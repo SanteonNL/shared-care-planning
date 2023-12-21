@@ -1,0 +1,6 @@
+output/
+temp/
+template/
+input-cache/
+.~lock*
+*.jar
