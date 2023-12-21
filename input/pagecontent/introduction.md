@@ -45,8 +45,7 @@ Zodra er een overeenkomst is (acceptatie van taak, consent) met de uitvoerende z
 
 Zodra zorgverlener B zijn taak afgerond heeft, werkt deze de status bij van de taak. Als er geen vervolgacties verwacht worden, werkt zorgverlener B ook zijn eigen einddatum bij in het zorgteam, zodat voor iedereen te zien is dat daar geen actieve behandelrelatie meer is.
 
-```plantuml
-@startuml startstate
-Bob -> Alice : hello?!!?
-@enduml
-```
+
+TODO: state/sequence-diagrams
+
+![startstate](/input/images/startstate.png)

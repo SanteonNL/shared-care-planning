@@ -1,0 +1,6 @@
+{
+    "plantuml.exportIncludeFolderHeirarchy": false,
+    "plantuml.exportOutDir": "input/images",
+    "plantuml.exportFormat": "png",
+    "plantuml.exportSubFolder": false
+}
