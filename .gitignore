@@ -4,3 +4,5 @@ template/
 input-cache/
 .~lock*
 *.jar
+*.dtmp
+*.bkp

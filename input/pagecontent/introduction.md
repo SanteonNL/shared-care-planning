@@ -39,13 +39,21 @@ Bij een verwijzing tussen zorgorganisaties wordt ervan uit dat er een [FHIR Task
 
 
 ## Voorbeeld 1
-Bijvoorbeeld; zorgverlener A bepaald dat een operatieve verrichting voor patient P bij zorgverlener B nodig is. Deze aanvraag wordt gecommuniceerd via een FHIR Task en kan in het zorgplan toegevoegd worden. De medisch autorisatie, informed consent voor deze ingreep, notificatie van de taak en acceptatie van de uitvoering vindt plaats in een separaat proces.
 
-Zodra er een overeenkomst is (acceptatie van taak, consent) met de uitvoerende zorgverlener B en patient P, wordt zorgverlener B toegevoegd aan het zorgteam door zorgverlener A. Zorgverlener B kan nu het patient-dossier bij zorgverlener A inzien. Daarnaast kan zorgverlener B een revalidatietraject toevoegen aan het zorgplan en het revalidatiecentrum toevoegen aan het zorgteam (na overleg met de patient, na acceptatie van de taak door het revalidatiecentrum). Het revalidatiecentrum kan daardoor het patient-dossier bij zorgverleners A en B inzien.
+Patient P meldt zich met klachten aan haar rechter voet. Ze heeft ooit al de diagnose hypertensie gehad en slikt daar medicatie voor. Patient heeft verder een lang dossier met somatische en psychische aandoeningen. Na onderzoek stelt zorgverlener A de diagnose Diabetes Mellitus type 2 vast. In een nieuw, 'leeg' zorgplan worden de relaties vastgelegd tussen diagnose, de relevante voorgeschiedenis en relevante medicatie van de patient. Ten slotte wordt er een nieuw zorgteam aangemaakt dat bestaat uit de patient, zorgverlener A en de zorgverleners/organisaties die een rol hebben/hadden in de voorgeschiedenis.
 
-Zodra zorgverlener B zijn taak afgerond heeft, werkt deze de status bij van de taak. Als er geen vervolgacties verwacht worden, werkt zorgverlener B ook zijn eigen einddatum bij in het zorgteam, zodat voor iedereen te zien is dat daar geen actieve behandelrelatie meer is.
+![](/input/images/example1-1.png)
 
 
-TODO: state/sequence-diagrams
+Zorgverlener A wil haar patient verwijzen naar een ziekenhuis B om de voet te laten amputeren. Na overleg met de patient (consent) maakt ze een verwijzing/order aan. Via een notificatie wordt deze in het ziekenhuis ontvangen.  (proces van dit soort transmurale verwijzingen/orders wordt [hier](https://confluence.hl7.org/display/HNETH/Generieke%2C+transmurale+workflow) verder beschreven).
 
-![startstate](/input/images/startstate.png)
+![](/input/images/example1-2.png)
+
+In het ziekenhuis wordt deze taak wordt toegewezen aan een lokaal ziekenhuis-team die de order accepteert. De acceptatie van de taak zorgt er ook voor dat het zorgteam aangepast wordt; er is nu een nieuwe behandelrelatie. Het team van chirurgen kan nu alle data inzien van de organisaties in het zorgteam van deze patient. Via het zorgplan vinden ze verwijzingen naar data die door zorgverlener A als relevant is aangemerkt. Indien nodig kan dit aangevuld worden. 
+
+![](/input/images/example1-3.png)
+
+
+Zodra de verrichting is uitgevoerd (met een 'Procedure' als resultaat), wordt de patient verwezen naar een thuiszorg-organisatie die de revalidatie op zich zal nemen. Thuiszorg-organisatie C accepteert de patient en de patient stemt hiermee in. Dit thuiszorg-team wordt hierdoor wederom toegevoegd aan het zorgteam en kan snel de relevante voorgeschiedenis vinden. De revalidatie start en de rol van het chirurgisch-team is inmiddels afgerond. De autorisatie wordt daardoor ingeperkt tot de data-elementen waar zij direct bij betrokken waren; de amputatie-order, zorgplan en zorgteam. 
+
+![](/input/images/example1-4.png)
