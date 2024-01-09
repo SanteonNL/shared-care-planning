@@ -32,7 +32,7 @@ Het zorgteam geeft een opsomming van deelnemers, hun rol en welke periode ze act
 Iedere actieve deelnemer in het zorgteam kan data opvragen (lezen) van de patient (in de context/scope van het zorgplan) bij ALLE organisaties in het zorgteam. Deelnemers in het zorgteam dienen een behandelrelatie te hebben met de patient of zijn door de patient zelf aan het zorgteam toegevoegd (bijvoorbeeld: een mantelzorger).
 
 
-Iedereen in het zorgteam kan het zorgplan of zorgteam aanpassen, zolang de aanpassing passend is bij de rol/taken die hij/zij heeft binnen het zorgteam/zorgplan. Het is aan de Care Plan/Team Service om tijdens de aanpassing (of middels een audit achteraf) te bepalen of deze 'past binnen de rol van het zorgteam-lid'. Er is geen aparte workflow voor deze zorgteam/zorgplan aanpassing. Bewerking van het zorgplan/zorgteam door patient/mantelzorger zou ook mogelijk moeten zijn (TODO: hoe? PGO??).
+Iedereen in het zorgteam kan het zorgplan aanpassen, zolang de aanpassing passend is bij de rol/taken die hij/zij heeft binnen het zorgteam/zorgplan. Het is aan de Care Plan/Team Service om tijdens de aanpassing (of middels een audit achteraf) te bepalen of deze 'past binnen de rol van het zorgteam-lid'. De leden van het zorgteam worden door de Care Plan/Team Service bijgewerkt; dit is een afgeleide van de uitvoerders van (lopende) activiteiten binnen het zorgplan. Er is geen aparte workflow voor deze zorgplan aanpassing. Bewerking van het zorgplan/zorgteam door patient/mantelzorger zou ook mogelijk moeten zijn (TODO: hoe? PGO??).
 
 ### Datamodel
 Bij een verwijzing tussen zorgorganisaties wordt ervan uit dat er een [FHIR Task](https://hl7.org/fhir/R4/task.html) uitgewisseld wordt die een referentie bevat naar het zorgplan (in Task.basedOn). Het zorgplan verwijst naar het zorgteam, patient, zorgvraag/diagnose, ondersteunende informatie en uitgevoerde/geplande taken. (TODO: plaatje maken)
@@ -40,8 +40,7 @@ Bij een verwijzing tussen zorgorganisaties wordt ervan uit dat er een [FHIR Task
 
 ## Voorbeeld 1
 
-Patient P meldt zich met klachten aan haar rechter voet. Ze heeft ooit al de diagnose hypertensie gehad en slikt daar medicatie voor. Patient heeft verder een lang dossier met somatische en psychische aandoeningen. Na onderzoek stelt zorgverlener A de diagnose Diabetes Mellitus type 2 vast. In een nieuw, 'leeg' zorgplan worden de relaties vastgelegd tussen diagnose, de relevante voorgeschiedenis en relevante medicatie van de patient. Ten slotte wordt er een nieuw zorgteam aangemaakt dat bestaat uit de patient, zorgverlener A en de zorgverleners/organisaties die een rol hebben/hadden in de voorgeschiedenis.
-Door het aanmaken van het zorgteam, krijgen organisaties 'huisarts' en 'apotk' in dit voorbeeld toegang tot de data van organisaties in dit zorgteam van de patient. Hun rol is hier gestart in 2015 en omdat deze actief is, heeft de rol geen einddatum. Als de rol van organisaties 'huisarts' en 'apotk' *wel* beëindigd zou zijn, zouden deze organisaties (alleen) toegang krijgen tot het zorgplan en zorgteam. De patient wordt in beide gevallen gevraagd om toestemming. Indien de patient geen toestemming geeft, dan wordt de data en organisaties van 'huisarts' en 'apotk' niet opgenomen in het zorgpad/zorgteam en wordt er een notitie in het zorgplan gemaakt met een beschrijving van de hypertensie-diagnose en medicatie. Deze manier van werken zal ook gevolgd worden als het technisch nog niet mogelijk is om, bijvoorbeeld, een referentie naar diagnose 'huisarts.nl/Condition/con1' op te nemen in het zorgpad.
+Patient P meldt zich met klachten aan haar rechter voet. Ze heeft ooit al de diagnose hypertensie gehad en slikt daar medicatie voor. Patient heeft verder een lang dossier met somatische en psychische aandoeningen. Na onderzoek stelt zorgverlener A de diagnose Diabetes Mellitus type 2 vast. In een nieuw, 'leeg' zorgplan worden de relaties vastgelegd tussen diagnose, de relevante voorgeschiedenis (hypertensie diagnose) en relevante medicatie van de patient. Ten slotte wordt er een nieuw zorgteam aangemaakt dat bestaat uit de patient en zorgverlener A. Het nieuwe zorgteam wordt geautoriseerd voor de (lokale) data van deze patient. Als er uit de anamnese blijkt dat er andere actieve, relevante behandelrelaties zijn, wordt deze data opgehaald (d.m.v. MITZ) en/of worden deze zorgverleners uitgenodigd om (alsnog) te participeren in het zorgteam; dit proces wordt in de volgende paragrafen beschreven. Dit zou de kans moeten verlagen op meerdere, redundante zorgplannen voor dezelfde zorgvraag.
 
 ![](/input/images/example1-1.png)
 
@@ -50,11 +49,17 @@ Zorgverlener A wil haar patient verwijzen naar een ziekenhuis B om de voet te la
 
 ![](/input/images/example1-2.png)
 
-In het ziekenhuis wordt deze taak wordt toegewezen aan een lokaal ziekenhuis-team die de order accepteert. De acceptatie van de taak zorgt er ook voor dat het zorgteam aangepast wordt; er is nu een nieuwe behandelrelatie. Het team van chirurgen kan nu alle data inzien van de organisaties in het zorgteam van deze patient. Via het zorgplan vinden ze verwijzingen naar data die door zorgverlener A als relevant is aangemerkt. Indien nodig kan dit aangevuld worden. 
+In het ziekenhuis wordt deze taak wordt toegewezen aan een lokaal ziekenhuis-team die de order accepteert. De acceptatie van de taak veroorzaakt meerdere acties:
+- in ziekenhuis B wordt het **zorgteam** geautoriseerd voor de (lokale) data van deze patient 
+- bij zorgorganisatie A wordt het zorgteam aangepast; er is immers een nieuwe behandelrelatie. 
+
+Hierdoor kunnen zowel zorgverlener A als het team van chirurgen nu alle data inzien van de organisaties in het zorgteam van deze patient. Via het zorgplan vindt de chirurg verwijzingen naar data die door zorgverlener A als relevant is aangemerkt. Indien nodig kan dit aangevuld worden. 
 
 ![](/input/images/example1-3.png)
 
 
-Zodra de verrichting is uitgevoerd (met een 'Procedure' als resultaat), wordt de patient verwezen naar een thuiszorg-organisatie die de revalidatie op zich zal nemen. Thuiszorg-organisatie C accepteert de patient en de patient stemt hiermee in. Dit thuiszorg-team wordt hierdoor wederom toegevoegd aan het zorgteam en kan snel de relevante voorgeschiedenis vinden. De revalidatie start en de rol van het chirurgisch-team is inmiddels afgerond. De autorisatie wordt daardoor ingeperkt tot de data-elementen waar zij direct bij betrokken waren; de amputatie-order, zorgplan en zorgteam. 
+Zodra de verrichting is uitgevoerd (met een 'Procedure' als resultaat), wordt de patient verwezen naar een thuiszorg-organisatie die de revalidatie op zich zal nemen. Patient stemt hiermee in en Thuiszorg-organisatie C accepteert deze taak. Dit thuiszorg-team wordt hierdoor wederom toegevoegd aan het zorgteam zodat men snel de relevante voorgeschiedenis kan vinden. Thuiszorg-organisatie C autoriseert het zorgteam voor de lokale data van patient P. 
 
-![](/input/images/example1-4.png)
+De revalidatie start en de rol van het chirurgisch-team is inmiddels afgerond. De autorisatie wordt hierdoor bij zorgorganisatie A en de thuiszorg-organisatie C ingeperkt (bijvoorbeeld tot de data-elementen waar zij direct bij betrokken waren; de amputatie-order, zorgplan en zorgteam). 
+
+![](/input/images/example1-4.png)!
