@@ -62,4 +62,4 @@ Zodra de verrichting is uitgevoerd (met een 'Procedure' als resultaat), wordt de
 
 De revalidatie start en de rol van het chirurgisch-team is inmiddels afgerond. De autorisatie wordt hierdoor bij zorgorganisatie A en de thuiszorg-organisatie C ingeperkt (bijvoorbeeld tot de data-elementen waar zij direct bij betrokken waren; de amputatie-order, zorgplan en zorgteam). 
 
-![](/input/images/example1-4.png)!
+![](/input/images/example1-4.png)
