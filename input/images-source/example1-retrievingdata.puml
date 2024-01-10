@@ -1,10 +1,17 @@
 @startuml example1-retrievingdata
+' box "organization A" #LightYellow
 participant "autorizationserver-A" as asa order 40
-participant "autorizationserver-B" as asb order 60
 participant "ehr-A" as ehra order 30
+' end box
+' box "organization B" #LightYellow
+participant "autorizationserver-B" as asb order 60
 participant "ehr-B" as ehrb order 50
+' end box
+' box "organization C" #LightYellow
 participant "ehr-C" as ehrc order 20
 actor "practitioner Charlie" as prc order 10
+' end box
+hide footbox
 
 prc -> ehrc : I want to access Diabetes-\n data of patient-P
 activate ehrc
@@ -33,7 +40,7 @@ ehrc -> asb : request access token (scope patient-P)
 deactivate ehrc
 activate asb
 group  get careplan/careteam at ehr-A
-    note over asb, ehra : autorizationserver-B initiating sub-proces\n "get careplan/careteam at ehr-A"
+    note over asb, ehra #White : autorizationserver-B initiating sub-proces\n "get careplan/careteam at ehr-A" 
 end
 asb -> asb : check if //practitioner Charlie//\n is (active/inactive) member\n of careteam
 asb -> asb : check local autorisations for\n careteam, active-member-role\n on patient-P data
