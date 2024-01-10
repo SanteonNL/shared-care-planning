@@ -1,3 +1,0 @@
-@startuml startstate
-Bob -> Alice : hello?!...
-@enduml

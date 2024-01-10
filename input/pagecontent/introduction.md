@@ -63,3 +63,12 @@ Zodra de verrichting is uitgevoerd (met een 'Procedure' als resultaat), wordt de
 De revalidatie start en de rol van het chirurgisch-team is inmiddels afgerond. De autorisatie wordt hierdoor bij zorgorganisatie A en de thuiszorg-organisatie C ingeperkt (bijvoorbeeld tot de data-elementen waar zij direct bij betrokken waren; de amputatie-order, zorgplan en zorgteam). 
 
 ![](/input/images/example1-4.png)
+
+
+### Zorginzage
+
+Als iemand binnen thuis-organisatie C de data wil inzien van ziekenhuis B, zullen de systemen van organisatie C, organisatie B en de Care Plan/Team Service (organisatie A) moeten interacteren met elkaar. Dit wordt in het volgende sequence beschreven. Doel hiervan is om de individuele transacties per systeem en de lokalisatie van data inzichtelijk te maken. Enkele stappen als user-authenticatie of access-token validatie zijn weggelaten om het schema overzichtelijk te houden. 
+
+![](/input/images/example1-retrievingdata.png)
+
+(TODO: beschrijving per stap).

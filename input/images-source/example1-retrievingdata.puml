@@ -1,0 +1,64 @@
+@startuml example1-retrievingdata
+participant "autorizationserver-A" as asa order 40
+participant "autorizationserver-B" as asb order 60
+participant "ehr-A" as ehra order 30
+participant "ehr-B" as ehrb order 50
+participant "ehr-C" as ehrc order 20
+actor "practitioner Charlie" as prc order 10
+
+prc -> ehrc : I want to access Diabetes-\n data of patient-P
+activate ehrc
+ehrc -> ehrc : lookup uri of CarePlan in (local) Task
+
+
+group get careplan/careteam at ehr-A
+    
+    ehrc -> ehra : request autorization server uri
+    deactivate ehrc
+    activate ehra
+    ehra -> ehrc : autorization server uri
+    deactivate ehra
+    activate ehrc
+    ehrc -> asa : request access token
+    deactivate ehrc
+    activate asa
+    asa -> asa : check if ehr-C is\n part of careteam
+    
+    asa -> ehrc : access token
+    deactivate asa
+    activate ehrc
+    ehrc -> ehra : request careteam, careplan (and \nother resources) for patient-P
+    deactivate ehrc
+    activate ehra
+    ehra -> ehrc : careteam, careplan (and \nother resources) for patient-P
+    deactivate ehra
+    activate ehrc
+end
+
+ehrc -> ehrc : lookup uri's of activities\n in CarePlan
+
+ehrc -> ehrb : request autorization server uri
+deactivate ehrc
+activate ehrb
+ehrb -> ehrc : autorization server uri
+deactivate ehrb
+activate ehrc
+ehrc -> asb : request access token
+deactivate ehrc
+activate asb
+group  get careplan/careteam at ehr-A
+    note over asb, ehra : autorizationserver-B initiating sub-proces\n "get careplan/careteam at ehr-A"
+end
+asb -> asb : check if //practitioner Charlie// \nis part of careteam
+asb -> ehrc : access token
+deactivate asb
+activate ehrc
+ehrc -> ehrb : request resources for patient-P
+deactivate ehrc
+activate ehrb
+ehrb -> ehrc : resources for patient-P
+deactivate ehrb
+activate ehrc
+ehrc -> prc : present data of patient-P
+deactivate ehrc
+@enduml
