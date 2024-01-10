@@ -12,31 +12,31 @@ ehrc -> ehrc : lookup reference/url\n of CarePlan in (local) Task
 
 
 group get careplan/careteam at ehr-A
-    ehrc -> asa : request access token
+    ehrc -> asa : request access token (scope CarePlan for patient-P)
     deactivate ehrc
     activate asa
-    asa -> asa : check if ehr-C is\n part of careteam
-    
+    asa -> asa : check if practitioners from\n organization-C are members\n of careteam
+    asa -> asa : check local autorisations for\n careteam, organization-role\n on patient-P data
     asa -> ehrc : access token
     deactivate asa
     activate ehrc
-    ehrc -> ehra : request careteam, careplan (and\n other resources) of patient-P
+    ehrc -> ehra : request careplan of patient-P
     deactivate ehrc
     activate ehra
-    ehra -> ehrc : careteam, careplan (and\n other resources) of patient-P
+    ehra -> ehrc : careplan of patient-P
     deactivate ehra
     activate ehrc
 end
 
-ehrc -> ehrc : lookup reference/url's of activities\n in CarePlan
-ehrc -> asb : request access token
+ehrc -> ehrc : lookup reference/url's of activities\n in careplan
+ehrc -> asb : request access token (scope patient-P)
 deactivate ehrc
 activate asb
 group  get careplan/careteam at ehr-A
     note over asb, ehra : autorizationserver-B initiating sub-proces\n "get careplan/careteam at ehr-A"
 end
-asb -> asb : check if //practitioner Charlie//\n is part of careteam
-asb -> asb : check local autorisations\n if //careteam// may access\n data of patient-P
+asb -> asb : check if //practitioner Charlie//\n is (active/inactive) member\n of careteam
+asb -> asb : check local autorisations for\n careteam, active-member-role\n on patient-P data
 asb -> ehrc : access token
 deactivate asb
 activate ehrc
