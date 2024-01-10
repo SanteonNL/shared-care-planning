@@ -50,6 +50,7 @@ group  get careplan/careteam at ehr-A
     note over asb, ehra : autorizationserver-B initiating sub-proces\n "get careplan/careteam at ehr-A"
 end
 asb -> asb : check if //practitioner Charlie// \nis part of careteam
+asb -> asb : check local autorisations\n if //careteam// may access\n data of patient-P
 asb -> ehrc : access token
 deactivate asb
 activate ehrc
