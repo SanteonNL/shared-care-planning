@@ -3,7 +3,7 @@ In Nederland wordt hard gewerkt aan het beschikbaar maken van zorgdata, zodat zo
 
 Zodra zorgdata van patiënten goed beschikbaar is voor zorgverleners, zal het voor veel zorgverleners extra tijd kosten om de **relevante informatie voor de zorgvraag** uit de beschikbare data uit te filteren. Meer informatie kost simpelweg meer tijd om door te nemen voor elke zorgverlener die betrokken is. Als hier geen voorziening voor komt, zal dit een negatief effect hebben op de efficiëntie van het zorgproces.
 
-Door o.a. het streven naar hybride zorg, zullen er in de toekomst meer organisaties betrokken zijn bij de zorg van een patient (TODO: bronvermelding, wellicht een paragraaf uit IZA?). Behalve het lokaliseren van beschikbare/relevante zorgdata, zal er ook behoefte zijn aan het lokaliseren van (actieve) zorgverleners/zorgorganisaties voor de behandeling van de patient. Een actieve behandelrelatie is niet altijd (snel/efficient) te achterhalen uit beschikbare data en kost zorgverleners dus extra tijd.
+Door o.a. het streven naar hybride zorg, zullen er in de toekomst meer organisaties betrokken zijn bij de zorg van een patient [TODO: bronvermelding, wellicht een paragraaf uit IZA?]. Behalve het lokaliseren van beschikbare/relevante zorgdata, zal er ook behoefte zijn aan het lokaliseren van (actieve) zorgverleners/zorgorganisaties voor de behandeling van de patient. Een actieve behandelrelatie is niet altijd (snel/efficient) te achterhalen uit beschikbare data en kost zorgverleners dus extra tijd.
 
 Bij het gebruik van MITZ moet de patient ervoor zorgen dat zijn/haar toestemming juist/tijdig is geadministreerd om data te kunnen delen tussen zorgverleners. Echter, als de patient in het zorgproces verwezen wordt naar een andere zorginstelling, kan er gebruik gemaakt worden van veronderstelde toestemming (immers, de verwijzing wordt besproken en geaccordeerd door de patient). De instemming met de verwijzing/behandeling en de registratie in MITZ kunnen in conflict met elkaar zijn. Dit kan komen doordat patiënten niet digitaal vaardig zijn, niet op de hoogte zijn van MITZ of doordat men datauitwisseling geweigerd heeft. Hierdoor ontstaat er een nieuwe afhankelijkheid van de patient in het zorgproces. Dit zal opnieuw extra tijd kosten van de zorgverlener.
 
@@ -32,12 +32,16 @@ Het zorgteam geeft een opsomming van deelnemers, hun rol en welke periode ze act
 Iedere deelnemer in het zorgteam zou (afhankelijk van hun actieve/inactieve rol) data moeten kunnen opvragen en/of bewerken van de patient (in de context/scope van het zorgplan) bij ALLE organisaties in het zorgteam. 
 
 Iedereen in het zorgteam kan het zorgplan aanpassen, zolang de aanpassing passend is bij de rol/taken die hij/zij heeft binnen het zorgteam/zorgplan. Dit is afhankelijk van de context en keuzes hierover kunnen per context worden vastgelegd. Een voorbeeld hiervan is de 'Zorgstandaard Integrale Geboortezorg' waarin aanpassing aan zorgteam/zorgplan worden toegekend aan de rol "coördinerend zorgverlener".
-Het is aan de Care Plan/Team Service om tijdens de aanpassing (of middels een audit achteraf) te bepalen of deze 'past binnen de rol van het zorgteam-lid'. De leden van het zorgteam worden door de Care Plan/Team Service bijgewerkt; dit is een afgeleide van de uitvoerders van (lopende) activiteiten binnen het zorgplan. Er is geen aparte workflow voor deze zorgplan aanpassing (TO DO: wat bedoel je met "er is geen aparte workflow"?). Bewerking van het zorgplan/zorgteam door patient/mantelzorger zou ook mogelijk moeten zijn (TODO: hoe? PGO?? en/of clientportalen van zorgorganisaties waar de patient in zorg is).
+Het is aan de Care Plan/Team Service om tijdens de aanpassing (of middels een audit achteraf) te bepalen of deze 'past binnen de rol van het zorgteam-lid'. De leden van het zorgteam worden door de Care Plan/Team Service bijgewerkt; dit is een afgeleide van de uitvoerders van (lopende) activiteiten binnen het zorgplan. Er is geen aparte workflow voor deze zorgplan aanpassing (TO DO: wat bedoel je met "er is geen aparte workflow"?). Bewerking van het zorgplan/zorgteam door patient/mantelzorger zou ook mogelijk moeten zijn [TODO: hoe? PGO?? en/of clientportalen van zorgorganisaties waar de patient in zorg is].
 
 NB: Zoals het IHE DCP ook vermeldt, kan een onderzoeker ook deel uitmaken van een zorgteam (met als rol: 'onderzoeker'). Als deze onderzoeker data opvraagt, zou deze gepseudonimiseerd teruggegeven kunnen worden door de zorgorganisatie in het zorgteam. (TO DO: apart kopje secundair gebruik/ onderzoek?)
 
 ### Datamodel
-Bij een verwijzing tussen zorgorganisaties wordt ervan uit gegaan dat er een [FHIR Task](https://hl7.org/fhir/R4/task.html) uitgewisseld wordt die een referentie bevat naar het zorgplan (in Task.basedOn). Het zorgplan verwijst naar het zorgteam, patient, zorgvraag/diagnose, ondersteunende informatie en uitgevoerde/geplande taken. (TODO: plaatje maken)
+Bij een verwijzing tussen zorgorganisaties wordt ervan uit gegaan dat er een [FHIR Task](https://hl7.org/fhir/R4/task.html) uitgewisseld wordt die een referentie bevat naar het zorgplan (in Task.basedOn). Het zorgplan verwijst naar het zorgteam, patient, zorgvraag/diagnose, ondersteunende informatie en uitgevoerde/geplande taken. [TODO: plaatje maken]
+
+### Definities
+Binnen [IHE DCP](http://ihe.net/uploadedFiles/Documents/PCC/IHE_PCC_Suppl_DCP.pdf) wordt gebruik gemaakt PlanDefinition als 'template' of definitie voor een CarePlan en ActivityDefinition die vaak gebruikt wordt voor een 'template' of definitie van een Task. Deze definition-instances worden beheerd door een Care Plan Definition Service. Zo'n service kan (net als bij de Care Plan/Team Service) bestaan binnen het eigen HIS/ECD/EPD, maar kan ook door een 3e partij geleverd worden. Overeenstemming over het te volgen behandelplan kan de samenwerking in het zorgnetwerk ten goede komen. Er zou afgesproken kunnen worden welke PlanDefinition de (Nederlandse?) best-practice bevat voor een bepaalde zorgvraag of diagnose (bijvoorbeeld Diabetes type 2). Vanuit een technisch perspectief is het toepassen van interne/externe definities relatief simpel; een CarePlan of Task kan aangemaakt worden o.b.v. een PlanDefinition of ActivityDefinition. Daarna vervolgt het zorgproces met de creeerde CarePlan/Task die 'vulling' en betekenis gekregen heeft vanuit de PlanDefinition/ActivityDefinition. Bij gebruik van een externe Care Plan Definition Service zal er ook iets geregeld moeten worden in het HIS/ECD/EPD om de juiste definitie te vinden/adresseren. Voor deze specificatie is dat proces buiten scope.   
+
 
 
 ## Voorbeeld 1
@@ -66,6 +70,12 @@ De revalidatie start en de rol van het chirurgisch-team is inmiddels afgerond. D
 
 ![](/input/images/example1-4.png)
 
+## Transacties
+
+
+### Van verwijzing tot uitvoering
+[TODO: beschrijving + sequence-diagram van verwijs-proces tot uitvoering]
+
 
 ### Zorginzage
 
@@ -73,4 +83,27 @@ Als iemand binnen thuis-organisatie C de data wil inzien van ziekenhuis B, zulle
 
 ![](/input/images/example1-retrievingdata.png)
 
-(TODO: beschrijving per stap).
+[TODO: beschrijving per stap].
+
+
+### Van uitvoering tot afronding
+[TODO: beschrijving + sequence-diagram van uitvoering tot afronding van taak]
+
+## Overeenkomsten met andere standaarden
+In bovenstaande specificatie beschrijft een implementatie van het IHE DCP profiel. Deze specificatie breidt het IHE profile uit met de data die binnen werkprocessen (en tussen organisaties) ontstaat en de afgeleide, functionele autorisatie voor deze data. Uiteraard zijn er andere standaarden binnen de zorg die een overlap hebben met deze specificatie. Bij het opstellen van deze specificatie is getracht om zo veel mogelijk deze bestaande standaarden te hergebruiken.
+
+### eOverdracht
+[TODO: beschrijving overeenkomsten en verschillen met eOverdracht standaard]
+
+
+### Koppeltaal 2.0
+[TODO: beschrijving overeenkomsten en verschillen met Koppeltaal 2.0 standaard]
+
+### Technical Agreement Notified Pull
+[TODO: beschrijving overeenkomsten en verschillen met TA NP standaard]
+
+
+
+
+
+ 
