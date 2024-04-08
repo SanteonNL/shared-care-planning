@@ -1,9 +1,12 @@
 # Shared Care Planning
 
-This repository contains the content of the Shared Care Planning Implementation Guide. For a readable version, start [here](/input/pagecontent/introduction.md). The location of the readable (published) version might change in the near future.
+This repository contains the content of the Shared Care Planning Implementation Guide. For a readable version, start [here](/input/pagecontent/introduction.md).
 
-This specification was presented at a NUTS Community meeting. Check the presentation [here](https://docs.google.com/presentation/d/1vSj-mtympSTkMmEC6NrvcPYXVt4_X4ppqqIPD-oGySE) and the recording here (TODO:Add recording)
+You can also check [this slidedeck](/input/attachments/Shared%20Care%20Planning%20voor%20Zorg&ICT2024.pptx) to quickly get a feeling what Shared Care Planning is. 
 
+
+A presentation of this specification was also [recorded](https://youtu.be/X9_r2I194CA?t=1390) on 16 Februari 2024 (during a [NUTS](https://nuts.nl/) community meeting)
+ 
 
 
 
