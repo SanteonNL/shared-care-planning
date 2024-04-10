@@ -23,6 +23,11 @@ publisher:
 # The dependencies property corresponds to IG.dependsOn. The key is the
 # package id and the value is the version (or dev/current). For advanced
 # use cases, the value can be an object with keys for id, uri, and version.
+dependencies:
+  nictiz.fhir.nl.r4.zib2020: 
+    id: zib2020
+    uri: https://simplifier.net/packages/nictiz.fhir.nl.r4.zib2020
+    version: 0.10.0-beta.1
 #
 # dependencies:
 #   hl7.fhir.us.core: 3.1.0
