@@ -1,0 +1,78 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://hl7.nl/shared-care-planning/RelatedPerson/nl-core-CareTeam-01-RelatedPerson-01> a fhir:RelatedPerson;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "nl-core-CareTeam-01-RelatedPerson-01"]; # 
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://nictiz.nl/fhir/StructureDefinition/nl-core-ContactPerson";
+       fhir:index 0;
+       fhir:link <http://nictiz.nl/fhir/StructureDefinition/nl-core-ContactPerson>
+     ]
+  ]; # 
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: RelatedPerson</b><a name=\"nl-core-CareTeam-01-RelatedPerson-01\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource RelatedPerson &quot;nl-core-CareTeam-01-RelatedPerson-01&quot; </p><p style=\"margin-bottom: 0px\">Profile: <code>http://nictiz.nl/fhir/StructureDefinition/nl-core-ContactPerson</code></p></div><p><b>patient</b>: <a href=\"Patient-nl-core-Patient-01.html\">Patient/nl-core-Patient-01: Patient, Johanna Petronella Maria (Jo) van Putten-van der Giessen</a> &quot; VAN PUTTEN-VAN DER GIESSEN&quot;</p><p><b>relationship</b>: Eerste relatie/contactpersoon <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.zib2020@0.10.0-beta.1&amp;canonical=urn:oid:2.16.840.1.113883.2.4.3.11.22.472\">COD-821-VEK Vektis Soort relatie</a>#01)</span>, Husband <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"http://terminology.hl7.org/5.3.0/CodeSystem-v3-RoleCode.html\">RoleCode</a>#HUSB)</span></p><p><b>name</b>: Jan de Wit(OFFICIAL)</p></div>"
+  ]; # 
+  fhir:RelatedPerson.patient [
+     fhir:link <http://hl7.nl/shared-care-planning/Patient/nl-core-Patient-01>;
+     fhir:Reference.reference [ fhir:value "Patient/nl-core-Patient-01" ];
+     fhir:Reference.type [ fhir:value "Patient" ];
+     fhir:Reference.display [ fhir:value "Patient, Johanna Petronella Maria (Jo) van Putten-van der Giessen" ]
+  ]; # 
+  fhir:RelatedPerson.relationship [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "urn:oid:2.16.840.1.113883.2.4.3.11.22.472" ];
+       fhir:Coding.code [ fhir:value "01" ];
+       fhir:Coding.display [ fhir:value "Eerste relatie/contactpersoon" ]
+     ]
+  ], [
+     fhir:index 1;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "http://terminology.hl7.org/CodeSystem/v3-RoleCode" ];
+       fhir:Coding.code [ fhir:value "HUSB" ];
+       fhir:Coding.display [ fhir:value "Husband" ]
+     ]
+  ]; # 
+  fhir:RelatedPerson.name [
+     fhir:index 0;
+     fhir:HumanName.use [ fhir:value "official" ];
+     fhir:HumanName.text [ fhir:value "Jan de Wit" ];
+     fhir:HumanName.family [
+       fhir:value "de Wit";
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix" ];
+         fhir:Extension.valueString [ fhir:value "de" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/humanname-own-name" ];
+         fhir:Extension.valueString [ fhir:value "Wit" ]
+       ]
+     ];
+     fhir:HumanName.given [
+       fhir:value "Jan";
+       fhir:index 0;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier" ];
+         fhir:Extension.valueCode [ fhir:value "BR" ]
+       ]
+     ]
+  ] . # 
+
+# - ontology header ------------------------------------------------------------
+
+<http://hl7.nl/shared-care-planning/RelatedPerson/nl-core-CareTeam-01-RelatedPerson-01.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

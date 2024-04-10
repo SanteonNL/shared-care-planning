@@ -1,0 +1,59 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://hl7.nl/shared-care-planning/Condition/nl-core-CareTeam-01-Condition-03> a fhir:Condition;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "nl-core-CareTeam-01-Condition-03"]; # 
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem";
+       fhir:index 0;
+       fhir:link <http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem>
+     ]
+  ]; # 
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Condition</b><a name=\"nl-core-CareTeam-01-Condition-03\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Condition &quot;nl-core-CareTeam-01-Condition-03&quot; </p><p style=\"margin-bottom: 0px\">Profile: <code>http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem</code></p></div><p><b>category</b>: Complicatie <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#116223007)</span></p><p><b>code</b>: Geneesmiddel-interacties <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#62014003)</span></p><p><b>subject</b>: <a href=\"Patient-nl-core-Patient-01.html\">Patient/nl-core-Patient-01: Patient, Johanna Petronella Maria (Jo) van Putten-van der Giessen</a> &quot; VAN PUTTEN-VAN DER GIESSEN&quot;</p><p><b>note</b>: Huiduitslag met veel jeuk door medicatie</p></div>"
+  ]; # 
+  fhir:Condition.category [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:116223007;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "116223007" ];
+       fhir:Coding.display [ fhir:value "Complicatie" ]
+     ]
+  ]; # 
+  fhir:Condition.code [
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       a sct:62014003;
+       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
+       fhir:Coding.code [ fhir:value "62014003" ];
+       fhir:Coding.display [ fhir:value "Geneesmiddel-interacties" ]
+     ]
+  ]; # 
+  fhir:Condition.subject [
+     fhir:link <http://hl7.nl/shared-care-planning/Patient/nl-core-Patient-01>;
+     fhir:Reference.reference [ fhir:value "Patient/nl-core-Patient-01" ];
+     fhir:Reference.type [ fhir:value "Patient" ];
+     fhir:Reference.display [ fhir:value "Patient, Johanna Petronella Maria (Jo) van Putten-van der Giessen" ]
+  ]; # 
+  fhir:Condition.note [
+     fhir:index 0;
+     fhir:Annotation.text [ fhir:value "Huiduitslag met veel jeuk door medicatie" ]
+  ] . # 
+
+# - ontology header ------------------------------------------------------------
+
+<http://hl7.nl/shared-care-planning/Condition/nl-core-CareTeam-01-Condition-03.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+

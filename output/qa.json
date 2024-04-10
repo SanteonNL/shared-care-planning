@@ -1,0 +1,12 @@
+{
+  "url" : "http://hl7.nl/shared-care-planning/ImplementationGuide/fhir.scp",
+  "name" : "sharedcareplanning",
+  "package-id" : "fhir.scp",
+  "ig-ver" : "0.1.0",
+  "date" : "Wed, 10 Apr, 2024 15:11:50 +0200",
+  "errs" : 15,
+  "warnings" : 52,
+  "hints" : 10,
+  "version" : "4.0.1",
+  "tool" : "5.0.0-snapshot2 (3)"
+}

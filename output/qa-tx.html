@@ -1,0 +1,513 @@
+<html><head><title>Terminology Server Log</title></head><body><h2>Terminology Server Log</h2>
+<hr/><a name="l1"> </a>
+<p>#1</p>
+<pre>
+POST http://tx.fhir.org/r4/ValueSet/$expand?_limit=1000&_incomplete=true HTTP/1.0
+User-Agent: hapi-fhir-tooling-client
+Accept-Charset: UTF-8
+Accept: application/fhir+json
+Content-Type: application/fhir+json;charset=UTF-8
+
+{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;x-system-cache-id&quot;,&quot;valueString&quot;:&quot;dc8fd4bc-091a-424a-8a3b-6198ef146891&quot;},{&quot;name&quot;:&quot;includeDefinition&quot;,&quot;valueBoolean&quot;:false},{&quot;name&quot;:&quot;excludeNested&quot;,&quot;valueBoolean&quot;:true},{&quot;name&quot;:&quot;valueSet&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;ValueSet&quot;,&quot;status&quot;:&quot;active&quot;,&quot;compose&quot;:{&quot;inactive&quot;:true,&quot;include&quot;:[{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;filter&quot;:[{&quot;property&quot;:&quot;concept&quot;,&quot;op&quot;:&quot;descendent-of&quot;,&quot;value&quot;:&quot;260787004&quot;}]}]}}},{&quot;name&quot;:&quot;_limit&quot;,&quot;valueString&quot;:&quot;1000&quot;},{&quot;name&quot;:&quot;_incomplete&quot;,&quot;valueString&quot;:&quot;true&quot;}]}
+</pre>
+<pre>
+422
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+connection:keep-alive
+content-length:385
+content-type:application/fhir+json
+date:Wed, 10 Apr 2024 13:11:44 GMT
+server:nginx
+x-request-id:136-690385
+
+{&quot;resourceType&quot; : &quot;OperationOutcome&quot;,&quot;text&quot; : {&quot;status&quot; : &quot;generated&quot;,&quot;div&quot; : &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p&gt;The value set '' expansion has 10000 codes, which is too many to display (&amp;gt;1000)&lt;/p&gt;&lt;/div&gt;&quot;},&quot;issue&quot; : [{&quot;severity&quot; : &quot;error&quot;,&quot;code&quot; : &quot;too-costly&quot;,&quot;details&quot; : {&quot;text&quot; : &quot;The value set '' expansion has 10000 codes, which is too many to display (&gt;1000)&quot;}}]}
+</pre>
+<hr/><a name="l2"> </a>
+<p>#2</p>
+<pre>
+POST http://tx.fhir.org/r4/ValueSet/$expand?_limit=1000&_incomplete=true HTTP/1.0
+User-Agent: hapi-fhir-tooling-client
+Accept-Charset: UTF-8
+Accept: application/fhir+json
+Content-Type: application/fhir+json;charset=UTF-8
+
+{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;x-system-cache-id&quot;,&quot;valueString&quot;:&quot;dc8fd4bc-091a-424a-8a3b-6198ef146891&quot;},{&quot;name&quot;:&quot;includeDefinition&quot;,&quot;valueBoolean&quot;:false},{&quot;name&quot;:&quot;excludeNested&quot;,&quot;valueBoolean&quot;:true},{&quot;name&quot;:&quot;valueSet&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;ValueSet&quot;,&quot;id&quot;:&quot;2.16.840.1.113883.2.4.3.11.60.40.2.10.1.1--20200901000000&quot;,&quot;meta&quot;:{&quot;profile&quot;:[&quot;http://hl7.org/fhir/StructureDefinition/shareablevalueset&quot;]},&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod&quot;,&quot;valuePeriod&quot;:{&quot;start&quot;:&quot;2020-09-01T00:00:00+00:00&quot;}}],&quot;url&quot;:&quot;http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.10.1.1--20200901000000&quot;,&quot;identifier&quot;:[{&quot;use&quot;:&quot;official&quot;,&quot;system&quot;:&quot;urn:ietf:rfc:3986&quot;,&quot;value&quot;:&quot;urn:oid:2.16.840.1.113883.2.4.3.11.60.40.2.10.1.1&quot;}],&quot;version&quot;:&quot;2020-09-01T00:00:00&quot;,&quot;name&quot;:&quot;ProductTypeCodelijst&quot;,&quot;title&quot;:&quot;ProductTypeCodelijst&quot;,&quot;status&quot;:&quot;active&quot;,&quot;experimental&quot;:false,&quot;publisher&quot;:&quot;Registratie aan de bron&quot;,&quot;contact&quot;:[{&quot;name&quot;:&quot;Registratie aan de bron&quot;,&quot;telecom&quot;:[{&quot;system&quot;:&quot;url&quot;,&quot;value&quot;:&quot;https://www.registratieaandebron.nl&quot;},{&quot;system&quot;:&quot;url&quot;,&quot;value&quot;:&quot;https://www.zibs.nl&quot;}]}],&quot;description&quot;:&quot;ProductTypeCodelijst&quot;,&quot;immutable&quot;:false,&quot;copyright&quot;:&quot;This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these artefacts must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/getsnomed-ct or info@snomed.org.&quot;,&quot;compose&quot;:{&quot;include&quot;:[{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;filter&quot;:[{&quot;property&quot;:&quot;concept&quot;,&quot;op&quot;:&quot;descendent-of&quot;,&quot;value&quot;:&quot;260787004&quot;}]}]}}},{&quot;name&quot;:&quot;_limit&quot;,&quot;valueString&quot;:&quot;1000&quot;},{&quot;name&quot;:&quot;_incomplete&quot;,&quot;valueString&quot;:&quot;true&quot;}]}
+</pre>
+<pre>
+422
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+connection:keep-alive
+content-length:613
+content-type:application/fhir+json
+date:Wed, 10 Apr 2024 13:11:44 GMT
+server:nginx
+x-request-id:136-690387
+
+{&quot;resourceType&quot; : &quot;OperationOutcome&quot;,&quot;text&quot; : {&quot;status&quot; : &quot;generated&quot;,&quot;div&quot; : &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p&gt;The value set 'http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.10.1.1--20200901000000|2020-09-01T00:00:00' expansion has 10000 codes, which is too many to display (&amp;gt;1000)&lt;/p&gt;&lt;/div&gt;&quot;},&quot;issue&quot; : [{&quot;severity&quot; : &quot;error&quot;,&quot;code&quot; : &quot;too-costly&quot;,&quot;details&quot; : {&quot;text&quot; : &quot;The value set 'http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.10.1.1--20200901000000|2020-09-01T00:00:00' expansion has 10000 codes, which is too many to display (&gt;1000)&quot;}}]}
+</pre>
+<hr/><a name="l3"> </a>
+<p>#3</p>
+<pre>
+POST http://tx.fhir.org/r4/ValueSet/$expand?_limit=1000&_incomplete=true HTTP/1.0
+User-Agent: hapi-fhir-tooling-client
+Accept-Charset: UTF-8
+Accept: application/fhir+json
+Content-Type: application/fhir+json;charset=UTF-8
+
+{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;x-system-cache-id&quot;,&quot;valueString&quot;:&quot;dc8fd4bc-091a-424a-8a3b-6198ef146891&quot;},{&quot;name&quot;:&quot;includeDefinition&quot;,&quot;valueBoolean&quot;:false},{&quot;name&quot;:&quot;excludeNested&quot;,&quot;valueBoolean&quot;:true},{&quot;name&quot;:&quot;valueSet&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;ValueSet&quot;,&quot;status&quot;:&quot;active&quot;,&quot;compose&quot;:{&quot;inactive&quot;:true,&quot;include&quot;:[{&quot;system&quot;:&quot;urn:oid:2.16.840.1.113883.2.4.3.11.22.211&quot;,&quot;concept&quot;:[{&quot;code&quot;:&quot;0&quot;,&quot;display&quot;:&quot;Geen&quot;,&quot;designation&quot;:[{&quot;language&quot;:&quot;nl-NL&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;Geen&quot;}]}]}]}}},{&quot;name&quot;:&quot;_limit&quot;,&quot;valueString&quot;:&quot;1000&quot;},{&quot;name&quot;:&quot;_incomplete&quot;,&quot;valueString&quot;:&quot;true&quot;}]}
+</pre>
+<pre>
+422
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+connection:keep-alive
+content-length:391
+content-type:application/fhir+json
+date:Wed, 10 Apr 2024 13:11:45 GMT
+server:nginx
+x-request-id:136-690389
+
+{&quot;resourceType&quot; : &quot;OperationOutcome&quot;,&quot;text&quot; : {&quot;status&quot; : &quot;generated&quot;,&quot;div&quot; : &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p&gt;Unable to provide support for code system urn:oid:2.16.840.1.113883.2.4.3.11.22.211&lt;/p&gt;&lt;/div&gt;&quot;},&quot;issue&quot; : [{&quot;severity&quot; : &quot;error&quot;,&quot;code&quot; : &quot;not-supported&quot;,&quot;details&quot; : {&quot;text&quot; : &quot;Unable to provide support for code system urn:oid:2.16.840.1.113883.2.4.3.11.22.211&quot;}}]}
+</pre>
+<hr/><a name="l4"> </a>
+<p>#4</p>
+<pre>
+POST http://tx.fhir.org/r4/ValueSet/$expand?_limit=1000&_incomplete=true HTTP/1.0
+User-Agent: hapi-fhir-tooling-client
+Accept-Charset: UTF-8
+Accept: application/fhir+json
+Content-Type: application/fhir+json;charset=UTF-8
+
+{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;x-system-cache-id&quot;,&quot;valueString&quot;:&quot;dc8fd4bc-091a-424a-8a3b-6198ef146891&quot;},{&quot;name&quot;:&quot;includeDefinition&quot;,&quot;valueBoolean&quot;:false},{&quot;name&quot;:&quot;excludeNested&quot;,&quot;valueBoolean&quot;:true},{&quot;name&quot;:&quot;valueSet&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;ValueSet&quot;,&quot;id&quot;:&quot;2.16.840.1.113883.2.4.3.11.60.40.2.4.17.2--20200901000000&quot;,&quot;meta&quot;:{&quot;profile&quot;:[&quot;http://hl7.org/fhir/StructureDefinition/shareablevalueset&quot;]},&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod&quot;,&quot;valuePeriod&quot;:{&quot;start&quot;:&quot;2020-09-01T00:00:00+00:00&quot;}}],&quot;url&quot;:&quot;http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.17.2--20200901000000&quot;,&quot;identifier&quot;:[{&quot;use&quot;:&quot;official&quot;,&quot;system&quot;:&quot;urn:ietf:rfc:3986&quot;,&quot;value&quot;:&quot;urn:oid:2.16.840.1.113883.2.4.3.11.60.40.2.4.17.2&quot;}],&quot;version&quot;:&quot;2020-09-01T00:00:00&quot;,&quot;name&quot;:&quot;HorenHulpmiddelTypeCodelijst&quot;,&quot;title&quot;:&quot;HorenHulpmiddelTypeCodelijst&quot;,&quot;status&quot;:&quot;active&quot;,&quot;experimental&quot;:false,&quot;publisher&quot;:&quot;Registratie aan de bron&quot;,&quot;contact&quot;:[{&quot;name&quot;:&quot;Registratie aan de bron&quot;,&quot;telecom&quot;:[{&quot;system&quot;:&quot;url&quot;,&quot;value&quot;:&quot;https://www.registratieaandebron.nl&quot;},{&quot;system&quot;:&quot;url&quot;,&quot;value&quot;:&quot;https://www.zibs.nl&quot;}]}],&quot;description&quot;:&quot;HorenHulpmiddelTypeCodelijst&quot;,&quot;immutable&quot;:false,&quot;copyright&quot;:&quot;This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these artefacts must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/getsnomed-ct or info@snomed.org.&quot;,&quot;compose&quot;:{&quot;inactive&quot;:true,&quot;include&quot;:[{&quot;system&quot;:&quot;urn:oid:2.16.840.1.113883.2.4.3.11.22.211&quot;,&quot;concept&quot;:[{&quot;code&quot;:&quot;0&quot;,&quot;display&quot;:&quot;Geen&quot;,&quot;designation&quot;:[{&quot;language&quot;:&quot;nl-NL&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;Geen&quot;}]}]},{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;concept&quot;:[{&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/valueset-concept-comments&quot;,&quot;valueString&quot;:&quot;Gehoorapparaat&quot;}],&quot;code&quot;:&quot;6012004&quot;,&quot;display&quot;:&quot;hoortoestel&quot;,&quot;designation&quot;:[{&quot;language&quot;:&quot;en-US&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;Hearing aid&quot;},{&quot;language&quot;:&quot;nl-NL&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;hoortoestel&quot;}]},{&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/valueset-deprecated&quot;,&quot;valueBoolean&quot;:true},{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/valueset-concept-comments&quot;,&quot;valueString&quot;:&quot;Gehoorapparaat&quot;}],&quot;code&quot;:&quot;272182005&quot;,&quot;display&quot;:&quot;Aid to hearing&quot;,&quot;designation&quot;:[{&quot;language&quot;:&quot;en-US&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;Aid to hearing&quot;}]}]}]}}},{&quot;name&quot;:&quot;_limit&quot;,&quot;valueString&quot;:&quot;1000&quot;},{&quot;name&quot;:&quot;_incomplete&quot;,&quot;valueString&quot;:&quot;true&quot;}]}
+</pre>
+<pre>
+422
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+connection:keep-alive
+content-length:391
+content-type:application/fhir+json
+date:Wed, 10 Apr 2024 13:11:45 GMT
+server:nginx
+x-request-id:136-690391
+
+{&quot;resourceType&quot; : &quot;OperationOutcome&quot;,&quot;text&quot; : {&quot;status&quot; : &quot;generated&quot;,&quot;div&quot; : &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p&gt;Unable to provide support for code system urn:oid:2.16.840.1.113883.2.4.3.11.22.211&lt;/p&gt;&lt;/div&gt;&quot;},&quot;issue&quot; : [{&quot;severity&quot; : &quot;error&quot;,&quot;code&quot; : &quot;not-supported&quot;,&quot;details&quot; : {&quot;text&quot; : &quot;Unable to provide support for code system urn:oid:2.16.840.1.113883.2.4.3.11.22.211&quot;}}]}
+</pre>
+<hr/><a name="l5"> </a>
+<p>#5</p>
+<pre>
+POST http://tx.fhir.org/r4/ValueSet/$expand?_limit=1000&_incomplete=true HTTP/1.0
+User-Agent: hapi-fhir-tooling-client
+Accept-Charset: UTF-8
+Accept: application/fhir+json
+Content-Type: application/fhir+json;charset=UTF-8
+
+{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;x-system-cache-id&quot;,&quot;valueString&quot;:&quot;dc8fd4bc-091a-424a-8a3b-6198ef146891&quot;},{&quot;name&quot;:&quot;includeDefinition&quot;,&quot;valueBoolean&quot;:false},{&quot;name&quot;:&quot;excludeNested&quot;,&quot;valueBoolean&quot;:true},{&quot;name&quot;:&quot;valueSet&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;ValueSet&quot;,&quot;status&quot;:&quot;active&quot;,&quot;compose&quot;:{&quot;inactive&quot;:true,&quot;include&quot;:[{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;filter&quot;:[{&quot;property&quot;:&quot;concept&quot;,&quot;op&quot;:&quot;descendent-of&quot;,&quot;value&quot;:&quot;442083009&quot;}]}]}}},{&quot;name&quot;:&quot;_limit&quot;,&quot;valueString&quot;:&quot;1000&quot;},{&quot;name&quot;:&quot;_incomplete&quot;,&quot;valueString&quot;:&quot;true&quot;}]}
+</pre>
+<pre>
+422
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+connection:keep-alive
+content-length:385
+content-type:application/fhir+json
+date:Wed, 10 Apr 2024 13:11:46 GMT
+server:nginx
+x-request-id:136-690393
+
+{&quot;resourceType&quot; : &quot;OperationOutcome&quot;,&quot;text&quot; : {&quot;status&quot; : &quot;generated&quot;,&quot;div&quot; : &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p&gt;The value set '' expansion has 10000 codes, which is too many to display (&amp;gt;1000)&lt;/p&gt;&lt;/div&gt;&quot;},&quot;issue&quot; : [{&quot;severity&quot; : &quot;error&quot;,&quot;code&quot; : &quot;too-costly&quot;,&quot;details&quot; : {&quot;text&quot; : &quot;The value set '' expansion has 10000 codes, which is too many to display (&gt;1000)&quot;}}]}
+</pre>
+<hr/><a name="l6"> </a>
+<p>#6</p>
+<pre>
+POST http://tx.fhir.org/r4/ValueSet/$expand?_limit=1000&_incomplete=true HTTP/1.0
+User-Agent: hapi-fhir-tooling-client
+Accept-Charset: UTF-8
+Accept: application/fhir+json
+Content-Type: application/fhir+json;charset=UTF-8
+
+{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;x-system-cache-id&quot;,&quot;valueString&quot;:&quot;dc8fd4bc-091a-424a-8a3b-6198ef146891&quot;},{&quot;name&quot;:&quot;includeDefinition&quot;,&quot;valueBoolean&quot;:false},{&quot;name&quot;:&quot;excludeNested&quot;,&quot;valueBoolean&quot;:true},{&quot;name&quot;:&quot;tx-resource&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;ValueSet&quot;,&quot;id&quot;:&quot;2.16.840.1.113883.2.4.3.11.60.40.2.20.7.1--20200901000000&quot;,&quot;meta&quot;:{&quot;profile&quot;:[&quot;http://hl7.org/fhir/StructureDefinition/shareablevalueset&quot;]},&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod&quot;,&quot;valuePeriod&quot;:{&quot;start&quot;:&quot;2020-09-01T00:00:00+00:00&quot;}}],&quot;url&quot;:&quot;http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.20.7.1--20200901000000&quot;,&quot;identifier&quot;:[{&quot;use&quot;:&quot;official&quot;,&quot;system&quot;:&quot;urn:ietf:rfc:3986&quot;,&quot;value&quot;:&quot;urn:oid:2.16.840.1.113883.2.4.3.11.60.40.2.20.7.1&quot;}],&quot;version&quot;:&quot;2020-09-01T00:00:00&quot;,&quot;name&quot;:&quot;LocatieCodelijst&quot;,&quot;title&quot;:&quot;LocatieCodelijst&quot;,&quot;status&quot;:&quot;active&quot;,&quot;experimental&quot;:false,&quot;publisher&quot;:&quot;Registratie aan de bron&quot;,&quot;contact&quot;:[{&quot;name&quot;:&quot;Registratie aan de bron&quot;,&quot;telecom&quot;:[{&quot;system&quot;:&quot;url&quot;,&quot;value&quot;:&quot;https://www.registratieaandebron.nl&quot;},{&quot;system&quot;:&quot;url&quot;,&quot;value&quot;:&quot;https://www.zibs.nl&quot;}]}],&quot;description&quot;:&quot;LocatieCodelijst&quot;,&quot;immutable&quot;:false,&quot;copyright&quot;:&quot;This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these artefacts must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/getsnomed-ct or info@snomed.org.&quot;,&quot;compose&quot;:{&quot;include&quot;:[{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;filter&quot;:[{&quot;property&quot;:&quot;concept&quot;,&quot;op&quot;:&quot;descendent-of&quot;,&quot;value&quot;:&quot;442083009&quot;}]}]}}},{&quot;name&quot;:&quot;tx-resource&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;ValueSet&quot;,&quot;id&quot;:&quot;2.16.840.1.113883.2.4.3.11.60.40.2.20.7.3--20200901000000&quot;,&quot;meta&quot;:{&quot;profile&quot;:[&quot;http://hl7.org/fhir/StructureDefinition/shareablevalueset&quot;]},&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod&quot;,&quot;valuePeriod&quot;:{&quot;start&quot;:&quot;2020-09-01T00:00:00+00:00&quot;}}],&quot;url&quot;:&quot;http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.20.7.3--20200901000000&quot;,&quot;identifier&quot;:[{&quot;use&quot;:&quot;official&quot;,&quot;system&quot;:&quot;urn:ietf:rfc:3986&quot;,&quot;value&quot;:&quot;urn:oid:2.16.840.1.113883.2.4.3.11.60.40.2.20.7.3&quot;}],&quot;version&quot;:&quot;2020-09-01T00:00:00&quot;,&quot;name&quot;:&quot;LocatieICD_O_3Codelijst&quot;,&quot;title&quot;:&quot;LocatieICD-O-3Codelijst&quot;,&quot;status&quot;:&quot;active&quot;,&quot;experimental&quot;:false,&quot;publisher&quot;:&quot;Registratie aan de bron&quot;,&quot;contact&quot;:[{&quot;name&quot;:&quot;Registratie aan de bron&quot;,&quot;telecom&quot;:[{&quot;system&quot;:&quot;url&quot;,&quot;value&quot;:&quot;https://www.registratieaandebron.nl&quot;},{&quot;system&quot;:&quot;url&quot;,&quot;value&quot;:&quot;https://www.zibs.nl&quot;}]}],&quot;description&quot;:&quot;ICD-O-3 - International Classification of Diseases for Oncology, version 3 (Topography codes)&quot;,&quot;immutable&quot;:false,&quot;compose&quot;:{&quot;include&quot;:[{&quot;system&quot;:&quot;urn:oid:2.16.840.1.113883.6.43.1&quot;}]}}},{&quot;name&quot;:&quot;cache-id&quot;,&quot;valueString&quot;:&quot;072713bb-13ae-48eb-8acd-ce56d5c402bc&quot;},{&quot;name&quot;:&quot;valueSet&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;ValueSet&quot;,&quot;id&quot;:&quot;2.16.840.1.113883.2.4.3.11.60.121.11.11--20200901000000&quot;,&quot;meta&quot;:{&quot;profile&quot;:[&quot;http://hl7.org/fhir/StructureDefinition/shareablevalueset&quot;]},&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod&quot;,&quot;valuePeriod&quot;:{&quot;start&quot;:&quot;2020-09-01T00:00:00+00:00&quot;}}],&quot;url&quot;:&quot;http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.121.11.11--20200901000000&quot;,&quot;identifier&quot;:[{&quot;use&quot;:&quot;official&quot;,&quot;system&quot;:&quot;urn:ietf:rfc:3986&quot;,&quot;value&quot;:&quot;urn:oid:2.16.840.1.113883.2.4.3.11.60.121.11.11&quot;}],&quot;version&quot;:&quot;2020-09-01T00:00:00&quot;,&quot;name&quot;:&quot;LocatieCodelijsten&quot;,&quot;title&quot;:&quot;LocatieCodelijsten&quot;,&quot;status&quot;:&quot;active&quot;,&quot;experimental&quot;:false,&quot;publisher&quot;:&quot;Registratie aan de bron&quot;,&quot;contact&quot;:[{&quot;name&quot;:&quot;Registratie aan de bron&quot;,&quot;telecom&quot;:[{&quot;system&quot;:&quot;url&quot;,&quot;value&quot;:&quot;https://www.registratieaandebron.nl&quot;},{&quot;system&quot;:&quot;url&quot;,&quot;value&quot;:&quot;https://www.zibs.nl&quot;}]}],&quot;description&quot;:&quot;Value set combining the distinct value sets that the zib AnatomicalLocation binds to for NL-CM:20.7.4 Location. This value set as such does not exist in the zib but facilitates referencing all these value sets at the same time&quot;,&quot;immutable&quot;:false,&quot;compose&quot;:{&quot;include&quot;:[{&quot;valueSet&quot;:[&quot;http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.20.7.1--20200901000000&quot;]},{&quot;valueSet&quot;:[&quot;http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.20.7.3--20200901000000&quot;]}]}}},{&quot;name&quot;:&quot;_limit&quot;,&quot;valueString&quot;:&quot;1000&quot;},{&quot;name&quot;:&quot;_incomplete&quot;,&quot;valueString&quot;:&quot;true&quot;}]}
+</pre>
+<pre>
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:862
+content-type:application/fhir+json
+date:Wed, 10 Apr 2024 13:11:46 GMT
+last-modified:Wed, 10 Apr 2024 13:11:46 GMT
+pragma:no-cache
+server:nginx
+x-request-id:136-690398
+
+{&quot;resourceType&quot; : &quot;ValueSet&quot;,&quot;meta&quot; : {&quot;profile&quot; : [&quot;http://hl7.org/fhir/StructureDefinition/shareablevalueset&quot;]},&quot;url&quot; : &quot;http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.121.11.11--20200901000000&quot;,&quot;identifier&quot; : [{&quot;use&quot; : &quot;official&quot;,&quot;system&quot; : &quot;urn:ietf:rfc:3986&quot;,&quot;value&quot; : &quot;urn:oid:2.16.840.1.113883.2.4.3.11.60.121.11.11&quot;}],&quot;version&quot; : &quot;2020-09-01T00:00:00&quot;,&quot;name&quot; : &quot;LocatieCodelijsten&quot;,&quot;title&quot; : &quot;LocatieCodelijsten&quot;,&quot;status&quot; : &quot;active&quot;,&quot;experimental&quot; : false,&quot;immutable&quot; : false,&quot;expansion&quot; : {&quot;extension&quot; : [{&quot;url&quot; : &quot;http://hl7.org/fhir/StructureDefinition/valueset-toocostly&quot;,&quot;valueBoolean&quot; : true}],&quot;identifier&quot; : &quot;urn:uuid:8ef16225-1c7e-4adc-9930-341c217d4a07&quot;,&quot;timestamp&quot; : &quot;2024-04-10T13:11:46.557Z&quot;,&quot;total&quot; : 0,&quot;parameter&quot; : [{&quot;name&quot; : &quot;limitedExpansion&quot;,&quot;valueBoolean&quot; : true},{&quot;name&quot; : &quot;excludeNested&quot;,&quot;valueBoolean&quot; : true}]}}
+</pre>
+<hr/><a name="l7"> </a>
+<p>#7</p>
+<pre>
+POST http://tx.fhir.org/r4/ValueSet/$expand?_limit=1000&_incomplete=true HTTP/1.0
+User-Agent: hapi-fhir-tooling-client
+Accept-Charset: UTF-8
+Accept: application/fhir+json
+Content-Type: application/fhir+json;charset=UTF-8
+
+{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;x-system-cache-id&quot;,&quot;valueString&quot;:&quot;dc8fd4bc-091a-424a-8a3b-6198ef146891&quot;},{&quot;name&quot;:&quot;includeDefinition&quot;,&quot;valueBoolean&quot;:false},{&quot;name&quot;:&quot;excludeNested&quot;,&quot;valueBoolean&quot;:true},{&quot;name&quot;:&quot;valueSet&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;ValueSet&quot;,&quot;status&quot;:&quot;active&quot;,&quot;compose&quot;:{&quot;inactive&quot;:true,&quot;include&quot;:[{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;concept&quot;:[{&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/valueset-concept-comments&quot;,&quot;valueString&quot;:&quot;Linkeroor&quot;}],&quot;code&quot;:&quot;89644007&quot;,&quot;display&quot;:&quot;structuur van linker oor&quot;,&quot;designation&quot;:[{&quot;language&quot;:&quot;en-US&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;Left ear structure&quot;},{&quot;language&quot;:&quot;nl-NL&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;structuur van linker oor&quot;}]},{&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/valueset-concept-comments&quot;,&quot;valueString&quot;:&quot;Rechteroor&quot;}],&quot;code&quot;:&quot;25577004&quot;,&quot;display&quot;:&quot;structuur van rechter oor&quot;,&quot;designation&quot;:[{&quot;language&quot;:&quot;en-US&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;Right ear structure&quot;},{&quot;language&quot;:&quot;nl-NL&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;structuur van rechter oor&quot;}]},{&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/valueset-concept-comments&quot;,&quot;valueString&quot;:&quot;Beide oren&quot;}],&quot;code&quot;:&quot;34338003&quot;,&quot;display&quot;:&quot;beide oren&quot;,&quot;designation&quot;:[{&quot;language&quot;:&quot;en-US&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;Both ears&quot;},{&quot;language&quot;:&quot;nl-NL&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;beide oren&quot;}]}]}]}}},{&quot;name&quot;:&quot;_limit&quot;,&quot;valueString&quot;:&quot;1000&quot;},{&quot;name&quot;:&quot;_incomplete&quot;,&quot;valueString&quot;:&quot;true&quot;}]}
+</pre>
+<pre>
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:802
+content-type:application/fhir+json
+date:Wed, 10 Apr 2024 13:11:47 GMT
+last-modified:Wed, 10 Apr 2024 13:11:47 GMT
+pragma:no-cache
+server:nginx
+x-request-id:136-690401
+
+{&quot;resourceType&quot; : &quot;ValueSet&quot;,&quot;status&quot; : &quot;active&quot;,&quot;expansion&quot; : {&quot;identifier&quot; : &quot;urn:uuid:dde575ea-1761-42c6-ba9d-2c00343bd56a&quot;,&quot;timestamp&quot; : &quot;2024-04-10T13:11:47.088Z&quot;,&quot;total&quot; : 3,&quot;parameter&quot; : [{&quot;name&quot; : &quot;limitedExpansion&quot;,&quot;valueBoolean&quot; : true},{&quot;name&quot; : &quot;excludeNested&quot;,&quot;valueBoolean&quot; : true},{&quot;name&quot; : &quot;used-codesystem&quot;,&quot;valueUri&quot; : &quot;http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240201&quot;},{&quot;name&quot; : &quot;version&quot;,&quot;valueUri&quot; : &quot;http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240201&quot;}],&quot;contains&quot; : [{&quot;system&quot; : &quot;http://snomed.info/sct&quot;,&quot;code&quot; : &quot;89644007&quot;,&quot;display&quot; : &quot;Left ear&quot;},{&quot;system&quot; : &quot;http://snomed.info/sct&quot;,&quot;code&quot; : &quot;25577004&quot;,&quot;display&quot; : &quot;Right ear&quot;},{&quot;system&quot; : &quot;http://snomed.info/sct&quot;,&quot;code&quot; : &quot;34338003&quot;,&quot;display&quot; : &quot;Both ears&quot;}]}}
+</pre>
+<hr/><a name="l8"> </a>
+<p>#8</p>
+<pre>
+POST http://tx.fhir.org/r4/ValueSet/$expand?_limit=1000&_incomplete=true HTTP/1.0
+User-Agent: hapi-fhir-tooling-client
+Accept-Charset: UTF-8
+Accept: application/fhir+json
+Content-Type: application/fhir+json;charset=UTF-8
+
+{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;x-system-cache-id&quot;,&quot;valueString&quot;:&quot;dc8fd4bc-091a-424a-8a3b-6198ef146891&quot;},{&quot;name&quot;:&quot;includeDefinition&quot;,&quot;valueBoolean&quot;:false},{&quot;name&quot;:&quot;excludeNested&quot;,&quot;valueBoolean&quot;:true},{&quot;name&quot;:&quot;valueSet&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;ValueSet&quot;,&quot;status&quot;:&quot;active&quot;,&quot;compose&quot;:{&quot;inactive&quot;:true,&quot;include&quot;:[{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;concept&quot;:[{&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/valueset-concept-comments&quot;,&quot;valueString&quot;:&quot;Links&quot;}],&quot;code&quot;:&quot;7771000&quot;,&quot;display&quot;:&quot;links&quot;,&quot;designation&quot;:[{&quot;language&quot;:&quot;en-US&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;Left&quot;},{&quot;language&quot;:&quot;nl-NL&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;links&quot;}]},{&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/valueset-concept-comments&quot;,&quot;valueString&quot;:&quot;Rechts&quot;}],&quot;code&quot;:&quot;24028007&quot;,&quot;display&quot;:&quot;rechts&quot;,&quot;designation&quot;:[{&quot;language&quot;:&quot;en-US&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;Right&quot;},{&quot;language&quot;:&quot;nl-NL&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;rechts&quot;}]},{&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/valueset-concept-comments&quot;,&quot;valueString&quot;:&quot;Rechts en links&quot;}],&quot;code&quot;:&quot;51440002&quot;,&quot;display&quot;:&quot;bilateraal&quot;,&quot;designation&quot;:[{&quot;language&quot;:&quot;en-US&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;Right and left&quot;},{&quot;language&quot;:&quot;nl-NL&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;bilateraal&quot;}]}]}]}}},{&quot;name&quot;:&quot;_limit&quot;,&quot;valueString&quot;:&quot;1000&quot;},{&quot;name&quot;:&quot;_incomplete&quot;,&quot;valueString&quot;:&quot;true&quot;}]}
+</pre>
+<pre>
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:798
+content-type:application/fhir+json
+date:Wed, 10 Apr 2024 13:11:47 GMT
+last-modified:Wed, 10 Apr 2024 13:11:47 GMT
+pragma:no-cache
+server:nginx
+x-request-id:136-690402
+
+{&quot;resourceType&quot; : &quot;ValueSet&quot;,&quot;status&quot; : &quot;active&quot;,&quot;expansion&quot; : {&quot;identifier&quot; : &quot;urn:uuid:88ffab17-b7e2-4238-bd1d-988d2995e471&quot;,&quot;timestamp&quot; : &quot;2024-04-10T13:11:47.369Z&quot;,&quot;total&quot; : 3,&quot;parameter&quot; : [{&quot;name&quot; : &quot;limitedExpansion&quot;,&quot;valueBoolean&quot; : true},{&quot;name&quot; : &quot;excludeNested&quot;,&quot;valueBoolean&quot; : true},{&quot;name&quot; : &quot;used-codesystem&quot;,&quot;valueUri&quot; : &quot;http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240201&quot;},{&quot;name&quot; : &quot;version&quot;,&quot;valueUri&quot; : &quot;http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240201&quot;}],&quot;contains&quot; : [{&quot;system&quot; : &quot;http://snomed.info/sct&quot;,&quot;code&quot; : &quot;7771000&quot;,&quot;display&quot; : &quot;Left&quot;},{&quot;system&quot; : &quot;http://snomed.info/sct&quot;,&quot;code&quot; : &quot;24028007&quot;,&quot;display&quot; : &quot;Right&quot;},{&quot;system&quot; : &quot;http://snomed.info/sct&quot;,&quot;code&quot; : &quot;51440002&quot;,&quot;display&quot; : &quot;Right and left&quot;}]}}
+</pre>
+<hr/><a name="l9"> </a>
+<p>#9</p>
+<pre>
+POST http://tx.fhir.org/r4/ValueSet/$expand?_limit=1000&_incomplete=true HTTP/1.0
+User-Agent: hapi-fhir-tooling-client
+Accept-Charset: UTF-8
+Accept: application/fhir+json
+Content-Type: application/fhir+json;charset=UTF-8
+
+{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;x-system-cache-id&quot;,&quot;valueString&quot;:&quot;dc8fd4bc-091a-424a-8a3b-6198ef146891&quot;},{&quot;name&quot;:&quot;includeDefinition&quot;,&quot;valueBoolean&quot;:false},{&quot;name&quot;:&quot;excludeNested&quot;,&quot;valueBoolean&quot;:true},{&quot;name&quot;:&quot;valueSet&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;ValueSet&quot;,&quot;status&quot;:&quot;active&quot;,&quot;compose&quot;:{&quot;inactive&quot;:true,&quot;include&quot;:[{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;concept&quot;:[{&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/valueset-concept-comments&quot;,&quot;valueString&quot;:&quot;Links&quot;}],&quot;code&quot;:&quot;7771000&quot;,&quot;display&quot;:&quot;links&quot;,&quot;designation&quot;:[{&quot;language&quot;:&quot;en-US&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;Left&quot;},{&quot;language&quot;:&quot;nl-NL&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;links&quot;}]},{&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/valueset-concept-comments&quot;,&quot;valueString&quot;:&quot;Rechts&quot;}],&quot;code&quot;:&quot;24028007&quot;,&quot;display&quot;:&quot;rechts&quot;,&quot;designation&quot;:[{&quot;language&quot;:&quot;en-US&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;Right&quot;},{&quot;language&quot;:&quot;nl-NL&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;rechts&quot;}]}]}]}}},{&quot;name&quot;:&quot;_limit&quot;,&quot;valueString&quot;:&quot;1000&quot;},{&quot;name&quot;:&quot;_incomplete&quot;,&quot;valueString&quot;:&quot;true&quot;}]}
+</pre>
+<pre>
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:711
+content-type:application/fhir+json
+date:Wed, 10 Apr 2024 13:11:47 GMT
+last-modified:Wed, 10 Apr 2024 13:11:47 GMT
+pragma:no-cache
+server:nginx
+x-request-id:136-690404
+
+{&quot;resourceType&quot; : &quot;ValueSet&quot;,&quot;status&quot; : &quot;active&quot;,&quot;expansion&quot; : {&quot;identifier&quot; : &quot;urn:uuid:e448c304-62db-44bf-8021-57276f2a81f8&quot;,&quot;timestamp&quot; : &quot;2024-04-10T13:11:47.494Z&quot;,&quot;total&quot; : 2,&quot;parameter&quot; : [{&quot;name&quot; : &quot;limitedExpansion&quot;,&quot;valueBoolean&quot; : true},{&quot;name&quot; : &quot;excludeNested&quot;,&quot;valueBoolean&quot; : true},{&quot;name&quot; : &quot;used-codesystem&quot;,&quot;valueUri&quot; : &quot;http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240201&quot;},{&quot;name&quot; : &quot;version&quot;,&quot;valueUri&quot; : &quot;http://snomed.info/sct|http://snomed.info/sct/900000000000207008/version/20240201&quot;}],&quot;contains&quot; : [{&quot;system&quot; : &quot;http://snomed.info/sct&quot;,&quot;code&quot; : &quot;7771000&quot;,&quot;display&quot; : &quot;Left&quot;},{&quot;system&quot; : &quot;http://snomed.info/sct&quot;,&quot;code&quot; : &quot;24028007&quot;,&quot;display&quot; : &quot;Right&quot;}]}}
+</pre>
+<hr/><a name="l10"> </a>
+<p>#10</p>
+<pre>
+POST http://tx.fhir.org/r4/ValueSet/$expand?_limit=1000&_incomplete=true HTTP/1.0
+User-Agent: hapi-fhir-tooling-client
+Accept-Charset: UTF-8
+Accept: application/fhir+json
+Content-Type: application/fhir+json;charset=UTF-8
+
+{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;x-system-cache-id&quot;,&quot;valueString&quot;:&quot;dc8fd4bc-091a-424a-8a3b-6198ef146891&quot;},{&quot;name&quot;:&quot;includeDefinition&quot;,&quot;valueBoolean&quot;:false},{&quot;name&quot;:&quot;excludeNested&quot;,&quot;valueBoolean&quot;:true},{&quot;name&quot;:&quot;valueSet&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;ValueSet&quot;,&quot;status&quot;:&quot;active&quot;,&quot;compose&quot;:{&quot;inactive&quot;:true,&quot;include&quot;:[{&quot;system&quot;:&quot;urn:oid:2.16.840.1.113883.2.4.3.11.22.218&quot;,&quot;concept&quot;:[{&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/valueset-concept-comments&quot;,&quot;valueString&quot;:&quot;geen visuele hulpmiddelen&quot;}],&quot;code&quot;:&quot;0&quot;,&quot;display&quot;:&quot;geen&quot;,&quot;designation&quot;:[{&quot;language&quot;:&quot;nl-NL&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;geen&quot;}]}]}]}}},{&quot;name&quot;:&quot;_limit&quot;,&quot;valueString&quot;:&quot;1000&quot;},{&quot;name&quot;:&quot;_incomplete&quot;,&quot;valueString&quot;:&quot;true&quot;}]}
+</pre>
+<pre>
+422
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+connection:keep-alive
+content-length:391
+content-type:application/fhir+json
+date:Wed, 10 Apr 2024 13:11:47 GMT
+server:nginx
+x-request-id:136-690406
+
+{&quot;resourceType&quot; : &quot;OperationOutcome&quot;,&quot;text&quot; : {&quot;status&quot; : &quot;generated&quot;,&quot;div&quot; : &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p&gt;Unable to provide support for code system urn:oid:2.16.840.1.113883.2.4.3.11.22.218&lt;/p&gt;&lt;/div&gt;&quot;},&quot;issue&quot; : [{&quot;severity&quot; : &quot;error&quot;,&quot;code&quot; : &quot;not-supported&quot;,&quot;details&quot; : {&quot;text&quot; : &quot;Unable to provide support for code system urn:oid:2.16.840.1.113883.2.4.3.11.22.218&quot;}}]}
+</pre>
+<hr/><a name="l11"> </a>
+<p>#11</p>
+<pre>
+POST http://tx.fhir.org/r4/ValueSet/$expand?_limit=1000&_incomplete=true HTTP/1.0
+User-Agent: hapi-fhir-tooling-client
+Accept-Charset: UTF-8
+Accept: application/fhir+json
+Content-Type: application/fhir+json;charset=UTF-8
+
+{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;x-system-cache-id&quot;,&quot;valueString&quot;:&quot;dc8fd4bc-091a-424a-8a3b-6198ef146891&quot;},{&quot;name&quot;:&quot;includeDefinition&quot;,&quot;valueBoolean&quot;:false},{&quot;name&quot;:&quot;excludeNested&quot;,&quot;valueBoolean&quot;:true},{&quot;name&quot;:&quot;tx-resource&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;CodeSystem&quot;,&quot;id&quot;:&quot;v3-NullFlavor&quot;,&quot;language&quot;:&quot;en&quot;,&quot;text&quot;:{&quot;status&quot;:&quot;generated&quot;,&quot;div&quot;:&quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;Placeholder&lt;/div&gt;&quot;},&quot;url&quot;:&quot;http://terminology.hl7.org/CodeSystem/v3-NullFlavor&quot;,&quot;identifier&quot;:[{&quot;system&quot;:&quot;urn:ietf:rfc:3986&quot;,&quot;value&quot;:&quot;urn:oid:2.16.840.1.113883.5.1008&quot;}],&quot;version&quot;:&quot;2.1.0&quot;,&quot;name&quot;:&quot;NullFlavor&quot;,&quot;title&quot;:&quot;NullFlavor&quot;,&quot;status&quot;:&quot;active&quot;,&quot;experimental&quot;:false,&quot;date&quot;:&quot;2019-03-20&quot;,&quot;publisher&quot;:&quot;Health Level 7&quot;,&quot;contact&quot;:[{&quot;name&quot;:&quot;Health Level Seven&quot;}],&quot;description&quot;:&quot;A collection of codes specifying why a valid value is not present.&quot;,&quot;caseSensitive&quot;:true,&quot;hierarchyMeaning&quot;:&quot;is-a&quot;,&quot;content&quot;:&quot;complete&quot;,&quot;property&quot;:[{&quot;extension&quot;:[{&quot;url&quot;:&quot;http://terminology.hl7.org/StructureDefinition/ext-mif-relationship-symmetry&quot;,&quot;valueCode&quot;:&quot;antisymmetric&quot;},{&quot;url&quot;:&quot;http://terminology.hl7.org/StructureDefinition/ext-mif-relationship-transitivity&quot;,&quot;valueCode&quot;:&quot;transitive&quot;},{&quot;url&quot;:&quot;http://terminology.hl7.org/StructureDefinition/ext-mif-relationship-reflexivity&quot;,&quot;valueCode&quot;:&quot;irreflexive&quot;},{&quot;url&quot;:&quot;http://terminology.hl7.org/StructureDefinition/ext-mif-relationship-isNavigable&quot;,&quot;valueBoolean&quot;:true},{&quot;url&quot;:&quot;http://terminology.hl7.org/StructureDefinition/ext-mif-relationship-relationshipKind&quot;,&quot;valueCode&quot;:&quot;Specializes&quot;},{&quot;url&quot;:&quot;http://terminology.hl7.org/StructureDefinition/ext-mif-relationship-inverseName&quot;,&quot;valueString&quot;:&quot;Generalizes&quot;}],&quot;code&quot;:&quot;Specializes&quot;,&quot;description&quot;:&quot;The child code is a more narrow version of the concept represented by the parent code.  I.e. Every child concept is also a valid parent concept.  Used to allow determination of subsumption.  Must be transitive, irreflexive, antisymmetric.&quot;,&quot;type&quot;:&quot;Coding&quot;},{&quot;extension&quot;:[{&quot;url&quot;:&quot;http://terminology.hl7.org/StructureDefinition/ext-mif-relationship-symmetry&quot;,&quot;valueCode&quot;:&quot;antisymmetric&quot;},{&quot;url&quot;:&quot;http://terminology.hl7.org/StructureDefinition/ext-mif-relationship-transitivity&quot;,&quot;valueCode&quot;:&quot;transitive&quot;},{&quot;url&quot;:&quot;http://terminology.hl7.org/StructureDefinition/ext-mif-relationship-reflexivity&quot;,&quot;valueCode&quot;:&quot;irreflexive&quot;},{&quot;url&quot;:&quot;http://terminology.hl7.org/StructureDefinition/ext-mif-relationship-isNavigable&quot;,&quot;valueBoolean&quot;:true},{&quot;url&quot;:&quot;http://terminology.hl7.org/StructureDefinition/ext-mif-relationship-relationshipKind&quot;,&quot;valueCode&quot;:&quot;Generalizes&quot;},{&quot;url&quot;:&quot;http://terminology.hl7.org/StructureDefinition/ext-mif-relationship-inverseName&quot;,&quot;valueString&quot;:&quot;Specializes&quot;}],&quot;code&quot;:&quot;Generalizes&quot;,&quot;description&quot;:&quot;Inverse of Specializes.  Only included as a derived relationship.&quot;,&quot;type&quot;:&quot;Coding&quot;},{&quot;code&quot;:&quot;internalId&quot;,&quot;uri&quot;:&quot;http://terminology.hl7.org/CodeSystem/utg-concept-properties#v3-internal-id&quot;,&quot;description&quot;:&quot;The internal identifier for the concept in the HL7 Access database repository.&quot;,&quot;type&quot;:&quot;code&quot;},{&quot;code&quot;:&quot;status&quot;,&quot;uri&quot;:&quot;http://hl7.org/fhir/concept-properties#status&quot;,&quot;description&quot;:&quot;Designation of a concept's state.  Normally is not populated unless the state is retired..&quot;,&quot;type&quot;:&quot;code&quot;},{&quot;code&quot;:&quot;HL7usageNotes&quot;,&quot;uri&quot;:&quot;http://terminology.hl7.org/CodeSystem/utg-concept-properties#HL7usageNotes&quot;,&quot;description&quot;:&quot;HL7 Concept Usage Notes&quot;,&quot;type&quot;:&quot;string&quot;},{&quot;code&quot;:&quot;subsumedBy&quot;,&quot;uri&quot;:&quot;http://hl7.org/fhir/concept-properties#parent&quot;,&quot;description&quot;:&quot;The concept code of a parent concept&quot;,&quot;type&quot;:&quot;code&quot;}],&quot;concept&quot;:[{&quot;code&quot;:&quot;NI&quot;,&quot;display&quot;:&quot;NoInformation&quot;,&quot;definition&quot;:&quot;**Description:**The value is exceptional (missing, omitted, incomplete, improper). No information as to the reason for being an exceptional value is provided. This is the most general exceptional value. It is also the default exceptional value.&quot;,&quot;property&quot;:[{&quot;code&quot;:&quot;status&quot;,&quot;valueCode&quot;:&quot;active&quot;},{&quot;code&quot;:&quot;internalId&quot;,&quot;valueCode&quot;:&quot;10610&quot;}]},{&quot;code&quot;:&quot;NP&quot;,&quot;display&quot;:&quot;not present&quot;,&quot;definition&quot;:&quot;Value is not present in a message. This is only defined in messages, never in application data! All values not present in the message must be replaced by the applicable default, or no-information (NI) as the default of all defaults.&quot;,&quot;property&quot;:[{&quot;code&quot;:&quot;status&quot;,&quot;valueCode&quot;:&quot;retired&quot;},{&quot;code&quot;:&quot;internalId&quot;,&quot;valueCode&quot;:&quot;10619&quot;}]},{&quot;code&quot;:&quot;NAV&quot;,&quot;display&quot;:&quot;temporarily unavailable&quot;,&quot;definition&quot;:&quot;Information is not available at this time but it is expected that it will be available later.&quot;,&quot;property&quot;:[{&quot;code&quot;:&quot;status&quot;,&quot;valueCode&quot;:&quot;active&quot;},{&quot;code&quot;:&quot;internalId&quot;,&quot;valueCode&quot;:&quot;10615&quot;},{&quot;code&quot;:&quot;subsumedBy&quot;,&quot;valueCode&quot;:&quot;ASKU&quot;},{&quot;code&quot;:&quot;subsumedBy&quot;,&quot;valueCode&quot;:&quot;NAVU&quot;}]},{&quot;code&quot;:&quot;DER&quot;,&quot;display&quot;:&quot;derived&quot;,&quot;definition&quot;:&quot;**Description:**An actual value may exist, but it must be derived from the provided information (usually an EXPR generic data type extension will be used to convey the derivation expressionexpression .&quot;,&quot;property&quot;:[{&quot;code&quot;:&quot;status&quot;,&quot;valueCode&quot;:&quot;active&quot;},{&quot;code&quot;:&quot;internalId&quot;,&quot;valueCode&quot;:&quot;22657&quot;},{&quot;code&quot;:&quot;subsumedBy&quot;,&quot;valueCode&quot;:&quot;INV&quot;}]},{&quot;code&quot;:&quot;OTH&quot;,&quot;display&quot;:&quot;other&quot;,&quot;definition&quot;:&quot;**Description:**The actual value is not a member of the set of permitted data values in the constrained value domain of a variable. (e.g., concept not provided by required code system).\r\n\r\n**Usage Notes**: This flavor and its specializations are most commonly used with the CD datatype and its flavors. However, it may apply to \\*any\\* datatype where the constraints of the type are tighter than can be conveyed. For example, a PQ that is for a true measured amount whose units are not supported in UCUM, a need to convey a REAL when the type has been constrained to INT, etc.\r\n\r\nWith coded datatypes, this null flavor may only be used if the vocabulary binding has a coding strength of CNE. By definition, all local codes and original text are part of the value set if the coding strength is CWE.&quot;,&quot;property&quot;:[{&quot;code&quot;:&quot;status&quot;,&quot;valueCode&quot;:&quot;active&quot;},{&quot;code&quot;:&quot;HL7usageNotes&quot;,&quot;valueString&quot;:&quot;This flavor and its specializations are most commonly used with the CD datatype and its flavors.  However, it may apply to *any* datatype where the constraints of the type are tighter than can be conveyed.  For example, a PQ that is for a true measured amount whose units are not supported in UCUM, a need to convey a REAL when the type has been constrained to INT, etc. With coded datatypes, this null flavor may only be used if the vocabulary binding has a coding strength of CNE.  By definition, all local codes and original text are part of the value set if the coding strength is CWE.&quot;},{&quot;code&quot;:&quot;internalId&quot;,&quot;valueCode&quot;:&quot;10616&quot;},{&quot;code&quot;:&quot;subsumedBy&quot;,&quot;valueCode&quot;:&quot;INV&quot;}]},{&quot;code&quot;:&quot;UNC&quot;,&quot;display&quot;:&quot;un-encoded&quot;,&quot;definition&quot;:&quot;**Description:** The actual value has not yet been encoded within the approved value domain.\r\n\r\n**Example**: Original text or a local code has been specified but translation or encoding to the approved value set has not yet occurred due to limitations of the sending system. Original text has been captured for a PQ, but not attempt has been made to split the value and unit or to encode the unit in UCUM.\r\n\r\n**Usage Notes**: If it is known that it is not possible to encode the concept, OTH should be used instead. However, use of UNC does not necessarily guarantee the concept will be encodable, only that encoding has not been attempted.\r\n\r\nData type properties such as original text and translations may be present when this null flavor is included.&quot;,&quot;property&quot;:[{&quot;code&quot;:&quot;status&quot;,&quot;valueCode&quot;:&quot;active&quot;},{&quot;code&quot;:&quot;HL7usageNotes&quot;,&quot;valueString&quot;:&quot;If it is known that it is not possible to encode the concept, OTH should be used instead.  However, use of UNC does not necessarily guarantee the concept will be encodable, only that encoding has not been attempted. Data type properties such as original text and translations may be present when this null flavor is included.&quot;},{&quot;code&quot;:&quot;internalId&quot;,&quot;valueCode&quot;:&quot;22185&quot;},{&quot;code&quot;:&quot;subsumedBy&quot;,&quot;valueCode&quot;:&quot;INV&quot;}]},{&quot;code&quot;:&quot;INV&quot;,&quot;display&quot;:&quot;invalid&quot;,&quot;definition&quot;:&quot;**Description:**The value as represented in the instance is not a member of the set of permitted data values in the constrained value domain of a variable.&quot;,&quot;property&quot;:[{&quot;code&quot;:&quot;status&quot;,&quot;valueCode&quot;:&quot;active&quot;},{&quot;code&quot;:&quot;internalId&quot;,&quot;valueCode&quot;:&quot;22656&quot;},{&quot;code&quot;:&quot;subsumedBy&quot;,&quot;valueCode&quot;:&quot;NI&quot;}]},{&quot;code&quot;:&quot;MSK&quot;,&quot;display&quot;:&quot;masked&quot;,&quot;definition&quot;:&quot;There is information on this item available but it has not been provided by the sender due to security, privacy or other reasons. There may be an alternate mechanism for gaining access to this information.\r\n\r\nNote: using this null flavor does provide information that may be a breach of confidentiality, even though no detail data is provided. Its primary purpose is for those circumstances where it is necessary to inform the receiver that the information does exist without providing any detail.&quot;,&quot;property&quot;:[{&quot;code&quot;:&quot;status&quot;,&quot;valueCode&quot;:&quot;active&quot;},{&quot;code&quot;:&quot;internalId&quot;,&quot;valueCode&quot;:&quot;17932&quot;},{&quot;code&quot;:&quot;subsumedBy&quot;,&quot;valueCode&quot;:&quot;NI&quot;}]},{&quot;code&quot;:&quot;NA&quot;,&quot;display&quot;:&quot;not applicable&quot;,&quot;definition&quot;:&quot;Known to have no proper value (e.g., last menstrual period for a male).&quot;,&quot;property&quot;:[{&quot;code&quot;:&quot;status&quot;,&quot;valueCode&quot;:&quot;active&quot;},{&quot;code&quot;:&quot;internalId&quot;,&quot;valueCode&quot;:&quot;10611&quot;},{&quot;code&quot;:&quot;subsumedBy&quot;,&quot;valueCode&quot;:&quot;NI&quot;}]},{&quot;code&quot;:&quot;UNK&quot;,&quot;display&quot;:&quot;unknown&quot;,&quot;definition&quot;:&quot;**Description:**A proper value is applicable, but not known.\r\n\r\n**Usage Notes**: This means the actual value is not known. If the only thing that is unknown is how to properly express the value in the necessary constraints (value set, datatype, etc.), then the OTH or UNC flavor should be used. No properties should be included for a datatype with this property unless:\r\n\r\n1.  Those properties themselves directly translate to a semantic of \&quot;unknown\&quot;. (E.g. a local code sent as a translation that conveys 'unknown')\r\n2.  Those properties further qualify the nature of what is unknown. (E.g. specifying a use code of \&quot;H\&quot; and a URL prefix of \&quot;tel:\&quot; to convey that it is the home phone number that is unknown.)&quot;,&quot;property&quot;:[{&quot;code&quot;:&quot;status&quot;,&quot;valueCode&quot;:&quot;active&quot;},{&quot;code&quot;:&quot;HL7usageNotes&quot;,&quot;valueString&quot;:&quot;This means the actual value is not known.  If the only thing that is unknown is how to properly express the value in the necessary constraints (value set, datatype, etc.), then the OTH or UNC flavor should be used.  No properties should be included for a datatype with this property unless:  Those properties themselves directly translate to a semantic of \&quot;unknown\&quot;.  (E.g. a local code sent as a translation that conveys 'unknown') Those properties further qualify the nature of what is unknown.  (E.g. specifying a use code of \&quot;H\&quot; and a URL prefix of \&quot;tel:\&quot; to convey that it is the home phone number that is unknown.)&quot;},{&quot;code&quot;:&quot;internalId&quot;,&quot;valueCode&quot;:&quot;10612&quot;},{&quot;code&quot;:&quot;subsumedBy&quot;,&quot;valueCode&quot;:&quot;NI&quot;}]},{&quot;code&quot;:&quot;NINF&quot;,&quot;display&quot;:&quot;negative infinity&quot;,&quot;definition&quot;:&quot;Negative infinity of numbers.&quot;,&quot;property&quot;:[{&quot;code&quot;:&quot;status&quot;,&quot;valueCode&quot;:&quot;active&quot;},{&quot;code&quot;:&quot;internalId&quot;,&quot;valueCode&quot;:&quot;10618&quot;},{&quot;code&quot;:&quot;subsumedBy&quot;,&quot;valueCode&quot;:&quot;OTH&quot;}]},{&quot;code&quot;:&quot;PINF&quot;,&quot;display&quot;:&quot;positive infinity&quot;,&quot;definition&quot;:&quot;Positive infinity of numbers.&quot;,&quot;property&quot;:[{&quot;code&quot;:&quot;status&quot;,&quot;valueCode&quot;:&quot;active&quot;},{&quot;code&quot;:&quot;internalId&quot;,&quot;valueCode&quot;:&quot;10617&quot;},{&quot;code&quot;:&quot;subsumedBy&quot;,&quot;valueCode&quot;:&quot;OTH&quot;}]},{&quot;code&quot;:&quot;ASKU&quot;,&quot;display&quot;:&quot;asked but unknown&quot;,&quot;definition&quot;:&quot;Information was sought but not found (e.g., patient was asked but didn't know)&quot;,&quot;property&quot;:[{&quot;code&quot;:&quot;status&quot;,&quot;valueCode&quot;:&quot;active&quot;},{&quot;code&quot;:&quot;internalId&quot;,&quot;valueCode&quot;:&quot;10614&quot;},{&quot;code&quot;:&quot;subsumedBy&quot;,&quot;valueCode&quot;:&quot;UNK&quot;}]},{&quot;code&quot;:&quot;NASK&quot;,&quot;display&quot;:&quot;not asked&quot;,&quot;definition&quot;:&quot;This information has not been sought (e.g., patient was not asked)&quot;,&quot;property&quot;:[{&quot;code&quot;:&quot;status&quot;,&quot;valueCode&quot;:&quot;active&quot;},{&quot;code&quot;:&quot;internalId&quot;,&quot;valueCode&quot;:&quot;10613&quot;},{&quot;code&quot;:&quot;subsumedBy&quot;,&quot;valueCode&quot;:&quot;UNK&quot;}]},{&quot;code&quot;:&quot;NAVU&quot;,&quot;display&quot;:&quot;Not available&quot;,&quot;definition&quot;:&quot;Information is not available at this time (with no expectation regarding whether it will or will not be available in the future).&quot;,&quot;property&quot;:[{&quot;code&quot;:&quot;status&quot;,&quot;valueCode&quot;:&quot;active&quot;},{&quot;code&quot;:&quot;internalId&quot;,&quot;valueCode&quot;:&quot;23731&quot;},{&quot;code&quot;:&quot;subsumedBy&quot;,&quot;valueCode&quot;:&quot;UNK&quot;}]},{&quot;code&quot;:&quot;QS&quot;,&quot;display&quot;:&quot;Sufficient Quantity&quot;,&quot;definition&quot;:&quot;**Description:**The specific quantity is not known, but is known to be non-zero and is not specified because it makes up the bulk of the material. e.g. 'Add 10mg of ingredient X, 50mg of ingredient Y, and sufficient quantity of water to 100mL.' The null flavor would be used to express the quantity of water.&quot;,&quot;property&quot;:[{&quot;code&quot;:&quot;status&quot;,&quot;valueCode&quot;:&quot;active&quot;},{&quot;code&quot;:&quot;internalId&quot;,&quot;valueCode&quot;:&quot;21436&quot;},{&quot;code&quot;:&quot;subsumedBy&quot;,&quot;valueCode&quot;:&quot;UNK&quot;}]},{&quot;code&quot;:&quot;TRC&quot;,&quot;display&quot;:&quot;trace&quot;,&quot;definition&quot;:&quot;The content is greater than zero, but too small to be quantified.&quot;,&quot;property&quot;:[{&quot;code&quot;:&quot;status&quot;,&quot;valueCode&quot;:&quot;active&quot;},{&quot;code&quot;:&quot;internalId&quot;,&quot;valueCode&quot;:&quot;21386&quot;},{&quot;code&quot;:&quot;subsumedBy&quot;,&quot;valueCode&quot;:&quot;UNK&quot;}]}]}},{&quot;name&quot;:&quot;cache-id&quot;,&quot;valueString&quot;:&quot;072713bb-13ae-48eb-8acd-ce56d5c402bc&quot;},{&quot;name&quot;:&quot;valueSet&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;ValueSet&quot;,&quot;id&quot;:&quot;2.16.840.1.113883.2.4.3.11.60.40.2.4.16.2--20200901000000&quot;,&quot;meta&quot;:{&quot;profile&quot;:[&quot;http://hl7.org/fhir/StructureDefinition/shareablevalueset&quot;]},&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/resource-effectivePeriod&quot;,&quot;valuePeriod&quot;:{&quot;start&quot;:&quot;2020-09-01T00:00:00+00:00&quot;}}],&quot;url&quot;:&quot;http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.4.16.2--20200901000000&quot;,&quot;identifier&quot;:[{&quot;use&quot;:&quot;official&quot;,&quot;system&quot;:&quot;urn:ietf:rfc:3986&quot;,&quot;value&quot;:&quot;urn:oid:2.16.840.1.113883.2.4.3.11.60.40.2.4.16.2&quot;}],&quot;version&quot;:&quot;2020-09-01T00:00:00&quot;,&quot;name&quot;:&quot;ZienHulpmiddelTypeCodelijst&quot;,&quot;title&quot;:&quot;ZienHulpmiddelTypeCodelijst&quot;,&quot;status&quot;:&quot;active&quot;,&quot;experimental&quot;:false,&quot;publisher&quot;:&quot;Registratie aan de bron&quot;,&quot;contact&quot;:[{&quot;name&quot;:&quot;Registratie aan de bron&quot;,&quot;telecom&quot;:[{&quot;system&quot;:&quot;url&quot;,&quot;value&quot;:&quot;https://www.registratieaandebron.nl&quot;},{&quot;system&quot;:&quot;url&quot;,&quot;value&quot;:&quot;https://www.zibs.nl&quot;}]}],&quot;description&quot;:&quot;ZienHulpmiddelTypeCodelijst&quot;,&quot;immutable&quot;:false,&quot;copyright&quot;:&quot;This artefact includes content from SNOMED Clinical Terms® (SNOMED CT®) which is copyright of the International Health Terminology Standards Development Organisation (IHTSDO). Implementers of these artefacts must have the appropriate SNOMED CT Affiliate license - for more information contact http://www.snomed.org/snomed-ct/getsnomed-ct or info@snomed.org.&quot;,&quot;compose&quot;:{&quot;include&quot;:[{&quot;system&quot;:&quot;urn:oid:2.16.840.1.113883.2.4.3.11.22.218&quot;,&quot;concept&quot;:[{&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/valueset-concept-comments&quot;,&quot;valueString&quot;:&quot;geen visuele hulpmiddelen&quot;}],&quot;code&quot;:&quot;0&quot;,&quot;display&quot;:&quot;geen&quot;,&quot;designation&quot;:[{&quot;language&quot;:&quot;nl-NL&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;geen&quot;}]}]},{&quot;system&quot;:&quot;http://terminology.hl7.org/CodeSystem/v3-NullFlavor&quot;,&quot;concept&quot;:[{&quot;code&quot;:&quot;OTH&quot;,&quot;display&quot;:&quot;Other&quot;,&quot;designation&quot;:[{&quot;language&quot;:&quot;en-US&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;Other&quot;},{&quot;language&quot;:&quot;nl-NL&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;Anders&quot;}]}]},{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;concept&quot;:[{&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/valueset-concept-comments&quot;,&quot;valueString&quot;:&quot;leesbril&quot;}],&quot;code&quot;:&quot;423013001&quot;,&quot;display&quot;:&quot;enkelfocale leesbril&quot;,&quot;designation&quot;:[{&quot;language&quot;:&quot;en-US&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;Single vision reading glasses&quot;},{&quot;language&quot;:&quot;nl-NL&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;enkelfocale leesbril&quot;}]},{&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/valueset-concept-comments&quot;,&quot;valueString&quot;:&quot;bril&quot;}],&quot;code&quot;:&quot;50121007&quot;,&quot;display&quot;:&quot;bril&quot;,&quot;designation&quot;:[{&quot;language&quot;:&quot;en-US&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;Eyeglasses&quot;},{&quot;language&quot;:&quot;nl-NL&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;bril&quot;}]},{&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/valueset-concept-comments&quot;,&quot;valueString&quot;:&quot;contactlenzen&quot;}],&quot;code&quot;:&quot;57368009&quot;,&quot;display&quot;:&quot;contactlens&quot;,&quot;designation&quot;:[{&quot;language&quot;:&quot;en-US&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;Contact lenses&quot;},{&quot;language&quot;:&quot;nl-NL&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;contactlens&quot;}]},{&quot;extension&quot;:[{&quot;url&quot;:&quot;http://hl7.org/fhir/StructureDefinition/valueset-concept-comments&quot;,&quot;valueString&quot;:&quot;loep&quot;}],&quot;code&quot;:&quot;264865009&quot;,&quot;display&quot;:&quot;apparaat met loep&quot;,&quot;designation&quot;:[{&quot;language&quot;:&quot;en-US&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;Optical near vision magnifier&quot;},{&quot;language&quot;:&quot;nl-NL&quot;,&quot;use&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;900000000000013009&quot;,&quot;display&quot;:&quot;Synonym&quot;},&quot;value&quot;:&quot;apparaat met loep&quot;}]}]}]}}},{&quot;name&quot;:&quot;_limit&quot;,&quot;valueString&quot;:&quot;1000&quot;},{&quot;name&quot;:&quot;_incomplete&quot;,&quot;valueString&quot;:&quot;true&quot;}]}
+</pre>
+<pre>
+422
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+connection:keep-alive
+content-length:391
+content-type:application/fhir+json
+date:Wed, 10 Apr 2024 13:11:48 GMT
+server:nginx
+x-request-id:136-690408
+
+{&quot;resourceType&quot; : &quot;OperationOutcome&quot;,&quot;text&quot; : {&quot;status&quot; : &quot;generated&quot;,&quot;div&quot; : &quot;&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p&gt;Unable to provide support for code system urn:oid:2.16.840.1.113883.2.4.3.11.22.218&lt;/p&gt;&lt;/div&gt;&quot;},&quot;issue&quot; : [{&quot;severity&quot; : &quot;error&quot;,&quot;code&quot; : &quot;not-supported&quot;,&quot;details&quot; : {&quot;text&quot; : &quot;Unable to provide support for code system urn:oid:2.16.840.1.113883.2.4.3.11.22.218&quot;}}]}
+</pre>
+<hr/><a name="l12"> </a>
+<p>#12</p>
+<pre>
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+User-Agent: hapi-fhir-tooling-client
+Accept-Charset: UTF-8
+Accept: application/fhir+json
+Content-Type: application/fhir+json;charset=UTF-8
+
+{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;coding&quot;,&quot;valueCoding&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;282291009&quot;,&quot;display&quot;:&quot;Interpretatie van diagnose&quot;}},{&quot;name&quot;:&quot;default-to-latest-version&quot;,&quot;valueBoolean&quot;:true},{&quot;name&quot;:&quot;profile&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;x-system-cache-id&quot;,&quot;valueString&quot;:&quot;dc8fd4bc-091a-424a-8a3b-6198ef146891&quot;}]}}]}
+</pre>
+<pre>
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1165
+content-type:application/fhir+json
+date:Wed, 10 Apr 2024 13:11:52 GMT
+last-modified:Wed, 10 Apr 2024 13:11:52 GMT
+pragma:no-cache
+server:nginx
+x-request-id:136-690409
+
+{&quot;resourceType&quot; : &quot;Parameters&quot;,&quot;parameter&quot; : [{&quot;name&quot; : &quot;result&quot;,&quot;valueBoolean&quot; : false},{&quot;name&quot; : &quot;system&quot;,&quot;valueUri&quot; : &quot;http://snomed.info/sct&quot;},{&quot;name&quot; : &quot;code&quot;,&quot;valueCode&quot; : &quot;282291009&quot;},{&quot;name&quot; : &quot;version&quot;,&quot;valueString&quot; : &quot;http://snomed.info/sct/900000000000207008/version/20240201&quot;},{&quot;name&quot; : &quot;display&quot;,&quot;valueString&quot; : &quot;Diagnosis interpretation&quot;},{&quot;name&quot; : &quot;message&quot;,&quot;valueString&quot; : &quot;Wrong Display Name 'Interpretatie van diagnose' for http://snomed.info/sct#282291009. Valid display is one of 2 choices: 'Diagnosis interpretation' or 'Diagnosis interpretation (observable entity)' (for the language(s) '--')&quot;},{&quot;name&quot; : &quot;issues&quot;,&quot;resource&quot; : {&quot;resourceType&quot; : &quot;OperationOutcome&quot;,&quot;issue&quot; : [{&quot;severity&quot; : &quot;error&quot;,&quot;code&quot; : &quot;invalid&quot;,&quot;details&quot; : {&quot;coding&quot; : [{&quot;system&quot; : &quot;http://hl7.org/fhir/tools/CodeSystem/tx-issue-type&quot;,&quot;code&quot; : &quot;invalid-display&quot;}],&quot;text&quot; : &quot;Wrong Display Name 'Interpretatie van diagnose' for http://snomed.info/sct#282291009. Valid display is one of 2 choices: 'Diagnosis interpretation' or 'Diagnosis interpretation (observable entity)' (for the language(s) '--')&quot;},&quot;location&quot; : [&quot;Coding.display&quot;],&quot;expression&quot; : [&quot;Coding.display&quot;]}]}}]}
+</pre>
+<hr/><a name="l13"> </a>
+<p>#13</p>
+<pre>
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+User-Agent: hapi-fhir-tooling-client
+Accept-Charset: UTF-8
+Accept: application/fhir+json
+Content-Type: application/fhir+json;charset=UTF-8
+
+{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;coding&quot;,&quot;valueCoding&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;429998004&quot;,&quot;display&quot;:&quot;vasculaire dementie&quot;}},{&quot;name&quot;:&quot;default-to-latest-version&quot;,&quot;valueBoolean&quot;:true},{&quot;name&quot;:&quot;profile&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;x-system-cache-id&quot;,&quot;valueString&quot;:&quot;dc8fd4bc-091a-424a-8a3b-6198ef146891&quot;}]}}]}
+</pre>
+<pre>
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1109
+content-type:application/fhir+json
+date:Wed, 10 Apr 2024 13:11:52 GMT
+last-modified:Wed, 10 Apr 2024 13:11:52 GMT
+pragma:no-cache
+server:nginx
+x-request-id:136-690410
+
+{&quot;resourceType&quot; : &quot;Parameters&quot;,&quot;parameter&quot; : [{&quot;name&quot; : &quot;result&quot;,&quot;valueBoolean&quot; : false},{&quot;name&quot; : &quot;system&quot;,&quot;valueUri&quot; : &quot;http://snomed.info/sct&quot;},{&quot;name&quot; : &quot;code&quot;,&quot;valueCode&quot; : &quot;429998004&quot;},{&quot;name&quot; : &quot;version&quot;,&quot;valueString&quot; : &quot;http://snomed.info/sct/900000000000207008/version/20240201&quot;},{&quot;name&quot; : &quot;display&quot;,&quot;valueString&quot; : &quot;Vascular dementia (disorder)&quot;},{&quot;name&quot; : &quot;message&quot;,&quot;valueString&quot; : &quot;Wrong Display Name 'vasculaire dementie' for http://snomed.info/sct#429998004. Valid display is one of 2 choices: 'Vascular dementia (disorder)' or 'Vascular dementia' (for the language(s) '--')&quot;},{&quot;name&quot; : &quot;issues&quot;,&quot;resource&quot; : {&quot;resourceType&quot; : &quot;OperationOutcome&quot;,&quot;issue&quot; : [{&quot;severity&quot; : &quot;error&quot;,&quot;code&quot; : &quot;invalid&quot;,&quot;details&quot; : {&quot;coding&quot; : [{&quot;system&quot; : &quot;http://hl7.org/fhir/tools/CodeSystem/tx-issue-type&quot;,&quot;code&quot; : &quot;invalid-display&quot;}],&quot;text&quot; : &quot;Wrong Display Name 'vasculaire dementie' for http://snomed.info/sct#429998004. Valid display is one of 2 choices: 'Vascular dementia (disorder)' or 'Vascular dementia' (for the language(s) '--')&quot;},&quot;location&quot; : [&quot;Coding.display&quot;],&quot;expression&quot; : [&quot;Coding.display&quot;]}]}}]}
+</pre>
+<hr/><a name="l14"> </a>
+<p>#14</p>
+<pre>
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+User-Agent: hapi-fhir-tooling-client
+Accept-Charset: UTF-8
+Accept: application/fhir+json
+Content-Type: application/fhir+json;charset=UTF-8
+
+{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;coding&quot;,&quot;valueCoding&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;195111005&quot;,&quot;display&quot;:&quot;Hartfalen&quot;}},{&quot;name&quot;:&quot;default-to-latest-version&quot;,&quot;valueBoolean&quot;:true},{&quot;name&quot;:&quot;profile&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;x-system-cache-id&quot;,&quot;valueString&quot;:&quot;dc8fd4bc-091a-424a-8a3b-6198ef146891&quot;}]}}]}
+</pre>
+<pre>
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1138
+content-type:application/fhir+json
+date:Wed, 10 Apr 2024 13:11:52 GMT
+last-modified:Wed, 10 Apr 2024 13:11:52 GMT
+pragma:no-cache
+server:nginx
+x-request-id:136-690411
+
+{&quot;resourceType&quot; : &quot;Parameters&quot;,&quot;parameter&quot; : [{&quot;name&quot; : &quot;result&quot;,&quot;valueBoolean&quot; : false},{&quot;name&quot; : &quot;system&quot;,&quot;valueUri&quot; : &quot;http://snomed.info/sct&quot;},{&quot;name&quot; : &quot;code&quot;,&quot;valueCode&quot; : &quot;195111005&quot;},{&quot;name&quot; : &quot;version&quot;,&quot;valueString&quot; : &quot;http://snomed.info/sct/900000000000207008/version/20240201&quot;},{&quot;name&quot; : &quot;display&quot;,&quot;valueString&quot; : &quot;Decompensated cardiac failure&quot;},{&quot;name&quot; : &quot;message&quot;,&quot;valueString&quot; : &quot;Wrong Display Name 'Hartfalen' for http://snomed.info/sct#195111005. Valid display is one of 2 choices: 'Decompensated cardiac failure' or 'Decompensated cardiac failure (disorder)' (for the language(s) '--')&quot;},{&quot;name&quot; : &quot;issues&quot;,&quot;resource&quot; : {&quot;resourceType&quot; : &quot;OperationOutcome&quot;,&quot;issue&quot; : [{&quot;severity&quot; : &quot;error&quot;,&quot;code&quot; : &quot;invalid&quot;,&quot;details&quot; : {&quot;coding&quot; : [{&quot;system&quot; : &quot;http://hl7.org/fhir/tools/CodeSystem/tx-issue-type&quot;,&quot;code&quot; : &quot;invalid-display&quot;}],&quot;text&quot; : &quot;Wrong Display Name 'Hartfalen' for http://snomed.info/sct#195111005. Valid display is one of 2 choices: 'Decompensated cardiac failure' or 'Decompensated cardiac failure (disorder)' (for the language(s) '--')&quot;},&quot;location&quot; : [&quot;Coding.display&quot;],&quot;expression&quot; : [&quot;Coding.display&quot;]}]}}]}
+</pre>
+<hr/><a name="l15"> </a>
+<p>#15</p>
+<pre>
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+User-Agent: hapi-fhir-tooling-client
+Accept-Charset: UTF-8
+Accept: application/fhir+json
+Content-Type: application/fhir+json;charset=UTF-8
+
+{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;coding&quot;,&quot;valueCoding&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;116223007&quot;,&quot;display&quot;:&quot;Complicatie&quot;}},{&quot;name&quot;:&quot;default-to-latest-version&quot;,&quot;valueBoolean&quot;:true},{&quot;name&quot;:&quot;profile&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;x-system-cache-id&quot;,&quot;valueString&quot;:&quot;dc8fd4bc-091a-424a-8a3b-6198ef146891&quot;}]}}]}
+</pre>
+<pre>
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1101
+content-type:application/fhir+json
+date:Wed, 10 Apr 2024 13:11:52 GMT
+last-modified:Wed, 10 Apr 2024 13:11:52 GMT
+pragma:no-cache
+server:nginx
+x-request-id:136-690412
+
+{&quot;resourceType&quot; : &quot;Parameters&quot;,&quot;parameter&quot; : [{&quot;name&quot; : &quot;result&quot;,&quot;valueBoolean&quot; : false},{&quot;name&quot; : &quot;system&quot;,&quot;valueUri&quot; : &quot;http://snomed.info/sct&quot;},{&quot;name&quot; : &quot;code&quot;,&quot;valueCode&quot; : &quot;116223007&quot;},{&quot;name&quot; : &quot;version&quot;,&quot;valueString&quot; : &quot;http://snomed.info/sct/900000000000207008/version/20240201&quot;},{&quot;name&quot; : &quot;display&quot;,&quot;valueString&quot; : &quot;Complication&quot;},{&quot;name&quot; : &quot;inactive&quot;,&quot;valueBoolean&quot; : true},{&quot;name&quot; : &quot;message&quot;,&quot;valueString&quot; : &quot;Wrong Display Name 'Complicatie' for http://snomed.info/sct#116223007. Valid display is one of 2 choices: 'Complication' or 'Complication (disorder)' (for the language(s) '--')&quot;},{&quot;name&quot; : &quot;issues&quot;,&quot;resource&quot; : {&quot;resourceType&quot; : &quot;OperationOutcome&quot;,&quot;issue&quot; : [{&quot;severity&quot; : &quot;error&quot;,&quot;code&quot; : &quot;invalid&quot;,&quot;details&quot; : {&quot;coding&quot; : [{&quot;system&quot; : &quot;http://hl7.org/fhir/tools/CodeSystem/tx-issue-type&quot;,&quot;code&quot; : &quot;invalid-display&quot;}],&quot;text&quot; : &quot;Wrong Display Name 'Complicatie' for http://snomed.info/sct#116223007. Valid display is one of 2 choices: 'Complication' or 'Complication (disorder)' (for the language(s) '--')&quot;},&quot;location&quot; : [&quot;Coding.display&quot;],&quot;expression&quot; : [&quot;Coding.display&quot;]}]}}]}
+</pre>
+<hr/><a name="l16"> </a>
+<p>#16</p>
+<pre>
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+User-Agent: hapi-fhir-tooling-client
+Accept-Charset: UTF-8
+Accept: application/fhir+json
+Content-Type: application/fhir+json;charset=UTF-8
+
+{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;coding&quot;,&quot;valueCoding&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;62014003&quot;,&quot;display&quot;:&quot;Geneesmiddel-interacties&quot;}},{&quot;name&quot;:&quot;default-to-latest-version&quot;,&quot;valueBoolean&quot;:true},{&quot;name&quot;:&quot;profile&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;x-system-cache-id&quot;,&quot;valueString&quot;:&quot;dc8fd4bc-091a-424a-8a3b-6198ef146891&quot;}]}}]}
+</pre>
+<pre>
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1903
+content-type:application/fhir+json
+date:Wed, 10 Apr 2024 13:11:52 GMT
+last-modified:Wed, 10 Apr 2024 13:11:52 GMT
+pragma:no-cache
+server:nginx
+x-request-id:136-690413
+
+{&quot;resourceType&quot; : &quot;Parameters&quot;,&quot;parameter&quot; : [{&quot;name&quot; : &quot;result&quot;,&quot;valueBoolean&quot; : false},{&quot;name&quot; : &quot;system&quot;,&quot;valueUri&quot; : &quot;http://snomed.info/sct&quot;},{&quot;name&quot; : &quot;code&quot;,&quot;valueCode&quot; : &quot;62014003&quot;},{&quot;name&quot; : &quot;version&quot;,&quot;valueString&quot; : &quot;http://snomed.info/sct/900000000000207008/version/20240201&quot;},{&quot;name&quot; : &quot;display&quot;,&quot;valueString&quot; : &quot;Drug reaction&quot;},{&quot;name&quot; : &quot;message&quot;,&quot;valueString&quot; : &quot;Wrong Display Name 'Geneesmiddel-interacties' for http://snomed.info/sct#62014003. Valid display is one of 8 choices: 'Drug reaction', 'Adverse drug effect', 'Adverse drug reaction', 'Adverse reaction to drug', 'ADR - Adverse drug reaction', 'Adverse reaction caused by drug', 'Adverse reaction caused by drug (disorder)' or 'All noxious and unintended responses to a medicinal product related to any dose should be considered adverse drug reactions (from US FDA Guideline for Industry, Clinical Safety Data Management: Definitions and Standards for Expedited Reporting).' (for the language(s) '--')&quot;},{&quot;name&quot; : &quot;issues&quot;,&quot;resource&quot; : {&quot;resourceType&quot; : &quot;OperationOutcome&quot;,&quot;issue&quot; : [{&quot;severity&quot; : &quot;error&quot;,&quot;code&quot; : &quot;invalid&quot;,&quot;details&quot; : {&quot;coding&quot; : [{&quot;system&quot; : &quot;http://hl7.org/fhir/tools/CodeSystem/tx-issue-type&quot;,&quot;code&quot; : &quot;invalid-display&quot;}],&quot;text&quot; : &quot;Wrong Display Name 'Geneesmiddel-interacties' for http://snomed.info/sct#62014003. Valid display is one of 8 choices: 'Drug reaction', 'Adverse drug effect', 'Adverse drug reaction', 'Adverse reaction to drug', 'ADR - Adverse drug reaction', 'Adverse reaction caused by drug', 'Adverse reaction caused by drug (disorder)' or 'All noxious and unintended responses to a medicinal product related to any dose should be considered adverse drug reactions (from US FDA Guideline for Industry, Clinical Safety Data Management: Definitions and Standards for Expedited Reporting).' (for the language(s) '--')&quot;},&quot;location&quot; : [&quot;Coding.display&quot;],&quot;expression&quot; : [&quot;Coding.display&quot;]}]}}]}
+</pre>
+<hr/><a name="l17"> </a>
+<p>#17</p>
+<pre>
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+User-Agent: hapi-fhir-tooling-client
+Accept-Charset: UTF-8
+Accept: application/fhir+json
+Content-Type: application/fhir+json;charset=UTF-8
+
+{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;coding&quot;,&quot;valueCoding&quot;:{&quot;system&quot;:&quot;http://snomed.info/sct&quot;,&quot;code&quot;:&quot;73211009&quot;,&quot;display&quot;:&quot;Diabetes mellitus (disorder)&quot;}},{&quot;name&quot;:&quot;default-to-latest-version&quot;,&quot;valueBoolean&quot;:true},{&quot;name&quot;:&quot;profile&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;x-system-cache-id&quot;,&quot;valueString&quot;:&quot;dc8fd4bc-091a-424a-8a3b-6198ef146891&quot;}]}}]}
+</pre>
+<pre>
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:345
+content-type:application/fhir+json
+date:Wed, 10 Apr 2024 13:11:52 GMT
+last-modified:Wed, 10 Apr 2024 13:11:52 GMT
+pragma:no-cache
+server:nginx
+x-request-id:136-690414
+
+{&quot;resourceType&quot; : &quot;Parameters&quot;,&quot;parameter&quot; : [{&quot;name&quot; : &quot;result&quot;,&quot;valueBoolean&quot; : true},{&quot;name&quot; : &quot;system&quot;,&quot;valueUri&quot; : &quot;http://snomed.info/sct&quot;},{&quot;name&quot; : &quot;code&quot;,&quot;valueCode&quot; : &quot;73211009&quot;},{&quot;name&quot; : &quot;version&quot;,&quot;valueString&quot; : &quot;http://snomed.info/sct/900000000000207008/version/20240201&quot;},{&quot;name&quot; : &quot;display&quot;,&quot;valueString&quot; : &quot;Diabetes mellitus&quot;}]}
+</pre>
+<hr/><a name="l18"> </a>
+<p>#18</p>
+<pre>
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+User-Agent: hapi-fhir-tooling-client
+Accept-Charset: UTF-8
+Accept: application/fhir+json
+Content-Type: application/fhir+json;charset=UTF-8
+
+{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;coding&quot;,&quot;valueCoding&quot;:{&quot;system&quot;:&quot;urn:iso:std:iso:3166&quot;,&quot;version&quot;:&quot;2020-10-26T00:00:00&quot;,&quot;code&quot;:&quot;NL&quot;,&quot;display&quot;:&quot;Nederland&quot;}},{&quot;name&quot;:&quot;default-to-latest-version&quot;,&quot;valueBoolean&quot;:true},{&quot;name&quot;:&quot;profile&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;x-system-cache-id&quot;,&quot;valueString&quot;:&quot;dc8fd4bc-091a-424a-8a3b-6198ef146891&quot;}]}}]}
+</pre>
+<pre>
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:875
+content-type:application/fhir+json
+date:Wed, 10 Apr 2024 13:11:53 GMT
+last-modified:Wed, 10 Apr 2024 13:11:53 GMT
+pragma:no-cache
+server:nginx
+x-request-id:136-690415
+
+{&quot;resourceType&quot; : &quot;Parameters&quot;,&quot;parameter&quot; : [{&quot;name&quot; : &quot;result&quot;,&quot;valueBoolean&quot; : false},{&quot;name&quot; : &quot;system&quot;,&quot;valueUri&quot; : &quot;urn:iso:std:iso:3166&quot;},{&quot;name&quot; : &quot;code&quot;,&quot;valueCode&quot; : &quot;NL&quot;},{&quot;name&quot; : &quot;version&quot;,&quot;valueString&quot; : &quot;2018&quot;},{&quot;name&quot; : &quot;display&quot;,&quot;valueString&quot; : &quot;Netherlands&quot;},{&quot;name&quot; : &quot;message&quot;,&quot;valueString&quot; : &quot;Wrong Display Name 'Nederland' for urn:iso:std:iso:3166#NL. Valid display is 'Netherlands' (for the language(s) '--')&quot;},{&quot;name&quot; : &quot;issues&quot;,&quot;resource&quot; : {&quot;resourceType&quot; : &quot;OperationOutcome&quot;,&quot;issue&quot; : [{&quot;severity&quot; : &quot;error&quot;,&quot;code&quot; : &quot;invalid&quot;,&quot;details&quot; : {&quot;coding&quot; : [{&quot;system&quot; : &quot;http://hl7.org/fhir/tools/CodeSystem/tx-issue-type&quot;,&quot;code&quot; : &quot;invalid-display&quot;}],&quot;text&quot; : &quot;Wrong Display Name 'Nederland' for urn:iso:std:iso:3166#NL. Valid display is 'Netherlands' (for the language(s) '--')&quot;},&quot;location&quot; : [&quot;Coding.display&quot;],&quot;expression&quot; : [&quot;Coding.display&quot;]}]}}]}
+</pre>
+<hr/><a name="l19"> </a>
+<p>#19</p>
+<pre>
+POST http://tx.fhir.org/r4/CodeSystem/$validate-code? HTTP/1.0
+User-Agent: hapi-fhir-tooling-client
+Accept-Charset: UTF-8
+Accept: application/fhir+json
+Content-Type: application/fhir+json;charset=UTF-8
+
+{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;coding&quot;,&quot;valueCoding&quot;:{&quot;system&quot;:&quot;urn:oid:2.16.840.1.113883.2.4.4.16.34&quot;,&quot;version&quot;:&quot;2020-04-01T00:00:00&quot;,&quot;code&quot;:&quot;6030&quot;,&quot;display&quot;:&quot;Nederland&quot;}},{&quot;name&quot;:&quot;default-to-latest-version&quot;,&quot;valueBoolean&quot;:true},{&quot;name&quot;:&quot;profile&quot;,&quot;resource&quot;:{&quot;resourceType&quot;:&quot;Parameters&quot;,&quot;parameter&quot;:[{&quot;name&quot;:&quot;x-system-cache-id&quot;,&quot;valueString&quot;:&quot;dc8fd4bc-091a-424a-8a3b-6198ef146891&quot;}]}}]}
+</pre>
+<pre>
+200
+access-control-allow-methods:GET, POST, PUT, PATCH, DELETE
+access-control-allow-origin:*
+access-control-expose-headers:Content-Location, Location
+cache-control:public, max-age=600
+connection:keep-alive
+content-length:1075
+content-type:application/fhir+json
+date:Wed, 10 Apr 2024 13:11:53 GMT
+last-modified:Wed, 10 Apr 2024 13:11:53 GMT
+pragma:no-cache
+server:nginx
+x-request-id:136-690416
+
+{&quot;resourceType&quot; : &quot;Parameters&quot;,&quot;parameter&quot; : [{&quot;name&quot; : &quot;result&quot;,&quot;valueBoolean&quot; : false},{&quot;name&quot; : &quot;system&quot;,&quot;valueUri&quot; : &quot;urn:oid:2.16.840.1.113883.2.4.4.16.34&quot;},{&quot;name&quot; : &quot;x-caused-by-unknown-system&quot;,&quot;valueCanonical&quot; : &quot;urn:oid:2.16.840.1.113883.2.4.4.16.34|2020-04-01T00:00:00&quot;},{&quot;name&quot; : &quot;code&quot;,&quot;valueCode&quot; : &quot;6030&quot;},{&quot;name&quot; : &quot;version&quot;,&quot;valueString&quot; : &quot;2020-04-01T00:00:00&quot;},{&quot;name&quot; : &quot;message&quot;,&quot;valueString&quot; : &quot;A definition for CodeSystem 'urn:oid:2.16.840.1.113883.2.4.4.16.34' version '2020-04-01T00:00:00' could not be found, so the code cannot be validated. Valid versions: []&quot;},{&quot;name&quot; : &quot;issues&quot;,&quot;resource&quot; : {&quot;resourceType&quot; : &quot;OperationOutcome&quot;,&quot;issue&quot; : [{&quot;severity&quot; : &quot;error&quot;,&quot;code&quot; : &quot;not-found&quot;,&quot;details&quot; : {&quot;coding&quot; : [{&quot;system&quot; : &quot;http://hl7.org/fhir/tools/CodeSystem/tx-issue-type&quot;,&quot;code&quot; : &quot;not-found&quot;}],&quot;text&quot; : &quot;A definition for CodeSystem 'urn:oid:2.16.840.1.113883.2.4.4.16.34' version '2020-04-01T00:00:00' could not be found, so the code cannot be validated. Valid versions: []&quot;},&quot;location&quot; : [&quot;Coding.system&quot;],&quot;expression&quot; : [&quot;Coding.system&quot;]}]}}]}
+</pre>
+</head></html>
