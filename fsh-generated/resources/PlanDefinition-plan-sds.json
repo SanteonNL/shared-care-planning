@@ -1,0 +1,84 @@
+{
+  "resourceType": "PlanDefinition",
+  "id": "plan-sds",
+  "meta": {
+    "profile": [
+      "http://hl7.nl/shared-care-planning/StructureDefinition/scp-plan"
+    ]
+  },
+  "url": "https://rarecare.world/fhir/PlanDefinition/shwachman-diamond-syndrome",
+  "status": "draft",
+  "version": "0.1",
+  "title": "Shwachman Diamond Syndrome Management",
+  "type": {
+    "coding": [
+      {
+        "code": "clinical-protocol",
+        "system": "http://terminology.hl7.org/CodeSystem/plan-definition-type"
+      }
+    ]
+  },
+  "subjectCodeableConcept": {
+    "coding": [
+      {
+        "code": "Patient",
+        "system": "http://hl7.org/fhir/resource-types"
+      }
+    ]
+  },
+  "date": "2021-01-14",
+  "publisher": "Stichting Rare Care World",
+  "description": "Shwachman Diamond Syndrome management plan.",
+  "topic": [
+    {
+      "coding": [
+        {
+          "code": "treatment",
+          "system": "http://terminology.hl7.org/CodeSystem/definition-topic"
+        }
+      ]
+    }
+  ],
+  "relatedArtifact": [
+    {
+      "type": "justification",
+      "url": "https://rarecare.world/patient-organisation/shwachman-syndrome-support-holland"
+    }
+  ],
+  "goal": [
+    {
+      "description": {
+        "text": "Shwachman Diamond Syndrome management"
+      },
+      "addresses": [
+        {
+          "coding": [
+            {
+              "code": "ORPHA:811",
+              "system": "http://www.orpha.net",
+              "display": "Shwachman-Diamond syndrome"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "action": [
+    {
+      "title": "Neutropenia",
+      "definitionCanonical": "https://rarecare.world/fhir/PlanDefinition/neutropenia"
+    },
+    {
+      "title": "Pancreas Insufficiency",
+      "definitionCanonical": "https://rarecare.world/fhir/PlanDefinition/pancreas-insufficiency"
+    },
+    {
+      "title": "Developmental disability",
+      "definitionCanonical": "https://rarecare.world/fhir/PlanDefinition/developmental-disability"
+    },
+    {
+      "title": "Vragenlijst participatie voor Shwachman Diamond Syndroom",
+      "definitionCanonical": "https://rarecare.world/fhir/Questionnaire/shwachman-diamond-syndrome"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "resourceType": "ImplementationGuide",
+  "id": "fhir.scp",
+  "url": "http://hl7.nl/shared-care-planning/ImplementationGuide/fhir.scp",
+  "version": "0.1.0",
+  "name": "sharedcareplanning",
+  "status": "draft",
+  "publisher": "HL7 Nederland",
+  "contact": [
+    {
+      "name": "HL7 Nederland",
+      "telecom": [
+        {
+          "system": "url",
+          "value": "http://hl7.nl"
+        }
+      ]
+    }
+  ],
+  "packageId": "fhir.scp",
+  "fhirVersion": [
+    "4.0.1"
+  ],
+  "definition": {
+    "resource": [
+      {
+        "reference": {
+          "reference": "StructureDefinition/scp-plan"
+        },
+        "name": "Shared Care Planning PlanDefinition",
+        "description": "TODO ...",
+        "exampleBoolean": false
+      },
+      {
+        "reference": {
+          "reference": "Patient/SharonCleoProef"
+        },
+        "name": "SharonCleoProef",
+        "description": "An example of a SCP patient.",
+        "exampleBoolean": true
+      },
+      {
+        "reference": {
+          "reference": "PlanDefinition/plan-sds"
+        },
+        "name": "Shwachman Diamond Syndrome PlanDefinition",
+        "description": "Shwachman Diamond Syndrome management plan.",
+        "exampleCanonical": "http://hl7.nl/shared-care-planning/StructureDefinition/scp-plan"
+      }
+    ],
+    "page": {
+      "nameUrl": "toc.html",
+      "title": "Table of Contents",
+      "generation": "html",
+      "page": [
+        {
+          "nameUrl": "introduction.html",
+          "title": "Introduction",
+          "generation": "markdown"
+        }
+      ]
+    },
+    "parameter": [
+      {
+        "code": "copyrightyear",
+        "value": "2024+"
+      },
+      {
+        "code": "releaselabel",
+        "value": "ci-build"
+      }
+    ]
+  }
+}

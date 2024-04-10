@@ -1,0 +1,27 @@
+{
+  "resourceType": "StructureDefinition",
+  "id": "scp-plan",
+  "url": "http://hl7.nl/shared-care-planning/StructureDefinition/scp-plan",
+  "name": "SCTPlanDefinition",
+  "title": "Shared Care Planning PlanDefinition",
+  "status": "draft",
+  "description": "TODO ...",
+  "fhirVersion": "4.0.1",
+  "kind": "resource",
+  "abstract": false,
+  "type": "PlanDefinition",
+  "baseDefinition": "http://hl7.org/fhir/StructureDefinition/PlanDefinition",
+  "derivation": "constraint",
+  "differential": {
+    "element": [
+      {
+        "id": "PlanDefinition.goal.addresses",
+        "path": "PlanDefinition.goal.addresses",
+        "binding": {
+          "strength": "required",
+          "valueSet": "http://snomed.info/sct"
+        }
+      }
+    ]
+  }
+}
