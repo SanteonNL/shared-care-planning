@@ -14,13 +14,17 @@ services:
       - HAPI_FHIR_BASEURL=http://fhirstore:8080/fhir
     depends_on:
       - fhirstore
-#  careplanservice:
-#    build: careplanservices
-#    ports:
-#      - "9000:8080"
-#    depends_on:
-#      fhirstore:
-#        condition: service_healthy
+  careteamservice:
+    build: careteamservice
+    ports:
+      - "9000:8080"
+    depends_on:
+      - fhirstore
+    environment:
+      # Where to find the FHIR store to subscribe to and write CareTeam to
+      - FHIR_BASEURL=http://fhirstore:8080/fhir/CarePlanService
+      # Where the FHIR Subscription should post notifications
+      - CARETEAMSERVICE_BASEURL=http://careteamservice:8080
 #  nutsnode:
 #    image: nutsfoundation/nuts-node:6.0.0-alpha.4
 #    ports:

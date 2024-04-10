@@ -22,6 +22,7 @@ func NewClient(baseURL string) Client {
 }
 
 type Client interface {
+	Create(ctx context.Context, resource interface{}, result interface{}) error
 	CreateOrUpdate(ctx context.Context, resource interface{}) error
 	ReadMultiple(ctx context.Context, path string, params map[string]string, results interface{}) error
 	ReadOne(ctx context.Context, path string, result interface{}) error
@@ -34,8 +35,25 @@ type RESTClient struct {
 	tlsConfig  *tls.Config
 }
 
+func (h RESTClient) Create(ctx context.Context, resource interface{}, result interface{}) error {
+	resourcePath, err := resolveResourcePathWithoutID(resource)
+	if err != nil {
+		return fmt.Errorf("unable to determine resource path: %w", err)
+	}
+	requestURI := h.BuildRequestURI(resourcePath)
+	resp, err := h.restClient.R().SetBody(resource).SetContext(ctx).Post(requestURI.String())
+	if err != nil {
+		return fmt.Errorf("unable to write FHIR resource (path=%s): %w", requestURI, err)
+	}
+	if !resp.IsSuccess() {
+		logrus.Warnf("FHIR server replied: %s", resp.String())
+		return fmt.Errorf("unable to write FHIR resource (path=%s,http-status=%d): %s", requestURI, resp.StatusCode(), string(resp.Body()))
+	}
+	return json.Unmarshal(resp.Body(), result)
+}
+
 func (h RESTClient) CreateOrUpdate(ctx context.Context, resource interface{}) error {
-	resourcePath, err := resolveResourcePath(resource)
+	resourcePath, err := resolveResourcePathWithID(resource)
 	if err != nil {
 		return fmt.Errorf("unable to determine resource path: %w", err)
 	}
@@ -103,7 +121,19 @@ func (h RESTClient) BuildRequestURI(fhirResourcePath string) *url.URL {
 	return buildRequestURI(h.url, fhirResourcePath)
 }
 
-func resolveResourcePath(resource interface{}) (string, error) {
+func resolveResourcePathWithoutID(resource interface{}) (string, error) {
+	data, err := json.Marshal(resource)
+	if err != nil {
+		return "", err
+	}
+	js := gjson.ParseBytes(data)
+	resourceType := js.Get("resourceType").String()
+	if resourceType == "" {
+		return "", fmt.Errorf("unable to determine resource type of %T", resource)
+	}
+	return path.Join(resourceType, "/"), nil
+}
+func resolveResourcePathWithID(resource interface{}) (string, error) {
 	data, err := json.Marshal(resource)
 	if err != nil {
 		return "", err

@@ -1,0 +1,76 @@
+### Create a new FHIR CarePlan
+POST http://localhost:8000/fhir/CarePlanService/CarePlan
+Content-Type: application/json
+
+{
+  "resourceType": "CarePlan",
+  "status": "active",
+  "intent": "proposal",
+  "subject": {
+    "identifier": {
+      "system": "http://fhir.nl/fhir/NamingSystem/bsn",
+      "value": "1234567890"
+    }
+  }
+}
+
+> {%
+    client.global.set('carePlanID', response.body.id)
+%}
+
+
+### Create a Task to be used as activity in the CarePlan
+POST http://localhost:8000/fhir/CarePlanService/Task
+Content-Type: application/json
+
+{
+  "resourceType": "Task",
+  "id": "SomeActivity",
+  "status": "requested",
+  "intent": "order",
+  "basedOn": [{
+    "reference": "CarePlan/{{carePlanID}}"
+  }],
+  "requester": {
+     "identifier": {
+        "system": "http://fhir.nl/fhir/NamingSystem/ura",
+        "value": "5000"
+      },
+    "display": "First Organization"
+  },
+  "owner": {
+     "identifier": {
+        "system": "http://fhir.nl/fhir/NamingSystem/ura",
+        "value": "2000"
+      },
+    "display": "Second Organization"
+  }
+}
+
+> {%
+    client.global.set('taskID', response.body.id)
+%}
+
+### Add activity to CarePlan
+PUT http://localhost:8000/fhir/CarePlanService/CarePlan/{{carePlanID}}
+Content-Type: application/json
+
+{
+  "resourceType": "CarePlan",
+  "id": "{{carePlanID}}",
+  "status": "active",
+  "intent": "proposal",
+  "subject": {
+    "identifier": {
+      "system": "http://fhir.nl/fhir/NamingSystem/bsn",
+      "value": "12345678911"
+    }
+  },
+  "activity": [
+    {
+      "reference": {
+        "reference": "Task/{{taskID}}"
+      }
+    }
+  ]
+}
