@@ -1,0 +1,24 @@
+@startuml CarePlanService Container Diagram
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+skinparam linetype polyline
+
+title Doel dag 3
+
+System_Ext(EHR, "EHR")
+System_Boundary(CarePlanService, "Care Plan Service") {
+    Container(APIGateway, "API Gateway")
+    Container(PDP, "Policy Decision Point", "Open Policy Agent", "Authorizes access to the FHIR store")
+    Container(FHIRStore, "FHIR Store", "HAPI FHIR", "Stores FHIR resources")
+    Container(CareTeamService, "Care Team Service", "Golang", "Updates CareTeams based on CarePlans in the FHIR store")
+    Container(NutsNode, "Nuts Node", "Nuts Node", "Issues and verifies access tokens")
+
+    Rel(APIGateway, PDP, "Authorize", "HTTP")
+    Rel(EHR, APIGateway, "Accesses/Manages CarePlans", "HTTPS")
+    Rel(EHR, APIGateway, "Request Access Token", "HTTPS")
+    Rel(FHIRStore, CareTeamService, "Notifies of CarePlan updates", "FHIR Subscription")
+    Rel(CareTeamService, FHIRStore, "Updates CareTeam", "HTTP")
+    Rel(APIGateway, FHIRStore, "Accesses FHIR resources", "HTTP")
+    Rel(APIGateway, NutsNode, "Forward access token requests", "HTTP")
+    Rel(APIGateway, NutsNode, "Verify access tokens", "HTTP")
+}
+@enduml
