@@ -52,25 +52,17 @@ Content-Type: application/json
 %}
 
 ### Add activity to CarePlan
-PUT http://localhost:8000/fhir/CarePlanService/CarePlan/{{carePlanID}}
-Content-Type: application/json
+PATCH http://localhost:8000/fhir/CarePlanService/CarePlan/{{carePlanID}}
+Content-Type: application/json-patch+json
 
-{
-  "resourceType": "CarePlan",
-  "id": "{{carePlanID}}",
-  "status": "active",
-  "intent": "proposal",
-  "subject": {
-    "identifier": {
-      "system": "http://fhir.nl/fhir/NamingSystem/bsn",
-      "value": "12345678911"
-    }
-  },
-  "activity": [
-    {
+[
+  {
+    "op": "add",
+    "path": "/activity/-",
+    "value": [{
       "reference": {
         "reference": "Task/{{taskID}}"
       }
-    }
-  ]
-}
+    }]
+  }
+]

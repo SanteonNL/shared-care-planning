@@ -15,8 +15,8 @@ Have Docker Compose installed
 
 ## TODO
 - Care Team Service:
-  - [ ] Fix bug where CareTeam isn't updated, but recreated every time
-  - [ ] Add Update() method to FHIR client that requires a resource with an ID, to avoid accidentally creating new resources.
+  - [x] Fix bug where CareTeam isn't updated, but recreated every time
+  - [x] Add Update() method to FHIR client that requires a resource with an ID, to avoid accidentally creating new resources.
     Use this for updating CareTeam and CarePlan resources.
   - Cleanup
 - Demo EHR:

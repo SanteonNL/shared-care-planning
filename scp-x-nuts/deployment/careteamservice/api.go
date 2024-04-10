@@ -117,9 +117,7 @@ func (a api) updateCareTeam(carePlan fhir.CarePlan) error {
 				Reference: stringP("CareTeam/" + *careTeam.Id),
 			},
 		}
-		data, _ := json.Marshal(carePlan)
-		println(string(data))
-		if err := a.fhirClient.CreateOrUpdate(context.Background(), carePlan); err != nil {
+		if err := a.fhirClient.Update(context.Background(), carePlan); err != nil {
 			return fmt.Errorf("failed to update CarePlan: %w", err)
 		}
 	} else if len(carePlan.CareTeam) == 1 {
@@ -133,7 +131,7 @@ func (a api) updateCareTeam(carePlan fhir.CarePlan) error {
 		participants := careTeam.Participant
 		careTeam = existingCareTeam
 		careTeam.Participant = participants
-		if err := a.fhirClient.CreateOrUpdate(context.Background(), careTeam); err != nil {
+		if err := a.fhirClient.Update(context.Background(), careTeam); err != nil {
 			return fmt.Errorf("failed to update CareTeam/%s: %w", careTeamID, err)
 		}
 	} else {

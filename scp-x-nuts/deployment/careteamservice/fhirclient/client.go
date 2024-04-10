@@ -23,7 +23,7 @@ func NewClient(baseURL string) Client {
 
 type Client interface {
 	Create(ctx context.Context, resource interface{}, result interface{}) error
-	CreateOrUpdate(ctx context.Context, resource interface{}) error
+	Update(ctx context.Context, resource interface{}) error
 	ReadMultiple(ctx context.Context, path string, params map[string]string, results interface{}) error
 	ReadOne(ctx context.Context, path string, result interface{}) error
 	BuildRequestURI(fhirResourcePath string) *url.URL
@@ -52,7 +52,7 @@ func (h RESTClient) Create(ctx context.Context, resource interface{}, result int
 	return json.Unmarshal(resp.Body(), result)
 }
 
-func (h RESTClient) CreateOrUpdate(ctx context.Context, resource interface{}) error {
+func (h RESTClient) Update(ctx context.Context, resource interface{}) error {
 	resourcePath, err := resolveResourcePathWithID(resource)
 	if err != nil {
 		return fmt.Errorf("unable to determine resource path: %w", err)
@@ -122,10 +122,7 @@ func (h RESTClient) BuildRequestURI(fhirResourcePath string) *url.URL {
 }
 
 func resolveResourcePathWithoutID(resource interface{}) (string, error) {
-	data, err := json.Marshal(resource)
-	if err != nil {
-		return "", err
-	}
+	data, _ := json.Marshal(resource)
 	js := gjson.ParseBytes(data)
 	resourceType := js.Get("resourceType").String()
 	if resourceType == "" {
@@ -134,17 +131,14 @@ func resolveResourcePathWithoutID(resource interface{}) (string, error) {
 	return path.Join(resourceType, "/"), nil
 }
 func resolveResourcePathWithID(resource interface{}) (string, error) {
-	data, err := json.Marshal(resource)
-	if err != nil {
-		return "", err
-	}
+	data, _ := json.Marshal(resource)
 	js := gjson.ParseBytes(data)
 	resourceType := js.Get("resourceType").String()
 	if resourceType == "" {
 		return "", fmt.Errorf("unable to determine resource type of %T", resource)
 	}
 	resourceID := js.Get("id").String()
-	if resourceType == "" {
+	if resourceID == "" {
 		return "", fmt.Errorf("unable to determine resource ID of %T", resource)
 	}
 	return resourceType + "/" + resourceID, nil
