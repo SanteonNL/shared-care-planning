@@ -1,0 +1,20 @@
+{
+  "resourceType" : "ServiceRequest",
+  "id" : "scp-req-bloedpanel",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: ServiceRequest</b><a name=\"scp-req-bloedpanel\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource ServiceRequest &quot;scp-req-bloedpanel&quot; </p></div><p><b>status</b>: active</p><p><b>intent</b>: order</p><p><b>code</b>: Compleet bloedbeeld panel in bloed d.m.v. geautomatiseerde telling <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://loinc.org/\">LOINC</a>#58410-2)</span></p><p><b>subject</b>: <a href=\"Patient-SharonCynthiaProef.html\">Patient/SharonCynthiaProef</a> &quot; PROEF&quot;</p></div>"
+  },
+  "status" : "active",
+  "intent" : "order",
+  "code" : {
+    "coding" : [{
+      "system" : "http://loinc.org",
+      "code" : "58410-2",
+      "display" : "Compleet bloedbeeld panel in bloed d.m.v. geautomatiseerde telling"
+    }]
+  },
+  "subject" : {
+    "reference" : "Patient/SharonCynthiaProef"
+  }
+}

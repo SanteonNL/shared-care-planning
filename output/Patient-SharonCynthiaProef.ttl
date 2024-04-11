@@ -5,23 +5,33 @@
 
 # - resource -------------------------------------------------------------------
 
-<http://hl7.nl/shared-care-planning/Patient/SharonCynthiaProef> a fhir:Patient ;
-  fhir:nodeRole fhir:treeRoot ;
-  fhir:id [ fhir:v "SharonCynthiaProef"] ; # 
-  fhir:meta [
-     fhir:profile ( [
-       fhir:v "http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient"^^xsd:anyURI ;
+<http://hl7.nl/shared-care-planning/Patient/SharonCynthiaProef> a fhir:Patient;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "SharonCynthiaProef"]; # 
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient";
+       fhir:index 0;
        fhir:link <http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient>
-     ] )
-  ] ; # 
-  fhir:text [
-     fhir:status [ fhir:v "generated" ] ;
-     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\"><b>Sharon Cynthia Proef </b> (no stated gender), DoB Unknown</p><hr/></div>"
-  ] ; # 
-  fhir:name ( [
-     fhir:family [ fhir:v "Proef" ] ;
-     fhir:given ( [ fhir:v "Sharon Cynthia" ] )
-  ] ) . # 
+     ]
+  ]; # 
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\"><b>Sharon Cynthia Proef </b> (no stated gender), DoB Unknown</p><hr/></div>"
+  ]; # 
+  fhir:Patient.name [
+     fhir:index 0;
+     fhir:HumanName.family [ fhir:value "Proef" ];
+     fhir:HumanName.given [
+       fhir:value "Sharon Cynthia";
+       fhir:index 0
+     ]
+  ] . # 
+
+# - ontology header ------------------------------------------------------------
+
+<http://hl7.nl/shared-care-planning/Patient/SharonCynthiaProef.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
 
 # -------------------------------------------------------------------------------------
 

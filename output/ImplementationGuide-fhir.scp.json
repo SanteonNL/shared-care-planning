@@ -9,7 +9,7 @@
   "version" : "0.1.0",
   "name" : "sharedcareplanning",
   "status" : "draft",
-  "date" : "2024-04-11T09:03:26+00:00",
+  "date" : "2024-04-11T13:49:43+02:00",
   "publisher" : "HL7 Nederland",
   "contact" : [{
     "name" : "HL7 Nederland",
@@ -30,16 +30,6 @@
     "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
     "packageId" : "hl7.terminology.r4",
     "version" : "5.3.0"
-  },
-  {
-    "id" : "hl7ext",
-    "extension" : [{
-      "url" : "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment",
-      "valueMarkdown" : "Automatically added as a dependency - all IGs depend on the HL7 Extension Pack"
-    }],
-    "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
-    "packageId" : "hl7.fhir.uv.extensions.r4",
-    "version" : "1.0.0"
   },
   {
     "id" : "nlcore",
@@ -324,13 +314,9 @@
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
     {
-      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency",
-      "valueCode" : "hl7.fhir.uv.tools#0.1.0"
-    },
-    {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "copyrightyear"
+        "valueString" : "copyrightyear"
       },
       {
         "url" : "value",
@@ -341,7 +327,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "releaselabel"
+        "valueString" : "releaselabel"
       },
       {
         "url" : "value",
@@ -352,7 +338,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "autoload-resources"
+        "valueString" : "autoload-resources"
       },
       {
         "url" : "value",
@@ -363,7 +349,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "path-liquid"
+        "valueString" : "path-liquid"
       },
       {
         "url" : "value",
@@ -374,7 +360,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "path-liquid"
+        "valueString" : "path-liquid"
       },
       {
         "url" : "value",
@@ -385,7 +371,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "path-qa"
+        "valueString" : "path-qa"
       },
       {
         "url" : "value",
@@ -396,7 +382,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "path-temp"
+        "valueString" : "path-temp"
       },
       {
         "url" : "value",
@@ -407,7 +393,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "path-output"
+        "valueString" : "path-output"
       },
       {
         "url" : "value",
@@ -418,7 +404,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "path-suppressed-warnings"
+        "valueString" : "path-suppressed-warnings"
       },
       {
         "url" : "value",
@@ -429,7 +415,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "path-history"
+        "valueString" : "path-history"
       },
       {
         "url" : "value",
@@ -440,7 +426,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "template-html"
+        "valueString" : "template-html"
       },
       {
         "url" : "value",
@@ -451,7 +437,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "template-md"
+        "valueString" : "template-md"
       },
       {
         "url" : "value",
@@ -462,7 +448,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "apply-contact"
+        "valueString" : "apply-contact"
       },
       {
         "url" : "value",
@@ -473,7 +459,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "apply-context"
+        "valueString" : "apply-context"
       },
       {
         "url" : "value",
@@ -484,7 +470,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "apply-copyright"
+        "valueString" : "apply-copyright"
       },
       {
         "url" : "value",
@@ -495,7 +481,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "apply-jurisdiction"
+        "valueString" : "apply-jurisdiction"
       },
       {
         "url" : "value",
@@ -506,7 +492,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "apply-license"
+        "valueString" : "apply-license"
       },
       {
         "url" : "value",
@@ -517,7 +503,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "apply-publisher"
+        "valueString" : "apply-publisher"
       },
       {
         "url" : "value",
@@ -528,7 +514,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "apply-version"
+        "valueString" : "apply-version"
       },
       {
         "url" : "value",
@@ -539,7 +525,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "apply-wg"
+        "valueString" : "apply-wg"
       },
       {
         "url" : "value",
@@ -550,7 +536,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "active-tables"
+        "valueString" : "active-tables"
       },
       {
         "url" : "value",
@@ -561,7 +547,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "fmm-definition"
+        "valueString" : "fmm-definition"
       },
       {
         "url" : "value",
@@ -572,7 +558,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "propagate-status"
+        "valueString" : "propagate-status"
       },
       {
         "url" : "value",
@@ -583,7 +569,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "excludelogbinaryformat"
+        "valueString" : "excludelogbinaryformat"
       },
       {
         "url" : "value",
@@ -594,7 +580,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueCode" : "tabbed-snapshots"
+        "valueString" : "tabbed-snapshots"
       },
       {
         "url" : "value",
@@ -611,6 +597,17 @@
         "reference" : "Condition/scp-condition-diabetes"
       },
       "name" : "Diabetes Sharon Cynthia Proef",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Condition"
+      }],
+      "reference" : {
+        "reference" : "Condition/scp-condition-hypertensie"
+      },
+      "name" : "Hypertensie Sharon Cynthia Proef",
       "exampleBoolean" : true
     },
     {
@@ -869,6 +866,17 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ServiceRequest"
+      }],
+      "reference" : {
+        "reference" : "ServiceRequest/scp-req-bloedpanel"
+      },
+      "name" : "Request: Compleet bloedbeeld bepalen",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "StructureDefinition:resource"
       }],
       "reference" : {
@@ -901,6 +909,17 @@
       "name" : "Shwachman Diamond Syndrome PlanDefinition",
       "description" : "Shwachman Diamond Syndrome management plan.",
       "exampleCanonical" : "http://hl7.nl/shared-care-planning/StructureDefinition/scp-plan"
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Task"
+      }],
+      "reference" : {
+        "reference" : "Task/scp-task-bloedpanel"
+      },
+      "name" : "Taak: Compleet bloedbeeld bepalen",
+      "exampleBoolean" : true
     }],
     "page" : {
       "extension" : [{

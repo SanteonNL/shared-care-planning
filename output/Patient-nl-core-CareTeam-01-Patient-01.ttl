@@ -5,46 +5,59 @@
 
 # - resource -------------------------------------------------------------------
 
-<http://hl7.nl/shared-care-planning/Patient/nl-core-CareTeam-01-Patient-01> a fhir:Patient ;
-  fhir:nodeRole fhir:treeRoot ;
-  fhir:id [ fhir:v "nl-core-CareTeam-01-Patient-01"] ; # 
-  fhir:meta [
-     fhir:profile ( [
-       fhir:v "http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient"^^xsd:anyURI ;
+<http://hl7.nl/shared-care-planning/Patient/nl-core-CareTeam-01-Patient-01> a fhir:Patient;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "nl-core-CareTeam-01-Patient-01"]; # 
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient";
+       fhir:index 0;
        fhir:link <http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient>
-     ] )
-  ] ; # 
-  fhir:text [
-     fhir:status [ fhir:v "generated" ] ;
-     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\"><b>Ingrid de Jong-de Wit(Official)</b> (no stated gender), DoB Unknown</p><hr/></div>"
-  ] ; # 
-  fhir:name ( [
-     fhir:use [ fhir:v "official" ] ;
-     fhir:text [ fhir:v "Ingrid de Jong-de Wit" ] ;
-     fhir:family [
-       fhir:v "de Jong-de Wit" ;
-       fhir:extension ( [
-         fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix"^^xsd:anyURI ] ;
-         fhir:value [ fhir:v "de" ]
-       ] [
-         fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/humanname-own-name"^^xsd:anyURI ] ;
-         fhir:value [ fhir:v "Jong" ]
-       ] [
-         fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/humanname-partner-prefix"^^xsd:anyURI ] ;
-         fhir:value [ fhir:v "de" ]
-       ] [
-         fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/humanname-partner-name"^^xsd:anyURI ] ;
-         fhir:value [ fhir:v "Wit" ]
-       ] )
-     ] ;
-     fhir:given ( [
-       fhir:v "Ingrid" ;
-       fhir:extension ( [
-         fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier"^^xsd:anyURI ] ;
-         fhir:value [ fhir:v "BR" ]
-       ] )
-     ] )
-  ] ) . # 
+     ]
+  ]; # 
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\"><b>Ingrid de Jong-de Wit(OFFICIAL)</b> (no stated gender), DoB Unknown</p><hr/></div>"
+  ]; # 
+  fhir:Patient.name [
+     fhir:index 0;
+     fhir:HumanName.use [ fhir:value "official" ];
+     fhir:HumanName.text [ fhir:value "Ingrid de Jong-de Wit" ];
+     fhir:HumanName.family [
+       fhir:value "de Jong-de Wit";
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix" ];
+         fhir:Extension.valueString [ fhir:value "de" ]
+       ], [
+         fhir:index 1;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/humanname-own-name" ];
+         fhir:Extension.valueString [ fhir:value "Jong" ]
+       ], [
+         fhir:index 2;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/humanname-partner-prefix" ];
+         fhir:Extension.valueString [ fhir:value "de" ]
+       ], [
+         fhir:index 3;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/humanname-partner-name" ];
+         fhir:Extension.valueString [ fhir:value "Wit" ]
+       ]
+     ];
+     fhir:HumanName.given [
+       fhir:value "Ingrid";
+       fhir:index 0;
+       fhir:Element.extension [
+         fhir:index 0;
+         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier" ];
+         fhir:Extension.valueCode [ fhir:value "BR" ]
+       ]
+     ]
+  ] . # 
+
+# - ontology header ------------------------------------------------------------
+
+<http://hl7.nl/shared-care-planning/Patient/nl-core-CareTeam-01-Patient-01.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
 
 # -------------------------------------------------------------------------------------
 
