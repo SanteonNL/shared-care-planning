@@ -1,7 +1,7 @@
 # Deployment
 
 ## Pre-requisites
-Have Docker Compose installed
+Have Docker Compose installed. So far, it has only been tested on MacOS.
 
 ## Usage
 Make sure you have the latest Docker image versions, then start the Nuts node.
@@ -24,7 +24,6 @@ Then, the following services will are started:
 - the initializer, that waits until the FHIR server and Nuts node are ready. It then creates:
   - a tenant for CarePlanService in the FHIR server
   - 2 care organizations in the Nuts node (meaning a DID, and a self-issued `NutsOrganizationCredential` and `URACredential`)
-
 
 ## TODO
 - Care Team Service:

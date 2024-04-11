@@ -1,9 +1,9 @@
 {
-  "id": "dev:HomeMonitoring2024",
-  "endpoint": "https://nuts-services.nl/discovery/dev:HomeMonitoring2024",
-  "presentation_max_validity": 2764800,
+  "id": "dev:HomeMonitoringURA2024",
+  "endpoint": "https://nuts-services.nl/discovery/dev:HomeMonitoringURA2024",
+  "presentation_max_validity": 4800,
   "presentation_definition": {
-    "id": "dev:HomeMonitoring2024",
+    "id": "dev:HomeMonitoringURA2024",
     "format": {
       "ldp_vc": {
         "proof_type": [
@@ -41,6 +41,31 @@
               "id": "organization_city",
               "path": [
                 "$.credentialSubject.organization.city"
+              ],
+              "filter": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "id": "SelfIssued_URACredential",
+        "constraints": {
+          "fields": [
+            {
+              "path": [
+                "$.type"
+              ],
+              "filter": {
+                "type": "string",
+                "const": "URACredential"
+              }
+            },
+            {
+              "id": "organization_ura",
+              "path": [
+                "$.credentialSubject.ura"
               ],
               "filter": {
                 "type": "string"

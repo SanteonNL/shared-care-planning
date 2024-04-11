@@ -10,6 +10,7 @@ import (
 	"net/url"
 	"os"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -65,7 +66,7 @@ func createOrganization(baseURL *url.URL) error {
 	// 5. Activate the HomeMonitoring Discovery Service for the DID
 	organizationName := gofakeit.FirstName() + " Care"
 	organizationCity := gofakeit.City()
-	organizationURACode := gofakeit.Number(100000, 999999)
+	organizationURACode := strconv.Itoa(gofakeit.Number(100000, 999999))
 	println("Creating organization...")
 	println("-----------------------------")
 	println("  Name:", organizationName)
@@ -80,14 +81,25 @@ func createOrganization(baseURL *url.URL) error {
 	}
 	println("  DID:", organizationDID)
 
-	// Issue and load credential
+	// Issue and load organization credential
 	organizationCredential := createBaseCredential(organizationDID, organizationDID, "NutsOrganizationCredential")
 	organizationCredential["credentialSubject"].(map[string]interface{})["organization"] = map[string]interface{}{
 		"name": organizationName,
 		"city": organizationCity,
 	}
 	if err := issueAndLoadCredential(baseURL, organizationDID, organizationCredential); err != nil {
-		return fmt.Errorf("error issuing/loading organization credential: %w", err)
+		return fmt.Errorf("error issuing/loading NutsOrganizationCredential: %w", err)
+	}
+	// Issue and load URA credential
+	organizationURACredential := createBaseCredential(organizationDID, organizationDID, "URACredential")
+	organizationURACredential["@context"] = "https://nuts-services.nl/jsonld/credentials/experimental"
+	organizationURACredential["credentialSubject"].(map[string]interface{})["ura"] = organizationURACode
+	if err := issueAndLoadCredential(baseURL, organizationDID, organizationURACredential); err != nil {
+		return fmt.Errorf("error issuing/loading URACredential: %w", err)
+	}
+	// Activate HomeMonitoring Discovery Service
+	if err = activateDiscoveryService(baseURL, organizationDID, "dev:HomeMonitoringURA2024"); err != nil {
+		return fmt.Errorf("error activating HomeMonitoring Discovery Service: %w", err)
 	}
 	println("-----------------------------")
 	return nil
@@ -168,6 +180,26 @@ func createBaseCredential(issuerDID string, subjectDID string, credentialType st
 			"id": subjectDID,
 		},
 	}
+}
+
+func activateDiscoveryService(baseURL *url.URL, subjectDID string, discoveryServiceID string) error {
+	// Activate a discovery service for the given DID
+	body, _ := json.Marshal(map[string]interface{}{
+		"subject": subjectDID,
+		"service": discoveryServiceID,
+	})
+	httpResponse, err := http.Post(baseURL.JoinPath("/internal/discovery/v1", discoveryServiceID, subjectDID).String(), "application/json", bytes.NewReader(body))
+	if err != nil {
+		return err
+	}
+	if !httpSuccessStatus(httpResponse.StatusCode) {
+		return fmt.Errorf("non-OK status received for activating discovery service: %s", httpResponse.Status)
+	}
+	data, _ := io.ReadAll(httpResponse.Body)
+	if httpResponse.StatusCode != http.StatusOK {
+		return fmt.Errorf("failed to activate discovery service: %s", string(data))
+	}
+	return nil
 }
 
 func httpSuccessStatus(status int) bool {

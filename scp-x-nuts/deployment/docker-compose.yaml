@@ -48,3 +48,4 @@ services:
       - NUTS_DATADIR=/nuts/data
       - NUTS_HTTP_INTERNAL_ADDRESS=:8081
       - NUTS_AUTH_CONTRACTVALIDATORS=dummy
+      - NUTS_DISCOVERY_DEFINITIONS_DIRECTORY=/nuts/config/discovery
