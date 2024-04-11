@@ -9,7 +9,7 @@
   <version value="0.1.0"/>
   <name value="sharedcareplanning"/>
   <status value="draft"/>
-  <date value="2024-04-11T13:49:43+02:00"/>
+  <date value="2024-04-11T13:58:08+02:00"/>
   <publisher value="HL7 Nederland"/>
   <contact>
     <name value="HL7 Nederland"/>
@@ -745,6 +745,14 @@
       <nameUrl value="toc.html"/>
       <title value="Table of Contents"/>
       <generation value="html"/>
+      <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="index.html"/>
+        </extension>
+        <nameUrl value="index.html"/>
+        <title value="Home"/>
+        <generation value="markdown"/>
+      </page>
       <page>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
           <valueUrl value="introduction.html"/>

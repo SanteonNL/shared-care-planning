@@ -9,7 +9,7 @@
   "version" : "0.1.0",
   "name" : "sharedcareplanning",
   "status" : "draft",
-  "date" : "2024-04-11T13:49:43+02:00",
+  "date" : "2024-04-11T13:58:08+02:00",
   "publisher" : "HL7 Nederland",
   "contact" : [{
     "name" : "HL7 Nederland",
@@ -930,6 +930,15 @@
       "title" : "Table of Contents",
       "generation" : "html",
       "page" : [{
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "index.html"
+        }],
+        "nameUrl" : "index.html",
+        "title" : "Home",
+        "generation" : "markdown"
+      },
+      {
         "extension" : [{
           "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
           "valueUrl" : "introduction.html"
