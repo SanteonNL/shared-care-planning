@@ -1,4 +1,5 @@
 Alias: $sct = http://snomed.info/sct
+Alias: $orpha = http://www.orpha.net
 Alias: $v3-AddressUse = http://terminology.hl7.org/CodeSystem/v3-AddressUse
 Alias: $consentscope = http://terminology.hl7.org/CodeSystem/consentscope
 Alias: $consentcategorycodes = http://terminology.hl7.org/CodeSystem/consentcategorycodes

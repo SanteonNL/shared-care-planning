@@ -1,6 +1,3 @@
-Alias: SCT = http://snomed.info/sct
-Alias: ORPHA = http://www.orpha.net
-
 Profile: SCTPlanDefinition
 Parent: PlanDefinition
 Id: scp-plan
@@ -8,7 +5,7 @@ Title: "Shared Care Planning PlanDefinition"
 Description: "TODO ..."
 
 // * relatedArtifact 1..* "Link to General Medical Guideline or Patient Organization, or other resources."
-* goal.addresses from SCT
+* goal.addresses from $sct
 // * action.definition[x] only PlanDefinition
 
 Instance: plan-sds
@@ -33,7 +30,7 @@ Usage: #example
 * relatedArtifact.type = #justification
 * relatedArtifact.url = "https://rarecare.world/patient-organisation/shwachman-syndrome-support-holland"
 * goal.description.text = "Shwachman Diamond Syndrome management"
-* goal.addresses = ORPHA#ORPHA:811 "Shwachman-Diamond syndrome"
+* goal.addresses = $orpha#ORPHA:811 "Shwachman-Diamond syndrome"
 * action[+].title = "Neutropenia"
 * action[=].definitionCanonical = "https://rarecare.world/fhir/PlanDefinition/neutropenia"
 * action[+].title = "Pancreas Insufficiency"

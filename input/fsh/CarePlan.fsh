@@ -1,6 +1,3 @@
-Alias: SCT = http://snomed.info/sct
-Alias: ORPHA = http://www.orpha.net
-
 Instance: scp-plan-diabetes
 InstanceOf: CarePlan
 Title: "Plan for Diabetes Sharon Cynthia Proef"
@@ -17,5 +14,5 @@ InstanceOf: Condition
 Title: "Diabetes Sharon Cynthia Proef"
 
 * clinicalStatus = #active
-* code = SCT#73211009 "Diabetes mellitus (disorder)"
+* code = $sct#73211009 "Diabetes mellitus (disorder)"
 * subject = Reference(SharonCynthiaProef)
