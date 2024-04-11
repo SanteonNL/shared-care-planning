@@ -1,0 +1,54 @@
+{
+  "id": "dev:HomeMonitoring2024",
+  "endpoint": "https://nuts-services.nl/discovery/dev:HomeMonitoring2024",
+  "presentation_max_validity": 2764800,
+  "presentation_definition": {
+    "id": "dev:HomeMonitoring2024",
+    "format": {
+      "ldp_vc": {
+        "proof_type": [
+          "JsonWebSignature2020"
+        ]
+      },
+      "jwt_vp": {
+        "alg": ["ES256"]
+      }
+    },
+    "input_descriptors": [
+      {
+        "id": "SelfIssued_NutsOrganizationCredential",
+        "constraints": {
+          "fields": [
+            {
+              "path": [
+                "$.type"
+              ],
+              "filter": {
+                "type": "string",
+                "const": "NutsOrganizationCredential"
+              }
+            },
+            {
+              "id": "organization_name",
+              "path": [
+                "$.credentialSubject.organization.name"
+              ],
+              "filter": {
+                "type": "string"
+              }
+            },
+            {
+              "id": "organization_city",
+              "path": [
+                "$.credentialSubject.organization.city"
+              ],
+              "filter": {
+                "type": "string"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

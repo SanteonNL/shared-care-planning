@@ -12,37 +12,39 @@ services:
     build: initializer
     environment:
       - HAPI_FHIR_BASEURL=http://fhirstore:8080/fhir
+      - NUTSNODE_INTERNAL_BASEURL=http://nutsnode:8081
     depends_on:
-      - fhirstore
+      fhirstore:
+        condition: service_started
+      nutsnode:
+        condition: service_healthy
   careteamservice:
     build: careteamservice
     ports:
       - "9000:8080"
     depends_on:
-      - fhirstore
+      # The service crashes when the FHIR store is not running,
+      # so we wait for the initializer (that blocks until the FHIR Store becomes available) to complete.
+      initializer:
+        condition: service_completed_successfully
     environment:
       # Where to find the FHIR store to subscribe to and write CareTeam to
       - FHIR_BASEURL=http://fhirstore:8080/fhir/CarePlanService
       # Where the FHIR Subscription should post notifications
       - CARETEAMSERVICE_BASEURL=http://careteamservice:8080
-#  nutsnode:
-#    image: nutsfoundation/nuts-node:6.0.0-alpha.4
-#    ports:
-#      - "8081:8081" # port exposed for loading test data (create DIDs and VCs, requesting access token)
-#      - "8080:8080"
-#    volumes:
-#      - "./nutsnode/policy:/opt/nuts/policy"
-#      # did:web resolver uses the OS CA bundle, but e2e tests use a self-signed CA which can be found in truststore.pem
-#      # So we need to mount that file to the OS CA bundle location, otherwise did:web resolving will fail due to untrusted certs.
-#      - "./nutsnode/truststore.pem:/etc/ssl/certs/Nuts_RootCA.pem:ro"
-#    environment:
-#      # NUTS_URL being the API Gateway might look weird, but it's actually the "outside facing" interface for the Nuts node,
-#      # since it needs TLS which is handled by APISIX in this setup.
-#      - NUTS_URL=https://api-gateway:9443
-#      - NUTS_STRICTMODE=false
-#      - NUTS_VERBOSITY=debug
-#      - NUTS_HTTP_INTERNAL_ADDRESS=:8081
-#      - NUTS_POLICY_DIRECTORY=/opt/nuts/policy
-#      - NUTS_AUTH_CONTRACTVALIDATORS=dummy
-#    networks:
-#      - nuts-deployment-apigateway
+  nutsnode:
+    # This service uses the dev image, which creates a devtunnel to allow public access to the Nuts node.
+    # This is required for the remote Discovery Service to resolve DID documents.
+    image: nutsfoundation/nuts-node:dev
+    ports:
+      - "7080:8080"
+      - "7081:8081"
+    volumes:
+      - "./nutsnode/discovery:/nuts/config/discovery:ro" # Required for Service Discovery of other Care Organizations
+      - "./data/nutsnode/devtunnel:/devtunnel" # Required for retaining the devtunnel on restart
+      - "./data/nutsnode/data:/nuts/data" # Required for retaining Nuts node data on restart
+    environment:
+      - NUTS_VERBOSITY=trace
+      - NUTS_DATADIR=/nuts/data
+      - NUTS_HTTP_INTERNAL_ADDRESS=:8081
+      - NUTS_AUTH_CONTRACTVALIDATORS=dummy

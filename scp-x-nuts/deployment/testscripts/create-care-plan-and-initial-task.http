@@ -26,7 +26,6 @@ Content-Type: application/json
 
 {
   "resourceType": "Task",
-  "id": "SomeActivity",
   "status": "requested",
   "intent": "order",
   "basedOn": [{
@@ -45,6 +44,13 @@ Content-Type: application/json
         "value": "2000"
       },
     "display": "Second Organization"
+  },
+  "code" : {
+    "coding" : [{
+      "system" : "http://loinc.org",
+      "code" : "58410-2",
+      "display" : "Compleet bloedbeeld panel in bloed d.m.v. geautomatiseerde telling"
+    }]
   }
 }
 

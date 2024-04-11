@@ -4,14 +4,27 @@
 Have Docker Compose installed
 
 ## Usage
-1. Start the FHIR Store and its initializer that creates tenants in the FHIR server:
-    ```bash
-    docker compose up --build fhirstore initializer
-    ```
-2. Wait for the FHIR server to start completely, then start the CareTeamService:
-    ```bash
-    docker compose up --build careteamservice
-    ```
+Make sure you have the latest Docker image versions, then start the Nuts node.
+It uses the "dev" image that creates a DevTunnel which requires you to log in with GitHub.
+If you don't log in, the stack will not start.
+```bash
+docker compose pull
+docker compose up nutsnode
+```
+
+After you've made sure the Nuts node started, start the rest of the stack:
+```bash
+docker compose up --build
+```
+(you could do it in one go, but you might miss the Nuts node asking you to click a link to log in with GitHub).
+
+Then, the following services will are started:
+- FHIR Store (HAPI)
+- Nuts node
+- the initializer, that waits until the FHIR server and Nuts node are ready. It then creates:
+  - a tenant for CarePlanService in the FHIR server
+  - 2 care organizations in the Nuts node (meaning a DID, and a self-issued `NutsOrganizationCredential` and `URACredential`)
+
 
 ## TODO
 - Care Team Service:
@@ -21,7 +34,7 @@ Have Docker Compose installed
   - Cleanup
 - Demo EHR:
   - [ ] Add Demo EHR deployment
-  - [ ] Support creating CarePlan in CarePlanService (register full resource URL in database)
+  - [x] Support creating CarePlan in CarePlanService (register full resource URL in database)
   - [ ] Support creating Tasks in CarePlan for other (or own) organization
   - [ ] Add CarePlan view with CareTeam members
   - [ ] 
