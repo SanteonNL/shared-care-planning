@@ -39,8 +39,8 @@
 
 	  <script src="assets/js/prism.js"></script>
 
-    <style type="text/css">h2{--heading-prefix:"2.22"}
-    h3,h4,h5,h6{--heading-prefix:"2.22"}</style>
+    <style type="text/css">h2{--heading-prefix:"2.25"}
+    h3,h4,h5,h6{--heading-prefix:"2.25"}</style>
     <div id="segment-header" class="segment">    <!-- segment-header -->
       <div class="container">    <!-- container -->
           <!-- Placeholder for child template header declarations -->
@@ -107,7 +107,7 @@
           <div class="inner-wrapper">
 
 <div style="counter-reset: section 9" class="col-12">
-  <!-- ReleaseHeader --><p id="publish-box">sharedcareplanning - Local Development build (v0.1.0). See the <a href="http://hl7.nl/shared-care-planning/history.html">Directory of published versions</a></p>  <!-- EndReleaseHeader -->
+  <!-- ReleaseHeader --><p id="publish-box">sharedcareplanning - Local Development build (v0.1.0) built by the FHIR (HL7&reg; FHIR&reg; Standard) Build Tools. See the <a href="http://hl7.nl/shared-care-planning/history.html">Directory of published versions</a></p>  <!-- EndReleaseHeader -->
 
 
 
@@ -171,28 +171,22 @@
 
 # - resource -------------------------------------------------------------------
 
- a fhir:CarePlan;
-  <a href="http://hl7.org/fhir/R4/rdf.html#tree-root">fhir:nodeRole</a> fhir:treeRoot;
-  <a href="http://hl7.org/fhir/R4/careplan.html#CarePlan.id">fhir:Resource.id</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:value</a> "scp-plan-diabetes"]; # 
-  <a href="http://hl7.org/fhir/R4/careplan.html#CarePlan.text">fhir:DomainResource.text</a> [
-     <a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">fhir:Narrative.status</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:value</a> "generated" ];
-     fhir:Narrative.div "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\"&gt;&lt;p&gt;&lt;b&gt;Generated Narrative: CarePlan&lt;/b&gt;&lt;a name=\"scp-plan-diabetes\"&gt; &lt;/a&gt;&lt;/p&gt;&lt;div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"&gt;&lt;p style=\"margin-bottom: 0px\"&gt;Resource CarePlan &amp;quot;scp-plan-diabetes&amp;quot; &lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;status&lt;/b&gt;: draft&lt;/p&gt;&lt;p&gt;&lt;b&gt;intent&lt;/b&gt;: plan&lt;/p&gt;&lt;p&gt;&lt;b&gt;title&lt;/b&gt;: Plan voor behandeling Diabetes Sharon Cynthia Proef&lt;/p&gt;&lt;p&gt;&lt;b&gt;subject&lt;/b&gt;: &lt;a href=\"Patient-SharonCynthiaProef.html\"&gt;Patient/SharonCynthiaProef&lt;/a&gt; &amp;quot; PROEF&amp;quot;&lt;/p&gt;&lt;p&gt;&lt;b&gt;addresses&lt;/b&gt;: &lt;a href=\"Condition-scp-condition-diabetes.html\"&gt;Condition/scp-condition-diabetes&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;"
-  ]; # 
-  <a href="http://hl7.org/fhir/R4/careplan.html#CarePlan.status">fhir:CarePlan.status</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:value</a> "draft"]; # 
-  <a href="http://hl7.org/fhir/R4/careplan.html#CarePlan.intent">fhir:CarePlan.intent</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:value</a> "plan"]; # 
-  <a href="http://hl7.org/fhir/R4/careplan.html#CarePlan.title">fhir:CarePlan.title</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:value</a> "Plan voor behandeling Diabetes Sharon Cynthia Proef"]; # 
-  <a href="http://hl7.org/fhir/R4/careplan.html#CarePlan.subject">fhir:CarePlan.subject</a> [
-     <a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.reference">fhir:Reference.reference</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:value</a> "Patient/SharonCynthiaProef" ]
-  ]; # 
-  <a href="http://hl7.org/fhir/R4/careplan.html#CarePlan.addresses">fhir:CarePlan.addresses</a> [
-     <a href="http://hl7.org/fhir/R4/rdf.html#index">fhir:index</a> 0;
-     <a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.reference">fhir:Reference.reference</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:value</a> "Condition/scp-condition-diabetes" ]
-  ]. # 
-
-# - ontology header ------------------------------------------------------------
-
- a owl:Ontology;
-  owl:imports fhir:fhir.ttl.
+ a fhir:CarePlan ;
+  <a href="http://hl7.org/fhir/R4/rdf.html#tree-root">fhir:nodeRole</a> fhir:treeRoot ;
+  <a href="http://hl7.org/fhir/R4/careplan.html#CarePlan.id">fhir:id</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#id">fhir:v</a> "scp-plan-diabetes"] ; # 
+  <a href="http://hl7.org/fhir/R4/careplan.html#CarePlan.text">fhir:text</a> [
+<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">fhir:status</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> "generated" ] ;
+fhir:div "&lt;div xmlns=\"http://www.w3.org/1999/xhtml\"&gt;&lt;p&gt;&lt;b&gt;Generated Narrative: CarePlan&lt;/b&gt;&lt;a name=\"scp-plan-diabetes\"&gt; &lt;/a&gt;&lt;a name=\"hcscp-plan-diabetes\"&gt; &lt;/a&gt;&lt;/p&gt;&lt;div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"&gt;&lt;p style=\"margin-bottom: 0px\"&gt;Resource CarePlan &amp;quot;scp-plan-diabetes&amp;quot; &lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;status&lt;/b&gt;: draft&lt;/p&gt;&lt;p&gt;&lt;b&gt;intent&lt;/b&gt;: plan&lt;/p&gt;&lt;p&gt;&lt;b&gt;title&lt;/b&gt;: Plan voor behandeling Diabetes Sharon Cynthia Proef&lt;/p&gt;&lt;p&gt;&lt;b&gt;subject&lt;/b&gt;: &lt;a href=\"Patient-SharonCynthiaProef.html\"&gt;Patient/SharonCynthiaProef&lt;/a&gt; &amp;quot; PROEF&amp;quot;&lt;/p&gt;&lt;p&gt;&lt;b&gt;addresses&lt;/b&gt;: &lt;a href=\"Condition-scp-condition-diabetes.html\"&gt;Condition/scp-condition-diabetes&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;"
+  ] ; # 
+  <a href="http://hl7.org/fhir/R4/careplan.html#CarePlan.status">fhir:status</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> "draft"] ; # 
+  <a href="http://hl7.org/fhir/R4/careplan.html#CarePlan.intent">fhir:intent</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#code">fhir:v</a> "plan"] ; # 
+  <a href="http://hl7.org/fhir/R4/careplan.html#CarePlan.title">fhir:title</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> "Plan voor behandeling Diabetes Sharon Cynthia Proef"] ; # 
+  <a href="http://hl7.org/fhir/R4/careplan.html#CarePlan.subject">fhir:subject</a> [
+<a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.reference">fhir:reference</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> "Patient/SharonCynthiaProef" ]
+  ] ; # 
+  <a href="http://hl7.org/fhir/R4/careplan.html#CarePlan.addresses">fhir:addresses</a> ( [
+<a href="http://hl7.org/fhir/R4/references.html#Reference#Reference.reference">fhir:reference</a> [ <a href="http://hl7.org/fhir/R4/datatypes.html#string">fhir:v</a> "Condition/scp-condition-diabetes" ]
+  ] ) . # 
 
 </code></pre>
 
@@ -225,7 +219,7 @@
 
       <div class="inner-wrapper">
         <p>
-          IG &copy; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="http://hl7.nl">HL7 Nederland</a>.  Package fhir.scp#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Wed, Apr 10, 2024 15:11+0200">2024-04-10</span>
+          IG &copy; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="http://hl7.nl">HL7 Nederland</a>.  Package fhir.scp#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Apr 11, 2024 09:03+0000">2024-04-11</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

@@ -5,63 +5,47 @@
 
 # - resource -------------------------------------------------------------------
 
-<http://hl7.nl/shared-care-planning/Practitioner/nl-core-CareTeam-01-Practitioner-03> a fhir:Practitioner;
-  fhir:nodeRole fhir:treeRoot;
-  fhir:Resource.id [ fhir:value "nl-core-CareTeam-01-Practitioner-03"]; # 
-  fhir:Resource.meta [
-     fhir:Meta.profile [
-       fhir:value "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner";
-       fhir:index 0;
+<http://hl7.nl/shared-care-planning/Practitioner/nl-core-CareTeam-01-Practitioner-03> a fhir:Practitioner ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "nl-core-CareTeam-01-Practitioner-03"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner"^^xsd:anyURI ;
        fhir:link <http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner>
-     ]
-  ]; # 
-  fhir:DomainResource.text [
-     fhir:Narrative.status [ fhir:value "generated" ];
-     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Practitioner</b><a name=\"nl-core-CareTeam-01-Practitioner-03\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Practitioner &quot;nl-core-CareTeam-01-Practitioner-03&quot; </p><p style=\"margin-bottom: 0px\">Profile: <code>http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner</code></p></div><p><b>name</b>: R.M. van Heck(OFFICIAL)</p></div>"
-  ]; # 
-  fhir:Practitioner.name [
-     fhir:index 0;
-     fhir:HumanName.use [ fhir:value "official" ];
-     fhir:HumanName.text [ fhir:value "R.M. van Heck" ];
-     fhir:HumanName.family [
-       fhir:value "van Heck";
-       fhir:Element.extension [
-         fhir:index 0;
-         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix" ];
-         fhir:Extension.valueString [ fhir:value "van" ]
-       ], [
-         fhir:index 1;
-         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/humanname-own-name" ];
-         fhir:Extension.valueString [ fhir:value "Heck" ]
-       ]
-     ];
-     fhir:HumanName.given [
-       fhir:value "R.";
-       fhir:index 0;
-       fhir:Element.extension [
-         fhir:index 0;
-         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier" ];
-         fhir:Extension.valueCode [ fhir:value "IN" ]
-       ]
-     ], [
-       fhir:value "M.";
-       fhir:index 1;
-       fhir:Element.extension [
-         fhir:index 0;
-         fhir:Extension.url [ fhir:value "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier" ];
-         fhir:Extension.valueCode [ fhir:value "IN" ]
-       ]
-     ];
-     fhir:HumanName.prefix [
-       fhir:value "Dr.";
-       fhir:index 0
-     ]
-  ] . # 
-
-# - ontology header ------------------------------------------------------------
-
-<http://hl7.nl/shared-care-planning/Practitioner/nl-core-CareTeam-01-Practitioner-03.ttl> a owl:Ontology;
-  owl:imports fhir:fhir.ttl .
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Practitioner</b><a name=\"nl-core-CareTeam-01-Practitioner-03\"> </a><a name=\"hcnl-core-CareTeam-01-Practitioner-03\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Practitioner &quot;nl-core-CareTeam-01-Practitioner-03&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.10.0-beta.1&amp;canonical=http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner\">nl core HealthProfessional Practitioner</a></p></div><p><b>name</b>: R.M. van Heck(Official)</p></div>"
+  ] ; # 
+  fhir:name ( [
+     fhir:use [ fhir:v "official" ] ;
+     fhir:text [ fhir:v "R.M. van Heck" ] ;
+     fhir:family [
+       fhir:v "van Heck" ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "van" ]
+       ] [
+         fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/humanname-own-name"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "Heck" ]
+       ] )
+     ] ;
+     fhir:given ( [
+       fhir:v "R." ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "IN" ]
+       ] )
+     ] [
+       fhir:v "M." ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "IN" ]
+       ] )
+     ] ) ;
+     fhir:prefix ( [ fhir:v "Dr." ] )
+  ] ) . # 
 
 # -------------------------------------------------------------------------------------
 

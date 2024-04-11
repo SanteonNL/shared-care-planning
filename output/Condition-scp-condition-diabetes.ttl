@@ -6,37 +6,30 @@
 
 # - resource -------------------------------------------------------------------
 
-<http://hl7.nl/shared-care-planning/Condition/scp-condition-diabetes> a fhir:Condition;
-  fhir:nodeRole fhir:treeRoot;
-  fhir:Resource.id [ fhir:value "scp-condition-diabetes"]; # 
-  fhir:DomainResource.text [
-     fhir:Narrative.status [ fhir:value "generated" ];
-     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Condition</b><a name=\"scp-condition-diabetes\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Condition &quot;scp-condition-diabetes&quot; </p></div><p><b>clinicalStatus</b>: active <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> ([not stated]#active)</span></p><p><b>code</b>: Diabetes mellitus (disorder) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#73211009)</span></p><p><b>subject</b>: <a href=\"Patient-SharonCynthiaProef.html\">Patient/SharonCynthiaProef</a> &quot; PROEF&quot;</p></div>"
-  ]; # 
-  fhir:Condition.clinicalStatus [
-     fhir:CodeableConcept.coding [
-       fhir:index 0;
-       fhir:Coding.code [ fhir:value "active" ]
-     ]
-  ]; # 
-  fhir:Condition.code [
-     fhir:CodeableConcept.coding [
-       fhir:index 0;
-       a sct:73211009;
-       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
-       fhir:Coding.code [ fhir:value "73211009" ];
-       fhir:Coding.display [ fhir:value "Diabetes mellitus (disorder)" ]
-     ]
-  ]; # 
-  fhir:Condition.subject [
-     fhir:link <http://hl7.nl/shared-care-planning/Patient/SharonCynthiaProef>;
-     fhir:Reference.reference [ fhir:value "Patient/SharonCynthiaProef" ]
+<http://hl7.nl/shared-care-planning/Condition/scp-condition-diabetes> a fhir:Condition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "scp-condition-diabetes"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Condition</b><a name=\"scp-condition-diabetes\"> </a><a name=\"hcscp-condition-diabetes\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Condition &quot;scp-condition-diabetes&quot; </p></div><p><b>clinicalStatus</b>: active <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> ([not stated]#active)</span></p><p><b>code</b>: Diabetes mellitus (disorder) <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#73211009)</span></p><p><b>subject</b>: <a href=\"Patient-SharonCynthiaProef.html\">Patient/SharonCynthiaProef</a> &quot; PROEF&quot;</p></div>"
+  ] ; # 
+  fhir:clinicalStatus [
+     fhir:coding ( [
+       fhir:code [ fhir:v "active" ]
+     ] )
+  ] ; # 
+  fhir:code [
+     fhir:coding ( [
+       a sct:73211009 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "73211009" ] ;
+       fhir:display [ fhir:v "Diabetes mellitus (disorder)" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://hl7.nl/shared-care-planning/Patient/SharonCynthiaProef> ;
+     fhir:reference [ fhir:v "Patient/SharonCynthiaProef" ]
   ] . # 
-
-# - ontology header ------------------------------------------------------------
-
-<http://hl7.nl/shared-care-planning/Condition/scp-condition-diabetes.ttl> a owl:Ontology;
-  owl:imports fhir:fhir.ttl .
 
 # -------------------------------------------------------------------------------------
 

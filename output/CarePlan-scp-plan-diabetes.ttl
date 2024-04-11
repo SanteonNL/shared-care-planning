@@ -5,30 +5,24 @@
 
 # - resource -------------------------------------------------------------------
 
-<http://hl7.nl/shared-care-planning/CarePlan/scp-plan-diabetes> a fhir:CarePlan;
-  fhir:nodeRole fhir:treeRoot;
-  fhir:Resource.id [ fhir:value "scp-plan-diabetes"]; # 
-  fhir:DomainResource.text [
-     fhir:Narrative.status [ fhir:value "generated" ];
-     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: CarePlan</b><a name=\"scp-plan-diabetes\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource CarePlan &quot;scp-plan-diabetes&quot; </p></div><p><b>status</b>: draft</p><p><b>intent</b>: plan</p><p><b>title</b>: Plan voor behandeling Diabetes Sharon Cynthia Proef</p><p><b>subject</b>: <a href=\"Patient-SharonCynthiaProef.html\">Patient/SharonCynthiaProef</a> &quot; PROEF&quot;</p><p><b>addresses</b>: <a href=\"Condition-scp-condition-diabetes.html\">Condition/scp-condition-diabetes</a></p></div>"
-  ]; # 
-  fhir:CarePlan.status [ fhir:value "draft"]; # 
-  fhir:CarePlan.intent [ fhir:value "plan"]; # 
-  fhir:CarePlan.title [ fhir:value "Plan voor behandeling Diabetes Sharon Cynthia Proef"]; # 
-  fhir:CarePlan.subject [
-     fhir:link <http://hl7.nl/shared-care-planning/Patient/SharonCynthiaProef>;
-     fhir:Reference.reference [ fhir:value "Patient/SharonCynthiaProef" ]
-  ]; # 
-  fhir:CarePlan.addresses [
-     fhir:index 0;
-     fhir:link <http://hl7.nl/shared-care-planning/Condition/scp-condition-diabetes>;
-     fhir:Reference.reference [ fhir:value "Condition/scp-condition-diabetes" ]
-  ] . # 
-
-# - ontology header ------------------------------------------------------------
-
-<http://hl7.nl/shared-care-planning/CarePlan/scp-plan-diabetes.ttl> a owl:Ontology;
-  owl:imports fhir:fhir.ttl .
+<http://hl7.nl/shared-care-planning/CarePlan/scp-plan-diabetes> a fhir:CarePlan ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "scp-plan-diabetes"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: CarePlan</b><a name=\"scp-plan-diabetes\"> </a><a name=\"hcscp-plan-diabetes\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource CarePlan &quot;scp-plan-diabetes&quot; </p></div><p><b>status</b>: draft</p><p><b>intent</b>: plan</p><p><b>title</b>: Plan voor behandeling Diabetes Sharon Cynthia Proef</p><p><b>subject</b>: <a href=\"Patient-SharonCynthiaProef.html\">Patient/SharonCynthiaProef</a> &quot; PROEF&quot;</p><p><b>addresses</b>: <a href=\"Condition-scp-condition-diabetes.html\">Condition/scp-condition-diabetes</a></p></div>"
+  ] ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:intent [ fhir:v "plan"] ; # 
+  fhir:title [ fhir:v "Plan voor behandeling Diabetes Sharon Cynthia Proef"] ; # 
+  fhir:subject [
+     fhir:link <http://hl7.nl/shared-care-planning/Patient/SharonCynthiaProef> ;
+     fhir:reference [ fhir:v "Patient/SharonCynthiaProef" ]
+  ] ; # 
+  fhir:addresses ( [
+     fhir:link <http://hl7.nl/shared-care-planning/Condition/scp-condition-diabetes> ;
+     fhir:reference [ fhir:v "Condition/scp-condition-diabetes" ]
+  ] ) . # 
 
 # -------------------------------------------------------------------------------------
 
