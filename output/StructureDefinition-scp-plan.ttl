@@ -17,7 +17,7 @@
   fhir:StructureDefinition.name [ fhir:value "SCTPlanDefinition"]; # 
   fhir:StructureDefinition.title [ fhir:value "Shared Care Planning PlanDefinition"]; # 
   fhir:StructureDefinition.status [ fhir:value "draft"]; # 
-  fhir:StructureDefinition.date [ fhir:value "2024-04-11T13:58:08+02:00"^^xsd:dateTime]; # 
+  fhir:StructureDefinition.date [ fhir:value "2024-04-11T14:11:32+02:00"^^xsd:dateTime]; # 
   fhir:StructureDefinition.publisher [ fhir:value "HL7 Nederland"]; # 
   fhir:StructureDefinition.contact [
      fhir:index 0;

@@ -12,6 +12,7 @@ Usage: #example
 * subject = Reference(SharonCynthiaProef)
 * addresses = Reference(scp-condition-diabetes)
 * supportingInfo = Reference(scp-condition-hypertensie)
+* activity.reference = Reference(scp-task-bloedpanel)
 
 Instance: scp-condition-diabetes
 InstanceOf: Condition
