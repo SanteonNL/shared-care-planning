@@ -21,5 +21,7 @@ Have Docker Compose installed
   - Cleanup
 - Demo EHR:
   - [ ] Add Demo EHR deployment
-  - [ ] Support creating CarePlan 
+  - [ ] Support creating CarePlan in CarePlanService (register full resource URL in database)
   - [ ] Support creating Tasks in CarePlan for other (or own) organization
+  - [ ] Add CarePlan view with CareTeam members
+  - [ ] 

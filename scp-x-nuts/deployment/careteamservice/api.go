@@ -107,7 +107,40 @@ func (a api) updateCareTeam(carePlan fhir.CarePlan) error {
 		// Create a new CareTeam
 		logrus.Infof("CarePlan/%s does not have a CareTeam yet, will be created", *carePlan.Id)
 		careTeam.Id = stringP(uuid.New().String())
-		// TODO: Do this via a Bundle transaction with PATCH on CarePlan
+		// TODO: Do this via a Bundle transaction with PATCH on CarePlan. But couldn't get it to work.
+		//careTeamData, _ := json.Marshal(careTeam)
+		//carePlanPatch, _ := json.Marshal(map[string]interface{}{
+		//	"op":   "add",
+		//	"path": "/careTeam/-",
+		//	"value": []fhir.Reference{
+		//		{
+		//			Type:      stringP("CareTeam"),
+		//			Reference: stringP(fmt.Sprintf("CareTeam/%d", careTeam.Id)),
+		//		},
+		//	},
+		//})
+		//bundle := fhir.Bundle{
+		//	Type: fhir.BundleTypeTransaction,
+		//	Entry: []fhir.BundleEntry{
+		//		{
+		//			Request: &fhir.BundleEntryRequest{
+		//				Method: fhir.HTTPVerbPOST,
+		//				Url:    fmt.Sprintf("CareTeam/%d", careTeam.Id),
+		//			},
+		//			Resource: careTeamData,
+		//		},
+		//		{
+		//			Request: &fhir.BundleEntryRequest{
+		//				Method: fhir.HTTPVerbPATCH,
+		//				Url:    fmt.Sprintf("CarePlan/%d", carePlan.Id),
+		//			},
+		//			Resource: carePlanPatch,
+		//		},
+		//	},
+		//}
+		//if err := a.fhirClient.Create(context.Background(), bundle, &bundle); err != nil {
+		//	return fmt.Errorf("failed to create CareTeam on CarePlan: %w", err)
+		//}
 		if err := a.fhirClient.Create(context.Background(), careTeam, &careTeam); err != nil {
 			return fmt.Errorf("failed to create CareTeam: %w", err)
 		}

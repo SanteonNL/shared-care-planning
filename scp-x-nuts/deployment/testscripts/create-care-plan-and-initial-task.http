@@ -6,6 +6,7 @@ Content-Type: application/json
   "resourceType": "CarePlan",
   "status": "active",
   "intent": "proposal",
+  "activity": [],
   "subject": {
     "identifier": {
       "system": "http://fhir.nl/fhir/NamingSystem/bsn",
@@ -51,7 +52,23 @@ Content-Type: application/json
     client.global.set('taskID', response.body.id)
 %}
 
-### Add activity to CarePlan
+### Add initial activity to CarePlan
+PATCH http://localhost:8000/fhir/CarePlanService/CarePlan/{{carePlanID}}
+Content-Type: application/json-patch+json
+
+[
+  {
+    "op": "add",
+    "path": "/activity",
+    "value": [{
+      "reference": {
+        "reference": "Task/{{taskID}}"
+      }
+    }]
+  }
+]
+
+### Add subsequent activity to CarePlan
 PATCH http://localhost:8000/fhir/CarePlanService/CarePlan/{{carePlanID}}
 Content-Type: application/json-patch+json
 
