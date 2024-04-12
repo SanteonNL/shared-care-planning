@@ -7,3 +7,4 @@ input-cache/
 *.dtmp
 *.bkp
 .idea
+.DS_Store

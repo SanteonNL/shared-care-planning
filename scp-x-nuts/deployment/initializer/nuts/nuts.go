@@ -35,7 +35,7 @@ func Initialize(organizationNames ...string) []Organization {
 	}
 	if initialized {
 		println("Nuts node already initialized")
-		//return
+		return nil
 	}
 	println("Initializing Nuts node")
 	organizations := make([]Organization, 0)
