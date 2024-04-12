@@ -1,0 +1,44 @@
+services:
+  fhirstore:
+    image: hapiproject/hapi:v7.0.3
+    ports:
+      - "8000:8080"
+    environment:
+      - hapi.fhir.fhir_version=R4
+      - hapi.fhir.partitioning.allow_references_across_partitions=false
+      # Required for CareTeamService subscriptions
+      - hapi.fhir.subscription.resthook_enabled=true
+  initializer:
+    build: initializer
+    environment:
+      - HAPI_FHIR_BASEURL=http://fhirstore:8080/fhir
+    depends_on:
+      - fhirstore
+#  careplanservice:
+#    build: careplanservices
+#    ports:
+#      - "9000:8080"
+#    depends_on:
+#      fhirstore:
+#        condition: service_healthy
+#  nutsnode:
+#    image: nutsfoundation/nuts-node:6.0.0-alpha.4
+#    ports:
+#      - "8081:8081" # port exposed for loading test data (create DIDs and VCs, requesting access token)
+#      - "8080:8080"
+#    volumes:
+#      - "./nutsnode/policy:/opt/nuts/policy"
+#      # did:web resolver uses the OS CA bundle, but e2e tests use a self-signed CA which can be found in truststore.pem
+#      # So we need to mount that file to the OS CA bundle location, otherwise did:web resolving will fail due to untrusted certs.
+#      - "./nutsnode/truststore.pem:/etc/ssl/certs/Nuts_RootCA.pem:ro"
+#    environment:
+#      # NUTS_URL being the API Gateway might look weird, but it's actually the "outside facing" interface for the Nuts node,
+#      # since it needs TLS which is handled by APISIX in this setup.
+#      - NUTS_URL=https://api-gateway:9443
+#      - NUTS_STRICTMODE=false
+#      - NUTS_VERBOSITY=debug
+#      - NUTS_HTTP_INTERNAL_ADDRESS=:8081
+#      - NUTS_POLICY_DIRECTORY=/opt/nuts/policy
+#      - NUTS_AUTH_CONTRACTVALIDATORS=dummy
+#    networks:
+#      - nuts-deployment-apigateway
