@@ -6,3 +6,9 @@ jsonld:
       - https://w3c-ccg.github.io/lds-jws2020/contexts/lds-jws2020-v1.json
       - https://w3id.org/vc/status-list/2021/v1
       - https://nuts-services.nl/jsonld/credentials/experimental
+
+discovery:
+  client:
+    # Make sure new registrations are retrieved as soon as possible,
+    # and that expired registrations are renewed as soon as possible.
+    refresh_interval: 30s

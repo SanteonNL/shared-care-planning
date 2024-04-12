@@ -17,7 +17,14 @@ import (
 
 const NUTSNODE_INTERNAL_API_ENV_KEY = "NUTSNODE_INTERNAL_BASEURL"
 
-func Initialize() {
+type Organization struct {
+	DID     string
+	Name    string
+	URACode string
+	City    string
+}
+
+func Initialize() []Organization {
 	baseURL, _ := url.Parse(os.Getenv(NUTSNODE_INTERNAL_API_ENV_KEY))
 	if baseURL == nil || baseURL.Host == "" {
 		panic(fmt.Sprintf("missing/invalid environment variable: %s", NUTSNODE_INTERNAL_API_ENV_KEY))
@@ -31,13 +38,19 @@ func Initialize() {
 		//return
 	}
 	println("Initializing Nuts node")
-	if err := createOrganization(baseURL); err != nil {
+	organizations := make([]Organization, 0)
+	if org, err := createOrganization(baseURL); err != nil {
 		panic(fmt.Sprintf("error creating organization: %v", err))
+	} else {
+		organizations = append(organizations, *org)
 	}
-	if err := createOrganization(baseURL); err != nil {
+	if org, err := createOrganization(baseURL); err != nil {
 		panic(fmt.Sprintf("error creating organization: %v", err))
+	} else {
+		organizations = append(organizations, *org)
 	}
 	println("Nuts node initialized")
+	return organizations
 }
 
 func isInitialized(baseURL *url.URL) (bool, error) {
@@ -57,7 +70,7 @@ func isInitialized(baseURL *url.URL) (bool, error) {
 	return len(dids) > 0, nil
 }
 
-func createOrganization(baseURL *url.URL) error {
+func createOrganization(baseURL *url.URL) (*Organization, error) {
 	// Create a new care organization in the Nuts node:
 	// 1. Generate a fake name, locality and URA-code
 	// 2. Create a DID
@@ -77,7 +90,7 @@ func createOrganization(baseURL *url.URL) error {
 	didTenant := strings.ToLower(regexp.MustCompile(`[^a-zA-Z0-9]+`).ReplaceAllString(organizationName, ""))
 	organizationDID, err := createDID(baseURL, didTenant)
 	if err != nil {
-		return fmt.Errorf("error creating DID for organization: %w", err)
+		return nil, fmt.Errorf("error creating DID for organization: %w", err)
 	}
 	println("  DID:", organizationDID)
 
@@ -88,21 +101,26 @@ func createOrganization(baseURL *url.URL) error {
 		"city": organizationCity,
 	}
 	if err := issueAndLoadCredential(baseURL, organizationDID, organizationCredential); err != nil {
-		return fmt.Errorf("error issuing/loading NutsOrganizationCredential: %w", err)
+		return nil, fmt.Errorf("error issuing/loading NutsOrganizationCredential: %w", err)
 	}
 	// Issue and load URA credential
 	organizationURACredential := createBaseCredential(organizationDID, organizationDID, "URACredential")
 	organizationURACredential["@context"] = "https://nuts-services.nl/jsonld/credentials/experimental"
 	organizationURACredential["credentialSubject"].(map[string]interface{})["ura"] = organizationURACode
 	if err := issueAndLoadCredential(baseURL, organizationDID, organizationURACredential); err != nil {
-		return fmt.Errorf("error issuing/loading URACredential: %w", err)
+		return nil, fmt.Errorf("error issuing/loading URACredential: %w", err)
 	}
 	// Activate HomeMonitoring Discovery Service
 	if err = activateDiscoveryService(baseURL, organizationDID, "dev:HomeMonitoringURA2024"); err != nil {
-		return fmt.Errorf("error activating HomeMonitoring Discovery Service: %w", err)
+		return nil, fmt.Errorf("error activating HomeMonitoring Discovery Service: %w", err)
 	}
 	println("-----------------------------")
-	return nil
+	return &Organization{
+		DID:     organizationDID,
+		Name:    organizationName,
+		City:    organizationCity,
+		URACode: organizationURACode,
+	}, nil
 }
 
 // createDID creates a new did:web DID in the Nuts node, with the given tenant. It creates the DID.
