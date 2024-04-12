@@ -24,7 +24,7 @@ type Organization struct {
 	City    string
 }
 
-func Initialize() []Organization {
+func Initialize(organizationNames ...string) []Organization {
 	baseURL, _ := url.Parse(os.Getenv(NUTSNODE_INTERNAL_API_ENV_KEY))
 	if baseURL == nil || baseURL.Host == "" {
 		panic(fmt.Sprintf("missing/invalid environment variable: %s", NUTSNODE_INTERNAL_API_ENV_KEY))
@@ -39,15 +39,12 @@ func Initialize() []Organization {
 	}
 	println("Initializing Nuts node")
 	organizations := make([]Organization, 0)
-	if org, err := createOrganization(baseURL); err != nil {
-		panic(fmt.Sprintf("error creating organization: %v", err))
-	} else {
-		organizations = append(organizations, *org)
-	}
-	if org, err := createOrganization(baseURL); err != nil {
-		panic(fmt.Sprintf("error creating organization: %v", err))
-	} else {
-		organizations = append(organizations, *org)
+	for _, organizationName := range organizationNames {
+		if org, err := createOrganization(baseURL, organizationName); err != nil {
+			panic(fmt.Sprintf("error creating organization: %v", err))
+		} else {
+			organizations = append(organizations, *org)
+		}
 	}
 	println("Nuts node initialized")
 	return organizations
@@ -70,14 +67,14 @@ func isInitialized(baseURL *url.URL) (bool, error) {
 	return len(dids) > 0, nil
 }
 
-func createOrganization(baseURL *url.URL) (*Organization, error) {
+func createOrganization(baseURL *url.URL, name string) (*Organization, error) {
 	// Create a new care organization in the Nuts node:
 	// 1. Generate a fake name, locality and URA-code
 	// 2. Create a DID
 	// 3. Issue and load a NutsOrganizationCredential
 	// 4. Issue and load a URACredential
 	// 5. Activate the HomeMonitoring Discovery Service for the DID
-	organizationName := gofakeit.FirstName() + " Care"
+	organizationName := name
 	organizationCity := gofakeit.City()
 	organizationURACode := strconv.Itoa(gofakeit.Number(100000, 999999))
 	println("Creating organization...")

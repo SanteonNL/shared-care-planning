@@ -7,5 +7,5 @@ import (
 
 func main() {
 	fhir.Initialize()
-	nuts.Initialize()
+	nuts.Initialize("Huisartsenpraktijk de Vries", "Ziekenhuis Maas en Waal", "Thuiszorg KomThuus")
 }

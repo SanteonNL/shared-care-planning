@@ -48,6 +48,7 @@ func Initialize(organizations []nuts.Organization) {
 				"domain": "",
 				"id":     customerID,
 				"name":   organization.Name,
+				"ura":    organization.URACode,
 			}
 		}
 	}
