@@ -19,17 +19,15 @@ func main() {
 		clientID      string
 		listenAddress string
 		fhirBaseURL   string
-		tokenEndpoint string
 		jwkFile       string
 		jwkKeyID      string
 	)
 	envVariables := map[string]*string{
-		"EPIC_ADAPTER_OAUTH_TOKEN_ENDPOINT": &tokenEndpoint,
-		"EPIC_ADAPTER_OAUTH_CLIENT_ID":      &clientID,
-		"EPIC_ADAPTER_FHIR_BASEURL":         &fhirBaseURL,
-		"EPIC_ADAPTER_LISTEN_ADDRESS":       &listenAddress,
-		"EPIC_ADAPTER_JWK_FILE":             &jwkFile,
-		"EPIC_ADAPTER_JWK_KEYID":            &jwkKeyID,
+		"EPIC_ADAPTER_OAUTH_CLIENT_ID": &clientID,
+		"EPIC_ADAPTER_FHIR_BASEURL":    &fhirBaseURL,
+		"EPIC_ADAPTER_LISTEN_ADDRESS":  &listenAddress,
+		"EPIC_ADAPTER_JWK_FILE":        &jwkFile,
+		"EPIC_ADAPTER_JWK_KEYID":       &jwkKeyID,
 	}
 	for name, ptr := range envVariables {
 		value := os.Getenv(name)
@@ -46,26 +44,40 @@ func main() {
 	log.Println("Listening on", listenAddress)
 	log.Println("Proxying to", fhirBaseURL)
 	log.Println("OAuth2 client ID", clientID)
+
+	handler, err := create(jwkFile, jwkKeyID, parsedFHIRBaseURL, clientID)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	err = http.ListenAndServe(listenAddress, handler)
+	if !errors.Is(err, http.ErrServerClosed) {
+		log.Fatalln(err)
+	}
+}
+
+func create(jwkFile string, jwkKeyID string, parsedFHIRBaseURL *url.URL, clientID string) (*httputil.ReverseProxy, error) {
+	// Load JWK for signing OAuth2 client assertions
 	signingKey, err := loadJWK(jwkFile, jwkKeyID)
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
-
-	ctx := context.Background()
-	fhirHTTPClient := oauth2.NewClient(ctx, oauth2.ReuseTokenSource(nil, smart_on_fhir.BackendTokenSource{
-		OAuth2ASTokenEndpoint: tokenEndpoint,
+	// Discovery SMART on FHIR configuration
+	smartConfig, err := smart_on_fhir.DiscoverConfiguration(parsedFHIRBaseURL)
+	if err != nil {
+		return nil, err
+	}
+	// Create OAuth2 client for authenticating calls to FHIR API
+	fhirHTTPClient := oauth2.NewClient(context.Background(), oauth2.ReuseTokenSource(nil, smart_on_fhir.BackendTokenSource{
+		OAuth2ASTokenEndpoint: smartConfig.TokenEndpoint,
 		ClientID:              clientID,
 		SigningKey:            signingKey,
 	}))
+	// Spin up proxy
 	reverseProxy := httputil.NewSingleHostReverseProxy(parsedFHIRBaseURL)
 	reverseProxy.Transport = LoggingTransportDecorator{
 		RoundTripper: fhirHTTPClient.Transport,
 	}
-
-	err = http.ListenAndServe(listenAddress, reverseProxy)
-	if !errors.Is(err, http.ErrServerClosed) {
-		panic(err)
-	}
+	return reverseProxy, nil
 }
 
 func loadJWK(jwkFile string, keyID string) (jwk.Key, error) {

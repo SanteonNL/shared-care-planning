@@ -10,3 +10,6 @@ https://open.epic.com/MyApps/Endpoints
 
 Sandbox R4 conformance statement: https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4/metadata
 SMART Configuration: https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4/.well-known/smart-configuration
+
+## Not supported / TODO
+- Token refresh: https://build.fhir.org/ig/HL7/smart-app-launch/app-launch.html#refresh-access-token

@@ -19,6 +19,7 @@ const grantTokenValidity = time.Minute
 
 var _ oauth2.TokenSource = &BackendTokenSource{}
 
+// BackendTokenSource is an oauth2.TokenSource for a SMART on FHIR backend client.
 type BackendTokenSource struct {
 	OAuth2ASTokenEndpoint string
 	ClientID              string
@@ -60,11 +61,7 @@ func (p BackendTokenSource) exchange(grantJWT string) (*oauth2.Token, error) {
 			Body:     body,
 		}
 	}
-	var result oauth2.Token
-	if err := json.Unmarshal(body, &result); err != nil {
-		return nil, fmt.Errorf("cannot unmarshal token response: %w", err)
-	}
-	return &result, nil
+	return parseTokenResponse(body)
 }
 
 func (p BackendTokenSource) createGrant() (string, error) {
@@ -89,4 +86,23 @@ func (p BackendTokenSource) createGrant() (string, error) {
 		return "", fmt.Errorf("failed to sign JWT: %w", err)
 	}
 	return string(signedToken), nil
+}
+
+type tokenResponse struct {
+	AccessToken string `json:"access_token"`
+	TokenType   string `json:"token_type"`
+	ExpiresIn   int64  `json:"expires_in"`
+	Scope       string `json:"scope"`
+}
+
+func parseTokenResponse(data []byte) (*oauth2.Token, error) {
+	var tr tokenResponse
+	if err := json.Unmarshal(data, &tr); err != nil {
+		return nil, err
+	}
+	return &oauth2.Token{
+		AccessToken: tr.AccessToken,
+		TokenType:   tr.TokenType,
+		Expiry:      time.Now().Add(time.Duration(tr.ExpiresIn) * time.Second).Add(-10 * time.Second), // allow for some clock skew
+	}, nil
 }
