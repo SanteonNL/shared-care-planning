@@ -15,7 +15,7 @@ import (
 )
 
 // grantTokenValidity specifies how long the grant token (used to acquire the access token) is valid.
-const grantTokenValidity = time.Minute
+const grantTokenValidity = 5 * time.Second
 
 var _ oauth2.TokenSource = &BackendTokenSource{}
 
