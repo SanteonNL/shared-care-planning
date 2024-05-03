@@ -1,0 +1,40 @@
+services:
+
+  epic-fhir-inbound-adapter:
+    build: epic-fhir-inbound-adapter
+    environment:
+      - EPIC_ADAPTER_FHIR_BASEURL=https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4/
+      - EPIC_ADAPTER_OAUTH_TOKEN_ENDPOINT=https://fhir.epic.com/interconnect-fhir-oauth/oauth2/token
+      - EPIC_ADAPTER_LISTEN_ADDRESS=:8080
+      - EPIC_ADAPTER_JWK_FILE=/app/jwk.json
+      - EPIC_ADAPTER_OAUTH_CLIENT_ID=65903377-f263-4293-82ba-45eb8d46e579
+      - EPIC_ADAPTER_JWK_KEYID=0c261de1-dd90-4cb4-ada6-139598fa95fe
+    ports:
+      - "8080"
+    volumes:
+      - ./epic-fhir-inbound-adapter/.envfiles/private.jwk:/app/jwk.json:ro
+  nutsnode:
+    image: nutsfoundation/nuts-node:dev
+    ports:
+      - "8081:8081" # port exposed for loading test data (create DIDs and VCs, requesting access token)
+    volumes:
+      - "./nutsnode/data/:/app/data"
+    environment:
+      - NUTS_VERBOSITY=debug
+      - NUTS_HTTP_INTERNAL_ADDRESS=:8081
+      - NUTS_AUTH_CONTRACTVALIDATORS=dummy
+
+  orchestrator:
+    build: orchestrator
+    ports:
+      - "9080:8080"
+      - "8081"
+    environment:
+      - ORCHESTRATOR_NUTS_API_ADDRESS=http://nutsnode:8081
+      - ORCHESTRATOR_API_LISTEN_ADDRESS=:8081
+      - ORCHESTRATOR_WEB_LISTEN_ADDRESS=:8080
+      - ORCHESTRATOR_BASE_URL=http://localhost:9080
+      # Update this when you recreate the Nuts node (and you get a new devtunnel address):
+      - ORCHESTRATOR_OWN_DID=did:web:tj2gwdp2-8080.euw.devtunnels.ms:iam:local
+      # Update this when you recreate the Nuts node (and you get a new devtunnel address):
+      - ORCHESTRATOR_REMOTE_DID=did:web:tj2gwdp2-8080.euw.devtunnels.ms:iam:remote

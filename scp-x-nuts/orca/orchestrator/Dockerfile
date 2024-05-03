@@ -10,8 +10,6 @@ COPY go.sum .
 RUN go mod download && go mod verify
 COPY . .
 
-RUN mkdir /app
-RUN go build -o /app/bin .
-WORKDIR /app
+RUN go build -o /app .
 
-ENTRYPOINT ["/app/bin"]
+ENTRYPOINT ["/app"]
