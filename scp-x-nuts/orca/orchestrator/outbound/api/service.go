@@ -22,7 +22,7 @@ func (e APIError) MarshalJSON() ([]byte, error) {
 }
 
 type Service struct {
-	ExchangeManager outbound.ExchangeManager
+	ExchangeManager *outbound.ExchangeManager
 }
 
 type StartExchangeRequest struct {

@@ -46,7 +46,8 @@ func main() {
 
 	httpServices := &sync.WaitGroup{}
 	// Internal-facing API service
-	internalFacingAPI := api.Service{ExchangeManager: outbound.NewExchangeManager(parsedBaseURL, nutsAPIAddress, ownDID, remoteDID)}
+	exchangeManager := outbound.NewExchangeManager(parsedBaseURL, nutsAPIAddress, ownDID, remoteDID)
+	internalFacingAPI := api.Service{ExchangeManager: exchangeManager}
 	httpServices.Add(1)
 	go func() {
 		defer httpServices.Done()
@@ -55,7 +56,7 @@ func main() {
 		}
 	}()
 	// User-facing web service
-	userFacingWeb := web.Service{ExchangeManager: outbound.NewExchangeManager(parsedBaseURL, nutsAPIAddress, ownDID, remoteDID)}
+	userFacingWeb := web.Service{ExchangeManager: exchangeManager}
 	httpServices.Add(1)
 	go func() {
 		defer httpServices.Done()

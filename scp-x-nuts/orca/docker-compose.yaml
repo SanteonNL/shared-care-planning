@@ -14,11 +14,13 @@ services:
     volumes:
       - ./epic-fhir-inbound-adapter/.envfiles/private.jwk:/app/jwk.json:ro
   nutsnode:
-    image: nutsfoundation/nuts-node:dev
+    image: nutsfoundation/nuts-node:local-dev
     ports:
       - "8081:8081" # port exposed for loading test data (create DIDs and VCs, requesting access token)
     volumes:
-      - "./nutsnode/data/:/app/data"
+      - "./nutsnode/data/:/nuts/data"
+      - "./nutsnode/devtunnel/:/devtunnel"
+      - "./nutsnode/policy/:/nuts/config/policy:ro"
     environment:
       - NUTS_VERBOSITY=debug
       - NUTS_HTTP_INTERNAL_ADDRESS=:8081
@@ -33,8 +35,9 @@ services:
       - ORCHESTRATOR_NUTS_API_ADDRESS=http://nutsnode:8081
       - ORCHESTRATOR_API_LISTEN_ADDRESS=:8081
       - ORCHESTRATOR_WEB_LISTEN_ADDRESS=:8080
-      - ORCHESTRATOR_BASE_URL=http://localhost:9080
+      # Update this when you start the devtunnel for orchestrator
+      - ORCHESTRATOR_BASE_URL=https://5387t3x3-9080.euw.devtunnels.ms
       # Update this when you recreate the Nuts node (and you get a new devtunnel address):
-      - ORCHESTRATOR_OWN_DID=did:web:tj2gwdp2-8080.euw.devtunnels.ms:iam:local
+      - ORCHESTRATOR_OWN_DID=did:web:22549dzl-8080.euw.devtunnels.ms:iam:local
       # Update this when you recreate the Nuts node (and you get a new devtunnel address):
-      - ORCHESTRATOR_REMOTE_DID=did:web:tj2gwdp2-8080.euw.devtunnels.ms:iam:remote
+      - ORCHESTRATOR_REMOTE_DID=did:web:22549dzl-8080.euw.devtunnels.ms:iam:remote

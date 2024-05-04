@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"io"
 	"net/http"
@@ -23,8 +24,10 @@ func Test_create(t *testing.T) {
 		_, _ = w.Write([]byte(`{"access_token":"access_token","token_type":"bearer","expires_in":3600}`))
 	}))
 	var capturedAccessToken string
+	var capturedQuery url.Values
 	fhirMux.Handle("GET /Task/1", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		capturedAccessToken = r.Header.Get("Authorization")
+		capturedQuery = r.URL.Query()
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
 		_, _ = w.Write([]byte(`{"resourceType":"Task","id":"1"}`))
@@ -39,7 +42,7 @@ func Test_create(t *testing.T) {
 	defer proxyServer.Close()
 
 	// Call front endpoint of the proxy (read Task resource), which should call the FHIR server with an access token
-	httpResponse, err := http.Get(proxyServer.URL + "/Task/1")
+	httpResponse, err := http.Get(proxyServer.URL + "/Task/1?foo=bar&msg=Hello,+World!")
 	require.NoError(t, err)
 
 	// Assert response return by FHIR mux
@@ -48,4 +51,5 @@ func Test_create(t *testing.T) {
 	data, err := io.ReadAll(httpResponse.Body)
 	require.NoError(t, err)
 	require.Equal(t, `{"resourceType":"Task","id":"1"}`, string(data))
+	assert.Equal(t, url.Values{"foo": []string{"bar"}, "msg": []string{"Hello, World!"}}, capturedQuery)
 }

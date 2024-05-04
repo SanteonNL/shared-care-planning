@@ -15,19 +15,18 @@ import (
 )
 
 type Service struct {
-	ExchangeManager outbound.ExchangeManager
+	ExchangeManager *outbound.ExchangeManager
 }
 
 func (h Service) Start(listenAddress string, apiListenAddress string) error {
 	httpHandler := http.NewServeMux()
-	httpHandler.HandleFunc("POST /:exchangeID/callback", func(response http.ResponseWriter, request *http.Request) {
+	httpHandler.HandleFunc("GET /exchange/{exchangeID}/callback", func(response http.ResponseWriter, request *http.Request) {
 		// The user lands on this "page" when the data exchange is completed.
 		exchangeID := request.PathValue("exchangeID")
 		result, err := h.ExchangeManager.HandleExchangeCallback(exchangeID)
 		// TODO: This now just shows the result (or an error), which should be posted back to the EPD/Viewer (or be retrieved by it).
 		if err != nil {
-			response.WriteHeader(http.StatusBadGateway)
-			_, _ = response.Write([]byte(fmt.Sprintf("Data exchange failed: %v", err)))
+			http.Error(response, fmt.Sprintf("error completing data exchange: %v", err), http.StatusBadGateway)
 			return
 		}
 		rest.RespondJSON(response, http.StatusOK, result)

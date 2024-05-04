@@ -2,9 +2,9 @@
   "homemonitoring": {
     "organization": {
       "id": "homemonitoring_org",
-      "definition": {
-        "input_descriptors": []
-      }
+      "input_descriptors": [
+
+      ]
     }
   }
 }

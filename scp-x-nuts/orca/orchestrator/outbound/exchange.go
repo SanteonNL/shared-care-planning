@@ -16,8 +16,8 @@ import (
 	"sync"
 )
 
-func NewExchangeManager(baseURL *url.URL, nutsNodeAddress, ownDID, dataHolderDID string) ExchangeManager {
-	return ExchangeManager{
+func NewExchangeManager(baseURL *url.URL, nutsNodeAddress, ownDID, dataHolderDID string) *ExchangeManager {
+	return &ExchangeManager{
 		BaseURL:         baseURL,
 		NutsNodeAddress: nutsNodeAddress,
 		OwnDID:          ownDID,
@@ -61,7 +61,7 @@ type DataSource struct {
 	DataHolderDID string
 }
 
-func (e ExchangeManager) StartExchange(patient fhir.Identifier) (string, string, error) {
+func (e *ExchangeManager) StartExchange(patient fhir.Identifier) (string, string, error) {
 	if patient.System == nil || patient.Value == nil {
 		return "", "", errors.New("patient identifier must have system and value")
 	}
@@ -111,7 +111,7 @@ func (e ExchangeManager) StartExchange(patient fhir.Identifier) (string, string,
 	return exchangeID, response.JSON200.RedirectUri, nil
 }
 
-func (e ExchangeManager) findFHIRBaseURL(holderDID string) (string, error) {
+func (e *ExchangeManager) findFHIRBaseURL(holderDID string) (string, error) {
 	request := &vdr.FilterServicesParams{
 		Type:         new(string),
 		EndpointType: new(vdr.FilterServicesParamsEndpointType),
@@ -144,7 +144,7 @@ func (e ExchangeManager) findFHIRBaseURL(holderDID string) (string, error) {
 
 // HandleExchangeCallback handles the callback from the remote party after the user has completed the exchange.
 // It is the trigger to retrieve the OAuth2 access token and do something with it (read data from external party).
-func (e ExchangeManager) HandleExchangeCallback(exchangeID string) (*fhir.Bundle, error) {
+func (e *ExchangeManager) HandleExchangeCallback(exchangeID string) (*fhir.Bundle, error) {
 	exchange, err := e.loadExchange(exchangeID)
 	if err != nil {
 		return nil, err
@@ -174,12 +174,17 @@ func (e ExchangeManager) HandleExchangeCallback(exchangeID string) (*fhir.Bundle
 	return exchange.Result, nil
 }
 
-func (e ExchangeManager) retrieveData(exchange *Exchange, tokenResponse iam.TokenResponse) error {
+func (e *ExchangeManager) retrieveData(exchange *Exchange, tokenResponse iam.TokenResponse) error {
 	baseURL, err := url.Parse(exchange.DataSource.FHIRBaseURL)
 	if err != nil {
 		return err
 	}
-	resourceURL := baseURL.JoinPath(fmt.Sprintf("/Patient?identifier=%s|%s", exchange.Patient.System, exchange.Patient.Value)).String()
+	// TODO: system/value lookup yields 403 Forbidden for some reason
+	//resourceURL := baseURL.JoinPath("/Patient")
+	//queryParams := url.Values{}
+	//queryParams.Set("identifier", fmt.Sprintf("%s|%s", *exchange.Patient.System, *exchange.Patient.Value))
+	//resourceURL.RawQuery = queryParams.Encode()
+	resourceURL := baseURL.JoinPath("Patient/erXuFYUfucBZaryVksYEcMg3").String()
 	httpRequest, _ := http.NewRequest("GET", resourceURL, nil)
 	httpRequest.Header.Add("Authorization", tokenResponse.TokenType+" "+tokenResponse.AccessToken)
 	httpRequest.Header.Add("Accept", "application/json")
@@ -206,33 +211,33 @@ func (e ExchangeManager) retrieveData(exchange *Exchange, tokenResponse iam.Toke
 	return nil
 }
 
-func (e ExchangeManager) iamClient() *iam.Client {
+func (e *ExchangeManager) iamClient() *iam.Client {
 	return &iam.Client{
 		Server: e.NutsNodeAddress,
 		Client: http.DefaultClient,
 	}
 }
 
-func (e ExchangeManager) vdrClient() *vdr.Client {
+func (e *ExchangeManager) vdrClient() *vdr.Client {
 	return &vdr.Client{
 		Server: e.NutsNodeAddress,
 		Client: http.DefaultClient,
 	}
 }
 
-func (e ExchangeManager) deleteExchange(exchangeID string) {
+func (e *ExchangeManager) deleteExchange(exchangeID string) {
 	e.stateMutex.Lock()
 	defer e.stateMutex.Unlock()
 	delete(e.exchanges, exchangeID)
 }
 
-func (e ExchangeManager) storeExchange(exchangeID string, exchange Exchange) {
+func (e *ExchangeManager) storeExchange(exchangeID string, exchange Exchange) {
 	e.stateMutex.Lock()
 	defer e.stateMutex.Unlock()
 	e.exchanges[exchangeID] = exchange
 }
 
-func (e ExchangeManager) loadExchange(exchangeID string) (*Exchange, error) {
+func (e *ExchangeManager) loadExchange(exchangeID string) (*Exchange, error) {
 	e.stateMutex.Lock()
 	defer e.stateMutex.Unlock()
 	exchange, exists := e.exchanges[exchangeID]
