@@ -1,0 +1,24 @@
+{
+  "resourceType" : "PractitionerRole",
+  "id" : "nl-core-CareTeam-01-PractitionerRole-03",
+  "meta" : {
+    "profile" : ["http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole"]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: PractitionerRole</b><a name=\"nl-core-CareTeam-01-PractitionerRole-03\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource PractitionerRole &quot;nl-core-CareTeam-01-PractitionerRole-03&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.10.0-beta.1&amp;canonical=http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole\">nl core HealthProfessional PractitionerRole</a></p></div><p><b>practitioner</b>: <a href=\"Practitioner-nl-core-CareTeam-01-Practitioner-03.html\">Practitioner/nl-core-CareTeam-01-Practitioner-03: Healthcare professional (person), R.M. van Heck</a> &quot; VAN HECK&quot;</p><p><b>specialty</b>: Medisch specialisten, cardiologie <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.zib2020@0.10.0-beta.1&amp;canonical=urn:oid:2.16.840.1.113883.2.4.6.7\">COD016-VEKT Vektis Zorgverlenersspecificatie (subberoepsgroep)[2020-10-23T00:00:00]</a>#0320)</span></p></div>"
+  },
+  "practitioner" : {
+    "reference" : "Practitioner/nl-core-CareTeam-01-Practitioner-03",
+    "type" : "Practitioner",
+    "display" : "Healthcare professional (person), R.M. van Heck"
+  },
+  "specialty" : [{
+    "coding" : [{
+      "system" : "urn:oid:2.16.840.1.113883.2.4.6.7",
+      "version" : "2020-10-23T00:00:00",
+      "code" : "0320",
+      "display" : "Medisch specialisten, cardiologie"
+    }]
+  }]
+}

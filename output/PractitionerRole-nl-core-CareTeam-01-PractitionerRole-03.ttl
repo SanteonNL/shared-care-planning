@@ -1,0 +1,45 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://hl7.nl/shared-care-planning/PractitionerRole/nl-core-CareTeam-01-PractitionerRole-03> a fhir:PractitionerRole;
+  fhir:nodeRole fhir:treeRoot;
+  fhir:Resource.id [ fhir:value "nl-core-CareTeam-01-PractitionerRole-03"]; # 
+  fhir:Resource.meta [
+     fhir:Meta.profile [
+       fhir:value "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole";
+       fhir:index 0;
+       fhir:link <http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole>
+     ]
+  ]; # 
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ];
+     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: PractitionerRole</b><a name=\"nl-core-CareTeam-01-PractitionerRole-03\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource PractitionerRole &quot;nl-core-CareTeam-01-PractitionerRole-03&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.10.0-beta.1&amp;canonical=http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole\">nl core HealthProfessional PractitionerRole</a></p></div><p><b>practitioner</b>: <a href=\"Practitioner-nl-core-CareTeam-01-Practitioner-03.html\">Practitioner/nl-core-CareTeam-01-Practitioner-03: Healthcare professional (person), R.M. van Heck</a> &quot; VAN HECK&quot;</p><p><b>specialty</b>: Medisch specialisten, cardiologie <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.zib2020@0.10.0-beta.1&amp;canonical=urn:oid:2.16.840.1.113883.2.4.6.7\">COD016-VEKT Vektis Zorgverlenersspecificatie (subberoepsgroep)[2020-10-23T00:00:00]</a>#0320)</span></p></div>"
+  ]; # 
+  fhir:PractitionerRole.practitioner [
+     fhir:link <http://hl7.nl/shared-care-planning/Practitioner/nl-core-CareTeam-01-Practitioner-03>;
+     fhir:Reference.reference [ fhir:value "Practitioner/nl-core-CareTeam-01-Practitioner-03" ];
+     fhir:Reference.type [ fhir:value "Practitioner" ];
+     fhir:Reference.display [ fhir:value "Healthcare professional (person), R.M. van Heck" ]
+  ]; # 
+  fhir:PractitionerRole.specialty [
+     fhir:index 0;
+     fhir:CodeableConcept.coding [
+       fhir:index 0;
+       fhir:Coding.system [ fhir:value "urn:oid:2.16.840.1.113883.2.4.6.7" ];
+       fhir:Coding.version [ fhir:value "2020-10-23T00:00:00" ];
+       fhir:Coding.code [ fhir:value "0320" ];
+       fhir:Coding.display [ fhir:value "Medisch specialisten, cardiologie" ]
+     ]
+  ] . # 
+
+# - ontology header ------------------------------------------------------------
+
+<http://hl7.nl/shared-care-planning/PractitionerRole/nl-core-CareTeam-01-PractitionerRole-03.ttl> a owl:Ontology;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+
