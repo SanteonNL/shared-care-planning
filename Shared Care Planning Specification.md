@@ -42,5 +42,3 @@ The act of finding the technical endpoint.
 
 ## Logging
 The act of recording the data exchange.
-
-# Use Case: Home monitoring using Shared Care Planning
