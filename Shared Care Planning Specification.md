@@ -1,44 +1,44 @@
-# Introduction
-
-# Terminology
-
 # Shared Care Planning
 
-## Processes
+## Introduction
 
-### Workflow
+## Terminology
 
-### Viewing data
+### Processes
 
-## Data Exchange Patterns
+#### Workflow
 
-### Push
+#### Viewing data
+
+### Data Exchange Patterns
+
+#### Push
 The act of sending unsolicited data to another party.
 
-#### Requirements
+##### Requirements
 The sending party must verify that the endpoint to which the data is sent, is under control of the intended recipient party.
 
-### Notified Pull
+#### Notified Pull
 TODO: Is it conform the TA NP, or another NP flavor?
 
-## Security
+### Security
 
-### Identification and Authentication
+#### Identification and Authentication
 The act of identifying the parties involved in the data exchange:
 
 - Care organizations
 - Care professionals
 
-### Authorization
+#### Authorization
 The act of determining what data can be exchanged between the parties.
 
-## Localization
+### Localization
 The act of finding parties that hold data for a specific patient.
 
-## Addressing
+### Addressing
 The act of finding the technical endpoint.
 
-### Traceability
+#### Traceability
 
-## Logging
+### Logging
 The act of recording the data exchange.
