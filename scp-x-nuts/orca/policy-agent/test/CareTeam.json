@@ -1,0 +1,34 @@
+{
+  "resourceType": "CareTeam",
+  "id": "example",
+  "status": "active",
+  "name": "Example Team",
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "encounter": {
+    "reference": "Encounter/example"
+  },
+  "period": {
+    "start": "2024-02-01T00:00:00Z",
+    "end": "2025-12-31T23:59:59Z"
+  },
+  "participant": [
+    {
+      "onBehalfOf": {
+        "identifier": {
+            "system": "http://fhir.nl/fhir/NamingSystem/ura",
+            "value": "1"
+        }
+      }
+    },
+    {
+      "onBehalfOf": {
+        "identifier": {
+          "system": "http://fhir.nl/fhir/NamingSystem/ura",
+          "value": "2"
+        }
+      }
+    }
+  ]
+}

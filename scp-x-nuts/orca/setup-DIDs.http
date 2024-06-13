@@ -1,0 +1,29 @@
+### Local XIS: create a new did:web
+POST http://localhost:8081/internal/vdr/v2/did
+Content-Type: application/json
+
+{
+  "tenant": "local"
+}
+
+> {% client.global.set('localDID', response.body.id) %}
+
+### Remote XIS: create a new did:web
+POST http://localhost:8081/internal/vdr/v2/did
+Content-Type: application/json
+
+{
+  "tenant": "remote"
+}
+
+> {% client.global.set('remoteDID', response.body.id) %}
+
+### Remote XIS: register FHIR base URL
+POST http://localhost:8081/internal/vdr/v2/did/{{remoteDID}}/service
+Content-Type: application/json
+
+{
+  "id": "{{remoteDID}}#fhir-api",
+  "type": "fhir-api",
+  "serviceEndpoint": "http://epic-fhir-inbound-adapter:8080"
+}

@@ -1,0 +1,11 @@
+verbosity: debug
+nutsnodeaddr: http://nutsnode:8081
+customersfile: /data/customers.json
+dbConnectionString: /data/demo-ehr.db?cache=shared
+fhir:
+  server:
+    type: hapi-multi-tenant
+    address: http://fhirstore:8080/fhir
+sharedcareplanning:
+  careplanservice:
+    url: http://fhirstore:8080/fhir/CarePlanService

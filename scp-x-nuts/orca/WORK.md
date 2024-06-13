@@ -1,0 +1,2 @@
+- [ ] Configure PEX policy mapping in Nuts node
+- [ ] Test data retrieval through orchestrator/index.html
