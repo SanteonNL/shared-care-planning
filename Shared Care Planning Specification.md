@@ -7,6 +7,11 @@
 ## Processes
 
 ### Workflow
+Nodig:
+Patient
+ServiceRequest (of andere 'request-resource') met referentie naar PractitionerRole en Organization van aanvragende en uitvoerende partij
+Indien CarePlan bekend: CarePlan, anders: relevante Condition(s)
+Optioneel: Task. Indien Task ontbreekt, wordt deze aangemaakt als dit lokaal mogelijk is.
 
 ### Viewing data
 
