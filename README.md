@@ -1,6 +1,6 @@
 # Shared Care Planning
 
-This repository contains the content of the Shared Care Planning Implementation Guide. For a readable version, start [here](/input/pagecontent/introduction.md).
+This repository contains the content of the Shared Care Planning Implementation Guide. For a readable version, start [here](/input/pagecontent/index.md).
 
 You can also check [this slidedeck](/input/attachments/Shared%20Care%20Planning%20voor%20Zorg&ICT2024.pptx) to quickly get a feeling what Shared Care Planning is. 
 
