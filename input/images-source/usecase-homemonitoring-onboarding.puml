@@ -8,9 +8,9 @@ title Use Case Home monitoring - Hospital onboarding Patient at Monitoring Clini
 box Monitoring Clinic
     actor eNurse as "eNurse\n(using browser)"
     participant "EHR" as ClinicEHR
+    participant "Orchestrator\n(CarePlanContributor)" as ClinicOrchestratorContr
     participant "FHIR API" as ClinicFHIR
     participant "Orchestrator\n(CarePlanService)" as ClinicOrchestratorCPS
-    participant "Orchestrator\n(CarePlanContributor)" as ClinicOrchestratorContr
     participant "Nuts Node" as ClinicNutsNode
 end box
 box Hospital
@@ -49,23 +49,24 @@ activate HospitalEHR
             return CarePlan
         end group
         group Task negotation (Clinic receives and accepts Task)
-            HospitalOrchestrator -> ClinicOrchestratorContr : Create Task\n<i>(ref CarePlan, ref ServiceRequest)
-            activate ClinicOrchestratorContr
-                ClinicOrchestratorContr -> ClinicNutsNode : Validate Access Token
+            HospitalOrchestrator -> ClinicOrchestratorCPS : Create Task\n<i>(status=requested)
+            note right: TODO: Also add directly to CarePlan?
+            activate ClinicOrchestratorCPS
+                ClinicOrchestratorCPS -> ClinicNutsNode : Validate Access Token
                 activate ClinicNutsNode
                 return OK
-                ClinicOrchestratorContr -> ClinicFHIR : Create Task
+                ClinicOrchestratorCPS -> ClinicFHIR : Create Task
                 activate ClinicFHIR
                     ClinicFHIR ---> ClinicEHR : Notify Task
                 return Task
             return Task
             group Hospital waits for Clinic to accept the Task
-                HospitalOrchestrator -> ClinicOrchestratorContr : Get Task
-                activate ClinicOrchestratorContr
-                    ClinicOrchestratorContr -> ClinicNutsNode : Validate Access Token
+                HospitalOrchestrator -> ClinicOrchestratorCPS : Get Task
+                activate ClinicOrchestratorCPS
+                    ClinicOrchestratorCPS -> ClinicNutsNode : Validate Access Token
                     activate ClinicNutsNode
                     return OK
-                    ClinicOrchestratorContr -> ClinicFHIR : Get Task
+                    ClinicOrchestratorCPS -> ClinicFHIR : Get Task
                     activate ClinicFHIR
                     ClinicEHR -> ClinicFHIR : Update Task\n(PUT status=accepted)\n(asynchronous)
                     return Task
@@ -84,14 +85,14 @@ activate HospitalEHR
             end group
         end group
         group Hospital enriches Task with ServiceRequest
-            HospitalOrchestrator -> ClinicOrchestratorContr : Update Task\n(input=ServiceRequest,inline)
-            activate ClinicOrchestratorContr
-                ClinicOrchestratorContr -> ClinicNutsNode : Validate Access Token
+            HospitalOrchestrator -> ClinicOrchestratorCPS : Update Task\n(input=ServiceRequest,inline)
+            activate ClinicOrchestratorCPS
+                ClinicOrchestratorCPS -> ClinicNutsNode : Validate Access Token
                 activate ClinicNutsNode
                 return OK
-                ClinicOrchestratorContr -> ClinicFHIR : Update Task
+                ClinicOrchestratorCPS -> ClinicFHIR : Update Task
                 activate ClinicFHIR
-                    ClinicFHIR ---> ClinicEHR : Notify ServiceRequest\navailable
+                    ClinicFHIR ---> ClinicEHR : Notify Task\n(ServiceRequest inline)
                 return Task
             return Task
         end group
