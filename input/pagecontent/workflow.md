@@ -34,8 +34,8 @@ The third actor is the Care Plan Definition Service. This actor manages Plan Def
 Shared Care Data Requests concern the structures and transactions for data requests to and from members involved in the careteam of a patient. The artifacts created in the Shared Care Workflow are used for localization and authorization.
 
 ### Pattern
-<to do>
-<unsolicited pull?>
+to do
+unsolicited pull?
 
 ### Actors
 There are a couple of actors in Shared Care Data Requests:
@@ -65,7 +65,7 @@ This actor hosts generic authorization policies that can be used as paramaters i
 
 
 
-<TO DO from here>
+----------TO DO from here----------
 
 Each actor is described in detail below. 
 
