@@ -7,13 +7,14 @@
 See [the introduction](introduction.html)
 
 0. [Introduction](./intro.md)
-1. Resources & artefacts
-2. Workflow
+1. [Resources & artefacts](artifacts.md)
+   2. [Logical IDs](logical_ids.md)
+2. [Workflow](workflow.md)
 3. API
-4. Authentication
-5. Authorization
-6. Service discovery
-7. Data discovery
+4. [Authentication](authentication.md)
+5. [Authorization](authorization.md)
+6. [Service discovery](servicediscovery.md)
+7. [Data discovery](datadiscovery.md)
 
 
 - [Overview](./overview.md)
