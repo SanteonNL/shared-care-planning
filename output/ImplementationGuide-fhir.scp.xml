@@ -10,7 +10,7 @@
   <name value="sharedcareplanning"/>
   <title value="Shared Care Planning"/>
   <status value="draft"/>
-  <date value="2024-06-25T19:12:23+02:00"/>
+  <date value="2024-06-25T19:40:44+02:00"/>
   <publisher value="Santeon"/>
   <contact>
     <name value="Santeon"/>
@@ -767,46 +767,6 @@
       </page>
       <page>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
-          <valueUrl value="authentication.html"/>
-        </extension>
-        <nameUrl value="authentication.html"/>
-        <title value="Authentication"/>
-        <generation value="markdown"/>
-      </page>
-      <page>
-        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
-          <valueUrl value="authorization.html"/>
-        </extension>
-        <nameUrl value="authorization.html"/>
-        <title value="Authorization"/>
-        <generation value="markdown"/>
-      </page>
-      <page>
-        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
-          <valueUrl value="history.html"/>
-        </extension>
-        <nameUrl value="history.html"/>
-        <title value="History"/>
-        <generation value="markdown"/>
-      </page>
-      <page>
-        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
-          <valueUrl value="introductie-oud.html"/>
-        </extension>
-        <nameUrl value="introductie-oud.html"/>
-        <title value="Introductie Oud"/>
-        <generation value="markdown"/>
-      </page>
-      <page>
-        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
-          <valueUrl value="other.html"/>
-        </extension>
-        <nameUrl value="other.html"/>
-        <title value="Other"/>
-        <generation value="markdown"/>
-      </page>
-      <page>
-        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
           <valueUrl value="overview.html"/>
         </extension>
         <nameUrl value="overview.html"/>
@@ -815,26 +775,18 @@
       </page>
       <page>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
-          <valueUrl value="transaction-autorization.html"/>
+          <valueUrl value="authentication.html"/>
         </extension>
-        <nameUrl value="transaction-autorization.html"/>
-        <title value="Transaction Autorization"/>
+        <nameUrl value="authentication.html"/>
+        <title value="Security - Authentication"/>
         <generation value="markdown"/>
       </page>
       <page>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
-          <valueUrl value="transaction-careplan-careteam-mngt.html"/>
+          <valueUrl value="authorization.html"/>
         </extension>
-        <nameUrl value="transaction-careplan-careteam-mngt.html"/>
-        <title value="Transaction Careplan Careteam Mngt"/>
-        <generation value="markdown"/>
-      </page>
-      <page>
-        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
-          <valueUrl value="transaction-discovery.html"/>
-        </extension>
-        <nameUrl value="transaction-discovery.html"/>
-        <title value="Transaction Discovery"/>
+        <nameUrl value="authorization.html"/>
+        <title value="Security - Authorization"/>
         <generation value="markdown"/>
       </page>
       <page>
@@ -842,15 +794,31 @@
           <valueUrl value="transaction-task-negotiation.html"/>
         </extension>
         <nameUrl value="transaction-task-negotiation.html"/>
-        <title value="Transaction Task Negotiation"/>
+        <title value="Transactions - Task negotiation and addressing care providers"/>
         <generation value="markdown"/>
       </page>
       <page>
         <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
-          <valueUrl value="usecase-enrollment.html"/>
+          <valueUrl value="transaction-careplan-careteam-mngt.html"/>
         </extension>
-        <nameUrl value="usecase-enrollment.html"/>
-        <title value="Usecase Enrollment"/>
+        <nameUrl value="transaction-careplan-careteam-mngt.html"/>
+        <title value="Transactions - CarePlan and CareTeam management"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="transaction-discovery.html"/>
+        </extension>
+        <nameUrl value="transaction-discovery.html"/>
+        <title value="Transactions - Localization of CareTeam members and Patient Information"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="transaction-autorization.html"/>
+        </extension>
+        <nameUrl value="transaction-autorization.html"/>
+        <title value="Transactions - Autorization of CareTeam members using Patient Information"/>
         <generation value="markdown"/>
       </page>
       <page>
@@ -858,7 +826,15 @@
           <valueUrl value="usecase-specification.html"/>
         </extension>
         <nameUrl value="usecase-specification.html"/>
-        <title value="Usecase Specification"/>
+        <title value="Use cases - How to use nation-specific or condition-specific profile"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="usecase-enrollment.html"/>
+        </extension>
+        <nameUrl value="usecase-enrollment.html"/>
+        <title value="Use cases - Enroll patient in home monitoring"/>
         <generation value="markdown"/>
       </page>
       <page>
@@ -866,7 +842,7 @@
           <valueUrl value="usecase-view-all-data.html"/>
         </extension>
         <nameUrl value="usecase-view-all-data.html"/>
-        <title value="Usecase View All Data"/>
+        <title value="Use cases - Get data for home monitoring"/>
         <generation value="markdown"/>
       </page>
     </page>

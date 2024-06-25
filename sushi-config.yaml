@@ -59,21 +59,50 @@ dependencies:
 #     simpleExamples.xml:
 #     complexExamples.xml:
 
-# pages:
-#   index.md:
-#     title: Home
-#     generation: markdown
-#   overview.md:
-#     title: Overview, Concepts and Actors
-#     generation: markdown
+pages:
+  index.md:
+    title: Home
+    generation: markdown
 
-#   examples.md:
-#     title: Example usecases
-#     generation: markdown
+  overview.md:
+    title: Overview
+    generation: markdown
 
-#   transactions.md:
-#     generation: markdown
+  authentication.md:
+    title: Security - Authentication
+    generation: markdown
 
+  authorization.md:
+    title: Security - Authorization
+    generation: markdown
+
+  transaction-task-negotiation.md:
+    title: Transactions - Task negotiation and addressing care providers
+    generation: markdown
+
+  transaction-careplan-careteam-mngt.md:
+    title: Transactions - CarePlan and CareTeam management
+    generation: markdown
+
+  transaction-discovery.md:
+    title: Transactions - Localization of CareTeam members and Patient Information
+    generation: markdown
+
+  transaction-autorization.md:
+    title: Transactions - Autorization of CareTeam members using Patient Information
+    generation: markdown
+
+  usecase-specification.md:
+    title: Use cases - How to use nation-specific or condition-specific profile
+    generation: markdown
+
+  usecase-enrollment.md:
+    title: Use cases - Enroll patient in home monitoring
+    generation: markdown
+
+  usecase-view-all-data.md:
+    title: Use cases - Get data for home monitoring
+    generation: markdown
 
 #
 #

@@ -10,7 +10,7 @@
   "name" : "sharedcareplanning",
   "title" : "Shared Care Planning",
   "status" : "draft",
-  "date" : "2024-06-25T19:12:23+02:00",
+  "date" : "2024-06-25T19:40:44+02:00",
   "publisher" : "Santeon",
   "contact" : [{
     "name" : "Santeon",
@@ -956,51 +956,6 @@
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-          "valueUrl" : "authentication.html"
-        }],
-        "nameUrl" : "authentication.html",
-        "title" : "Authentication",
-        "generation" : "markdown"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-          "valueUrl" : "authorization.html"
-        }],
-        "nameUrl" : "authorization.html",
-        "title" : "Authorization",
-        "generation" : "markdown"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-          "valueUrl" : "history.html"
-        }],
-        "nameUrl" : "history.html",
-        "title" : "History",
-        "generation" : "markdown"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-          "valueUrl" : "introductie-oud.html"
-        }],
-        "nameUrl" : "introductie-oud.html",
-        "title" : "Introductie Oud",
-        "generation" : "markdown"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-          "valueUrl" : "other.html"
-        }],
-        "nameUrl" : "other.html",
-        "title" : "Other",
-        "generation" : "markdown"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
           "valueUrl" : "overview.html"
         }],
         "nameUrl" : "overview.html",
@@ -1010,28 +965,19 @@
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-          "valueUrl" : "transaction-autorization.html"
+          "valueUrl" : "authentication.html"
         }],
-        "nameUrl" : "transaction-autorization.html",
-        "title" : "Transaction Autorization",
+        "nameUrl" : "authentication.html",
+        "title" : "Security - Authentication",
         "generation" : "markdown"
       },
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-          "valueUrl" : "transaction-careplan-careteam-mngt.html"
+          "valueUrl" : "authorization.html"
         }],
-        "nameUrl" : "transaction-careplan-careteam-mngt.html",
-        "title" : "Transaction Careplan Careteam Mngt",
-        "generation" : "markdown"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-          "valueUrl" : "transaction-discovery.html"
-        }],
-        "nameUrl" : "transaction-discovery.html",
-        "title" : "Transaction Discovery",
+        "nameUrl" : "authorization.html",
+        "title" : "Security - Authorization",
         "generation" : "markdown"
       },
       {
@@ -1040,16 +986,34 @@
           "valueUrl" : "transaction-task-negotiation.html"
         }],
         "nameUrl" : "transaction-task-negotiation.html",
-        "title" : "Transaction Task Negotiation",
+        "title" : "Transactions - Task negotiation and addressing care providers",
         "generation" : "markdown"
       },
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-          "valueUrl" : "usecase-enrollment.html"
+          "valueUrl" : "transaction-careplan-careteam-mngt.html"
         }],
-        "nameUrl" : "usecase-enrollment.html",
-        "title" : "Usecase Enrollment",
+        "nameUrl" : "transaction-careplan-careteam-mngt.html",
+        "title" : "Transactions - CarePlan and CareTeam management",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "transaction-discovery.html"
+        }],
+        "nameUrl" : "transaction-discovery.html",
+        "title" : "Transactions - Localization of CareTeam members and Patient Information",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "transaction-autorization.html"
+        }],
+        "nameUrl" : "transaction-autorization.html",
+        "title" : "Transactions - Autorization of CareTeam members using Patient Information",
         "generation" : "markdown"
       },
       {
@@ -1058,7 +1022,16 @@
           "valueUrl" : "usecase-specification.html"
         }],
         "nameUrl" : "usecase-specification.html",
-        "title" : "Usecase Specification",
+        "title" : "Use cases - How to use nation-specific or condition-specific profile",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "usecase-enrollment.html"
+        }],
+        "nameUrl" : "usecase-enrollment.html",
+        "title" : "Use cases - Enroll patient in home monitoring",
         "generation" : "markdown"
       },
       {
@@ -1067,7 +1040,7 @@
           "valueUrl" : "usecase-view-all-data.html"
         }],
         "nameUrl" : "usecase-view-all-data.html",
-        "title" : "Usecase View All Data",
+        "title" : "Use cases - Get data for home monitoring",
         "generation" : "markdown"
       }]
     },
