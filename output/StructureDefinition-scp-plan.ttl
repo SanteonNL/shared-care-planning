@@ -17,7 +17,7 @@
   fhir:name [ fhir:v "SCTPlanDefinition"] ; # 
   fhir:title [ fhir:v "Shared Care Planning PlanDefinition"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2024-06-25T19:40:44+02:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2024-06-26T00:37:58+02:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Santeon"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Santeon" ] ;

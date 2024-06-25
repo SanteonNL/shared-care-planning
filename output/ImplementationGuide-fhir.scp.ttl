@@ -17,7 +17,7 @@
   fhir:name [ fhir:v "sharedcareplanning"] ; # 
   fhir:title [ fhir:v "Shared Care Planning"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2024-06-25T19:40:44+02:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2024-06-26T00:37:58+02:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Santeon"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Santeon" ] ;
@@ -520,6 +520,28 @@
      fhir:resource ( [
        fhir:extension ( [
          fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "Bundle" ]
+       ] ) ;
+       fhir:reference [
+         fhir:link <http://santeonnl.github.io/shared-care-planning/Bundle/minimal-enrollment-Bundle> ;
+         fhir:reference [ fhir:v "Bundle/minimal-enrollment-Bundle" ]
+       ] ;
+       fhir:name [ fhir:v "Bundle for Minimal Enrollment" ] ;
+       fhir:example [ fhir:v "true"^^xsd:boolean ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "CarePlan" ]
+       ] ) ;
+       fhir:reference [
+         fhir:link <http://santeonnl.github.io/shared-care-planning/CarePlan/minimal-enrollment-CarePlan> ;
+         fhir:reference [ fhir:v "CarePlan/minimal-enrollment-CarePlan" ]
+       ] ;
+       fhir:name [ fhir:v "CarePlan for Minimal Enrollment" ] ;
+       fhir:example [ fhir:v "true"^^xsd:boolean ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
          fhir:value [ fhir:v "Condition" ]
        ] ) ;
        fhir:reference [
@@ -538,6 +560,94 @@
          fhir:reference [ fhir:v "Condition/scp-condition-hypertensie" ]
        ] ;
        fhir:name [ fhir:v "Hypertensie Sharon Cynthia Proef" ] ;
+       fhir:example [ fhir:v "true"^^xsd:boolean ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "Condition" ]
+       ] ) ;
+       fhir:reference [
+         fhir:link <http://santeonnl.github.io/shared-care-planning/Condition/minimal-enrollment-Condition> ;
+         fhir:reference [ fhir:v "Condition/minimal-enrollment-Condition" ]
+       ] ;
+       fhir:name [ fhir:v "minimal-enrollment-Condition" ] ;
+       fhir:example [ fhir:v "true"^^xsd:boolean ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "Organization" ]
+       ] ) ;
+       fhir:reference [
+         fhir:link <http://santeonnl.github.io/shared-care-planning/Organization/minimal-enrollment-Organization-Performer> ;
+         fhir:reference [ fhir:v "Organization/minimal-enrollment-Organization-Performer" ]
+       ] ;
+       fhir:name [ fhir:v "minimal-enrollment-Organization-Performer" ] ;
+       fhir:example [ fhir:v "true"^^xsd:boolean ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "Organization" ]
+       ] ) ;
+       fhir:reference [
+         fhir:link <http://santeonnl.github.io/shared-care-planning/Organization/minimal-enrollment-Organization-Requester> ;
+         fhir:reference [ fhir:v "Organization/minimal-enrollment-Organization-Requester" ]
+       ] ;
+       fhir:name [ fhir:v "minimal-enrollment-Organization-Requester" ] ;
+       fhir:example [ fhir:v "true"^^xsd:boolean ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "Patient" ]
+       ] ) ;
+       fhir:reference [
+         fhir:link <http://santeonnl.github.io/shared-care-planning/Patient/minimal-enrollment-Patient> ;
+         fhir:reference [ fhir:v "Patient/minimal-enrollment-Patient" ]
+       ] ;
+       fhir:name [ fhir:v "minimal-enrollment-Patient" ] ;
+       fhir:example [ fhir:v "true"^^xsd:boolean ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "Practitioner" ]
+       ] ) ;
+       fhir:reference [
+         fhir:link <http://santeonnl.github.io/shared-care-planning/Practitioner/minimal-enrollment-Practitioner-HP> ;
+         fhir:reference [ fhir:v "Practitioner/minimal-enrollment-Practitioner-HP" ]
+       ] ;
+       fhir:name [ fhir:v "minimal-enrollment-Practitioner-HP" ] ;
+       fhir:example [ fhir:v "true"^^xsd:boolean ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "Practitioner" ]
+       ] ) ;
+       fhir:reference [
+         fhir:link <http://santeonnl.github.io/shared-care-planning/Practitioner/minimal-enrollment-Practitioner-Requester> ;
+         fhir:reference [ fhir:v "Practitioner/minimal-enrollment-Practitioner-Requester" ]
+       ] ;
+       fhir:name [ fhir:v "minimal-enrollment-Practitioner-Requester" ] ;
+       fhir:example [ fhir:v "true"^^xsd:boolean ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "ServiceRequest" ]
+       ] ) ;
+       fhir:reference [
+         fhir:link <http://santeonnl.github.io/shared-care-planning/ServiceRequest/minimal-enrollment-ServiceRequest> ;
+         fhir:reference [ fhir:v "ServiceRequest/minimal-enrollment-ServiceRequest" ]
+       ] ;
+       fhir:name [ fhir:v "minimal-enrollment-ServiceRequest" ] ;
+       fhir:example [ fhir:v "true"^^xsd:boolean ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "Task" ]
+       ] ) ;
+       fhir:reference [
+         fhir:link <http://santeonnl.github.io/shared-care-planning/Task/minimal-enrollment-Task> ;
+         fhir:reference [ fhir:v "Task/minimal-enrollment-Task" ]
+       ] ;
+       fhir:name [ fhir:v "minimal-enrollment-Task" ] ;
        fhir:example [ fhir:v "true"^^xsd:boolean ]
      ] [
        fhir:extension ( [

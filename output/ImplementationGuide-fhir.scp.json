@@ -10,7 +10,7 @@
   "name" : "sharedcareplanning",
   "title" : "Shared Care Planning",
   "status" : "draft",
-  "date" : "2024-06-25T19:40:44+02:00",
+  "date" : "2024-06-26T00:37:58+02:00",
   "publisher" : "Santeon",
   "contact" : [{
     "name" : "Santeon",
@@ -606,6 +606,28 @@
     "resource" : [{
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/minimal-enrollment-Bundle"
+      },
+      "name" : "Bundle for Minimal Enrollment",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CarePlan"
+      }],
+      "reference" : {
+        "reference" : "CarePlan/minimal-enrollment-CarePlan"
+      },
+      "name" : "CarePlan for Minimal Enrollment",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "Condition"
       }],
       "reference" : {
@@ -623,6 +645,94 @@
         "reference" : "Condition/scp-condition-hypertensie"
       },
       "name" : "Hypertensie Sharon Cynthia Proef",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Condition"
+      }],
+      "reference" : {
+        "reference" : "Condition/minimal-enrollment-Condition"
+      },
+      "name" : "minimal-enrollment-Condition",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Organization"
+      }],
+      "reference" : {
+        "reference" : "Organization/minimal-enrollment-Organization-Performer"
+      },
+      "name" : "minimal-enrollment-Organization-Performer",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Organization"
+      }],
+      "reference" : {
+        "reference" : "Organization/minimal-enrollment-Organization-Requester"
+      },
+      "name" : "minimal-enrollment-Organization-Requester",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Patient"
+      }],
+      "reference" : {
+        "reference" : "Patient/minimal-enrollment-Patient"
+      },
+      "name" : "minimal-enrollment-Patient",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Practitioner"
+      }],
+      "reference" : {
+        "reference" : "Practitioner/minimal-enrollment-Practitioner-HP"
+      },
+      "name" : "minimal-enrollment-Practitioner-HP",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Practitioner"
+      }],
+      "reference" : {
+        "reference" : "Practitioner/minimal-enrollment-Practitioner-Requester"
+      },
+      "name" : "minimal-enrollment-Practitioner-Requester",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ServiceRequest"
+      }],
+      "reference" : {
+        "reference" : "ServiceRequest/minimal-enrollment-ServiceRequest"
+      },
+      "name" : "minimal-enrollment-ServiceRequest",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Task"
+      }],
+      "reference" : {
+        "reference" : "Task/minimal-enrollment-Task"
+      },
+      "name" : "minimal-enrollment-Task",
       "exampleBoolean" : true
     },
     {

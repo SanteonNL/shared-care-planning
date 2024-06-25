@@ -25,22 +25,26 @@
       "StructureDefinition.snapshot.element.binding"
     ],
     "http://hl7.org/fhir/StructureDefinition/humanname-own-name": [
+      "Bundle.entry.resource.name.family",
       "Patient.contact.name.family",
       "Patient.name.family",
       "Practitioner.name.family",
       "RelatedPerson.name.family"
     ],
     "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix": [
+      "Bundle.entry.resource.name.family",
       "Patient.contact.name.family",
       "Patient.name.family",
       "Practitioner.name.family",
       "RelatedPerson.name.family"
     ],
     "http://hl7.org/fhir/StructureDefinition/humanname-partner-name": [
+      "Bundle.entry.resource.name.family",
       "Patient.contact.name.family",
       "Patient.name.family"
     ],
     "http://hl7.org/fhir/StructureDefinition/humanname-partner-prefix": [
+      "Bundle.entry.resource.name.family",
       "Patient.contact.name.family",
       "Patient.name.family"
     ],
@@ -55,6 +59,7 @@
       "Patient.contact.address.line"
     ],
     "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier": [
+      "Bundle.entry.resource.name.given",
       "Patient.contact.name.given",
       "Patient.name.given",
       "Practitioner.name.given",
