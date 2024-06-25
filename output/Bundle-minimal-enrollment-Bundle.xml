@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Bundle xmlns="http://hl7.org/fhir">
+  <id value="minimal-enrollment-Bundle"/>
+  <type value="transaction"/>
+  <entry>
+    <fullUrl value="minimal-enrollment-CarePlan"/>
+    <resource>
+      <CarePlan>
+        <id value="minimal-enrollment-CarePlan"/>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="CarePlan_minimal-enrollment-CarePlan"> </a><p><b>Generated Narrative: CarePlan </b><a name="minimal-enrollment-CarePlan"> </a><a name="hcminimal-enrollment-CarePlan"> </a></p><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">ResourceCarePlan &quot;minimal-enrollment-CarePlan&quot; </p></div><p><b>status</b>: draft</p><p><b>intent</b>: plan</p><p><b>title</b>: CarePlan for Minimal Enrollment</p><p><b>subject</b>: See on this page: Patient/minimal-enrollment-Patient</p><p><b>addresses</b>: See on this page: Condition/minimal-enrollment-Condition</p><h3>Activities</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Reference</b></td></tr><tr><td style="display: none">*</td><td><a href="https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.10.0-beta.1&amp;canonical=https://simplifier.net/packages/nictiz.fhir.nl.r4.nl-core/mimimal-enrollment-Task">mimimal-enrollment-Task</a></td></tr></table></div>
+        </text>
+        <status value="draft"/>
+        <intent value="plan"/>
+        <title value="CarePlan for Minimal Enrollment"/>
+        <subject>
+          <reference value="Patient/minimal-enrollment-Patient"/>
+        </subject>
+        <addresses>
+          <reference value="Condition/minimal-enrollment-Condition"/>
+        </addresses>
+        <activity>
+          <reference>
+            <reference value="mimimal-enrollment-Task"/>
+          </reference>
+        </activity>
+      </CarePlan>
+    </resource>
+    <request>
+      <method value="POST"/>
+      <url value="CarePlan"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="minimal-enrollment-Condition"/>
+    <resource>
+      <Condition>
+        <id value="minimal-enrollment-Condition"/>
+        <meta>
+          <profile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="Condition_minimal-enrollment-Condition"> </a><p><b>Generated Narrative: Condition </b><a name="minimal-enrollment-Condition"> </a><a name="hcminimal-enrollment-Condition"> </a></p><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">ResourceCondition &quot;minimal-enrollment-Condition&quot; </p><p style="margin-bottom: 0px">Profile: <a href="https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.10.0-beta.1&amp;canonical=http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem">nl core Problem</a></p></div><p><b>category</b>: Interpretatie van diagnose <span style="background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki"> (<a href="https://browser.ihtsdotools.org/">SNOMED CT</a>#282291009)</span></p><p><b>code</b>: Hartfalen <span style="background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki"> (<a href="https://browser.ihtsdotools.org/">SNOMED CT</a>#195111005)</span></p><p><b>subject</b>: See on this page: Patient/minimal-enrollment-Patient: Patient, Jean Jacques van Putten-van der Giessen</p><p><b>note</b>: Hier een zinnige tekst over de diagnose Hartfalen</p></div>
+        </text>
+        <category>
+          <coding>
+            <system value="http://snomed.info/sct"/>
+            <code value="282291009"/>
+            <display value="Interpretatie van diagnose"/>
+          </coding>
+        </category>
+        <code>
+          <coding>
+            <system value="http://snomed.info/sct"/>
+            <code value="195111005"/>
+            <display value="Hartfalen"/>
+          </coding>
+        </code>
+        <subject>
+          <reference value="Patient/minimal-enrollment-Patient"/>
+          <type value="Patient"/>
+          <display value="Patient, Jean Jacques van Putten-van der Giessen"/>
+        </subject>
+        <note>
+          <text value="Hier een zinnige tekst over de diagnose Hartfalen"/>
+        </note>
+      </Condition>
+    </resource>
+    <request>
+      <method value="POST"/>
+      <url value="Condition"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="minimal-enrollment-Organization-Performer"/>
+    <resource>
+      <Organization>
+        <id value="minimal-enrollment-Organization-Performer"/>
+        <meta>
+          <profile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="Organization_minimal-enrollment-Organization-Performer"> </a><p><b>Generated Narrative: Organization </b><a name="minimal-enrollment-Organization-Performer"> </a><a name="hcminimal-enrollment-Organization-Performer"> </a></p><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">ResourceOrganization &quot;minimal-enrollment-Organization-Performer&quot; </p><p style="margin-bottom: 0px">Profile: <a href="https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.10.0-beta.1&amp;canonical=http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization">nl core HealthcareProvider Organization</a></p></div><p><b>identifier</b>: Ura/URA-1</p><p><b>type</b>: Ziekenhuis <span style="background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki"> (<a href="https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.zib2020@0.10.0-beta.1&amp;canonical=http://nictiz.nl/fhir/NamingSystem/organization-type">RoleCodeNL - zorgaanbiedertype (organisaties)</a>#V4)</span></p><p><b>name</b>: Zorg bij jou</p></div>
+        </text>
+        <identifier>
+          <system value="http://fhir.nl/fhir/NamingSystem/ura"/>
+          <value value="URA-1"/>
+        </identifier>
+        <type>
+          <coding>
+            <system value="http://nictiz.nl/fhir/NamingSystem/organization-type"/>
+            <code value="V4"/>
+            <display value="Ziekenhuis"/>
+          </coding>
+        </type>
+        <name value="Zorg bij jou"/>
+      </Organization>
+    </resource>
+    <request>
+      <method value="POST"/>
+      <url value="Organization"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="minimal-enrollment-Organization-Requester"/>
+    <resource>
+      <Organization>
+        <id value="minimal-enrollment-Organization-Requester"/>
+        <meta>
+          <profile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="Organization_minimal-enrollment-Organization-Requester"> </a><p><b>Generated Narrative: Organization </b><a name="minimal-enrollment-Organization-Requester"> </a><a name="hcminimal-enrollment-Organization-Requester"> </a></p><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">ResourceOrganization &quot;minimal-enrollment-Organization-Requester&quot; </p><p style="margin-bottom: 0px">Profile: <a href="https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.10.0-beta.1&amp;canonical=http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization">nl core HealthcareProvider Organization</a></p></div><p><b>identifier</b>: Ura/URA-ziekenhuis-1</p><p><b>name</b>: St. Antonius Ziekenhuis</p></div>
+        </text>
+        <identifier>
+          <system value="http://fhir.nl/fhir/NamingSystem/ura"/>
+          <value value="URA-ziekenhuis-1"/>
+        </identifier>
+        <name value="St. Antonius Ziekenhuis"/>
+      </Organization>
+    </resource>
+    <request>
+      <method value="POST"/>
+      <url value="Organization"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="minimal-enrollment-Patient"/>
+    <resource>
+      <Patient>
+        <id value="minimal-enrollment-Patient"/>
+        <meta>
+          <profile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="Patient_minimal-enrollment-Patient"> </a><p><b>Generated Narrative: Patient </b><a name="minimal-enrollment-Patient"> </a><a name="hcminimal-enrollment-Patient"> </a></p><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">ResourcePatient &quot;minimal-enrollment-Patient&quot; </p><p style="margin-bottom: 0px">Profile: <a href="https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.10.0-beta.1&amp;canonical=http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient">nl core Patient</a></p></div><p><b>identifier</b>: <code>http://fhir.nl/fhir/NamingSystem/bsn</code>/111222333</p><p><b>name</b>: Jean Jacques van Putten-van der Giessen(Official)</p><p><b>birthDate</b>: 1974-01-01</p><h3>Contacts</h3><table class="grid"><tr><td style="display: none">-</td><td><b>Telecom</b></td></tr><tr><td style="display: none">*</td><td><a href="tel:+31612345678">+31612345678</a></td></tr></table></div>
+        </text>
+        <identifier>
+          <system value="http://fhir.nl/fhir/NamingSystem/bsn"/>
+          <value value="111222333"/>
+        </identifier>
+        <name>
+          <use value="official"/>
+          <text value="Jean Jacques van Putten-van der Giessen"/>
+          <family value="van Putten-van der Giessen">
+            <extension url="http://hl7.org/fhir/StructureDefinition/humanname-own-prefix">
+              <valueString value="van"/>
+            </extension>
+            <extension url="http://hl7.org/fhir/StructureDefinition/humanname-own-name">
+              <valueString value="Putten"/>
+            </extension>
+            <extension url="http://hl7.org/fhir/StructureDefinition/humanname-partner-prefix">
+              <valueString value="van der"/>
+            </extension>
+            <extension url="http://hl7.org/fhir/StructureDefinition/humanname-partner-name">
+              <valueString value="Giessen"/>
+            </extension>
+          </family>
+          <given value="Jean"/>
+          <given value="Jacques"/>
+        </name>
+        <birthDate value="1974-01-01"/>
+        <contact>
+          <telecom>
+            <system value="phone"/>
+            <value value="+31612345678"/>
+          </telecom>
+        </contact>
+      </Patient>
+    </resource>
+    <request>
+      <method value="POST"/>
+      <url value="Patient"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="minimal-enrollment-Practitioner-HP"/>
+    <resource>
+      <Practitioner>
+        <id value="minimal-enrollment-Practitioner-HP"/>
+        <meta>
+          <profile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="Practitioner_minimal-enrollment-Practitioner-HP"> </a><p><b>Generated Narrative: Practitioner </b><a name="minimal-enrollment-Practitioner-HP"> </a><a name="hcminimal-enrollment-Practitioner-HP"> </a></p><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">ResourcePractitioner &quot;minimal-enrollment-Practitioner-HP&quot; </p><p style="margin-bottom: 0px">Profile: <a href="https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.10.0-beta.1&amp;canonical=http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner">nl core HealthProfessional Practitioner</a></p></div><p><b>name</b>: H.B. Hoofdbehandelaar(Official)</p><p><b>telecom</b>: <a href="tel:+31688888888">+31688888888</a>, <a href="mailto:hb@icloud.com">hb@icloud.com</a></p></div>
+        </text>
+        <name>
+          <use value="official"/>
+          <text value="H.B. Hoofdbehandelaar"/>
+          <family value="Hoofdbehandelaar">
+            <extension url="http://hl7.org/fhir/StructureDefinition/humanname-own-name">
+              <valueString value="Hoofdbehandelaar"/>
+            </extension>
+          </family>
+          <given value="Hendrik Bernard">
+            <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier">
+              <valueCode value="IN"/>
+            </extension>
+          </given>
+          <prefix value="Prof."/>
+        </name>
+        <telecom>
+          <system value="phone"/>
+          <value value="+31688888888"/>
+        </telecom>
+        <telecom>
+          <system value="email"/>
+          <value value="hb@icloud.com"/>
+        </telecom>
+      </Practitioner>
+    </resource>
+    <request>
+      <method value="POST"/>
+      <url value="Practitioner"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="minimal-enrollment-Practitioner-Requester"/>
+    <resource>
+      <Practitioner>
+        <id value="minimal-enrollment-Practitioner-Requester"/>
+        <meta>
+          <profile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner"/>
+        </meta>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="Practitioner_minimal-enrollment-Practitioner-Requester"> </a><p><b>Generated Narrative: Practitioner </b><a name="minimal-enrollment-Practitioner-Requester"> </a><a name="hcminimal-enrollment-Practitioner-Requester"> </a></p><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">ResourcePractitioner &quot;minimal-enrollment-Practitioner-Requester&quot; </p><p style="margin-bottom: 0px">Profile: <a href="https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.10.0-beta.1&amp;canonical=http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner">nl core HealthProfessional Practitioner</a></p></div><p><b>name</b>: A. Aanvrager(Official)</p><p><b>telecom</b>: <a href="tel:+31687654321">+31687654321</a>, <a href="mailto:av@icloud.com">av@icloud.com</a></p></div>
+        </text>
+        <name>
+          <use value="official"/>
+          <text value="A. Aanvrager"/>
+          <family value="Aanvrager">
+            <extension url="http://hl7.org/fhir/StructureDefinition/humanname-own-name">
+              <valueString value="Aanvrager"/>
+            </extension>
+          </family>
+          <given value="Anton">
+            <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier">
+              <valueCode value="IN"/>
+            </extension>
+          </given>
+          <prefix value="Drs."/>
+        </name>
+        <telecom>
+          <system value="phone"/>
+          <value value="+31687654321"/>
+        </telecom>
+        <telecom>
+          <system value="email"/>
+          <value value="av@icloud.com"/>
+        </telecom>
+      </Practitioner>
+    </resource>
+    <request>
+      <method value="POST"/>
+      <url value="Practitioner"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="minimal-enrollment-ServiceRequest"/>
+    <resource>
+      <ServiceRequest>
+        <id value="minimal-enrollment-ServiceRequest"/>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="ServiceRequest_minimal-enrollment-ServiceRequest"> </a><p><b>Generated Narrative: ServiceRequest </b><a name="minimal-enrollment-ServiceRequest"> </a><a name="hcminimal-enrollment-ServiceRequest"> </a></p><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">ResourceServiceRequest &quot;minimal-enrollment-ServiceRequest&quot; </p></div><p><b>status</b>: draft</p><p><b>intent</b>: order</p><p><b>code</b>: monitoren via telegeneeskunde (regime/therapie) <span style="background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki"> (<a href="https://browser.ihtsdotools.org/">SNOMED CT</a>#719858009)</span></p><p><b>orderDetail</b>: COPD Thuismonitoring pakket Light <span style="background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki"> ()</span></p><p><b>subject</b>: See on this page: Patient/minimal-enrollment-Patient: Patient, Jean Jacques van Putten-van der Giessen</p><p><b>requester</b>: See on this page: Organization/minimal-enrollment-Organization-Requester: Requester Organization St. Antonius Ziekenhuis</p><p><b>performer</b>: See on this page: Organization/minimal-enrollment-Organization-Performer: Performer Organization Zorg bij jou</p><p><b>reasonReference</b>: See on this page: Condition/minimal-enrollment-Condition: Diagnose Hartfalen</p><p><b>patientInstruction</b>: # streefwaarden
+- 30 kg
+- 180 cm
+# aantekeningen
+- Grote hond
+-grote mond
+</p></div>
+        </text>
+        <status value="draft"/>
+        <intent value="order"/>
+        <code>
+          <coding>
+            <system value="http://snomed.info/sct"/>
+            <code value="719858009"/>
+            <display value="monitoren via telegeneeskunde (regime/therapie)"/>
+          </coding>
+        </code>
+        <orderDetail>
+          <text value="COPD Thuismonitoring pakket Light"/>
+        </orderDetail>
+        <subject>
+          <reference value="Patient/minimal-enrollment-Patient"/>
+          <type value="Patient"/>
+          <display value="Patient, Jean Jacques van Putten-van der Giessen"/>
+        </subject>
+        <requester>
+          <reference value="Organization/minimal-enrollment-Organization-Requester"/>
+          <type value="Organization"/>
+          <display value="Requester Organization St. Antonius Ziekenhuis"/>
+        </requester>
+        <performer>
+          <reference value="Organization/minimal-enrollment-Organization-Performer"/>
+          <type value="Organization"/>
+          <display value="Performer Organization Zorg bij jou"/>
+        </performer>
+        <reasonReference>
+          <reference value="Condition/minimal-enrollment-Condition"/>
+          <display value="Diagnose Hartfalen"/>
+        </reasonReference>
+        <patientInstruction value="# streefwaarden&#xA;- 30 kg&#xA;- 180 cm&#xA;# aantekeningen&#xA;- Grote hond&#xA;-grote mond&#xA;"/>
+      </ServiceRequest>
+    </resource>
+    <request>
+      <method value="POST"/>
+      <url value="ServiceRequest"/>
+    </request>
+  </entry>
+  <entry>
+    <fullUrl value="minimal-enrollment-Task"/>
+    <resource>
+      <Task>
+        <id value="minimal-enrollment-Task"/>
+        <text>
+          <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><a name="Task_minimal-enrollment-Task"> </a><p><b>Generated Narrative: Task </b><a name="minimal-enrollment-Task"> </a><a name="hcminimal-enrollment-Task"> </a></p><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">ResourceTask &quot;minimal-enrollment-Task&quot; </p></div><p><b>basedOn</b>: See on this page: CarePlan/minimal-enrollment-CarePlan</p><p><b>status</b>: requested</p><p><b>intent</b>: order</p><p><b>focus</b>: See on this page: ServiceRequest/minimal-enrollment-ServiceRequest</p></div>
+        </text>
+        <basedOn>
+          <reference value="CarePlan/minimal-enrollment-CarePlan"/>
+        </basedOn>
+        <status value="requested"/>
+        <intent value="order"/>
+        <focus>
+          <reference value="ServiceRequest/minimal-enrollment-ServiceRequest"/>
+        </focus>
+      </Task>
+    </resource>
+    <request>
+      <method value="POST"/>
+      <url value="Task"/>
+    </request>
+  </entry>
+</Bundle>
