@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Transaction Autorization - Shared Care Planning v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"8"}
+    h3,h4,h5,h6{--heading-prefix:"8"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+        <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">Shared Care Planning</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <!-- menu.xml  -->
+
+<ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li>
+    <a href="overview.html">Overview</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Security
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="authorization.html">Authorization</a>
+      </li>
+      <li>
+        <a href="authentication.html">Authentication</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Transactions
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="transaction-task-negotiation.html">Task negotiation and addressing care providers</a>
+      </li>
+      <li>
+        <a href="transaction-careplan-careteam-mngt.html">CarePlan and CareTeam management</a>
+      </li>
+      <li>
+        <a href="transaction-discovery.html">Localization of CareTeam members and Patient Information</a>
+      </li>
+      <li>
+        <a href="transaction-autorization.html">Autorization of CareTeam members using Patient Information</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Use cases
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="usecase-specification.html">How to use nation-specific or condition-specific profile</a>
+      </li>
+      <li>
+        <a href="usecase-enrollment.html">Enroll patient in home monitoring</a>
+      </li>
+      <li>
+        <a href="usecase-view-all-data.html">Get data for home monitoring</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Transaction Autorization</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">Shared Care Planning - Local Development build (v0.1.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href="http://santeonnl.github.io/shared-care-planning/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Transaction Autorization</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#workflow" id="markdown-toc-workflow">Workflow</a>    <ul>
+      <li><a href="#1-shared-care-workflow" id="markdown-toc-1-shared-care-workflow">1. Shared Care Workflow</a>        <ul>
+          <li><a href="#functional-description" id="markdown-toc-functional-description">Functional description</a></li>
+          <li><a href="#pattern" id="markdown-toc-pattern">Pattern</a></li>
+          <li><a href="#actors" id="markdown-toc-actors">Actors</a></li>
+        </ul>
+      </li>
+      <li><a href="#2-shared-care-data-requests" id="markdown-toc-2-shared-care-data-requests">2. Shared Care Data Requests</a>        <ul>
+          <li><a href="#functional-description-1" id="markdown-toc-functional-description-1">Functional description</a></li>
+          <li><a href="#pattern-1" id="markdown-toc-pattern-1">Pattern</a></li>
+          <li><a href="#actors-1" id="markdown-toc-actors-1">Actors</a></li>
+        </ul>
+      </li>
+      <li><a href="#care-plan-contributor-1" id="markdown-toc-care-plan-contributor-1">Care Plan Contributor</a></li>
+      <li><a href="#care-plan-service-2" id="markdown-toc-care-plan-service-2">Care Plan Service</a></li>
+      <li><a href="#plan-definition-service" id="markdown-toc-plan-definition-service">Plan Definition Service</a></li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+<h1 id="workflow">Workflow</h1>
+<p>This IG supports the following processes:</p>
+<ol>
+  <li>Shared Care Workflow: an organization requests an activity from another organization.</li>
+  <li>Shared Care Data Requests: an organization requests ehr data from another organization</li>
+</ol>
+
+<h2 id="1-shared-care-workflow">1. Shared Care Workflow</h2>
+<h3 id="functional-description">Functional description</h3>
+<p>Shared Care Workflow concerns the structures and transactions for care planning and collaboration between practitioners by cross-organizational ordering processes.</p>
+
+<h3 id="pattern">Pattern</h3>
+<p>This IG specify a workflow pattern for the Shared Care Workflow. For general FHIR workflow concepts, see: https://hl7.org/fhir/R4/workflow.html. The base pattern that will be used is <a href="https://hl7.org/fhir/R4/workflow-management.html#optionh">FHIR Workflow Pattern H</a>.</p>
+
+<h3 id="actors">Actors</h3>
+<p>There are a couple of actors in the Shared Care Workflow:</p>
+<ul>
+  <li>Care Plan Contributor</li>
+  <li>Care Plan Service</li>
+  <li>Care Plan Definition Service</li>
+</ul>
+
+<h4 id="care-plan-contributor">Care Plan Contributor</h4>
+<p>The first actor is the Care Plan Contributor. This actor interacts with both the Care Plan Service and the Care Plan Definition Service. This actor creates and updates the care plan and tasks/orders for other Care Plan Contributors.</p>
+
+<p>This actor aligns with actors Placer and Filler in <a href="https://hl7.org/fhir/R4/workflow-management.html#optionh">FHIR Workflow Pattern H</a>.</p>
+
+<h4 id="care-plan-service">Care Plan Service</h4>
+<p>The second actor is the Care Plan Service. This actor manages patient specific Care Plans, Tasks and Care Teams. The Care Plan Service is also responsible for updating several elements in Care Plans and Care Teams that authorize new practitioners in the Care Teams.</p>
+
+<p>This actor aligns with actor Broker in <a href="https://hl7.org/fhir/R4/workflow-management.html#optionh">FHIR Workflow Pattern H</a>.</p>
+
+<h4 id="care-plan-definition-service">Care Plan Definition Service</h4>
+<p>The third actor is the Care Plan Definition Service. This actor manages Plan Definitions and Activity Definitions that are used for order sets, protocols, clinical practice guidelines, etc.</p>
+
+<h2 id="2-shared-care-data-requests">2. Shared Care Data Requests</h2>
+<h3 id="functional-description-1">Functional description</h3>
+<p>Shared Care Data Requests concern the structures and transactions for data requests to and from members involved in the careteam of a patient. The artifacts created in the Shared Care Workflow are used for localization and authorization.</p>
+
+<h3 id="pattern-1">Pattern</h3>
+<p>to do
+unsolicited pull?</p>
+
+<h3 id="actors-1">Actors</h3>
+<p>There are a couple of actors in Shared Care Data Requests:</p>
+<ul>
+  <li>Data User</li>
+  <li>Data Holder</li>
+  <li>Care Plan Service</li>
+</ul>
+
+<h4 id="data-user">Data User</h4>
+<p>This is an actor that has a request concerning data held by another party, the data holder.</p>
+
+<h4 id="data-holder">Data Holder</h4>
+<p>This is an actor that hosts the data that is requested by the data user.</p>
+
+<h4 id="care-plan-service-1">Care Plan Service</h4>
+<p>This actor hosts Care Plans and Care Teams that act</p>
+<ul>
+  <li>as index in the localization process performed by the Data User;</li>
+  <li>as parameters in the authorization process performed by the Data Holder.</li>
+</ul>
+
+<h4 id="access-policy-service">Access Policy Service</h4>
+<p>This actor hosts generic authorization policies that can be used as paramaters in the authorization process. E.g.:</p>
+<ul>
+  <li>Condition - resource matrices</li>
+  <li>ParticipantRole - Resource matrices</li>
+</ul>
+
+<p>———-TO DO from here———-</p>
+
+<p>Each actor is described in detail below.</p>
+
+<h2 id="care-plan-contributor-1">Care Plan Contributor</h2>
+
+<p>CarePlan kunnen POSTen naar CPS
+Task kunnen POSTen naar CPS
+notificatie kunnen ontvangen van Task
+Optioneel: subscription nemen/notificatie ontvangen voor CarePlan/CareTeam
+Data ontsluiten uit FHIR endpoint
+Autorisatie op data-ontsluiting o.b.v. CarePlan/CareTeam (optioneel: gebruik van CPC $authorize)
+Lokaliseren&amp;ophalen van data o.b.v. CarePlan/CareTeam (optioneel: gebruik van CPC $localize)
+TODO: CapabilityStatement maken voor CPC zoals https://profiles.ihe.net/ITI/mCSD/CapabilityStatement-IHE.mCSD.CareServicesSelectiveConsumer.html</p>
+
+<h2 id="care-plan-service-2">Care Plan Service</h2>
+
+<p>Alle Tasks bij de CPS posten/updaten (en placer of owner automatisch notificeren, behalve als ontvanger=verzender; als je zelf de CPS bent
+Maak b.v. AuditEvent van een Task-request, Task-acceptance, Task-cancellation, etc. Daarna proces bouwen dat bij iedere Task wijziging checkt of o.b.v. Task&amp;AuditEvents het CarePlan/CareTeam moet wijzigen
+Voor CarePlan-merge ook Task aanmaken vanuit/naar CarePlan-X-eigenaar of Careplan-Y-eigenaar (ook request/acceptance vastleggen)
+Iets met hoofdbehandelaarschap doen? (met Task overdragen?)
+Operation $authorize: gesloten autorizatievraag: mag deze zorgverlener van organizatie 123 ihkv het CarePlan X data opvragen (welke data?)
+Operatie $localize: geef me endpoints (of URA’s) voor CarePlan X</p>
+
+<p>TODO: CapabilityStatement maken voor CPS zoals https://profiles.ihe.net/ITI/mCSD/CapabilityStatement-IHE.mCSD.CareServicesSelectiveSupplier.html</p>
+
+<h2 id="plan-definition-service">Plan Definition Service</h2>
+
+<p>Hoeft niet zo veel te kunnen; hosten van PlanDefinition en ActivityDefinitions</p>
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.santeon.nl">Santeon</a>.  Package fhir.scp#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jun 25, 2024 19:12+0200">2024-06-25</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+  
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

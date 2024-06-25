@@ -5,7 +5,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>nl-core-Patient-01 - XML Representation -  v0.1.0</title>
+    <title>nl-core-Patient-01 - XML Representation - Shared Care Planning v0.1.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -41,15 +41,15 @@
 
 	  <script src="assets/js/prism.js"></script>
 
-    <style type="text/css">h2{--heading-prefix:"3.24"}
-    h3,h4,h5,h6{--heading-prefix:"3.24"}</style>
+    <style type="text/css">h2{--heading-prefix:"15.24"}
+    h3,h4,h5,h6{--heading-prefix:"15.24"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
         <!-- Placeholder for child template header declarations -->
 
 
         <div id="ig-status">
-          <p><span style="font-size:12pt;font-weight:bold"></span>
+          <p><span style="font-size:12pt;font-weight:bold">Shared Care Planning</span>
             <br/>
             <span style="display:inline-block;">0.1.0 - ci-build
 
@@ -82,6 +82,57 @@
     <a href="index.html">Home</a>
   </li>
   <li>
+    <a href="overview.html">Overview</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Security
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="authorization.html">Authorization</a>
+      </li>
+      <li>
+        <a href="authentication.html">Authentication</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Transactions
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="transaction-task-negotiation.html">Task negotiation and addressing care providers</a>
+      </li>
+      <li>
+        <a href="transaction-careplan-careteam-mngt.html">CarePlan and CareTeam management</a>
+      </li>
+      <li>
+        <a href="transaction-discovery.html">Localization of CareTeam members and Patient Information</a>
+      </li>
+      <li>
+        <a href="transaction-autorization.html">Autorization of CareTeam members using Patient Information</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Use cases
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="usecase-specification.html">How to use nation-specific or condition-specific profile</a>
+      </li>
+      <li>
+        <a href="usecase-enrollment.html">Enroll patient in home monitoring</a>
+      </li>
+      <li>
+        <a href="usecase-view-all-data.html">Get data for home monitoring</a>
+      </li>
+    </ul>
+  </li>
+  <li>
     <a href="artifacts.html">Artifacts</a>
   </li>
 </ul>
@@ -109,7 +160,7 @@
           <div class="inner-wrapper">
 
 <div style="counter-reset: section 7" class="col-12">
-<!--ReleaseHeader--><p id="publish-box">sharedcareplanning - Local Development build (v0.1.0). See the <a href="http://hl7.nl/shared-care-planning/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+<!--ReleaseHeader--><p id="publish-box">Shared Care Planning - Local Development build (v0.1.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href="http://santeonnl.github.io/shared-care-planning/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
 
 
 
@@ -165,17 +216,17 @@
 
 
 
-  <pre class="xml" style="white-space: pre; overflow: hidden"><code class="language-xml">
+  <pre class="xml" style="white-space: pre; text-wrap: nowrap;"><code class="language-xml" style="white-space: pre; text-wrap: nowrap;">
 
 &lt;<a href="http://hl7.org/fhir/R4/patient.html#Patient">Patient</a> xmlns=&quot;http://hl7.org/fhir&quot;&gt;
-  &lt;<a href="http://hl7.org/fhir/R4/patient.html#Patient.id">id</a> <a href="http://hl7.org/fhir/R4/datatypes.html#id">value</a>=&quot;nl-core-Patient-01&quot;/&gt;
+  &lt;<a href="http://hl7.org/fhir/R4/patient.html#Patient.id">id</a> <a href="http://hl7.org/fhir/R4/datatypes.html#string">value</a>=&quot;nl-core-Patient-01&quot;/&gt;
   &lt;<a href="http://hl7.org/fhir/R4/patient.html#Patient.meta">meta</a>&gt;
     &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Meta#Meta.profile">profile</a>
              <a href="http://hl7.org/fhir/R4/datatypes.html#canonical">value</a>=&quot;http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient&quot;/&gt;
   &lt;/meta&gt;
   &lt;<a href="http://hl7.org/fhir/R4/patient.html#Patient.text">text</a>&gt;
     &lt;<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">status</a> <a href="http://hl7.org/fhir/R4/datatypes.html#code">value</a>=&quot;generated&quot;/&gt;
-    &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;p style=&quot;border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;&quot;&gt;&lt;b&gt;Jo &lt;/b&gt; female, DoB: 1934-04-28 ( id: 111222333)&lt;/p&gt;&lt;hr/&gt;&lt;table class=&quot;grid&quot;&gt;&lt;tr&gt;&lt;td style=&quot;background-color: #f3f5da&quot; title=&quot;Known status of Patient&quot;&gt;Deceased:&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td style=&quot;background-color: #f3f5da&quot; title=&quot;Known Marital status of Patient&quot;&gt;Marital Status:&lt;/td&gt;&lt;td&gt;&lt;span title=&quot;Codes: {http://terminology.hl7.org/CodeSystem/v3-MaritalStatus D}&quot;&gt;Divorced&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;background-color: #f3f5da&quot; title=&quot;Known multipleBirth status of Patient&quot;&gt;Multiple Birth:&lt;/td&gt;&lt;td colspan=&quot;3&quot;&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;background-color: #f3f5da&quot; title=&quot;Alternate names (see the one above)&quot;&gt;Alt. Name:&lt;/td&gt;&lt;td colspan=&quot;3&quot;&gt;Johanna Petronella Maria (Jo) van Putten-van der Giessen(OFFICIAL)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;background-color: #f3f5da&quot; title=&quot;Ways to contact the Patient&quot;&gt;Contact Details:&lt;/td&gt;&lt;td colspan=&quot;3&quot;&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;tel:+31611234567&quot;&gt;+31611234567&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;mailto:giesput@myweb.nl&quot;&gt;giesput@myweb.nl&lt;/a&gt;&lt;/li&gt;&lt;li&gt;1e Jacob van Campenstr 15 Hoogmade 1012 NX Nederland (HOME)&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;background-color: #f3f5da&quot; title=&quot;Languages spoken&quot;&gt;Language:&lt;/td&gt;&lt;td colspan=&quot;3&quot;&gt;&lt;span title=&quot;Codes: {urn:oid:1.0.639.1 nl}&quot;&gt;Nederlands&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;background-color: #f3f5da&quot; title=&quot;Patient contact&quot;&gt;Contact&lt;/td&gt;&lt;td colspan=&quot;3&quot;&gt;&lt;ul&gt;&lt;li&gt;J.P.M. van Putten-van der Giessen(OFFICIAL)&lt;/li&gt;&lt;li&gt;Relationships: &lt;span title=&quot;Codes: {urn:oid:2.16.840.1.113883.2.4.3.11.22.472 01}&quot;&gt;Eerste relatie/contactpersoon&lt;/span&gt;, &lt;span title=&quot;Codes: {urn:oid:2.16.840.1.113883.2.4.3.11.22.472 07}&quot;&gt;Hulpverlener&lt;/span&gt;&lt;/li&gt;&lt;li&gt;1e Jacob van Campenstr 15 Hoogmade 1012 NX Nederland (HOME)&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;tel:+31611234567&quot;&gt;+31611234567&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;mailto:giesput@myweb.nl&quot;&gt;giesput@myweb.nl&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;background-color: #f3f5da&quot; title=&quot;The nationality of the patient.&quot;&gt;nationality:&lt;/td&gt;&lt;td colspan=&quot;3&quot;&gt;&lt;ul&gt;&lt;li&gt;code: &lt;span title=&quot;Codes: {urn:oid:2.16.840.1.113883.2.4.4.16.32 0001}&quot;&gt;Nederlandse&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;<a name="end-xhtml"></a>
+    &lt;div xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;p style=&quot;border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;&quot;&gt;&lt;b&gt;Jo &lt;/b&gt; female, DoB: 1934-04-28 ( &lt;code&gt;http://fhir.nl/fhir/NamingSystem/bsn&lt;/code&gt;/111222333)&lt;/p&gt;&lt;hr/&gt;&lt;table class=&quot;grid&quot;&gt;&lt;tr&gt;&lt;td style=&quot;background-color: #f3f5da&quot; title=&quot;Known status of Patient&quot;&gt;Deceased:&lt;/td&gt;&lt;td&gt;false&lt;/td&gt;&lt;td style=&quot;background-color: #f3f5da&quot; title=&quot;Known Marital status of Patient&quot;&gt;Marital Status:&lt;/td&gt;&lt;td&gt;&lt;span title=&quot;Codes:{http://terminology.hl7.org/CodeSystem/v3-MaritalStatus D}&quot;&gt;Divorced&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;background-color: #f3f5da&quot; title=&quot;Known multipleBirth status of Patient&quot;&gt;Multiple Birth:&lt;/td&gt;&lt;td colspan=&quot;3&quot;&gt;true&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;background-color: #f3f5da&quot; title=&quot;Alternate names (see the one above)&quot;&gt;Alt. Name:&lt;/td&gt;&lt;td colspan=&quot;3&quot;&gt;Johanna Petronella Maria (Jo) van Putten-van der Giessen(Official)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;background-color: #f3f5da&quot; title=&quot;Ways to contact the Patient&quot;&gt;Contact Detail&lt;/td&gt;&lt;td colspan=&quot;3&quot;&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;tel:+31611234567&quot;&gt;+31611234567&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;mailto:giesput@myweb.nl&quot;&gt;giesput@myweb.nl&lt;/a&gt;&lt;/li&gt;&lt;li&gt;1e Jacob van Campenstr 15 Hoogmade 1012 NX Nederland (home)&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;background-color: #f3f5da&quot; title=&quot;Language spoken&quot;&gt;Language:&lt;/td&gt;&lt;td colspan=&quot;3&quot;&gt;&lt;span title=&quot;Codes:{urn:oid:1.0.639.1 nl}&quot;&gt;Nederlands&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;background-color: #f3f5da&quot; title=&quot;Patient contact&quot;&gt;Contact:&lt;/td&gt;&lt;td colspan=&quot;3&quot;&gt;&lt;ul&gt;&lt;li&gt;J.P.M. van Putten-van der Giessen(Official)&lt;/li&gt;&lt;li&gt;Relationships:&lt;span title=&quot;Codes:{urn:oid:2.16.840.1.113883.2.4.3.11.22.472 01}&quot;&gt;Eerste relatie/contactpersoon&lt;/span&gt;, &lt;span title=&quot;Codes:{urn:oid:2.16.840.1.113883.2.4.3.11.22.472 07}&quot;&gt;Hulpverlener&lt;/span&gt;&lt;/li&gt;&lt;li&gt;1e Jacob van Campenstr 15 Hoogmade 1012 NX Nederland (home)&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;tel:+31611234567&quot;&gt;+31611234567&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;mailto:giesput@myweb.nl&quot;&gt;giesput@myweb.nl&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=&quot;background-color: #f3f5da&quot; title=&quot;The nationality of the patient.&quot;&gt;Patient Nationality:&lt;/td&gt;&lt;td colspan=&quot;3&quot;&gt;&lt;ul&gt;&lt;li&gt;code: &lt;span title=&quot;Codes:{urn:oid:2.16.840.1.113883.2.4.4.16.32 0001}&quot;&gt;Nederlandse&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;<a name="end-xhtml"></a>
   &lt;/text&gt;
   &lt;<a href="http://hl7.org/fhir/R4/patient.html#Patient.extension">extension</a>
              <a href="http://hl7.org/fhir/R4/datatypes.html#uri">url</a>=&quot;http://hl7.org/fhir/StructureDefinition/patient-nationality&quot;&gt;
@@ -527,20 +578,14 @@
   <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
   <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
 
-  <script type="text/javascript">
-    $(document).ready(function(){
-      if(window.location.hash != "") {
-          $('a[href="' + window.location.hash + '"]').click()
-      }
-    });
-  </script>
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
   <a name="bottom"> </a>
   <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
     <div class="container">  <!-- container -->
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="http://hl7.nl">HL7 Nederland</a>.  Package fhir.scp#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Apr 11, 2024 14:11+0200">2024-04-11</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.santeon.nl">Santeon</a>.  Package fhir.scp#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jun 25, 2024 19:12+0200">2024-06-25</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -567,16 +612,8 @@
   <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
-  <script>anchors.options.visible = 'hover'
-anchors.add()</script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
   
-<!-- feedback form - Google forms -->
-<!-- v0.1, 2021-01-09 -->
-
-
-
-<!-- / feedback form  -->
-
   <!-- Analytics Below
   ================================================== -->
   </body>

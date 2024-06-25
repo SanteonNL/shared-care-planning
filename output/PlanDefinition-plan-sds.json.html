@@ -5,7 +5,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Shwachman Diamond Syndrome PlanDefinition - JSON Representation -  v0.1.0</title>
+    <title>Shwachman Diamond Syndrome PlanDefinition - JSON Representation - Shared Care Planning v0.1.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -41,15 +41,15 @@
 
 	  <script src="assets/js/prism.js"></script>
 
-    <style type="text/css">h2{--heading-prefix:"3.29"}
-    h3,h4,h5,h6{--heading-prefix:"3.29"}</style>
+    <style type="text/css">h2{--heading-prefix:"15.29"}
+    h3,h4,h5,h6{--heading-prefix:"15.29"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
         <!-- Placeholder for child template header declarations -->
 
 
         <div id="ig-status">
-          <p><span style="font-size:12pt;font-weight:bold"></span>
+          <p><span style="font-size:12pt;font-weight:bold">Shared Care Planning</span>
             <br/>
             <span style="display:inline-block;">0.1.0 - ci-build
 
@@ -82,6 +82,57 @@
     <a href="index.html">Home</a>
   </li>
   <li>
+    <a href="overview.html">Overview</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Security
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="authorization.html">Authorization</a>
+      </li>
+      <li>
+        <a href="authentication.html">Authentication</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Transactions
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="transaction-task-negotiation.html">Task negotiation and addressing care providers</a>
+      </li>
+      <li>
+        <a href="transaction-careplan-careteam-mngt.html">CarePlan and CareTeam management</a>
+      </li>
+      <li>
+        <a href="transaction-discovery.html">Localization of CareTeam members and Patient Information</a>
+      </li>
+      <li>
+        <a href="transaction-autorization.html">Autorization of CareTeam members using Patient Information</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Use cases
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="usecase-specification.html">How to use nation-specific or condition-specific profile</a>
+      </li>
+      <li>
+        <a href="usecase-enrollment.html">Enroll patient in home monitoring</a>
+      </li>
+      <li>
+        <a href="usecase-view-all-data.html">Get data for home monitoring</a>
+      </li>
+    </ul>
+  </li>
+  <li>
     <a href="artifacts.html">Artifacts</a>
   </li>
 </ul>
@@ -109,7 +160,7 @@
           <div class="inner-wrapper">
 
 <div style="counter-reset: section 8" class="col-12">
-<!--ReleaseHeader--><p id="publish-box">sharedcareplanning - Local Development build (v0.1.0). See the <a href="http://hl7.nl/shared-care-planning/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+<!--ReleaseHeader--><p id="publish-box">Shared Care Planning - Local Development build (v0.1.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href="http://santeonnl.github.io/shared-care-planning/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
 
 
 
@@ -180,18 +231,18 @@
 
 
 
-  <pre class="json" style="white-space: pre; overflow: hidden"><code class="language-json">
+  <pre class="json" style="white-space: pre; text-wrap: nowrap;"><code class="language-json" style="white-space: pre; text-wrap: nowrap;">
 {
   "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition">resourceType</a>" : "PlanDefinition",
   "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.id">id</a>" : "plan-sds",
   "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.meta">meta</a>" : {
     "<a href="http://hl7.org/fhir/R4/datatypes.html#Meta#Meta.profile">profile</a>" : [
-      "http://hl7.nl/shared-care-planning/StructureDefinition/scp-plan"
+      <a href="StructureDefinition-scp-plan.html" style="color: Maroon">&#x1F517;</a> "http://santeonnl.github.io/shared-care-planning/StructureDefinition/scp-plan"
     ]
   },
   "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.text">text</a>" : {
     "<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.status">status</a>" : "generated",
-    "<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.div">div</a>" : "&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p&gt;&lt;b&gt;Generated Narrative: PlanDefinition&lt;/b&gt;&lt;a name=\&quot;plan-sds\&quot;&gt; &lt;/a&gt;&lt;/p&gt;&lt;div style=\&quot;display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\&quot;&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;&gt;Resource PlanDefinition &amp;quot;plan-sds&amp;quot; &lt;/p&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;&gt;Profile: &lt;a href=\&quot;StructureDefinition-scp-plan.html\&quot;&gt;Shared Care Planning PlanDefinition&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;url&lt;/b&gt;: &lt;code&gt;https://rarecare.world/fhir/PlanDefinition/shwachman-diamond-syndrome&lt;/code&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;version&lt;/b&gt;: 0.1.0&lt;/p&gt;&lt;p&gt;&lt;b&gt;title&lt;/b&gt;: Shwachman Diamond Syndrome Management&lt;/p&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: Clinical Protocol &lt;span style=\&quot;background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\&quot;&gt; (&lt;a href=\&quot;http://terminology.hl7.org/5.3.0/CodeSystem-plan-definition-type.html\&quot;&gt;PlanDefinitionType&lt;/a&gt;#clinical-protocol)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;status&lt;/b&gt;: draft&lt;/p&gt;&lt;p&gt;&lt;b&gt;subject&lt;/b&gt;: Patient &lt;span style=\&quot;background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\&quot;&gt; (&lt;a href=\&quot;http://hl7.org/fhir/R4/codesystem-resource-types.html\&quot;&gt;ResourceType&lt;/a&gt;#Patient)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;date&lt;/b&gt;: 2021-01-14&lt;/p&gt;&lt;p&gt;&lt;b&gt;publisher&lt;/b&gt;: HL7 Nederland&lt;/p&gt;&lt;p&gt;&lt;b&gt;contact&lt;/b&gt;: HL7 Nederland: &lt;a href=\&quot;http://hl7.nl\&quot;&gt;http://hl7.nl&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt;: Shwachman Diamond Syndrome management plan.&lt;/p&gt;&lt;p&gt;&lt;b&gt;topic&lt;/b&gt;: Treatment &lt;span style=\&quot;background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\&quot;&gt; (&lt;a href=\&quot;http://terminology.hl7.org/5.3.0/CodeSystem-definition-topic.html\&quot;&gt;DefinitionTopic&lt;/a&gt;#treatment)&lt;/span&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;relatedArtifact&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: justification&lt;/p&gt;&lt;p&gt;&lt;b&gt;url&lt;/b&gt;: &lt;a href=\&quot;https://rarecare.world/patient-organisation/shwachman-syndrome-support-holland\&quot;&gt;https://rarecare.world/patient-organisation/shwachman-syndrome-support-holland&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;h3&gt;Goals&lt;/h3&gt;&lt;table class=\&quot;grid\&quot;&gt;&lt;tr&gt;&lt;td&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Description&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Addresses&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;*&lt;/td&gt;&lt;td&gt;Shwachman Diamond Syndrome management &lt;span style=\&quot;background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\&quot;&gt; ()&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Shwachman-Diamond syndrome &lt;span style=\&quot;background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\&quot;&gt; (www.orpha.net#ORPHA:811)&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;action&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;title&lt;/b&gt;: Neutropenia&lt;/p&gt;&lt;p&gt;&lt;b&gt;definition&lt;/b&gt;: &lt;a href=\&quot;https://rarecare.world/fhir/PlanDefinition/neutropenia\&quot;&gt;https://rarecare.world/fhir/PlanDefinition/neutropenia&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;action&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;title&lt;/b&gt;: Pancreas Insufficiency&lt;/p&gt;&lt;p&gt;&lt;b&gt;definition&lt;/b&gt;: &lt;a href=\&quot;https://rarecare.world/fhir/PlanDefinition/pancreas-insufficiency\&quot;&gt;https://rarecare.world/fhir/PlanDefinition/pancreas-insufficiency&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;action&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;title&lt;/b&gt;: Developmental disability&lt;/p&gt;&lt;p&gt;&lt;b&gt;definition&lt;/b&gt;: &lt;a href=\&quot;https://rarecare.world/fhir/PlanDefinition/developmental-disability\&quot;&gt;https://rarecare.world/fhir/PlanDefinition/developmental-disability&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;action&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;title&lt;/b&gt;: Vragenlijst participatie voor Shwachman Diamond Syndroom&lt;/p&gt;&lt;p&gt;&lt;b&gt;definition&lt;/b&gt;: &lt;a href=\&quot;https://rarecare.world/fhir/Questionnaire/shwachman-diamond-syndrome\&quot;&gt;https://rarecare.world/fhir/Questionnaire/shwachman-diamond-syndrome&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;"<a name="end-xhtml"></a>
+    "<a href="http://hl7.org/fhir/R4/datatypes.html#Narrative#Narrative.div">div</a>" : "&lt;div xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;&lt;p&gt;&lt;b&gt;Generated Narrative: PlanDefinition &lt;/b&gt;&lt;a name=\&quot;plan-sds\&quot;&gt; &lt;/a&gt;&lt;a name=\&quot;hcplan-sds\&quot;&gt; &lt;/a&gt;&lt;/p&gt;&lt;div style=\&quot;display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\&quot;&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;&gt;ResourcePlanDefinition &amp;quot;plan-sds&amp;quot; &lt;/p&gt;&lt;p style=\&quot;margin-bottom: 0px\&quot;&gt;Profile: &lt;a href=\&quot;StructureDefinition-scp-plan.html\&quot;&gt;Shared Care Planning PlanDefinition&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;p&gt;&lt;b&gt;url&lt;/b&gt;: &lt;code&gt;https://rarecare.world/fhir/PlanDefinition/shwachman-diamond-syndrome&lt;/code&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;version&lt;/b&gt;: 0.1.0&lt;/p&gt;&lt;p&gt;&lt;b&gt;title&lt;/b&gt;: Shwachman Diamond Syndrome Management&lt;/p&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: Clinical Protocol &lt;span style=\&quot;background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\&quot;&gt; (&lt;a href=\&quot;http://terminology.hl7.org/5.5.0/CodeSystem-plan-definition-type.html\&quot;&gt;PlanDefinitionType&lt;/a&gt;#clinical-protocol)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;status&lt;/b&gt;: draft&lt;/p&gt;&lt;p&gt;&lt;b&gt;subject&lt;/b&gt;: Patient &lt;span style=\&quot;background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\&quot;&gt; (&lt;a href=\&quot;http://hl7.org/fhir/R4/codesystem-resource-types.html\&quot;&gt;ResourceType&lt;/a&gt;#Patient)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;date&lt;/b&gt;: 2021-01-14&lt;/p&gt;&lt;p&gt;&lt;b&gt;publisher&lt;/b&gt;: Santeon&lt;/p&gt;&lt;p&gt;&lt;b&gt;contact&lt;/b&gt;: Santeon: &lt;a href=\&quot;https://www.santeon.nl\&quot;&gt;https://www.santeon.nl&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;description&lt;/b&gt;: Shwachman Diamond Syndrome management plan.&lt;/p&gt;&lt;p&gt;&lt;b&gt;topic&lt;/b&gt;: Treatment &lt;span style=\&quot;background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\&quot;&gt; (&lt;a href=\&quot;http://terminology.hl7.org/5.5.0/CodeSystem-definition-topic.html\&quot;&gt;DefinitionTopic&lt;/a&gt;#treatment)&lt;/span&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;relatedArtifact&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;type&lt;/b&gt;: justification&lt;/p&gt;&lt;p&gt;&lt;b&gt;url&lt;/b&gt;: &lt;a href=\&quot;https://rarecare.world/patient-organisation/shwachman-syndrome-support-holland\&quot;&gt;https://rarecare.world/patient-organisation/shwachman-syndrome-support-holland&lt;/a&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;document&lt;/b&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&lt;h3&gt;Goals&lt;/h3&gt;&lt;table class=\&quot;grid\&quot;&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;-&lt;/td&gt;&lt;td&gt;&lt;b&gt;Description&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;Addresses&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=\&quot;display: none\&quot;&gt;*&lt;/td&gt;&lt;td&gt;Shwachman Diamond Syndrome management &lt;span style=\&quot;background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\&quot;&gt; ()&lt;/span&gt;&lt;/td&gt;&lt;td&gt;Shwachman-Diamond syndrome &lt;span style=\&quot;background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\&quot;&gt; (www.orpha.net#ORPHA:811)&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;action&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;title&lt;/b&gt;: Neutropenia&lt;/p&gt;&lt;p&gt;&lt;b&gt;definition&lt;/b&gt;: &lt;a href=\&quot;https://rarecare.world/fhir/PlanDefinition/neutropenia\&quot;&gt;https://rarecare.world/fhir/PlanDefinition/neutropenia&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;action&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;title&lt;/b&gt;: Pancreas Insufficiency&lt;/p&gt;&lt;p&gt;&lt;b&gt;definition&lt;/b&gt;: &lt;a href=\&quot;https://rarecare.world/fhir/PlanDefinition/pancreas-insufficiency\&quot;&gt;https://rarecare.world/fhir/PlanDefinition/pancreas-insufficiency&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;action&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;title&lt;/b&gt;: Developmental disability&lt;/p&gt;&lt;p&gt;&lt;b&gt;definition&lt;/b&gt;: &lt;a href=\&quot;https://rarecare.world/fhir/PlanDefinition/developmental-disability\&quot;&gt;https://rarecare.world/fhir/PlanDefinition/developmental-disability&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;action&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;title&lt;/b&gt;: Vragenlijst participatie voor Shwachman Diamond Syndroom&lt;/p&gt;&lt;p&gt;&lt;b&gt;definition&lt;/b&gt;: &lt;a href=\&quot;https://rarecare.world/fhir/Questionnaire/shwachman-diamond-syndrome\&quot;&gt;https://rarecare.world/fhir/Questionnaire/shwachman-diamond-syndrome&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;/div&gt;"<a name="end-xhtml"></a>
   },
   "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.url">url</a>" : "https://rarecare.world/fhir/PlanDefinition/shwachman-diamond-syndrome",
   "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.version">version</a>" : "0.1.0",
@@ -214,14 +265,14 @@
     ]
   },
   "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.date">date</a>" : "2021-01-14",
-  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.publisher">publisher</a>" : "HL7 Nederland",
+  "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.publisher">publisher</a>" : "Santeon",
   "<a href="http://hl7.org/fhir/R4/plandefinition.html#PlanDefinition.contact">contact</a>" : [
     {
-      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.name">name</a>" : "HL7 Nederland",
+      "<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.name">name</a>" : "Santeon",
       "<a href="http://hl7.org/fhir/R4/metadatatypes.html#ContactDetail#ContactDetail.telecom">telecom</a>" : [
         {
           "<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.system">system</a>" : "url",
-          "<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.value">value</a>" : "http://hl7.nl"
+          "<a href="http://hl7.org/fhir/R4/datatypes.html#ContactPoint#ContactPoint.value">value</a>" : "https://www.santeon.nl"
         }
       ]
     }
@@ -299,20 +350,14 @@
   <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
   <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
 
-  <script type="text/javascript">
-    $(document).ready(function(){
-      if(window.location.hash != "") {
-          $('a[href="' + window.location.hash + '"]').click()
-      }
-    });
-  </script>
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
   <a name="bottom"> </a>
   <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
     <div class="container">  <!-- container -->
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="http://hl7.nl">HL7 Nederland</a>.  Package fhir.scp#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Apr 11, 2024 14:11+0200">2024-04-11</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.santeon.nl">Santeon</a>.  Package fhir.scp#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jun 25, 2024 19:12+0200">2024-06-25</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
@@ -339,16 +384,8 @@
   <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
   <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
-  <script>anchors.options.visible = 'hover'
-anchors.add()</script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
   
-<!-- feedback form - Google forms -->
-<!-- v0.1, 2021-01-09 -->
-
-
-
-<!-- / feedback form  -->
-
   <!-- Analytics Below
   ================================================== -->
   </body>

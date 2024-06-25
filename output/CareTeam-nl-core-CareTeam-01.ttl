@@ -5,102 +5,86 @@
 
 # - resource -------------------------------------------------------------------
 
-<http://hl7.nl/shared-care-planning/CareTeam/nl-core-CareTeam-01> a fhir:CareTeam;
-  fhir:nodeRole fhir:treeRoot;
-  fhir:Resource.id [ fhir:value "nl-core-CareTeam-01"]; # 
-  fhir:Resource.meta [
-     fhir:Meta.profile [
-       fhir:value "http://nictiz.nl/fhir/StructureDefinition/nl-core-CareTeam";
-       fhir:index 0;
+<http://santeonnl.github.io/shared-care-planning/CareTeam/nl-core-CareTeam-01> a fhir:CareTeam ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "nl-core-CareTeam-01"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://nictiz.nl/fhir/StructureDefinition/nl-core-CareTeam"^^xsd:anyURI ;
        fhir:link <http://nictiz.nl/fhir/StructureDefinition/nl-core-CareTeam>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: CareTeam </b><a name=\"nl-core-CareTeam-01\"> </a><a name=\"hcnl-core-CareTeam-01\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">ResourceCareTeam &quot;nl-core-CareTeam-01&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.10.0-beta.1&amp;canonical=http://nictiz.nl/fhir/StructureDefinition/nl-core-CareTeam\">nl core CareTeam</a></p></div><p><b>name</b>: Complexe Ouderenzorg</p><blockquote><p><b>participant</b></p><p><b>member</b>: <a href=\"RelatedPerson-nl-core-CareTeam-01-RelatedPerson-01.html\">RelatedPerson/nl-core-CareTeam-01-RelatedPerson-01: Contact person, Jan de Wit</a> &quot; DE WIT&quot;</p></blockquote><blockquote><p><b>participant</b></p><p><b>member</b>: <a href=\"Patient-nl-core-CareTeam-01-Patient-01.html\">Patient/nl-core-CareTeam-01-Patient-01: Patient, Ingrid de Jong-de Wit</a> &quot; DE JONG-DE WIT&quot;</p></blockquote><blockquote><p><b>participant</b></p><p><b>member</b>: <a href=\"PractitionerRole-nl-core-CareTeam-01-PractitionerRole-01.html\">PractitionerRole/nl-core-CareTeam-01-PractitionerRole-01: Healthcare professional (role), W. Klaasen, Huisartsen, niet nader gespecificeerd</a></p></blockquote><blockquote><p><b>participant</b></p><p><b>member</b>: <a href=\"PractitionerRole-nl-core-CareTeam-01-PractitionerRole-02.html\">PractitionerRole/nl-core-CareTeam-01-PractitionerRole-02: Healthcare professional (role), S. Curie, Medisch specialisten, geriatrie</a></p></blockquote><blockquote><p><b>participant</b></p><p><b>member</b>: <a href=\"PractitionerRole-nl-core-CareTeam-01-PractitionerRole-03.html\">PractitionerRole/nl-core-CareTeam-01-PractitionerRole-03: Healthcare professional (role), R.M. van Heck, Medisch specialisten, cardiologie</a></p></blockquote><blockquote><p><b>participant</b></p><p><b>member</b>: <a href=\"PractitionerRole-nl-core-CareTeam-01-PractitionerRole-04.html\">PractitionerRole/nl-core-CareTeam-01-PractitionerRole-04: Healthcare professional (role), A. Schele, Medisch specialisten, inwendige geneeskunde</a></p></blockquote><blockquote><p><b>participant</b></p><p><b>member</b>: <a href=\"PractitionerRole-nl-core-CareTeam-01-PractitionerRole-05.html\">PractitionerRole/nl-core-CareTeam-01-PractitionerRole-05: Healthcare professional (role), G.F. de Haan, Apothekers</a></p></blockquote><p><b>reasonReference</b>: </p><ul><li><a href=\"Condition-nl-core-CareTeam-01-Condition-01.html\">Condition/nl-core-CareTeam-01-Condition-01: Problem, type: Interpretatie van diagnose</a></li><li><a href=\"Condition-nl-core-CareTeam-01-Condition-02.html\">Condition/nl-core-CareTeam-01-Condition-02: Problem, type: Interpretatie van diagnose</a></li><li><a href=\"Condition-nl-core-CareTeam-01-Condition-03.html\">Condition/nl-core-CareTeam-01-Condition-03: Problem, type: Complicatie</a></li></ul></div>"
+  ] ; # 
+  fhir:name [ fhir:v "Complexe Ouderenzorg"] ; # 
+  fhir:participant ( [
+     fhir:member [
+       fhir:link <http://santeonnl.github.io/shared-care-planning/RelatedPerson/nl-core-CareTeam-01-RelatedPerson-01> ;
+       fhir:reference [ fhir:v "RelatedPerson/nl-core-CareTeam-01-RelatedPerson-01" ] ;
+       fhir:type [ fhir:v "RelatedPerson"^^xsd:anyURI ] ;
+       fhir:display [ fhir:v "Contact person, Jan de Wit" ]
      ]
-  ]; # 
-  fhir:DomainResource.text [
-     fhir:Narrative.status [ fhir:value "generated" ];
-     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: CareTeam</b><a name=\"nl-core-CareTeam-01\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource CareTeam &quot;nl-core-CareTeam-01&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.10.0-beta.1&amp;canonical=http://nictiz.nl/fhir/StructureDefinition/nl-core-CareTeam\">nl core CareTeam</a></p></div><p><b>name</b>: Complexe Ouderenzorg</p><blockquote><p><b>participant</b></p><p><b>member</b>: <a href=\"RelatedPerson-nl-core-CareTeam-01-RelatedPerson-01.html\">RelatedPerson/nl-core-CareTeam-01-RelatedPerson-01: Contact person, Jan de Wit</a> &quot; DE WIT&quot;</p></blockquote><blockquote><p><b>participant</b></p><p><b>member</b>: <a href=\"Patient-nl-core-CareTeam-01-Patient-01.html\">Patient/nl-core-CareTeam-01-Patient-01: Patient, Ingrid de Jong-de Wit</a> &quot; DE JONG-DE WIT&quot;</p></blockquote><blockquote><p><b>participant</b></p><p><b>member</b>: <a href=\"PractitionerRole-nl-core-CareTeam-01-PractitionerRole-01.html\">PractitionerRole/nl-core-CareTeam-01-PractitionerRole-01: Healthcare professional (role), W. Klaasen, Huisartsen, niet nader gespecificeerd</a></p></blockquote><blockquote><p><b>participant</b></p><p><b>member</b>: <a href=\"PractitionerRole-nl-core-CareTeam-01-PractitionerRole-02.html\">PractitionerRole/nl-core-CareTeam-01-PractitionerRole-02: Healthcare professional (role), S. Curie, Medisch specialisten, geriatrie</a></p></blockquote><blockquote><p><b>participant</b></p><p><b>member</b>: <a href=\"PractitionerRole-nl-core-CareTeam-01-PractitionerRole-03.html\">PractitionerRole/nl-core-CareTeam-01-PractitionerRole-03: Healthcare professional (role), R.M. van Heck, Medisch specialisten, cardiologie</a></p></blockquote><blockquote><p><b>participant</b></p><p><b>member</b>: <a href=\"PractitionerRole-nl-core-CareTeam-01-PractitionerRole-04.html\">PractitionerRole/nl-core-CareTeam-01-PractitionerRole-04: Healthcare professional (role), A. Schele, Medisch specialisten, inwendige geneeskunde</a></p></blockquote><blockquote><p><b>participant</b></p><p><b>member</b>: <a href=\"PractitionerRole-nl-core-CareTeam-01-PractitionerRole-05.html\">PractitionerRole/nl-core-CareTeam-01-PractitionerRole-05: Healthcare professional (role), G.F. de Haan, Apothekers</a></p></blockquote><p><b>reasonReference</b>: </p><ul><li><a href=\"Condition-nl-core-CareTeam-01-Condition-01.html\">Condition/nl-core-CareTeam-01-Condition-01: Problem, type: Interpretatie van diagnose</a></li><li><a href=\"Condition-nl-core-CareTeam-01-Condition-02.html\">Condition/nl-core-CareTeam-01-Condition-02: Problem, type: Interpretatie van diagnose</a></li><li><a href=\"Condition-nl-core-CareTeam-01-Condition-03.html\">Condition/nl-core-CareTeam-01-Condition-03: Problem, type: Complicatie</a></li></ul></div>"
-  ]; # 
-  fhir:CareTeam.name [ fhir:value "Complexe Ouderenzorg"]; # 
-  fhir:CareTeam.participant [
-     fhir:index 0;
-     fhir:CareTeam.participant.member [
-       fhir:link <http://hl7.nl/shared-care-planning/RelatedPerson/nl-core-CareTeam-01-RelatedPerson-01>;
-       fhir:Reference.reference [ fhir:value "RelatedPerson/nl-core-CareTeam-01-RelatedPerson-01" ];
-       fhir:Reference.type [ fhir:value "RelatedPerson" ];
-       fhir:Reference.display [ fhir:value "Contact person, Jan de Wit" ]
+  ] [
+     fhir:member [
+       fhir:link <http://santeonnl.github.io/shared-care-planning/Patient/nl-core-CareTeam-01-Patient-01> ;
+       fhir:reference [ fhir:v "Patient/nl-core-CareTeam-01-Patient-01" ] ;
+       fhir:type [ fhir:v "Patient"^^xsd:anyURI ] ;
+       fhir:display [ fhir:v "Patient, Ingrid de Jong-de Wit" ]
      ]
-  ], [
-     fhir:index 1;
-     fhir:CareTeam.participant.member [
-       fhir:link <http://hl7.nl/shared-care-planning/Patient/nl-core-CareTeam-01-Patient-01>;
-       fhir:Reference.reference [ fhir:value "Patient/nl-core-CareTeam-01-Patient-01" ];
-       fhir:Reference.type [ fhir:value "Patient" ];
-       fhir:Reference.display [ fhir:value "Patient, Ingrid de Jong-de Wit" ]
+  ] [
+     fhir:member [
+       fhir:link <http://santeonnl.github.io/shared-care-planning/PractitionerRole/nl-core-CareTeam-01-PractitionerRole-01> ;
+       fhir:reference [ fhir:v "PractitionerRole/nl-core-CareTeam-01-PractitionerRole-01" ] ;
+       fhir:type [ fhir:v "PractitionerRole"^^xsd:anyURI ] ;
+       fhir:display [ fhir:v "Healthcare professional (role), W. Klaasen, Huisartsen, niet nader gespecificeerd" ]
      ]
-  ], [
-     fhir:index 2;
-     fhir:CareTeam.participant.member [
-       fhir:link <http://hl7.nl/shared-care-planning/PractitionerRole/nl-core-CareTeam-01-PractitionerRole-01>;
-       fhir:Reference.reference [ fhir:value "PractitionerRole/nl-core-CareTeam-01-PractitionerRole-01" ];
-       fhir:Reference.type [ fhir:value "PractitionerRole" ];
-       fhir:Reference.display [ fhir:value "Healthcare professional (role), W. Klaasen, Huisartsen, niet nader gespecificeerd" ]
+  ] [
+     fhir:member [
+       fhir:link <http://santeonnl.github.io/shared-care-planning/PractitionerRole/nl-core-CareTeam-01-PractitionerRole-02> ;
+       fhir:reference [ fhir:v "PractitionerRole/nl-core-CareTeam-01-PractitionerRole-02" ] ;
+       fhir:type [ fhir:v "PractitionerRole"^^xsd:anyURI ] ;
+       fhir:display [ fhir:v "Healthcare professional (role), S. Curie, Medisch specialisten, geriatrie" ]
      ]
-  ], [
-     fhir:index 3;
-     fhir:CareTeam.participant.member [
-       fhir:link <http://hl7.nl/shared-care-planning/PractitionerRole/nl-core-CareTeam-01-PractitionerRole-02>;
-       fhir:Reference.reference [ fhir:value "PractitionerRole/nl-core-CareTeam-01-PractitionerRole-02" ];
-       fhir:Reference.type [ fhir:value "PractitionerRole" ];
-       fhir:Reference.display [ fhir:value "Healthcare professional (role), S. Curie, Medisch specialisten, geriatrie" ]
+  ] [
+     fhir:member [
+       fhir:link <http://santeonnl.github.io/shared-care-planning/PractitionerRole/nl-core-CareTeam-01-PractitionerRole-03> ;
+       fhir:reference [ fhir:v "PractitionerRole/nl-core-CareTeam-01-PractitionerRole-03" ] ;
+       fhir:type [ fhir:v "PractitionerRole"^^xsd:anyURI ] ;
+       fhir:display [ fhir:v "Healthcare professional (role), R.M. van Heck, Medisch specialisten, cardiologie" ]
      ]
-  ], [
-     fhir:index 4;
-     fhir:CareTeam.participant.member [
-       fhir:link <http://hl7.nl/shared-care-planning/PractitionerRole/nl-core-CareTeam-01-PractitionerRole-03>;
-       fhir:Reference.reference [ fhir:value "PractitionerRole/nl-core-CareTeam-01-PractitionerRole-03" ];
-       fhir:Reference.type [ fhir:value "PractitionerRole" ];
-       fhir:Reference.display [ fhir:value "Healthcare professional (role), R.M. van Heck, Medisch specialisten, cardiologie" ]
+  ] [
+     fhir:member [
+       fhir:link <http://santeonnl.github.io/shared-care-planning/PractitionerRole/nl-core-CareTeam-01-PractitionerRole-04> ;
+       fhir:reference [ fhir:v "PractitionerRole/nl-core-CareTeam-01-PractitionerRole-04" ] ;
+       fhir:type [ fhir:v "PractitionerRole"^^xsd:anyURI ] ;
+       fhir:display [ fhir:v "Healthcare professional (role), A. Schele, Medisch specialisten, inwendige geneeskunde" ]
      ]
-  ], [
-     fhir:index 5;
-     fhir:CareTeam.participant.member [
-       fhir:link <http://hl7.nl/shared-care-planning/PractitionerRole/nl-core-CareTeam-01-PractitionerRole-04>;
-       fhir:Reference.reference [ fhir:value "PractitionerRole/nl-core-CareTeam-01-PractitionerRole-04" ];
-       fhir:Reference.type [ fhir:value "PractitionerRole" ];
-       fhir:Reference.display [ fhir:value "Healthcare professional (role), A. Schele, Medisch specialisten, inwendige geneeskunde" ]
+  ] [
+     fhir:member [
+       fhir:link <http://santeonnl.github.io/shared-care-planning/PractitionerRole/nl-core-CareTeam-01-PractitionerRole-05> ;
+       fhir:reference [ fhir:v "PractitionerRole/nl-core-CareTeam-01-PractitionerRole-05" ] ;
+       fhir:type [ fhir:v "PractitionerRole"^^xsd:anyURI ] ;
+       fhir:display [ fhir:v "Healthcare professional (role), G.F. de Haan, Apothekers" ]
      ]
-  ], [
-     fhir:index 6;
-     fhir:CareTeam.participant.member [
-       fhir:link <http://hl7.nl/shared-care-planning/PractitionerRole/nl-core-CareTeam-01-PractitionerRole-05>;
-       fhir:Reference.reference [ fhir:value "PractitionerRole/nl-core-CareTeam-01-PractitionerRole-05" ];
-       fhir:Reference.type [ fhir:value "PractitionerRole" ];
-       fhir:Reference.display [ fhir:value "Healthcare professional (role), G.F. de Haan, Apothekers" ]
-     ]
-  ]; # 
-  fhir:CareTeam.reasonReference [
-     fhir:index 0;
-     fhir:link <http://hl7.nl/shared-care-planning/Condition/nl-core-CareTeam-01-Condition-01>;
-     fhir:Reference.reference [ fhir:value "Condition/nl-core-CareTeam-01-Condition-01" ];
-     fhir:Reference.type [ fhir:value "Condition" ];
-     fhir:Reference.display [ fhir:value "Problem, type: Interpretatie van diagnose" ]
-  ], [
-     fhir:index 1;
-     fhir:link <http://hl7.nl/shared-care-planning/Condition/nl-core-CareTeam-01-Condition-02>;
-     fhir:Reference.reference [ fhir:value "Condition/nl-core-CareTeam-01-Condition-02" ];
-     fhir:Reference.type [ fhir:value "Condition" ];
-     fhir:Reference.display [ fhir:value "Problem, type: Interpretatie van diagnose" ]
-  ], [
-     fhir:index 2;
-     fhir:link <http://hl7.nl/shared-care-planning/Condition/nl-core-CareTeam-01-Condition-03>;
-     fhir:Reference.reference [ fhir:value "Condition/nl-core-CareTeam-01-Condition-03" ];
-     fhir:Reference.type [ fhir:value "Condition" ];
-     fhir:Reference.display [ fhir:value "Problem, type: Complicatie" ]
-  ] . # 
-
-# - ontology header ------------------------------------------------------------
-
-<http://hl7.nl/shared-care-planning/CareTeam/nl-core-CareTeam-01.ttl> a owl:Ontology;
-  owl:imports fhir:fhir.ttl .
+  ] ) ; # 
+  fhir:reasonReference ( [
+     fhir:link <http://santeonnl.github.io/shared-care-planning/Condition/nl-core-CareTeam-01-Condition-01> ;
+     fhir:reference [ fhir:v "Condition/nl-core-CareTeam-01-Condition-01" ] ;
+     fhir:type [ fhir:v "Condition"^^xsd:anyURI ] ;
+     fhir:display [ fhir:v "Problem, type: Interpretatie van diagnose" ]
+  ] [
+     fhir:link <http://santeonnl.github.io/shared-care-planning/Condition/nl-core-CareTeam-01-Condition-02> ;
+     fhir:reference [ fhir:v "Condition/nl-core-CareTeam-01-Condition-02" ] ;
+     fhir:type [ fhir:v "Condition"^^xsd:anyURI ] ;
+     fhir:display [ fhir:v "Problem, type: Interpretatie van diagnose" ]
+  ] [
+     fhir:link <http://santeonnl.github.io/shared-care-planning/Condition/nl-core-CareTeam-01-Condition-03> ;
+     fhir:reference [ fhir:v "Condition/nl-core-CareTeam-01-Condition-03" ] ;
+     fhir:type [ fhir:v "Condition"^^xsd:anyURI ] ;
+     fhir:display [ fhir:v "Problem, type: Complicatie" ]
+  ] ) . # 
 
 # -------------------------------------------------------------------------------------
 

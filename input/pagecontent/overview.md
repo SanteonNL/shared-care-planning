@@ -80,7 +80,16 @@ TODO: CapabilityStatement maken voor CPS zoals https://profiles.ihe.net/ITI/mCSD
 
 Hoeft niet zo veel te kunnen; hosten van PlanDefinition en ActivityDefinitions
 
+# Security considerations
 
+## Identification and authentication
+Data push or data pull of Personally Identifiable Information (PII) should always be initiated by a Practitioner; should be auditable who has done stuff.
+
+Refer to Trust-over-IP or ARF or something
+
+## Authorization
+Authorization; based on conditions, task-type, careteam-member-status (active/inactive) and/or role
+Member(-status) in the CareTeam are only updated by the CPS after 'agreement' on a Task in the CarePlan. 
 
 # Transactions
 
@@ -168,14 +177,35 @@ TODO: refer to used profiles (FHIR structure definitions generated on page 'Arti
 ### Profiles
 TODO: refer to used profiles (FHIR structure definitions generated on page 'Artifacts')
 
-## Identification and authentication
-Data push or data pull of Personally Identifiable Information (PII) should always be initiated by a Practitioner; should be auditable who has done stuff.
 
-Refer to Trust-over-IP or ARF or something
-
-## Authorization
-Authorization; based on conditions, task-type, careteam-member-status (active/inactive) and/or role
-Member(-status) in the CareTeam are only updated by the CPS after 'agreement' on a Task in the CarePlan. 
-
-## Deployment considerations
+# Deployment considerations
 use Orca and you'll be fine.
+
+# Overview of the documentation structure
+
+The image below displays the schematic overview of the topics.
+
+Legenda
+- Light green, existing standards that don't need a specific description of the usage.
+- Dark green, existing standards that need a specific description of the usage.
+- Blue, the topics that need description.
+
+# Related Standards
+
+TODO Review text:
+In bovenstaande specificatie beschrijft een implementatie van het IHE DCP profiel. Deze specificatie breidt het IHE profile uit met de data die binnen werkprocessen (en tussen organisaties) ontstaat en de afgeleide, functionele autorisatie voor deze data. Uiteraard zijn er andere standaarden binnen de zorg die een overlap hebben met deze specificatie. Bij het opstellen van deze specificatie is getracht om zo veel mogelijk deze bestaande standaarden te hergebruiken.
+
+## IHE: DCP
+This specification has copied many of the concepts used in IHE DCP. However.... describe difference
+
+## US: Bi-directional ServiceRequest (BSER)
+
+## NL: eOverdracht
+[TODO: beschrijving overeenkomsten en verschillen met eOverdracht standaard]
+
+
+## NL: Koppeltaal 2.0
+[TODO: beschrijving overeenkomsten en verschillen met Koppeltaal 2.0 standaard]
+
+## NL: Technical Agreement Notified Pull
+[TODO: beschrijving overeenkomsten en verschillen met TA NP standaard]

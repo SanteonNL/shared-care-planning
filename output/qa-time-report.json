@@ -1,0 +1,1082 @@
+{
+  "date" : "Tue, 25 Jun, 2024 19:12:23 +0200",
+  "doco" : "For each file: start is seconds after start activity occurred. Length = milliseconds activity took",
+  "files" : [
+    {
+      "name" : "/fsh-generated/resources/ImplementationGuide-fhir.scp.json",
+      "size" : 9463,
+      "processes" : [
+        {
+          "activity" : "load",
+          "start" : 22,
+          "length" : 18
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 23,
+          "length" : 8
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 23,
+          "length" : 92
+        },
+        {
+          "activity" : "validate",
+          "start" : 26,
+          "length" : 2395
+        },
+        {
+          "activity" : "scanForUsageStats",
+          "start" : 29,
+          "length" : 1
+        },
+        {
+          "activity" : "generate1",
+          "start" : 30,
+          "length" : 119
+        },
+        {
+          "activity" : "generate2",
+          "start" : 34,
+          "length" : 97
+        },
+        {
+          "activity" : "generateValidationPack",
+          "start" : 49,
+          "length" : 3
+        },
+        {
+          "activity" : "scanExamplesForR5",
+          "start" : 53,
+          "length" : 1
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/CarePlan-scp-plan-diabetes.json",
+      "size" : 529,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 6
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 23,
+          "length" : 138
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 18
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 25
+        },
+        {
+          "activity" : "generate2",
+          "start" : 34,
+          "length" : 18
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/CareTeam-nl-core-CareTeam-01.json",
+      "size" : 2380,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 4
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 23,
+          "length" : 1
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 23,
+          "length" : 167
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 239
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 39
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 17
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Condition-nl-core-CareTeam-01-Condition-01.json",
+      "size" : 819,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 3
+        },
+        {
+          "activity" : "load-configure",
+          "start" : 22,
+          "length" : 1
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 23,
+          "length" : 29
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 14
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 31
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 11
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Condition-nl-core-CareTeam-01-Condition-02.json",
+      "size" : 801,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 3
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 23,
+          "length" : 32
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 12
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 30
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 10
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Condition-nl-core-CareTeam-01-Condition-03.json",
+      "size" : 807,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 3
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 23,
+          "length" : 1
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 23,
+          "length" : 28
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 7
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 28
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 14
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Condition-scp-condition-diabetes.json",
+      "size" : 490,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 4
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 23,
+          "length" : 27
+        },
+        {
+          "activity" : "scanForUsageStats",
+          "start" : 29,
+          "length" : 1
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 6
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 23
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 10
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Condition-scp-condition-hypertensie.json",
+      "size" : 427,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 3
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 23,
+          "length" : 21
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 3
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 34
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 8
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Organization-nl-core-Encounter-01-Organization-01.json",
+      "size" : 466,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 3
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 23,
+          "length" : 35
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 10
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 48
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 10
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Organization-nl-core-HealthcareProvider-Organization-01.json",
+      "size" : 2040,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 3
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 23,
+          "length" : 1
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 23,
+          "length" : 505
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 35
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 30
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 10
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Organization-nl-core-Procedure-01-Organization-01.json",
+      "size" : 233,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 3
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 24,
+          "length" : 11
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 3
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 30
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 12
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Patient-SharonCynthiaProef.json",
+      "size" : 272,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 5
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 24,
+          "length" : 11
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 2
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 29
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 11
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Patient-nl-core-CareTeam-01-Patient-01.json",
+      "size" : 1206,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 7
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 24,
+          "length" : 43
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 22
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 30
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 12
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Patient-nl-core-Patient-01.json",
+      "size" : 12243,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 13
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 23,
+          "length" : 3
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 24,
+          "length" : 112
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 395
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 43
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 13
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/PlanDefinition-plan-sds.json",
+      "size" : 2172,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 5
+        },
+        {
+          "activity" : "load",
+          "start" : 22,
+          "length" : 31
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 24,
+          "length" : 143
+        },
+        {
+          "activity" : "validate",
+          "start" : 28,
+          "length" : 176
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 28
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 33
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Practitioner-nl-core-CareTeam-01-Practitioner-01.json",
+      "size" : 836,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 4
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 23,
+          "length" : 1
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 24,
+          "length" : 8
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 11
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 25
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 14
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Practitioner-nl-core-CareTeam-01-Practitioner-02.json",
+      "size" : 829,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 4
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 24,
+          "length" : 7
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 11
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 38
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 9
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Practitioner-nl-core-CareTeam-01-Practitioner-03.json",
+      "size" : 1195,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 3
+        },
+        {
+          "activity" : "scan",
+          "start" : 22,
+          "length" : 1
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 24,
+          "length" : 7
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 21
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 38
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 7
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Practitioner-nl-core-CareTeam-01-Practitioner-04.json",
+      "size" : 832,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 4
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 24,
+          "length" : 7
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 12
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 31
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 7
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Practitioner-nl-core-CareTeam-01-Practitioner-05.json",
+      "size" : 1193,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 5
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 24,
+          "length" : 7
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 24
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 36
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 6
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Practitioner-nl-core-CareTeam-01-Practitioner-06.json",
+      "size" : 952,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 5
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 24,
+          "length" : 7
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 66
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 38
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 6
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/PractitionerRole-nl-core-CareTeam-01-PractitionerRole-01.json",
+      "size" : 678,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 3
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 23,
+          "length" : 1
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 24,
+          "length" : 20
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 7
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 35
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 9
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/PractitionerRole-nl-core-CareTeam-01-PractitionerRole-02.json",
+      "size" : 670,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 3
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 24,
+          "length" : 10
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 7
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 38
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 12
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/PractitionerRole-nl-core-CareTeam-01-PractitionerRole-03.json",
+      "size" : 677,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 5
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 24,
+          "length" : 12
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 13
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 33
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 8
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/PractitionerRole-nl-core-CareTeam-01-PractitionerRole-04.json",
+      "size" : 683,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 4
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 24,
+          "length" : 11
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 12
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 39
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 13
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/PractitionerRole-nl-core-CareTeam-01-PractitionerRole-05.json",
+      "size" : 653,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 3
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 24,
+          "length" : 10
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 11
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 37
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 8
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/PractitionerRole-nl-core-CareTeam-01-PractitionerRole-06.json",
+      "size" : 417,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 4
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 23,
+          "length" : 1
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 24,
+          "length" : 12
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 5
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 34
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 7
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/RelatedPerson-nl-core-CareTeam-01-RelatedPerson-01.json",
+      "size" : 1501,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 4
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 24,
+          "length" : 84
+        },
+        {
+          "activity" : "validate",
+          "start" : 29,
+          "length" : 24
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 40
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 12
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/ServiceRequest-scp-req-bloedpanel.json",
+      "size" : 386,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 7
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 24,
+          "length" : 12
+        },
+        {
+          "activity" : "validate",
+          "start" : 30,
+          "length" : 6
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 40
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 14
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/StructureDefinition-scp-plan.json",
+      "size" : 1270,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 8
+        },
+        {
+          "activity" : "load",
+          "start" : 22,
+          "length" : 21
+        },
+        {
+          "activity" : "generateSnapshots",
+          "start" : 22,
+          "length" : 163
+        },
+        {
+          "activity" : "checkR4R4B",
+          "start" : 23,
+          "length" : 1
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 24,
+          "length" : 128
+        },
+        {
+          "activity" : "validate",
+          "start" : 24,
+          "length" : 1514
+        },
+        {
+          "activity" : "checkConformanceResources",
+          "start" : 28,
+          "length" : 1
+        },
+        {
+          "activity" : "scanForUsageStats",
+          "start" : 29,
+          "length" : 3
+        },
+        {
+          "activity" : "generate1",
+          "start" : 31,
+          "length" : 308
+        },
+        {
+          "activity" : "generate2",
+          "start" : 35,
+          "length" : 2823
+        },
+        {
+          "activity" : "generateValidationPack",
+          "start" : 49,
+          "length" : 14
+        },
+        {
+          "activity" : "scanExamplesForR5",
+          "start" : 53,
+          "length" : 1
+        }
+      ]
+    },
+    {
+      "name" : "fsh-generated/resources/Task-scp-task-bloedpanel.json",
+      "size" : 385,
+      "processes" : [
+        {
+          "activity" : "loadResources",
+          "start" : 22,
+          "length" : 6
+        },
+        {
+          "activity" : "load",
+          "start" : 22,
+          "length" : 1
+        },
+        {
+          "activity" : "generateNarratives",
+          "start" : 24,
+          "length" : 12
+        },
+        {
+          "activity" : "validate",
+          "start" : 30,
+          "length" : 5
+        },
+        {
+          "activity" : "generate1",
+          "start" : 32,
+          "length" : 30
+        },
+        {
+          "activity" : "generate2",
+          "start" : 38,
+          "length" : 48
+        }
+      ]
+    }
+  ]
+}

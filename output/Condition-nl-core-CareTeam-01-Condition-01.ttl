@@ -6,54 +6,44 @@
 
 # - resource -------------------------------------------------------------------
 
-<http://hl7.nl/shared-care-planning/Condition/nl-core-CareTeam-01-Condition-01> a fhir:Condition;
-  fhir:nodeRole fhir:treeRoot;
-  fhir:Resource.id [ fhir:value "nl-core-CareTeam-01-Condition-01"]; # 
-  fhir:Resource.meta [
-     fhir:Meta.profile [
-       fhir:value "http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem";
-       fhir:index 0;
+<http://santeonnl.github.io/shared-care-planning/Condition/nl-core-CareTeam-01-Condition-01> a fhir:Condition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "nl-core-CareTeam-01-Condition-01"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem"^^xsd:anyURI ;
        fhir:link <http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem>
-     ]
-  ]; # 
-  fhir:DomainResource.text [
-     fhir:Narrative.status [ fhir:value "generated" ];
-     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Condition</b><a name=\"nl-core-CareTeam-01-Condition-01\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource Condition &quot;nl-core-CareTeam-01-Condition-01&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.10.0-beta.1&amp;canonical=http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem\">nl core Problem</a></p></div><p><b>category</b>: Interpretatie van diagnose <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#282291009)</span></p><p><b>code</b>: vasculaire dementie <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#429998004)</span></p><p><b>subject</b>: <a href=\"Patient-nl-core-Patient-01.html\">Patient/nl-core-Patient-01: Patient, Johanna Petronella Maria (Jo) van Putten-van der Giessen</a> &quot; VAN PUTTEN-VAN DER GIESSEN&quot;</p><p><b>note</b>: De laatste weken erg onrustig in de nacht</p></div>"
-  ]; # 
-  fhir:Condition.category [
-     fhir:index 0;
-     fhir:CodeableConcept.coding [
-       fhir:index 0;
-       a sct:282291009;
-       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
-       fhir:Coding.code [ fhir:value "282291009" ];
-       fhir:Coding.display [ fhir:value "Interpretatie van diagnose" ]
-     ]
-  ]; # 
-  fhir:Condition.code [
-     fhir:CodeableConcept.coding [
-       fhir:index 0;
-       a sct:429998004;
-       fhir:Coding.system [ fhir:value "http://snomed.info/sct" ];
-       fhir:Coding.code [ fhir:value "429998004" ];
-       fhir:Coding.display [ fhir:value "vasculaire dementie" ]
-     ]
-  ]; # 
-  fhir:Condition.subject [
-     fhir:link <http://hl7.nl/shared-care-planning/Patient/nl-core-Patient-01>;
-     fhir:Reference.reference [ fhir:value "Patient/nl-core-Patient-01" ];
-     fhir:Reference.type [ fhir:value "Patient" ];
-     fhir:Reference.display [ fhir:value "Patient, Johanna Petronella Maria (Jo) van Putten-van der Giessen" ]
-  ]; # 
-  fhir:Condition.note [
-     fhir:index 0;
-     fhir:Annotation.text [ fhir:value "De laatste weken erg onrustig in de nacht" ]
-  ] . # 
-
-# - ontology header ------------------------------------------------------------
-
-<http://hl7.nl/shared-care-planning/Condition/nl-core-CareTeam-01-Condition-01.ttl> a owl:Ontology;
-  owl:imports fhir:fhir.ttl .
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: Condition </b><a name=\"nl-core-CareTeam-01-Condition-01\"> </a><a name=\"hcnl-core-CareTeam-01-Condition-01\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">ResourceCondition &quot;nl-core-CareTeam-01-Condition-01&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.10.0-beta.1&amp;canonical=http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem\">nl core Problem</a></p></div><p><b>category</b>: Interpretatie van diagnose <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#282291009)</span></p><p><b>code</b>: vasculaire dementie <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://browser.ihtsdotools.org/\">SNOMED CT</a>#429998004)</span></p><p><b>subject</b>: <a href=\"Patient-nl-core-Patient-01.html\">Patient/nl-core-Patient-01: Patient, Johanna Petronella Maria (Jo) van Putten-van der Giessen</a> &quot; VAN PUTTEN-VAN DER GIESSEN&quot;</p><p><b>note</b>: De laatste weken erg onrustig in de nacht</p></div>"
+  ] ; # 
+  fhir:category ( [
+     fhir:coding ( [
+       a sct:282291009 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "282291009" ] ;
+       fhir:display [ fhir:v "Interpretatie van diagnose" ]
+     ] )
+  ] ) ; # 
+  fhir:code [
+     fhir:coding ( [
+       a sct:429998004 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "429998004" ] ;
+       fhir:display [ fhir:v "vasculaire dementie" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://santeonnl.github.io/shared-care-planning/Patient/nl-core-Patient-01> ;
+     fhir:reference [ fhir:v "Patient/nl-core-Patient-01" ] ;
+     fhir:type [ fhir:v "Patient"^^xsd:anyURI ] ;
+     fhir:display [ fhir:v "Patient, Johanna Petronella Maria (Jo) van Putten-van der Giessen" ]
+  ] ; # 
+  fhir:note ( [
+     fhir:text [ fhir:v "De laatste weken erg onrustig in de nacht" ]
+  ] ) . # 
 
 # -------------------------------------------------------------------------------------
 

@@ -5,41 +5,33 @@
 
 # - resource -------------------------------------------------------------------
 
-<http://hl7.nl/shared-care-planning/PractitionerRole/nl-core-CareTeam-01-PractitionerRole-02> a fhir:PractitionerRole;
-  fhir:nodeRole fhir:treeRoot;
-  fhir:Resource.id [ fhir:value "nl-core-CareTeam-01-PractitionerRole-02"]; # 
-  fhir:Resource.meta [
-     fhir:Meta.profile [
-       fhir:value "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole";
-       fhir:index 0;
+<http://santeonnl.github.io/shared-care-planning/PractitionerRole/nl-core-CareTeam-01-PractitionerRole-02> a fhir:PractitionerRole ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "nl-core-CareTeam-01-PractitionerRole-02"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole"^^xsd:anyURI ;
        fhir:link <http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole>
-     ]
-  ]; # 
-  fhir:DomainResource.text [
-     fhir:Narrative.status [ fhir:value "generated" ];
-     fhir:Narrative.div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: PractitionerRole</b><a name=\"nl-core-CareTeam-01-PractitionerRole-02\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">Resource PractitionerRole &quot;nl-core-CareTeam-01-PractitionerRole-02&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.10.0-beta.1&amp;canonical=http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole\">nl core HealthProfessional PractitionerRole</a></p></div><p><b>practitioner</b>: <a href=\"Practitioner-nl-core-CareTeam-01-Practitioner-02.html\">Practitioner/nl-core-CareTeam-01-Practitioner-02: Healthcare professional (person), S. Curie</a> &quot; CURIE&quot;</p><p><b>specialty</b>: Medisch specialisten, geriatrie <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.zib2020@0.10.0-beta.1&amp;canonical=urn:oid:2.16.840.1.113883.2.4.6.7\">COD016-VEKT Vektis Zorgverlenersspecificatie (subberoepsgroep)[2020-10-23T00:00:00]</a>#0335)</span></p></div>"
-  ]; # 
-  fhir:PractitionerRole.practitioner [
-     fhir:link <http://hl7.nl/shared-care-planning/Practitioner/nl-core-CareTeam-01-Practitioner-02>;
-     fhir:Reference.reference [ fhir:value "Practitioner/nl-core-CareTeam-01-Practitioner-02" ];
-     fhir:Reference.type [ fhir:value "Practitioner" ];
-     fhir:Reference.display [ fhir:value "Healthcare professional (person), S. Curie" ]
-  ]; # 
-  fhir:PractitionerRole.specialty [
-     fhir:index 0;
-     fhir:CodeableConcept.coding [
-       fhir:index 0;
-       fhir:Coding.system [ fhir:value "urn:oid:2.16.840.1.113883.2.4.6.7" ];
-       fhir:Coding.version [ fhir:value "2020-10-23T00:00:00" ];
-       fhir:Coding.code [ fhir:value "0335" ];
-       fhir:Coding.display [ fhir:value "Medisch specialisten, geriatrie" ]
-     ]
-  ] . # 
-
-# - ontology header ------------------------------------------------------------
-
-<http://hl7.nl/shared-care-planning/PractitionerRole/nl-core-CareTeam-01-PractitionerRole-02.ttl> a owl:Ontology;
-  owl:imports fhir:fhir.ttl .
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: PractitionerRole </b><a name=\"nl-core-CareTeam-01-PractitionerRole-02\"> </a><a name=\"hcnl-core-CareTeam-01-PractitionerRole-02\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">ResourcePractitionerRole &quot;nl-core-CareTeam-01-PractitionerRole-02&quot; </p><p style=\"margin-bottom: 0px\">Profile: <a href=\"https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.10.0-beta.1&amp;canonical=http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole\">nl core HealthProfessional PractitionerRole</a></p></div><p><b>practitioner</b>: <a href=\"Practitioner-nl-core-CareTeam-01-Practitioner-02.html\">Practitioner/nl-core-CareTeam-01-Practitioner-02: Healthcare professional (person), S. Curie</a> &quot; CURIE&quot;</p><p><b>specialty</b>: Medisch specialisten, geriatrie <span style=\"background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki\"> (<a href=\"https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.zib2020@0.10.0-beta.1&amp;canonical=urn:oid:2.16.840.1.113883.2.4.6.7\">COD016-VEKT Vektis Zorgverlenersspecificatie (subberoepsgroep)[2020-10-23T00:00:00]</a>#0335)</span></p></div>"
+  ] ; # 
+  fhir:practitioner [
+     fhir:link <http://santeonnl.github.io/shared-care-planning/Practitioner/nl-core-CareTeam-01-Practitioner-02> ;
+     fhir:reference [ fhir:v "Practitioner/nl-core-CareTeam-01-Practitioner-02" ] ;
+     fhir:type [ fhir:v "Practitioner"^^xsd:anyURI ] ;
+     fhir:display [ fhir:v "Healthcare professional (person), S. Curie" ]
+  ] ; # 
+  fhir:specialty ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:oid:2.16.840.1.113883.2.4.6.7"^^xsd:anyURI ] ;
+       fhir:version [ fhir:v "2020-10-23T00:00:00" ] ;
+       fhir:code [ fhir:v "0335" ] ;
+       fhir:display [ fhir:v "Medisch specialisten, geriatrie" ]
+     ] )
+  ] ) . # 
 
 # -------------------------------------------------------------------------------------
 

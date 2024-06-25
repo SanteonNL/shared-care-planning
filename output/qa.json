@@ -1,12 +1,19 @@
 {
-  "url" : "http://hl7.nl/shared-care-planning/ImplementationGuide/fhir.scp",
+  "url" : "http://santeonnl.github.io/shared-care-planning",
   "name" : "sharedcareplanning",
+  "title" : "Shared Care Planning",
+  "description" : null,
+  "status" : "draft",
   "package-id" : "fhir.scp",
   "ig-ver" : "0.1.0",
-  "date" : "Thu, 11 Apr, 2024 14:11:32 +0200",
-  "errs" : 24,
+  "date" : "Tue, 25 Jun, 2024 19:12:23 +0200",
+  "dateISO8601" : "2024-06-25T19:12:23+02:00",
+  "errs" : 27,
   "warnings" : 40,
-  "hints" : 7,
+  "hints" : 16,
+  "suppressed-hints" : 0,
+  "suppressed-warnings" : 0,
   "version" : "4.0.1",
-  "tool" : "5.0.0-snapshot2 (3)"
+  "tool" : "5.0.0 (3)",
+  "maxMemory" : 1701332024
 }

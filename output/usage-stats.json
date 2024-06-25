@@ -6,7 +6,7 @@
   "profiles": {
     "PlanDefinition": [
       {
-        "url": "http://hl7.nl/shared-care-planning/StructureDefinition/scp-plan",
+        "url": "http://santeonnl.github.io/shared-care-planning/StructureDefinition/scp-plan",
         "title": "Shared Care Planning PlanDefinition"
       }
     ]
@@ -19,9 +19,6 @@
       "StructureDefinition.snapshot.element.constraint"
     ],
     "http://hl7.org/fhir/StructureDefinition/elementdefinition-bindingName": [
-      "StructureDefinition.snapshot.element.binding"
-    ],
-    "http://hl7.org/fhir/StructureDefinition/elementdefinition-isCommonBinding": [
       "StructureDefinition.snapshot.element.binding"
     ],
     "http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet": [
@@ -77,6 +74,9 @@
     ],
     "http://hl7.org/fhir/StructureDefinition/structuredefinition-standards-status": [
       "StructureDefinition.snapshot.element"
+    ],
+    "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency": [
+      "ImplementationGuide.definition"
     ],
     "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name": [
       "ImplementationGuide.definition.page",
