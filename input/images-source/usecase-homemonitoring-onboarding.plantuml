@@ -40,6 +40,9 @@ activate HospitalEHR
         group Create/Update CarePlan
             HospitalOrchestrator -> ClinicOrchestratorCPS : Create CarePlan
             activate ClinicOrchestratorCPS
+                ClinicOrchestratorCPS -> ClinicNutsNode : Validate Access Token
+                activate ClinicNutsNode
+                return OK
                 ClinicOrchestratorCPS -> ClinicFHIR : Create Care Plan
                 activate ClinicFHIR
                 return CarePlan
@@ -48,6 +51,9 @@ activate HospitalEHR
         group Task negotation (Clinic receives and accepts Task)
             HospitalOrchestrator -> ClinicOrchestratorContr : Create Task\n<i>(ref CarePlan, ref ServiceRequest)
             activate ClinicOrchestratorContr
+                ClinicOrchestratorContr -> ClinicNutsNode : Validate Access Token
+                activate ClinicNutsNode
+                return OK
                 ClinicOrchestratorContr -> ClinicFHIR : Create Task
                 activate ClinicFHIR
                     ClinicFHIR ---> ClinicEHR : Notify Task
@@ -56,6 +62,9 @@ activate HospitalEHR
             group Hospital waits for Clinic to accept the Task
                 HospitalOrchestrator -> ClinicOrchestratorContr : Get Task
                 activate ClinicOrchestratorContr
+                    ClinicOrchestratorContr -> ClinicNutsNode : Validate Access Token
+                    activate ClinicNutsNode
+                    return OK
                     ClinicOrchestratorContr -> ClinicFHIR : Get Task
                     activate ClinicFHIR
                     ClinicEHR -> ClinicFHIR : Update Task\n(PUT status=accepted)\n(asynchronous)
@@ -65,6 +74,9 @@ activate HospitalEHR
             group Hospital adds Clinic to CarePlan
                 HospitalOrchestrator -> ClinicOrchestratorCPS : Update CarePlan\n(adds Task)
                 activate ClinicOrchestratorCPS
+                    ClinicOrchestratorCPS -> ClinicNutsNode : Validate Access Token
+                    activate ClinicNutsNode
+                    return OK
                     ClinicOrchestratorCPS -> ClinicFHIR : Add Task to CarePlan,\nUpdate CareTeam
                     activate ClinicFHIR
                     return CarePlan
@@ -74,6 +86,9 @@ activate HospitalEHR
         group Hospital enriches Task with ServiceRequest
             HospitalOrchestrator -> ClinicOrchestratorContr : Update Task\n(input=ServiceRequest,inline)
             activate ClinicOrchestratorContr
+                ClinicOrchestratorContr -> ClinicNutsNode : Validate Access Token
+                activate ClinicNutsNode
+                return OK
                 ClinicOrchestratorContr -> ClinicFHIR : Update Task
                 activate ClinicFHIR
                     ClinicFHIR ---> ClinicEHR : Notify ServiceRequest\navailable
