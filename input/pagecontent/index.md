@@ -6,15 +6,18 @@
 
 See [the introduction](introduction.html)
 
-0. [Introduction](./intro.md)
-1. [Resources & artefacts](artifacts.md)
-   2. [Logical IDs](logical_ids.md)
-2. [Workflow](workflow.md)
-3. API
-4. [Authentication](authentication.md)
-5. [Authorization](authorization.md)
-6. [Service discovery](servicediscovery.md)
-7. [Data discovery](datadiscovery.md)
+- FHIR 
+  - [Introduction](./intro.md)
+  - [Resources & artefacts](artifacts.md)
+    - [Logical IDs](logical_ids.md)
+  - [Workflow](workflow.md)
+  - [API](api.md)
+- Authz
+  - [Authentication](authentication.md)
+  - [Authorization](authorization.md)
+- Localization
+  - [Service discovery](servicediscovery.md)
+  - [Data discovery](datadiscovery.md)
 
 
 - [Overview](./overview.md)
