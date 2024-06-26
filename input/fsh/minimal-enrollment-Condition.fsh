@@ -1,6 +1,7 @@
 Instance: minimal-enrollment-Condition
 InstanceOf: Condition
 Usage: #example
+
 * meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem"
 * category = $sct#282291009 "Interpretatie van diagnose"
 * code = $sct#195111005 "Hartfalen"
