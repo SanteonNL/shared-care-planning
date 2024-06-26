@@ -11,3 +11,7 @@ Usage: #example
 * name.given.extension.url = "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier"
 * name.given.extension.valueCode = #IN
 * name.prefix = "Prof."
+* telecom[+].system = #phone
+* telecom[=].value = "+31688888888"
+* telecom[+].system = #email
+* telecom[=].value = "hb@icloud.com"
