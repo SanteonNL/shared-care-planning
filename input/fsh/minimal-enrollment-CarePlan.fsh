@@ -6,6 +6,10 @@ Usage: #example
 * status = #draft
 * intent = #plan
 * title = "CarePlan for Minimal Enrollment"
-* subject = Reference(minimal-enrollment-Patient)
-* addresses = Reference(minimal-enrollment-Condition)
-* activity.reference = Reference(mimimal-enrollment-Task)
+* subject.identifier.system = "http://fhir.nl/fhir/NamingSystem/bsn"
+* subject.identifier.value = "111222333"
+//Reference(minimal-enrollment-Patient)
+* addresses[+].identifier.system = $sct
+* addresses[=].identifier.value = "195111005"
+* addresses[=] = Reference(minimal-enrollment-Condition)
+//* activity.reference = Reference(mimimal-enrollment-Task)
