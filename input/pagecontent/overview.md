@@ -95,7 +95,7 @@ Member(-status) in the CareTeam are only updated by the CPS after 'agreement' on
 
 There are four(?) transactions in SCP.
 1. Task negotiation
-1. CarePlan and CareTeam management for autorization and localization
+1. CarePlan and CareTeam management (for autorization and localization)
 1. Localization of CareTeam members and Patient Information
 1. Autorization of CareTeam members using Patient Information
 
