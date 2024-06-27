@@ -1,0 +1,33 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://santeonnl.github.io/shared-care-planning/CarePlan/minimal-enrollment-CarePlan> a fhir:CarePlan ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "minimal-enrollment-CarePlan"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><b>Generated Narrative: CarePlan </b><a name=\"minimal-enrollment-CarePlan\"> </a><a name=\"hcminimal-enrollment-CarePlan\"> </a></p><div style=\"display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%\"><p style=\"margin-bottom: 0px\">ResourceCarePlan &quot;minimal-enrollment-CarePlan&quot; </p></div><p><b>status</b>: draft</p><p><b>intent</b>: plan</p><p><b>title</b>: CarePlan for Minimal Enrollment</p><p><b>subject</b>: <a href=\"Patient-minimal-enrollment-Patient.html\">Patient/minimal-enrollment-Patient</a> &quot; VAN PUTTEN-VAN DER GIESSEN&quot;</p><p><b>addresses</b>: <a href=\"Condition-minimal-enrollment-Condition.html\">Condition/minimal-enrollment-Condition</a></p><h3>Activities</h3><table class=\"grid\"><tr><td style=\"display: none\">-</td><td><b>Reference</b></td></tr><tr><td style=\"display: none\">*</td><td><a href=\"https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.10.0-beta.1&amp;canonical=https://simplifier.net/packages/nictiz.fhir.nl.r4.nl-core/mimimal-enrollment-Task\">mimimal-enrollment-Task</a></td></tr></table></div>"
+  ] ; # 
+  fhir:status [ fhir:v "draft"] ; # 
+  fhir:intent [ fhir:v "plan"] ; # 
+  fhir:title [ fhir:v "CarePlan for Minimal Enrollment"] ; # 
+  fhir:subject [
+     fhir:link <http://santeonnl.github.io/shared-care-planning/Patient/minimal-enrollment-Patient> ;
+     fhir:reference [ fhir:v "Patient/minimal-enrollment-Patient" ]
+  ] ; # 
+  fhir:addresses ( [
+     fhir:link <http://santeonnl.github.io/shared-care-planning/Condition/minimal-enrollment-Condition> ;
+     fhir:reference [ fhir:v "Condition/minimal-enrollment-Condition" ]
+  ] ) ; # 
+  fhir:activity ( [
+     fhir:reference [
+       fhir:reference [ fhir:v "mimimal-enrollment-Task" ]
+     ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

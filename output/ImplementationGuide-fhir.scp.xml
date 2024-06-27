@@ -10,7 +10,7 @@
   <name value="sharedcareplanning"/>
   <title value="Shared Care Planning"/>
   <status value="draft"/>
-  <date value="2024-06-25T19:40:44+02:00"/>
+  <date value="2024-06-26T00:37:58+02:00"/>
   <publisher value="Santeon"/>
   <contact>
     <name value="Santeon"/>
@@ -449,6 +449,26 @@
     </extension>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Bundle"/>
+      </extension>
+      <reference>
+        <reference value="Bundle/minimal-enrollment-Bundle"/>
+      </reference>
+      <name value="Bundle for Minimal Enrollment"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="CarePlan"/>
+      </extension>
+      <reference>
+        <reference value="CarePlan/minimal-enrollment-CarePlan"/>
+      </reference>
+      <name value="CarePlan for Minimal Enrollment"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="Condition"/>
       </extension>
       <reference>
@@ -465,6 +485,86 @@
         <reference value="Condition/scp-condition-hypertensie"/>
       </reference>
       <name value="Hypertensie Sharon Cynthia Proef"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Condition"/>
+      </extension>
+      <reference>
+        <reference value="Condition/minimal-enrollment-Condition"/>
+      </reference>
+      <name value="minimal-enrollment-Condition"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <reference>
+        <reference value="Organization/minimal-enrollment-Organization-Performer"/>
+      </reference>
+      <name value="minimal-enrollment-Organization-Performer"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <reference>
+        <reference value="Organization/minimal-enrollment-Organization-Requester"/>
+      </reference>
+      <name value="minimal-enrollment-Organization-Requester"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Patient"/>
+      </extension>
+      <reference>
+        <reference value="Patient/minimal-enrollment-Patient"/>
+      </reference>
+      <name value="minimal-enrollment-Patient"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Practitioner"/>
+      </extension>
+      <reference>
+        <reference value="Practitioner/minimal-enrollment-Practitioner-HP"/>
+      </reference>
+      <name value="minimal-enrollment-Practitioner-HP"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Practitioner"/>
+      </extension>
+      <reference>
+        <reference value="Practitioner/minimal-enrollment-Practitioner-Requester"/>
+      </reference>
+      <name value="minimal-enrollment-Practitioner-Requester"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="ServiceRequest"/>
+      </extension>
+      <reference>
+        <reference value="ServiceRequest/minimal-enrollment-ServiceRequest"/>
+      </reference>
+      <name value="minimal-enrollment-ServiceRequest"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Task"/>
+      </extension>
+      <reference>
+        <reference value="Task/minimal-enrollment-Task"/>
+      </reference>
+      <name value="minimal-enrollment-Task"/>
       <exampleBoolean value="true"/>
     </resource>
     <resource>

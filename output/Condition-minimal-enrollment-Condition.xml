@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Condition xmlns="http://hl7.org/fhir">
+  <id value="minimal-enrollment-Condition"/>
+  <meta>
+    <profile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem"/>
+  </meta>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p><b>Generated Narrative: Condition </b><a name="minimal-enrollment-Condition"> </a><a name="hcminimal-enrollment-Condition"> </a></p><div style="display: inline-block; background-color: #d9e0e7; padding: 6px; margin: 4px; border: 1px solid #8da1b4; border-radius: 5px; line-height: 60%"><p style="margin-bottom: 0px">ResourceCondition &quot;minimal-enrollment-Condition&quot; </p><p style="margin-bottom: 0px">Profile: <a href="https://simplifier.net/resolve?scope=nictiz.fhir.nl.r4.nl-core@0.10.0-beta.1&amp;canonical=http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem">nl core Problem</a></p></div><p><b>category</b>: Interpretatie van diagnose <span style="background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki"> (<a href="https://browser.ihtsdotools.org/">SNOMED CT</a>#282291009)</span></p><p><b>code</b>: Hartfalen <span style="background: LightGoldenRodYellow; margin: 4px; border: 1px solid khaki"> (<a href="https://browser.ihtsdotools.org/">SNOMED CT</a>#195111005)</span></p><p><b>subject</b>: <a href="Patient-minimal-enrollment-Patient.html">Patient/minimal-enrollment-Patient: Patient, Jean Jacques van Putten-van der Giessen</a> &quot; VAN PUTTEN-VAN DER GIESSEN&quot;</p><p><b>note</b>: Hier een zinnige tekst over de diagnose Hartfalen</p></div>
+  </text>
+  <category>
+    <coding>
+      <system value="http://snomed.info/sct"/>
+      <code value="282291009"/>
+      <display value="Interpretatie van diagnose"/>
+    </coding>
+  </category>
+  <code>
+    <coding>
+      <system value="http://snomed.info/sct"/>
+      <code value="195111005"/>
+      <display value="Hartfalen"/>
+    </coding>
+  </code>
+  <subject>
+    <reference value="Patient/minimal-enrollment-Patient"/>
+    <type value="Patient"/>
+    <display value="Patient, Jean Jacques van Putten-van der Giessen"/>
+  </subject>
+  <note>
+    <text value="Hier een zinnige tekst over de diagnose Hartfalen"/>
+  </note>
+</Condition>
