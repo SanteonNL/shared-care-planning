@@ -8,9 +8,52 @@ Shared Care Planning involves two different access policies.
 
 ## Care Plan Service Policy
 
-The Care Plan Service Policy describes access to the resources stored in the Care Plan Service. When requesting an access token from the authorization server of the Care Plan Service, attributes of both the requesting organization and requesting person MUST be presented (see page Authentication for the exact requirements).
+The Care Plan Service Policy describes access to the resources stored in the Care Plan Service. 
 
+### Access token requirements
+
+When requesting an access token from the authorization server of the Care Plan Service, attributes of both the requesting organization and requesting person MUST be presented (see page Authentication for the exact requirements).
+
+### Resource access
+|Resource|CRUDS|Audience/attributes|
+|--------|-----|--------|
+|CarePlan|C|test|
+|Task|C|test|
+|CareTeam|C|test|
 
 
 ## Care Plan Contributor Policy
 
+The Care Plan Contributor policy describes access to resources of which the Care Plan Contributior is Data Holder (link to EHDS definition?) and describes access to notification service endpoints the Care Plan Contributor exposes.
+
+### Access to resources of which the Care Plan Contributior is Data Holder
+
+**Access token requirements**
+
+When requesting an access token from the authorization server of the Care Plan Service for access to resources of which the Care Plan Contributior is Data Holder, attributes of both the requesting organization and requesting person MUST be presented (see page Authentication for the exact requirements).
+
+**Request**
+
+Each data request MUST include the access token AND an abolute reference to the CarePlan-resource that defines the context in which the data request takes place. The reference to the CarePlan-resource has to be included in HTTP header field...?
+
+**Resource access**
+
+|Resource|CRUDS|Audience/attributes|
+|--------|-----|--------|
+|Resources|RS|test|
+
+### Access to notification service endpoints of the Care Plan Contributior
+
+**Access token requirements**
+
+When requesting an access token from the authorization server of the Care Plan Service for access to notification service endpoints of the Care Plan Contributior, attributes of the requesting organization MUST be presented (see page Authentication for the exact requirements). Attributes of a requesting person MUST NOT be presented.
+
+**Request**
+
+Each notification request MUST include the access token. An abolute reference to the CarePlan-resource that defines the context in which the data request takes place MUST NOT be included.
+
+**Resource access**
+
+|Resource|CRUDS|Audience/attributes/rules|
+|--------|-----|--------|
+|Incoming notification|C|test|
