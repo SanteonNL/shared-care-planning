@@ -8,11 +8,9 @@ Shared Care Planning involves two different access policies.
 
 ## Care Plan Service Policy
 
-The Care Plan Service Policy describes access to the resources stored in the Care Plan Service. When requesting an access token from the authorization server of the Care Plan Service, the following claims of the requesting organization and requesting person have to be presented:
-- Requesting Organization
-  - Requesting Organization is a Care Organization, including a logical identifier (of type URA)
-- Requesting Person: 
-  - Requesting Person has an appropriate PractitionerRole (Organization, Practitioner, Type)
+The Care Plan Service Policy describes access to the resources stored in the Care Plan Service. When requesting an access token from the authorization server of the Care Plan Service, attributes of both the requesting organization and requesting person MUST be presented (see page Authentication for the exact requirements).
+
 
 
 ## Care Plan Contributor Policy
+
