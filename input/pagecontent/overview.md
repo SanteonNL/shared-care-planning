@@ -22,7 +22,14 @@ This IG will use and specify a workflow pattern. For general FHIR workflow conce
 ## FHIR Resource types
 The IG is referring to many FHIR resource types. A quick summary:
 
-## CarePlan
+### CarePlan
+The FHIR CarePlan resource is a comprehensive framework for documenting and managing healthcare interventions and goals. It ensures that all relevant information is available to all stakeholders, promoting coordinated and effective care delivery. Key elements of a CarePlan for SCP:
+- **subject**: The patient to whom the care plan is intended.
+- **addresses**: Conditions/problems/concerns/diagnoses that this plan is addressing.
+- **careTeam**: All the individuals and organizations who are expected to be involved in the care plan’s execution.
+- **goal**: The intended outcomes or objectives of the care plan.
+- **activity**: Details of the planned interventions, including scheduled activities, performed activities, and their outcomes.
+- **author**: The person or organization that authored the care plan.
 https://hl7.org/fhir/R4/careplan.html
 
 ## CareTeam

@@ -63,36 +63,3 @@ This actor hosts generic authorization policies that can be used as paramaters i
 
 
 
-
-
-----------TO DO from here----------
-
-Each actor is described in detail below. 
-
-## Care Plan Contributor
-
-CarePlan kunnen POSTen naar CPS
-Task kunnen POSTen naar CPS
-notificatie kunnen ontvangen van Task
-Optioneel: subscription nemen/notificatie ontvangen voor CarePlan/CareTeam
-Data ontsluiten uit FHIR endpoint
-Autorisatie op data-ontsluiting o.b.v. CarePlan/CareTeam (optioneel: gebruik van CPC $authorize)
-Lokaliseren&ophalen van data o.b.v. CarePlan/CareTeam (optioneel: gebruik van CPC $localize)
-TODO: CapabilityStatement maken voor CPC zoals https://profiles.ihe.net/ITI/mCSD/CapabilityStatement-IHE.mCSD.CareServicesSelectiveConsumer.html 
-
-
-
-## Care Plan Service
-
- Alle Tasks bij de CPS posten/updaten (en placer of owner automatisch notificeren, behalve als ontvanger=verzender; als je zelf de CPS bent
-Maak b.v. AuditEvent van een Task-request, Task-acceptance, Task-cancellation, etc. Daarna proces bouwen dat bij iedere Task wijziging checkt of o.b.v. Task&AuditEvents het CarePlan/CareTeam moet wijzigen
-Voor CarePlan-merge ook Task aanmaken vanuit/naar CarePlan-X-eigenaar of Careplan-Y-eigenaar (ook request/acceptance vastleggen)
-Iets met hoofdbehandelaarschap doen? (met Task overdragen?)
-Operation $authorize: gesloten autorizatievraag: mag deze zorgverlener van organizatie 123 ihkv het CarePlan X data opvragen (welke data?)
-Operatie $localize: geef me endpoints (of URA's) voor CarePlan X
-
-TODO: CapabilityStatement maken voor CPS zoals https://profiles.ihe.net/ITI/mCSD/CapabilityStatement-IHE.mCSD.CareServicesSelectiveSupplier.html
-
-## Plan Definition Service
-
-Hoeft niet zo veel te kunnen; hosten van PlanDefinition en ActivityDefinitions

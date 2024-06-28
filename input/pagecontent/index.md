@@ -60,7 +60,7 @@ SCP uses the HL7 FHIR standaard, version R4
 > [!NOTE]
 > It is recommended that readers have a foundational understanding of FHIR R4 to fully grasp the content presented in this document. 
 
-{% include example1-request2execution.svg %}
+
 
 <!-- add other conventions -->
 
