@@ -76,21 +76,23 @@ For more information, check the FHIR R4 [PlanDefinition](https://hl7.org/fhir/R4
 
 
 ### Actors
-There are three actors in this Implementation Guide: The Care Plan User, Care Plan Contributor and Care Plan Service.
+There are three actors in this Implementation Guide: The Care Plan User, Care Plan Contributor and Care Plan Service. Every care-provider has to implement the Care Plan User and Care Plan Contributor role, but in a (cross-organizational) CareTeam, just one care-provider needs to implement the Care Plan Service.
 
 #### Care Plan User
-The first actor is the Care Plan User (CP-User). It is an application/client rol that is acting on behalf of a real practitioner, patient or related person. This actor interacts with both the Care Plan Contributor(s) and the Care Plan Service. This actor creates and updates the care plan and tasks/orders for other (future) Care Plan Contributors. The CP-User may also get data from the other Care Plan Contributor(s); CP-User will query the Care Plan service for the CarePlan and CareTeam-data to find at which organizations (or endpoints) other data could be reside. Every SCP-transaction is initiated or trigged by a Care Plan User, so any manipulation of data can be led back to a Care Plan User or responsible person.
-
-TODO: FHIR capabilitystatement ([example](https://profiles.ihe.net/ITI/mCSD/CapabilityStatement-IHE.mCSD.CareServicesSelectiveConsumer.html)) (mode=client):
-- POST/PUT CarePlan & Task
-- GET various FHIR resource types
+The first actor is the Care Plan User (CP-User). It is an application/client rol that is acting on behalf of a real practitioner, patient or related person. This actor interacts with both the Care Plan Contributor(s) and a Care Plan Service. 
+This actor creates and updates the care plan and tasks/orders for other (future) Care Plan Contributors. 
+The CP-User may also retrieve data from the other Care Plan Contributor(s); CP-User will query the Care Plan service for the CarePlan and CareTeam-data to find at which organizations (or endpoints) other data could be reside. 
+Every SCP-transaction is initiated or trigged by a Care Plan User, so any manipulation of data should be traceable to the Care Plan User and responsible person.
+The Care Plan User role is a superset of the Care Plan Contributor role. I.e. a Care Plan User will change to Care Plan Contributor as soon as the user or practitioner leaves.
 
 #### Care Plan Contributor
 The second actor is the Care Plan Contributor (CP-Contributor). The main responsibilities of a CP-Contributor is to respond to an incoming Task-requests or Task-updates and to authorize other CP-Users to query local data.
 
-TODO: FHIR capabilitystatement (mode=client):
-- PUT Task
-- GET CarePlan, CareTeam, Task, PractitionerRole, Organization to authorize CP-User to query data in the context of a CarePlan
+Because the Care Plan Contributor is part of the Care Plan User role, the capabilities can be combined:
+
+TODO: FHIR capabilitystatement ([example](https://profiles.ihe.net/ITI/mCSD/CapabilityStatement-IHE.mCSD.CareServicesSelectiveConsumer.html))(mode=client):
+- POST/PUT CarePlan & Task
+- GET various FHIR resource types 
 
 TODO: FHIR capabilitystatement ([example](https://profiles.ihe.net/ITI/mCSD/CapabilityStatement-IHE.mCSD.CareServicesSelectiveSupplier.html)) (mode=server):
 - POST Notification (for a new/updated Task, CarePlan or CareTeam)
@@ -135,21 +137,31 @@ There are three transactions in SCP:
 
 
 #### Creating and responding to a Task
+An essential part of SCP is the workflow where one care provider requests another care provider to do something for a patient/CarePlan. If the latter one accepts the request, it can be added to the (active) members of the CareTeam. In the first sequence diagram, Care Provider 1 has implemented the (optional) CP-Service role.
 
 
 
+<img src="task-negotiation-overview-1-2.png" width="60%" style="float: none"/>
+
+The transaction is based on [FHIR workflow pattern H](https://hl7.org/fhir/R4/workflow-management.html#optionh) which uses a 'workflow broker' that stores and manages Task resources. In SCP, the 'workflow broker' is implemented by the Care Plan Service. The Care Plan Service store and manages Tasks, CarePlans and CareTeam resources.  
+In the second diagram, Care Provider 2 will send Care Provider 3 a request, using Care Provider 1 as the 'workflow broker' (the CP-Service where the CarePlan, CareTeam and Tasks reside).
 
 
+<img src="task-negotiation-overview-1-2-3.png" width="60%" style="float: none"/>
+
+For more information on this transaction, see [Transactions - Creating and responding to a Task](./transaction-task-negotiation.html)
 
 #### Updating CarePlan and CareTeam
+The CarePlan Service is responsible for updating the CareTeam and, for convenience, the CarePlan.activities. This transaction is triggered by a Task creation or update. The CP-Service evaluates all Tasks and their status for a CarePlan, updates the CarePlan/CareTeam accordingly and notifies all CareTeam-members. The base ['Task state machine'](https://hl7.org/fhir/R4/task.html#statemachine) is used in SCP (allowed states and allowed transitions).
 
 
+<img src="careplan-careteam-management-overview.png" width="100%" style="float: none"/>
 
 
 #### Getting data from CareTeam members
 
-
-
+Work-in-progress....
+{% include example1-retrievingdata.svg %}
 
 
 ### Deployment considerations
@@ -170,8 +182,6 @@ TODO Review text:
 In bovenstaande specificatie beschrijft een implementatie van het IHE DCP profiel. Deze specificatie breidt het IHE profile uit met de data die binnen werkprocessen (en tussen organisaties) ontstaat en de afgeleide, functionele autorisatie voor deze data. Uiteraard zijn er andere standaarden binnen de zorg die een overlap hebben met deze specificatie. Bij het opstellen van deze specificatie is getracht om zo veel mogelijk deze bestaande standaarden te hergebruiken.
 
 
-
-<img src="example1-2.png" width="50%" style="float: right"/>
 
 #### IHE: DCP
 This specification has copied many of the concepts used in IHE DCP. However.... describe difference

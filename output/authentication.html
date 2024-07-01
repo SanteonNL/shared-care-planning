@@ -181,6 +181,46 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <div>
 <!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
 </div>
+<h1 id="authentication">Authentication</h1>
+<p>Shared Care Planning (SCP) provides a way of distributed and planning of complex use cases in digital information exchange within healthcare. The cornerstone of all exchange is the authenticity of the actors that exchange information. In order to achieve the right level of authenticity the SCP relies on <em>Trust over IP</em>.</p>
+
+<h2 id="trust-over-ip">Trust over IP</h2>
+<p>The Trust over IP framework makes use of Trusted Sources or Trusted Third Parties that are trusted to issuer authentic properties to the participants. These parties are called <em>issuers</em> within the Trust over IP framework. Within the Trust over IP framework the participants are able to store the assigned authentic properties within a wallet-like solution. The role of these participants is the role of the credential <em>holder</em>.  The credentials used in the Trust over IP framework can be presented by the <em>holder</em>. In the case of presentation, the holder is able to proof the ownership as part of the <em>presentation</em>. The role of <em>verifier</em> is to verify both the issuer of the credential and the holder of the credential. By doing this the verifier can be achieve the right level of authenticity required for the exchange of information required by SCP.</p>
+
+<h2 id="nuts-and-verifiable-credentials">NUTS and Verifiable Credentials.</h2>
+<p>The implementation for Trust over IP by SCP is NUTS. The NUTS nodes are able to implement the role of both holder and verifier within the trust construct of SCP. Each role in the SCP has its own NUTS-node that acts both wallet and interface for trust exchange.</p>
+
+<h2 id="sources-of-trust">Sources of trust.</h2>
+<p>The implementation of Trust over IP requires trusted sources that provide assertions about both individual caregivers and organizations involved in healthcare. At the time of writing this specification, there are no official trusted sources available for both individuals and organizations. However, initiatives such as “IAA in de zorg” are trying to resolve this issue.</p>
+
+<h3 id="structure">Structure</h3>
+<p>The structure of the credentials that act as sources of trust are:</p>
+<ul>
+  <li>The <em>UZI credential</em>, that contains:
+    <ul>
+      <li>The UZI code</li>
+      <li>One or more relations, that contain the URA number of the institution abd the Role of the professional.</li>
+    </ul>
+  </li>
+  <li>The <em>URA credential</em> of the organization.</li>
+</ul>
+
+<p><img src="Trust_structure.jpg" width="40%" style="float: none" /></p>
+
+<p>Alternatively, the role can be assigned by the organization itself. Thereby the organization becomes s trusted source itself. As the organization holds a URA credential the verifier is albe to verify the authenticity of both the professional (UZI) and organization (URA), and the assigned role issued by the organization.</p>
+
+<p><img src="Trust_structure_2.jpg" width="40%" style="float: none" /></p>
+
+<h2 id="practical-implementation">Practical implementation</h2>
+<p>As the sources of trust are not available yet, we need to work with whatever is around right now. The tentative credential structure will be:</p>
+
+<ul>
+  <li>The EmployeeCredential, represents a login of an employee by wrapping the id_token.</li>
+  <li>The membership credentials is assigned to an organization by an issuer with the role “domain controller”.</li>
+  <li>The Role credential is issued by the organization to the owner of the EmployeeCredential.</li>
+</ul>
+
+<p><img src="Trust_structure_now.jpg" width="40%" style="float: none" /></p>
 
 
 
@@ -201,7 +241,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.santeon.nl">Santeon</a>.  Package fhir.scp#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Jul 1, 2024 05:14+0200">2024-07-01</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.santeon.nl">Santeon</a>.  Package fhir.scp#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Jul 1, 2024 12:11+0200">2024-07-01</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

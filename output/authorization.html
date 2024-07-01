@@ -213,7 +213,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h4 id="access-token-requirements">Access token requirements</h4>
 
-<p>When requesting an access token from the authorization server of the Care Plan Service, attributes of both the requesting organization and requesting person MUST be presented (see page Authentication for the exact requirements).</p>
+<p>When requesting an access token from the authorization server of the Care Plan Service, attributes of both the requesting organization and requesting person MUST be presented (see page Authentication for the exact requirements). <em>Note that for all transactions an active user session is required and the use MUST be identifiable, either direct by user interaction or indirect by cryptographic proof, by all involved parties.</em></p>
 
 <h4 id="resource-access">Resource access</h4>
 <p>|Resource(.element)|CRUDS|Audience/attributes|
@@ -343,8 +343,8 @@ Authorization: Bearer 03c90ce0-fe7b-44fb-aff7-b09ef4e45863
   </thead>
   <tbody>
     <tr>
-      <td> </td>
-      <td> </td>
+      <td>*</td>
+      <td>*</td>
       <td>Patient?id=patient.id</td>
     </tr>
     <tr>
@@ -353,13 +353,13 @@ Authorization: Bearer 03c90ce0-fe7b-44fb-aff7-b09ef4e45863
       <td>Condition?subject=patient&amp;category=[all somatic conditions]</td>
     </tr>
     <tr>
-      <td> </td>
-      <td> </td>
+      <td>*</td>
+      <td>Thuismonitoring</td>
       <td>CarePlan?id=CarePlan.id</td>
     </tr>
     <tr>
-      <td> </td>
-      <td> </td>
+      <td>*</td>
+      <td>Thuismonitoring</td>
       <td>CareTeam?subject=patient.id</td>
     </tr>
   </tbody>
@@ -389,7 +389,7 @@ Authorization: Bearer 03c90ce0-fe7b-44fb-aff7-b09ef4e45863
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.santeon.nl">Santeon</a>.  Package fhir.scp#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Jul 1, 2024 05:14+0200">2024-07-01</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.santeon.nl">Santeon</a>.  Package fhir.scp#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Jul 1, 2024 12:11+0200">2024-07-01</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

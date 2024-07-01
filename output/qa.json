@@ -6,8 +6,8 @@
   "status" : "draft",
   "package-id" : "fhir.scp",
   "ig-ver" : "0.1.0",
-  "date" : "Mon, 01 Jul, 2024 05:14:46 +0200",
-  "dateISO8601" : "2024-07-01T05:14:46+02:00",
+  "date" : "Mon, 01 Jul, 2024 12:11:43 +0200",
+  "dateISO8601" : "2024-07-01T12:11:43+02:00",
   "errs" : 52,
   "warnings" : 61,
   "hints" : 18,
@@ -15,5 +15,5 @@
   "suppressed-warnings" : 0,
   "version" : "4.0.1",
   "tool" : "5.0.0 (3)",
-  "maxMemory" : 1220835240
+  "maxMemory" : 1326899864
 }

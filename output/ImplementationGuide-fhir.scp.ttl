@@ -17,7 +17,7 @@
   fhir:name [ fhir:v "sharedcareplanning"] ; # 
   fhir:title [ fhir:v "Shared Care Planning (SCP) Implementation Guide"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2024-07-01T05:14:46+02:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2024-07-01T12:11:43+02:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Santeon"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Santeon" ] ;
