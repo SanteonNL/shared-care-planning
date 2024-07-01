@@ -102,12 +102,12 @@ The access and filtering rules COULD be articulated in a tabular format that mak
 
 An example rules for home monitoring could look like the following:
 
-| Condition.code         | Request.code    | Resource                                                    |
-|------------------------|-----------------|-------------------------------------------------------------|
-|                        |                 | Patient?id=patient.id                                       |
-| COPD/ longaandoeningen | Thuismonitoring | Condition?subject=patient&category=[all somatic conditions] |
-|                        |                 | CarePlan?id=CarePlan.id                                     |
-|                        |                 | CareTeam?subject=patient.id                                 |
+| Condition.code         | Request.code     | Resource                                                    |
+|------------------------|------------------|-------------------------------------------------------------|
+| *                      | *                | Patient?id=patient.id                                       |
+| COPD/ longaandoeningen | Thuismonitoring  | Condition?subject=patient&category=[all somatic conditions] |
+| *                      | Thuismonitoring  | CarePlan?id=CarePlan.id                                     |
+| *                      | Thuismonitoring  | CareTeam?subject=patient.id                                 |
 
 
 
