@@ -17,7 +17,7 @@ The Care Plan Service Policy describes access to the resources stored in the Car
 
 #### Access token requirements
 
-When requesting an access token from the authorization server of the Care Plan Service, attributes of both the requesting organization and requesting person MUST be presented (see page Authentication for the exact requirements).
+When requesting an access token from the authorization server of the Care Plan Service, attributes of both the requesting organization and requesting person MUST be presented (see page Authentication for the exact requirements). _Note that for all transactions an active user session is required and the use MUST be identifiable, either direct by user interaction or indirect by cryptographic proof, by all involved parties._
 
 #### Resource access
 |Resource(.element)|CRUDS|Audience/attributes|
