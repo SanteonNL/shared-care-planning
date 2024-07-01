@@ -81,13 +81,15 @@ fi
 echo -n "Do you want to clone a github-repository in current directory? : y/n"
    read -r cloneRepository
 
-if configureGitGlobals = "y" ; then
+if cloneRepository = "y" ; then
    echo -n "Please provide the url of the github-repository:"
    read -r repositoryUrl
    
    echo "-----Cloning git repo"
    git clone $repositoryUrl
 fi
+
+sudo chmod +x _updatePublisher.sh
 
 echo "-----Example FHIR Publisher command: java -jar './input-cache/publisher.jar' -ig ."
 echo "it assumes you have an ig.ini file in your repository. More information on the publisher and this .ini file: https://confluence.hl7.org/pages/viewpage.action?pageId=175618322"

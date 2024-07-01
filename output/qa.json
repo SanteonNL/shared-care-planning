@@ -6,10 +6,14 @@
   "status" : "draft",
   "package-id" : "fhir.scp",
   "ig-ver" : "0.1.0",
-  "date" : "Mon, 01 Jul, 2024 02:47:05 +0200",
-  "dateISO8601" : "2024-07-01T02:47:05+02:00",
-  "exception" : "Process exited with an error: 1 (Exit value: 1)",
+  "date" : "Mon, 01 Jul, 2024 03:07:22 +0200",
+  "dateISO8601" : "2024-07-01T03:07:22+02:00",
+  "errs" : 52,
+  "warnings" : 61,
+  "hints" : 18,
+  "suppressed-hints" : 0,
+  "suppressed-warnings" : 0,
   "version" : "4.0.1",
   "tool" : "5.0.0 (3)",
-  "maxMemory" : 1170647400
+  "maxMemory" : 1782388720
 }

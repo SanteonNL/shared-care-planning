@@ -24,5 +24,5 @@ curl -X POST  "https://us-central1-fhir-org-starter-project.cloudfunctions.net/i
 --data '{"ref": "refs/heads/main", "repository": {"full_name": "santeonnl/shared-care-planning"}}'
 ```
 
-The result is published on https://build.fhir.org/ig/santeonnl/shared-care-planning
+The result is published on https://build.fhir.org/ig/santeonnl/shared-care-planning/branches/
 In the ./build.log you can find the build log. Validation tests are in ./output/qa.html
