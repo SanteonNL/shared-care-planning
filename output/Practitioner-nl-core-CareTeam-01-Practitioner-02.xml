@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Practitioner xmlns="http://hl7.org/fhir">
+  <id value="nl-core-CareTeam-01-Practitioner-02"/>
+  <meta>
+    <profile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner"/>
+  </meta>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: Practitioner nl-core-CareTeam-01-Practitioner-02</b></p><a name="nl-core-CareTeam-01-Practitioner-02"> </a><a name="hcnl-core-CareTeam-01-Practitioner-02"> </a><a name="hcnl-core-CareTeam-01-Practitioner-02-en-US"> </a><p><b>name</b>: S. Curie(Official)</p></div>
+  </text>
+  <name>
+    <use value="official"/>
+    <text value="S. Curie"/>
+    <family value="Curie">
+      <extension url="http://hl7.org/fhir/StructureDefinition/humanname-own-name">
+        <valueString value="Curie"/>
+      </extension>
+    </family>
+    <given value="S.">
+      <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier">
+        <valueCode value="IN"/>
+      </extension>
+    </given>
+    <prefix value="Dr."/>
+  </name>
+</Practitioner>

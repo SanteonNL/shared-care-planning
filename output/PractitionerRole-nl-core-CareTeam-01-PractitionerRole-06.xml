@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PractitionerRole xmlns="http://hl7.org/fhir">
+  <id value="nl-core-CareTeam-01-PractitionerRole-06"/>
+  <meta>
+    <profile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole"/>
+  </meta>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: PractitionerRole nl-core-CareTeam-01-PractitionerRole-06</b></p><a name="nl-core-CareTeam-01-PractitionerRole-06"> </a><a name="hcnl-core-CareTeam-01-PractitionerRole-06"> </a><a name="hcnl-core-CareTeam-01-PractitionerRole-06-en-US"> </a><p><b>practitioner</b>: <a href="Practitioner-nl-core-CareTeam-01-Practitioner-06.html">Healthcare professional (person), K. van der Linden</a></p></div>
+  </text>
+  <practitioner>
+    <reference value="Practitioner/nl-core-CareTeam-01-Practitioner-06"/>
+    <type value="Practitioner"/>
+    <display value="Healthcare professional (person), K. van der Linden"/>
+  </practitioner>
+</PractitionerRole>

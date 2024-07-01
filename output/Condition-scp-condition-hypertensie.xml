@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Condition xmlns="http://hl7.org/fhir">
+  <id value="scp-condition-hypertensie"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: Condition scp-condition-hypertensie</b></p><a name="scp-condition-hypertensie"> </a><a name="hcscp-condition-hypertensie"> </a><a name="hcscp-condition-hypertensie-en-US"> </a><p><b>clinicalStatus</b>: <span title="Codes:">active</span></p><p><b>code</b>: <span title="Codes:{http://snomed.info/sct 38341003}">Hypertensive disorder, systemic arterial (disorder)</span></p><p><b>subject</b>: <a href="Patient-SharonCynthiaProef.html">Sharon Cynthia Proef  (no stated gender), DoB Unknown</a></p></div>
+  </text>
+  <clinicalStatus>
+    <coding>
+      <code value="active"/>
+    </coding>
+  </clinicalStatus>
+  <code>
+    <coding>
+      <system value="http://snomed.info/sct"/>
+      <code value="38341003"/>
+      <display value="Hypertensive disorder, systemic arterial (disorder)"/>
+    </coding>
+  </code>
+  <subject>
+    <reference value="Patient/SharonCynthiaProef"/>
+  </subject>
+</Condition>

@@ -1,0 +1,22 @@
+[
+  {
+    "id" : "fhir.scp",
+    "type" : "ImplementationGuide",
+    "url" : "http://santeonnl.github.io/shared-care-planning",
+    "version" : "0.1.0",
+    "name" : "sharedcareplanning"
+  },
+  {
+    "id" : "scp-plan",
+    "type" : "StructureDefinition",
+    "url" : "http://santeonnl.github.io/shared-care-planning/StructureDefinition/scp-plan",
+    "version" : "0.1.0",
+    "name" : "SCTPlanDefinition"
+  },
+  {
+    "id" : "plan-sds",
+    "type" : "PlanDefinition",
+    "url" : "https://rarecare.world/fhir/PlanDefinition/shwachman-diamond-syndrome",
+    "version" : "0.1.0"
+  }
+]

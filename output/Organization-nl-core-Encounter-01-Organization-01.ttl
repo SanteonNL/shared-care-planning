@@ -1,0 +1,31 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://santeonnl.github.io/shared-care-planning/Organization/nl-core-Encounter-01-Organization-01> a fhir:Organization ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "nl-core-Encounter-01-Organization-01"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization"^^xsd:anyURI ;
+       fhir:link <http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Organization nl-core-Encounter-01-Organization-01</b></p><a name=\"nl-core-Encounter-01-Organization-01\"> </a><a name=\"hcnl-core-Encounter-01-Organization-01\"> </a><a name=\"hcnl-core-Encounter-01-Organization-01-en-US\"> </a><p><b>type</b>: <span title=\"Codes:{http://nictiz.nl/fhir/NamingSystem/organization-type V4}\">Ziekenhuis</span></p><p><b>name</b>: St. Lucas Andreas Ziekenhuis</p></div>"
+  ] ; # 
+  fhir:type ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://nictiz.nl/fhir/NamingSystem/organization-type"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "V4" ] ;
+       fhir:display [ fhir:v "Ziekenhuis" ]
+     ] )
+  ] ) ; # 
+  fhir:name [ fhir:v "St. Lucas Andreas Ziekenhuis"] . # 
+
+# -------------------------------------------------------------------------------------
+

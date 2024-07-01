@@ -1,0 +1,35 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sct: <http://snomed.info/id/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://santeonnl.github.io/shared-care-planning/Condition/scp-condition-hypertensie> a fhir:Condition ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "scp-condition-hypertensie"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Condition scp-condition-hypertensie</b></p><a name=\"scp-condition-hypertensie\"> </a><a name=\"hcscp-condition-hypertensie\"> </a><a name=\"hcscp-condition-hypertensie-en-US\"> </a><p><b>clinicalStatus</b>: <span title=\"Codes:\">active</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 38341003}\">Hypertensive disorder, systemic arterial (disorder)</span></p><p><b>subject</b>: <a href=\"Patient-SharonCynthiaProef.html\">Sharon Cynthia Proef  (no stated gender), DoB Unknown</a></p></div>"
+  ] ; # 
+  fhir:clinicalStatus [
+     fhir:coding ( [
+       fhir:code [ fhir:v "active" ]
+     ] )
+  ] ; # 
+  fhir:code [
+     fhir:coding ( [
+       a sct:38341003 ;
+       fhir:system [ fhir:v "http://snomed.info/sct"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "38341003" ] ;
+       fhir:display [ fhir:v "Hypertensive disorder, systemic arterial (disorder)" ]
+     ] )
+  ] ; # 
+  fhir:subject [
+     fhir:link <http://santeonnl.github.io/shared-care-planning/Patient/SharonCynthiaProef> ;
+     fhir:reference [ fhir:v "Patient/SharonCynthiaProef" ]
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+

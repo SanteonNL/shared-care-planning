@@ -1,0 +1,41 @@
+{
+  "resourceType" : "Patient",
+  "id" : "nl-core-CareTeam-01-Patient-01",
+  "meta" : {
+    "profile" : ["http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient"]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Patient nl-core-CareTeam-01-Patient-01</b></p><a name=\"nl-core-CareTeam-01-Patient-01\"> </a><a name=\"hcnl-core-CareTeam-01-Patient-01\"> </a><a name=\"hcnl-core-CareTeam-01-Patient-01-en-US\"> </a><p style=\"border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;\">Ingrid de Jong-de Wit(official) (no stated gender), DoB Unknown</p><hr/></div>"
+  },
+  "name" : [{
+    "use" : "official",
+    "text" : "Ingrid de Jong-de Wit",
+    "family" : "de Jong-de Wit",
+    "_family" : {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix",
+        "valueString" : "de"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/humanname-own-name",
+        "valueString" : "Jong"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/humanname-partner-prefix",
+        "valueString" : "de"
+      },
+      {
+        "url" : "http://hl7.org/fhir/StructureDefinition/humanname-partner-name",
+        "valueString" : "Wit"
+      }]
+    },
+    "given" : ["Ingrid"],
+    "_given" : [{
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier",
+        "valueCode" : "BR"
+      }]
+    }]
+  }]
+}

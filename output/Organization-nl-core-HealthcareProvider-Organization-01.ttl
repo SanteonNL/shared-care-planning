@@ -1,0 +1,77 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://santeonnl.github.io/shared-care-planning/Organization/nl-core-HealthcareProvider-Organization-01> a fhir:Organization ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "nl-core-HealthcareProvider-Organization-01"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization"^^xsd:anyURI ;
+       fhir:link <http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Organization nl-core-HealthcareProvider-Organization-01</b></p><a name=\"nl-core-HealthcareProvider-Organization-01\"> </a><a name=\"hcnl-core-HealthcareProvider-Organization-01\"> </a><a name=\"hcnl-core-HealthcareProvider-Organization-01-en-US\"> </a><p><b>identifier</b>: Ura/06020806</p><p><b>type</b>: <span title=\"Codes:{urn:oid:2.16.840.1.113883.2.4.6.7 0320}\">Medisch specialisten, cardiologie</span>, <span title=\"Codes:{http://nictiz.nl/fhir/NamingSystem/organization-type V5}\">Universitair Medisch Centrum</span></p><p><b>name</b>: Erasmus Universitair Medisch Centrum</p><p><b>telecom</b>: <a href=\"tel:+31107040704\">+31107040704</a>, <a href=\"mailto:info@erasmus.nl\">info@erasmus.nl</a></p><p><b>address</b>: s-Gravendijkwal 230 Rotterdam 3015 CE (work)</p></div>"
+  ] ; # 
+  fhir:identifier ( [
+     fhir:system [ fhir:v "http://fhir.nl/fhir/NamingSystem/ura"^^xsd:anyURI ] ;
+     fhir:value [ fhir:v "06020806" ]
+  ] ) ; # 
+  fhir:type ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:oid:2.16.840.1.113883.2.4.6.7"^^xsd:anyURI ] ;
+       fhir:version [ fhir:v "2020-10-23T00:00:00" ] ;
+       fhir:code [ fhir:v "0320" ] ;
+       fhir:display [ fhir:v "Medisch specialisten, cardiologie" ]
+     ] )
+  ] [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://nictiz.nl/fhir/NamingSystem/organization-type"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "V5" ] ;
+       fhir:display [ fhir:v "Universitair Medisch Centrum" ]
+     ] )
+  ] ) ; # 
+  fhir:name [ fhir:v "Erasmus Universitair Medisch Centrum"] ; # 
+  fhir:telecom ( [
+     fhir:system [ fhir:v "phone" ] ;
+     fhir:value [ fhir:v "+31107040704" ] ;
+     fhir:use [ fhir:v "work" ]
+  ] [
+     fhir:system [ fhir:v "email" ] ;
+     fhir:value [ fhir:v "info@erasmus.nl" ] ;
+     fhir:use [ fhir:v "work" ]
+  ] ) ; # 
+  fhir:address ( [
+     fhir:extension ( [
+       fhir:url [ fhir:v "http://nictiz.nl/fhir/StructureDefinition/ext-AddressInformation.AddressType"^^xsd:anyURI ] ;
+       fhir:value [
+         a fhir:CodeableConcept ;
+         fhir:coding ( [
+           fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v3-AddressUse"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "WP" ] ;
+           fhir:display [ fhir:v "Work Place" ]
+         ] )
+       ]
+     ] ) ;
+     fhir:use [ fhir:v "work" ] ;
+     fhir:line ( [
+       fhir:v "s-Gravendijkwal 230" ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "s-Gravendijkwal" ]
+       ] [
+         fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "230" ]
+       ] )
+     ] ) ;
+     fhir:city [ fhir:v "Rotterdam" ] ;
+     fhir:postalCode [ fhir:v "3015 CE" ]
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

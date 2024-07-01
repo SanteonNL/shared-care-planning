@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Patient xmlns="http://hl7.org/fhir">
+  <id value="SharonCynthiaProef"/>
+  <meta>
+    <profile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient"/>
+  </meta>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: Patient SharonCynthiaProef</b></p><a name="SharonCynthiaProef"> </a><a name="hcSharonCynthiaProef"> </a><a name="hcSharonCynthiaProef-en-US"> </a><p style="border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;">Sharon Cynthia Proef  (no stated gender), DoB Unknown</p><hr/></div>
+  </text>
+  <name>
+    <family value="Proef"/>
+    <given value="Sharon Cynthia"/>
+  </name>
+</Patient>

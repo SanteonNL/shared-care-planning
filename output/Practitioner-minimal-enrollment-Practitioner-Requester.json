@@ -1,0 +1,38 @@
+{
+  "resourceType" : "Practitioner",
+  "id" : "minimal-enrollment-Practitioner-Requester",
+  "meta" : {
+    "profile" : ["http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner"]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Practitioner minimal-enrollment-Practitioner-Requester</b></p><a name=\"minimal-enrollment-Practitioner-Requester\"> </a><a name=\"hcminimal-enrollment-Practitioner-Requester\"> </a><a name=\"hcminimal-enrollment-Practitioner-Requester-en-US\"> </a><p><b>name</b>: A. Aanvrager(Official)</p><p><b>telecom</b>: <a href=\"tel:+31687654321\">+31687654321</a>, <a href=\"mailto:av@icloud.com\">av@icloud.com</a></p></div>"
+  },
+  "name" : [{
+    "use" : "official",
+    "text" : "A. Aanvrager",
+    "family" : "Aanvrager",
+    "_family" : {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/humanname-own-name",
+        "valueString" : "Aanvrager"
+      }]
+    },
+    "given" : ["Anton"],
+    "_given" : [{
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier",
+        "valueCode" : "IN"
+      }]
+    }],
+    "prefix" : ["Drs."]
+  }],
+  "telecom" : [{
+    "system" : "phone",
+    "value" : "+31687654321"
+  },
+  {
+    "system" : "email",
+    "value" : "av@icloud.com"
+  }]
+}

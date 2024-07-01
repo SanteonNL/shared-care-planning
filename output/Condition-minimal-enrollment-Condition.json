@@ -1,0 +1,33 @@
+{
+  "resourceType" : "Condition",
+  "id" : "minimal-enrollment-Condition",
+  "meta" : {
+    "profile" : ["http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem"]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Condition minimal-enrollment-Condition</b></p><a name=\"minimal-enrollment-Condition\"> </a><a name=\"hcminimal-enrollment-Condition\"> </a><a name=\"hcminimal-enrollment-Condition-en-US\"> </a><p><b>category</b>: <span title=\"Codes:{http://snomed.info/sct 282291009}\">Interpretatie van diagnose</span></p><p><b>code</b>: <span title=\"Codes:{http://snomed.info/sct 195111005}\">Hartfalen</span></p><p><b>subject</b>: <a href=\"Patient-minimal-enrollment-Patient.html\">Patient, Jean Jacques van Putten-van der Giessen</a></p><p><b>note</b>: Hier een zinnige tekst over de diagnose Hartfalen</p></div>"
+  },
+  "category" : [{
+    "coding" : [{
+      "system" : "http://snomed.info/sct",
+      "code" : "282291009",
+      "display" : "Interpretatie van diagnose"
+    }]
+  }],
+  "code" : {
+    "coding" : [{
+      "system" : "http://snomed.info/sct",
+      "code" : "195111005",
+      "display" : "Hartfalen"
+    }]
+  },
+  "subject" : {
+    "reference" : "Patient/minimal-enrollment-Patient",
+    "type" : "Patient",
+    "display" : "Patient, Jean Jacques van Putten-van der Giessen"
+  },
+  "note" : [{
+    "text" : "Hier een zinnige tekst over de diagnose Hartfalen"
+  }]
+}

@@ -1,0 +1,30 @@
+{
+  "resourceType" : "Practitioner",
+  "id" : "nl-core-CareTeam-01-Practitioner-01",
+  "meta" : {
+    "profile" : ["http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner"]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: Practitioner nl-core-CareTeam-01-Practitioner-01</b></p><a name=\"nl-core-CareTeam-01-Practitioner-01\"> </a><a name=\"hcnl-core-CareTeam-01-Practitioner-01\"> </a><a name=\"hcnl-core-CareTeam-01-Practitioner-01-en-US\"> </a><p><b>name</b>: W. Klaasen(Official)</p></div>"
+  },
+  "name" : [{
+    "use" : "official",
+    "text" : "W. Klaasen",
+    "family" : "Klaasen",
+    "_family" : {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/humanname-own-name",
+        "valueString" : "Klaasen"
+      }]
+    },
+    "given" : ["W."],
+    "_given" : [{
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier",
+        "valueCode" : "IN"
+      }]
+    }],
+    "prefix" : ["Drs."]
+  }]
+}

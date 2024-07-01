@@ -1,0 +1,578 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <title>Overview - Shared Care Planning (SCP) Implementation Guide v0.1.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link rel="stylesheet" href="fhir.css"/>
+
+      <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap-fhir.css"/>
+
+      <!-- Project extras -->
+    <link rel="stylesheet" href="assets/css/project.css"/>
+    <link rel="stylesheet" href="assets/css/pygments-manni.css"/>
+    <link rel="stylesheet" href="assets/css/jquery-ui.css"/>
+  	<link rel="stylesheet" href="assets/css/prism.css"/>
+      <!-- Placeholder for child template CSS declarations -->
+
+    <script src="fhir-table-scripts.js" type="text/javascript"> </script>
+
+      <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!-- [if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif] -->
+
+      <!-- Favicons -->
+    <link sizes="144x144" rel="fhir-logo" href="assets/ico/icon-fhir-144.png"/>
+    <link sizes="114x114" rel="fhir-logo" href="assets/ico/icon-fhir-114.png"/>
+    <link sizes="72x72" rel="fhir-logo" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"2"}
+    h3,h4,h5,h6{--heading-prefix:"2"}</style>
+    <div id="segment-header" class="segment">    <!-- segment-header -->
+      <div class="container">    <!-- container -->
+          <!-- Placeholder for child template header declarations -->
+
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">Shared Care Planning (SCP) Implementation Guide</span>
+            <br/>
+            <span style="display:inline-block;">0.1.0 - ci-build
+
+
+            </span>
+          </p>
+        </div>
+      </div>   <!-- /container -->
+    </div>    <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">    <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">    <!-- container -->
+          <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+            <!-- status-bar -->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a href="http://hl7.org/fhir/R4/index.html" class="navbar-brand hidden">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+                <!-- menu.xml -->
+
+<ul class="nav navbar-nav">
+  <li>
+    <a href="index.html">Home</a>
+  </li>
+  <li>
+    <a href="overview.html">Overview</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Security
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="authorization.html">Authorization</a>
+      </li>
+      <li>
+        <a href="authentication.html">Authentication</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Transactions
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="transaction-task-negotiation.html">Task negotiation and addressing care providers</a>
+      </li>
+      <li>
+        <a href="transaction-careplan-careteam-mngt.html">CarePlan and CareTeam management</a>
+      </li>
+      <li>
+        <a href="transaction-discovery.html">Localization of CareTeam members and Patient Information</a>
+      </li>
+      <li>
+        <a href="transaction-autorization.html">Autorization of CareTeam members using Patient Information</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Use cases
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="usecase-specification.html">How to use nation-specific or condition-specific profile</a>
+      </li>
+      <li>
+        <a href="usecase-enrollment.html">Enroll patient in home monitoring</a>
+      </li>
+      <li>
+        <a href="usecase-view-all-data.html">Get data for home monitoring</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="artifacts.html">Artifacts</a>
+  </li>
+</ul>
+            </div>    <!-- /.nav-collapse -->
+          </div>    <!-- /.container -->
+        </nav>    <!-- /.navbar -->
+        <!-- /HEADER CONTENT -->
+      </div>    <!-- /container -->
+    </div>    <!-- /segment-navbar -->
+      <!-- status-bar -->
+
+    <div id="segment-breadcrumb" class="segment">    <!-- segment-breadcrumb -->
+      <div class="container">    <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href="toc.html"><b>Table of Contents</b></a></li><li><b>Overview</b></li>
+
+        </ul>
+      </div>    <!-- /container -->
+    </div>    <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">    <!-- segment-content -->
+      <div class="container">    <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+    <!-- ReleaseHeader --><p id="publish-box">Shared Care Planning (SCP) Implementation Guide - Local Development build (v0.1.0) built by the FHIR (HL7&reg; FHIR&reg; Standard) Build Tools. See the <a href="http://santeonnl.github.io/shared-care-planning/history.html">Directory of published versions</a></p>  <!-- EndReleaseHeader -->
+  <h2>Overview</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p>  <!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#concepts" id="markdown-toc-concepts">Concepts</a>    <ul>
+      <li><a href="#fhir-restful-interactions" id="markdown-toc-fhir-restful-interactions">FHIR Restful interactions</a></li>
+      <li><a href="#fhir-workflow" id="markdown-toc-fhir-workflow">FHIR Workflow</a></li>
+      <li><a href="#fhir-resource-types" id="markdown-toc-fhir-resource-types">FHIR Resource types</a>        <ul>
+          <li><a href="#careplan" id="markdown-toc-careplan">CarePlan</a></li>
+        </ul>
+      </li>
+      <li><a href="#careteam" id="markdown-toc-careteam">CareTeam</a></li>
+      <li><a href="#task" id="markdown-toc-task">Task</a></li>
+      <li><a href="#entities-patient-relatedperson-practitioner-practitionerrole-organization" id="markdown-toc-entities-patient-relatedperson-practitioner-practitionerrole-organization">Entities: Patient, RelatedPerson, Practitioner, PractitionerRole, Organization</a></li>
+      <li><a href="#auditevent" id="markdown-toc-auditevent">AuditEvent</a></li>
+      <li><a href="#definitional-resource-plandefinition-and-activitydefinition" id="markdown-toc-definitional-resource-plandefinition-and-activitydefinition">Definitional resource: PlanDefinition and ActivityDefinition</a></li>
+    </ul>
+  </li>
+  <li><a href="#actors" id="markdown-toc-actors">Actors</a>    <ul>
+      <li><a href="#care-plan-user" id="markdown-toc-care-plan-user">Care Plan User</a></li>
+      <li><a href="#care-plan-contributor" id="markdown-toc-care-plan-contributor">Care Plan Contributor</a></li>
+      <li><a href="#care-plan-service" id="markdown-toc-care-plan-service">Care Plan Service</a></li>
+    </ul>
+  </li>
+  <li><a href="#security-considerations" id="markdown-toc-security-considerations">Security considerations</a>    <ul>
+      <li><a href="#identification-and-authentication" id="markdown-toc-identification-and-authentication">Identification and authentication</a></li>
+      <li><a href="#authorization" id="markdown-toc-authorization">Authorization</a></li>
+    </ul>
+  </li>
+  <li><a href="#transactions" id="markdown-toc-transactions">Transactions</a>    <ul>
+      <li><a href="#task-negotiation-and-addressing-care-providers" id="markdown-toc-task-negotiation-and-addressing-care-providers">Task negotiation and addressing care providers</a>        <ul>
+          <li><a href="#trigger-events" id="markdown-toc-trigger-events">Trigger Events</a></li>
+          <li><a href="#scope" id="markdown-toc-scope">Scope</a></li>
+          <li><a href="#actor-roles" id="markdown-toc-actor-roles">Actor Roles</a></li>
+          <li><a href="#interactions" id="markdown-toc-interactions">Interactions</a></li>
+          <li><a href="#profiles" id="markdown-toc-profiles">Profiles</a></li>
+        </ul>
+      </li>
+      <li><a href="#careplan-and-careteam-management-for-autorization-and-localization" id="markdown-toc-careplan-and-careteam-management-for-autorization-and-localization">CarePlan and CareTeam management for autorization and localization</a>        <ul>
+          <li><a href="#trigger-events-1" id="markdown-toc-trigger-events-1">Trigger Events</a></li>
+          <li><a href="#scope-1" id="markdown-toc-scope-1">Scope</a></li>
+          <li><a href="#actor-roles-1" id="markdown-toc-actor-roles-1">Actor Roles</a></li>
+          <li><a href="#interactions-1" id="markdown-toc-interactions-1">Interactions</a></li>
+          <li><a href="#profiles-1" id="markdown-toc-profiles-1">Profiles</a></li>
+        </ul>
+      </li>
+      <li><a href="#localization-of-careteam-members-and-patient-information" id="markdown-toc-localization-of-careteam-members-and-patient-information">Localization of CareTeam members and Patient Information</a>        <ul>
+          <li><a href="#trigger-events-2" id="markdown-toc-trigger-events-2">Trigger Events</a></li>
+          <li><a href="#scope-2" id="markdown-toc-scope-2">Scope</a></li>
+          <li><a href="#actor-roles-2" id="markdown-toc-actor-roles-2">Actor Roles</a></li>
+          <li><a href="#interactions-2" id="markdown-toc-interactions-2">Interactions</a></li>
+          <li><a href="#profiles-2" id="markdown-toc-profiles-2">Profiles</a></li>
+        </ul>
+      </li>
+      <li><a href="#autorization-of-careteam-members-using-patient-information" id="markdown-toc-autorization-of-careteam-members-using-patient-information">Autorization of CareTeam members using Patient Information</a>        <ul>
+          <li><a href="#trigger-events-3" id="markdown-toc-trigger-events-3">Trigger Events</a></li>
+          <li><a href="#scope-3" id="markdown-toc-scope-3">Scope</a></li>
+          <li><a href="#actor-roles-3" id="markdown-toc-actor-roles-3">Actor Roles</a></li>
+          <li><a href="#interactions-3" id="markdown-toc-interactions-3">Interactions</a></li>
+          <li><a href="#profiles-3" id="markdown-toc-profiles-3">Profiles</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#deployment-considerations" id="markdown-toc-deployment-considerations">Deployment considerations</a></li>
+  <li><a href="#overview-of-the-documentation-structure" id="markdown-toc-overview-of-the-documentation-structure">Overview of the documentation structure</a></li>
+  <li><a href="#related-standards" id="markdown-toc-related-standards">Related Standards</a>    <ul>
+      <li><a href="#ihe-dcp" id="markdown-toc-ihe-dcp">IHE: DCP</a></li>
+      <li><a href="#us-bi-directional-servicerequest-bser" id="markdown-toc-us-bi-directional-servicerequest-bser">US: Bi-directional ServiceRequest (BSER)</a></li>
+      <li><a href="#nl-eoverdracht" id="markdown-toc-nl-eoverdracht">NL: eOverdracht</a></li>
+      <li><a href="#nl-koppeltaal-20" id="markdown-toc-nl-koppeltaal-20">NL: Koppeltaal 2.0</a></li>
+      <li><a href="#nl-technical-agreement-notified-pull" id="markdown-toc-nl-technical-agreement-notified-pull">NL: Technical Agreement Notified Pull</a></li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+<h1 id="introduction">Introduction</h1>
+
+<p>Shared Care Planning (SCP) provides the structures and transactions for care
+planning, collaboration between practitioners by cross-organizational ordering processes and localization and authorization of members involved in the careteam of a patient. Improved collaboration between different types of care providers (e.g. GP, homecare or hospitals) should improve efficiency in hybrid or network-care settings. It should lower the administrative burden for practitioners without having to switch to auxillary collaboration-systems.</p>
+
+<p>SCP builds upon the IHE ‘Dynamic Care Planning’ profile (IHE-DCP). It is extended by generic, FHIR workflow patterns for cross-organizational requests or orders. An authorization model will also be provided so that members in a distributed careteam will, e.g., be able to read patient-data from other organizations and/or will be able to plan new activities.</p>
+
+<h1 id="concepts">Concepts</h1>
+
+<p>This IG uses several concepts from the FHIR R4 specifications.</p>
+
+<h2 id="fhir-restful-interactions">FHIR Restful interactions</h2>
+<p>In the transactions sections, this IG will use the <a href="https://hl7.org/fhir/R4/http.html">basic concepts on RESTful interaction with a FHIR API</a>; e.g. read, search, update, create and delete iinteractions</p>
+<blockquote>
+  <p>[!IMPORTANT] 
+To avoid losing data during update, actors MUST support the directives in  <a href="http://hl7.org/fhir/R4/http.html#transactional-integrity">transactional integrity</a> and <a href="https://hl7.org/fhir/R4/http.html#concurrency">concurrency</a></p>
+</blockquote>
+
+<h2 id="fhir-workflow">FHIR Workflow</h2>
+<p>This IG will use and specify a workflow pattern. For general FHIR workflow concepts, see: https://hl7.org/fhir/R4/workflow.html The base pattern that will be used is the <a href="https://hl7.org/fhir/R4/workflow-management.html#optionh">https://hl7.org/fhir/R4/workflow-management.html#optionh</a></p>
+
+<h2 id="fhir-resource-types">FHIR Resource types</h2>
+<p>The IG is referring to many FHIR resource types. A quick summary:</p>
+
+<h3 id="careplan">CarePlan</h3>
+<p>The FHIR CarePlan resource is a framework for documenting and managing healthcare interventions and goals. It ensures that all relevant information is available to all stakeholders, promoting coordinated and effective care delivery. Key elements of a CarePlan for SCP:</p>
+<ul>
+  <li><strong>subject</strong>: The patient to whom the care plan is intended.</li>
+  <li><strong>addresses</strong>: Conditions/problems/concerns/diagnoses that this plan is addressing.</li>
+  <li><strong>activity</strong>: Details of the planned interventions, including scheduled activities, performed activities, and their outcomes.</li>
+  <li><strong>careTeam</strong>: All the individuals and organizations who are expected to be involved in the care plan’s execution.</li>
+  <li><strong>author</strong>: The person or organization that authored the care plan.</li>
+  <li><strong>supportingInfo</strong>: Additional (relevant) information to support the care plan, such as diagnostic reports, procedures, family member history, observations, etc.</li>
+  <li><strong>goal</strong>: The intended outcomes or objectives of the care plan.</li>
+</ul>
+
+<p><a name="l657">​</a>For SCP, CarePlan will be validated using <a href="TODO">this profile</a>. For more information, check the <a href="https://hl7.org/fhir/R4/careplan.html">FHIR R4 CarePlan documentation</a></p>
+
+<h2 id="careteam">CareTeam</h2>
+<p>The CareTeam resource includes all people and organizations who are participating or have participated in the care process for a patient. Key elements of a CareTeam for SCP:</p>
+<ul>
+  <li><strong>participant</strong>: The members of the care team and their roles. This includes:
+    <ul>
+      <li><strong>member</strong>: The actual person (patient, related person) or organization participating.</li>
+      <li><strong>onBehalfOf</strong>: The organization the participant is representing.</li>
+      <li><a name="l689">​</a><strong>period</strong>: The time period during which the participant is involved with the care team. This could be ongoing (active member) or ended (inactive member) 
+For SCP, CareTeam will be validated using <a href="TODO">this profile</a>. For more information, check the <a href="https://hl7.org/fhir/R4/careteam.html">FHIR R4 CareTeam documentation</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="task">Task</h2>
+<p>The Task resource describes an activity that can be performed, is being performed, or has been performed. It is used to manage and track the status of tasks, participants and definition of the Task. A Task in SCP is always related (‘basedOn’) the CarePlan. When a party is request to ‘do’ a Task, that organizations that may not be part of the CareTeam yet. Personally Identifiable Information SHOULD be left out of the Task content until the Task is accepted by the organization responsible for the Task.
+Key elements of a Task for SCP:</p>
+<ul>
+  <li><strong>basedOn</strong>: References to other requests that the task is based on. MUST contain one reference to a SCP-CarePlan.</li>
+  <li><strong>focus</strong>: A reference to the request-resource that the task is focused on. (e.g. a <a href="https://hl7.org/fhir/R4/servicerequest.html">ServiceRequest</a>, <a href="https://hl7.org/fhir/R4/medicationrequest.html">MedicationRequest</a> or <a href="https://hl7.org/fhir/R4/devicerequest.html">DeviceRequest</a>)</li>
+  <li><strong>code</strong>: The type of task to be performed (e.g. approval, fullfilment, suspend or resume)</li>
+  <li><strong>status</strong>: The current status of the task (e.g., draft, requested, received, accepted, in-progress, on-hold, completed, cancelled, entered-in-error, rejected).</li>
+  <li><strong>requester</strong>: The individual or organization who initiated the task.</li>
+  <li><strong>owner</strong>: The individual or organization responsible for the task.</li>
+  <li><strong>for</strong>: The patient for whom the task is being performed.</li>
+  <li><strong>input</strong>: The input data required for the task.</li>
+  <li><strong>output</strong>: The output data produced by the task.
+https://hl7.org/fhir/R4/task.html see the state machine: https://hl7.org/fhir/R4/workflow-communications.html#12.6.2</li>
+</ul>
+
+<h2 id="entities-patient-relatedperson-practitioner-practitionerrole-organization">Entities: Patient, RelatedPerson, Practitioner, PractitionerRole, Organization</h2>
+<p>SCP uses some base FHIR resource types for entities. These entities are referenced in the <a href="#careplan">CarePlan</a>, <a href="#careteam">CareTeam</a> or <a href="#task">Task</a>.</p>
+
+<p>For the planning or coordination of care, healthcare professionals should be able to get into contact with each other. The CareTeam-members could, for instance, plan a Multi Disciplinary Team-meeting to discuss the condition of the patient. How to organize these meetings is out of scope for SCP.
+The identifiers for Patient, RelatedPerson, Practitioner and Organization are used for authentication and authorization. The key element for these entity-resources are:</p>
+<ul>
+  <li><strong>identifier</strong>: e.g. Social Security Number for individuals, Care Professional number for PractitionerRoles, Chamber of Commerce number for organizations.</li>
+  <li><strong>name</strong>: name of the Patient, RelatedPerson, Practitioner or Organization</li>
+  <li><strong>telecom</strong>: contact details of the Patient, RelatedPerson, Practitioner or Organization
+For more information, check the FHIR R4 <a href="https://hl7.org/fhir/R4/patient.html">Patient</a>, <a href="https://hl7.org/fhir/R4/relatedperson.html">RelatedPerson</a>, <a href="https://hl7.org/fhir/R4/practitionerrole.html">PractitionerRole</a> or <a href="https://hl7.org/fhir/R4/organization.html">Organization</a> documentation</li>
+</ul>
+
+<h2 id="auditevent">AuditEvent</h2>
+<p>The FHIR AuditEvent resource is used for logging of events that record activities related to the use or manipulation of data. Members of the CareTeam in a CarePlan are authorized to access and manipulate data.  Therefore the transactions that lead to adding or changing CareTeam-members is recorded in AuditEvents. For more information, check the <a href="https://hl7.org/fhir/R4/auditevent.html">FHIR R4 AuditEvent documentation</a>.</p>
+
+<h2 id="definitional-resource-plandefinition-and-activitydefinition">Definitional resource: PlanDefinition and ActivityDefinition</h2>
+<p>The FHIR PlanDefinition and ActivityDefinition resource provides a detailed, reusable template for defining various healthcare-related activities. It ensures that standardized actions, treatments, and procedures can be clearly described and referenced across different healthcare systems, promoting consistency and quality in care delivery.
+Using the <a href="https://hl7.org/fhir/R4/activitydefinition-operation-apply.html">$apply operation</a> healthcare organizations are able instantiate a <a href="#careplan">CarePlan</a> or request (referred to in <a href="#task">Task</a>.focus) in a consistent way.
+For more information, check the FHIR R4 <a href="https://hl7.org/fhir/R4/plandefinition.html">PlanDefinition</a>, <a href="https://hl7.org/fhir/R4/activitydefinition.html">ActivityDefinition</a> documentation.</p>
+
+<h1 id="actors">Actors</h1>
+<p>There are three actors in this Implementation Guide: The Care Plan User, Care Plan Contributor and Care Plan Service.</p>
+
+<h2 id="care-plan-user">Care Plan User</h2>
+<p>The first actor is the Care Plan User (CP-User). It is an application/client rol that is acting on behalf of a real practitioner, patient or related person. This actor interacts with both the Care Plan Contributor(s) and the Care Plan Service. This actor creates and updates the care plan and tasks/orders for other (future) Care Plan Contributors. The CP-User may also get data from the other Care Plan Contributor(s); CP-User will query the Care Plan service for the CarePlan and CareTeam-data to find at which organizations (or endpoints) other data could be reside. Every SCP-transaction is initiated or trigged by a Care Plan User, so any manipulation of data can be led back to a Care Plan User or responsible person.</p>
+
+<p>TODO: FHIR capabilitystatement (<a href="https://profiles.ihe.net/ITI/mCSD/CapabilityStatement-IHE.mCSD.CareServicesSelectiveConsumer.html">example</a>) (mode=client):</p>
+<ul>
+  <li>POST/PUT CarePlan &amp; Task</li>
+  <li>GET various FHIR resource types</li>
+</ul>
+
+<h2 id="care-plan-contributor">Care Plan Contributor</h2>
+<p>The second actor is the Care Plan Contributor (CP-Contributor). The main responsibilities of a CP-Contributor is to respond to an incoming Task-requests or Task-updates and to authorize other CP-Users to query local data.</p>
+
+<p>TODO: FHIR capabilitystatement (mode=client):</p>
+<ul>
+  <li>PUT Task</li>
+  <li>GET CarePlan, CareTeam, Task, PractitionerRole, Organization to authorize CP-User to query data in the context of a CarePlan</li>
+</ul>
+
+<p>TODO: FHIR capabilitystatement (<a href="https://profiles.ihe.net/ITI/mCSD/CapabilityStatement-IHE.mCSD.CareServicesSelectiveSupplier.html">example</a>) (mode=server):</p>
+<ul>
+  <li>POST Notification (for a new/updated Task, CarePlan or CareTeam)</li>
+  <li>GET various FHIR resource types (including authorization of CP-User)</li>
+</ul>
+
+<h2 id="care-plan-service">Care Plan Service</h2>
+<p>The third actor is the Care Plan Service. This actor manages (hosts) patient specific Care Plans, Tasks and Care Teams. The Care Plan Service is also responsible for <strong>updating several elements in Care Plans and Care Teams</strong> that authorize new persons or practitioners in the Care Team.
+Optionally, this actor also manages (hosts) Plan Definitions and Activity Definitions that are used for order sets, protocols, clinical practice guidelines, etc.</p>
+
+<p>TODO: FHIR capabilitystatement (mode=client):</p>
+<ul>
+  <li>POST Notifications (for a new/updated Task, CarePlan or CareTeam)</li>
+  <li>POST AuditEvent (at local endpoint)</li>
+  <li>PUT CarePlan, CareTeam (at local endpoint)</li>
+</ul>
+
+<p>TODO: FHIR capabilitystatement (mode=server):</p>
+<ul>
+  <li>POST, PUT, GET Task, CarePlan, CareTeam and AuditEvent (including authorization of CP-User)</li>
+  <li>Optional: POST, PUT, GET, DELETE, $apply for PlanDefinition and ActivityDefinition</li>
+</ul>
+
+<p>TODO/Roadmap:</p>
+<ul>
+  <li>transfer CarePlan-responsibility to other Practitioner or Organization. Maybe use a Task for the current CarePlan-author to accept</li>
+  <li>support for CarePlan-merges. Maybe use a Task for the to-be-merged-CarePlan-author to accept. Add all Tasks (all versions and provenance?) to the new CP-service.</li>
+</ul>
+
+<h1 id="security-considerations">Security considerations</h1>
+
+<h2 id="identification-and-authentication">Identification and authentication</h2>
+<p>Data push or data pull of Personally Identifiable Information (PII) should always be initiated by a Practitioner; should be auditable who has done stuff.</p>
+
+<p>Refer to Trust-over-IP or ARF or something</p>
+
+<h2 id="authorization">Authorization</h2>
+<p>Authorization; based on conditions, task-type, careteam-member-status (active/inactive) and/or role
+Member(-status) in the CareTeam are only updated by the CPS after ‘agreement’ on a Task in the CarePlan.</p>
+
+<h1 id="transactions">Transactions</h1>
+
+<p>There are four(?) transactions in SCP.</p>
+<ol>
+  <li>Task negotiation</li>
+  <li>CarePlan and CareTeam management (for autorization and localization)</li>
+  <li>Localization of CareTeam members and Patient Information</li>
+  <li>Autorization of CareTeam members using Patient Information</li>
+</ol>
+
+<p>Zie voor structuur: https://profiles.ihe.net/ITI/mCSD/ITI-90.html</p>
+
+<p>Generic requirement for updates:
+In order to ensure data integrity, as is necessary when multiple Care Plan Contributors are attempting to update the same Care Plan, the Care Plan Contributor SHALL use the following pattern (from http://hl7.org/fhir/R4/http.html#transactional-integrity):</p>
+<ul>
+  <li>Before updating, the actor SHALL read the latest version of the instance;</li>
+  <li>The actor SHALL apply the changes (additions, updates, deletions) it wants to the instance, leaving all other information intact;</li>
+  <li>The actor SHALL write the instance back as an update interaction, and
+is able to handle a failure response, commonly due to other Contributor Updates (usually by trying again)
+TODO: https://hl7.org/fhir/http.html#concurrency</li>
+</ul>
+
+<h2 id="task-negotiation-and-addressing-care-providers">Task negotiation and addressing care providers</h2>
+
+<p>For adressing: make use of a (nation wide) database where you can find healthcareservices and or organizations that you are looking for. Tip: implement/use a Care Service Discovery that conforms to the <a href="https://profiles.ihe.net/ITI/mCSD/index.html">IHE mCSD</a> profile</p>
+
+<p>For resolving a FHIR-endpoint for a specific healthcareservice/organization, multiple service discovery methods could be used (NUTS en/of GF Adressering)</p>
+
+<blockquote>
+  <p>[!IMPORTANT] 
+This transaction will involve notification of the Task. Depending on the usecase, this might include sending/pushing PHI to other parties. The sending party must verify that the endpoint to which the data is sent, is under control of the intended recipient party.</p>
+</blockquote>
+
+<h3 id="trigger-events">Trigger Events</h3>
+<p>geen; handmatig?</p>
+<h3 id="scope">Scope</h3>
+
+<h3 id="actor-roles">Actor Roles</h3>
+
+<h3 id="interactions">Interactions</h3>
+<p>Sequence diagram</p>
+
+<h3 id="profiles">Profiles</h3>
+<p>Task profile met verplichte referentie naar CarePlan in .BasedOn en request in .focus ??? Constraints zetten op referentie naar .owner (moet opgehaald kunnen worden door CPS). 
+TODO: refer to used profiles (FHIR structure definitions generated on page ‘Artifacts’)</p>
+
+<h2 id="careplan-and-careteam-management-for-autorization-and-localization">CarePlan and CareTeam management for autorization and localization</h2>
+
+<h3 id="trigger-events-1">Trigger Events</h3>
+<p>Task met status ‘accepted’, ‘cancelled’, ‘completed’, etc.</p>
+
+<h3 id="scope-1">Scope</h3>
+
+<h3 id="actor-roles-1">Actor Roles</h3>
+
+<h3 id="interactions-1">Interactions</h3>
+<p>Sequence diagram</p>
+
+<h3 id="profiles-1">Profiles</h3>
+<p>TODO: refer to used profiles (FHIR structure definitions generated on page ‘Artifacts’)</p>
+
+<h2 id="localization-of-careteam-members-and-patient-information">Localization of CareTeam members and Patient Information</h2>
+
+<h3 id="trigger-events-2">Trigger Events</h3>
+
+<h3 id="scope-2">Scope</h3>
+
+<h3 id="actor-roles-2">Actor Roles</h3>
+
+<h3 id="interactions-2">Interactions</h3>
+
+<h3 id="profiles-2">Profiles</h3>
+<p>TODO: refer to used profiles (FHIR structure definitions generated on page ‘Artifacts’)</p>
+
+<h2 id="autorization-of-careteam-members-using-patient-information">Autorization of CareTeam members using Patient Information</h2>
+
+<h3 id="trigger-events-3">Trigger Events</h3>
+
+<h3 id="scope-3">Scope</h3>
+
+<h3 id="actor-roles-3">Actor Roles</h3>
+
+<h3 id="interactions-3">Interactions</h3>
+
+<h3 id="profiles-3">Profiles</h3>
+<p>TODO: refer to used profiles (FHIR structure definitions generated on page ‘Artifacts’)</p>
+
+<h1 id="deployment-considerations">Deployment considerations</h1>
+<p>use Orca and you’ll be fine.</p>
+
+<h1 id="overview-of-the-documentation-structure">Overview of the documentation structure</h1>
+
+<p>The image below displays the schematic overview of the topics.</p>
+
+<p>Legenda</p>
+<ul>
+  <li>Light green, existing standards that don’t need a specific description of the usage.</li>
+  <li>Dark green, existing standards that need a specific description of the usage.</li>
+  <li>Blue, the topics that need description.</li>
+</ul>
+
+<h1 id="related-standards">Related Standards</h1>
+
+<p>TODO Review text:
+In bovenstaande specificatie beschrijft een implementatie van het IHE DCP profiel. Deze specificatie breidt het IHE profile uit met de data die binnen werkprocessen (en tussen organisaties) ontstaat en de afgeleide, functionele autorisatie voor deze data. Uiteraard zijn er andere standaarden binnen de zorg die een overlap hebben met deze specificatie. Bij het opstellen van deze specificatie is getracht om zo veel mogelijk deze bestaande standaarden te hergebruiken.</p>
+
+<h2 id="ihe-dcp">IHE: DCP</h2>
+<p>This specification has copied many of the concepts used in IHE DCP. However…. describe difference</p>
+
+<h2 id="us-bi-directional-servicerequest-bser">US: Bi-directional ServiceRequest (BSER)</h2>
+
+<h2 id="nl-eoverdracht">NL: eOverdracht</h2>
+<p>[TODO: beschrijving overeenkomsten en verschillen met eOverdracht standaard]</p>
+
+<h2 id="nl-koppeltaal-20">NL: Koppeltaal 2.0</h2>
+<p>[TODO: beschrijving overeenkomsten en verschillen met Koppeltaal 2.0 standaard]</p>
+
+<h2 id="nl-technical-agreement-notified-pull">NL: Technical Agreement Notified Pull</h2>
+<p>[TODO: beschrijving overeenkomsten en verschillen met TA NP standaard]</p>
+
+
+
+</div>
+        </div>    <!-- /inner-wrapper -->
+      </div>    <!-- /row -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-content -->
+
+  <script src="assets/js/jquery.js" type="text/javascript"> </script>       <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script src="assets/js/jquery-ui.min.js" type="text/javascript"> </script>
+
+  <script src="assets/js/window-hash.js" type="text/javascript"> </script>
+  <a name="bottom"> </a>
+  <div igtool="footer" id="segment-footer" class="segment">    <!-- segment-footer -->
+    <div class="container">    <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &copy; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.santeon.nl">Santeon</a>.  Package fhir.scp#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Jul 1, 2024 03:07+0200">2024-07-01</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+          </span>
+        </p>
+      </div>    <!-- /inner-wrapper -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">    <!-- segment-post-footer -->
+    <div class="container">    <!-- container -->
+    </div>    <!-- /container -->
+  </div>    <!-- /segment-post-footer -->
+  
+    <!-- JS and analytics only. -->
+    <!-- Bootstrap core JavaScript
+  ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  <script src="assets/js/bootstrap.min.js" type="text/javascript"> </script>
+  <script src="assets/js/respond.min.js" type="text/javascript"> </script>
+  <script src="assets/js/anchor.min.js" type="text/javascript"> </script>
+  <script src="assets/js/clipboard.min.js" type="text/javascript"> </script>
+  <script src="assets/js/clipboard-btn.js" type="text/javascript"> </script>
+  <script src="assets/js/anchor-hover.js" type="text/javascript"> </script>
+  
+    <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>

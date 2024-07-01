@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Organization xmlns="http://hl7.org/fhir">
+  <id value="minimal-enrollment-Organization-Requester"/>
+  <meta>
+    <profile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization"/>
+  </meta>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: Organization minimal-enrollment-Organization-Requester</b></p><a name="minimal-enrollment-Organization-Requester"> </a><a name="hcminimal-enrollment-Organization-Requester"> </a><a name="hcminimal-enrollment-Organization-Requester-en-US"> </a><p><b>identifier</b>: Ura/URA-ziekenhuis-1</p><p><b>name</b>: St. Antonius Ziekenhuis</p></div>
+  </text>
+  <identifier>
+    <system value="http://fhir.nl/fhir/NamingSystem/ura"/>
+    <value value="URA-ziekenhuis-1"/>
+  </identifier>
+  <name value="St. Antonius Ziekenhuis"/>
+</Organization>

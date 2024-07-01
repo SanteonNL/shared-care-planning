@@ -1,0 +1,63 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://santeonnl.github.io/shared-care-planning/RelatedPerson/nl-core-CareTeam-01-RelatedPerson-01> a fhir:RelatedPerson ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "nl-core-CareTeam-01-RelatedPerson-01"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://nictiz.nl/fhir/StructureDefinition/nl-core-ContactPerson"^^xsd:anyURI ;
+       fhir:link <http://nictiz.nl/fhir/StructureDefinition/nl-core-ContactPerson>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: RelatedPerson nl-core-CareTeam-01-RelatedPerson-01</b></p><a name=\"nl-core-CareTeam-01-RelatedPerson-01\"> </a><a name=\"hcnl-core-CareTeam-01-RelatedPerson-01\"> </a><a name=\"hcnl-core-CareTeam-01-RelatedPerson-01-en-US\"> </a><p><b>patient</b>: <a href=\"Patient-nl-core-Patient-01.html\">Patient, Johanna Petronella Maria (Jo) van Putten-van der Giessen</a></p><p><b>relationship</b>: <span title=\"Codes:{urn:oid:2.16.840.1.113883.2.4.3.11.22.472 01}\">Eerste relatie/contactpersoon</span>, <span title=\"Codes:{http://terminology.hl7.org/CodeSystem/v3-RoleCode HUSB}\">Husband</span></p><p><b>name</b>: Jan de Wit(Official)</p></div>"
+  ] ; # 
+  fhir:patient [
+     fhir:link <http://santeonnl.github.io/shared-care-planning/Patient/nl-core-Patient-01> ;
+     fhir:reference [ fhir:v "Patient/nl-core-Patient-01" ] ;
+     fhir:type [ fhir:v "Patient"^^xsd:anyURI ] ;
+     fhir:display [ fhir:v "Patient, Johanna Petronella Maria (Jo) van Putten-van der Giessen" ]
+  ] ; # 
+  fhir:relationship ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:oid:2.16.840.1.113883.2.4.3.11.22.472"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "01" ] ;
+       fhir:display [ fhir:v "Eerste relatie/contactpersoon" ]
+     ] )
+  ] [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/v3-RoleCode"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "HUSB" ] ;
+       fhir:display [ fhir:v "Husband" ]
+     ] )
+  ] ) ; # 
+  fhir:name ( [
+     fhir:use [ fhir:v "official" ] ;
+     fhir:text [ fhir:v "Jan de Wit" ] ;
+     fhir:family [
+       fhir:v "de Wit" ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/humanname-own-prefix"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "de" ]
+       ] [
+         fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/humanname-own-name"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "Wit" ]
+       ] )
+     ] ;
+     fhir:given ( [
+       fhir:v "Jan" ;
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier"^^xsd:anyURI ] ;
+         fhir:value [ fhir:v "BR" ]
+       ] )
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

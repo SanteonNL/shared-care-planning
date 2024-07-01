@@ -1,0 +1,76 @@
+{
+  "resourceType" : "CareTeam",
+  "id" : "nl-core-CareTeam-01",
+  "meta" : {
+    "profile" : ["http://nictiz.nl/fhir/StructureDefinition/nl-core-CareTeam"]
+  },
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: CareTeam nl-core-CareTeam-01</b></p><a name=\"nl-core-CareTeam-01\"> </a><a name=\"hcnl-core-CareTeam-01\"> </a><a name=\"hcnl-core-CareTeam-01-en-US\"> </a><p><b>name</b>: Complexe Ouderenzorg</p><blockquote><p><b>participant</b></p><p><b>member</b>: <a href=\"RelatedPerson-nl-core-CareTeam-01-RelatedPerson-01.html\">Contact person, Jan de Wit</a></p></blockquote><blockquote><p><b>participant</b></p><p><b>member</b>: <a href=\"Patient-nl-core-CareTeam-01-Patient-01.html\">Patient, Ingrid de Jong-de Wit</a></p></blockquote><blockquote><p><b>participant</b></p><p><b>member</b>: <a href=\"PractitionerRole-nl-core-CareTeam-01-PractitionerRole-01.html\">Healthcare professional (role), W. Klaasen, Huisartsen, niet nader gespecificeerd</a></p></blockquote><blockquote><p><b>participant</b></p><p><b>member</b>: <a href=\"PractitionerRole-nl-core-CareTeam-01-PractitionerRole-02.html\">Healthcare professional (role), S. Curie, Medisch specialisten, geriatrie</a></p></blockquote><blockquote><p><b>participant</b></p><p><b>member</b>: <a href=\"PractitionerRole-nl-core-CareTeam-01-PractitionerRole-03.html\">Healthcare professional (role), R.M. van Heck, Medisch specialisten, cardiologie</a></p></blockquote><blockquote><p><b>participant</b></p><p><b>member</b>: <a href=\"PractitionerRole-nl-core-CareTeam-01-PractitionerRole-04.html\">Healthcare professional (role), A. Schele, Medisch specialisten, inwendige geneeskunde</a></p></blockquote><blockquote><p><b>participant</b></p><p><b>member</b>: <a href=\"PractitionerRole-nl-core-CareTeam-01-PractitionerRole-05.html\">Healthcare professional (role), G.F. de Haan, Apothekers</a></p></blockquote><p><b>reasonReference</b>: </p><ul><li><a href=\"Condition-nl-core-CareTeam-01-Condition-01.html\">Problem, type: Interpretatie van diagnose</a></li><li><a href=\"Condition-nl-core-CareTeam-01-Condition-02.html\">Problem, type: Interpretatie van diagnose</a></li><li><a href=\"Condition-nl-core-CareTeam-01-Condition-03.html\">Problem, type: Complicatie</a></li></ul></div>"
+  },
+  "name" : "Complexe Ouderenzorg",
+  "participant" : [{
+    "member" : {
+      "reference" : "RelatedPerson/nl-core-CareTeam-01-RelatedPerson-01",
+      "type" : "RelatedPerson",
+      "display" : "Contact person, Jan de Wit"
+    }
+  },
+  {
+    "member" : {
+      "reference" : "Patient/nl-core-CareTeam-01-Patient-01",
+      "type" : "Patient",
+      "display" : "Patient, Ingrid de Jong-de Wit"
+    }
+  },
+  {
+    "member" : {
+      "reference" : "PractitionerRole/nl-core-CareTeam-01-PractitionerRole-01",
+      "type" : "PractitionerRole",
+      "display" : "Healthcare professional (role), W. Klaasen, Huisartsen, niet nader gespecificeerd"
+    }
+  },
+  {
+    "member" : {
+      "reference" : "PractitionerRole/nl-core-CareTeam-01-PractitionerRole-02",
+      "type" : "PractitionerRole",
+      "display" : "Healthcare professional (role), S. Curie, Medisch specialisten, geriatrie"
+    }
+  },
+  {
+    "member" : {
+      "reference" : "PractitionerRole/nl-core-CareTeam-01-PractitionerRole-03",
+      "type" : "PractitionerRole",
+      "display" : "Healthcare professional (role), R.M. van Heck, Medisch specialisten, cardiologie"
+    }
+  },
+  {
+    "member" : {
+      "reference" : "PractitionerRole/nl-core-CareTeam-01-PractitionerRole-04",
+      "type" : "PractitionerRole",
+      "display" : "Healthcare professional (role), A. Schele, Medisch specialisten, inwendige geneeskunde"
+    }
+  },
+  {
+    "member" : {
+      "reference" : "PractitionerRole/nl-core-CareTeam-01-PractitionerRole-05",
+      "type" : "PractitionerRole",
+      "display" : "Healthcare professional (role), G.F. de Haan, Apothekers"
+    }
+  }],
+  "reasonReference" : [{
+    "reference" : "Condition/nl-core-CareTeam-01-Condition-01",
+    "type" : "Condition",
+    "display" : "Problem, type: Interpretatie van diagnose"
+  },
+  {
+    "reference" : "Condition/nl-core-CareTeam-01-Condition-02",
+    "type" : "Condition",
+    "display" : "Problem, type: Interpretatie van diagnose"
+  },
+  {
+    "reference" : "Condition/nl-core-CareTeam-01-Condition-03",
+    "type" : "Condition",
+    "display" : "Problem, type: Complicatie"
+  }]
+}

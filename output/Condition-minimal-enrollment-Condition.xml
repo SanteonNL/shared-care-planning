@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Condition xmlns="http://hl7.org/fhir">
+  <id value="minimal-enrollment-Condition"/>
+  <meta>
+    <profile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem"/>
+  </meta>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: Condition minimal-enrollment-Condition</b></p><a name="minimal-enrollment-Condition"> </a><a name="hcminimal-enrollment-Condition"> </a><a name="hcminimal-enrollment-Condition-en-US"> </a><p><b>category</b>: <span title="Codes:{http://snomed.info/sct 282291009}">Interpretatie van diagnose</span></p><p><b>code</b>: <span title="Codes:{http://snomed.info/sct 195111005}">Hartfalen</span></p><p><b>subject</b>: <a href="Patient-minimal-enrollment-Patient.html">Patient, Jean Jacques van Putten-van der Giessen</a></p><p><b>note</b>: Hier een zinnige tekst over de diagnose Hartfalen</p></div>
+  </text>
+  <category>
+    <coding>
+      <system value="http://snomed.info/sct"/>
+      <code value="282291009"/>
+      <display value="Interpretatie van diagnose"/>
+    </coding>
+  </category>
+  <code>
+    <coding>
+      <system value="http://snomed.info/sct"/>
+      <code value="195111005"/>
+      <display value="Hartfalen"/>
+    </coding>
+  </code>
+  <subject>
+    <reference value="Patient/minimal-enrollment-Patient"/>
+    <type value="Patient"/>
+    <display value="Patient, Jean Jacques van Putten-van der Giessen"/>
+  </subject>
+  <note>
+    <text value="Hier een zinnige tekst over de diagnose Hartfalen"/>
+  </note>
+</Condition>

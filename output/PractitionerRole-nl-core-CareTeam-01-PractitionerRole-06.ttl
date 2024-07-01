@@ -1,0 +1,29 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<http://santeonnl.github.io/shared-care-planning/PractitionerRole/nl-core-CareTeam-01-PractitionerRole-06> a fhir:PractitionerRole ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "nl-core-CareTeam-01-PractitionerRole-06"] ; # 
+  fhir:meta [
+     fhir:profile ( [
+       fhir:v "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole"^^xsd:anyURI ;
+       fhir:link <http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole>
+     ] )
+  ] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "generated" ] ;
+     fhir:div "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: PractitionerRole nl-core-CareTeam-01-PractitionerRole-06</b></p><a name=\"nl-core-CareTeam-01-PractitionerRole-06\"> </a><a name=\"hcnl-core-CareTeam-01-PractitionerRole-06\"> </a><a name=\"hcnl-core-CareTeam-01-PractitionerRole-06-en-US\"> </a><p><b>practitioner</b>: <a href=\"Practitioner-nl-core-CareTeam-01-Practitioner-06.html\">Healthcare professional (person), K. van der Linden</a></p></div>"
+  ] ; # 
+  fhir:practitioner [
+     fhir:link <http://santeonnl.github.io/shared-care-planning/Practitioner/nl-core-CareTeam-01-Practitioner-06> ;
+     fhir:reference [ fhir:v "Practitioner/nl-core-CareTeam-01-Practitioner-06" ] ;
+     fhir:type [ fhir:v "Practitioner"^^xsd:anyURI ] ;
+     fhir:display [ fhir:v "Healthcare professional (person), K. van der Linden" ]
+  ] . # 
+
+# -------------------------------------------------------------------------------------
+

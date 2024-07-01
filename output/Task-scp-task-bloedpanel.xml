@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Task xmlns="http://hl7.org/fhir">
+  <id value="scp-task-bloedpanel"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: Task scp-task-bloedpanel</b></p><a name="scp-task-bloedpanel"> </a><a name="hcscp-task-bloedpanel"> </a><a name="hcscp-task-bloedpanel-en-US"> </a><p><b>status</b>: Requested</p><p><b>intent</b>: order</p><p><b>code</b>: <span title="Codes:{http://loinc.org 58410-2}">Compleet bloedbeeld panel in bloed d.m.v. geautomatiseerde telling</span></p><p><b>focus</b>: <a href="ServiceRequest-scp-req-bloedpanel.html">ServiceRequest Compleet bloedbeeld panel in bloed d.m.v. geautomatiseerde telling</a></p></div>
+  </text>
+  <status value="requested"/>
+  <intent value="order"/>
+  <code>
+    <coding>
+      <system value="http://loinc.org"/>
+      <code value="58410-2"/>
+      <display value="Compleet bloedbeeld panel in bloed d.m.v. geautomatiseerde telling"/>
+    </coding>
+  </code>
+  <focus>
+    <reference value="ServiceRequest/scp-req-bloedpanel"/>
+  </focus>
+</Task>
