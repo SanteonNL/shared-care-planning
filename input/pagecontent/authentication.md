@@ -17,11 +17,11 @@ The structure of the credentials that act as sources of trust are:
   * One or more relations, that contain the URA number of the institution abd the Role of the professional.
 * The *URA credential* of the organization.
 
-![Trust structure](../images/Trust structure.jpg "Trust structure")
+![Trust structure](../images/Trust_structure.jpg "Trust structure")
 
 Alternatively, the role can be assigned by the organization itself. Thereby the organization becomes s trusted source itself. As the organization holds a URA credential the verifier is albe to verify the authenticity of both the professional (UZI) and organization (URA), and the assigned role issued by the organization.
 
-![Trust structure](../images/Trust structure 2.jpg "Trust structure")
+![Trust structure](../images/Trust_structure_2.jpg "Trust structure")
 
 ## Practical implementation
 As the sources of trust are not available yet, we need to work with whatever is around right now. The tentative credential structure will be:
@@ -30,4 +30,4 @@ As the sources of trust are not available yet, we need to work with whatever is 
 * The membership credentials is assigned to an organization by an issuer with the role "domain controller". 
 * The Role credential is issued by the organization to the owner of the EmployeeCredential.
 
-![Trust structure](../images/Trust structure now.jpg "Trust structure now")
+![Trust structure](../images/Trust_structure_now.jpg "Trust structure now")
