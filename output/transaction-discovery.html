@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Transactions - Localization of CareTeam members and Patient Information - Shared Care Planning (SCP) Implementation Guide v0.1.0</title>
+    <title>Transactions - Getting data from CareTeam members - Shared Care Planning (SCP) Implementation Guide v0.1.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -88,10 +88,10 @@
     </a>
     <ul class="dropdown-menu">
       <li>
-        <a href="authorization.html">Authorization</a>
+        <a href="authentication.html">Authentication</a>
       </li>
       <li>
-        <a href="authentication.html">Authentication</a>
+        <a href="authorization.html">Authorization</a>
       </li>
     </ul>
   </li>
@@ -101,16 +101,13 @@
     </a>
     <ul class="dropdown-menu">
       <li>
-        <a href="transaction-task-negotiation.html">Task negotiation and addressing care providers</a>
+        <a href="transaction-task-negotiation.html">Creating and responding to a Task</a>
       </li>
       <li>
-        <a href="transaction-careplan-careteam-mngt.html">CarePlan and CareTeam management</a>
+        <a href="transaction-careplan-careteam-mngt.html">Updating CarePlan and CareTeam</a>
       </li>
       <li>
-        <a href="transaction-discovery.html">Localization of CareTeam members and Patient Information</a>
-      </li>
-      <li>
-        <a href="transaction-autorization.html">Autorization of CareTeam members using Patient Information</a>
+        <a href="transaction-discovery.html">Getting data from CareTeam members</a>
       </li>
     </ul>
   </li>
@@ -120,13 +117,13 @@
     </a>
     <ul class="dropdown-menu">
       <li>
-        <a href="usecase-specification.html">How to use nation-specific or condition-specific profile</a>
-      </li>
-      <li>
         <a href="usecase-enrollment.html">Enroll patient in home monitoring</a>
       </li>
       <li>
         <a href="usecase-view-all-data.html">Get data for home monitoring</a>
+      </li>
+      <li>
+        <a href="usecase-specification.html">How to use nation-specific or condition-specific profile</a>
       </li>
     </ul>
   </li>
@@ -145,7 +142,7 @@
     <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
       <div class="container">  <!-- container -->
         <ul class="breadcrumb">
-          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Transactions - Localization of CareTeam members and Patient Information</b></li>
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Transactions - Getting data from CareTeam members</b></li>
 
         </ul>
       </div>  <!-- /container -->
@@ -166,7 +163,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </style>
 <div class="col-12">
   <!--ReleaseHeader--><p id="publish-box">Shared Care Planning (SCP) Implementation Guide - Local Development build (v0.1.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href="http://santeonnl.github.io/shared-care-planning/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
-  <h2>Transactions - Localization of CareTeam members and Patient Information</h2>
+  <h2>Transactions - Getting data from CareTeam members</h2>
   
 
 
@@ -183,94 +180,90 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <p><!-- white space is critical inside of capture --></p>
 <div class="markdown-toc">
 <ul id="markdown-toc">
-  <li><a href="#workflow" id="markdown-toc-workflow">Workflow</a>    <ul>
-      <li><a href="#1-shared-care-workflow" id="markdown-toc-1-shared-care-workflow">1. Shared Care Workflow</a>        <ul>
-          <li><a href="#functional-description" id="markdown-toc-functional-description">Functional description</a></li>
-          <li><a href="#pattern" id="markdown-toc-pattern">Pattern</a></li>
-          <li><a href="#actors" id="markdown-toc-actors">Actors</a></li>
-        </ul>
-      </li>
-      <li><a href="#2-shared-care-data-requests" id="markdown-toc-2-shared-care-data-requests">2. Shared Care Data Requests</a>        <ul>
-          <li><a href="#functional-description-1" id="markdown-toc-functional-description-1">Functional description</a></li>
-          <li><a href="#pattern-1" id="markdown-toc-pattern-1">Pattern</a></li>
-          <li><a href="#actors-1" id="markdown-toc-actors-1">Actors</a></li>
-        </ul>
-      </li>
-    </ul>
-  </li>
+  <li><a href="#trigger-events" id="markdown-toc-trigger-events">Trigger Events</a></li>
+  <li><a href="#scope" id="markdown-toc-scope">Scope</a></li>
+  <li><a href="#actor-roles" id="markdown-toc-actor-roles">Actor Roles</a></li>
+  <li><a href="#interactions" id="markdown-toc-interactions">Interactions</a></li>
+  <li><a href="#profiles" id="markdown-toc-profiles">Profiles</a></li>
 </ul>
 
 </div>
-<h1 id="workflow">Workflow</h1>
-<p>This IG supports the following processes:</p>
-<ol>
-  <li>Shared Care Workflow: an organization requests an activity from another organization.</li>
-  <li>Shared Care Data Requests: an organization requests ehr data from another organization</li>
-</ol>
+<h3 id="trigger-events">Trigger Events</h3>
 
-<h2 id="1-shared-care-workflow">1. Shared Care Workflow</h2>
-<h3 id="functional-description">Functional description</h3>
-<p>Shared Care Workflow concerns the structures and transactions for care planning and collaboration between practitioners by cross-organizational ordering processes.</p>
+<h3 id="scope">Scope</h3>
 
-<h3 id="pattern">Pattern</h3>
-<p>This IG specify a workflow pattern for the Shared Care Workflow. For general FHIR workflow concepts, see: https://hl7.org/fhir/R4/workflow.html. The base pattern that will be used is <a href="https://hl7.org/fhir/R4/workflow-management.html#optionh">FHIR Workflow Pattern H</a>.</p>
+<h3 id="actor-roles">Actor Roles</h3>
 
-<h3 id="actors">Actors</h3>
-<p>There are a couple of actors in the Shared Care Workflow:</p>
-<ul>
-  <li>Care Plan Contributor</li>
-  <li>Care Plan Service</li>
-  <li>Care Plan Definition Service</li>
-</ul>
+<h3 id="interactions">Interactions</h3>
 
-<h4 id="care-plan-contributor">Care Plan Contributor</h4>
-<p>The first actor is the Care Plan Contributor. This actor interacts with both the Care Plan Service and the Care Plan Definition Service. This actor creates and updates the care plan and tasks/orders for other Care Plan Contributors.</p>
+<h3 id="profiles">Profiles</h3>
+<p>TODO: refer to used profiles (FHIR structure definitions generated on page ‘Artifacts’)</p>
 
-<p>This actor aligns with actors Placer and Filler in <a href="https://hl7.org/fhir/R4/workflow-management.html#optionh">FHIR Workflow Pattern H</a>.</p>
+<!-- # Workflow
+This IG supports the following processes:
+1. Shared Care Workflow: an organization requests an activity from another organization. 
+2. Shared Care Data Requests: an organization requests ehr data from another organization
 
-<h4 id="care-plan-service">Care Plan Service</h4>
-<p>The second actor is the Care Plan Service. This actor manages patient specific Care Plans, Tasks and Care Teams. The Care Plan Service is also responsible for updating several elements in Care Plans and Care Teams that authorize new practitioners in the Care Teams.</p>
+## 1. Shared Care Workflow
+### Functional description
+Shared Care Workflow concerns the structures and transactions for care planning and collaboration between practitioners by cross-organizational ordering processes.
 
-<p>This actor aligns with actor Broker in <a href="https://hl7.org/fhir/R4/workflow-management.html#optionh">FHIR Workflow Pattern H</a>.</p>
+### Pattern
+This IG specify a workflow pattern for the Shared Care Workflow. For general FHIR workflow concepts, see: https://hl7.org/fhir/R4/workflow.html. The base pattern that will be used is [FHIR Workflow Pattern H](https://hl7.org/fhir/R4/workflow-management.html#optionh). 
 
-<h4 id="care-plan-definition-service">Care Plan Definition Service</h4>
-<p>The third actor is the Care Plan Definition Service. This actor manages Plan Definitions and Activity Definitions that are used for order sets, protocols, clinical practice guidelines, etc.</p>
+### Actors
+There are a couple of actors in the Shared Care Workflow:
+- Care Plan Contributor
+- Care Plan Service
+- Care Plan Definition Service
 
-<h2 id="2-shared-care-data-requests">2. Shared Care Data Requests</h2>
-<h3 id="functional-description-1">Functional description</h3>
-<p>Shared Care Data Requests concern the structures and transactions for data requests to and from members involved in the careteam of a patient. The artifacts created in the Shared Care Workflow are used for localization and authorization.</p>
+#### Care Plan Contributor
+The first actor is the Care Plan Contributor. This actor interacts with both the Care Plan Service and the Care Plan Definition Service. This actor creates and updates the care plan and tasks/orders for other Care Plan Contributors. 
 
-<h3 id="pattern-1">Pattern</h3>
-<p>to do
-unsolicited pull?</p>
+This actor aligns with actors Placer and Filler in [FHIR Workflow Pattern H](https://hl7.org/fhir/R4/workflow-management.html#optionh).
 
-<h3 id="actors-1">Actors</h3>
-<p>There are a couple of actors in Shared Care Data Requests:</p>
-<ul>
-  <li>Data User</li>
-  <li>Data Holder</li>
-  <li>Care Plan Service</li>
-</ul>
+#### Care Plan Service
+The second actor is the Care Plan Service. This actor manages patient specific Care Plans, Tasks and Care Teams. The Care Plan Service is also responsible for updating several elements in Care Plans and Care Teams that authorize new practitioners in the Care Teams.
 
-<h4 id="data-user">Data User</h4>
-<p>This is an actor that has a request concerning data held by another party, the data holder.</p>
+This actor aligns with actor Broker in [FHIR Workflow Pattern H](https://hl7.org/fhir/R4/workflow-management.html#optionh).
 
-<h4 id="data-holder">Data Holder</h4>
-<p>This is an actor that hosts the data that is requested by the data user.</p>
+#### Care Plan Definition Service
+The third actor is the Care Plan Definition Service. This actor manages Plan Definitions and Activity Definitions that are used for order sets, protocols, clinical practice guidelines, etc.
 
-<h4 id="care-plan-service-1">Care Plan Service</h4>
-<p>This actor hosts Care Plans and Care Teams that act</p>
-<ul>
-  <li>as index in the localization process performed by the Data User;</li>
-  <li>as parameters in the authorization process performed by the Data Holder.</li>
-</ul>
+## 2. Shared Care Data Requests
+### Functional description
+Shared Care Data Requests concern the structures and transactions for data requests to and from members involved in the careteam of a patient. The artifacts created in the Shared Care Workflow are used for localization and authorization.
 
-<h4 id="access-policy-service">Access Policy Service</h4>
-<p>This actor hosts generic authorization policies that can be used as paramaters in the authorization process. E.g.:</p>
-<ul>
-  <li>Condition - resource matrices</li>
-  <li>ParticipantRole - Resource matrices</li>
-</ul>
+### Pattern
+to do
+unsolicited pull?
+
+### Actors
+There are a couple of actors in Shared Care Data Requests:
+- Data User
+- Data Holder
+- Care Plan Service
+
+#### Data User
+This is an actor that has a request concerning data held by another party, the data holder.
+
+#### Data Holder
+This is an actor that hosts the data that is requested by the data user.
+
+#### Care Plan Service
+This actor hosts Care Plans and Care Teams that act
+- as index in the localization process performed by the Data User;
+- as parameters in the authorization process performed by the Data Holder.
+
+#### Access Policy Service
+This actor hosts generic authorization policies that can be used as paramaters in the authorization process. E.g.:
+- Condition - resource matrices
+- ParticipantRole - Resource matrices
+
+
+
+
+ -->
 
 
 
@@ -291,7 +284,7 @@ unsolicited pull?</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.santeon.nl">Santeon</a>.  Package fhir.scp#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Jul 1, 2024 03:07+0200">2024-07-01</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.santeon.nl">Santeon</a>.  Package fhir.scp#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Jul 1, 2024 05:14+0200">2024-07-01</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

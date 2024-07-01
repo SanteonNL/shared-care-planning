@@ -10,7 +10,7 @@
   <name value="sharedcareplanning"/>
   <title value="Shared Care Planning (SCP) Implementation Guide"/>
   <status value="draft"/>
-  <date value="2024-07-01T03:07:22+02:00"/>
+  <date value="2024-07-01T05:14:46+02:00"/>
   <publisher value="Santeon"/>
   <contact>
     <name value="Santeon"/>
@@ -894,7 +894,7 @@
           <valueUrl value="transaction-task-negotiation.html"/>
         </extension>
         <nameUrl value="transaction-task-negotiation.html"/>
-        <title value="Transactions - Task negotiation and addressing care providers"/>
+        <title value="Transactions - Creating and responding to a Task"/>
         <generation value="markdown"/>
       </page>
       <page>
@@ -902,7 +902,7 @@
           <valueUrl value="transaction-careplan-careteam-mngt.html"/>
         </extension>
         <nameUrl value="transaction-careplan-careteam-mngt.html"/>
-        <title value="Transactions - CarePlan and CareTeam management"/>
+        <title value="Transactions - Updating CarePlan and CareTeam"/>
         <generation value="markdown"/>
       </page>
       <page>
@@ -910,23 +910,7 @@
           <valueUrl value="transaction-discovery.html"/>
         </extension>
         <nameUrl value="transaction-discovery.html"/>
-        <title value="Transactions - Localization of CareTeam members and Patient Information"/>
-        <generation value="markdown"/>
-      </page>
-      <page>
-        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
-          <valueUrl value="transaction-autorization.html"/>
-        </extension>
-        <nameUrl value="transaction-autorization.html"/>
-        <title value="Transactions - Autorization of CareTeam members using Patient Information"/>
-        <generation value="markdown"/>
-      </page>
-      <page>
-        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
-          <valueUrl value="usecase-specification.html"/>
-        </extension>
-        <nameUrl value="usecase-specification.html"/>
-        <title value="Use cases - How to use nation-specific or condition-specific profile"/>
+        <title value="Transactions - Getting data from CareTeam members"/>
         <generation value="markdown"/>
       </page>
       <page>
@@ -943,6 +927,14 @@
         </extension>
         <nameUrl value="usecase-view-all-data.html"/>
         <title value="Use cases - Get data for home monitoring"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="usecase-specification.html"/>
+        </extension>
+        <nameUrl value="usecase-specification.html"/>
+        <title value="Use cases - How to use nation-specific or condition-specific profile"/>
         <generation value="markdown"/>
       </page>
     </page>

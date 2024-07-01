@@ -77,23 +77,15 @@ pages:
     generation: markdown
 
   transaction-task-negotiation.md:
-    title: Transactions - Task negotiation and addressing care providers
-    generation: markdown
+    title: Transactions - Creating and responding to a Task
+    generation: markdown 
 
   transaction-careplan-careteam-mngt.md:
-    title: Transactions - CarePlan and CareTeam management
+    title: Transactions - Updating CarePlan and CareTeam
     generation: markdown
 
   transaction-discovery.md:
-    title: Transactions - Localization of CareTeam members and Patient Information
-    generation: markdown
-
-  transaction-autorization.md:
-    title: Transactions - Autorization of CareTeam members using Patient Information
-    generation: markdown
-
-  usecase-specification.md:
-    title: Use cases - How to use nation-specific or condition-specific profile
+    title: Transactions - Getting data from CareTeam members
     generation: markdown
 
   usecase-enrollment.md:
@@ -102,6 +94,10 @@ pages:
 
   usecase-view-all-data.md:
     title: Use cases - Get data for home monitoring
+    generation: markdown
+
+  usecase-specification.md:
+    title: Use cases - How to use nation-specific or condition-specific profile
     generation: markdown
 
 #
@@ -131,17 +127,16 @@ menu:
   Home: index.html
   Overview: overview.html
   Security:
-    Authorization: authorization.html
     Authentication: authentication.html
+    Authorization: authorization.html
   Transactions: 
-    Task negotiation and addressing care providers: transaction-task-negotiation.html
-    CarePlan and CareTeam management: transaction-careplan-careteam-mngt.html
-    Localization of CareTeam members and Patient Information: transaction-discovery.html
-    Autorization of CareTeam members using Patient Information: transaction-autorization.html
+    Creating and responding to a Task: transaction-task-negotiation.html
+    Updating CarePlan and CareTeam: transaction-careplan-careteam-mngt.html
+    Getting data from CareTeam members: transaction-discovery.html
   Use cases: 
-    How to use nation-specific or condition-specific profile: usecase-specification.html
     Enroll patient in home monitoring: usecase-enrollment.html
     Get data for home monitoring: usecase-view-all-data.html
+    How to use nation-specific or condition-specific profile: usecase-specification.html
 
   #Contents: toc.html
   Artifacts: artifacts.html

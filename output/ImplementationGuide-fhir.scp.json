@@ -10,7 +10,7 @@
   "name" : "sharedcareplanning",
   "title" : "Shared Care Planning (SCP) Implementation Guide",
   "status" : "draft",
-  "date" : "2024-07-01T03:07:22+02:00",
+  "date" : "2024-07-01T05:14:46+02:00",
   "publisher" : "Santeon",
   "contact" : [{
     "name" : "Santeon",
@@ -1096,7 +1096,7 @@
           "valueUrl" : "transaction-task-negotiation.html"
         }],
         "nameUrl" : "transaction-task-negotiation.html",
-        "title" : "Transactions - Task negotiation and addressing care providers",
+        "title" : "Transactions - Creating and responding to a Task",
         "generation" : "markdown"
       },
       {
@@ -1105,7 +1105,7 @@
           "valueUrl" : "transaction-careplan-careteam-mngt.html"
         }],
         "nameUrl" : "transaction-careplan-careteam-mngt.html",
-        "title" : "Transactions - CarePlan and CareTeam management",
+        "title" : "Transactions - Updating CarePlan and CareTeam",
         "generation" : "markdown"
       },
       {
@@ -1114,25 +1114,7 @@
           "valueUrl" : "transaction-discovery.html"
         }],
         "nameUrl" : "transaction-discovery.html",
-        "title" : "Transactions - Localization of CareTeam members and Patient Information",
-        "generation" : "markdown"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-          "valueUrl" : "transaction-autorization.html"
-        }],
-        "nameUrl" : "transaction-autorization.html",
-        "title" : "Transactions - Autorization of CareTeam members using Patient Information",
-        "generation" : "markdown"
-      },
-      {
-        "extension" : [{
-          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-          "valueUrl" : "usecase-specification.html"
-        }],
-        "nameUrl" : "usecase-specification.html",
-        "title" : "Use cases - How to use nation-specific or condition-specific profile",
+        "title" : "Transactions - Getting data from CareTeam members",
         "generation" : "markdown"
       },
       {
@@ -1151,6 +1133,15 @@
         }],
         "nameUrl" : "usecase-view-all-data.html",
         "title" : "Use cases - Get data for home monitoring",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "usecase-specification.html"
+        }],
+        "nameUrl" : "usecase-specification.html",
+        "title" : "Use cases - How to use nation-specific or condition-specific profile",
         "generation" : "markdown"
       }]
     },

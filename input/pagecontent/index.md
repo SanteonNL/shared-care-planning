@@ -27,15 +27,16 @@ Some of these items are explained in more detail:
   - [Authorization](authorization.html)
 
 - Transactions
-    - [Task negotiation and addressing care providers](./transaction-task-negotiation.html)
-    - [CarePlan and CareTeam management for autorization and localization](./transaction-careplan-careteam-mngt.html)
-    - [Localization of CareTeam members and Patient Information (servicediscovery/datadiscovery?)](./transaction-discovery.html)
-    - [Autorization of CareTeam members using Patient Information](./transaction-autorization.html)
+    - [Creating and responding to a Task](./transaction-task-negotiation.html)
+    - [Updating CarePlan and CareTeam](./transaction-careplan-careteam-mngt.html)
+    - [Getting data from CareTeam members](./transaction-discovery.html)
+
 
 - Use Cases/Examples
-    - [How to use nation-specific or condition-specific profile](./usecase-specification.html)
+
     - [Enroll patient in home monitoring](./usecase-enrollment.html)
     - [Get data for home monitoring](./usecase-view-all-data.html)
+    - [How to use nation-specific or condition-specific profile](./usecase-specification.html)
 
 - [Artifacts](./artifacts.html): a comprehensive list of all artifacts that are used in SCP 
 

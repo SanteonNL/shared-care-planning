@@ -88,10 +88,10 @@
     </a>
     <ul class="dropdown-menu">
       <li>
-        <a href="authorization.html">Authorization</a>
+        <a href="authentication.html">Authentication</a>
       </li>
       <li>
-        <a href="authentication.html">Authentication</a>
+        <a href="authorization.html">Authorization</a>
       </li>
     </ul>
   </li>
@@ -101,16 +101,13 @@
     </a>
     <ul class="dropdown-menu">
       <li>
-        <a href="transaction-task-negotiation.html">Task negotiation and addressing care providers</a>
+        <a href="transaction-task-negotiation.html">Creating and responding to a Task</a>
       </li>
       <li>
-        <a href="transaction-careplan-careteam-mngt.html">CarePlan and CareTeam management</a>
+        <a href="transaction-careplan-careteam-mngt.html">Updating CarePlan and CareTeam</a>
       </li>
       <li>
-        <a href="transaction-discovery.html">Localization of CareTeam members and Patient Information</a>
-      </li>
-      <li>
-        <a href="transaction-autorization.html">Autorization of CareTeam members using Patient Information</a>
+        <a href="transaction-discovery.html">Getting data from CareTeam members</a>
       </li>
     </ul>
   </li>
@@ -120,13 +117,13 @@
     </a>
     <ul class="dropdown-menu">
       <li>
-        <a href="usecase-specification.html">How to use nation-specific or condition-specific profile</a>
-      </li>
-      <li>
         <a href="usecase-enrollment.html">Enroll patient in home monitoring</a>
       </li>
       <li>
         <a href="usecase-view-all-data.html">Get data for home monitoring</a>
+      </li>
+      <li>
+        <a href="usecase-specification.html">How to use nation-specific or condition-specific profile</a>
       </li>
     </ul>
   </li>
@@ -183,28 +180,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <p><!-- white space is critical inside of capture --></p>
 <div class="markdown-toc">
 <ul id="markdown-toc">
-  <li><a href="#authorization" id="markdown-toc-authorization">Authorization</a>    <ul>
-      <li><a href="#care-plan-service-policy" id="markdown-toc-care-plan-service-policy">Care Plan Service Policy</a></li>
-      <li><a href="#audiences" id="markdown-toc-audiences">Audiences</a>        <ul>
-          <li><a href="#access-token-requirements" id="markdown-toc-access-token-requirements">Access token requirements</a></li>
-          <li><a href="#resource-access" id="markdown-toc-resource-access">Resource access</a></li>
-        </ul>
-      </li>
-      <li><a href="#care-plan-contributor-policy" id="markdown-toc-care-plan-contributor-policy">Care Plan Contributor Policy</a>        <ul>
-          <li><a href="#access-to-resources-of-which-the-care-plan-contributor-is-data-holder" id="markdown-toc-access-to-resources-of-which-the-care-plan-contributor-is-data-holder">Access to resources of which the Care Plan Contributor is Data Holder</a></li>
-          <li><a href="#access-to-notification-service-endpoints-of-the-care-plan-contributor" id="markdown-toc-access-to-notification-service-endpoints-of-the-care-plan-contributor">Access to notification service endpoints of the Care Plan Contributor</a></li>
-          <li><a href="#access-to-use-case-specific-care-data" id="markdown-toc-access-to-use-case-specific-care-data">Access to use case specific care data</a></li>
-          <li><a href="#an-example-of-use-case-specific-access-rules" id="markdown-toc-an-example-of-use-case-specific-access-rules">An example of use case specific access rules.</a></li>
-        </ul>
-      </li>
-      <li><a href="#notes--questions" id="markdown-toc-notes--questions">Notes / Questions</a></li>
-    </ul>
-  </li>
+  <li><a href="#care-plan-service-policy" id="markdown-toc-care-plan-service-policy">Care Plan Service Policy</a></li>
+  <li><a href="#audiences" id="markdown-toc-audiences">Audiences</a></li>
+  <li><a href="#care-plan-contributor-policy" id="markdown-toc-care-plan-contributor-policy">Care Plan Contributor Policy</a></li>
+  <li><a href="#notes--questions" id="markdown-toc-notes--questions">Notes / Questions</a></li>
 </ul>
 
 </div>
-<h1 id="authorization">Authorization</h1>
-
 <p>Shared Care Planning involves authorizations  to resources that are part of a) the Shared Care Planning data model, and b) data that is use case specific. Authorizations are described in an access policy. It is the responsibility of the systems of the Care Plan Contributor and Care Plan Service to adhere to the policy when resources are being requested in the context of Shared Care Planning.</p>
 
 <p>Shared Care Planning involves two different access policies.</p>
@@ -213,11 +195,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li>The <strong>Care Plan Contributor policy</strong> controls access to resources of which the Care Plan Contributor is Data Holder and controls access to notification service endpoints the Care Plan Contributor exposes. The data controlled by the Care Plan Contributor can both be part of the Shared Care Planning data model or use case specific data.</li>
 </ol>
 
-<h2 id="care-plan-service-policy">Care Plan Service Policy</h2>
+<h3 id="care-plan-service-policy">Care Plan Service Policy</h3>
 
 <p>The Care Plan Service Policy describes access to the resources stored in the Care Plan Service.</p>
 
-<h2 id="audiences">Audiences</h2>
+<h3 id="audiences">Audiences</h3>
 <ul>
   <li>All healthcare providers in the <code class="language-plaintext highlighter-rouge">CareTeam.participant</code>.
     <ul>
@@ -229,11 +211,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
   <li>All healthcare providers that are <code class="language-plaintext highlighter-rouge">Task.requester</code> or <code class="language-plaintext highlighter-rouge">Task.owner</code></li>
 </ul>
 
-<h3 id="access-token-requirements">Access token requirements</h3>
+<h4 id="access-token-requirements">Access token requirements</h4>
 
 <p>When requesting an access token from the authorization server of the Care Plan Service, attributes of both the requesting organization and requesting person MUST be presented (see page Authentication for the exact requirements).</p>
 
-<h3 id="resource-access">Resource access</h3>
+<h4 id="resource-access">Resource access</h4>
 <p>|Resource(.element)|CRUDS|Audience/attributes|
 |——–|—–|——–|
 |CarePlan|C|All healthcare providers with atributes organization-identifier, practitioner-identifier, practitioner-role ?AND having an active service contract with the Care Plan Service?|
@@ -248,11 +230,11 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p>Operations that are not mentioned in the above table MUST not be supported.</p>
 
-<h2 id="care-plan-contributor-policy">Care Plan Contributor Policy</h2>
+<h3 id="care-plan-contributor-policy">Care Plan Contributor Policy</h3>
 
 <p>The Care Plan Contributor policy describes access to resources of which the Care Plan Contributor is <a href="https://www.european-health-data-space.com/European_Health_Data_Space_Article_2_(Proposal_3.5.2022).html">Data Holder</a> and describes access to notification service endpoints the Care Plan Contributor exposes.</p>
 
-<h3 id="access-to-resources-of-which-the-care-plan-contributor-is-data-holder">Access to resources of which the Care Plan Contributor is Data Holder</h3>
+<h4 id="access-to-resources-of-which-the-care-plan-contributor-is-data-holder">Access to resources of which the Care Plan Contributor is Data Holder</h4>
 
 <p><strong>Access token requirements</strong></p>
 
@@ -294,7 +276,7 @@ Authorization: Bearer 03c90ce0-fe7b-44fb-aff7-b09ef4e45863
 
 <p>Operations that are not mentioned in the above table MUST not be supported.</p>
 
-<h3 id="access-to-notification-service-endpoints-of-the-care-plan-contributor">Access to notification service endpoints of the Care Plan Contributor</h3>
+<h4 id="access-to-notification-service-endpoints-of-the-care-plan-contributor">Access to notification service endpoints of the Care Plan Contributor</h4>
 
 <p><strong>Access token requirements</strong></p>
 
@@ -330,7 +312,7 @@ Authorization: Bearer 03c90ce0-fe7b-44fb-aff7-b09ef4e45863
 
 <p>Operations that are not mentioned in the above table MUST not be supported.</p>
 
-<h3 id="access-to-use-case-specific-care-data">Access to use case specific care data</h3>
+<h4 id="access-to-use-case-specific-care-data">Access to use case specific care data</h4>
 <p>The Care Plan Contributor shares use case specific data with the other Care Plan Contributor(s) or Care Plan User(s) within the use case. This data is read-only by nature. Access rules are not so much defined on resource type level, instead, they are defined in resource instance level, where resources relative to the CarePlan and related entities are <em>filtered</em> within the scope of the request. The <code class="language-plaintext highlighter-rouge">X-SCP-Context</code> header provided the context of the request. The Data Holder SHOULD use the following content to apply the access rules:</p>
 <ul>
   <li>CarePlan and its related data</li>
@@ -338,7 +320,7 @@ Authorization: Bearer 03c90ce0-fe7b-44fb-aff7-b09ef4e45863
   <li>The proof of the user’s identity.</li>
 </ul>
 
-<h3 id="an-example-of-use-case-specific-access-rules">An example of use case specific access rules.</h3>
+<h4 id="an-example-of-use-case-specific-access-rules">An example of use case specific access rules.</h4>
 
 <p>The access and filtering rules COULD be articulated in a tabular format that make use of specific data related to this context, for example:</p>
 
@@ -383,7 +365,7 @@ Authorization: Bearer 03c90ce0-fe7b-44fb-aff7-b09ef4e45863
   </tbody>
 </table>
 
-<h2 id="notes--questions">Notes / Questions</h2>
+<h3 id="notes--questions">Notes / Questions</h3>
 <ul>
   <li>The careteam is supposed to have Active / Inactive members, is that managed by Period?</li>
 </ul>
@@ -407,7 +389,7 @@ Authorization: Bearer 03c90ce0-fe7b-44fb-aff7-b09ef4e45863
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.santeon.nl">Santeon</a>.  Package fhir.scp#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Jul 1, 2024 03:07+0200">2024-07-01</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.santeon.nl">Santeon</a>.  Package fhir.scp#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Jul 1, 2024 05:14+0200">2024-07-01</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

@@ -1,4 +1,29 @@
-# Workflow
+For adressing: make use of a (nation wide) database where you can find healthcareservices and or organizations that you are looking for. Tip: implement/use a Care Service Discovery that conforms to the [IHE mCSD](https://profiles.ihe.net/ITI/mCSD/index.html) profile
+
+For resolving a FHIR-endpoint for a specific healthcareservice/organization, multiple service discovery methods could be used (NUTS en/of GF Adressering)
+
+To avoid losing data during update, actors MUST support the directives in  [transactional integrity](http://hl7.org/fhir/R4/http.html#transactional-integrity) and [concurrency](https://hl7.org/fhir/R4/http.html#concurrency)
+
+
+> [!IMPORTANT] 
+> This transaction will involve notification of the Task. Depending on the usecase, this might include sending/pushing PHI to other parties. The sending party must verify that the endpoint to which the data is sent, is under control of the intended recipient party.
+
+
+### Trigger Events
+geen; handmatig?
+### Scope
+
+
+### Actor Roles
+
+### Interactions 
+Sequence diagram
+
+### Profiles
+Task profile met verplichte referentie naar CarePlan in .BasedOn en request in .focus ??? Constraints zetten op referentie naar .owner (moet opgehaald kunnen worden door CPS). 
+TODO: refer to used profiles (FHIR structure definitions generated on page 'Artifacts')
+
+<!-- # Workflow
 This IG supports the following processes:
 1. Shared Care Workflow: an organization requests an activity from another organization. 
 2. Shared Care Data Requests: an organization requests ehr data from another organization
@@ -98,4 +123,4 @@ TODO: CapabilityStatement maken voor CPS zoals https://profiles.ihe.net/ITI/mCSD
 Hoeft niet zo veel te kunnen; hosten van PlanDefinition en ActivityDefinitions
 
 
-{% include example1-request2execution.svg %}
+{% include example1-request2execution.svg %} -->

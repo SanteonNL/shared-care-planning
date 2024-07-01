@@ -3,7 +3,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
-    <title>Transactions - Task negotiation and addressing care providers - Shared Care Planning (SCP) Implementation Guide v0.1.0</title>
+    <title>Transactions - Creating and responding to a Task - Shared Care Planning (SCP) Implementation Guide v0.1.0</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="author" content="http://hl7.org/fhir"/>
@@ -88,10 +88,10 @@
     </a>
     <ul class="dropdown-menu">
       <li>
-        <a href="authorization.html">Authorization</a>
+        <a href="authentication.html">Authentication</a>
       </li>
       <li>
-        <a href="authentication.html">Authentication</a>
+        <a href="authorization.html">Authorization</a>
       </li>
     </ul>
   </li>
@@ -101,16 +101,13 @@
     </a>
     <ul class="dropdown-menu">
       <li>
-        <a href="transaction-task-negotiation.html">Task negotiation and addressing care providers</a>
+        <a href="transaction-task-negotiation.html">Creating and responding to a Task</a>
       </li>
       <li>
-        <a href="transaction-careplan-careteam-mngt.html">CarePlan and CareTeam management</a>
+        <a href="transaction-careplan-careteam-mngt.html">Updating CarePlan and CareTeam</a>
       </li>
       <li>
-        <a href="transaction-discovery.html">Localization of CareTeam members and Patient Information</a>
-      </li>
-      <li>
-        <a href="transaction-autorization.html">Autorization of CareTeam members using Patient Information</a>
+        <a href="transaction-discovery.html">Getting data from CareTeam members</a>
       </li>
     </ul>
   </li>
@@ -120,13 +117,13 @@
     </a>
     <ul class="dropdown-menu">
       <li>
-        <a href="usecase-specification.html">How to use nation-specific or condition-specific profile</a>
-      </li>
-      <li>
         <a href="usecase-enrollment.html">Enroll patient in home monitoring</a>
       </li>
       <li>
         <a href="usecase-view-all-data.html">Get data for home monitoring</a>
+      </li>
+      <li>
+        <a href="usecase-specification.html">How to use nation-specific or condition-specific profile</a>
       </li>
     </ul>
   </li>
@@ -145,7 +142,7 @@
     <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
       <div class="container">  <!-- container -->
         <ul class="breadcrumb">
-          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Transactions - Task negotiation and addressing care providers</b></li>
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>Transactions - Creating and responding to a Task</b></li>
 
         </ul>
       </div>  <!-- /container -->
@@ -166,7 +163,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 </style>
 <div class="col-12">
   <!--ReleaseHeader--><p id="publish-box">Shared Care Planning (SCP) Implementation Guide - Local Development build (v0.1.0) built by the FHIR (HL7® FHIR® Standard) Build Tools. See the <a href="http://santeonnl.github.io/shared-care-planning/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
-  <h2>Transactions - Task negotiation and addressing care providers</h2>
+  <h2>Transactions - Creating and responding to a Task</h2>
   
 
 
@@ -183,129 +180,139 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
     <p><!-- white space is critical inside of capture --></p>
 <div class="markdown-toc">
 <ul id="markdown-toc">
-  <li><a href="#workflow" id="markdown-toc-workflow">Workflow</a>    <ul>
-      <li><a href="#1-shared-care-workflow" id="markdown-toc-1-shared-care-workflow">1. Shared Care Workflow</a>        <ul>
-          <li><a href="#functional-description" id="markdown-toc-functional-description">Functional description</a></li>
-          <li><a href="#pattern" id="markdown-toc-pattern">Pattern</a></li>
-          <li><a href="#actors" id="markdown-toc-actors">Actors</a></li>
-        </ul>
-      </li>
-      <li><a href="#2-shared-care-data-requests" id="markdown-toc-2-shared-care-data-requests">2. Shared Care Data Requests</a>        <ul>
-          <li><a href="#functional-description-1" id="markdown-toc-functional-description-1">Functional description</a></li>
-          <li><a href="#pattern-1" id="markdown-toc-pattern-1">Pattern</a></li>
-          <li><a href="#actors-1" id="markdown-toc-actors-1">Actors</a></li>
-        </ul>
-      </li>
-      <li><a href="#care-plan-contributor-1" id="markdown-toc-care-plan-contributor-1">Care Plan Contributor</a></li>
-      <li><a href="#care-plan-service-2" id="markdown-toc-care-plan-service-2">Care Plan Service</a></li>
-      <li><a href="#plan-definition-service" id="markdown-toc-plan-definition-service">Plan Definition Service</a></li>
-    </ul>
-  </li>
+  <li><a href="#trigger-events" id="markdown-toc-trigger-events">Trigger Events</a></li>
+  <li><a href="#scope" id="markdown-toc-scope">Scope</a></li>
+  <li><a href="#actor-roles" id="markdown-toc-actor-roles">Actor Roles</a></li>
+  <li><a href="#interactions" id="markdown-toc-interactions">Interactions</a></li>
+  <li><a href="#profiles" id="markdown-toc-profiles">Profiles</a></li>
 </ul>
 
 </div>
-<h1 id="workflow">Workflow</h1>
-<p>This IG supports the following processes:</p>
-<ol>
-  <li>Shared Care Workflow: an organization requests an activity from another organization.</li>
-  <li>Shared Care Data Requests: an organization requests ehr data from another organization</li>
-</ol>
+<p>For adressing: make use of a (nation wide) database where you can find healthcareservices and or organizations that you are looking for. Tip: implement/use a Care Service Discovery that conforms to the <a href="https://profiles.ihe.net/ITI/mCSD/index.html">IHE mCSD</a> profile</p>
 
-<h2 id="1-shared-care-workflow">1. Shared Care Workflow</h2>
-<h3 id="functional-description">Functional description</h3>
-<p>Shared Care Workflow concerns the structures and transactions for care planning and collaboration between practitioners by cross-organizational ordering processes.</p>
+<p>For resolving a FHIR-endpoint for a specific healthcareservice/organization, multiple service discovery methods could be used (NUTS en/of GF Adressering)</p>
 
-<h3 id="pattern">Pattern</h3>
-<p>This IG specify a workflow pattern for the Shared Care Workflow. For general FHIR workflow concepts, see: https://hl7.org/fhir/R4/workflow.html. The base pattern that will be used is <a href="https://hl7.org/fhir/R4/workflow-management.html#optionh">FHIR Workflow Pattern H</a>.</p>
+<p>To avoid losing data during update, actors MUST support the directives in  <a href="http://hl7.org/fhir/R4/http.html#transactional-integrity">transactional integrity</a> and <a href="https://hl7.org/fhir/R4/http.html#concurrency">concurrency</a></p>
 
-<h3 id="actors">Actors</h3>
-<p>There are a couple of actors in the Shared Care Workflow:</p>
-<ul>
-  <li>Care Plan Contributor</li>
-  <li>Care Plan Service</li>
-  <li>Care Plan Definition Service</li>
-</ul>
+<blockquote>
+  <p>[!IMPORTANT] 
+This transaction will involve notification of the Task. Depending on the usecase, this might include sending/pushing PHI to other parties. The sending party must verify that the endpoint to which the data is sent, is under control of the intended recipient party.</p>
+</blockquote>
 
-<h4 id="care-plan-contributor">Care Plan Contributor</h4>
-<p>The first actor is the Care Plan Contributor. This actor interacts with both the Care Plan Service and the Care Plan Definition Service. This actor creates and updates the care plan and tasks/orders for other Care Plan Contributors.</p>
+<h3 id="trigger-events">Trigger Events</h3>
+<p>geen; handmatig?</p>
+<h3 id="scope">Scope</h3>
 
-<p>This actor aligns with actors Placer and Filler in <a href="https://hl7.org/fhir/R4/workflow-management.html#optionh">FHIR Workflow Pattern H</a>.</p>
+<h3 id="actor-roles">Actor Roles</h3>
 
-<h4 id="care-plan-service">Care Plan Service</h4>
-<p>The second actor is the Care Plan Service. This actor manages patient specific Care Plans, Tasks and Care Teams. The Care Plan Service is also responsible for updating several elements in Care Plans and Care Teams that authorize new practitioners in the Care Teams.</p>
+<h3 id="interactions">Interactions</h3>
+<p>Sequence diagram</p>
 
-<p>This actor aligns with actor Broker in <a href="https://hl7.org/fhir/R4/workflow-management.html#optionh">FHIR Workflow Pattern H</a>.</p>
+<h3 id="profiles">Profiles</h3>
+<p>Task profile met verplichte referentie naar CarePlan in .BasedOn en request in .focus ??? Constraints zetten op referentie naar .owner (moet opgehaald kunnen worden door CPS). 
+TODO: refer to used profiles (FHIR structure definitions generated on page ‘Artifacts’)</p>
 
-<h4 id="care-plan-definition-service">Care Plan Definition Service</h4>
-<p>The third actor is the Care Plan Definition Service. This actor manages Plan Definitions and Activity Definitions that are used for order sets, protocols, clinical practice guidelines, etc.</p>
+<!-- # Workflow
+This IG supports the following processes:
+1. Shared Care Workflow: an organization requests an activity from another organization. 
+2. Shared Care Data Requests: an organization requests ehr data from another organization
 
-<h2 id="2-shared-care-data-requests">2. Shared Care Data Requests</h2>
-<h3 id="functional-description-1">Functional description</h3>
-<p>Shared Care Data Requests concern the structures and transactions for data requests to and from members involved in the careteam of a patient. The artifacts created in the Shared Care Workflow are used for localization and authorization.</p>
+## 1. Shared Care Workflow
+### Functional description
+Shared Care Workflow concerns the structures and transactions for care planning and collaboration between practitioners by cross-organizational ordering processes.
 
-<h3 id="pattern-1">Pattern</h3>
-<p>to do
-unsolicited pull?</p>
+### Pattern
+This IG specify a workflow pattern for the Shared Care Workflow. For general FHIR workflow concepts, see: https://hl7.org/fhir/R4/workflow.html. The base pattern that will be used is [FHIR Workflow Pattern H](https://hl7.org/fhir/R4/workflow-management.html#optionh). 
 
-<h3 id="actors-1">Actors</h3>
-<p>There are a couple of actors in Shared Care Data Requests:</p>
-<ul>
-  <li>Data User</li>
-  <li>Data Holder</li>
-  <li>Care Plan Service</li>
-</ul>
+### Actors
+There are a couple of actors in the Shared Care Workflow:
+- Care Plan Contributor
+- Care Plan Service
+- Care Plan Definition Service
 
-<h4 id="data-user">Data User</h4>
-<p>This is an actor that has a request concerning data held by another party, the data holder.</p>
+#### Care Plan Contributor
+The first actor is the Care Plan Contributor. This actor interacts with both the Care Plan Service and the Care Plan Definition Service. This actor creates and updates the care plan and tasks/orders for other Care Plan Contributors. 
 
-<h4 id="data-holder">Data Holder</h4>
-<p>This is an actor that hosts the data that is requested by the data user.</p>
+This actor aligns with actors Placer and Filler in [FHIR Workflow Pattern H](https://hl7.org/fhir/R4/workflow-management.html#optionh).
 
-<h4 id="care-plan-service-1">Care Plan Service</h4>
-<p>This actor hosts Care Plans and Care Teams that act</p>
-<ul>
-  <li>as index in the localization process performed by the Data User;</li>
-  <li>as parameters in the authorization process performed by the Data Holder.</li>
-</ul>
+#### Care Plan Service
+The second actor is the Care Plan Service. This actor manages patient specific Care Plans, Tasks and Care Teams. The Care Plan Service is also responsible for updating several elements in Care Plans and Care Teams that authorize new practitioners in the Care Teams.
 
-<h4 id="access-policy-service">Access Policy Service</h4>
-<p>This actor hosts generic authorization policies that can be used as paramaters in the authorization process. E.g.:</p>
-<ul>
-  <li>Condition - resource matrices</li>
-  <li>ParticipantRole - Resource matrices</li>
-</ul>
+This actor aligns with actor Broker in [FHIR Workflow Pattern H](https://hl7.org/fhir/R4/workflow-management.html#optionh).
 
-<p>———-TO DO from here———-</p>
+#### Care Plan Definition Service
+The third actor is the Care Plan Definition Service. This actor manages Plan Definitions and Activity Definitions that are used for order sets, protocols, clinical practice guidelines, etc.
 
-<p>Each actor is described in detail below.</p>
+## 2. Shared Care Data Requests
+### Functional description
+Shared Care Data Requests concern the structures and transactions for data requests to and from members involved in the careteam of a patient. The artifacts created in the Shared Care Workflow are used for localization and authorization.
 
-<h2 id="care-plan-contributor-1">Care Plan Contributor</h2>
+### Pattern
+to do
+unsolicited pull?
 
-<p>CarePlan kunnen POSTen naar CPS
+### Actors
+There are a couple of actors in Shared Care Data Requests:
+- Data User
+- Data Holder
+- Care Plan Service
+
+#### Data User
+This is an actor that has a request concerning data held by another party, the data holder.
+
+#### Data Holder
+This is an actor that hosts the data that is requested by the data user.
+
+#### Care Plan Service
+This actor hosts Care Plans and Care Teams that act
+- as index in the localization process performed by the Data User;
+- as parameters in the authorization process performed by the Data Holder.
+
+#### Access Policy Service
+This actor hosts generic authorization policies that can be used as paramaters in the authorization process. E.g.:
+- Condition - resource matrices
+- ParticipantRole - Resource matrices
+
+
+
+
+
+
+
+----------TO DO from here----------
+
+Each actor is described in detail below. 
+
+## Care Plan Contributor
+
+CarePlan kunnen POSTen naar CPS
 Task kunnen POSTen naar CPS
 notificatie kunnen ontvangen van Task
 Optioneel: subscription nemen/notificatie ontvangen voor CarePlan/CareTeam
 Data ontsluiten uit FHIR endpoint
 Autorisatie op data-ontsluiting o.b.v. CarePlan/CareTeam (optioneel: gebruik van CPC $authorize)
-Lokaliseren&amp;ophalen van data o.b.v. CarePlan/CareTeam (optioneel: gebruik van CPC $localize)
-TODO: CapabilityStatement maken voor CPC zoals https://profiles.ihe.net/ITI/mCSD/CapabilityStatement-IHE.mCSD.CareServicesSelectiveConsumer.html</p>
+Lokaliseren&ophalen van data o.b.v. CarePlan/CareTeam (optioneel: gebruik van CPC $localize)
+TODO: CapabilityStatement maken voor CPC zoals https://profiles.ihe.net/ITI/mCSD/CapabilityStatement-IHE.mCSD.CareServicesSelectiveConsumer.html 
 
-<h2 id="care-plan-service-2">Care Plan Service</h2>
 
-<p>Alle Tasks bij de CPS posten/updaten (en placer of owner automatisch notificeren, behalve als ontvanger=verzender; als je zelf de CPS bent
-Maak b.v. AuditEvent van een Task-request, Task-acceptance, Task-cancellation, etc. Daarna proces bouwen dat bij iedere Task wijziging checkt of o.b.v. Task&amp;AuditEvents het CarePlan/CareTeam moet wijzigen
+
+## Care Plan Service
+
+ Alle Tasks bij de CPS posten/updaten (en placer of owner automatisch notificeren, behalve als ontvanger=verzender; als je zelf de CPS bent
+Maak b.v. AuditEvent van een Task-request, Task-acceptance, Task-cancellation, etc. Daarna proces bouwen dat bij iedere Task wijziging checkt of o.b.v. Task&AuditEvents het CarePlan/CareTeam moet wijzigen
 Voor CarePlan-merge ook Task aanmaken vanuit/naar CarePlan-X-eigenaar of Careplan-Y-eigenaar (ook request/acceptance vastleggen)
 Iets met hoofdbehandelaarschap doen? (met Task overdragen?)
 Operation $authorize: gesloten autorizatievraag: mag deze zorgverlener van organizatie 123 ihkv het CarePlan X data opvragen (welke data?)
-Operatie $localize: geef me endpoints (of URA’s) voor CarePlan X</p>
+Operatie $localize: geef me endpoints (of URA's) voor CarePlan X
 
-<p>TODO: CapabilityStatement maken voor CPS zoals https://profiles.ihe.net/ITI/mCSD/CapabilityStatement-IHE.mCSD.CareServicesSelectiveSupplier.html</p>
+TODO: CapabilityStatement maken voor CPS zoals https://profiles.ihe.net/ITI/mCSD/CapabilityStatement-IHE.mCSD.CareServicesSelectiveSupplier.html
 
-<h2 id="plan-definition-service">Plan Definition Service</h2>
+## Plan Definition Service
 
-<p>Hoeft niet zo veel te kunnen; hosten van PlanDefinition en ActivityDefinitions</p>
+Hoeft niet zo veel te kunnen; hosten van PlanDefinition en ActivityDefinitions
 
-<p>&lt;?xml version=”1.0” encoding=”us-ascii” standalone=”no”?&gt;<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="931px" preserveAspectRatio="none" style="width:1241px;height:931px;background:#FFFFFF;" version="1.1" viewBox="0 0 1241 931" width="1241px" zoomAndPan="magnify"><defs></defs><g><rect fill="#FFFFFF" height="110.5313" style="stroke:#181818;stroke-width:1.0;" width="10" x="259.5" y="127.5625"></rect><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="259.5" y="412.0234"></rect><rect fill="#FFFFFF" height="93.3984" style="stroke:#181818;stroke-width:1.0;" width="10" x="259.5" y="470.2891"></rect><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="259.5" y="819.0156"></rect><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="259.5" y="877.2813"></rect><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="540.5" y="441.1563"></rect><rect fill="#FFFFFF" height="173.9297" style="stroke:#181818;stroke-width:1.0;" width="10" x="691.5" y="238.0938"></rect><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="903.5" y="848.1484"></rect><rect fill="#FFFFFF" height="255.3281" style="stroke:#181818;stroke-width:1.0;" width="10" x="1016" y="563.6875"></rect><rect fill="none" height="278.4609" style="stroke:#000000;stroke-width:1.5;" width="680" x="228.5" y="199.8281"></rect><rect fill="none" height="67.3984" style="stroke:#000000;stroke-width:1.5;" width="592.5" x="487" y="578.6875"></rect><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="72" x2="72" y1="81.2969" y2="924.4141"></line><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="264.5" x2="264.5" y1="81.2969" y2="924.4141"></line><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="545" x2="545" y1="81.2969" y2="924.4141"></line><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="696.5" x2="696.5" y1="81.2969" y2="924.4141"></line><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="908.5" x2="908.5" y1="81.2969" y2="924.4141"></line><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1020.5" x2="1020.5" y1="81.2969" y2="924.4141"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="129" x="5" y="77.9951">practitioner Charlie</text><ellipse cx="72.5" cy="13.5" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"></ellipse><path d="M72.5,21.5 L72.5,48.5 M59.5,29.5 L85.5,29.5 M72.5,48.5 L59.5,63.5 M72.5,48.5 L85.5,63.5 " fill="none" style="stroke:#181818;stroke-width:0.5;"></path><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="52" x="238.5" y="50"></rect><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="38" x="245.5" y="69.9951">ehr-C</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="51" x="520" y="50"></rect><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="527" y="69.9951">ehr-A</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="152" x="620.5" y="50"></rect><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138" x="627.5" y="69.9951">autorizationserver-A</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="52" x="882.5" y="50"></rect><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="38" x="889.5" y="69.9951">ehr-B</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="153" x="944.5" y="50"></rect><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="139" x="951.5" y="69.9951">autorizationserver-B</text><rect fill="#FFFFFF" height="110.5313" style="stroke:#181818;stroke-width:1.0;" width="10" x="259.5" y="127.5625"></rect><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="259.5" y="412.0234"></rect><rect fill="#FFFFFF" height="93.3984" style="stroke:#181818;stroke-width:1.0;" width="10" x="259.5" y="470.2891"></rect><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="259.5" y="819.0156"></rect><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="259.5" y="877.2813"></rect><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="540.5" y="441.1563"></rect><rect fill="#FFFFFF" height="173.9297" style="stroke:#181818;stroke-width:1.0;" width="10" x="691.5" y="238.0938"></rect><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="903.5" y="848.1484"></rect><rect fill="#FFFFFF" height="255.3281" style="stroke:#181818;stroke-width:1.0;" width="10" x="1016" y="563.6875"></rect><polygon fill="#181818" points="247.5,123.5625,257.5,127.5625,247.5,131.5625,251.5,127.5625" style="stroke:#181818;stroke-width:1.0;"></polygon><line style="stroke:#181818;stroke-width:1.0;" x1="72.5" x2="253.5" y1="127.5625" y2="127.5625"></line><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="168" x="79.5" y="107.3638">I want to access Diabetes-</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="107" x="83.5" y="122.4966">data of patient-P</text><line style="stroke:#181818;stroke-width:1.0;" x1="269.5" x2="311.5" y1="171.8281" y2="171.8281"></line><line style="stroke:#181818;stroke-width:1.0;" x1="311.5" x2="311.5" y1="171.8281" y2="184.8281"></line><line style="stroke:#181818;stroke-width:1.0;" x1="270.5" x2="311.5" y1="184.8281" y2="184.8281"></line><polygon fill="#181818" points="280.5,180.8281,270.5,184.8281,280.5,188.8281,276.5,184.8281" style="stroke:#181818;stroke-width:1.0;"></polygon><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="127" x="276.5" y="151.6294">lookup reference/url</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="164" x="280.5" y="166.7622">of CarePlan in (local) Task</text><path d="M228.5,199.8281 L506.5,199.8281 L506.5,206.9609 L496.5,216.9609 L228.5,216.9609 L228.5,199.8281 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"></path><rect fill="none" height="278.4609" style="stroke:#000000;stroke-width:1.5;" width="680" x="228.5" y="199.8281"></rect><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="233" x="243.5" y="212.895">get careplan/careteam at ehr-A</text><polygon fill="#181818" points="679.5,234.0938,689.5,238.0938,679.5,242.0938,683.5,238.0938" style="stroke:#181818;stroke-width:1.0;"></polygon><line style="stroke:#181818;stroke-width:1.0;" x1="264.5" x2="685.5" y1="238.0938" y2="238.0938"></line><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="403" x="271.5" y="233.0278">request access token (scope CarePlan/CareTeam for patient-P)</text><line style="stroke:#181818;stroke-width:1.0;" x1="701.5" x2="743.5" y1="297.4922" y2="297.4922"></line><line style="stroke:#181818;stroke-width:1.0;" x1="743.5" x2="743.5" y1="297.4922" y2="310.4922"></line><line style="stroke:#181818;stroke-width:1.0;" x1="702.5" x2="743.5" y1="310.4922" y2="310.4922"></line><polygon fill="#181818" points="712.5,306.4922,702.5,310.4922,712.5,314.4922,708.5,310.4922" style="stroke:#181818;stroke-width:1.0;"></polygon><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="166" x="708.5" y="262.1606">check if practitioners from</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="184" x="712.5" y="277.2935">organization-C are members</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="78" x="712.5" y="292.4263">of careteam</text><line style="stroke:#181818;stroke-width:1.0;" x1="701.5" x2="743.5" y1="369.8906" y2="369.8906"></line><line style="stroke:#181818;stroke-width:1.0;" x1="743.5" x2="743.5" y1="369.8906" y2="382.8906"></line><line style="stroke:#181818;stroke-width:1.0;" x1="702.5" x2="743.5" y1="382.8906" y2="382.8906"></line><polygon fill="#181818" points="712.5,378.8906,702.5,382.8906,712.5,386.8906,708.5,382.8906" style="stroke:#181818;stroke-width:1.0;"></polygon><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="178" x="708.5" y="334.5591">check local autorisations for</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="178" x="712.5" y="349.6919">careteam, organization-role</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="111" x="712.5" y="364.8247">on patient-P data</text><polygon fill="#181818" points="280.5,408.0234,270.5,412.0234,280.5,416.0234,276.5,412.0234" style="stroke:#181818;stroke-width:1.0;"></polygon><line style="stroke:#181818;stroke-width:1.0;" x1="274.5" x2="695.5" y1="412.0234" y2="412.0234"></line><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="84" x="286.5" y="406.9575">access token</text><polygon fill="#181818" points="528.5,437.1563,538.5,441.1563,528.5,445.1563,532.5,441.1563" style="stroke:#181818;stroke-width:1.0;"></polygon><line style="stroke:#181818;stroke-width:1.0;" x1="264.5" x2="534.5" y1="441.1563" y2="441.1563"></line><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="252" x="271.5" y="436.0903">request careplan/careteam of patient-P</text><polygon fill="#181818" points="280.5,466.2891,270.5,470.2891,280.5,474.2891,276.5,470.2891" style="stroke:#181818;stroke-width:1.0;"></polygon><line style="stroke:#181818;stroke-width:1.0;" x1="274.5" x2="544.5" y1="470.2891" y2="470.2891"></line><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="199" x="286.5" y="465.2231">careplan/careteam of patient-P</text><line style="stroke:#181818;stroke-width:1.0;" x1="269.5" x2="311.5" y1="521.5547" y2="521.5547"></line><line style="stroke:#181818;stroke-width:1.0;" x1="311.5" x2="311.5" y1="521.5547" y2="534.5547"></line><line style="stroke:#181818;stroke-width:1.0;" x1="270.5" x2="311.5" y1="534.5547" y2="534.5547"></line><polygon fill="#181818" points="280.5,530.5547,270.5,534.5547,280.5,538.5547,276.5,534.5547" style="stroke:#181818;stroke-width:1.0;"></polygon><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="213" x="276.5" y="501.356">lookup reference/url's of activities</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="70" x="280.5" y="516.4888">in careplan</text><polygon fill="#181818" points="1004,559.6875,1014,563.6875,1004,567.6875,1008,563.6875" style="stroke:#181818;stroke-width:1.0;"></polygon><line style="stroke:#181818;stroke-width:1.0;" x1="264.5" x2="1010" y1="563.6875" y2="563.6875"></line><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="251" x="271.5" y="558.6216">request access token (scope patient-P)</text><path d="M487,578.6875 L765,578.6875 L765,585.8203 L755,595.8203 L487,595.8203 L487,578.6875 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"></path><rect fill="none" height="67.3984" style="stroke:#000000;stroke-width:1.5;" width="592.5" x="487" y="578.6875"></rect><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="233" x="502" y="591.7544">get careplan/careteam at ehr-A</text><path d="M497,600.8203 L497,640.8203 L1069,640.8203 L1069,610.8203 L1059,600.8203 L497,600.8203 " fill="#FFFFFF" style="stroke:#181818;stroke-width:0.5;"></path><path d="M1059,600.8203 L1059,610.8203 L1069,610.8203 L1059,600.8203 " fill="#FFFFFF" style="stroke:#181818;stroke-width:0.5;"></path><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="263" x="647.25" y="617.8872">autorizationserver-B initiating sub-proces</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="212" x="651.25" y="633.02">"get careplan/careteam at ehr-A"</text><line style="stroke:#181818;stroke-width:1.0;" x1="1026" x2="1068" y1="704.4844" y2="704.4844"></line><line style="stroke:#181818;stroke-width:1.0;" x1="1068" x2="1068" y1="704.4844" y2="717.4844"></line><line style="stroke:#181818;stroke-width:1.0;" x1="1027" x2="1068" y1="717.4844" y2="717.4844"></line><polygon fill="#181818" points="1037,713.4844,1027,717.4844,1037,721.4844,1033,717.4844" style="stroke:#181818;stroke-width:1.0;"></polygon><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="48" x="1033" y="669.1528">check if</text><text fill="#000000" font-family="sans-serif" font-size="13" font-style="italic" lengthAdjust="spacing" textLength="121" x="1085" y="669.1528">practitioner Charlie</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="174" x="1037" y="684.2856">is (active/inactive) member</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="78" x="1037" y="699.4185">of careteam</text><line style="stroke:#181818;stroke-width:1.0;" x1="1026" x2="1068" y1="776.8828" y2="776.8828"></line><line style="stroke:#181818;stroke-width:1.0;" x1="1068" x2="1068" y1="776.8828" y2="789.8828"></line><line style="stroke:#181818;stroke-width:1.0;" x1="1027" x2="1068" y1="789.8828" y2="789.8828"></line><polygon fill="#181818" points="1037,785.8828,1027,789.8828,1037,793.8828,1033,789.8828" style="stroke:#181818;stroke-width:1.0;"></polygon><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="178" x="1033" y="741.5513">check local autorisations for</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="197" x="1037" y="756.6841">careteam, active-member-role</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="111" x="1037" y="771.8169">on patient-P data</text><polygon fill="#181818" points="280.5,815.0156,270.5,819.0156,280.5,823.0156,276.5,819.0156" style="stroke:#181818;stroke-width:1.0;"></polygon><line style="stroke:#181818;stroke-width:1.0;" x1="274.5" x2="1020" y1="819.0156" y2="819.0156"></line><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="84" x="286.5" y="813.9497">access token</text><polygon fill="#181818" points="891.5,844.1484,901.5,848.1484,891.5,852.1484,895.5,848.1484" style="stroke:#181818;stroke-width:1.0;"></polygon><line style="stroke:#181818;stroke-width:1.0;" x1="264.5" x2="897.5" y1="848.1484" y2="848.1484"></line><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="194" x="271.5" y="843.0825">request resources of patient-P</text><polygon fill="#181818" points="280.5,873.2813,270.5,877.2813,280.5,881.2813,276.5,877.2813" style="stroke:#181818;stroke-width:1.0;"></polygon><line style="stroke:#181818;stroke-width:1.0;" x1="274.5" x2="907.5" y1="877.2813" y2="877.2813"></line><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="141" x="286.5" y="872.2153">resources of patient-P</text><polygon fill="#181818" points="83.5,902.4141,73.5,906.4141,83.5,910.4141,79.5,906.4141" style="stroke:#181818;stroke-width:1.0;"></polygon><line style="stroke:#181818;stroke-width:1.0;" x1="77.5" x2="263.5" y1="906.4141" y2="906.4141"></line><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="160" x="89.5" y="901.3481">present data of patient-P</text></g></svg></p>
+
+<?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="931px" preserveAspectRatio="none" style="width:1241px;height:931px;background:#FFFFFF;" version="1.1" viewBox="0 0 1241 931" width="1241px" zoomAndPan="magnify"><defs/><g><rect fill="#FFFFFF" height="110.5313" style="stroke:#181818;stroke-width:1.0;" width="10" x="259.5" y="127.5625"/><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="259.5" y="412.0234"/><rect fill="#FFFFFF" height="93.3984" style="stroke:#181818;stroke-width:1.0;" width="10" x="259.5" y="470.2891"/><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="259.5" y="819.0156"/><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="259.5" y="877.2813"/><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="540.5" y="441.1563"/><rect fill="#FFFFFF" height="173.9297" style="stroke:#181818;stroke-width:1.0;" width="10" x="691.5" y="238.0938"/><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="903.5" y="848.1484"/><rect fill="#FFFFFF" height="255.3281" style="stroke:#181818;stroke-width:1.0;" width="10" x="1016" y="563.6875"/><rect fill="none" height="278.4609" style="stroke:#000000;stroke-width:1.5;" width="680" x="228.5" y="199.8281"/><rect fill="none" height="67.3984" style="stroke:#000000;stroke-width:1.5;" width="592.5" x="487" y="578.6875"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="72" x2="72" y1="81.2969" y2="924.4141"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="264.5" x2="264.5" y1="81.2969" y2="924.4141"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="545" x2="545" y1="81.2969" y2="924.4141"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="696.5" x2="696.5" y1="81.2969" y2="924.4141"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="908.5" x2="908.5" y1="81.2969" y2="924.4141"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="1020.5" x2="1020.5" y1="81.2969" y2="924.4141"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="129" x="5" y="77.9951">practitioner Charlie</text><ellipse cx="72.5" cy="13.5" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M72.5,21.5 L72.5,48.5 M59.5,29.5 L85.5,29.5 M72.5,48.5 L59.5,63.5 M72.5,48.5 L85.5,63.5 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="52" x="238.5" y="50"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="38" x="245.5" y="69.9951">ehr-C</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="51" x="520" y="50"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="527" y="69.9951">ehr-A</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="152" x="620.5" y="50"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="138" x="627.5" y="69.9951">autorizationserver-A</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="52" x="882.5" y="50"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="38" x="889.5" y="69.9951">ehr-B</text><rect fill="#E2E2F0" height="30.2969" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="153" x="944.5" y="50"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="139" x="951.5" y="69.9951">autorizationserver-B</text><rect fill="#FFFFFF" height="110.5313" style="stroke:#181818;stroke-width:1.0;" width="10" x="259.5" y="127.5625"/><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="259.5" y="412.0234"/><rect fill="#FFFFFF" height="93.3984" style="stroke:#181818;stroke-width:1.0;" width="10" x="259.5" y="470.2891"/><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="259.5" y="819.0156"/><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="259.5" y="877.2813"/><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="540.5" y="441.1563"/><rect fill="#FFFFFF" height="173.9297" style="stroke:#181818;stroke-width:1.0;" width="10" x="691.5" y="238.0938"/><rect fill="#FFFFFF" height="29.1328" style="stroke:#181818;stroke-width:1.0;" width="10" x="903.5" y="848.1484"/><rect fill="#FFFFFF" height="255.3281" style="stroke:#181818;stroke-width:1.0;" width="10" x="1016" y="563.6875"/><polygon fill="#181818" points="247.5,123.5625,257.5,127.5625,247.5,131.5625,251.5,127.5625" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="72.5" x2="253.5" y1="127.5625" y2="127.5625"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="168" x="79.5" y="107.3638">I want to access Diabetes-</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="107" x="83.5" y="122.4966">data of patient-P</text><line style="stroke:#181818;stroke-width:1.0;" x1="269.5" x2="311.5" y1="171.8281" y2="171.8281"/><line style="stroke:#181818;stroke-width:1.0;" x1="311.5" x2="311.5" y1="171.8281" y2="184.8281"/><line style="stroke:#181818;stroke-width:1.0;" x1="270.5" x2="311.5" y1="184.8281" y2="184.8281"/><polygon fill="#181818" points="280.5,180.8281,270.5,184.8281,280.5,188.8281,276.5,184.8281" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="127" x="276.5" y="151.6294">lookup reference/url</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="164" x="280.5" y="166.7622">of CarePlan in (local) Task</text><path d="M228.5,199.8281 L506.5,199.8281 L506.5,206.9609 L496.5,216.9609 L228.5,216.9609 L228.5,199.8281 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="278.4609" style="stroke:#000000;stroke-width:1.5;" width="680" x="228.5" y="199.8281"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="233" x="243.5" y="212.895">get careplan/careteam at ehr-A</text><polygon fill="#181818" points="679.5,234.0938,689.5,238.0938,679.5,242.0938,683.5,238.0938" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="264.5" x2="685.5" y1="238.0938" y2="238.0938"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="403" x="271.5" y="233.0278">request access token (scope CarePlan/CareTeam for patient-P)</text><line style="stroke:#181818;stroke-width:1.0;" x1="701.5" x2="743.5" y1="297.4922" y2="297.4922"/><line style="stroke:#181818;stroke-width:1.0;" x1="743.5" x2="743.5" y1="297.4922" y2="310.4922"/><line style="stroke:#181818;stroke-width:1.0;" x1="702.5" x2="743.5" y1="310.4922" y2="310.4922"/><polygon fill="#181818" points="712.5,306.4922,702.5,310.4922,712.5,314.4922,708.5,310.4922" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="166" x="708.5" y="262.1606">check if practitioners from</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="184" x="712.5" y="277.2935">organization-C are members</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="78" x="712.5" y="292.4263">of careteam</text><line style="stroke:#181818;stroke-width:1.0;" x1="701.5" x2="743.5" y1="369.8906" y2="369.8906"/><line style="stroke:#181818;stroke-width:1.0;" x1="743.5" x2="743.5" y1="369.8906" y2="382.8906"/><line style="stroke:#181818;stroke-width:1.0;" x1="702.5" x2="743.5" y1="382.8906" y2="382.8906"/><polygon fill="#181818" points="712.5,378.8906,702.5,382.8906,712.5,386.8906,708.5,382.8906" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="178" x="708.5" y="334.5591">check local autorisations for</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="178" x="712.5" y="349.6919">careteam, organization-role</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="111" x="712.5" y="364.8247">on patient-P data</text><polygon fill="#181818" points="280.5,408.0234,270.5,412.0234,280.5,416.0234,276.5,412.0234" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="274.5" x2="695.5" y1="412.0234" y2="412.0234"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="84" x="286.5" y="406.9575">access token</text><polygon fill="#181818" points="528.5,437.1563,538.5,441.1563,528.5,445.1563,532.5,441.1563" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="264.5" x2="534.5" y1="441.1563" y2="441.1563"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="252" x="271.5" y="436.0903">request careplan/careteam of patient-P</text><polygon fill="#181818" points="280.5,466.2891,270.5,470.2891,280.5,474.2891,276.5,470.2891" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="274.5" x2="544.5" y1="470.2891" y2="470.2891"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="199" x="286.5" y="465.2231">careplan/careteam of patient-P</text><line style="stroke:#181818;stroke-width:1.0;" x1="269.5" x2="311.5" y1="521.5547" y2="521.5547"/><line style="stroke:#181818;stroke-width:1.0;" x1="311.5" x2="311.5" y1="521.5547" y2="534.5547"/><line style="stroke:#181818;stroke-width:1.0;" x1="270.5" x2="311.5" y1="534.5547" y2="534.5547"/><polygon fill="#181818" points="280.5,530.5547,270.5,534.5547,280.5,538.5547,276.5,534.5547" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="213" x="276.5" y="501.356">lookup reference/url's of activities</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="70" x="280.5" y="516.4888">in careplan</text><polygon fill="#181818" points="1004,559.6875,1014,563.6875,1004,567.6875,1008,563.6875" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="264.5" x2="1010" y1="563.6875" y2="563.6875"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="251" x="271.5" y="558.6216">request access token (scope patient-P)</text><path d="M487,578.6875 L765,578.6875 L765,585.8203 L755,595.8203 L487,595.8203 L487,578.6875 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="67.3984" style="stroke:#000000;stroke-width:1.5;" width="592.5" x="487" y="578.6875"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="233" x="502" y="591.7544">get careplan/careteam at ehr-A</text><path d="M497,600.8203 L497,640.8203 L1069,640.8203 L1069,610.8203 L1059,600.8203 L497,600.8203 " fill="#FFFFFF" style="stroke:#181818;stroke-width:0.5;"/><path d="M1059,600.8203 L1059,610.8203 L1069,610.8203 L1059,600.8203 " fill="#FFFFFF" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="263" x="647.25" y="617.8872">autorizationserver-B initiating sub-proces</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="212" x="651.25" y="633.02">"get careplan/careteam at ehr-A"</text><line style="stroke:#181818;stroke-width:1.0;" x1="1026" x2="1068" y1="704.4844" y2="704.4844"/><line style="stroke:#181818;stroke-width:1.0;" x1="1068" x2="1068" y1="704.4844" y2="717.4844"/><line style="stroke:#181818;stroke-width:1.0;" x1="1027" x2="1068" y1="717.4844" y2="717.4844"/><polygon fill="#181818" points="1037,713.4844,1027,717.4844,1037,721.4844,1033,717.4844" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="48" x="1033" y="669.1528">check if</text><text fill="#000000" font-family="sans-serif" font-size="13" font-style="italic" lengthAdjust="spacing" textLength="121" x="1085" y="669.1528">practitioner Charlie</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="174" x="1037" y="684.2856">is (active/inactive) member</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="78" x="1037" y="699.4185">of careteam</text><line style="stroke:#181818;stroke-width:1.0;" x1="1026" x2="1068" y1="776.8828" y2="776.8828"/><line style="stroke:#181818;stroke-width:1.0;" x1="1068" x2="1068" y1="776.8828" y2="789.8828"/><line style="stroke:#181818;stroke-width:1.0;" x1="1027" x2="1068" y1="789.8828" y2="789.8828"/><polygon fill="#181818" points="1037,785.8828,1027,789.8828,1037,793.8828,1033,789.8828" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="178" x="1033" y="741.5513">check local autorisations for</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="197" x="1037" y="756.6841">careteam, active-member-role</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="111" x="1037" y="771.8169">on patient-P data</text><polygon fill="#181818" points="280.5,815.0156,270.5,819.0156,280.5,823.0156,276.5,819.0156" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="274.5" x2="1020" y1="819.0156" y2="819.0156"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="84" x="286.5" y="813.9497">access token</text><polygon fill="#181818" points="891.5,844.1484,901.5,848.1484,891.5,852.1484,895.5,848.1484" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="264.5" x2="897.5" y1="848.1484" y2="848.1484"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="194" x="271.5" y="843.0825">request resources of patient-P</text><polygon fill="#181818" points="280.5,873.2813,270.5,877.2813,280.5,881.2813,276.5,877.2813" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="274.5" x2="907.5" y1="877.2813" y2="877.2813"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="141" x="286.5" y="872.2153">resources of patient-P</text><polygon fill="#181818" points="83.5,902.4141,73.5,906.4141,83.5,910.4141,79.5,906.4141" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="77.5" x2="263.5" y1="906.4141" y2="906.4141"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="160" x="89.5" y="901.3481">present data of patient-P</text></g></svg> -->
 
 
 
@@ -325,7 +332,7 @@ Operatie $localize: geef me endpoints (of URA’s) voor CarePlan X</p>
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.santeon.nl">Santeon</a>.  Package fhir.scp#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Jul 1, 2024 03:07+0200">2024-07-01</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.santeon.nl">Santeon</a>.  Package fhir.scp#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Jul 1, 2024 05:14+0200">2024-07-01</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |

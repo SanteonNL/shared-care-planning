@@ -17,7 +17,7 @@
   fhir:name [ fhir:v "sharedcareplanning"] ; # 
   fhir:title [ fhir:v "Shared Care Planning (SCP) Implementation Guide"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2024-07-01T03:07:22+02:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2024-07-01T05:14:46+02:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Santeon"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Santeon" ] ;
@@ -1010,7 +1010,7 @@
            fhir:value [ fhir:v "transaction-task-negotiation.html"^^xsd:anyURI ]
          ] ) ;
          fhir:name [ fhir:v "transaction-task-negotiation.html"^^xsd:anyURI ] ;
-         fhir:title [ fhir:v "Transactions - Task negotiation and addressing care providers" ] ;
+         fhir:title [ fhir:v "Transactions - Creating and responding to a Task" ] ;
          fhir:generation [ fhir:v "markdown" ]
        ] [
          fhir:extension ( [
@@ -1018,7 +1018,7 @@
            fhir:value [ fhir:v "transaction-careplan-careteam-mngt.html"^^xsd:anyURI ]
          ] ) ;
          fhir:name [ fhir:v "transaction-careplan-careteam-mngt.html"^^xsd:anyURI ] ;
-         fhir:title [ fhir:v "Transactions - CarePlan and CareTeam management" ] ;
+         fhir:title [ fhir:v "Transactions - Updating CarePlan and CareTeam" ] ;
          fhir:generation [ fhir:v "markdown" ]
        ] [
          fhir:extension ( [
@@ -1026,23 +1026,7 @@
            fhir:value [ fhir:v "transaction-discovery.html"^^xsd:anyURI ]
          ] ) ;
          fhir:name [ fhir:v "transaction-discovery.html"^^xsd:anyURI ] ;
-         fhir:title [ fhir:v "Transactions - Localization of CareTeam members and Patient Information" ] ;
-         fhir:generation [ fhir:v "markdown" ]
-       ] [
-         fhir:extension ( [
-           fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name"^^xsd:anyURI ] ;
-           fhir:value [ fhir:v "transaction-autorization.html"^^xsd:anyURI ]
-         ] ) ;
-         fhir:name [ fhir:v "transaction-autorization.html"^^xsd:anyURI ] ;
-         fhir:title [ fhir:v "Transactions - Autorization of CareTeam members using Patient Information" ] ;
-         fhir:generation [ fhir:v "markdown" ]
-       ] [
-         fhir:extension ( [
-           fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name"^^xsd:anyURI ] ;
-           fhir:value [ fhir:v "usecase-specification.html"^^xsd:anyURI ]
-         ] ) ;
-         fhir:name [ fhir:v "usecase-specification.html"^^xsd:anyURI ] ;
-         fhir:title [ fhir:v "Use cases - How to use nation-specific or condition-specific profile" ] ;
+         fhir:title [ fhir:v "Transactions - Getting data from CareTeam members" ] ;
          fhir:generation [ fhir:v "markdown" ]
        ] [
          fhir:extension ( [
@@ -1059,6 +1043,14 @@
          ] ) ;
          fhir:name [ fhir:v "usecase-view-all-data.html"^^xsd:anyURI ] ;
          fhir:title [ fhir:v "Use cases - Get data for home monitoring" ] ;
+         fhir:generation [ fhir:v "markdown" ]
+       ] [
+         fhir:extension ( [
+           fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name"^^xsd:anyURI ] ;
+           fhir:value [ fhir:v "usecase-specification.html"^^xsd:anyURI ]
+         ] ) ;
+         fhir:name [ fhir:v "usecase-specification.html"^^xsd:anyURI ] ;
+         fhir:title [ fhir:v "Use cases - How to use nation-specific or condition-specific profile" ] ;
          fhir:generation [ fhir:v "markdown" ]
        ] )
      ] ;

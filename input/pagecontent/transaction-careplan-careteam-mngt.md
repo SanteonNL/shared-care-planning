@@ -1,4 +1,21 @@
-# Workflow
+### Trigger Events
+Task met status 'accepted', 'cancelled', 'completed', etc.
+
+### Scope
+
+### Actor Roles
+
+### Interactions 
+Sequence diagram
+
+### Profiles
+TODO: refer to used profiles (FHIR structure definitions generated on page 'Artifacts')
+
+
+
+
+
+<!-- # Workflow
 This IG supports the following processes:
 1. Shared Care Workflow: an organization requests an activity from another organization. 
 2. Shared Care Data Requests: an organization requests ehr data from another organization
@@ -60,4 +77,4 @@ This actor hosts generic authorization policies that can be used as paramaters i
 - ParticipantRole - Resource matrices
 
 
-
+ -->
