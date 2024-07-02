@@ -25,6 +25,7 @@ Some of these items are explained in more detail:
 - Security considerations
   - [Authentication](authentication.html)
   - [Authorization](authorization.html)
+  - [Privacy](privacy.html)
 
 - Transactions
     - [Creating and responding to a Task](./transaction-task-negotiation.html)
