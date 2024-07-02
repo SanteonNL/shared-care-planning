@@ -1,0 +1,24 @@
+{
+  "resourceType" : "CarePlan",
+  "id" : "minimal-enrollment-CarePlan",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: CarePlan minimal-enrollment-CarePlan</b></p><a name=\"minimal-enrollment-CarePlan\"> </a><a name=\"hcminimal-enrollment-CarePlan\"> </a><a name=\"hcminimal-enrollment-CarePlan-en-US\"> </a><p><b>status</b>: Draft</p><p><b>intent</b>: Plan</p><p><b>title</b>: CarePlan for Minimal Enrollment</p><p><b>subject</b>: Identifier: <code>http://fhir.nl/fhir/NamingSystem/bsn</code>/111222333</p><p><b>addresses</b>: <a href=\"Condition-minimal-enrollment-Condition.html\">Condition Hartfalen</a></p></div>"
+  },
+  "status" : "draft",
+  "intent" : "plan",
+  "title" : "CarePlan for Minimal Enrollment",
+  "subject" : {
+    "identifier" : {
+      "system" : "http://fhir.nl/fhir/NamingSystem/bsn",
+      "value" : "111222333"
+    }
+  },
+  "addresses" : [{
+    "reference" : "Condition/minimal-enrollment-Condition",
+    "identifier" : {
+      "system" : "http://snomed.info/sct",
+      "value" : "195111005"
+    }
+  }]
+}

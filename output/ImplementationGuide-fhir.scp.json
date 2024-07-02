@@ -2,24 +2,25 @@
   "resourceType" : "ImplementationGuide",
   "id" : "fhir.scp",
   "text" : {
-    "status" : "extensions",
-    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h2>sharedcareplanning</h2><p>The official URL for this implementation guide is: </p><pre>http://hl7.nl/shared-care-planning/ImplementationGuide/fhir.scp</pre></div>"
+    "status" : "generated",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"res-header-id\"><b>Generated Narrative: ImplementationGuide fhir.scp</b></p><a name=\"fhir.scp\"> </a><a name=\"hcfhir.scp\"> </a><a name=\"hcfhir.scp-en-US\"> </a><h2>sharedcareplanning</h2><p>The official URL for this implementation guide is: </p><pre>http://santeonnl.github.io/shared-care-planning</pre></div>"
   },
-  "url" : "http://hl7.nl/shared-care-planning/ImplementationGuide/fhir.scp",
+  "url" : "http://santeonnl.github.io/shared-care-planning",
   "version" : "0.1.0",
   "name" : "sharedcareplanning",
+  "title" : "Shared Care Planning (SCP) Implementation Guide",
   "status" : "draft",
-  "date" : "2024-04-11T14:11:32+02:00",
-  "publisher" : "HL7 Nederland",
+  "date" : "2024-07-02T15:07:48+00:00",
+  "publisher" : "Santeon",
   "contact" : [{
-    "name" : "HL7 Nederland",
+    "name" : "Santeon",
     "telecom" : [{
       "system" : "url",
-      "value" : "http://hl7.nl"
+      "value" : "https://www.santeon.nl"
     }]
   }],
   "packageId" : "fhir.scp",
-  "license" : "CC0-1.0",
+  "license" : "GPL-3.0-or-later",
   "fhirVersion" : ["4.0.1"],
   "dependsOn" : [{
     "id" : "hl7tx",
@@ -29,7 +30,17 @@
     }],
     "uri" : "http://terminology.hl7.org/ImplementationGuide/hl7.terminology",
     "packageId" : "hl7.terminology.r4",
-    "version" : "5.3.0"
+    "version" : "5.5.0"
+  },
+  {
+    "id" : "hl7ext",
+    "extension" : [{
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/implementationguide-dependency-comment",
+      "valueMarkdown" : "Automatically added as a dependency - all IGs depend on the HL7 Extension Pack"
+    }],
+    "uri" : "http://hl7.org/fhir/extensions/ImplementationGuide/hl7.fhir.uv.extensions",
+    "packageId" : "hl7.fhir.uv.extensions.r4",
+    "version" : "5.1.0"
   },
   {
     "id" : "nlcore",
@@ -144,7 +155,7 @@
       },
       {
         "url" : "value",
-        "valueString" : "http://hl7.nl/shared-care-planning/history.html"
+        "valueString" : "history.html"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
@@ -314,9 +325,13 @@
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
     {
+      "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-internal-dependency",
+      "valueCode" : "hl7.fhir.uv.tools#0.1.0"
+    },
+    {
       "extension" : [{
         "url" : "code",
-        "valueString" : "copyrightyear"
+        "valueCode" : "copyrightyear"
       },
       {
         "url" : "value",
@@ -327,7 +342,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "releaselabel"
+        "valueCode" : "releaselabel"
       },
       {
         "url" : "value",
@@ -338,7 +353,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "autoload-resources"
+        "valueCode" : "autoload-resources"
       },
       {
         "url" : "value",
@@ -349,7 +364,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "path-liquid"
+        "valueCode" : "path-liquid"
       },
       {
         "url" : "value",
@@ -360,7 +375,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "path-liquid"
+        "valueCode" : "path-liquid"
       },
       {
         "url" : "value",
@@ -371,7 +386,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "path-qa"
+        "valueCode" : "path-qa"
       },
       {
         "url" : "value",
@@ -382,7 +397,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "path-temp"
+        "valueCode" : "path-temp"
       },
       {
         "url" : "value",
@@ -393,7 +408,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "path-output"
+        "valueCode" : "path-output"
       },
       {
         "url" : "value",
@@ -404,7 +419,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "path-suppressed-warnings"
+        "valueCode" : "path-suppressed-warnings"
       },
       {
         "url" : "value",
@@ -415,18 +430,18 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "path-history"
+        "valueCode" : "path-history"
       },
       {
         "url" : "value",
-        "valueString" : "http://hl7.nl/shared-care-planning/history.html"
+        "valueString" : "history.html"
       }],
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     },
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "template-html"
+        "valueCode" : "template-html"
       },
       {
         "url" : "value",
@@ -437,7 +452,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "template-md"
+        "valueCode" : "template-md"
       },
       {
         "url" : "value",
@@ -448,7 +463,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-contact"
+        "valueCode" : "apply-contact"
       },
       {
         "url" : "value",
@@ -459,7 +474,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-context"
+        "valueCode" : "apply-context"
       },
       {
         "url" : "value",
@@ -470,7 +485,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-copyright"
+        "valueCode" : "apply-copyright"
       },
       {
         "url" : "value",
@@ -481,7 +496,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-jurisdiction"
+        "valueCode" : "apply-jurisdiction"
       },
       {
         "url" : "value",
@@ -492,7 +507,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-license"
+        "valueCode" : "apply-license"
       },
       {
         "url" : "value",
@@ -503,7 +518,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-publisher"
+        "valueCode" : "apply-publisher"
       },
       {
         "url" : "value",
@@ -514,7 +529,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-version"
+        "valueCode" : "apply-version"
       },
       {
         "url" : "value",
@@ -525,7 +540,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "apply-wg"
+        "valueCode" : "apply-wg"
       },
       {
         "url" : "value",
@@ -536,7 +551,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "active-tables"
+        "valueCode" : "active-tables"
       },
       {
         "url" : "value",
@@ -547,7 +562,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "fmm-definition"
+        "valueCode" : "fmm-definition"
       },
       {
         "url" : "value",
@@ -558,7 +573,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "propagate-status"
+        "valueCode" : "propagate-status"
       },
       {
         "url" : "value",
@@ -569,7 +584,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "excludelogbinaryformat"
+        "valueCode" : "excludelogbinaryformat"
       },
       {
         "url" : "value",
@@ -580,7 +595,7 @@
     {
       "extension" : [{
         "url" : "code",
-        "valueString" : "tabbed-snapshots"
+        "valueCode" : "tabbed-snapshots"
       },
       {
         "url" : "value",
@@ -589,6 +604,28 @@
       "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-parameter"
     }],
     "resource" : [{
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Bundle"
+      }],
+      "reference" : {
+        "reference" : "Bundle/minimal-enrollment-Bundle"
+      },
+      "name" : "Bundle for Minimal Enrollment",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "CarePlan"
+      }],
+      "reference" : {
+        "reference" : "CarePlan/minimal-enrollment-CarePlan"
+      },
+      "name" : "CarePlan for Minimal Enrollment",
+      "exampleBoolean" : true
+    },
+    {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "Condition"
@@ -608,6 +645,94 @@
         "reference" : "Condition/scp-condition-hypertensie"
       },
       "name" : "Hypertensie Sharon Cynthia Proef",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Condition"
+      }],
+      "reference" : {
+        "reference" : "Condition/minimal-enrollment-Condition"
+      },
+      "name" : "minimal-enrollment-Condition",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Organization"
+      }],
+      "reference" : {
+        "reference" : "Organization/minimal-enrollment-Organization-Performer"
+      },
+      "name" : "minimal-enrollment-Organization-Performer",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Organization"
+      }],
+      "reference" : {
+        "reference" : "Organization/minimal-enrollment-Organization-Requester"
+      },
+      "name" : "minimal-enrollment-Organization-Requester",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Patient"
+      }],
+      "reference" : {
+        "reference" : "Patient/minimal-enrollment-Patient"
+      },
+      "name" : "minimal-enrollment-Patient",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Practitioner"
+      }],
+      "reference" : {
+        "reference" : "Practitioner/minimal-enrollment-Practitioner-HP"
+      },
+      "name" : "minimal-enrollment-Practitioner-HP",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Practitioner"
+      }],
+      "reference" : {
+        "reference" : "Practitioner/minimal-enrollment-Practitioner-Requester"
+      },
+      "name" : "minimal-enrollment-Practitioner-Requester",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "ServiceRequest"
+      }],
+      "reference" : {
+        "reference" : "ServiceRequest/minimal-enrollment-ServiceRequest"
+      },
+      "name" : "minimal-enrollment-ServiceRequest",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Task"
+      }],
+      "reference" : {
+        "reference" : "Task/minimal-enrollment-Task"
+      },
+      "name" : "minimal-enrollment-Task",
       "exampleBoolean" : true
     },
     {
@@ -908,7 +1033,7 @@
       },
       "name" : "Shwachman Diamond Syndrome PlanDefinition",
       "description" : "Shwachman Diamond Syndrome management plan.",
-      "exampleCanonical" : "http://hl7.nl/shared-care-planning/StructureDefinition/scp-plan"
+      "exampleCanonical" : "http://santeonnl.github.io/shared-care-planning/StructureDefinition/scp-plan"
     },
     {
       "extension" : [{
@@ -941,10 +1066,82 @@
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-          "valueUrl" : "introduction.html"
+          "valueUrl" : "overview.html"
         }],
-        "nameUrl" : "introduction.html",
-        "title" : "Introduction",
+        "nameUrl" : "overview.html",
+        "title" : "Overview",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "authentication.html"
+        }],
+        "nameUrl" : "authentication.html",
+        "title" : "Security - Authentication",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "authorization.html"
+        }],
+        "nameUrl" : "authorization.html",
+        "title" : "Security - Authorization",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "transaction-task-negotiation.html"
+        }],
+        "nameUrl" : "transaction-task-negotiation.html",
+        "title" : "Transactions - Creating and responding to a Task",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "transaction-careplan-careteam-mngt.html"
+        }],
+        "nameUrl" : "transaction-careplan-careteam-mngt.html",
+        "title" : "Transactions - Updating CarePlan and CareTeam",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "transaction-discovery.html"
+        }],
+        "nameUrl" : "transaction-discovery.html",
+        "title" : "Transactions - Getting data from CareTeam members",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "usecase-enrollment.html"
+        }],
+        "nameUrl" : "usecase-enrollment.html",
+        "title" : "Use cases - Enroll patient in home monitoring",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "usecase-view-all-data.html"
+        }],
+        "nameUrl" : "usecase-view-all-data.html",
+        "title" : "Use cases - Get data for home monitoring",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "usecase-specification.html"
+        }],
+        "nameUrl" : "usecase-specification.html",
+        "title" : "Use cases - How to use nation-specific or condition-specific profile",
         "generation" : "markdown"
       }]
     },

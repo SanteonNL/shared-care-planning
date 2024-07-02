@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Practitioner xmlns="http://hl7.org/fhir">
+  <id value="minimal-enrollment-Practitioner-Requester"/>
+  <meta>
+    <profile value="http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner"/>
+  </meta>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml"><p class="res-header-id"><b>Generated Narrative: Practitioner minimal-enrollment-Practitioner-Requester</b></p><a name="minimal-enrollment-Practitioner-Requester"> </a><a name="hcminimal-enrollment-Practitioner-Requester"> </a><a name="hcminimal-enrollment-Practitioner-Requester-en-US"> </a><p><b>name</b>: A. Aanvrager(Official)</p><p><b>telecom</b>: <a href="tel:+31687654321">+31687654321</a>, <a href="mailto:av@icloud.com">av@icloud.com</a></p></div>
+  </text>
+  <name>
+    <use value="official"/>
+    <text value="A. Aanvrager"/>
+    <family value="Aanvrager">
+      <extension url="http://hl7.org/fhir/StructureDefinition/humanname-own-name">
+        <valueString value="Aanvrager"/>
+      </extension>
+    </family>
+    <given value="Anton">
+      <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier">
+        <valueCode value="IN"/>
+      </extension>
+    </given>
+    <prefix value="Drs."/>
+  </name>
+  <telecom>
+    <system value="phone"/>
+    <value value="+31687654321"/>
+  </telecom>
+  <telecom>
+    <system value="email"/>
+    <value value="av@icloud.com"/>
+  </telecom>
+</Practitioner>
