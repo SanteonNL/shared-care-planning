@@ -7,7 +7,7 @@ When practitioners of different organizations use the same IT-system, collaborat
 
 # Goal
 This guide tries to come up with an answer for these challenges. Is there a way for practitioners, in multiple care organizations, to jointly provide care for a patient, without the current administrative burden and without the use of additional IT-systems? 
-This question implies that we should be able to use current IT-systems. These systems can vary from organization to organization, so they should be able to interact with each other. This is not a new type of solution; organizations like HL7 and IHE have published hundreds of standards for various use-cases. This guide aims to reuse or build upon a current standards as much as possible. 
+This question implies that we should be able to use current IT-systems. These systems can vary from organization to organization, so they should be able to interact with each other. This is not a new type of solution; organizations like HL7 and IHE have published hundreds of standards for various use-cases. This guide aims to reuse or build upon current standards as much as possible. 
 So how do you choose the 'best' standard to use or to build on? First the requirements will be specified in more detail. These requirements will be used to motivate the decision to build upon the IHE 'Dynamic Care Planning' profile (IHE-DCP). We'll extent this profile by further defining the cross-organizational workflow using Task-resources. An authorization model will also be provided so that participants/roles in a distributed careteam will, e.g., be able to read patient-data from other organizations and/or will be able to plan new activities.
 
 
