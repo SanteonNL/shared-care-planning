@@ -1,51 +1,51 @@
 sharedcareplanning : Validation Results
 =========================================
 
-err = 52, warn = 61, info = 18
+err = 51, warn = 63, info = 16
 IG Publisher Version: 1.6.13
-Generated Mon Jul 01 12:12:16 CEST 2024. FHIR version 4.0.1 for fhir.scp#0.1.0 (canonical = http://santeonnl.github.io/shared-care-planning)
- Build Errors : 3 / 44 / 0
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Bundle-minimal-enrollment-Bundle : 17 / 9 / 17
- /home/bwesselo/shared-care-planning/fsh-generated/resources/CarePlan-minimal-enrollment-CarePlan : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/CarePlan-scp-plan-diabetes : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/CareTeam-nl-core-CareTeam-01 : 1 / 0 / 2
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Condition-minimal-enrollment-Condition : 3 / 1 / 2
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Condition-nl-core-CareTeam-01-Condition-01 : 3 / 1 / 2
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Condition-nl-core-CareTeam-01-Condition-02 : 3 / 1 / 2
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Condition-nl-core-CareTeam-01-Condition-03 : 3 / 1 / 3
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Condition-scp-condition-diabetes : 1 / 1 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Condition-scp-condition-hypertensie : 1 / 1 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/ImplementationGuide-fhir.scp : 3 / 1 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Organization-minimal-enrollment-Organization-Performer : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Organization-minimal-enrollment-Organization-Requester : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Organization-nl-core-Encounter-01-Organization-01 : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Organization-nl-core-HealthcareProvider-Organization-01 : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Organization-nl-core-Procedure-01-Organization-01 : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Patient-SharonCynthiaProef : 0 / 0 / 2
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Patient-minimal-enrollment-Patient : 4 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Patient-nl-core-CareTeam-01-Patient-01 : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Patient-nl-core-Patient-01 : 6 / 1 / 5
- /home/bwesselo/shared-care-planning/fsh-generated/resources/PlanDefinition-plan-sds : 1 / 0 / 5
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Practitioner-minimal-enrollment-Practitioner-HP : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Practitioner-minimal-enrollment-Practitioner-Requester : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Practitioner-nl-core-CareTeam-01-Practitioner-01 : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Practitioner-nl-core-CareTeam-01-Practitioner-02 : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Practitioner-nl-core-CareTeam-01-Practitioner-03 : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Practitioner-nl-core-CareTeam-01-Practitioner-04 : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Practitioner-nl-core-CareTeam-01-Practitioner-05 : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Practitioner-nl-core-CareTeam-01-Practitioner-06 : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/PractitionerRole-nl-core-CareTeam-01-PractitionerRole-01 : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/PractitionerRole-nl-core-CareTeam-01-PractitionerRole-02 : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/PractitionerRole-nl-core-CareTeam-01-PractitionerRole-03 : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/PractitionerRole-nl-core-CareTeam-01-PractitionerRole-04 : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/PractitionerRole-nl-core-CareTeam-01-PractitionerRole-05 : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/PractitionerRole-nl-core-CareTeam-01-PractitionerRole-06 : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/RelatedPerson-nl-core-CareTeam-01-RelatedPerson-01 : 1 / 0 / 2
- /home/bwesselo/shared-care-planning/fsh-generated/resources/ServiceRequest-minimal-enrollment-ServiceRequest : 1 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/ServiceRequest-scp-req-bloedpanel : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/StructureDefinition-scp-plan : 4 / 0 / 2
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Task-minimal-enrollment-Task : 0 / 0 / 1
- /home/bwesselo/shared-care-planning/fsh-generated/resources/Task-scp-task-bloedpanel : 0 / 0 / 1
+Generated Tue Jul 02 15:08:22 UTC 2024. FHIR version 4.0.1 for fhir.scp#0.1.0 (canonical = http://santeonnl.github.io/shared-care-planning)
+ Build Errors : 4 / 44 / 0
+ /app/fsh-generated/resources/Bundle-minimal-enrollment-Bundle : 17 / 9 / 17
+ /app/fsh-generated/resources/CarePlan-minimal-enrollment-CarePlan : 0 / 0 / 1
+ /app/fsh-generated/resources/CarePlan-scp-plan-diabetes : 0 / 0 / 1
+ /app/fsh-generated/resources/CareTeam-nl-core-CareTeam-01 : 1 / 0 / 2
+ /app/fsh-generated/resources/Condition-minimal-enrollment-Condition : 3 / 1 / 2
+ /app/fsh-generated/resources/Condition-nl-core-CareTeam-01-Condition-01 : 3 / 1 / 2
+ /app/fsh-generated/resources/Condition-nl-core-CareTeam-01-Condition-02 : 3 / 1 / 2
+ /app/fsh-generated/resources/Condition-nl-core-CareTeam-01-Condition-03 : 3 / 1 / 3
+ /app/fsh-generated/resources/Condition-scp-condition-diabetes : 1 / 1 / 1
+ /app/fsh-generated/resources/Condition-scp-condition-hypertensie : 1 / 1 / 1
+ /app/fsh-generated/resources/ImplementationGuide-fhir.scp : 3 / 1 / 1
+ /app/fsh-generated/resources/Organization-minimal-enrollment-Organization-Performer : 0 / 0 / 1
+ /app/fsh-generated/resources/Organization-minimal-enrollment-Organization-Requester : 0 / 0 / 1
+ /app/fsh-generated/resources/Organization-nl-core-Encounter-01-Organization-01 : 0 / 0 / 1
+ /app/fsh-generated/resources/Organization-nl-core-HealthcareProvider-Organization-01 : 0 / 0 / 1
+ /app/fsh-generated/resources/Organization-nl-core-Procedure-01-Organization-01 : 0 / 0 / 1
+ /app/fsh-generated/resources/Patient-SharonCynthiaProef : 0 / 0 / 2
+ /app/fsh-generated/resources/Patient-minimal-enrollment-Patient : 4 / 0 / 1
+ /app/fsh-generated/resources/Patient-nl-core-CareTeam-01-Patient-01 : 0 / 0 / 1
+ /app/fsh-generated/resources/Patient-nl-core-Patient-01 : 5 / 3 / 5
+ /app/fsh-generated/resources/PlanDefinition-plan-sds : 1 / 0 / 4
+ /app/fsh-generated/resources/Practitioner-minimal-enrollment-Practitioner-HP : 0 / 0 / 1
+ /app/fsh-generated/resources/Practitioner-minimal-enrollment-Practitioner-Requester : 0 / 0 / 1
+ /app/fsh-generated/resources/Practitioner-nl-core-CareTeam-01-Practitioner-01 : 0 / 0 / 1
+ /app/fsh-generated/resources/Practitioner-nl-core-CareTeam-01-Practitioner-02 : 0 / 0 / 1
+ /app/fsh-generated/resources/Practitioner-nl-core-CareTeam-01-Practitioner-03 : 0 / 0 / 1
+ /app/fsh-generated/resources/Practitioner-nl-core-CareTeam-01-Practitioner-04 : 0 / 0 / 1
+ /app/fsh-generated/resources/Practitioner-nl-core-CareTeam-01-Practitioner-05 : 0 / 0 / 1
+ /app/fsh-generated/resources/Practitioner-nl-core-CareTeam-01-Practitioner-06 : 0 / 0 / 1
+ /app/fsh-generated/resources/PractitionerRole-nl-core-CareTeam-01-PractitionerRole-01 : 0 / 0 / 1
+ /app/fsh-generated/resources/PractitionerRole-nl-core-CareTeam-01-PractitionerRole-02 : 0 / 0 / 1
+ /app/fsh-generated/resources/PractitionerRole-nl-core-CareTeam-01-PractitionerRole-03 : 0 / 0 / 1
+ /app/fsh-generated/resources/PractitionerRole-nl-core-CareTeam-01-PractitionerRole-04 : 0 / 0 / 1
+ /app/fsh-generated/resources/PractitionerRole-nl-core-CareTeam-01-PractitionerRole-05 : 0 / 0 / 1
+ /app/fsh-generated/resources/PractitionerRole-nl-core-CareTeam-01-PractitionerRole-06 : 0 / 0 / 1
+ /app/fsh-generated/resources/RelatedPerson-nl-core-CareTeam-01-RelatedPerson-01 : 1 / 0 / 2
+ /app/fsh-generated/resources/ServiceRequest-minimal-enrollment-ServiceRequest : 1 / 0 / 1
+ /app/fsh-generated/resources/ServiceRequest-scp-req-bloedpanel : 0 / 0 / 1
+ /app/fsh-generated/resources/StructureDefinition-scp-plan : 4 / 0 / 1
+ /app/fsh-generated/resources/Task-minimal-enrollment-Task : 0 / 0 / 1
+ /app/fsh-generated/resources/Task-scp-task-bloedpanel : 0 / 0 / 1
 </table>
 == n/a ==
 WARNING: ImplementationGuide.url: The canonical URL for an Implementation Guide must point directly to the implementation guide resource, not to the Implementation Guide as a whole
@@ -87,10 +87,11 @@ WARNING: Unable to find ImplementationGuide.definition.resource.description for 
 WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Organization/nl-core-HealthcareProvider-Organization-01.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
 WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Patient/nl-core-Patient-01.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
 WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Organization/nl-core-Procedure-01-Organization-01.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
-WARNING: /home/bwesselo/shared-care-planning/output/StructureDefinition-scp-plan.html: The html source has duplicate anchor Ids: PlanDefinition.goal.target.due,PlanDefinition.action.modifierExtension,PlanDefinition.purpose,PlanDefinition.name,PlanDefinition.action.trigger,PlanDefinition.id,PlanDefinition.action.textEquivalent,PlanDefinition.action.timing_x_,PlanDefinition.goal.target.modifierExtension,PlanDefinition.action.title,PlanDefinition.subtitle,PlanDefinition.action.relatedAction.relationship,PlanDefinition.endorser,PlanDefinition.modifierExtension,PlanDefinition.title,PlanDefinition.action.documentation,PlanDefinition.goal.start,PlanDefinition.copyright,PlanDefinition.goal.target.measure,PlanDefinition.action.relatedAction,PlanDefinition.goal.id,PlanDefinition.contained,PlanDefinition.editor,PlanDefinition.status,PlanDefinition.goal.modifierExtension,PlanDefinition.goal.priority,PlanDefinition.action.participant.role,PlanDefinition.action.definition_x_,PlanDefinition.date,PlanDefinition.goal.target.extension,PlanDefinition.action.condition.extension,PlanDefinition.action.reason,PlanDefinition.action.condition.id,PlanDefinition.action.requiredBehavior,PlanDefinition.url,PlanDefinition.action.relatedAction.modifierExtension,PlanDefinition.goal.addresses,PlanDefinition.goal.category,PlanDefinition.useContext,PlanDefinition.action.dynamicValue.modifierExtension,PlanDefinition.jurisdiction,PlanDefinition.goal.extension,PlanDefinition.action.goalId,PlanDefinition.action.input,PlanDefinition.action.relatedAction.extension,PlanDefinition.identifier,PlanDefinition.publisher,PlanDefinition.action.type,PlanDefinition.topic,PlanDefinition.author,PlanDefinition.action.participant,PlanDefinition.meta,PlanDefinition.language,PlanDefinition.action.dynamicValue.path,PlanDefinition.action.condition.expression,PlanDefinition.action.precheckBehavior,PlanDefinition.goal.target.id,PlanDefinition.action.participant.modifierExtension,PlanDefinition.action.participant.type,PlanDefinition.lastReviewDate,PlanDefinition.action.condition.kind,PlanDefinition.action.dynamicValue.extension,PlanDefinition.reviewer,PlanDefinition.relatedArtifact,PlanDefinition.action.extension,PlanDefinition.approvalDate,PlanDefinition.action.dynamicValue,PlanDefinition.action,PlanDefinition.goal.target,PlanDefinition.action.subject_x_,PlanDefinition.action.transform,PlanDefinition.action.dynamicValue.id,PlanDefinition.action.action,PlanDefinition.action.participant.extension,PlanDefinition.action.participant.id,PlanDefinition.action.relatedAction.offset_x_,PlanDefinition.action.relatedAction.actionId,PlanDefinition.action.dynamicValue.expression,PlanDefinition.contact,PlanDefinition.action.description,PlanDefinition.type,PlanDefinition.goal.description,PlanDefinition.version,PlanDefinition.action.groupingBehavior,PlanDefinition.action.code,PlanDefinition.action.condition,PlanDefinition.action.cardinalityBehavior,summary,PlanDefinition.goal.target.detail_x_,PlanDefinition.action.id,PlanDefinition.text,PlanDefinition.effectivePeriod,PlanDefinition.action.priority,PlanDefinition.action.output,PlanDefinition.experimental,inv,PlanDefinition.description,PlanDefinition.goal,PlanDefinition.action.prefix,PlanDefinition.goal.documentation,PlanDefinition.action.relatedAction.id,PlanDefinition,PlanDefinition.extension,PlanDefinition.library,PlanDefinition.action.condition.modifierExtension,PlanDefinition.action.selectionBehavior,PlanDefinition.subject_x_,PlanDefinition.usage,PlanDefinition.implicitRules
-ERROR: /home/bwesselo/shared-care-planning/output/index.html#/html/body/div/div/div/div/div/ul/li/ul/li/a at Line 252, column 12: The link './overview.html#usecases' for "Use Cases/Examples" cannot be resolved (valid targets: 52 targets)
-ERROR: /home/bwesselo/shared-care-planning/output/overview.html#/html/body/div/div/div/div/div/p/a at Line 229, column 47: The link 'TODO' for "this profile" cannot be resolved
-ERROR: /home/bwesselo/shared-care-planning/output/overview.html#/html/body/div/div/div/div/div/ul/li/ul/li/a at Line 239, column 44: The link 'TODO' for "this profile" cannot be resolved
+WARNING: /app/output/StructureDefinition-scp-plan.html: The html source has duplicate anchor Ids: PlanDefinition.goal.target.due,PlanDefinition.action.modifierExtension,PlanDefinition.purpose,PlanDefinition.name,PlanDefinition.action.trigger,PlanDefinition.id,PlanDefinition.action.textEquivalent,PlanDefinition.action.timing_x_,PlanDefinition.goal.target.modifierExtension,PlanDefinition.action.title,PlanDefinition.subtitle,PlanDefinition.action.relatedAction.relationship,PlanDefinition.endorser,PlanDefinition.modifierExtension,PlanDefinition.title,PlanDefinition.action.documentation,PlanDefinition.goal.start,PlanDefinition.copyright,PlanDefinition.goal.target.measure,PlanDefinition.action.relatedAction,PlanDefinition.goal.id,PlanDefinition.contained,PlanDefinition.editor,PlanDefinition.status,PlanDefinition.goal.modifierExtension,PlanDefinition.goal.priority,PlanDefinition.action.participant.role,PlanDefinition.action.definition_x_,PlanDefinition.date,PlanDefinition.goal.target.extension,PlanDefinition.action.condition.extension,PlanDefinition.action.reason,PlanDefinition.action.condition.id,PlanDefinition.action.requiredBehavior,PlanDefinition.url,PlanDefinition.action.relatedAction.modifierExtension,PlanDefinition.goal.addresses,PlanDefinition.goal.category,PlanDefinition.useContext,PlanDefinition.action.dynamicValue.modifierExtension,PlanDefinition.jurisdiction,PlanDefinition.goal.extension,PlanDefinition.action.goalId,PlanDefinition.action.input,PlanDefinition.action.relatedAction.extension,PlanDefinition.identifier,PlanDefinition.publisher,PlanDefinition.action.type,PlanDefinition.topic,PlanDefinition.author,PlanDefinition.action.participant,PlanDefinition.meta,PlanDefinition.language,PlanDefinition.action.dynamicValue.path,PlanDefinition.action.condition.expression,PlanDefinition.action.precheckBehavior,PlanDefinition.goal.target.id,PlanDefinition.action.participant.modifierExtension,PlanDefinition.action.participant.type,PlanDefinition.lastReviewDate,PlanDefinition.action.condition.kind,PlanDefinition.action.dynamicValue.extension,PlanDefinition.reviewer,PlanDefinition.relatedArtifact,PlanDefinition.action.extension,PlanDefinition.approvalDate,PlanDefinition.action.dynamicValue,PlanDefinition.action,PlanDefinition.goal.target,PlanDefinition.action.subject_x_,PlanDefinition.action.transform,PlanDefinition.action.dynamicValue.id,PlanDefinition.action.action,PlanDefinition.action.participant.extension,PlanDefinition.action.participant.id,PlanDefinition.action.relatedAction.offset_x_,PlanDefinition.action.relatedAction.actionId,PlanDefinition.action.dynamicValue.expression,PlanDefinition.contact,PlanDefinition.action.description,PlanDefinition.type,PlanDefinition.goal.description,PlanDefinition.version,PlanDefinition.action.groupingBehavior,PlanDefinition.action.code,PlanDefinition.action.condition,PlanDefinition.action.cardinalityBehavior,summary,PlanDefinition.goal.target.detail_x_,PlanDefinition.action.id,PlanDefinition.text,PlanDefinition.effectivePeriod,PlanDefinition.action.priority,PlanDefinition.action.output,PlanDefinition.experimental,inv,PlanDefinition.description,PlanDefinition.goal,PlanDefinition.action.prefix,PlanDefinition.goal.documentation,PlanDefinition.action.relatedAction.id,PlanDefinition,PlanDefinition.extension,PlanDefinition.library,PlanDefinition.action.condition.modifierExtension,PlanDefinition.action.selectionBehavior,PlanDefinition.subject_x_,PlanDefinition.usage,PlanDefinition.implicitRules
+ERROR: /app/output/index.html#/html/body/div/div/div/div/div/ul/li/ul/li/a at Line 252, column 12: The link './overview.html#usecases' for "Use Cases/Examples" cannot be resolved (valid targets: 52 targets)
+ERROR: /app/output/index.html#/html/body/div/div/div/div/div/ul/li/ul/li/a at Line 265, column 12: The link 'privacy.html' for "Privacy" cannot be resolved
+ERROR: /app/output/overview.html#/html/body/div/div/div/div/div/p/a at Line 229, column 47: The link 'TODO' for "this profile" cannot be resolved
+ERROR: /app/output/overview.html#/html/body/div/div/div/div/div/ul/li/ul/li/a at Line 239, column 44: The link 'TODO' for "this profile" cannot be resolved
 WARNING: 1: The HTML fragment 'ip-statements.xhtml' is not included anywhere in the produced implementation guide
 WARNING: 2: An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide
 WARNING: 3: An HTML fragment from the set [dependency-table.xhtml, dependency-table-short.xhtml] is not included anywhere in the produced implementation guide
@@ -100,7 +101,7 @@ WARNING: Bundle/minimal-enrollment-Bundle: Bundle.entry[0].resource/*CarePlan/mi
 ERROR: Bundle/minimal-enrollment-Bundle: Bundle.entry[1].resource/*Condition/minimal-enrollment-Condition*/.category[0].coding[0].display: Wrong Display Name 'Interpretatie van diagnose' for http://snomed.info/sct#282291009. Valid display is one of 2 choices: 'Diagnosis interpretation' or 'Diagnosis interpretation (observable entity)' (for the language(s) '--')
 ERROR: Bundle/minimal-enrollment-Bundle: Bundle.entry[1].resource/*Condition/minimal-enrollment-Condition*/.code.coding[0].display: Wrong Display Name 'Hartfalen' for http://snomed.info/sct#195111005. Valid display is one of 2 choices: 'Decompensated cardiac failure' or 'Decompensated cardiac failure (disorder)' (for the language(s) '--')
 WARNING: Bundle/minimal-enrollment-Bundle: Bundle.entry[1].resource/*Condition/minimal-enrollment-Condition*/.subject: Entry 4 matches the reference Patient/minimal-enrollment-Patient by type and id but it's fullUrl minimal-enrollment-Patient does not match the full target URL Patient/minimal-enrollment-Patient by Bundle resolution rules
-WARNING: Bundle/minimal-enrollment-Bundle: Bundle.entry[1].resource/*Condition/minimal-enrollment-Condition*/: Constraint failed: con-3: 'Condition.clinicalStatus SHALL be present if verificationStatus is not entered-in-error and category is problem-list-item' (defined in http://hl7.org/fhir/StructureDefinition/Condition) (Best Practice Recommendation)
+WARNING: Bundle/minimal-enrollment-Bundle: Bundle.entry[1].resource/*Condition/minimal-enrollment-Condition*/: Constraint failed: con-3: 'Condition.clinicalStatus SHALL be present if verificationStatus is not entered-in-error and category is problem-list-item' (Best Practice Recommendation)
 INFORMATION: Bundle/minimal-enrollment-Bundle: Bundle.entry[1].resource/*Condition/minimal-enrollment-Condition*/.category[0]: This element does not match any known slice defined in the profile http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem (this may not be a problem, but you should check that it's not intended to match a slice)
 ERROR: Bundle/minimal-enrollment-Bundle: Bundle.entry[1].resource/*Condition/minimal-enrollment-Condition*/.code: None of the codings provided are in the value set 'ProbleemNaamCodelijst' (http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.5.1.3--20200901000000|2020-09-01T00:00:00), and a coding from this value set is required) (codes = http://snomed.info/sct#195111005)
 ERROR: Bundle/minimal-enrollment-Bundle: Bundle.entry[4].resource/*Patient/minimal-enrollment-Patient*/.name[0].given[0]: HumanName.given.extension: minimum required = 1, but only found 0 (from http://nictiz.nl/fhir/StructureDefinition/nl-core-NameInformation)
@@ -160,10 +161,10 @@ ERROR: Condition/scp-condition-diabetes: Condition.clinicalStatus: None of the c
 WARNING: Condition/scp-condition-hypertensie: Condition.clinicalStatus.coding[0]: Coding has no system. A code with no system has no defined meaning, and it cannot be validated. A system should be provided
 ERROR: Condition/scp-condition-hypertensie: Condition.clinicalStatus: None of the codings provided are in the value set 'Condition Clinical Status Codes' (http://hl7.org/fhir/ValueSet/condition-clinical|4.0.1), and a coding from this value set is required) (codes = null#active)
 == fsh-generated/resources/ImplementationGuide-fhir.scp.json ==
-ERROR: ImplementationGuide.where(url = 'http://santeonnl.github.io/shared-care-planning'): Conformance resource /home/bwesselo/shared-care-planning/fsh-generated/resources/ImplementationGuide-fhir.scp.json - the canonical URL (http://santeonnl.github.io/shared-care-planning/ImplementationGuide/fhir.scp) does not match the URL (http://santeonnl.github.io/shared-care-planning)
+ERROR: ImplementationGuide.where(url = 'http://santeonnl.github.io/shared-care-planning'): Conformance resource /app/fsh-generated/resources/ImplementationGuide-fhir.scp.json - the canonical URL (http://santeonnl.github.io/shared-care-planning/ImplementationGuide/fhir.scp) does not match the URL (http://santeonnl.github.io/shared-care-planning)
 ERROR: ImplementationGuide.url: Resource id/url mismatch: fhir.scp/http://santeonnl.github.io/shared-care-planning
-WARNING: ImplementationGuide/fhir.scp: ImplementationGuide: Constraint failed: ig-0: 'Name should be usable as an identifier for the module by machine processing applications such as code generation' (defined in http://hl7.org/fhir/StructureDefinition/ImplementationGuide)
-ERROR: /home/bwesselo/shared-care-planning/fsh-generated/resources/ImplementationGuide-fhir.scp: URL Mismatch http://santeonnl.github.io/shared-care-planning/ImplementationGuide/fhir.scp vs http://santeonnl.github.io/shared-care-planning
+WARNING: ImplementationGuide/fhir.scp: ImplementationGuide: Constraint failed: ig-0: 'Name should be usable as an identifier for the module by machine processing applications such as code generation'
+ERROR: /app/fsh-generated/resources/ImplementationGuide-fhir.scp: URL Mismatch http://santeonnl.github.io/shared-care-planning/ImplementationGuide/fhir.scp vs http://santeonnl.github.io/shared-care-planning
 == fsh-generated/resources/Organization-minimal-enrollment-Organization-Performer.json ==
 == fsh-generated/resources/Organization-minimal-enrollment-Organization-Requester.json ==
 == fsh-generated/resources/Organization-nl-core-Encounter-01-Organization-01.json ==
@@ -188,9 +189,9 @@ ERROR: Patient/nl-core-Patient-01: Patient.contact[0].relationship[0].coding[0].
 ERROR: Patient/nl-core-Patient-01: Patient.contact[0].telecom[0].system.extension[0].value.ofType(CodeableConcept).coding[0].display: Wrong Display Name 'Mobile Phone' for http://terminology.hl7.org/CodeSystem/v3-AddressUse#MC. Valid display is 'mobile contact' (en) (for the language(s) '--')
 INFORMATION: Patient/nl-core-Patient-01: Patient.contact[0].address.country.extension[0].value.ofType(CodeableConcept).coding[0].system: A definition for CodeSystem 'urn:oid:2.16.840.1.113883.2.4.4.16.34' version '2020-04-01T00:00:00' could not be found, so the code cannot be validated. Valid versions: []
 WARNING: Patient/nl-core-Patient-01: Patient.communication[0].language.coding[0].system: A definition for CodeSystem 'urn:oid:1.0.639.1' could not be found, so the code cannot be validated
-ERROR: Patient/nl-core-Patient-01: Patient.communication[0].language: None of the codings provided are in the value set 'CommunicatieTaalCodelijst' (http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.7.12.2--20200901000000|2020-09-01T00:00:00), and a coding from this value set is required) (codes = urn:oid:1.0.639.1#nl)
+WARNING: Patient/nl-core-Patient-01: Patient.communication[0].language: Unable to check whether the code is in the value set 'http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.7.12.2--20200901000000|2020-09-01T00:00:00' because the code system urn:oid:1.0.639.1 was not found
+WARNING: Patient/nl-core-Patient-01: Patient.communication[0].language: A definition for CodeSystem 'urn:oid:1.0.639.1' could not be found, so the code cannot be validated; Unable to check whether the code is in the value set 'http://decor.nictiz.nl/fhir/ValueSet/2.16.840.1.113883.2.4.3.11.60.40.2.7.12.2--20200901000000|2020-09-01T00:00:00' because the code system urn:oid:1.0.639.1 was not found
 == fsh-generated/resources/PlanDefinition-plan-sds.json ==
-INFORMATION: PlanDefinition/plan-sds: PlanDefinition.type: Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/plan-definition-type|4.0.1
 INFORMATION: PlanDefinition/plan-sds: PlanDefinition.topic[0]: Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/definition-topic|1.0.0
 ERROR: PlanDefinition/plan-sds: PlanDefinition.goal[0].addresses[0]: Found a reference to a CodeSystem 'http://snomed.info/sct' where a ValueSet belongs
 INFORMATION: PlanDefinition/plan-sds: PlanDefinition.goal[0].addresses[0].coding[0].system: A definition for CodeSystem 'http://www.orpha.net' could not be found, so the code cannot be validated
@@ -216,7 +217,6 @@ ERROR: RelatedPerson/nl-core-CareTeam-01-RelatedPerson-01: RelatedPerson.relatio
 ERROR: ServiceRequest/minimal-enrollment-ServiceRequest: ServiceRequest.code.coding[0].display: Wrong Display Name 'monitoren via telegeneeskunde (regime/therapie)' for http://snomed.info/sct#719858009. Valid display is one of 2 choices: 'Telehealth monitoring (regime/therapy)' or 'Telehealth monitoring' (for the language(s) '--')
 == fsh-generated/resources/ServiceRequest-scp-req-bloedpanel.json ==
 == fsh-generated/resources/StructureDefinition-scp-plan.json ==
-INFORMATION: StructureDefinition/scp-plan: StructureDefinition.snapshot.element[30].mapping[2].map: The string value contains text that looks like embedded HTML tags. If this content is rendered to HTML without appropriate post-processing, it may be a security risk
 ERROR: StructureDefinition/scp-plan: StructureDefinition.snapshot.element[46].binding.valueSet: Canonical URL 'http://snomed.info/sct' refers to a resource that has the wrong type. Found CodeSystem expecting one of [ValueSet]
 ERROR: StructureDefinition/scp-plan: StructureDefinition.differential.element[1].binding.valueSet: Canonical URL 'http://snomed.info/sct' refers to a resource that has the wrong type. Found CodeSystem expecting one of [ValueSet]
 ERROR: StructureDefinition/scp-plan: StructureDefinition.differential.element[1].binding: The valueSet reference http://snomed.info/sct on element PlanDefinition.goal.addresses points to something that is not a value set (CodeSystem)

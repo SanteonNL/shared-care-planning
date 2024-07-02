@@ -174,20 +174,6 @@
       "StructureDefinition-scp-plan.html" : "Shared Care Planning PlanDefinition"
     },
     {
-      "url" : "http://hl7.org/fhir/ValueSet/duration-units",
-      "version" : "4.0.1",
-      "status" : "active",
-      "name" : "CommonUCUMCodesForDuration",
-      "title" : "Common UCUM Codes for Duration",
-      "description" : "Unified Code for Units of Measure (UCUM). This value set includes all UCUM codes",
-      "systems" : ["http://unitsofmeasure.org"],
-      "oids" : ["2.16.840.1.113883.4.642.3.61"],
-      "sources" : ["2.16.840.1.113883.4.642.3.61"],
-      "uses" : {
-      },
-      "StructureDefinition-scp-plan.html" : "Shared Care Planning PlanDefinition"
-    },
-    {
       "url" : "http://hl7.org/fhir/ValueSet/goal-category",
       "version" : "4.0.1",
       "status" : "draft",

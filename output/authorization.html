@@ -201,14 +201,14 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h3 id="audiences">Audiences</h3>
 <ul>
-  <li>All healthcare providers in the <code class="language-plaintext highlighter-rouge">CareTeam.participant</code>.
+  <li>All healthcare providers in the <code class="highlighter-rouge">CareTeam.participant</code>.
     <ul>
-      <li>Active, the <code class="language-plaintext highlighter-rouge">CareTeam.participant.period</code> of the memberships falls within the current time.</li>
-      <li>Inactive, the <code class="language-plaintext highlighter-rouge">CareTeam.participant.period</code> of the memberships falls outside the current time</li>
+      <li>Active, the <code class="highlighter-rouge">CareTeam.participant.period</code> of the memberships falls within the current time.</li>
+      <li>Inactive, the <code class="highlighter-rouge">CareTeam.participant.period</code> of the memberships falls outside the current time</li>
     </ul>
   </li>
-  <li>Head Practitioner, the <code class="language-plaintext highlighter-rouge">CarePlan.author</code></li>
-  <li>All healthcare providers that are <code class="language-plaintext highlighter-rouge">Task.requester</code> or <code class="language-plaintext highlighter-rouge">Task.owner</code></li>
+  <li>Head Practitioner, the <code class="highlighter-rouge">CarePlan.author</code></li>
+  <li>All healthcare providers that are <code class="highlighter-rouge">Task.requester</code> or <code class="highlighter-rouge">Task.owner</code></li>
 </ul>
 
 <h4 id="access-token-requirements">Access token requirements</h4>
@@ -216,17 +216,17 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <p>When requesting an access token from the authorization server of the Care Plan Service, attributes of both the requesting organization and requesting person MUST be presented (see page Authentication for the exact requirements). <em>Note that for all transactions an active user session is required and the use MUST be identifiable, either direct by user interaction or indirect by cryptographic proof, by all involved parties.</em></p>
 
 <h4 id="resource-access">Resource access</h4>
-<p>|Resource(.element)|CRUDS|Audience/attributes|
-|——–|—–|——–|
-|CarePlan|C|All healthcare providers with atributes organization-identifier, practitioner-identifier, practitioner-role ?AND having an active service contract with the Care Plan Service?|
-|CarePlan|RS|All healthcare providers (active and inactive) in the CareTeam|
-|CarePlan.all, .Condition, .Goal, .todo|U|All active healthcare providers in the CareTeam|
-|CarePlan.subject, .todo|U|not allowed|
-|CarePlan|D|Head Practitioner (equals CarePlan Author)|
-|Task|C|All active healthcare providers in the CareTeam|
-|Task|RS|All healthcare providers (active en inactive) in the CareTeam, MAYBE: All healthcare providers that are Task.owner can acccess that specific Task (only when notification does not contain enough info)|
-|Task|U|All healthcare providers that are Task.requester or Task.owner can access that specific Task|
-|CareTeam|RS|All healthcare providers (active and inactive) in the CareTeam |</p>
+<p>| Resource(.element)                     | CRUDS | Audience/attributes                                                                                                                                                                                     |
+|—————————————-|——-|———————————————————————————————————————————————————————————————————|
+| CarePlan                               | C     | All healthcare providers with atributes organization-identifier, practitioner-identifier, practitioner-role ?AND having an active service contract with the Care Plan Service?                          |
+| CarePlan                               | RS    | All healthcare providers (active and inactive) in the CareTeam                                                                                                                                          |
+| CarePlan.all, .Condition, .Goal, .todo | U     | All active healthcare providers in the CareTeam                                                                                                                                                         |
+| CarePlan.subject, .todo                | U     | not allowed                                                                                                                                                                                             |
+| CarePlan                               | D     | Head Practitioner (equals CarePlan Author)                                                                                                                                                              |
+| Task                                   | C     | All active healthcare providers in the CareTeam                                                                                                                                                         |
+| Task                                   | RS    | All healthcare providers (active en inactive) in the CareTeam, MAYBE: All healthcare providers that are Task.owner can acccess that specific Task (only when notification does not contain enough info) |
+| Task                                   | U     | All healthcare providers that are Task.requester or Task.owner can access that specific Task                                                                                                            |
+| CareTeam                               | RS    | All healthcare providers (active and inactive) in the CareTeam                                                                                                                                          |</p>
 
 <p>Operations that are not mentioned in the above table MUST not be supported.</p>
 
@@ -246,8 +246,9 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <p><strong>Request</strong></p>
 
-<p>Each data request MUST include the access token AND an absolute reference to the CarePlan-resource that defines the context in which the data request takes place. The reference to the CarePlan-resource has to be included in HTTP header field as follows:
-<code class="language-plaintext highlighter-rouge">http request
+<p>Each data request MUST include the access token AND an absolute reference to the CarePlan-resource that defines the context in which the data request takes place. The reference to the CarePlan-resource has to be included in HTTP header field as follows:</p>
+
+<p><code class="highlighter-rouge">http request
 GET /Condition HTTP/1.1
 X-SCP-Context: https://careplan-service.example.com/fhir/CarePlan/73012d35
 Authorization: Bearer 03c90ce0-fe7b-44fb-aff7-b09ef4e45863
@@ -313,7 +314,7 @@ Authorization: Bearer 03c90ce0-fe7b-44fb-aff7-b09ef4e45863
 <p>Operations that are not mentioned in the above table MUST not be supported.</p>
 
 <h4 id="access-to-use-case-specific-care-data">Access to use case specific care data</h4>
-<p>The Care Plan Contributor shares use case specific data with the other Care Plan Contributor(s) or Care Plan User(s) within the use case. This data is read-only by nature. Access rules are not so much defined on resource type level, instead, they are defined in resource instance level, where resources relative to the CarePlan and related entities are <em>filtered</em> within the scope of the request. The <code class="language-plaintext highlighter-rouge">X-SCP-Context</code> header provided the context of the request. The Data Holder SHOULD use the following content to apply the access rules:</p>
+<p>The Care Plan Contributor shares use case specific data with the other Care Plan Contributor(s) or Care Plan User(s) within the use case. This data is read-only by nature. Access rules are not so much defined on resource type level, instead, they are defined in resource instance level, where resources relative to the CarePlan and related entities are <em>filtered</em> within the scope of the request. The <code class="highlighter-rouge">X-SCP-Context</code> header provided the context of the request. The Data Holder SHOULD use the following content to apply the access rules:</p>
 <ul>
   <li>CarePlan and its related data</li>
   <li>The proof of the organization’s identity.</li>
@@ -325,9 +326,9 @@ Authorization: Bearer 03c90ce0-fe7b-44fb-aff7-b09ef4e45863
 <p>The access and filtering rules COULD be articulated in a tabular format that make use of specific data related to this context, for example:</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">CarePlan.subject</code> The <code class="language-plaintext highlighter-rouge">patient</code> related to the resource.</li>
-  <li><code class="language-plaintext highlighter-rouge">CarePlan.addresses[Condition].code</code> The <code class="language-plaintext highlighter-rouge">type of condition</code>, like <em>COPD</em>.</li>
-  <li><code class="language-plaintext highlighter-rouge">CarePlan.activity[ServiceRequest].doe</code> The <code class="language-plaintext highlighter-rouge">type of service</code>, like <em>Home monitoring</em>.</li>
+  <li><code class="highlighter-rouge">CarePlan.subject</code> The <code class="highlighter-rouge">patient</code> related to the resource.</li>
+  <li><code class="highlighter-rouge">CarePlan.addresses[Condition].code</code> The <code class="highlighter-rouge">type of condition</code>, like <em>COPD</em>.</li>
+  <li><code class="highlighter-rouge">CarePlan.activity[ServiceRequest].doe</code> The <code class="highlighter-rouge">type of service</code>, like <em>Home monitoring</em>.</li>
   <li>Resource, the resource type.</li>
 </ul>
 
@@ -389,7 +390,7 @@ Authorization: Bearer 03c90ce0-fe7b-44fb-aff7-b09ef4e45863
 
       <div class="inner-wrapper">
         <p>
-          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.santeon.nl">Santeon</a>.  Package fhir.scp#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Mon, Jul 1, 2024 12:11+0200">2024-07-01</span>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.santeon.nl">Santeon</a>.  Package fhir.scp#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Jul 2, 2024 15:07+0000">2024-07-02</span>
           <br/>
           <span style="color: var(--footer-highlight-text-color)">
                       Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
