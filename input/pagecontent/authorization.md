@@ -20,17 +20,17 @@ The Care Plan Service Policy describes access to the resources stored in the Car
 When requesting an access token from the authorization server of the Care Plan Service, attributes of both the requesting organization and requesting person MUST be presented (see page Authentication for the exact requirements). _Note that for all transactions an active user session is required and the use MUST be identifiable, either direct by user interaction or indirect by cryptographic proof, by all involved parties._
 
 #### Resource access
-|Resource(.element)|CRUDS|Audience/attributes|
-|--------|-----|--------|
-|CarePlan|C|All healthcare providers with atributes organization-identifier, practitioner-identifier, practitioner-role ?AND having an active service contract with the Care Plan Service?|
-|CarePlan|RS|All healthcare providers (active and inactive) in the CareTeam|
-|CarePlan.all, .Condition, .Goal, .todo|U|All active healthcare providers in the CareTeam|
-|CarePlan.subject, .todo|U|not allowed|
-|CarePlan|D|Head Practitioner (equals CarePlan Author)|
-|Task|C|All active healthcare providers in the CareTeam|
-|Task|RS|All healthcare providers (active en inactive) in the CareTeam, MAYBE: All healthcare providers that are Task.owner can acccess that specific Task (only when notification does not contain enough info)|
-|Task|U|All healthcare providers that are Task.requester or Task.owner can access that specific Task|
-|CareTeam|RS|All healthcare providers (active and inactive) in the CareTeam |
+| Resource(.element)                     | CRUDS | Audience/attributes                                                                                                                                                                                     |
+|----------------------------------------|-------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| CarePlan                               | C     | All healthcare providers with atributes organization-identifier, practitioner-identifier, practitioner-role ?AND having an active service contract with the Care Plan Service?                          |
+| CarePlan                               | RS    | All healthcare providers (active and inactive) in the CareTeam                                                                                                                                          |
+| CarePlan.all, .Condition, .Goal, .todo | U     | All active healthcare providers in the CareTeam                                                                                                                                                         |
+| CarePlan.subject, .todo                | U     | not allowed                                                                                                                                                                                             |
+| CarePlan                               | D     | Head Practitioner (equals CarePlan Author)                                                                                                                                                              |
+| Task                                   | C     | All active healthcare providers in the CareTeam                                                                                                                                                         |
+| Task                                   | RS    | All healthcare providers (active en inactive) in the CareTeam, MAYBE: All healthcare providers that are Task.owner can acccess that specific Task (only when notification does not contain enough info) |
+| Task                                   | U     | All healthcare providers that are Task.requester or Task.owner can access that specific Task                                                                                                            |
+| CareTeam                               | RS    | All healthcare providers (active and inactive) in the CareTeam                                                                                                                                          |
 
 Operations that are not mentioned in the above table MUST not be supported.
 
@@ -50,6 +50,7 @@ When requesting an access token from the authorization server of the Care Plan S
 **Request**
 
 Each data request MUST include the access token AND an absolute reference to the CarePlan-resource that defines the context in which the data request takes place. The reference to the CarePlan-resource has to be included in HTTP header field as follows:
+
 ```http request
 GET /Condition HTTP/1.1
 X-SCP-Context: https://careplan-service.example.com/fhir/CarePlan/73012d35
