@@ -47,4 +47,4 @@ jobs:
           tags: localhost:5000/santeon/publisher:latest
       - name: Inspect
         run: |
-          docker run --name=scp --rm -v "$(pwd)/input":/app/input -v "$(pwd)/output":/app/output localhost:5000/santeon/publisher:latest  
+          docker run --name=scp --rm -v "$(pwd)/input":/app/input -v "$(pwd)/output":/app/output localhost:5000/santeon/publisher:latest  ls -lah
