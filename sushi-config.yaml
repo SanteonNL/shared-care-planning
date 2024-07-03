@@ -4,8 +4,8 @@
 # │  see: https://fshschool.org/docs/sushi/configuration/.                                         │
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 id: fhir.scp
-# canonical: http://hl7.nl/shared-care-planning 
-canonical: http://santeonnl.github.io/shared-care-planning 
+# canonical: http://hl7.nl/shared-care-planning
+canonical: http://santeonnl.github.io/shared-care-planning
 url: http://santeonnl.github.io/shared-care-planning
 name: shared-care-planning
 title: Shared Care Planning (SCP) Implementation Guide
@@ -26,7 +26,7 @@ publisher:
 # package id and the value is the version (or dev/current). For advanced
 # use cases, the value can be an object with keys for id, uri, and version.
 dependencies:
-  nictiz.fhir.nl.r4.nl-core: 
+  nictiz.fhir.nl.r4.nl-core:
     id: nlcore
     uri: https://simplifier.net/packages/nictiz.fhir.nl.r4.nl-core
     version: 0.10.0-beta.1
@@ -76,9 +76,13 @@ pages:
     title: Security - Authorization
     generation: markdown
 
+  privacy.md:
+    title: Security - Privacy
+    generation: markdown
+
   transaction-task-negotiation.md:
     title: Transactions - Creating and responding to a Task
-    generation: markdown 
+    generation: markdown
 
   transaction-careplan-careteam-mngt.md:
     title: Transactions - Updating CarePlan and CareTeam
@@ -129,11 +133,12 @@ menu:
   Security:
     Authentication: authentication.html
     Authorization: authorization.html
-  Transactions: 
+    Privacy: privacy.html
+  Transactions:
     Creating and responding to a Task: transaction-task-negotiation.html
     Updating CarePlan and CareTeam: transaction-careplan-careteam-mngt.html
     Getting data from CareTeam members: transaction-discovery.html
-  Use cases: 
+  Use cases:
     Enroll patient in home monitoring: usecase-enrollment.html
     Get data for home monitoring: usecase-view-all-data.html
     How to use nation-specific or condition-specific profile: usecase-specification.html
