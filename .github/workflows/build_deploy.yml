@@ -23,7 +23,7 @@ concurrency:
 
 
 jobs:
-  build:
+  prepare:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Docker Buildx
@@ -31,5 +31,13 @@ jobs:
       - name: Build and tag
         uses: docker/build-push-action@v6
         with:
-          tags: scp:latest
+          tags: ig-publisher:latest
           push: false
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ig-publisher:latest
+      volumes:
+        - input:/app/input
+        - output:/app/output
+
