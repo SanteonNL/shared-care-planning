@@ -40,4 +40,6 @@ jobs:
       volumes:
         - input:/app/input
         - output:/app/output
-
+    steps:
+      - name: Build output
+        run: _genonce.sh
