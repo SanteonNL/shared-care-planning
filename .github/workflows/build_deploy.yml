@@ -34,6 +34,7 @@ jobs:
           tags: ig-publisher:latest
           push: false
   build:
+    needs: prepare
     runs-on: ubuntu-latest
     container:
       image: ig-publisher:latest
