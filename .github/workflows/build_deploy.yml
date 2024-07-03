@@ -1,0 +1,61 @@
+name: Build and Deploy static content to Pages with Docker
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["build_deploy"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  id-token: write
+  contents: read
+  packages: write
+  attestations: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+
+jobs:
+  build:
+    services:
+      registry:
+        image: registry:2
+        ports:
+          - 5000:5000
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          driver-opts: network=host
+      - name: Build and push to local registry
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: localhost:5000/santeon/publisher:latest
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build
+        run: |
+          mkdir -p ./output
+          docker run --name=scp --rm -v ./input:/app/input -v ./output:/app/output localhost:5000/santeon/publisher:latest
+#      - name: Setup Pages
+#        uses: actions/configure-pages@v5
+#      - name: Upload artifact
+#        uses: actions/upload-pages-artifact@v3
+#        with:
+#          # Upload entire repository
+#          path: './output'
+#      - name: Deploy to GitHub Pages
+#        id: deployment
+#        uses: actions/deploy-pages@v4
