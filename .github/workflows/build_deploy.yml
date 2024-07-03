@@ -45,6 +45,12 @@ jobs:
           tags: localhost:5000/santeon/publisher:latest
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Pwd
+        run: |
+          pwd
+      - name: List
+        run: |
+          ls -lah
       - name: Build
         run: |
-          docker run --name=scp --rm -v "${pwd/}/input":/app/input -v "${pwd/}/output":/app/output localhost:5000/santeon/publisher:latest ls -lah /app/input
+          docker run --name=scp --rm -v "${pwd}/input":/app/input -v "${pwd}/output":/app/output localhost:5000/santeon/publisher:latest ls -lah /app/input
