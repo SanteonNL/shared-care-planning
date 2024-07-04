@@ -8,3 +8,4 @@ input-cache/
 .idea
 .DS_Store
 fsh-generated/
+output/
