@@ -1,32 +1,3 @@
-# Motivation
-Rising healthcare costs are unsustainable in the long term. By making healthcare more efficient, we can ensure the sustainability of healthcare systems, safeguarding access to care for future generations. In The Netherlands, many patients visit multiple practitioners during their treatment, at different organizations. Currently, these practitioners either handover the patient to a different care-provider or practitioners use the same IT-system for collaboration. Both methods have severe disadvantages. 
-
-Using the Dutch handover-process, it requires the initiating party to write a hand-over-letter, collect and send data. The 'receiving' party has to read this letter and decide what to do with the data; either reconciliate (copy) the data in their own system or discard the data. The receiving party is often required to send back a 'discharge' letter after treatment. The process of handovers involves a significant amount of administrative work. When two practitioners would like to collaborate (back and forth) using this handover-process, the administrative burden increases because data might be duplicated at every handover. When more than two parties are involved in a collaboration, the handover-process is even more challenging to coordinate care and relevant/up-to-date data.
-When practitioners of different organizations use the same IT-system, collaboration is often a lot easier. These systems (e.g. a regio-wide implemented EHR or a care network/collaboration platform) usually provide members of the careteam functionality to share medical records, to communicate and to coordinate/plan care activities for a patient. The downside of these systems is that every participant of the careteam has to use that same system. In The Netherlands, many care organizations participate in multiple organization-associations. Implementing an IT-system in a group of care-organizations can be challenging and often results in a lock-in with that vendor. In some organizations, different systems have been implemented for multiple organization-affiliations. This already leads to multiple care-network-platforms that a practitioner has to use, in addition to the EHR. Switching between different applications decreases productivity and practitioner-satisfaction. Using multiple (collaboration) systems also create new silo's of disconnected medical data for a patient.
-![Alt text](/input/images/overview-problem.png)
-
-# Goal
-This guide tries to come up with an answer for these challenges. Is there a way for practitioners, in multiple care organizations, to jointly provide care for a patient, without the current administrative burden and without the use of additional IT-systems? 
-This question implies that we should be able to use current IT-systems. These systems can vary from organization to organization, so they should be able to interact with each other. This is not a new type of solution; organizations like HL7 and IHE have published hundreds of standards for various use-cases. This guide aims to reuse or build upon current standards as much as possible. 
-So how do you choose the 'best' standard to use or to build on? First the requirements will be specified in more detail. These requirements will be used to motivate the decision to build upon the IHE 'Dynamic Care Planning' profile (IHE-DCP). We'll extent this profile by further defining the cross-organizational workflow using Task-resources. An authorization model will also be provided so that participants/roles in a distributed careteam will, e.g., be able to read patient-data from other organizations and/or will be able to plan new activities.
-
-
-## Requirements
-- Finding & Accessing data in individual care network
-- Finding who is/was involved 
-- Planning & Coordination of new activities
-- Obey local laws & regulations
-
-## Use-cases
-- Handovers
-- Referrals
-- Requests
-- Orders
-
-## Scope 
-Work in Progress. Communication (chat, phone, email, video) is out of scope
-
-
 
 # Oplossing
 
@@ -91,30 +62,12 @@ De revalidatie start en de rol van het chirurgisch-team is inmiddels afgerond. D
 [TODO: beschrijving + sequence-diagram van verwijs-proces tot uitvoering]
 ![Alt text](/input/images/request-to-execution.png)
 
-### Zorginzage
 
-Als iemand binnen thuis-organisatie C de data wil inzien van ziekenhuis B, zullen de systemen van organisatie C, organisatie B en de Care Plan/Team Service (organisatie A) moeten interacteren met elkaar. Dit wordt in het volgende sequence beschreven. Doel hiervan is om de individuele transacties per systeem en de lokalisatie van data inzichtelijk te maken. Enkele stappen als de user-authenticatie, ophalen van de autorisatieserver-url of de access-token validatie zijn weggelaten om het schema overzichtelijk te houden. 
-
-![](/input/images/example1-retrievingdata.png)
-
-[TODO: beschrijving per stap].
 
 
 ### Van uitvoering tot afronding
 [TODO: beschrijving + sequence-diagram van uitvoering tot afronding van taak]
 
-## Overeenkomsten met andere standaarden
-In bovenstaande specificatie beschrijft een implementatie van het IHE DCP profiel. Deze specificatie breidt het IHE profile uit met de data die binnen werkprocessen (en tussen organisaties) ontstaat en de afgeleide, functionele autorisatie voor deze data. Uiteraard zijn er andere standaarden binnen de zorg die een overlap hebben met deze specificatie. Bij het opstellen van deze specificatie is getracht om zo veel mogelijk deze bestaande standaarden te hergebruiken.
-
-### eOverdracht
-[TODO: beschrijving overeenkomsten en verschillen met eOverdracht standaard]
-
-
-### Koppeltaal 2.0
-[TODO: beschrijving overeenkomsten en verschillen met Koppeltaal 2.0 standaard]
-
-### Technical Agreement Notified Pull
-[TODO: beschrijving overeenkomsten en verschillen met TA NP standaard]
 
 
 
