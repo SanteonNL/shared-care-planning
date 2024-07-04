@@ -152,10 +152,19 @@ In the second diagram, Care Provider 2 will send Care Provider 3 a request, usin
 For more information on this transaction, see [Transactions - Creating and responding to a Task](./transaction-task-negotiation.html)
 
 #### Updating CarePlan and CareTeam
-The CarePlan Service is responsible for updating the CareTeam and, for convenience, the CarePlan.activities. This transaction is triggered by a Task creation or update. The CP-Service evaluates all Tasks and their status for a CarePlan, updates the CarePlan/CareTeam accordingly and notifies all CareTeam-members. The base ['Task state machine'](https://hl7.org/fhir/R4/task.html#statemachine) is used in SCP (allowed states and allowed transitions).
+The CarePlan Service is responsible for updating the CareTeam and, for convenience, the CarePlan.activities. This transaction is triggered by a Task creation or update. 
+The Task state machine for SCP is a subset of the [base FHIR Task state machine](https://hl7.org/fhir/R4/task.html#statemachine) (SCP does not use status 'draft' and 'ready'). The requestor and owner are resctricted to make certain state transitions    
 
+
+
+
+<img src="Task-state-machine-excl-draft.svg" width="100%" style="float: none"/>
+
+The CP-Service evaluates all Tasks and their status for a CarePlan, updates the CarePlan/CareTeam accordingly and notifies all CareTeam-members.
 
 <img src="careplan-careteam-management-overview.png" width="100%" style="float: none"/>
+
+<img src="Task-status-change-to-membership-status.svg" width="100%" style="float: none"/>
 
 
 #### Getting data from CareTeam members
