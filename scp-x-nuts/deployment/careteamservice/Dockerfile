@@ -4,10 +4,12 @@ ENV GO111MODULE on
 ENV GOPATH /
 
 COPY go.mod .
-COPY main.go .
+COPY go.sum .
+RUN go mod download && go mod verify
+COPY . .
 
 EXPOSE 8080
 
-RUN go build -o /app main.go
+RUN go build -o /app .
 
 ENTRYPOINT ["/app"]

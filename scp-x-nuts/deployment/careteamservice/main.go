@@ -4,8 +4,9 @@ import (
 	"context"
 	"fmt"
 	"github.com/SanteonNL/shared-care-planning/scp-x-nuts/careteamservice/fhirclient"
-	fhir "github.com/samply/golang-fhir-models/fhir-models/fhir"
+	"github.com/samply/golang-fhir-models/fhir-models/fhir"
 	"github.com/sirupsen/logrus"
+	"net/http"
 	"net/url"
 	"os"
 )
@@ -35,47 +36,43 @@ func main() {
 		panic(fmt.Sprintf("failed to initialize FHIR subscription: %v", err))
 	}
 
-	//err := http.ListenAndServe(listenAddress, http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
-	//	switch request.Method {
-	//	case http.MethodGet:
-	//		writer.Header().Set("Content-Type", "application/json")
-	//		lock.Lock()
-	//		defer lock.Unlock()
-	//		writer.WriteHeader(http.StatusOK)
-	//		_ = json.NewEncoder(writer).Encode(resources)
-	//	case http.MethodPost:
-	//		var resourceURLs []string
-	//		if err := readJSON(request.Body, &resourceURLs); err != nil {
-	//			writer.WriteHeader(http.StatusBadRequest)
-	//			_, _ = writer.Write([]byte(fmt.Sprintf("expected JSON []string: %w", err.Error())))
-	//			return
-	//		}
-	//		party := strings.TrimLeft(request.URL.RawPath, "/")
-	//		if party == "" {
-	//			writer.WriteHeader(http.StatusBadRequest)
-	//			_, _ = writer.Write([]byte("invalid party in URL"))
-	//		}
-	//		for _, resourceURL := range resourceURLs {
-	//			resources[party] = append(resources[party], resourceURL)
-	//		}
-	//		log.Println(fmt.Sprintf("authorized resources for %s: %v", party, resourceURLs))
-	//		writer.WriteHeader(http.StatusCreated)
-	//	}
-	//}))
-	//if err != nil {
-	//	panic(err)
-	//}
+	apiHandler := api{
+		fhirClient: fhirClient,
+	}
+	mux := http.NewServeMux()
+	// FHIR Store posts to /notify/{ResourceType}/{ResourceID}
+	mux.HandleFunc("POST /notify/{resourceType}/{resourceID}", apiHandler.handleSubscriptionNotify)
+	mux.HandleFunc("PUT /notify/{resourceType}/{resourceID}", apiHandler.handleSubscriptionNotify)
+	mux.HandleFunc("/*", handleNotFound)
+	if err := http.ListenAndServe(listenAddress, mux); err != nil {
+		panic(err)
+	}
 }
 
 func fhirSubscribe(fhirClient fhirclient.Client, serviceBaseURL *url.URL) error {
-	return fhirClient.CreateOrUpdate(context.Background(), fhir.Subscription{
-		Criteria: "CarePlan",
+	if isSubscribed, err := fhirIsSubscribed(fhirClient); err != nil {
+		return fmt.Errorf("failed to check FHIR subscription status: %v", err)
+	} else if isSubscribed {
+		return nil
+	}
+	logrus.Info("Subscribing CarePlan changes on FHIR server")
+	var createdSubscription fhir.Subscription
+	return fhirClient.Create(context.Background(), fhir.Subscription{
+		Criteria: "CarePlan?",
 		Channel: fhir.SubscriptionChannel{
 			Type:     fhir.SubscriptionChannelTypeRestHook,
 			Endpoint: stringP(serviceBaseURL.JoinPath("notify").String()),
-			Payload:  stringP("application/json"),
+			Payload:  stringP("application/fhir+json"),
 		},
-	})
+	}, &createdSubscription)
+}
+
+func fhirIsSubscribed(fhirClient fhirclient.Client) (bool, error) {
+	var subscriptions fhir.Bundle
+	if err := fhirClient.ReadOne(context.Background(), "/Subscription", &subscriptions); err != nil {
+		return false, err
+	}
+	return len(subscriptions.Entry) > 0, nil
 }
 
 func stringP(value string) *string {
