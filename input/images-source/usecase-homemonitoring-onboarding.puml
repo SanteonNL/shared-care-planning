@@ -1,0 +1,100 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+autonumber
+
+
+title Use Case Home monitoring - Hospital onboarding Patient at Monitoring Clinic
+
+box Monitoring Clinic
+    actor eNurse as "eNurse\n(using browser)"
+    participant "EHR" as ClinicEHR
+    participant "FHIR API" as ClinicFHIR
+    participant "Orchestrator\n(CarePlanService)" as ClinicOrchestratorCPS
+    participant "Orchestrator\n(CarePlanContributor)" as ClinicOrchestratorContr
+    participant "Nuts Node" as ClinicNutsNode
+end box
+box Hospital
+    participant "Nuts Node" as HospitalNutsNode
+    participant "Orchestrator\n(CarePlanContributor)" as HospitalOrchestrator
+    participant "FHIR API" as HospitalFHIR
+    participant "EHR" as HospitalEHR
+    actor "Nurse/Doctor" as HospitalNurse
+end box
+
+HospitalNurse -> HospitalEHR : Start Onboarding app
+activate HospitalEHR
+    HospitalEHR -> HospitalOrchestrator : SMART on FHIR App Launch\n(patient,user)
+    activate HospitalOrchestrator
+        HospitalOrchestrator -> HospitalFHIR : Collect FHIR resources\n(Patient, ServiceRequest)
+        activate HospitalFHIR
+        return FHIR resources
+        HospitalOrchestrator -> HospitalNurse : Ask for onboarding confirmation
+        activate HospitalNurse
+        return OK
+        HospitalOrchestrator -> HospitalNutsNode : Request Service Access Token\n(requesterDID, verifierDID, scope)
+        activate HospitalNutsNode
+            HospitalNutsNode -> ClinicNutsNode : Create Access Token\n(Verif.Pres.Org., scope)
+            activate ClinicNutsNode
+            return Access Token
+        return Access Token
+        group Create/Update CarePlan
+            HospitalOrchestrator -> ClinicOrchestratorCPS : Create CarePlan
+            activate ClinicOrchestratorCPS
+                ClinicOrchestratorCPS -> ClinicNutsNode : Validate Access Token
+                activate ClinicNutsNode
+                return OK
+                ClinicOrchestratorCPS -> ClinicFHIR : Create Care Plan
+                activate ClinicFHIR
+                return CarePlan
+            return CarePlan
+        end group
+        group Task negotation (Clinic receives and accepts Task)
+            HospitalOrchestrator -> ClinicOrchestratorContr : Create Task\n<i>(ref CarePlan, ref ServiceRequest)
+            activate ClinicOrchestratorContr
+                ClinicOrchestratorContr -> ClinicNutsNode : Validate Access Token
+                activate ClinicNutsNode
+                return OK
+                ClinicOrchestratorContr -> ClinicFHIR : Create Task
+                activate ClinicFHIR
+                    ClinicFHIR ---> ClinicEHR : Notify Task
+                return Task
+            return Task
+            group Hospital waits for Clinic to accept the Task
+                HospitalOrchestrator -> ClinicOrchestratorContr : Get Task
+                activate ClinicOrchestratorContr
+                    ClinicOrchestratorContr -> ClinicNutsNode : Validate Access Token
+                    activate ClinicNutsNode
+                    return OK
+                    ClinicOrchestratorContr -> ClinicFHIR : Get Task
+                    activate ClinicFHIR
+                    ClinicEHR -> ClinicFHIR : Update Task\n(PUT status=accepted)\n(asynchronous)
+                    return Task
+                return Task\n<i>(status=accepted)
+            end group
+            group Hospital adds Clinic to CarePlan
+                HospitalOrchestrator -> ClinicOrchestratorCPS : Update CarePlan\n(adds Task)
+                activate ClinicOrchestratorCPS
+                    ClinicOrchestratorCPS -> ClinicNutsNode : Validate Access Token
+                    activate ClinicNutsNode
+                    return OK
+                    ClinicOrchestratorCPS -> ClinicFHIR : Add Task to CarePlan,\nUpdate CareTeam
+                    activate ClinicFHIR
+                    return CarePlan
+                return CarePlan
+            end group
+        end group
+        group Hospital enriches Task with ServiceRequest
+            HospitalOrchestrator -> ClinicOrchestratorContr : Update Task\n(input=ServiceRequest,inline)
+            activate ClinicOrchestratorContr
+                ClinicOrchestratorContr -> ClinicNutsNode : Validate Access Token
+                activate ClinicNutsNode
+                return OK
+                ClinicOrchestratorContr -> ClinicFHIR : Update Task
+                activate ClinicFHIR
+                    ClinicFHIR ---> ClinicEHR : Notify ServiceRequest\navailable
+                return Task
+            return Task
+        end group
+    return OK
+return Completed\n(closes SMART on FHIR app)
+@enduml

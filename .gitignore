@@ -1,4 +1,3 @@
-output/
 temp/
 template/
 input-cache/
@@ -8,3 +7,4 @@ input-cache/
 *.bkp
 .idea
 .DS_Store
+fsh-generated/
