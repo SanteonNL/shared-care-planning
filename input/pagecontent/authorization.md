@@ -175,17 +175,17 @@ context, for example:
 
 * `CarePlan.subject` The `patient` related to the resource.
 * `CarePlan.addresses[Condition].code` The `type of condition`, like *COPD*.
-* `CarePlan.activity[ServiceRequest].doe` The `type of service`, like *Home monitoring*.
+* `CarePlan.activity[ServiceRequest].code` The `type of service`, like *Home monitoring*.
 * Resource, the resource type.
 
 An example rules for home monitoring could look like the following:
 
-| Condition.code         | Request.code    | Resource                                                    |
-|------------------------|-----------------|-------------------------------------------------------------|
-| *                      | *               | Patient?id=patient.id                                       |
-| COPD/ longaandoeningen | Thuismonitoring | Condition?subject=patient&category=[all somatic conditions] |
-| *                      | Thuismonitoring | CarePlan?id=CarePlan.id                                     |
-| *                      | Thuismonitoring | CareTeam?subject=patient.id                                 |
+| Condition.code                                              | Request.code                      | Resource                                                    |
+|-------------------------------------------------------------|-----------------------------------|-------------------------------------------------------------|
+| *                                                           | *                                 | Patient?id=patient.id                                       |
+| 13645005 (Chronic obstructive pulmonary disease (disorder)) | 719858009 (Telehealth monitoring) | Condition?subject=patient&category=[all somatic conditions] |
+| *                                                           | 719858009 (Telehealth monitoring  | CarePlan?id=CarePlan.id                                     |
+| *                                                           | 719858009 (Telehealth monitoring  | CareTeam?subject=patient.id                                 |
 
 ### Notes / Questions
 
