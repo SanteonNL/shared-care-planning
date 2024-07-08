@@ -11,8 +11,11 @@ This IG uses several concepts from the FHIR R4 specifications.
 
 #### FHIR Restful interactions
 In the transactions sections, this IG will use the [basic concepts on RESTful interaction with a FHIR API](https://hl7.org/fhir/R4/http.html); e.g. read, search, update, create and delete interactions
-> [!IMPORTANT] 
-> To avoid losing data during update, actors MUST support the directives in  [transactional integrity](http://hl7.org/fhir/R4/http.html#transactional-integrity) and [concurrency](https://hl7.org/fhir/R4/http.html#concurrency)
+
+|------------------------------------------------|
+| To avoid losing data during update, actors MUST support the directives in  [transactional integrity](http://hl7.org/fhir/R4/http.html#transactional-integrity) and [concurrency](https://hl7.org/fhir/R4/http.html#concurrency) |
+{:.grid .bg-warning}
+
 
 #### FHIR Workflow
 This IG will use and specify a workflow pattern. For general FHIR workflow concepts, see: https://hl7.org/fhir/R4/workflow.html The base pattern that will be used is the [https://hl7.org/fhir/R4/workflow-management.html#optionh](https://hl7.org/fhir/R4/workflow-management.html#optionh)
@@ -141,13 +144,15 @@ An essential part of SCP is the workflow where one care provider requests anothe
 
 
 
-<img src="task-negotiation-overview-1-2.png" width="60%" style="float: none"/>
+<img src="task-negotiation-overview-1-2.svg" width="60%" style="float: none"/>
 
 The transaction is based on [FHIR workflow pattern H](https://hl7.org/fhir/R4/workflow-management.html#optionh) which uses a 'workflow broker' that stores and manages Task resources. In SCP, the 'workflow broker' is implemented by the Care Plan Service. The Care Plan Service store and manages Tasks, CarePlans and CareTeam resources.  
 In the second diagram, Care Provider 2 will send Care Provider 3 a request, using Care Provider 1 as the 'workflow broker' (the CP-Service where the CarePlan, CareTeam and Tasks reside).
 
 
-<img src="task-negotiation-overview-1-2-3.png" width="60%" style="float: none"/>
+<img src="task-negotiation-overview-1-2-3.svg" width="60%" style="float: none"/>
+
+{% include task-negotiation-overview-1-2-3.svg %}
 
 For more information on this transaction, see [Transactions - Creating and responding to a Task](./transaction-task-negotiation.html)
 
@@ -158,20 +163,25 @@ The Task state machine for SCP is a subset of the [base FHIR Task state machine]
 
 
 
-<img src="Task-state-machine-excl-draft.svg" width="100%" style="float: none"/>
+<img src="Task-state-machine-excl-draft.svg" width="80%" style="float: none"/>
 
 The CP-Service evaluates all Tasks and their status for a CarePlan, updates the CarePlan/CareTeam accordingly and notifies all CareTeam-members.
 
-<img src="careplan-careteam-management-overview.png" width="100%" style="float: none"/>
+<div>
+{% include careplan-careteam-management-overview.svg %}
+</div>
 
-<img src="Task-status-change-to-membership-status.svg" width="100%" style="float: none"/>
+
+<img src="Task-status-change-to-membership-status.svg" width="40%" style="float: none"/>
+
 
 
 #### Getting data from CareTeam members
 
 Work-in-progress....
+<div>
 {% include example1-retrievingdata.svg %}
-
+</div>
 
 ### Deployment considerations
 use Orca and you'll be fine.
@@ -206,3 +216,15 @@ This specification has copied many of the concepts used in IHE DCP. However.... 
 
 #### NL: Technical Agreement Notified Pull
 [TODO: beschrijving overeenkomsten en verschillen met TA NP standaard]
+
+
+<!-- |------------------------------------------------|
+| Editor, add the following new or modified transactions to the [IHE Technical Frameworks General Introduction Appendix B](https://profiles.ihe.net/GeneralIntro/ch-B.html): |
+{:.grid .bg-info}
+
+
+| Transaction                              | Definition                                                                                                                                                                                                                                                                                                                           |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Find Matching Care Services \[ITI-90\]   | The Find Matching Care Services transaction is used to query for practitioners, locations, organizations, and healthcare services resources as well as links between these resources. The Find Matching Care Services transaction is initiated by the Care Services Selective Consumer against the Care Services Selective Supplier. |
+| Request Care Services Updates \[ITI-91\] | The Request Care Services Updates is used to obtain practitioners, locations, organizations, and healthcare services resources that have been inserted or updated since the specified timestamp. The Request Care Services Updates is initiated by the Care Services Update Consumer against the Care Services Update Supplier.      |
+{:.grid .table-hover} -->

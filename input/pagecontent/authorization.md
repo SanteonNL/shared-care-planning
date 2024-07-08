@@ -32,62 +32,18 @@ user interaction or indirect by cryptographic proof, by all involved parties._
 
 #### Resource access
 
-<table>
-<thead>
-<tr>
-<th>Resource(.element)</th>
-<th>CRUDS</th>
-<th>Audience/attributes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CarePlan</td>
-<td>C</td>
-<td>All healthcare providers with atributes organization-identifier, practitioner-identifier, practitioner-role ?AND having an active service contract with the Care Plan Service?</td>
-</tr>
-<tr>
-<td>CarePlan</td>
-<td>RS</td>
-<td>All healthcare providers (active and inactive) in the CareTeam</td>
-</tr>
-<tr>
-<td>CarePlan.all, .Condition, .Goal, .todo</td>
-<td>U</td>
-<td>All active healthcare providers in the CareTeam</td>
-</tr>
-<tr>
-<td>CarePlan.subject, .todo</td>
-<td>U</td>
-<td>not allowed</td>
-</tr>
-<tr>
-<td>CarePlan</td>
-<td>D</td>
-<td>Head Practitioner (equals CarePlan Author)</td>
-</tr>
-<tr>
-<td>Task</td>
-<td>C</td>
-<td>All active healthcare providers in the CareTeam</td>
-</tr>
-<tr>
-<td>Task</td>
-<td>RS</td>
-<td>All healthcare providers (active en inactive) in the CareTeam, MAYBE: All healthcare providers that are Task.owner can access that specific Task (only when notification does not contain enough info)</td>
-</tr>
-<tr>
-<td>Task</td>
-<td>U</td>
-<td>All healthcare providers that are Task.requester or Task.owner can access that specific Task</td>
-</tr>
-<tr>
-<td>CareTeam</td>
-<td>RS</td>
-<td>All healthcare providers (active and inactive) in the CareTeam</td>
-</tr>
-</tbody>
-</table>
+| Resource(.element)                     | CRUDS | Audience/attributes                                                                                                                                                                                     |
+|----------------------------------------|-------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| CarePlan | C | All healthcare providers with atributes organization-identifier, practitioner-identifier, practitioner-role ?AND having an active service contract with the Care Plan Service? |
+| CarePlan | RS | All healthcare providers (active and inactive) in the CareTeam                                                                                                                                          |
+| CarePlan.all, .Condition, .Goal, .todo | U     | All active healthcare providers in the CareTeam                                                                                                                                                         |
+| CarePlan.subject, .todo                | U     | not allowed                                                                                                                                                                                             |
+| CarePlan                               | D     | Head Practitioner (equals CarePlan Author)                                                                                                                                                              |
+| Task                                   | C     | All active healthcare providers in the CareTeam                                                                                                                                                         |
+| Task                                   | RS    | All healthcare providers (active en inactive) in the CareTeam, MAYBE: All healthcare providers that are Task.owner can acccess that specific Task (only when notification does not contain enough info) |
+| Task                                   | U     | All healthcare providers that are Task.requester or Task.owner can access that specific Task                                                                                                            |
+| CareTeam  | RS    | All healthcare providers (active and inactive) in the CareTeam |
+{:.grid .table-hover}
 
 
 Operations that are not mentioned in the above table MUST not be supported.
@@ -127,6 +83,7 @@ Authorization: Bearer 03c90ce0-fe7b-44fb-aff7-b09ef4e45863
 | Resource   | CRUDS | Audience/attributes                          |
 |------------|-------|----------------------------------------------|
 | Resources* | RS    | All active PractitionerRoles in the CareTeam |
+{:.grid .table-hover}
 
 *The list of which resources are accessible depends on the context of the CarePlan (Patient, Condition, Request) and
 possibly the role of the requesting healthcare provider. Condition-Request-Resource lists MUST be specified for each use
@@ -152,7 +109,8 @@ context in which the data request takes place MUST NOT be included.
 | Resource              | CRUDS | Audience/attributes/rules                                              |
 |-----------------------|-------|------------------------------------------------------------------------|
 | Incoming notification | C     | All (healthcare)organizations that expose a Care Plan Service endpoint |
-| *                     | RUDS  | Not allowed                                                            |
+| *                     | RUDS  | Not allowed |
+{:.grid .table-hover}
 
 Operations that are not mentioned in the above table MUST not be supported.
 
@@ -182,10 +140,11 @@ An example rules for home monitoring could look like the following:
 
 | Condition.code                                              | Request.code                      | Resource                                                    |
 |-------------------------------------------------------------|-----------------------------------|-------------------------------------------------------------|
-| *                                                           | *                                 | Patient?id=patient.id                                       |
+| * | * | Patient?id=patient.id  |
 | 13645005 (Chronic obstructive pulmonary disease (disorder)) | 719858009 (Telehealth monitoring) | Condition?subject=patient&category=[all somatic conditions] |
-| *                                                           | 719858009 (Telehealth monitoring  | CarePlan?id=CarePlan.id                                     |
-| *                                                           | 719858009 (Telehealth monitoring  | CareTeam?subject=patient.id                                 |
+| * | 719858009 (Telehealth monitoring)  | CarePlan?id=CarePlan.id |
+| * | 719858009 (Telehealth monitoring)  | CareTeam?subject=patient.id |
+{:.grid .table-hover}
 
 ### Notes / Questions
 

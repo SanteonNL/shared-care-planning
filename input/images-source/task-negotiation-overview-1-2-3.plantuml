@@ -2,8 +2,6 @@
 
 autonumber
 
-
-' title Use Case Home monitoring - Hospital onboarding Patient at Monitoring Clinic
 box Care Provider 2
     actor "Practitioner" as Practitioner1
     participant "Care Plan Contributor" as CPC1
@@ -53,3 +51,4 @@ deactivate CPC2
 CPS -> CPC1 : Notify Task update
 deactivate CPC1
 deactivate CPC1
+@enduml

@@ -49,3 +49,4 @@ deactivate CPC2
 CPS -> CPC1 : Notify Task update
 deactivate CPC1
 deactivate CPC1
+@enduml

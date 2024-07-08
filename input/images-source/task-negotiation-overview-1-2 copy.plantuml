@@ -35,3 +35,4 @@ CPS -> EHR1 : Notify Task update
 EHR2 -> CPS : Update Task\n(status complete)
 deactivate EHR2
 CPS -> EHR1 : Notify Task update
+@enduml
