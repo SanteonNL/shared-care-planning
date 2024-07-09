@@ -1,0 +1,74 @@
+@startuml task-negotiation-overview-1-2-3
+
+autonumber 1.1
+
+' title Use Case Home monitoring - Hospital onboarding Patient at Monitoring Clinic
+box Care Provider 2: Antonius
+    actor "Practitioner" as Practitioner
+    participant "Epic EHR" as Epic #LightYellow
+    participant "Epic on FHIR" as EpicOnFHIR #LightYellow
+    participant "API platform (role: CPC \n(Requester))" as APIplatform #LightCoral
+    participant "Orca app" as OrcaApp #LightBlue
+    'participant CPU
+end box
+box Care Provider 1: Zorg bij jou
+    participant "Care Plan Service" as CPS #LightBlue
+    participant "Care Plan Contributor \n(Performer)" as CPC #LightBlue
+end box
+
+activate Practitioner
+    Practitioner -> Epic : Enter \nEnrollment \norder
+deactivate Practitioner
+
+Epic -> Epic : Compose HL7v2\n-ORM message
+Epic -> APIplatform : Send HL7v2 message
+activate APIplatform
+    APIplatform -> APIplatform: Inspect HL7v2 message \nfor conversion
+    APIplatform -> EpicOnFHIR: search and \nread resources
+    EpicOnFHIR --> APIplatform: resources
+    APIplatform -> APIplatform: Convert HL7v2 message \nto resources
+    APIplatform -> APIplatform: Store Task, CarePlan, \nServiceRequest
+deactivate APIplatform
+
+autonumber inc a
+activate Practitioner
+    Practitioner -> Epic : Open Orca-app
+    Epic -> OrcaApp: launch app \n(SMART on FHIR)
+    activate OrcaApp
+        OrcaApp -> OrcaApp: inspect launch context for prefill
+        OrcaApp -> APIplatform: search and read resources
+        APIplatform -> OrcaApp: resources \n(Task, CarePlan, ServiceRequest)
+        OrcaApp -> OrcaApp: prefill enrollment form
+        OrcaApp -> Practitioner: display enrollment characteristics
+        Practitioner -> OrcaApp : confirm , Start Enrollment requestl
+
+        OrcaApp -> CPS : Create Task\n(status requested,\nreferring CarePlan\nand (Service-)Request)
+        
+        autonumber inc a
+        CPS -> CPC : Notify Task creation
+
+        activate CPC
+            CPC -> CPS : Update Task status\n(status accepted)
+        deactivate CPC
+        
+        CPS -> APIplatform : Notify Task update?
+        APIplatform -> OrcaApp : Notify Task update?
+        group Optional: Add PII to Task //after// Task acceptance
+            OrcaApp -> CPS : Update Task (add PII)
+            CPS -> CPC : Notify Task update\n(enriched Task)
+        end group
+        OrcaApp -> Practitioner : Done
+    deactivate OrcaApp
+deactivate Practitioner
+
+autonumber inc a
+CPC -> CPS : Update Task status\n(status in-progress)
+CPS -> APIplatform : Notify Task update
+CPC -> CPS : Update Task status\n(status complete)
+CPS -> APIplatform : Notify Task update
+
+legend bottom
+    |<#LightYellow> Hosted by Antonius/Epic|
+    |<#LightCoral> Hosted by Harmony|
+    |<#LightBlue> Hosted by Zorgbijjou|
+endlegend
