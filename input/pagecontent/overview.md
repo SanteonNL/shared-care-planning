@@ -68,13 +68,16 @@ The identifiers for Patient, RelatedPerson, Practitioner and Organization are us
 - **telecom**: contact details of the Patient, RelatedPerson, Practitioner or Organization
 For more information, check the FHIR R4 [Patient](https://hl7.org/fhir/R4/patient.html), [RelatedPerson](https://hl7.org/fhir/R4/relatedperson.html), [PractitionerRole](https://hl7.org/fhir/R4/practitionerrole.html) or [Organization](https://hl7.org/fhir/R4/organization.html) documentation
 
-#### AuditEvent
-The FHIR AuditEvent resource is used for logging of events that record activities related to the use or manipulation of data. Members of the CareTeam in a CarePlan are authorized to access and manipulate data.  Therefore the transactions that lead to adding or changing CareTeam-members is recorded in AuditEvents. For more information, check the [FHIR R4 AuditEvent documentation](https://hl7.org/fhir/R4/auditevent.html).
-
-#### Definitional resource: PlanDefinition and ActivityDefinition
-The FHIR PlanDefinition and ActivityDefinition resource provides a detailed, reusable template for defining various healthcare-related activities. It ensures that standardized actions, treatments, and procedures can be clearly described and referenced across different healthcare systems, promoting consistency and quality in care delivery.
-Using the [$apply operation](https://hl7.org/fhir/R4/activitydefinition-operation-apply.html) healthcare organizations are able instantiate a [CarePlan](#careplan) or request (referred to in [Task](#task).focus) in a consistent way.
-For more information, check the FHIR R4 [PlanDefinition](https://hl7.org/fhir/R4/plandefinition.html), [ActivityDefinition](https://hl7.org/fhir/R4/activitydefinition.html) documentation.
+#### Provenance
+The Provenance resource captures details about the creation, modification, and transmission of a resource. It includes information about the entities and agents involved, as well as the time and place of the event. Provenance is essential for understanding the history and trustworthiness of data within healthcare systems. Members of the CareTeam in a CarePlan are authorized to access and manipulate data.  Therefore the transactions that lead to adding or changing CareTeam-members is recorded in Provenance instances. 
+Key elements of a Provenance for SCP:
+- **target**: The resources that are the subject of the provenance information (e.g., a specific Task).
+- **occurredDateTime**: The time period or specific date and time when the event occurred
+- **activity**: The type of activity that took place (e.g., creation, modification).
+- **agent**: Details about the individual(s) or organization(s) involved in the event, including:
+    - **onBehalfOf**: The organization the agent was acting on behalf of.
+- **signature**: Digital signatures that authenticate the provenance event.
+For more information, check the [FHIR R4 Provenance documentation](https://hl7.org/fhir/R4/provenance.html) and see [this example of a Task with an embedded Provenance instance](https://hl7.org/fhir/R4/task-example1.json.html).
 
 
 ---
