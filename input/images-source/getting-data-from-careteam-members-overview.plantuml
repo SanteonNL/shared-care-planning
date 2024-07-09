@@ -1,4 +1,4 @@
-@startuml getting-data-from-CareTeam-members-overview
+@startuml getting-data-from-careteam-members-overview
 
 autonumber
 !pragma teoz true
