@@ -45,6 +45,7 @@ Some of these items are explained in more detail:
     - [Enroll patient in home monitoring](./usecase-enrollment.html)
     - [Get data for home monitoring](./usecase-view-all-data.html)
     - [How to use nation-specific or condition-specific profile](./usecase-specification.html)
+    - [Nursing handoff (eOverdracht)](./usecase-nursing-handoff.html)
 
 - [Artifacts](./artifacts.html): a comprehensive list of all artifacts that are used in SCP 
 

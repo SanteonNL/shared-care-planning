@@ -2,48 +2,53 @@
 autonumber
 !pragma teoz true
 
-' title Use Case Home monitoring - Hospital onboarding Patient at Monitoring Clinic
-
 box Care Provider 1
     actor "Practitioner" as Practitioner1
     participant "Care Plan Contributor" as CPC1
     participant "Care Plan Service" as CPS
 end box
 box Care Provider 2
-    participant "Care Plan Contributor" as CPC2
+     participant "Care Plan Contributor" as CPC2
     participant "Order mgnt" as EHR2
     actor "Practitioner" as Practitioner2
 end box
 
+hide footbox
+
 activate Practitioner1
 Practitioner1 -> CPC1 : Start Request\nreferral
-& CPC1 -> CPS : Create CarePlan\n (if non exists\n referring Patient\n and Conditions)
+&CPC1 -> CPS : Create CarePlan\n (if non exists\n referring Patient\n and Conditions)
+& note over EHR2 #WhiteSmoke
+Actions in <color #purple>purple
+ are optional
+end note
 CPC1 -> CPS : Create Task\n status requested,\n referring CarePlan\n and (Service-)Request
 & CPS -> CPC2  : Notify Task created
 & CPC2 -> EHR2  : Notify Task created
-& EHR2 -> EHR2 : check\navailabity....
+& EHR2 -[#purple]> EHR2 : <color #purple>evaluate Task\n <color #purple>(required data,\n <color #purple>capacity, etc):\n <color #purple>status 'received'
 
-EHR2 -> CPC2 : Need more information
-& CPC2 -> CPS  : Update Task: status received,\n add preliminary QuestionnaireResponse\n to Task.input
+
+EHR2 -[#purple]> CPC2 : <color #purple>Need more information
+& CPC2 -[#purple]> CPS  : <color #purple>Update Task: status received,\n <color #purple>add preliminary QuestionnaireResponse\n <color #purple>to Task.input
+& CPS -[#purple]> CPC1 : <color #purple>Notify Task update
+& CPC1 -[#purple]> Practitioner1 : <color #purple>Present form\n<color #purple>(prefill data from EHR)
+
+Practitioner1 -[#purple]> CPC1 : <color #purple>Complete form
+& CPC1 -[#purple]> CPS : <color #purple>Update Task: Complete\n <color #purple>QuestionnaireResponse\n <color #purple>in Task.input
+& CPS -[#purple]> CPC2 : <color #purple>Notify Task update
+& CPC2 -[#purple]> EHR2 : <color #purple>Notify Task update
+& EHR2 -> EHR2 : evaluate Task:\n status 'accepted'
+
+EHR2 -> CPC2 : Task accepted,\n <color #purple>need patient\n <color #purple>contact details
+& CPC2 -> CPS : Update Task: status accepted,\n <color #purple>add preliminary QuestionnaireResponse\n <color #purple>to Task.input for PII
 & CPS -> CPC1 : Notify Task update
-& CPC1 -> Practitioner1 : Present form\n(prefill data from EHR)
+& CPC1 -[#purple]> Practitioner1 : <color #purple>Present form\n<color #purple>(prefill data from EHR)
 
-Practitioner1 -> CPC1 : Complete form
-& CPC1 -> CPS : Update Task: Complete\n QuestionnaireResponse\n in Task.input
-& CPS -> CPC2 : Notify Task update
-& CPC2 -> EHR2 : Notify Task update
-& EHR2 -> EHR2 : check\navailabity: OK
-
-EHR2 -> CPC2 : Task accepted, need\n patient contact details
-& CPC2 -> CPS : Update Task: status accepted,\n add preliminary QuestionnaireResponse\n to Task.input for PII
-& CPS -> CPC1 : Notify Task update
-& CPC1 -> Practitioner1 : Present form\n(prefill data from EHR)
-Practitioner1 -> CPC1 : Complete form
-& CPC1 -> CPS : Complete\n QuestionnaireResponse\n in Task.input (PII)
-
-& CPS -> CPC2 : Notify Task update
-& CPC2 -> EHR2 : Notify Task update
-& EHR2 -> Practitioner2 : Notify Task
+Practitioner1 -[#purple]> CPC1 : <color #purple>Complete form
+& CPC1 -[#purple]> CPS : <color #purple>Update Task: Complete\n <color #purple>QuestionnaireResponse\n <color #purple>in Task.input (PII)
+& CPS -[#purple]> CPC2 : <color #purple>Notify Task update
+& CPC2 -[#purple]> EHR2 : <color #purple>Notify Task update
+& EHR2 -> Practitioner2 : present Task
 deactivate Practitioner1
 
 == waiting for Task to start ==
@@ -54,7 +59,7 @@ Practitioner2 -> EHR2 : starting with Task
 & CPS -> CPC1 : Notify Task update
 
 == waiting for Task to finish ==
-Practitioner2 -> EHR2 : I'm done
+Practitioner2 -> EHR2 : Task done
 & EHR2 -> CPC2 : Task is done
 & CPC2 -> CPS : Update Task: status complete
 & CPS -> CPC1 : Notify Task update

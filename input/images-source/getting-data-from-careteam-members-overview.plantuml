@@ -1,0 +1,45 @@
+@startuml getting-data-from-CareTeam-members-overview
+
+autonumber
+!pragma teoz true
+
+
+
+box Care Provider 2
+    actor "Practitioner" as Practitioner2
+    participant "Care Plan Contributor" as CPC2
+end box
+box Care Provider 1
+    participant "Care Plan Service" as CPS
+    participant "Care Plan Contributor" as CPC1
+end box
+box Care Provider 3
+    participant "Care Plan Contributor" as CPC3
+end box
+hide footbox
+
+
+
+Practitioner2 -> CPC2 : show me\n (condition-related)\n data of patient
+
+& note over CPC3 #WhiteSmoke
+Actions in <color #purple>purple
+ are optional
+end note
+
+CPC2 -> CPC2 : lookup url\n of CarePlan\n in (local) Task
+CPC2 -> CPS : request <color #purple>CarePlan, \nCareTeam<color #purple>, Tasks
+CPS -->  CPC2 : return <color #purple>CarePlan, \nCareTeam<color #purple>, Tasks
+CPC2 -> CPC1 : request health data of patient
+CPC1 -> CPS : request <color #purple>CarePlan, \nCareTeam<color #purple>, Tasks
+CPS -->  CPC1 : return <color #purple>CarePlan, \nCareTeam<color #purple>, Tasks
+CPC1 -->  CPC1 : check\nauthorization
+CPC1 -->  CPC2 : health data of patient
+CPC2 -> CPC3 : request health data of patient
+CPC3 -> CPS : request <color #purple>CarePlan, \nCareTeam<color #purple>, Tasks
+CPS -->  CPC3 : return <color #purple>CarePlan, \nCareTeam<color #purple>, Tasks
+CPC3 -->  CPC3 : check\nauthorization
+CPC3 -->  CPC2 : health data of patient
+CPC2 -> Practitioner2 : present Patient data
+
+@enduml

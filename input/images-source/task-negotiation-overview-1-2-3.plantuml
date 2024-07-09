@@ -16,7 +16,7 @@ box Care Provider 3
     participant "Order mgnt" as EHR2
     actor "Practitioner" as Practitioner2
 end box
-
+hide footbox
 
 
 activate Practitioner1
@@ -24,18 +24,22 @@ Practitioner1 -> CPC1 : Start Request\nreferral
 & CPC1 -> CPS : Create Task:\n status requested,\n referring CarePlan\n and (Service-)Request
 & CPS -> CPC2  : Notify Task created
 & CPC2 -> EHR2  : Notify Task created
-& EHR2 -> EHR2 : check\nrequired data\n to accept Task.
+& EHR2 -> EHR2 : evaluate Task:\n status 'received'
 
-EHR2 -> CPC2 : Need more information
-& CPC2 -> CPS  : Update Task: status received,\n add preliminary QuestionnaireResponse\n to Task.input
+& note over Practitioner2 #WhiteSmoke
+Actions in <color #purple>purple
+ are optional
+end note
+
+EHR2 -> CPC2 : Task received,\n <color #purple>Need more information
+& CPC2 -> CPS  : Update Task: status received,\n <color #purple>add preliminary\n <color #purple> QuestionnaireResponse\n <color #purple>to Task.input
 & CPS -> CPC1 : Notify Task update
-& CPC1 -> Practitioner1 : Present form\n(prefill data from EHR)
+& CPC1 -[#purple]> Practitioner1 : <color #purple>Present form\n<color #purple>(prefill data from EHR)
 
-Practitioner1 -> CPC1 : Complete form
-& CPC1 -> CPS : Update Task: Complete\n QuestionnaireResponse\n in Task.input
-& CPS -> CPC2 : Notify Task update
-& CPC2 -> EHR2 : Notify Task update
-
+Practitioner1 -[#purple]> CPC1 : <color #purple>Complete form
+& CPC1 -[#purple]> CPS : <color #purple>Update Task: Complete\n <color #purple>QuestionnaireResponse\n <color #purple>in Task.input
+& CPS -[#purple]> CPC2 : <color #purple>Notify Task update
+& CPC2 -[#purple]> EHR2 : <color #purple>Notify Task update
 
 & EHR2 -> Practitioner2 : present Task
 
@@ -48,16 +52,16 @@ activate Practitioner2
 & CPC2 -> CPS : Update Task: status accepted
 & CPS -> CPC1 : Notify Task update
 
-Practitioner2 -> EHR2 : Need patient\n contact details
+Practitioner2 -[#purple]> EHR2 : <color #purple>Need patient\n <color #purple>contact details
 
-& EHR2 -> CPC2 : Get patient contact details
-& CPC2 -> CPS : Get CareTeam for\n url Care Provider 2
-CPC2 -> CPC1 : Get Patient details
-CPC1 --> CPC2 : Patient details
+& EHR2 -[#purple]> CPC2 : <color #purple>Get patient contact details
+& CPC2 -[#purple]> CPS : <color #purple>Get CareTeam for\n <color #purple>url Care Provider 2
+CPC2 -[#purple]> CPC1 : <color #purple>Get Patient details
+CPC1 -[#purple]-> CPC2 : <color #purple>Patient details
 
-& CPC2 --> EHR2 : Patient details
+& CPC2 -[#purple]-> EHR2 : <color #purple>Patient details
 
-& EHR2 --> Practitioner2 : present Patient details
+& EHR2 -[#purple]-> Practitioner2 : <color #purple>present Patient details
 == waiting for Practitioner to start ==
 Practitioner2 -> EHR2 : starting with Task
 & EHR2 -> CPC2 : Task in-progress

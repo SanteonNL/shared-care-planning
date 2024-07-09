@@ -4,7 +4,7 @@ Shared Care Planning (SCP) provides the structures and transactions for care pla
 
 SCP builds upon the IHE 'Dynamic Care Planning' profile (IHE-DCP). It is extended by generic, FHIR workflow patterns for cross-organizational requests or orders. An authorization model will also be provided so that members in a distributed careteam will, e.g., be able to read patient-data from other organizations and/or will be able to plan new activities.
 
-
+---
 ### Concepts
 
 This IG uses several concepts from the FHIR R4 specifications. 
@@ -77,7 +77,7 @@ Using the [$apply operation](https://hl7.org/fhir/R4/activitydefinition-operatio
 For more information, check the FHIR R4 [PlanDefinition](https://hl7.org/fhir/R4/plandefinition.html), [ActivityDefinition](https://hl7.org/fhir/R4/activitydefinition.html) documentation.
 
 
-
+---
 ### Actors
 There are two actors in this Implementation Guide: The Care Plan Contributor and Care Plan Service. Every care-provider has to implement the Care Plan Contributor role, but in a (cross-organizational) CareTeam, just one care-provider needs to implement the Care Plan Service role.
 
@@ -123,6 +123,7 @@ Refer to Trust-over-IP or ARF or something
 Authorization; based on conditions, task-type, careteam-member-status (active/inactive) and/or role
 Member(-status) in the CareTeam are only updated by the CPS after 'agreement' on a Task in the CarePlan. 
 
+---
 ### Transactions
 
 An essential part of SCP is the workflow where one care provider requests another care provider to do something for a patient/CarePlan. If the latter one accepts the request (Task), the Task filler (a.k.a. Task.owner) can be added to the participants of the CareTeam. If a Task is rejected or cancelled, the Task.owner could be removed from the CareTeam. Once a Task is completed, the Task.owner remains a member of the CareTeam, but 'inactive' (CareTeam.participant.period gets an enddate). 
@@ -139,7 +140,7 @@ Next, we'll go into these three transactions in SCP:
 The CarePlan author or an 'active' CareTeam participant can create a new request and send the request to another Care provider. This Care provider may not be a current participant of the CareTeam. The Task status and state transitions are important part in the lifecycle of these requests.
 The Task state machine for SCP is a subset of the [base FHIR Task state machine](https://hl7.org/fhir/R4/task.html#statemachine) (SCP does not use status 'draft' and 'ready'): 
 
-<img src="Task-state-machine-excl-draft.png" width="80%" style="float: none"/>
+<img src="Task-state-machine-excl-draft.png" width="25%" style="float: none"/>
 
 The requestor and owner are restricted to make certain state transitions. For some Task states, the Task.owner will become a member of the CareTeam (see transaction [Updating CarePlan and CareTeam](#updating-careplan-and-careteam)). This table shows who must be authorized to make a state transition and if the Task.owner will become a CareTeam participant:
 
@@ -183,7 +184,7 @@ For more information on this transaction, see [Transactions - Creating and respo
 #### Updating CarePlan and CareTeam
 The CarePlan Service is responsible for updating the CareTeam and, for convenience, the CarePlan.activities. This transaction is triggered by a Task creation or update at the CP-Service. 
 
-The CP-Service evaluate the Task update (is state transition allowed?), updates the CarePlan/CareTeam accordingly and notifies all CareTeam-members.
+The CP-Service evaluates the Task update (is state transition allowed?), updates the CarePlan/CareTeam accordingly and notifies all CareTeam-members.
 The CarePlan.author and CarePlan.subject are always active participants in the CareTeam. 
 
 <div>
@@ -193,53 +194,39 @@ The CarePlan.author and CarePlan.subject are always active participants in the C
 
 #### Getting data from CareTeam members
 
-Work-in-progress....
+The first two transactions allow practitioners to collaborate across organizational borders. Having the CarePlan and CareTeam in place, also allows for CareTeam members to get additional information for the patient/CarePlan. In this transaction, Care Provider 2 is using the CareTeam from the CP-Service to locate other CareTeam members and ask each CareTeam-member for health data for this patient.
+The 'responding' CareTeam-member (data holders) use the CareTeam, CarePlan and Tasks to authorize incoming requests.
+
 <div>
-{% include example1-retrievingdata.svg %}
+{% include getting-data-from-careteam-members-overview.svg %}
 </div>
 
+Note that the CP-Service will notify all CP-Contributors on changed CarePlans and CareTeams. It might not be necessary to retrieve these from the CP-Service if the CarePlan and CareTeam are stored locally at the CP-Contributor.
+
 ### Deployment considerations
-use Orca and you'll be fine.
+***TODO*** Use Orca and you'll be fine.
 
-### Overview of the documentation structure
-
-The image below displays the schematic overview of the topics.
-
-Legenda
-- Light green, existing standards that don't need a specific description of the usage.
-- Dark green, existing standards that need a specific description of the usage.
-- Blue, the topics that need description.
-
+---
 ### Related Standards
 
-TODO Review text:
-In bovenstaande specificatie beschrijft een implementatie van het IHE DCP profiel. Deze specificatie breidt het IHE profile uit met de data die binnen werkprocessen (en tussen organisaties) ontstaat en de afgeleide, functionele autorisatie voor deze data. Uiteraard zijn er andere standaarden binnen de zorg die een overlap hebben met deze specificatie. Bij het opstellen van deze specificatie is getracht om zo veel mogelijk deze bestaande standaarden te hergebruiken.
-
-
+The above specification is an extension of the IHE Dynamic Care Planning profile (DCP). This specification extends the IHE profile with workflows (between organizations), CareTeam-member/data localization and CareTeam-member authorization for this data. Naturally, there are other standards within healthcare that overlap with this specification. In drafting this specification, efforts have been made to reuse existing standards as much as possible.
+We'll briefly describe the differences between SCP and other standards. The 'use case' section of this IG contains some examples of how to implement these other standards using SCP (e.g. [Nursing handoff (eOverdracht)](./usecase-nursing-handoff.html)).
 
 #### IHE: DCP
-This specification has copied many of the concepts used in IHE DCP. However.... describe difference
+***TODO***This specification has copied many of the concepts used in IHE DCP. However.... describe difference
+
+#### IHE: mCSD
+***TODO***
 
 #### US: Bi-directional ServiceRequest (BSER)
+***TODO***
 
 #### NL: eOverdracht
-[TODO: beschrijving overeenkomsten en verschillen met eOverdracht standaard]
+***TODO*** beschrijving overeenkomsten en verschillen met eOverdracht standaard
 
 
 #### NL: Koppeltaal 2.0
-[TODO: beschrijving overeenkomsten en verschillen met Koppeltaal 2.0 standaard]
+***TODO*** beschrijving overeenkomsten en verschillen met Koppeltaal 2.0 standaard
 
 #### NL: Technical Agreement Notified Pull
-[TODO: beschrijving overeenkomsten en verschillen met TA NP standaard]
-
-
-<!-- |------------------------------------------------|
-| Editor, add the following new or modified transactions to the [IHE Technical Frameworks General Introduction Appendix B](https://profiles.ihe.net/GeneralIntro/ch-B.html): |
-{:.grid .bg-info}
-
-
-| Transaction                              | Definition                                                                                                                                                                                                                                                                                                                           |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Find Matching Care Services \[ITI-90\]   | The Find Matching Care Services transaction is used to query for practitioners, locations, organizations, and healthcare services resources as well as links between these resources. The Find Matching Care Services transaction is initiated by the Care Services Selective Consumer against the Care Services Selective Supplier. |
-| Request Care Services Updates \[ITI-91\] | The Request Care Services Updates is used to obtain practitioners, locations, organizations, and healthcare services resources that have been inserted or updated since the specified timestamp. The Request Care Services Updates is initiated by the Care Services Update Consumer against the Care Services Update Supplier.      |
-{:.grid .table-hover} -->
+***TODO*** beschrijving overeenkomsten en verschillen met TA NP standaard
