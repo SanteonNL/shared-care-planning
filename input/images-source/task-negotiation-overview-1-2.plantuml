@@ -1,6 +1,6 @@
 @startuml task-negotiation-overview-1-2
 autonumber
-
+!pragma teoz true
 
 ' title Use Case Home monitoring - Hospital onboarding Patient at Monitoring Clinic
 
@@ -17,36 +17,46 @@ end box
 
 activate Practitioner1
 Practitioner1 -> CPC1 : Start Request\nreferral
-activate CPC1
-CPC1 -> CPS : Create CarePlan\n(if non exists\nreferring Patient\nand Conditions)
-activate CPS
-CPC1 -> CPS : Create Task\n(status requested,\nreferring CarePlan\nand (Service-)Request)
-CPS -> CPC2 : Notify Task creation
-activate CPC2
-CPC2 -> EHR2 : Notify Task creation
-EHR2 -> EHR2 : check\navailabity
-EHR2 -> CPC2 : Task accepted
-CPC2 -> CPS : Update Task\n(status accepted)
-CPS -> CPC1 : Notify Task update
-CPC1 -> Practitioner1 : Task accepted
-deactivate Practitioner1
-group Optional: Add PII to Task //after// Task acceptance
-CPC1 -> CPS : Update Task (add PII)
-CPS -> CPC2 : Notify Task update
-CPC2 -> EHR2 : Notify Task updated
-EHR2 -> EHR2 : check\ndata input\nrequirements
-end group
-{taskprogress} EHR2 -> CPC2 : Task in-progress
-CPC2 -> CPS : Update Task\n(status in-progress)
-CPS -> CPC1 : Notify Task update
-== waiting for Task to finish ==
- Practitioner2 -> EHR2 : I'm done
+& CPC1 -> CPS : Create CarePlan\n (if non exists\n referring Patient\n and Conditions)
+CPC1 -> CPS : Create Task\n status requested,\n referring CarePlan\n and (Service-)Request
+& CPS -> CPC2  : Notify Task created
+& CPC2 -> EHR2  : Notify Task created
+& EHR2 -> EHR2 : check\navailabity....
 
-{taskdone} EHR2 -> CPC2 : Task is done
-{taskprogress} <-> {taskdone} : some time
-CPC2 -> CPS : Update Task\n(status complete)
-deactivate CPC2
-CPS -> CPC1 : Notify Task update
-deactivate CPC1
-deactivate CPC1
+EHR2 -> CPC2 : Need more information
+& CPC2 -> CPS  : Update Task: status received,\n add preliminary QuestionnaireResponse\n to Task.input
+& CPS -> CPC1 : Notify Task update
+& CPC1 -> Practitioner1 : Present form\n(prefill data from EHR)
+
+Practitioner1 -> CPC1 : Complete form
+& CPC1 -> CPS : Update Task: Complete\n QuestionnaireResponse\n in Task.input
+& CPS -> CPC2 : Notify Task update
+& CPC2 -> EHR2 : Notify Task update
+& EHR2 -> EHR2 : check\navailabity: OK
+
+EHR2 -> CPC2 : Task accepted, need\n patient contact details
+& CPC2 -> CPS : Update Task: status accepted,\n add preliminary QuestionnaireResponse\n to Task.input for PII
+& CPS -> CPC1 : Notify Task update
+& CPC1 -> Practitioner1 : Present form\n(prefill data from EHR)
+Practitioner1 -> CPC1 : Complete form
+& CPC1 -> CPS : Complete\n QuestionnaireResponse\n in Task.input (PII)
+
+& CPS -> CPC2 : Notify Task update
+& CPC2 -> EHR2 : Notify Task update
+& EHR2 -> Practitioner2 : Notify Task
+deactivate Practitioner1
+
+== waiting for Task to start ==
+activate Practitioner2
+Practitioner2 -> EHR2 : starting with Task
+& EHR2 -> CPC2 : Task in-progress
+& CPC2 -> CPS : Update Task: status in-progress
+& CPS -> CPC1 : Notify Task update
+
+== waiting for Task to finish ==
+Practitioner2 -> EHR2 : I'm done
+& EHR2 -> CPC2 : Task is done
+& CPC2 -> CPS : Update Task: status complete
+& CPS -> CPC1 : Notify Task update
+deactivate Practitioner2
 @enduml

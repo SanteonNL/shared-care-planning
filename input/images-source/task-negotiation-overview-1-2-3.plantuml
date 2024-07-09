@@ -1,6 +1,7 @@
 @startuml task-negotiation-overview-1-2-3
 
 autonumber
+!pragma teoz true
 
 box Care Provider 2
     actor "Practitioner" as Practitioner1
@@ -20,35 +21,52 @@ end box
 
 activate Practitioner1
 Practitioner1 -> CPC1 : Start Request\nreferral
-activate CPC1
-CPC1 -> CPS : Create Task\n(status requested,\nreferring CarePlan\nand (Service-)Request)
+& CPC1 -> CPS : Create Task:\n status requested,\n referring CarePlan\n and (Service-)Request
+& CPS -> CPC2  : Notify Task created
+& CPC2 -> EHR2  : Notify Task created
+& EHR2 -> EHR2 : check\nrequired data\n to accept Task.
+
+EHR2 -> CPC2 : Need more information
+& CPC2 -> CPS  : Update Task: status received,\n add preliminary QuestionnaireResponse\n to Task.input
+& CPS -> CPC1 : Notify Task update
+& CPC1 -> Practitioner1 : Present form\n(prefill data from EHR)
+
+Practitioner1 -> CPC1 : Complete form
+& CPC1 -> CPS : Update Task: Complete\n QuestionnaireResponse\n in Task.input
+& CPS -> CPC2 : Notify Task update
+& CPC2 -> EHR2 : Notify Task update
+
+
+& EHR2 -> Practitioner2 : present Task
+
 deactivate Practitioner1
-activate CPS
-CPS -> CPC2 : Notify Task creation
-activate CPC2
-CPC2 -> EHR2 : Notify Task creation
-EHR2 -> CPC2 : Task received
-== waiting for (manual) Task acceptance ==
-Practitioner2 -> EHR2 : I accept the Task
-EHR2 -> CPC2 : Task accepted
-CPC2 -> CPS : Update Task\n(status accepted)
-CPS -> CPC1 : Notify Task update
-group Optional: Add PII to Task //after// Task acceptance
-CPC1 -> CPS : Update Task (add PII)
-CPS -> CPC2 : Notify Task update
-CPC2 -> EHR2 : Notify Task updated
-end group
-== waiting for Task to start ==
-Practitioner2 -> EHR2 : I started working\non the Task
-EHR2 -> CPC2 : Task in-progress
-CPC2 -> CPS : Update Task\n(status in-progress)
-CPS -> CPC1 : Notify Task update
-== waiting for Task to finish ==
+
+== waiting for Practitioner to accept ==
+Practitioner2 -> EHR2 : Task accepted
+activate Practitioner2
+& EHR2 -> CPC2 : Task accepted
+& CPC2 -> CPS : Update Task: status accepted
+& CPS -> CPC1 : Notify Task update
+
+Practitioner2 -> EHR2 : Need patient\n contact details
+
+& EHR2 -> CPC2 : Get patient contact details
+& CPC2 -> CPS : Get CareTeam for\n url Care Provider 2
+CPC2 -> CPC1 : Get Patient details
+CPC1 --> CPC2 : Patient details
+
+& CPC2 --> EHR2 : Patient details
+
+& EHR2 --> Practitioner2 : present Patient details
+== waiting for Practitioner to start ==
+Practitioner2 -> EHR2 : starting with Task
+& EHR2 -> CPC2 : Task in-progress
+& CPC2 -> CPS : Update Task: status in-progress
+& CPS -> CPC1 : Notify Task update
+== waiting for Practitioner to finish ==
 Practitioner2 -> EHR2 : I'm done
-EHR2 -> CPC2 : Task is done
-CPC2 -> CPS : Update Task\n(status complete)
-deactivate CPC2
-CPS -> CPC1 : Notify Task update
-deactivate CPC1
-deactivate CPC1
+& EHR2 -> CPC2 : Task is done
+& CPC2 -> CPS : Update Task: status complete
+& CPS -> CPC1 : Notify Task update
+deactivate Practitioner2
 @enduml

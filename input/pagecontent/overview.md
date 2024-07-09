@@ -79,19 +79,13 @@ For more information, check the FHIR R4 [PlanDefinition](https://hl7.org/fhir/R4
 
 
 ### Actors
-There are three actors in this Implementation Guide: The Care Plan User, Care Plan Contributor and Care Plan Service. Every care-provider has to implement the Care Plan User and Care Plan Contributor role, but in a (cross-organizational) CareTeam, just one care-provider needs to implement the Care Plan Service.
-
-#### Care Plan User
-The first actor is the Care Plan User (CP-User). It is an application/client rol that is acting on behalf of a real practitioner, patient or related person. This actor interacts with both the Care Plan Contributor(s) and a Care Plan Service. 
-This actor creates and updates the care plan and tasks/orders for other (future) Care Plan Contributors. 
-The CP-User may also retrieve data from the other Care Plan Contributor(s); CP-User will query the Care Plan service for the CarePlan and CareTeam-data to find at which organizations (or endpoints) other data could be reside. 
-Every SCP-transaction is initiated or trigged by a Care Plan User, so any manipulation of data should be traceable to the Care Plan User and responsible person.
-The Care Plan User role is a superset of the Care Plan Contributor role. I.e. a Care Plan User will change to Care Plan Contributor as soon as the user or practitioner leaves.
+There are two actors in this Implementation Guide: The Care Plan Contributor and Care Plan Service. Every care-provider has to implement the Care Plan Contributor role, but in a (cross-organizational) CareTeam, just one care-provider needs to implement the Care Plan Service role.
 
 #### Care Plan Contributor
-The second actor is the Care Plan Contributor (CP-Contributor). The main responsibilities of a CP-Contributor is to respond to an incoming Task-requests or Task-updates and to authorize other CP-Users to query local data.
+The first actor is the Care Plan Contributor (CP-Contributor). This actor interacts with both other Care Plan Contributor(s) and a Care Plan Service. This actor creates and updates the care plan and tasks/orders for other (future) Care Plan Contributors. CP-Contributor initiates most transactions on behalf of a real practitioner, patient or related person, but Task-state-changes can be made without an active user.
+The CP-Contributor may also retrieve data from the other Care Plan Contributor(s); CP-Contributor will query the Care Plan service for the CarePlan and CareTeam-data to find at which organizations (or endpoints) other data could be reside. The CP-Contributor must also respond to an incoming Task-requests or Task-updates and to authorize other CP-Users to query local data.
 
-Because the Care Plan Contributor is part of the Care Plan User role, the capabilities can be combined:
+Expressed in a FHIR Capability Statement, there are operations that CP-Contributor will do as an client-application (initiating transactions) and as a server-application (responding to transactions):
 
 TODO: FHIR capabilitystatement ([example](https://profiles.ihe.net/ITI/mCSD/CapabilityStatement-IHE.mCSD.CareServicesSelectiveConsumer.html))(mode=client):
 - POST/PUT CarePlan & Task
@@ -103,8 +97,7 @@ TODO: FHIR capabilitystatement ([example](https://profiles.ihe.net/ITI/mCSD/Capa
 
 
 #### Care Plan Service
-The third actor is the Care Plan Service. This actor manages (hosts) patient specific Care Plans, Tasks and Care Teams. The Care Plan Service is also responsible for **updating several elements in Care Plans and Care Teams** that authorize new persons or practitioners in the Care Team.
-Optionally, this actor also manages (hosts) Plan Definitions and Activity Definitions that are used for order sets, protocols, clinical practice guidelines, etc.
+The second actor is the Care Plan Service. This actor manages (hosts) patient specific Care Plans, Tasks and Care Teams. The Care Plan Service is also responsible for **updating several elements in Care Plans and Care Teams** that authorize new persons or practitioners in the Care Team.
 
 TODO: FHIR capabilitystatement (mode=client):
 - POST Notifications (for a new/updated Task, CarePlan or CareTeam)
@@ -113,7 +106,6 @@ TODO: FHIR capabilitystatement (mode=client):
 
 TODO: FHIR capabilitystatement (mode=server):
 - POST, PUT, GET Task, CarePlan, CareTeam and AuditEvent (including authorization of CP-User)
-- Optional: POST, PUT, GET, DELETE, $apply for PlanDefinition and ActivityDefinition
 
 TODO/Roadmap: 
 - transfer CarePlan-responsibility to other Practitioner or Organization. Maybe use a Task for the current CarePlan-author to accept
@@ -133,47 +125,70 @@ Member(-status) in the CareTeam are only updated by the CPS after 'agreement' on
 
 ### Transactions
 
-There are three transactions in SCP:
+An essential part of SCP is the workflow where one care provider requests another care provider to do something for a patient/CarePlan. If the latter one accepts the request (Task), the Task filler (a.k.a. Task.owner) can be added to the participants of the CareTeam. If a Task is rejected or cancelled, the Task.owner could be removed from the CareTeam. Once a Task is completed, the Task.owner remains a member of the CareTeam, but 'inactive' (CareTeam.participant.period gets an enddate). 
+The CareTeam instance is used to find other participants in the CareTeam and health data for the patient/CarePlan. The CareTeam instance is also used to authorize incoming requests for health data for a patient/CarePlan.
+
+Next, we'll go into these three transactions in SCP:
+
 1. Creating and responding to a Task
 1. Updating CarePlan and CareTeam
 1. Getting data from CareTeam members
 
 
 #### Creating and responding to a Task
-An essential part of SCP is the workflow where one care provider requests another care provider to do something for a patient/CarePlan. If the latter one accepts the request, it can be added to the (active) members of the CareTeam. In the first sequence diagram, Care Provider 1 has implemented the (optional) CP-Service role.
+The CarePlan author or an 'active' CareTeam participant can create a new request and send the request to another Care provider. This Care provider may not be a current participant of the CareTeam. The Task status and state transitions are important part in the lifecycle of these requests.
+The Task state machine for SCP is a subset of the [base FHIR Task state machine](https://hl7.org/fhir/R4/task.html#statemachine) (SCP does not use status 'draft' and 'ready'): 
+
+<img src="Task-state-machine-excl-draft.png" width="80%" style="float: none"/>
+
+The requestor and owner are restricted to make certain state transitions. For some Task states, the Task.owner will become a member of the CareTeam (see transaction [Updating CarePlan and CareTeam](#updating-careplan-and-careteam)). This table shows who must be authorized to make a state transition and if the Task.owner will become a CareTeam participant:
+
+|State from|State to|Allow state transition for|Task.owner is <br>CareTeam.participant|CareTeam.participant.period|
+|-|-|-|-|-|
+|-|requested|Task.requestor|No|-|
+|requested|received|Task.owner|No|-|
+|requested|accepted|Task.owner|Yes|period.start=date accepted|
+|requested|rejected|Task.owner|No|-|
+|requested|cancelled|Task.requestor, CarePlan.author, Task.owner|No|-|
+|received|accepted|Task.owner|Yes|period.start=date accepted|
+|received|rejected|Task.owner|No|-|
+|received|cancelled|Task.requestor, CarePlan.author, Task.owner|No|-|
+|accepted|in-progress|Task.owner|Yes|period.start=date accepted|
+|accepted|cancelled|Task.requestor, CarePlan.author, Task.owner|No|-|
+|in-progress|completed|Task.requestor, CarePlan.author, Task.owner|Yes|period.start=date accepted<br>period.end=date completed|
+|in-progress|failed|Task.owner|Yes|period.start=date accepted<br>period.end=date failed|
+|in-progress|on-hold|Task.requestor, CarePlan.author, Task.owner|Yes|period.start=date accepted|
+|on-hold|in-progress|Task.requestor, CarePlan.author, Task.owner|Yes|period.start=date accepted|
+{:.grid .table-hover}
 
 
 
-<img src="task-negotiation-overview-1-2.svg" width="60%" style="float: none"/>
+In the first sequence diagram, Care Provider 1 has implemented the (optional) CP-Service role and is requesting Care Provider 2 to do a Task. As a Task MUST always be based on a CarePlan, so if there is none, a CarePlan should be created. 
+> Optional: As Care Provider 2 is updating the Task to 'received', it includes a draft QuestionnaireResponse that Care Provider 1 should complete before a Task can be accepted by Care Provider 2. After Task acceptance, Care Provider 2 is including a second QuestionnaireResponse for patient contact details (which might be needed to send the patient an pre-consult intake Questionnaire).
 
-The transaction is based on [FHIR workflow pattern H](https://hl7.org/fhir/R4/workflow-management.html#optionh) which uses a 'workflow broker' that stores and manages Task resources. In SCP, the 'workflow broker' is implemented by the Care Plan Service. The Care Plan Service store and manages Tasks, CarePlans and CareTeam resources.  
-In the second diagram, Care Provider 2 will send Care Provider 3 a request, using Care Provider 1 as the 'workflow broker' (the CP-Service where the CarePlan, CareTeam and Tasks reside).
+<div>
+{% include task-negotiation-overview-1-2.svg %}
+</div>
 
+This transaction is based on [FHIR workflow pattern H](https://hl7.org/fhir/R4/workflow-management.html#optionh) which uses a 'workflow broker' that stores and manages Task resources. In SCP, the 'workflow broker' is implemented by the Care Plan Service. The Care Plan Service store and manages Tasks, CarePlans and CareTeam resources.
 
-<img src="task-negotiation-overview-1-2-3.svg" width="60%" style="float: none"/>
+In the second diagram, Care Provider 2 will send Care Provider 3 a request, still using Care Provider 1 as the 'workflow broker' (the CP-Service where the CarePlan, CareTeam and Tasks reside). In this example, Care provider 3 is not able to accept the Task automatically and needs an practitioner to evaluate it. 
 
+<div>
 {% include task-negotiation-overview-1-2-3.svg %}
+</div>
 
 For more information on this transaction, see [Transactions - Creating and responding to a Task](./transaction-task-negotiation.html)
 
 #### Updating CarePlan and CareTeam
-The CarePlan Service is responsible for updating the CareTeam and, for convenience, the CarePlan.activities. This transaction is triggered by a Task creation or update. 
-The Task state machine for SCP is a subset of the [base FHIR Task state machine](https://hl7.org/fhir/R4/task.html#statemachine) (SCP does not use status 'draft' and 'ready'). The requestor and owner are resctricted to make certain state transitions    
+The CarePlan Service is responsible for updating the CareTeam and, for convenience, the CarePlan.activities. This transaction is triggered by a Task creation or update at the CP-Service. 
 
-
-
-
-<img src="Task-state-machine-excl-draft.svg" width="80%" style="float: none"/>
-
-The CP-Service evaluates all Tasks and their status for a CarePlan, updates the CarePlan/CareTeam accordingly and notifies all CareTeam-members.
+The CP-Service evaluate the Task update (is state transition allowed?), updates the CarePlan/CareTeam accordingly and notifies all CareTeam-members.
+The CarePlan.author and CarePlan.subject are always active participants in the CareTeam. 
 
 <div>
 {% include careplan-careteam-management-overview.svg %}
 </div>
-
-
-<img src="Task-status-change-to-membership-status.svg" width="40%" style="float: none"/>
-
 
 
 #### Getting data from CareTeam members

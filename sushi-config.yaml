@@ -104,6 +104,10 @@ pages:
     title: Use cases - How to use nation-specific or condition-specific profile
     generation: markdown
 
+  issues.md:
+    title: Significant Changes, Open, and Closed Issues
+    generation: markdown
+
 #
 #
 # The parameters property represents IG.definition.parameter. Rather
