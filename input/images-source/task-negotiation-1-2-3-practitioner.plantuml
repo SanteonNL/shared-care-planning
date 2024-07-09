@@ -1,0 +1,54 @@
+@startuml task-negotiation-overview-1-2-3
+
+autonumber
+
+box Care Provider 2
+    actor "Practitioner" as Practitioner1
+    participant "Care Plan Contributor" as CPC1
+end box
+box Care Provider 1
+    participant "Care Plan Service" as CPS
+end box
+
+box Care Provider 3
+    participant "Care Plan Contributor" as CPC2
+    participant "Order mgnt" as EHR2
+    actor "Practitioner" as Practitioner2
+end box
+
+
+
+activate Practitioner1
+Practitioner1 -> CPC1 : Start Request\nreferral
+activate CPC1
+CPC1 -> CPS : Create Task\n(status requested,\nreferring CarePlan\nand (Service-)Request)
+deactivate Practitioner1
+activate CPS
+CPS -> CPC2 : Notify Task creation
+activate CPC2
+CPC2 -> EHR2 : Notify Task creation
+EHR2 -> CPC2 : Task received
+== waiting for (manual) Task acceptance ==
+Practitioner2 -> EHR2 : I accept the Task
+EHR2 -> CPC2 : Task accepted
+CPC2 -> CPS : Update Task\n(status accepted)
+CPS -> CPC1 : Notify Task update
+group Optional: Add PII to Task //after// Task acceptance
+CPC1 -> CPS : Update Task (add PII)
+CPS -> CPC2 : Notify Task update
+CPC2 -> EHR2 : Notify Task updated
+end group
+== waiting for Task to start ==
+Practitioner2 -> EHR2 : I started working\non the Task
+EHR2 -> CPC2 : Task in-progress
+CPC2 -> CPS : Update Task\n(status in-progress)
+CPS -> CPC1 : Notify Task update
+== waiting for Task to finish ==
+Practitioner2 -> EHR2 : I'm done
+EHR2 -> CPC2 : Task is done
+CPC2 -> CPS : Update Task\n(status complete)
+deactivate CPC2
+CPS -> CPC1 : Notify Task update
+deactivate CPC1
+deactivate CPC1
+@enduml
