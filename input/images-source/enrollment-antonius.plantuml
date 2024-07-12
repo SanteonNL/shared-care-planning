@@ -16,56 +16,93 @@ box Care Provider 1: Zorg bij jou
     participant "Care Plan Contributor \n(Performer)" as CPC #LightBlue
 end box
 
-activate Practitioner
-    Practitioner -> Epic : Enter \nEnrollment \norder
-deactivate Practitioner
+== create order in Epic and convert to FHIR ==
+Practitioner -> Epic : Enter \nEnrollment \norder
 
 Epic -> Epic : Compose HL7v2\n-ORM message
 Epic -> APIplatform : Send HL7v2 message
 activate APIplatform
-    APIplatform -> APIplatform: Inspect HL7v2 message \nfor conversion
-    APIplatform -> EpicOnFHIR: search and \nread resources
-    EpicOnFHIR --> APIplatform: resources
-    APIplatform -> APIplatform: Convert HL7v2 message \nto resources
-    APIplatform -> APIplatform: Store Task, CarePlan, \nServiceRequest
+APIplatform -> APIplatform: Inspect HL7v2 message \nfor conversion
+
+APIplatform -> EpicOnFHIR: search and \nread resources
+activate EpicOnFHIR
+EpicOnFHIR --> APIplatform: resources
+deactivate EpicOnFHIR
+
+APIplatform -> APIplatform: Convert HL7v2 message \nto resources
+APIplatform -> APIplatform: Store Task, CarePlan, \nServiceRequest
 deactivate APIplatform
 
+== create and send generic enrollment request ==
 autonumber inc a
+
+Practitioner -> Epic : Open Orca-app
 activate Practitioner
-    Practitioner -> Epic : Open Orca-app
-    Epic -> OrcaApp: launch app \n(SMART on FHIR)
-    activate OrcaApp
-        OrcaApp -> OrcaApp: inspect launch context for prefill
-        OrcaApp -> APIplatform: search and read resources
-        APIplatform -> OrcaApp: resources \n(Task, CarePlan, ServiceRequest)
-        OrcaApp -> OrcaApp: prefill enrollment form
-        OrcaApp -> Practitioner: display enrollment characteristics
-        Practitioner -> OrcaApp : confirm , Start Enrollment requestl
 
-        OrcaApp -> CPS : Create Task\n(status requested,\nreferring CarePlan\nand (Service-)Request)
-        
-        autonumber inc a
-        CPS -> CPC : Notify Task creation
+Epic -> OrcaApp: launch app \n(SMART on FHIR)
+activate OrcaApp
+OrcaApp -> OrcaApp: inspect launch context \nfor prefill
+OrcaApp -> APIplatform: search and read resources
+APIplatform --> OrcaApp: resources \n(Task, CarePlan, ServiceRequest)
+OrcaApp -> OrcaApp: prefill generic \nenrollment form
+OrcaApp -> Practitioner: display generic enrollment \ncharacteristics
+Practitioner -> OrcaApp : confirm , Start Enrollment requestl
+OrcaApp -> CPS : Create Task\n(status requested,\nreferring CarePlan\nand ServiceRequest)
 
-        activate CPC
-            CPC -> CPS : Update Task status\n(status accepted)
-        deactivate CPC
-        
-        CPS -> APIplatform : Notify Task update?
-        APIplatform -> OrcaApp : Notify Task update?
-        group Optional: Add PII to Task //after// Task acceptance
-            OrcaApp -> CPS : Update Task (add PII)
-            CPS -> CPC : Notify Task update\n(enriched Task)
-        end group
-        OrcaApp -> Practitioner : Done
-    deactivate OrcaApp
+CPS -> CPC  : Notify Task created
+activate CPC
+CPC -> CPC : evaluate Task\n (required data,\n capacity, etc):\n status 'received'
+CPC -> CPC : Need more information \nfor carepath
+
+== request, create and send carepath-specific enrollment information ==
+autonumber inc a
+
+CPC -> CPS  : Update Task: status received,\n add preliminary QuestionnaireResponse\n to Task.input to get carepath-specific input
+deactivate CPC
+
+CPS -> OrcaApp : Notify Task update
+OrcaApp -> APIplatform : update Task.status \nto 'received'
+OrcaApp -> OrcaApp : inspect \nQuestionnaireResponse
+OrcaApp -> APIplatform: search and read resources \nto fill QuestionnaireResponse
+APIplatform --> OrcaApp: resources
+OrcaApp -> OrcaApp: prefill carepath-specific \nenrollment form
+OrcaApp -> Practitioner: display carepath-specific enrollment \ncharacteristics
+
+Practitioner -> OrcaApp : confirm/complete form
+OrcaApp -> CPS : Update Task: Complete\n QuestionnaireResponse\n in Task.input
+CPS -> CPC : Notify Task update
+
+== task acceptance ==
+autonumber inc a
+
+
+activate CPC
+CPC -> CPC : evaluate Task:\n status 'accepted'
+CPC -> CPS : Update Task status\n(status accepted)
+deactivate CPC
+
+CPS -> OrcaApp : Notify Task update
+OrcaApp -> APIplatform : update Task.status \nto 'accepted'
+
+group Optional: Add PII to Task //after// Task acceptance
+    OrcaApp -> CPS : Update Task (add PII)
+    CPS -> CPC : Notify Task update\n(enriched Task)
+end group
+OrcaApp -> Practitioner : Done
+deactivate OrcaApp
 deactivate Practitioner
 
+== waiting for Task to start ==
 autonumber inc a
 CPC -> CPS : Update Task status\n(status in-progress)
-CPS -> APIplatform : Notify Task update
+CPS -> OrcaApp : Notify Task update
+OrcaApp -> APIplatform : update Task.status \nto 'in-progress'
+
+== waiting for Task to finish ==
+autonumber inc a
 CPC -> CPS : Update Task status\n(status complete)
-CPS -> APIplatform : Notify Task update
+CPS -> OrcaApp : Notify Task update
+OrcaApp -> APIplatform : update Task.status \nto 'complete'
 
 legend bottom
     |<#LightYellow> Hosted by Antonius/Epic|
