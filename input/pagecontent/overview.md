@@ -50,7 +50,7 @@ Key elements of a Task for SCP:
 - **basedOn**: References to other requests that the task is based on. MUST contain one reference to a SCP-CarePlan.
 - **focus**: A reference to the request-resource that the task is focused on. (e.g. a [ServiceRequest](https://hl7.org/fhir/R4/servicerequest.html), [MedicationRequest](https://hl7.org/fhir/R4/medicationrequest.html) or [DeviceRequest](https://hl7.org/fhir/R4/devicerequest.html))
 - **code**: The type of task to be performed (e.g. approval, fullfilment, suspend or resume)
-- **status**: The current status of the task (e.g., draft, requested, received, accepted, in-progress, on-hold, completed, cancelled, entered-in-error, rejected).
+- **status**: The current status of the task (requested, received, accepted, in-progress, on-hold, completed, cancelled, entered-in-error, rejected).
 - **requester**: The individual or organization who initiated the task.
 - **owner**: The individual or organization responsible for the task.
 - **for**: The patient for whom the task is being performed.
@@ -143,7 +143,7 @@ Next, we'll go into these three transactions in SCP:
 The CarePlan author or an 'active' CareTeam participant can create a new request and send the request to another Care provider. This Care provider may not be a current participant of the CareTeam. The Task status and state transitions are important part in the lifecycle of these requests.
 The Task state machine for SCP is a subset of the [base FHIR Task state machine](https://hl7.org/fhir/R4/task.html#statemachine) (SCP does not use status 'draft' and 'ready'): 
 
-<img src="Task-state-machine-excl-draft.png" width="25%" style="float: none"/>
+<img src="Task-state-machine-excl-draft.png" width="32%" style="float: none"/>
 
 The requestor and owner are restricted to make certain state transitions. For some Task states, the Task.owner will become a member of the CareTeam (see transaction [Updating CarePlan and CareTeam](#updating-careplan-and-careteam)). This table shows who must be authorized to make a state transition and if the Task.owner will become a CareTeam participant:
 
