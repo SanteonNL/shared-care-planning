@@ -1,12 +1,13 @@
 @startuml task-negotiation-overview-1-2
-autonumber
+
 !pragma teoz true
 
 box St Antonius
     actor "Practitioner" as Practitioner1
     participant "EPIC" as EHR1
     participant "EPIC-FHIR-endpoint" as FHIR1
-    participant "API platform\nCare Plan Contributor" as CPC1
+    participant "API platform\nCPC" as CPC1
+    participant "SoF app \nCPC" as SoFapp
 end box
 box Zorg bij jou
     participant "Care Plan Service" as CPS
@@ -17,29 +18,35 @@ end box
 
 hide footbox
 
+autonumber 1.1
+
 activate Practitioner1
 Practitioner1 -> EHR1 : Start Request\nreferral
-&EHR1 -> CPC1 : Launch\nSmart-on-FHIR (patient/order in launch context)
-
+&EHR1 -> SoFapp : Launch\nSmart-on-FHIR (patient/order in launch context)
+SoFapp -> CPC1 : Search/read FHIR Patient,\nServiceRequest(**telemonitoring** for **ZBJ**),\nCarePlans, Tasks, Conditions 
 CPC1 -> FHIR1 : Search/read FHIR Patient,\nServiceRequest(**telemonitoring** for **ZBJ**),\nCarePlans, Tasks, Conditions
 FHIR1 --> CPC1 : return resources
-CPC1 -> Practitioner1 : <color #black>Present form-part 1\nSelect appropriate SCP-CarePlan or make a new one.
+CPC1 --> SoFapp : return resources
+SoFapp -> Practitioner1 : <color #black>Present form-part 1\nSelect appropriate SCP-CarePlan or make a new one.
 
-Practitioner1 -> CPC1 : <color #black>Complete form
+Practitioner1 -> SoFapp : <color #black>Complete form
 
-CPC1 -> CPC1 : Lookup default\nCPS-endpoint (ZBJ)
-CPC1 -> CPS : Create SCP-CarePlan\n (if non exists)
+SoFapp -> SoFapp : Lookup default\nCPS-endpoint (ZBJ)
+SoFapp -> CPS : Create SCP-CarePlan\n (if non exists)
+SoFapp -> CPC1 : Patch ServiceRequest.basedOn: SCP-CarePlan
 CPC1 -> FHIR1 : Patch ServiceRequest.basedOn: SCP-CarePlan
 
-CPC1 -> CPS : Create Task\n status requested,\n referring CarePlan\n and (Service-)Request
+SoFapp -> CPS : Create Task\n status requested,\n referring CarePlan\n and (Service-)Request
 & CPS -> CPC2  : Notify Task created
 & CPC2 -> EHR2  : Notify Task created
 & EHR2 -> EHR2 : <color #black>evaluate Task\n <color #black>(required data,\n <color #black>capacity, etc):\n <color #black>status 'received'
 
+autonumber inc a
 
 EHR2 -> CPC2 : <color #black>Need more information
 & CPC2 -> CPS  : <color #black>Update Task: status received,\n <color #black>add preliminary QuestionnaireResponse\n <color #black>to Task.input
 & CPS -> CPC1 : <color #black>Notify Task/CarePlan/\nCareTeam update
+CPC1 -> SoFapp : ?notify Task update?
 & note over FHIR1 #WhiteSmoke
 Hoe Task/CarePlan/CareTeam 
  op te slaan zodat deze 
@@ -49,32 +56,40 @@ CPC1 -> CPS : Read Task
 CPS --> CPC1 : Task
 CPC1 -> FHIR1 : Search resources for\nQuestionnaireResponse\nin Task.input
 FHIR1 --> CPC1 : return resources
+CPC1 -> SoFapp : ?how does SoFapp know \nwhen to render new form?
 
-CPC1 -> Practitioner1 : <color #black>Present form-part 2\n<color #black>(prefill data from EPIC-FHIR)
+SoFapp -> Practitioner1 : <color #black>Present form-part 2\n<color #black>(prefill data from EPIC-FHIR)
 
-Practitioner1 -> CPC1 : <color #black>Complete form
-& CPC1 -> CPS : <color #black>Update Task: Complete\n <color #black>QuestionnaireResponse\n <color #black>in Task.input
+Practitioner1 -> SoFapp : <color #black>Complete form
+& SoFapp -> CPS : <color #black>Update Task: Complete\n <color #black>QuestionnaireResponse\n <color #black>in Task.input
 & CPS -> CPC2 : <color #black>Notify Task/CarePlan/\nCareTeam update
 & CPC2 -> EHR2 : <color #black>Notify Task update
 & EHR2 -> EHR2 : evaluate Task:\n status 'accepted'
 
+autonumber inc a
+
 EHR2 -> CPC2 : Task accepted,\n <color #black>need patient\n <color #black>contact details
 & CPC2 -> CPS : Update Task: status accepted,\n <color #black>add preliminary QuestionnaireResponse\n <color #black>to Task.input for PII
 & CPS -> CPC1 : Notify Task/CarePlan/\nCareTeam update
+CPC1 -> SoFapp : ?notify Task update?
 CPC1 -> CPS : Read Task
 CPS --> CPC1 : Task
 CPC1 -> FHIR1 : Search resources for\nQuestionnaireResponse\nin Task.input
 FHIR1 --> CPC1 : return resources
-CPC1 -> Practitioner1 : <color #black>Present form-part 3\n<color #black>(prefill data from EHR)
+CPC1 -> SoFapp : ?how does SoFapp know \nwhen to render new form?
+SoFapp -> Practitioner1 : <color #black>Present form-part 3\n<color #black>(prefill data from EHR)
 
-Practitioner1 -> CPC1 : <color #black>Complete form
-& CPC1 -> CPS : <color #black>Update Task: Complete\n <color #black>QuestionnaireResponse\n <color #black>in Task.input (PII)
+Practitioner1 -> SoFapp : <color #black>Complete form
+& SoFapp -> CPS : <color #black>Update Task: Complete\n <color #black>QuestionnaireResponse\n <color #black>in Task.input (PII)
 & CPS -> CPC2 : <color #black>Notify Task/CarePlan/\nCareTeam update
 & CPC2 -> EHR2 : <color #black>Notify Task update
 & EHR2 -> Practitioner2 : present Task
 deactivate Practitioner1
 
 == waiting for Task to start ==
+
+autonumber inc a
+
 activate Practitioner2
 Practitioner2 -> EHR2 : starting with Task
 & EHR2 -> CPC2 : Task in-progress
@@ -82,6 +97,9 @@ Practitioner2 -> EHR2 : starting with Task
 & CPS -> CPC1 : Notify Task/CarePlan/\nCareTeam update
 
 == waiting for Task to finish ==
+
+autonumber inc a
+
 Practitioner2 -> EHR2 : Task done
 & EHR2 -> CPC2 : Task is done
 & CPC2 -> CPS : Update Task: status complete
