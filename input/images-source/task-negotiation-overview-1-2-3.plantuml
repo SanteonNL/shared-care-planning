@@ -24,15 +24,15 @@ Practitioner1 -> CPC1 : Start Request\nreferral
 & CPC1 -> CPS : Create Task:\n status requested,\n referring CarePlan\n and (Service-)Request
 & CPS -> CPC2  : Notify Task created
 & CPC2 -> EHR2  : Notify Task created
-& EHR2 -> EHR2 : evaluate Task:\n status 'received'
+& EHR2 -> EHR2 : evaluate Task:\n <color #purple>(required data,\n <color #purple>capacity, etc)
 
 & note over Practitioner2 #WhiteSmoke
 Actions in <color #purple>purple
  are optional
 end note
 
-EHR2 -> CPC2 : Task received,\n <color #purple>Need more information
-& CPC2 -> CPS  : Update Task: status received,\n <color #purple>add preliminary\n <color #purple> QuestionnaireResponse\n <color #purple>to Task.input
+EHR2 -> CPC2 : Update Task:\n <color #purple>Need more information
+& CPC2 -> CPS  : Update Task: \n <color #purple>add preliminary\n <color #purple> QuestionnaireResponse\n <color #purple>to Task.input
 & CPS -> CPC1 : Notify Task update
 & CPC1 -[#purple]> Practitioner1 : <color #purple>Present form\n<color #purple>(prefill data from EHR)
 
@@ -41,6 +41,12 @@ Practitioner1 -[#purple]> CPC1 : <color #purple>Complete form
 & CPS -[#purple]> CPC2 : <color #purple>Notify Task update
 & CPC2 -[#purple]> EHR2 : <color #purple>Notify Task update
 
+& EHR2 -> EHR2 : evaluate Task:\n status 'received'
+
+CPC2 -> CPS : Update Task: \n status 'received'
+& EHR2 -[#purple]> CPC2 : <color #purple>Notify Task update
+& CPS -> CPC1 : Notify Task update
+& CPC1 -> Practitioner1 : Your order has been received
 & EHR2 -> Practitioner2 : present Task
 
 deactivate Practitioner1
