@@ -68,15 +68,15 @@ pages:
     title: Overview
     generation: markdown
 
-  authentication.md:
+  security-authentication.md:
     title: Security - Authentication
     generation: markdown
 
-  authorization.md:
+  security-authorization.md:
     title: Security - Authorization
     generation: markdown
 
-  privacy.md:
+  security-privacy.md:
     title: Security - Privacy
     generation: markdown
 
@@ -108,6 +108,10 @@ pages:
     title: Significant Changes, Open, and Closed Issues
     generation: markdown
 
+  history.md:
+    title: Published versions, Significant Changes & Frequently Asked Questions
+    generation: markdown
+
 #
 #
 # The parameters property represents IG.definition.parameter. Rather
@@ -135,9 +139,9 @@ menu:
   Home: index.html
   Overview: overview.html
   Security:
-    Authentication: authentication.html
-    Authorization: authorization.html
-    Privacy: privacy.html
+    Authentication: security-authentication.html
+    Authorization: security-authorization.html
+    Privacy: security-privacy.html
   Transactions:
     Creating and responding to a Task: transaction-task-negotiation.html
     Updating CarePlan and CareTeam: transaction-careplan-careteam-mngt.html

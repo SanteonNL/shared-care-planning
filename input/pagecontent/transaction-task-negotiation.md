@@ -120,7 +120,4 @@ TODO: CapabilityStatement maken voor CPS zoals https://profiles.ihe.net/ITI/mCSD
 
 ## Plan Definition Service
 
-Hoeft niet zo veel te kunnen; hosten van PlanDefinition en ActivityDefinitions
-
-
-{% include example1-request2execution.svg %} -->
+Hoeft niet zo veel te kunnen; hosten van PlanDefinition en ActivityDefinitions-->

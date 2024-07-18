@@ -1,3 +1,15 @@
+### Open issues
+
+Current issues are located on Github
+
+### Closed issues
+none yet..
+
+### Significant changes
+
+todo
+
+
 [09:49] Joost Holslag (Unverified)
 dit gaat uit van eenmalige tasks? Veel care plan tasks zijn continu: bijv: "bel mij als de bloeddruk boven de 180 is." hoe wordt dat onderstuend?
  

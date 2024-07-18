@@ -143,7 +143,7 @@ Next, we'll go into these three transactions in SCP:
 The CarePlan author or an 'active' CareTeam participant can create a new request and send the request to another Care provider. This Care provider may not be a current participant of the CareTeam. The Task status and state transitions are important part in the lifecycle of these requests.
 The Task state machine for SCP is a subset of the [base FHIR Task state machine](https://hl7.org/fhir/R4/task.html#statemachine) (SCP does not use status 'draft' and 'ready'): 
 
-<img src="Task-state-machine-excl-draft.png" width="32%" style="float: none"/>
+<img src="Task-state-machine.png" width="32%" style="float: none"/>
 
 The requestor and owner are restricted to make certain state transitions. For some Task states, the Task.owner will become a member of the CareTeam (see transaction [Updating CarePlan and CareTeam](#updating-careplan-and-careteam)). This table shows who must be authorized to make a state transition and if the Task.owner will become a CareTeam participant:
 
@@ -169,7 +169,7 @@ In the first sequence diagram, Care Provider 1 has implemented the (optional) CP
 > Optional: As Care Provider 2 is updating the Task to 'received', it includes a draft QuestionnaireResponse that Care Provider 1 should complete before a Task can be accepted by Care Provider 2. After Task acceptance, Care Provider 2 is including a second QuestionnaireResponse for patient contact details (which might be needed to send the patient an pre-consult intake Questionnaire).
 
 <div>
-{% include task-negotiation-overview-1-2.svg %}
+{% include overview-task-negotiation-1-2.svg %}
 </div>
 
 This transaction is based on [FHIR workflow pattern H](https://hl7.org/fhir/R4/workflow-management.html#optionh) which uses a 'workflow broker' that stores and manages Task resources. In SCP, the 'workflow broker' is implemented by the Care Plan Service. The Care Plan Service store and manages Tasks, CarePlans and CareTeam resources.
@@ -177,7 +177,7 @@ This transaction is based on [FHIR workflow pattern H](https://hl7.org/fhir/R4/w
 In the second diagram, Care Provider 2 will send Care Provider 3 a request, still using Care Provider 1 as the 'workflow broker' (the CP-Service where the CarePlan, CareTeam and Tasks reside). In this example, Care provider 3 is not able to accept the Task automatically and needs an practitioner to evaluate it. 
 
 <div>
-{% include task-negotiation-overview-1-2-3.svg %}
+{% include overview-task-negotiation-1-2-3.svg %}
 </div>
 
 For more information on this transaction, see [Transactions - Creating and responding to a Task](./transaction-task-negotiation.html)
@@ -202,7 +202,7 @@ The CP-Service evaluates the Task update (is state transition allowed?), updates
 The CarePlan.author and CarePlan.subject are always active participants in the CareTeam. 
 
 <div>
-{% include careplan-careteam-management-overview.svg %}
+{% include overview-careplan-careteam-management.svg %}
 </div>
 
 
@@ -212,7 +212,7 @@ The first two transactions allow practitioners to collaborate across organizatio
 The 'responding' CareTeam-member (data holders) use the CareTeam, CarePlan and Tasks to authorize incoming requests.
 
 <div>
-{% include getting-data-from-careteam-members-overview.svg %}
+{% include overview-getting-data-from-careteam-members.svg %}
 </div>
 
 Note that the CP-Service will notify all CP-Contributors on changed CarePlans and CareTeams. It might not be necessary to retrieve these from the CP-Service if the CarePlan and CareTeam are stored locally at the CP-Contributor.
