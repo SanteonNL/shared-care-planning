@@ -12,4 +12,4 @@ Significant changes/Closed issues:
 
 
 ### Version: 0.1.0
-Date: 2024-07-18, Source code
+Date: 2024-07-18, [Source code](https://github.com/SanteonNL/shared-care-planning/releases/tag/0.1.0)
