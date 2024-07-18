@@ -68,15 +68,15 @@ pages:
     title: Overview
     generation: markdown
 
-  authentication.md:
+  security-authentication.md:
     title: Security - Authentication
     generation: markdown
 
-  authorization.md:
+  security-authorization.md:
     title: Security - Authorization
     generation: markdown
 
-  privacy.md:
+  security-privacy.md:
     title: Security - Privacy
     generation: markdown
 
@@ -100,8 +100,8 @@ pages:
     title: Use cases - Get data for home monitoring
     generation: markdown
 
-  usecase-specification.md:
-    title: Use cases - How to use nation-specific or condition-specific profile
+  history.md:
+    title: Changes & Issues
     generation: markdown
 
 #
@@ -131,9 +131,9 @@ menu:
   Home: index.html
   Overview: overview.html
   Security:
-    Authentication: authentication.html
-    Authorization: authorization.html
-    Privacy: privacy.html
+    Authentication: security-authentication.html
+    Authorization: security-authorization.html
+    Privacy: security-privacy.html
   Transactions:
     Creating and responding to a Task: transaction-task-negotiation.html
     Updating CarePlan and CareTeam: transaction-careplan-careteam-mngt.html
@@ -141,10 +141,10 @@ menu:
   Use cases:
     Enroll patient in home monitoring: usecase-enrollment.html
     Get data for home monitoring: usecase-view-all-data.html
-    How to use nation-specific or condition-specific profile: usecase-specification.html
+    Referral/Nursing handoff: usecase-nursing-handoff.md
 
-  #Contents: toc.html
   Artifacts: artifacts.html
+  Changes & Issues: history.html
 
 
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
