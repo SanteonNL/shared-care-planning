@@ -44,13 +44,6 @@ Some of these items are explained in more detail:
 - [Changes & Issues](history.html)
 
 
-<!-- <div markdown="1" class="w-100 bg-info">
-
-> [Significant Changes, Open, and Closed Issues](history.html)
-
-</div> -->
-
-
 ### Glossary
 - Personally Identifiable Information (PII) 
 - Protected Health Information (PHI)

@@ -101,7 +101,7 @@ pages:
     generation: markdown
 
   history.md:
-    title: Published versions, Significant Changes & Issues
+    title: Changes & Issues
     generation: markdown
 
 #
