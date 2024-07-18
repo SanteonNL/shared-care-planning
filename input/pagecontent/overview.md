@@ -147,25 +147,23 @@ The Task state machine for SCP is a subset of the [base FHIR Task state machine]
 
 The requestor and owner are restricted to make certain state transitions. For some Task states, the Task.owner will become a member of the CareTeam (see transaction [Updating CarePlan and CareTeam](#updating-careplan-and-careteam)). This table shows who must be authorized to make a state transition and if the Task.owner will become a CareTeam participant:
 
-|State from|State to|Allow state transition for|Task.owner is <br>CareTeam.participant|CareTeam.participant.period|
-|-|-|-|-|-|
-|-|requested|Task.requestor|No|-|
-|requested|received|Task.owner|No|-|
-|requested|accepted|Task.owner|Yes|period.start=date accepted|
-|requested|rejected|Task.owner|No|-|
-|requested|cancelled|Task.requestor, CarePlan.author, Task.owner|No|-|
-|received|accepted|Task.owner|Yes|period.start=date accepted|
-|received|rejected|Task.owner|No|-|
-|received|cancelled|Task.requestor, CarePlan.author, Task.owner|No|-|
-|accepted|in-progress|Task.owner|Yes|period.start=date accepted|
-|accepted|cancelled|Task.requestor, CarePlan.author, Task.owner|No|-|
-|in-progress|completed|Task.requestor, CarePlan.author, Task.owner|Yes|period.start=date accepted<br>period.end=date completed|
-|in-progress|failed|Task.owner|Yes|period.start=date accepted<br>period.end=date failed|
-|in-progress|on-hold|Task.requestor, CarePlan.author, Task.owner|Yes|period.start=date accepted|
-|on-hold|in-progress|Task.requestor, CarePlan.author, Task.owner|Yes|period.start=date accepted|
+|State from|State to|Allow state transition for|
+|-|-|-|
+|-|requested|Task.requestor|
+|requested|received|Task.owner|
+|requested|accepted|Task.owner|
+|requested|rejected|Task.owner|
+|requested|cancelled|Task.requestor, Task.owner|
+|received|accepted|Task.owner|
+|received|rejected|Task.owner|
+|received|cancelled|Task.requestor, Task.owner|
+|accepted|in-progress|Task.owner|
+|accepted|cancelled|Task.requestor, Task.owner|
+|in-progress|completed|Task.owner|
+|in-progress|failed|Task.owner|
+|in-progress|on-hold|Task.requestor, Task.owner|
+|on-hold|in-progress|Task.requestor, Task.owner|
 {:.grid .table-hover}
-
-
 
 In the first sequence diagram, Care Provider 1 has implemented the (optional) CP-Service role and is requesting Care Provider 2 to do a Task. As a Task MUST always be based on a CarePlan, so if there is none, a CarePlan should be created. 
 > Optional: As Care Provider 2 is updating the Task to 'received', it includes a draft QuestionnaireResponse that Care Provider 1 should complete before a Task can be accepted by Care Provider 2. After Task acceptance, Care Provider 2 is including a second QuestionnaireResponse for patient contact details (which might be needed to send the patient an pre-consult intake Questionnaire).
@@ -186,6 +184,19 @@ For more information on this transaction, see [Transactions - Creating and respo
 
 #### Updating CarePlan and CareTeam
 The CarePlan Service is responsible for updating the CareTeam and, for convenience, the CarePlan.activities. This transaction is triggered by a Task creation or update at the CP-Service. 
+
+|State to|Task.owner is <br>CareTeam.participant|CareTeam.participant.period|
+|-|-|-|
+|requested|No|-|
+|received|No|-|
+|accepted|Yes|period.start=date accepted|
+|rejected|No|-|
+|cancelled|No|-|
+|in-progress|Yes|period.start=date accepted|
+|on-hold|Yes|period.start=date accepted|
+|completed|Yes|period.start=date accepted<br>period.end=date completed|
+|failed|Yes|period.start=date accepted<br>period.end=date failed|
+{:.grid .table-hover}
 
 The CP-Service evaluates the Task update (is state transition allowed?), updates the CarePlan/CareTeam accordingly and notifies all CareTeam-members.
 The CarePlan.author and CarePlan.subject are always active participants in the CareTeam. 
