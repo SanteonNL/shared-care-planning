@@ -1,0 +1,12 @@
+@startuml overview-careplan-careteam-management
+'https://plantuml.com/activity-diagram-beta
+start
+:Loop through all Tasks for CarePlan &
+evaluate CareTeam membership(-period)
+of Task.owner;
+:Update CarePlan.activities;
+:Update CareTeam;
+:Notify CareTeam members 
+(current and removed members);
+stop
+@enduml
