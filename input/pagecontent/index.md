@@ -9,13 +9,6 @@ Shared Care Planning (SCP) provides the structures and transactions for care
 planning, collaboration between practitioners by cross-organizational ordering processes and localization and authorization of members involved in the careteam of a patient. Improved collaboration between different types of care providers (e.g. GP, homecare or hospitals) should improve efficiency in hybrid or network-care settings. It should lower the administrative burden for practitioners without having to switch to auxillary collaboration-systems.
 
 
-
-<div markdown="1" class="w-100 bg-info">
-
-> [Significant Changes, Open, and Closed Issues](issues.html)
-
-</div>
-
 ### Organization of this Implementation Guide
 
 - [Overview](./overview.html): This provides an overview of the spec. It includes:
@@ -44,13 +37,18 @@ Some of these items are explained in more detail:
 
     - [Enroll patient in home monitoring](./usecase-enrollment.html)
     - [Get data for home monitoring](./usecase-view-all-data.html)
-    - [How to use nation-specific or condition-specific profile](./usecase-specification.html)
-    - [Nursing handoff (eOverdracht)](./usecase-nursing-handoff.html)
+    - [Referral/Nursing handoff](./usecase-nursing-handoff.html)
 
 - [Artifacts](./artifacts.html): a comprehensive list of all artifacts that are used in SCP 
 
+- [Changes & Issues](history.html)
 
 
+<!-- <div markdown="1" class="w-100 bg-info">
+
+> [Significant Changes, Open, and Closed Issues](history.html)
+
+</div> -->
 
 
 ### Glossary
@@ -73,9 +71,6 @@ SCP uses the HL7 FHIR standaard, version R4
 
 
 <!-- add other conventions -->
-
-
-
 
 ### Download 
 

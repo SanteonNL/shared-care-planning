@@ -100,16 +100,8 @@ pages:
     title: Use cases - Get data for home monitoring
     generation: markdown
 
-  usecase-specification.md:
-    title: Use cases - How to use nation-specific or condition-specific profile
-    generation: markdown
-
-  issues.md:
-    title: Significant Changes, Open, and Closed Issues
-    generation: markdown
-
   history.md:
-    title: Published versions, Significant Changes & Frequently Asked Questions
+    title: Published versions, Significant Changes & Issues
     generation: markdown
 
 #
@@ -149,10 +141,10 @@ menu:
   Use cases:
     Enroll patient in home monitoring: usecase-enrollment.html
     Get data for home monitoring: usecase-view-all-data.html
-    How to use nation-specific or condition-specific profile: usecase-specification.html
+    Referral/Nursing handoff: usecase-nursing-handoff.md
 
-  #Contents: toc.html
   Artifacts: artifacts.html
+  Changes & Issues: history.html
 
 
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
