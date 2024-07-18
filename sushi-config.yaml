@@ -100,6 +100,10 @@ pages:
     title: Use cases - Get data for home monitoring
     generation: markdown
 
+  usecase-nursing-handoff.md:
+    title: Use cases - Referral/Nursing handoff
+    generation: markdown
+
   history.md:
     title: Changes & Issues
     generation: markdown

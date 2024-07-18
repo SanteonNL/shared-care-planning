@@ -6,10 +6,10 @@
 
 
 ### Version: current
-Source code, Compare to previous.  
+[Source code](https://github.com/SanteonNL/shared-care-planning), [Compare to version 0.1.0](https://github.com/SanteonNL/shared-care-planning/compare/main...0.1.0).  
 Significant changes/Closed issues:
 - WIP
 
 
 ### Version: 0.1.0
-Date: 2024-07-18, [Source code](https://github.com/SanteonNL/shared-care-planning/releases/tag/0.1.0)
+Date: 2024-07-18, [Source code](https://github.com/SanteonNL/shared-care-planning/tree/0.1.0)
