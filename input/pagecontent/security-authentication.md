@@ -1,5 +1,11 @@
 Shared Care Planning (SCP) provides a way of distributed and planning of complex use cases in digital information exchange within healthcare. The cornerstone of all exchange is the authenticity of the actors that exchange information. In order to achieve the right level of authenticity the SCP relies on *Trust over IP*.
 
+The primary entity being identified and authenticated is the legal organization providing care.
+For instance, a hospital, general practitioner, dentist, home care organization, or a pharmacy.
+The organizations should be identified by a unique identifier. Which identifier is used depends on local regulations, such as the URA number in the Netherlands.
+This unique identifier is then used as logical identifier to refer to the organization from the CarePlan, Tasks, CareTeam, and other resources if applicable.
+These unique identifiers should be issued by a trusted source, and authenticated in a cryptographically secure way according to TrustOverIP (ToIP).
+
 ### Trust over IP
 The Trust over IP framework makes use of Trusted Sources or Trusted Third Parties that are trusted to issuer authentic properties to the participants. These parties are called *issuers* within the Trust over IP framework. Within the Trust over IP framework the participants are able to store the assigned authentic properties within a wallet-like solution. The role of these participants is the role of the credential *holder*.  The credentials used in the Trust over IP framework can be presented by the *holder*. In the case of presentation, the holder is able to proof the ownership as part of the *presentation*. The role of *verifier* is to verify both the issuer of the credential and the holder of the credential. By doing this the verifier can be achieve the right level of authenticity required for the exchange of information required by SCP. In extension to that, Trust over IP delivers the following benefits:
 * International and established standard, part of EBSI and the European wallet.
@@ -8,11 +14,67 @@ The Trust over IP framework makes use of Trusted Sources or Trusted Third Partie
 * Flexible, trust networks can be created whenever needed.
 * Simple in its core, VCs and VPs are manifested as commonly used signed JSON objects (JWS).
 
-### NUTS and Verifiable Credentials.
-The implementation for Trust over IP by SCP is NUTS. The NUTS nodes are able to implement the role of both holder and verifier within the trust construct of SCP. Each service in the SCP has its own NUTS-node that acts both wallet and interface for trust exchange. 
+### Verifiable Credential to FHIR Organization
+Given the organization authenticates itself using a Verifiable Credential, the attributes contained within can be used to create or derive the FHIR Organization resource.
+This identification mechanism is flexible: any type of Verifiable Credential (and even non-Verifiable Credentials) can be used, as long as parties agree on a trusted source and presentation format.
+This section outlines the options that are known to be available.
 
-### Sources of trust.
+#### NutsUraCredential
+The `NutsUraCredential` ([JSON-LD context](https://nuts.nl/credentials/2024)) is a Verifiable Credential that contains the following properties:
+- URA number: a unique identifier for healthcare organizations in the Netherlands.
+- Name: the name of the organization.
+- City: locality of the organization.
+
+The credential is to be issued by a party trusted in the particular SCP use case, as currently, there's no governing body that issues it.
+It can be represented in both JWT and JSON-LD format. The JSON-LD version of the credential can look as follows:
+
+```json
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://nuts.nl/credentials/2024"
+  ],
+  "id": "did:web:example.com:issuer#1",
+  "type": ["VerifiableCredential", "NutsUraCredential"],
+  "issuer": "did:web:example.com:issuer#1",
+  "issuanceDate": "2024-01-01T00:00:00Z",
+  "expirationDate": "2025-01-01T00:00:00Z",
+  "credentialSubject": {
+    "id": "did:web:example.com:holder#1",
+    "organization": {
+      "uraNumber": "3732",
+      "name": "Example Hospital",
+      "city": "Amsterdam"
+    }
+  }
+}
+```
+
+This then translates to the following Organization resource:
+
+```json
+{
+  "resourceType": "Organization",
+  "identifier": [
+    {
+      "system": "http://fhir.nl/fhir/NamingSystem/ura",
+      "value": "3732"
+    }
+  ],
+  "name": "Example Hospital",
+  "address": [
+    {
+      "city": "Amsterdam"
+    }
+  ]
+}
+```
+
+This Organization resource can then be used for authorizing access to SCP services.
+
+### Future Considerations
 The implementation of Trust over IP requires trusted sources that provide assertions about both individual caregivers and organizations involved in healthcare. At the time of writing this specification, there are no official trusted sources available for both individuals and organizations. However, initiatives such as "IAA in de zorg" are trying to resolve this issue.
+This section outlines how authentication could be implemented in the future when the trusted sources for individual caregivers and care organizations are available.
 
 #### Structure
 The structure of the credentials that act as sources of trust are:
@@ -22,7 +84,6 @@ The structure of the credentials that act as sources of trust are:
 * The *URA credential* of the organization.  
 
 <img src="Trust_structure.png" width="40%" style="float: none"/>
-
 
 Alternatively, the role can be assigned by the organization itself. Thereby the organization becomes s trusted source itself. As the organization holds a URA credential the verifier is albe to verify the authenticity of both the professional (UZI) and organization (URA), and the assigned role issued by the organization.  
 
