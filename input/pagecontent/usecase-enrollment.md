@@ -1,19 +1,25 @@
 # Enroll patient in home monitoring
 
-A cardiologist, Janique de Boer, from Hospital X diagnoses heart failure for patient Jean Jacques van Putten and explains about home monitoring with Zorg bij jou and gets implied consent from Jean Jacques to enroll him in this.
+A cardiologist, Caroline van Dijk, from Hospital X diagnoses heart failure for patient Patrick Egger and explains about home monitoring with Zorg bij jou and gets implied consent from Patrick to enroll him in this.
 
-Janique make a (service-)request for 'home monitoring' in the EHR and clicks on the 'share request'-button to enroll Jean Jacques. A pop-up window appears. In this window, a CarePlan can be selected, but for Jean Jacques, no CarePlan was found, so Janique gets some questions concerning Jean Jacques identification, the related conditions and other relevant information. This is used to create a new (Shared) CarePlan.
+Caroline make a (service-)request for 'home monitoring' in the EHR and clicks on the 'share request'-button to enroll Patrick. 
 
-The pop-up window now displays more checks/questions.
+<b>Careplan</b>
 
-The pop-up window now displays more checks/questions. Janique checks with Jean Jacques if all criteria for enrollment are met: he has a smartphone, he reads email on smartphone, he can install apps on smartphone, he is proficient in Dutch language and that he is in possession of scales and a blood pressure meter. The checks are evaluated by Zorg bij jou and Zorg bij jou accepts 
+A pop-up window appears. In this window, a CarePlan should be selected from a dropdown menu; for Patrick there are no known Careplans, therefore Caroline can only pick 'create new Careplan' from the dropdown menu. Basic information about Patrick, his name and BSN number, are shown in the window and a multi-select menu appears with all Conditions known for Patrick in the EHR. Caroline selects relevant conditions for the CarePlan from the list, in this case heart failure, COPD and Eczemia. She also indicates that heart failure is the one she is ordering home monitoring on. Zorg bij jou is the default party to perform home monitoring on heart failure and is auto-selected in a dropdown. She clicks 'Next'. 
 
+<b>Criteria</b>
 
+The Careplan is created in a matter of seconds. The pop-up window now displays more checks/questions based on the selection of heart failure to perform home monitoring on with Zorg bij jou. Caroline checks with Patrick if all criteria for enrollment are met: he has a smartphone, he reads email from his smartphone, he can install apps on his smartphone, he is proficient in Dutch language and that he is in possession of scales and a blood pressure meter. Caroline clicks on checkbox 'validation of pre-requisites completed' and clicks 'Next' again. 
 
-With selection of the CarePlan, Janique can now provide further information in a questionnaire required for the enrollment process. For the patient: name (Jean Jacques van Putten), gender (male), date of birth (12-7-1956) and contact information (phone-number 06-12345678 and e-mail address jj.van.putten@gmail.com) is populated; heart failure is selected from the conditions known in the CarePlan; and, requestor (Janique de Boer from Hospital X) and performer (Zorg bij jou) details are populated. 
+<b>Further information and complete request</b>
 
-The name and requester information are populated automatically. The condition can be selected from a dropdown; since heart failure is the only condition known for Jean Jacques, the dropdown is also populated automatically. Since Zorg bij jou is the only organization where home monitoring is performed for Hospital X, also the performer is selected automatically.
+Within a matter of seconds the checks are evaluated by Zorg bij jou. Caroline has to do one final step and validates the auto-populated information in the form of a questionnaire required to complete the enrollment process. For the patient: name (Patrick Egger), gender (male), date of birth (12-7-1956) and contact information (phone-number 06-12345678 and e-mail address p.egger@gmail.com) is populated; and, requestor (Caroline van Dijk from Hospital X) details are populated. 
 
-Janique has to click “Order” and the “Task” is sent to Zorg bij jou including all the information provided. Zorg bij jou automatically accepts the tasks and provides a direct task status update, so Janique can see that the task is received and subsequently accepted. 
+Caroline cliks on "Complete request" and the request is sent to Zorg bij jou including all the information provided. 
 
-Janique monitors the task in the EHR and sees that a few days later the status of the Task is updated to “in progress”, meaning that Jean Jacques has downloaded and started to use the monitoring app.
+<b>Monitoring</b>
+
+As all information is provided, Zorg bij jou automatically accepts the tasks and provides a direct task status update, so Caroline can see that the task is received and subsequently accepted. 
+
+Caroline monitors the task in the EHR and sees that a few days later the status of the Task is updated to “in progress”, meaning that Patrick has downloaded and started to use the monitoring app.
