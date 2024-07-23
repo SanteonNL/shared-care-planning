@@ -8,7 +8,7 @@
 ### Version: current
 [Source code](https://github.com/SanteonNL/shared-care-planning), [Compare to version 0.1.0](https://github.com/SanteonNL/shared-care-planning/compare/main...0.1.0).  
 Significant changes/Closed issues:
-- WIP
+- [issue #48](https://github.com/SanteonNL/shared-care-planning/issues/48): Task to get additional information for parent-Task
 
 
 ### Version: 0.1.0
