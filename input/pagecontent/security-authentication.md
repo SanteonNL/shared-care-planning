@@ -7,16 +7,18 @@ This unique identifier is then used as logical identifier to refer to the organi
 These unique identifiers should be issued by a trusted source, and authenticated in a cryptographically secure way according to TrustOverIP (ToIP).
 
 ### Trust over IP
-The Trust over IP framework makes use of Trusted Sources or Trusted Third Parties that are trusted to issuer authentic properties to the participants. These parties are called *issuers* within the Trust over IP framework. Within the Trust over IP framework the participants are able to store the assigned authentic properties within a wallet-like solution. The role of these participants is the role of the credential *holder*.  The credentials used in the Trust over IP framework can be presented by the *holder*. In the case of presentation, the holder is able to proof the ownership as part of the *presentation*. The role of *verifier* is to verify both the issuer of the credential and the holder of the credential. By doing this the verifier can be achieve the right level of authenticity required for the exchange of information required by SCP. In extension to that, Trust over IP delivers the following benefits:
+The Trust over IP framework makes use of Trusted Sources or Trusted Third Parties that issue authentic properties to the participants. These parties are called *issuers* within the Trust over IP framework.  
+The participants, that get the 'authentic properties' from the issuers, are able to store these properties within a wallet-like solution as a *verifiable credential* (VC). These participants have the role of the credential *holder*.  
+The third and last role in ToIP is the *verifier*. A *verifier* can ask a *holder* to *present* a VC that may contain an (healthcare) organization-identifier. The holder will present a *verifiable presentation* (VP) to the verifier.
+The role of *verifier* is to verify both the issuer *and* the holder that are part of this verifiable presentation. By doing this, the verifier can achieve the right level of authenticity required for the exchange of information required by SCP. In extension to that, Trust over IP delivers the following benefits:
 * International and established standard, part of EBSI and the European wallet.
-* Scalable, VCs can be made to depend on each other to create unlimited hierarchies.
-* Decentralized, there is no need for a central services.
+* Decentralized, there is no need for a central services (like an Identity Provider in OpenID Connect) while verifying a VC.
 * Flexible, trust networks can be created whenever needed.
 * Simple in its core, VCs and VPs are manifested as commonly used signed JSON objects (JWS).
 
 ### Verifiable Credential to FHIR Organization
 Given the organization authenticates itself using a Verifiable Credential, the attributes contained within can be used to create or derive the FHIR Organization resource.
-This identification mechanism is flexible: any type of Verifiable Credential (and even non-Verifiable Credentials) can be used, as long as parties agree on a trusted source and presentation format.
+This identification mechanism is flexible: any type of Verifiable Credential (and even non-Verifiable Credentials) can be used, as long as parties agree on a trusted source (issuer) and presentation format.
 This section outlines the options that are known to be available.
 
 #### NutsUraCredential
