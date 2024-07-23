@@ -42,7 +42,7 @@ It can be represented in both JWT and JSON-LD format. The JSON-LD version of the
   "credentialSubject": {
     "id": "did:web:example.com:holder#1",
     "organization": {
-      "uraNumber": "3732",
+      "ura": "3732",
       "name": "Example Hospital",
       "city": "Amsterdam"
     }
