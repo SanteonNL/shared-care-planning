@@ -169,7 +169,7 @@ The requestor and owner are restricted to make certain state transitions. For so
 {:.grid .table-hover}
 
 In the first sequence diagram, Care Provider 1 has implemented the (optional) CP-Service role and is requesting Care Provider 2 to do a Task. As a Task MUST always be based on a CarePlan, so if there is none, a CarePlan should be created. 
-> Optional: As Care Provider 2 is updating the Task to 'received', it includes a draft QuestionnaireResponse that Care Provider 1 should complete before a Task can be accepted by Care Provider 2. After Task acceptance, Care Provider 2 is including a second QuestionnaireResponse for patient contact details (which might be needed to send the patient an pre-consult intake Questionnaire).
+> Optional: As Care Provider 2 is evaluating the Task, it may create a new Task (a sub-Task that is based on the main Task) containing a Questionnaire for Care Provider 1. As soon as Care Provider 1 provides the response, Care Provider 2 re-evaluates the main Task. This cycle can be repeated. The reason for cycles of (short, incremental) Questionnaires (or conditional segments in a Questionnaire?) is that if Care Provider 2 evaluates the first response (e.g. inclusion criteria for the Task) it might reject the main Task without Practitioner 1 having to answer additional questions. The table above specifies who is able to do certain state transitions. 
 
 <div>
 {% include overview-task-negotiation-1-2.svg %}
@@ -188,6 +188,10 @@ For more information on this transaction, see [Transactions - Creating and respo
 #### Updating CarePlan and CareTeam
 The CarePlan Service is responsible for updating the CareTeam and, for convenience, the CarePlan.activities. This transaction is triggered by a Task creation or update at the CP-Service. 
 
+The CP-Service evaluates the Task update (is state transition allowed?). The Task state determines if the Task.owner should or shouldn't be a participant in the CareTeam (see the table below). Once a Task is completed or failed, the Task.owner remains a participant, but the (active) period is ended, unless there are other active Tasks for the participant. Active CareTeam.participants are authorized to access patient data at other CareTeam.participants. Inactive (period has ended) CareTeam.participants can access the Tasks, CarePlan and CareTeam. Other Care providers can only access their Tasks (for more info see [security-authorization](authorization.html)).  
+
+The CarePlan.author and CarePlan.subject are always active participants in the CareTeam.
+
 |State to|Task.owner is <br>CareTeam.participant|CareTeam.participant.period|
 |-|-|-|
 |requested|No|-|
@@ -204,8 +208,7 @@ The CarePlan Service is responsible for updating the CareTeam and, for convenien
 
 *: If the Task was never in state 'accepted' (thus state 'ready' was used), the Task.owner is not a CareTeam.participant and CareTeam.participant.period will be empty.
 
-The CP-Service evaluates the Task update (is state transition allowed?), updates the CarePlan/CareTeam accordingly and notifies all CareTeam-members.
-The CarePlan.author and CarePlan.subject are always active participants in the CareTeam. 
+ 
 
 <div>
 {% include overview-careplan-careteam-management.svg %}
