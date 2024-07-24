@@ -1,6 +1,10 @@
 # Enroll patient in home monitoring
 
-A cardiologist, Caroline van Dijk, from Hospital X diagnoses heart failure for patient Patrick Egger and explains about home monitoring with Zorg bij jou and gets implied consent from Patrick to enroll him in this.
+<b>Diagnosis, informed consent, implied consent</b>
+
+A cardiologist, Caroline van Dijk, from Hospital X diagnoses heart failure for patient Patrick Egger and explains about home monitoring with Zorg bij jou. Caroline gets informed consent from Patrick to enroll him for home monitoring at Zorg bij jou. Because Patrick gives informed consent for the enrollment, consent for the processing of the relevant data by Zorg bij jou can be implied (implied consent).
+
+<b>Order/ Service-request</b>
 
 Caroline make a (service-)request for 'home monitoring' in the EHR and clicks on the 'share request'-button to enroll Patrick. 
 
