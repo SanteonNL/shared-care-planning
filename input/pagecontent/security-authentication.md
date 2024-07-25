@@ -6,6 +6,18 @@ The organizations should be identified by a unique identifier. Which identifier 
 This unique identifier is then used as logical identifier to refer to the organization from the CarePlan, Tasks, CareTeam, and other resources if applicable.
 These unique identifiers should be issued by a trusted source, and authenticated in a cryptographically secure way according to TrustOverIP (ToIP).
 
+### Authentication through OAuth2
+SCP uses OAuth2 to authorize access to its services. Care Plan Contributors and Care Plan Services act as OAuth2 Resource Servers, using an OAuth2 Authorization Server to identify and authenticate users.
+Clients are informed by the resource server using well-known Resource Server Metadata, a [proposed RFC](https://www.ietf.org/archive/id/draft-ietf-oauth-resource-metadata-07.html) that allows resource servers to convey the information needed to interact with it.
+
+Resource servers MAY use any of the specified metadata, but MUST use include at least the following fields:
+
+- `resource`: the FHIR base URL of the service (Care Plan Contributor or Care Plan Service).
+- `authorization_servers`: JSON array containing URLs of allowed OAuth2 Authorization Servers, containing at least 1 entry.
+
+The well-known location of the metadata is `/.well-known/oauth-protected-resource`, appended to the FHIR base URL of the service.
+This is contrary to RFC8615, but follows the convention of other FHIR well-known metadata endpoints. 
+
 ### Trust over IP
 The Trust over IP framework makes use of Trusted Sources or Trusted Third Parties that issue authentic properties to the participants. These parties are called *issuers* within the Trust over IP framework.  
 The participants, that get the 'authentic properties' from the issuers, are able to store these properties within a wallet-like solution as a *verifiable credential* (VC). These participants have the role of the credential *holder*.  
