@@ -1,15 +1,15 @@
-Shared Care Planning (SCP) provides a way of distributed and planning of complex use cases in digital information exchange within healthcare. The cornerstone of all exchange is the authenticity of the actors that exchange information. In order to achieve the right level of authenticity the SCP relies on *Trust over IP*.
+Shared Care Planning (SCP) provides a distributed way for supporting digital data exchange and digital workflow in healthcare use cases involving multiple organizations. The cornerstone for the security of the necessary digital transactions is the authenticity of the actors involved. In order to achieve the right level of authenticity SCP relies on *Trust over IP*.
 
 ### Trust over IP
-The Trust over IP framework makes use of Trusted Sources or Trusted Third Parties that are trusted to issuer authentic properties to the participants. These parties are called *issuers* within the Trust over IP framework. Within the Trust over IP framework the participants are able to store the assigned authentic properties within a wallet-like solution. The role of these participants is the role of the credential *holder*.  The credentials used in the Trust over IP framework can be presented by the *holder*. In the case of presentation, the holder is able to proof the ownership as part of the *presentation*. The role of *verifier* is to verify both the issuer of the credential and the holder of the credential. By doing this the verifier can be achieve the right level of authenticity required for the exchange of information required by SCP. In extension to that, Trust over IP delivers the following benefits:
-* International and established standard, part of EBSI and the European wallet.
-* Scalable, VCs can be made to depend on each other to create unlimited hierarchies.
-* Decentralized, there is no need for a central services.
-* Flexible, trust networks can be created whenever needed.
-* Simple in its core, VCs and VPs are manifested as commonly used signed JSON objects (JWS).
+The Trust over IP framework makes use of Trusted Sources or Trusted Third Parties that are trusted to issue authentic properties, referred to as "credentials", to the participants. These parties are called *issuers* within the Trust over IP framework. Within the Trust over IP framework the participants are able to store the assigned authentic properties in a wallet-like solution. The role of these participants is the role of the credential *holder*.  The credentials used in the Trust over IP framework can be presented by the *holder*. In the case of presentation, the holder is able to proof the ownership as part of the *presentation*. The role of *verifier* is to verify both the issuer of the credential and the holder of the credential. By doing this the verifier can achieve the right level of authenticity required for the transactions required by SCP. In extension to that, Trust over IP delivers the following benefits:
+* International and established standard: W3C-standards that are part of EBSI and the European wallet (eIDAS2)
+* Scalable: VCs can be made to depend on each other to create unlimited hierarchies.
+* Decentralized: there is no need for central services.
+* Flexible: trust networks can be created whenever needed.
+* Simple in its core: VC's and VP's are manifested as commonly used signed JSON objects (JWS).
 
-### NUTS and Verifiable Credentials.
-The implementation for Trust over IP by SCP is NUTS. The NUTS nodes are able to implement the role of both holder and verifier within the trust construct of SCP. Each service in the SCP has its own NUTS-node that acts both wallet and interface for trust exchange. 
+### Nuts and Verifiable Credentials.
+The implementation for Trust over IP by SCP is Nuts. The Nuts-nodes are able to implement the role of both holder and verifier within the trust construct of SCP. Each service in the SCP has its own Nuts-node that acts both as wallet and as interface for credential exchange. 
 
 ### Sources of trust.
 The implementation of Trust over IP requires trusted sources that provide assertions about both individual caregivers and organizations involved in healthcare. At the time of writing this specification, there are no official trusted sources available for both individuals and organizations. However, initiatives such as "IAA in de zorg" are trying to resolve this issue.
