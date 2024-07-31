@@ -25,3 +25,4 @@ Alias: $coverage-selfpay = http://terminology.hl7.org/CodeSystem/coverage-selfpa
 Alias: $atc = http://www.whocc.no/atc
 Alias: $v2-0443 = http://terminology.hl7.org/CodeSystem/v2-0443
 Alias: $immunization-recommendation-status = http://terminology.hl7.org/CodeSystem/immunization-recommendation-status
+Alias: $task-input-type = http://terminology.hl7.org/CodeSystem/task-input-type
