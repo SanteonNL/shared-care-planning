@@ -1,7 +1,7 @@
 Shared Care Planning (SCP) provides a way of distributed and planning of complex use cases in digital information exchange within healthcare. The cornerstone of all exchange is the authenticity of the actors that exchange information. In order to achieve the right level of authenticity the SCP relies on *Trust over IP*.
 
 The primary entity being identified and authenticated is the legal organization providing care.
-For instance, a hospital, general practitioner, dentist, home care organization, or a pharmacy.
+For instance, a hospital, home care organization, or a pharmacy.
 The organizations should be identified by a unique identifier. Which identifier is used depends on local regulations, such as the URA number in the Netherlands.
 This unique identifier is then used as logical identifier to refer to the organization from the CarePlan, Tasks, CareTeam, and other resources if applicable.
 These unique identifiers should be issued by a trusted source, and authenticated in a cryptographically secure way according to TrustOverIP (ToIP).
@@ -48,13 +48,13 @@ It can be represented in both JWT and JSON-LD format. The JSON-LD version of the
     "https://www.w3.org/2018/credentials/v1",
     "https://nuts.nl/credentials/2024"
   ],
-  "id": "did:web:example.com:issuer#1",
+  "id": "did:web:ministryofhealth.example.com:issuer#1",
   "type": ["VerifiableCredential", "NutsUraCredential"],
   "issuer": "did:web:example.com:issuer#1",
   "issuanceDate": "2024-01-01T00:00:00Z",
   "expirationDate": "2025-01-01T00:00:00Z",
   "credentialSubject": {
-    "id": "did:web:example.com:holder#1",
+    "id": "did:web:hospital.example.com:holder#1",
     "organization": {
       "ura": "3732",
       "name": "Example Hospital",
