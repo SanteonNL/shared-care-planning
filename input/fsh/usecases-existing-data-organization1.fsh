@@ -1,13 +1,13 @@
 Instance: Patient1
 InstanceOf: Patient
-Title: Patient Patrick Egger
+Title: "Patient Patrick Egger"
 Description: "An example of a SCP patient."
 * identifier.system = "http://fhir.nl/fhir/NamingSystem/bsn"
 * identifier.value = "111222333"
 * name
   * given[0] = "Patrick"
   * family = "Egger"
-* telecom[=].system = #phone
+* telecom[+].system = #phone
 * telecom[=].value = "+31612345678"
 * telecom[+].system = #email
 * telecom[=].value = "patrickegger@myweb.nl"
