@@ -1,4 +1,4 @@
-FROM openjdk:24-jdk-bullseye
+FROM openjdk:24-jdk-bookworm
 LABEL maintainer="roland@headease.nl"
 
 # Install native compilation dependencies.
@@ -11,7 +11,7 @@ RUN apt-get install -y nodejs
 
 # Install Jekyll for Ubuntu/Debian: https://jekyllrb.com/docs/installation/ubuntu/
 RUN apt-get install -y ruby-full build-essential zlib1g-dev
-RUN gem install -N jekyll:4.3.3 bundler:2.5.10
+RUN gem install -N jekyll bundler
 
 RUN mkdir /app
 WORKDIR /app
