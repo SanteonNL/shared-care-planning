@@ -24,4 +24,7 @@ COPY ./_updatePublisher.sh .
 RUN bash ./_updatePublisher.sh -y
 RUN chmod +x *.sh *.bat
 
+ADD ig.ini .
+ADD sushi-config.yaml .
+
 CMD ["bash", "_genonce.sh"]
