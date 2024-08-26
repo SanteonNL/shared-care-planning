@@ -1,4 +1,4 @@
-Instance: Patient1
+Instance: patient-patrick
 InstanceOf: Patient
 Title: "Patient Patrick Egger"
 Description: "An example of a SCP patient."
@@ -14,54 +14,60 @@ Description: "An example of a SCP patient."
 * gender = #female
 * birthDate = "1984-04-01"
 
-Instance: nl-core-CareTeam-01-Condition-01
+Instance: condition-dementia
 InstanceOf: Condition
 Usage: #example
+Title: "Diagnose vasculaire dementie"
+Description: "An example of a diagnosis of vascular dementia."
 * meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem"
 * category = $sct#282291009 "Interpretatie van diagnose"
 * code = $sct#429998004 "vasculaire dementie"
-* subject = Reference(nl-core-Patient-01) "Patient, Johanna Petronella Maria (Jo) van Putten-van der Giessen"
+* subject = Reference(patient-patrick) // Patient Patrick Egger
 * subject.type = "Patient"
 * note.text = "De laatste weken erg onrustig in de nacht"
 
-Instance: nl-core-CareTeam-01-Condition-02
+Instance: condition-heartfailure
 InstanceOf: Condition
 Usage: #example
+Title: "Diagnose hartfalen"
+Description: "An example of a diagnosis of heart failure."
 * meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem"
 * category = $sct#282291009 "Interpretatie van diagnose"
 * code = $sct#195111005 "Hartfalen"
-* subject = Reference(nl-core-Patient-01) "Patient, Johanna Petronella Maria (Jo) van Putten-van der Giessen"
+* subject = Reference(patient-patrick) // Patient Patrick Egger
 * subject.type = "Patient"
-* note.text = "Houdt veel vocht vast, kortademig"
+* note.text = "Hier een zinnige tekst over de diagnose Hartfalen"
 
-Instance: nl-core-CareTeam-01-Condition-03
+
+Instance: condition-medication-rash
 InstanceOf: Condition
 Usage: #example
+Title: "Skin rash due to medication"
+Description: "An example of a skin rash due to medication."
 * meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem"
 * category = $sct#116223007 "Complicatie"
 * code = $sct#62014003 "Geneesmiddel-interacties"
-* subject = Reference(nl-core-Patient-01) "Patient, Johanna Petronella Maria (Jo) van Putten-van der Giessen"
+* subject = Reference(patient-patrick) // Patient Patrick Egger
 * subject.type = "Patient"
 * note.text = "Huiduitslag met veel jeuk door medicatie"
 
 // PractitionerRole1
-Instance: nl-core-CareTeam-01-PractitionerRole-06
+Instance: practitionerrole-vanderLinden
 InstanceOf: PractitionerRole
 Usage: #example
-* practitioner = Reference(nl-core-CareTeam-01-Practitioner-06) "Healthcare professional (person), K. van der Linden"
+Title: "Healthcare professional (role), K. van der Linden"
+* practitioner = Reference(practitioner-vanderLinden)
 * practitioner.type = "Practitioner"
 
 
-Instance: minimal-enrollment-Practitioner-HP
+Instance: practitioner-vanderLinden
 InstanceOf: Practitioner
 Usage: #example
 * meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner"
 * name.use = #official
-* name.text = "H.B. Hoofdbehandelaar"
-* name.family.extension.url = "http://hl7.org/fhir/StructureDefinition/humanname-own-name"
-* name.family.extension.valueString = "Hoofdbehandelaar"
-* name.family = "Hoofdbehandelaar"
-* name.given = "Hendrik Bernard"
+* name.text = "K. van der Linden"
+* name.family = "van der Linden"
+* name.given = "Karel"
 * name.given.extension.url = "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier"
 * name.given.extension.valueCode = #IN
 * name.prefix = "Prof."
@@ -71,12 +77,11 @@ Usage: #example
 * telecom[=].value = "hb@icloud.com"
 
 
-
-Instance: Organization1
+Instance: organization-hospital
 InstanceOf: Organization
 Usage: #example
 * identifier.system = "http://fhir.nl/fhir/NamingSystem/ura"
-* identifier.value = "1"
+* identifier.value = "URA-1"
 * name = "Hospital X"
 * telecom[0].system = #phone
 * telecom[=].value = "+31301234567"
@@ -84,9 +89,6 @@ Usage: #example
 * telecom[+].system = #email
 * telecom[=].value = "info@erasmus.nl"
 * telecom[=].use = #work
-* address.extension.url = "http://nictiz.nl/fhir/StructureDefinition/ext-AddressInformation.AddressType"
-* address.extension.valueCodeableConcept = $v3-AddressUse#WP "Work Place"
-* address.use = #work
 * address.line = "s-Gravendijkwal 230"
 * address.line.extension[0].url = "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName"
 * address.line.extension[=].valueString = "s-Gravendijkwal"
@@ -96,11 +98,11 @@ Usage: #example
 * address.postalCode = "3015 CE"
 
 
-Instance: Organization2
+Instance: organization-medicalservicecentre
 InstanceOf: Organization
 Usage: #example
 * identifier.system = "http://fhir.nl/fhir/NamingSystem/ura"
-* identifier.value = "2"
+* identifier.value = "URA-2"
 * name = "Medical Service Centre"
 * telecom[0].system = #phone
 * telecom[=].value = "+31301234567"
@@ -108,9 +110,6 @@ Usage: #example
 * telecom[+].system = #email
 * telecom[=].value = "info@erasmus.nl"
 * telecom[=].use = #work
-* address.extension.url = "http://nictiz.nl/fhir/StructureDefinition/ext-AddressInformation.AddressType"
-* address.extension.valueCodeableConcept = $v3-AddressUse#WP "Work Place"
-* address.use = #work
 * address.line = "s-Gravendijkwal 230"
 * address.line.extension[0].url = "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName"
 * address.line.extension[=].valueString = "s-Gravendijkwal"
@@ -119,18 +118,26 @@ Usage: #example
 * address.city = "Rotterdam"
 * address.postalCode = "3015 CE"
 
-Instance: minimal-enrollment-ServiceRequest
+Instance: servicerequest-telemonitoring
 InstanceOf: ServiceRequest
 Usage: #example
-* status = #draft
+* status = #active
 * intent = #order
-* subject = Reference(minimal-enrollment-Patient) "Patient, Jean Jacques van Putten-van der Giessen"
+* subject = Reference(patient-patrickegger) "Patient Patrick Egger"
 * subject.type = "Patient"
-* requester = Reference(minimal-enrollment-Organization-Requester) "Requester Organization St. Antonius Ziekenhuis"
-* requester.type = "Organization"
-* performer = Reference(minimal-enrollment-Organization-Performer) "Performer Organization Zorg bij jou"
+* requester = Reference(organization-hospital) "Hospital X"
+* performer = Reference(organization-medicalservicecentre) "Medical Service Centre"
 * performer.type = "Organization"
 * code = http://snomed.info/sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
 //* orderDetail.text = "COPD Thuismonitoring pakket Light"
 * reasonReference = Reference(minimal-enrollment-Condition) "Diagnose Hartfalen"
 //* patientInstruction = "# streefwaarden\n- 30 kg\n- 180 cm\n# aantekeningen\n- Grote hond\n-grote mond\n"
+
+// Instance: scp-req-bloedpanel
+// InstanceOf: ServiceRequest
+// Title: "Request: Compleet bloedbeeld bepalen"
+
+// * status = #active
+// * intent = #order
+// * code = LOINC#58410-2 "Compleet bloedbeeld panel in bloed d.m.v. geautomatiseerde telling"
+// * subject = Reference(SharonCynthiaProef)

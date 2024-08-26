@@ -25,11 +25,11 @@ publisher:
 # The dependencies property corresponds to IG.dependsOn. The key is the
 # package id and the value is the version (or dev/current). For advanced
 # use cases, the value can be an object with keys for id, uri, and version.
-dependencies:
-  nictiz.fhir.nl.r4.nl-core:
-    id: nlcore
-    uri: https://simplifier.net/packages/nictiz.fhir.nl.r4.nl-core
-    version: 0.10.0-beta.1
+# dependencies:
+#   nictiz.fhir.nl.r4.nl-core:
+#     id: nlcore
+#     uri: https://simplifier.net/packages/nictiz.fhir.nl.r4.nl-core
+#     version: 0.10.0-beta.1
 #
 # dependencies:
 #   hl7.fhir.us.core: 3.1.0
@@ -141,7 +141,7 @@ menu:
   Use cases:
     Enroll patient in home monitoring: usecase-enrollment.html
     Get data for home monitoring: usecase-view-all-data.html
-    Referral/Nursing handoff: usecase-nursing-handoff.md
+    Referral/Nursing handoff: usecase-nursing-handoff.html
 
   Artifacts: artifacts.html
   Changes & Issues: history.html
