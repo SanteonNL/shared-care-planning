@@ -7,6 +7,8 @@ Description: "A care plan for a patient that is shared between multiple care pro
 * subject 1..1
 * careTeam only Reference(SCPCareTeam)
 * careTeam 1..1
+* author only Reference(PractitionerRole)
+* author 1..1
 
 
 Profile: SCPCareTeam
@@ -18,7 +20,6 @@ Description: "A care team for a patient that is shared between multiple care pro
 * participant.member 1..1
 * participant.period.start 1..1
 * participant.period.end 0..1
-* managingOrganization 1..1
 
 
 Profile: SCPTask
@@ -28,6 +29,16 @@ Description: "A task for a patient that is shared between multiple care provider
 * ^status = #draft
 * ^experimental = true
 * basedOn only Reference(SCPCareplan)
-* basedOn MS
-* status = #ready,#requested,#received,#accepted,#rejected,#in-progress,#on-hold,#completed,#failed,#cancelled,#entered-in-error
+* basedOn 1..1
+* status from SCPTaskStatus (required) 
 * focus MS
+* for only Reference(Patient)
+* for 1..1
+
+
+ValueSet: SCPTaskStatus
+Id: scp-task-status
+Title: "Shared Care Planning: Task Status"
+* ^status = #active
+* include codes from valueset http://hl7.org/fhir/ValueSet/task-status
+* exclude $task-status#draft
