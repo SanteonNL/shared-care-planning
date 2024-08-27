@@ -25,19 +25,19 @@ Description: "Questionnaire for extra information for telemonitoring"
 * item[=].text = "For which condition(s) do you want to start telemonitoring?"
 * item[=].repeats = true
 * item[=].type = #choice
-* item[=].answerValueSet = Canonical(condition-code)
+* item[=].answerValueSet = $condition-code
 
 * item[+].linkId = "2"
 * item[=].text = "Patient has a smartphone?"
 * item[=].type = #choice
-* item[=].answerValueSet = Canonical(yesnodontknow)
+* item[=].answerValueSet = $yesnodontknow
 
 * item[+].linkId = "3"
 * item[=].text = "Patient can read email on his/her smartphone?"
 * item[=].type = #choice
-* item[=].answerValueSet = Canonical(yesnodontknow)
+* item[=].answerValueSet = $yesnodontknow
 
 * item[+].linkId = "4"
 * item[=].text = "You like this Questionnaire?"
 * item[=].type = #choice
-* item[=].answerValueSet = Canonical(yesnodontknow)
+* item[=].answerValueSet = $yesnodontknow

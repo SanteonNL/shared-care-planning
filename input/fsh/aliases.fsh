@@ -4,6 +4,8 @@ Alias: $task-status = http://hl7.org/fhir/task-status
 Alias: $task-input-type = http://terminology.hl7.org/CodeSystem/task-input-type
 Alias: $bsn = http://fhir.nl/fhir/NamingSystem/bsn
 Alias: $ura = http://fhir.nl/fhir/NamingSystem/ura
+Alias: $yesnodontknow = http://hl7.org/fhir/ValueSet/yesnodontknow
+Alias: $condition-code = http://hl7.org/fhir/ValueSet/condition-code
 
 // Alias: $ucum = http://unitsofmeasure.org
 // Alias: $orpha = http://www.orpha.net
