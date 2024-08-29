@@ -1,35 +1,35 @@
-Instance: cps-careplan1-01
+Instance: bundle-careplan1-01
 InstanceOf: SCPCareplan
-Usage: #example
+Usage: #inline
 Title: "1.01 CarePlan creation"
 Description: "Initiation of a care plan for a patient with Heartfailure"
 * meta.versionId = "1"
 * status = #active
 * intent = #order
 * category = $sct#135411000146103 "Multidisciplinary care regime"
-* subject = Reference(cps-patrick)
+* subject = Reference(urn:uuid:patrick)
 * subject.display = "Patrick Egger"
-* careTeam = Reference(cps-careteam1-01)
+* careTeam = Reference(urn:uuid:careteam1)
 * addresses[+] = Reference(hospitalx-heartfailure)
 * addresses[=].display = "Heartfailure"
 * addresses[+] = Reference(hospitalx-copd)
 * addresses[=].display = "COPD"
-* author = Reference(cps-carolinevandijk-hospitalx) 
+* author = Reference(urn:uuid:carolinevandijk-hospitalx) 
 * author.display = "Caroline van Dijk at Hospital X"
 //* supportingInfo = Reference(hospitalx-medication-rash)
 
 
-Instance: cps-careteam1-01
+Instance: bundle-careteam1-01
 InstanceOf: SCPCareTeam
-Usage: #example
+Usage: #inline
 Title: "1.01 CareTeam creation"
 Description: "Initiation of a care team for a patient with Heartfailure"
 * meta.versionId = "1"
 * category = $sct#135411000146103 "Multidisciplinary care regime"
-* subject = Reference(cps-patrick) 
+* subject = Reference(urn:uuid:patrick) 
 * subject.display = "Patrick Egger"
 
-Instance: cps-patrick
+Instance: bundle-patrick
 InstanceOf: Patient
 Usage: #inline
 Title: "1.01 Patient Patrick Egger"
@@ -47,7 +47,7 @@ Description: "copy patient to CPS if it doesn't exist"
 * gender = #male
 * birthDate = "1984-04-01"
 
-Instance: cps-carolinevandijk-hospitalx
+Instance: bundle-carolinevandijk-hospitalx
 InstanceOf: PractitionerRole
 Usage: #inline
 Title: "1.01 PractitionerRole Caroline van Dijk at Hospital X"
@@ -56,13 +56,13 @@ Description: "copy PractitionerRole to CPS if it doesn't exist"
 * identifier.system = "http://fhir.nl/fhir/NamingSystem/uzi"
 * identifier.value = "UZI-1"
 * practitioner = Reference(hospitalx-carolinevandijk)
-* organization = Reference(cps-hospitalx)
+* organization = Reference(urn:uuid:hospitalx)
 * code.coding = $sct#17561000 "Cardiologist"
 * specialty.coding = $sct#394579002 "Cardiology"
 * telecom[+].system = #email
 * telecom[=].value = "c.vandijk@hospitalx.nl"
 
-Instance: cps-hospitalx
+Instance: bundle-hospitalx
 InstanceOf: Organization
 Usage: #inline
 Title: "1.01 Organization Hospital X"
@@ -90,11 +90,11 @@ InstanceOf: Bundle
 Usage: #example
 Title: "1.01 Bundle to create CarePlan and CareTeam"
 * type = #transaction
-* insert BundleEntry(cps-careplan1-01, #POST, CarePlan)
-* insert BundleEntry(cps-careteam1-01, #POST, CareTeam)
-* insert BundleEntry(cps-patrick, #POST, Patient)
+* insert BundleEntry(bundle-careplan1-01, careplan1, #POST, CarePlan)
+* insert BundleEntry(bundle-careteam1-01, careteam1, #POST, CareTeam)
+* insert BundleEntry(bundle-patrick, patrick, #POST, Patient)
 * entry[=].request.ifNoneExist = "identifier=http://fhir.nl/fhir/NamingSystem/bsn|111222333"
-* insert BundleEntry(cps-carolinevandijk-hospitalx, #POST, PractitionerRole)
+* insert BundleEntry(bundle-carolinevandijk-hospitalx, carolinevandijk-hospitalx, #POST, PractitionerRole)
 * entry[=].request.ifNoneExist = "identifier=http://fhir.nl/fhir/NamingSystem/uzi|UZI-1"
-* insert BundleEntry(cps-hospitalx, #POST, Organization)
+* insert BundleEntry(bundle-hospitalx, hospitalx, #POST, Organization)
 * entry[=].request.ifNoneExist = "identifier=http://fhir.nl/fhir/NamingSystem/ura|URA-1"

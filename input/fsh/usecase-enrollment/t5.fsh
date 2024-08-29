@@ -16,7 +16,7 @@ Description: "Provide information for telemonitoring"
 * output.type = $task-input-type#Reference "Reference"
 * output.valueReference = Reference(cps-questionnaireresponse-telemonitoring)
 
-Instance: cps-questionnaireresponse-telemonitoring 
+Instance: cps-questionnaireresponse-telemonitoring
 InstanceOf: QuestionnaireResponse
 Usage: #example
 Title: "1.05 QuestionnaireResponse for telemonitoring"

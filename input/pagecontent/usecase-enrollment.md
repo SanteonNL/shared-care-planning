@@ -27,3 +27,27 @@ Caroline cliks on "Complete request" and the request is sent to Zorg bij jou inc
 As all information is provided, Zorg bij jou automatically accepts the tasks and provides a direct task status update, so Caroline can see that the task is received and subsequently accepted. 
 
 Caroline monitors the task in the EHR and sees that a few days later the status of the Task is updated to “in progress”, meaning that Patrick has downloaded and started to use the monitoring app.
+
+
+# Transactions
+
+## Creating the CarePlan/CareTeam
+
+bla bla, it goes like this:
+
+```json
+curl <fhir-base-url>/CarePlan/?category=http://snomed.info/sct|135411000146103
+
+{% include Bundle-hospitalx-bundle1-01.json %}
+
+```
+
+
+en nog een keer (console):
+
+```console
+curl <fhir-base-url>/CarePlan/?category=http://snomed.info/sct|135411000146103
+
+{% include Bundle-hospitalx-bundle1-01.json %}
+
+```

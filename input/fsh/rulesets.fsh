@@ -20,8 +20,9 @@ RuleSet: SupportSearchParam (name, canonical, type)
 // * rest.resource[=].searchParam[=].extension[0].url = $exp
 // * rest.resource[=].searchParam[=].extension[0].valueCode = {expectation}
 
-RuleSet: BundleEntry (resource, method, url)
-* entry[+].resource = {resource}
+RuleSet: BundleEntry (resource, fullUrl, method, url)
+* entry[+].fullUrl = "urn:uuid:{fullUrl}"
+* entry[=].resource = {resource}
 * entry[=].request.method = {method}
 * entry[=].request.url = "{url}"
 
