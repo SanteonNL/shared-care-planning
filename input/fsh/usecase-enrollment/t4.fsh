@@ -4,13 +4,18 @@ Usage: #example
 Title: "1.04 (sub-)Task 2 creation"
 Description: "Ask for extra information for telemonitoring"
 * meta.versionId = "1"
-* contained = hospitalx-servicerequest-telemonitoring
+* contained = cps-questionnaire-telemonitoring
 * basedOn = Reference(cps-careplan1-02)
 * partOf = Reference(cps-task1-01)
 * status = #ready
 * intent = #order
 * focus = Reference(hospitalx-servicerequest-telemonitoring)
-* for = Reference(cps-patrick)
+* for.identifier.system = $bsn
+* for.identifier.value = "111222333"
+* requester.identifier.system = $ura
+* requester.identifier.value = "URA-2"
+* owner.identifier.system = $ura
+* owner.identifier.value = "URA-1"
 * input.type = $task-input-type#Reference "Reference"
 * input.valueReference = Reference(cps-questionnaire-telemonitoring)
 

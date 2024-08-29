@@ -29,11 +29,15 @@ Description: "A task for a patient that is shared between multiple care provider
 * ^status = #draft
 * ^experimental = true
 * basedOn only Reference(SCPCareplan)
-* basedOn 1..1
+* basedOn MS
 * status from SCPTaskStatus (required) 
 * focus MS
-* for only Reference(Patient)
-* for 1..1
+* for.identifier.system 1..1
+* for.identifier.value 1..1
+* requester.identifier.system 1..1
+* requester.identifier.value 1..1
+* owner.identifier.system 1..1
+* owner.identifier.value 1..1
 
 
 ValueSet: SCPTaskStatus

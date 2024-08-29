@@ -31,23 +31,39 @@ Caroline monitors the task in the EHR and sees that a few days later the status 
 
 # Transactions
 
-## Creating the CarePlan/CareTeam
-
-bla bla, it goes like this:
-
-```json
-curl <fhir-base-url>/CarePlan/?category=http://snomed.info/sct|135411000146103
-
-{% include Bundle-hospitalx-bundle1-01.json %}
+## Hospital X: Find existing CarePlan/CareTeam for Patient
 
 ```
+curl --request GET '{% raw %}{{cps-base-url}}{% endraw %}/CarePlan/?category=http://snomed.info/sct|135411000146103' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: {% raw %}{{access-token}}{% endraw %}'
+```
 
+## Hospital X: Create Task 
 
-en nog een keer (console):
+assumption no CarePlan was found (so no Task.basedOn), create a new Task:
 
-```console
-curl <fhir-base-url>/CarePlan/?category=http://snomed.info/sct|135411000146103
+```
+curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/Task/' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+--data '{% include Task-cps-task1-01.json %}'
+```
 
-{% include Bundle-hospitalx-bundle1-01.json %}
+## MedicalServiceCentre: Create sub-Task with Questionnaire
 
+```
+curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/Task/' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+--data '{% include Task-cps-task2-01.json %}'
+```
+
+## Hospital X: Update sub-Task with QuestionnaireResponse
+
+```
+curl --request PUT '{% raw %}{{cps-base-url}}{% endraw %}/Task/' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+--data '{% include Task-cps-task2-02.json %}'
 ```
