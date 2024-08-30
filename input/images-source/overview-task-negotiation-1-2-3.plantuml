@@ -19,7 +19,8 @@ end box
 
 activate Practitioner1
 Practitioner1 -> CPC1 : Start Request\nreferral
-& CPC1 -> CPS : Create Task:\n status requested,\n referring CarePlan\n and (Service-)Request
+& CPC1 -> CPS : Find/select CarePlan
+CPC1 -> CPS : Create Task:\n status requested,\n referring CarePlan\n and (Service-)Request
 & CPS -> CPC2  : Notify Task created
 & CPC2 -> EHR2  : Notify Task created
 & EHR2 -> EHR2 : evaluate Task:\n <color #purple>(required data,\n <color #purple>capacity, etc)
