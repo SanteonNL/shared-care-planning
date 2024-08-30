@@ -48,7 +48,7 @@ curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/' \
 --data '{% include Bundle-cps-bundle1.json %}'
 ```
 
-## MedicalServiceCentre: Create sub-Task with Questionnaire
+## MedicalServiceCentre: Create sub-Task with Questionnaire (enrollment criteria)
 
 ```
 curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/' \
@@ -57,7 +57,7 @@ curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/' \
 --data '{% include Bundle-cps-bundle2.json %}'
 ```
 
-## Hospital X: Update sub-Task with QuestionnaireResponse
+## Hospital X: Update sub-Task with QuestionnaireResponse (enrollment criteria)
 
 ```
 curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/' \
@@ -65,6 +65,14 @@ curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/' \
 --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
 --data '{% include Bundle-cps-bundle3.json %}'
 ```
+
+## MedicalServiceCentre: Create sub-Task with Questionnaire (patient details)
+
+//TO DO//
+
+## Hospital X: Update sub-Task with QuestionnaireResponse (patient details)
+
+//TO DO//
 
 ## MedicalServiceCentre: Update Task to accepted
 
