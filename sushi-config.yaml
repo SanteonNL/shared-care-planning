@@ -92,10 +92,6 @@ pages:
   usecase-nursing-handoff.md:
     title: Use cases - How execute a nursing referral
 
-  usecase-nursing-handoff.md:
-    title: Use cases - Referral/Nursing handoff
-    generation: markdown
-
   history.md:
     title: Changes & Issues
 
