@@ -1,100 +1,61 @@
-Instance: bundle-careplan1-01
-InstanceOf: SCPCareplan
-Usage: #inline
-Title: "1.01 CarePlan creation"
-Description: "Initiation of a care plan for a patient with Heartfailure"
+//transaction 1
+
+Instance: cps-task1-01
+InstanceOf: SCPTask
+Usage: #example
+Title: "1.01 Task creation"
+Description: "Initiation of a task for telemonitoring"
 * meta.versionId = "1"
-* status = #active
+* status = #requested
 * intent = #order
-* category = $sct#135411000146103 "Multidisciplinary care regime"
-* subject = Reference(urn:uuid:patrick)
-* subject.display = "Patrick Egger"
-* careTeam = Reference(urn:uuid:careteam1)
-* addresses[+] = Reference(hospitalx-heartfailure)
-* addresses[=].display = "Heartfailure"
-* addresses[+] = Reference(hospitalx-copd)
-* addresses[=].display = "COPD"
-* author = Reference(urn:uuid:carolinevandijk-hospitalx) 
-* author.display = "Caroline van Dijk at Hospital X"
-//* supportingInfo = Reference(hospitalx-medication-rash)
+* code = $task-code#fullfill
+* focus = Reference(urn:oid:456)
+* reasonReference = Reference(urn:oid:789)
+* for.identifier.system = $bsn
+* for.identifier.value = "111222333"
+* requester.identifier.system = $uzi
+* requester.identifier.value = "UZI-1"
+* owner.identifier.system = $ura
+* owner.identifier.value = "URA-2"
 
 
-Instance: bundle-careteam1-01
-InstanceOf: SCPCareTeam
-Usage: #inline
-Title: "1.01 CareTeam creation"
-Description: "Initiation of a care team for a patient with Heartfailure"
-* meta.versionId = "1"
-* category = $sct#135411000146103 "Multidisciplinary care regime"
-* subject = Reference(urn:uuid:patrick) 
-* subject.display = "Patrick Egger"
-
-Instance: bundle-patrick
-InstanceOf: Patient
-Usage: #inline
-Title: "1.01 Patient Patrick Egger"
-Description: "copy patient to CPS if it doesn't exist"
-* meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient"
-* identifier.system = "http://fhir.nl/fhir/NamingSystem/bsn"
-* identifier.value = "111222333"
-* name
-  * given[0] = "Patrick"
-  * family = "Egger"
-* telecom[+].system = #phone
-* telecom[=].value = "+31612345678"
-* telecom[+].system = #email
-* telecom[=].value = "patrickegger@myweb.nl"
-* gender = #male
-* birthDate = "1984-04-01"
-
-Instance: bundle-carolinevandijk-hospitalx
-InstanceOf: PractitionerRole
-Usage: #inline
-Title: "1.01 PractitionerRole Caroline van Dijk at Hospital X"
-Description: "copy PractitionerRole to CPS if it doesn't exist"
-* meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole"
-* identifier.system = "http://fhir.nl/fhir/NamingSystem/uzi"
-* identifier.value = "UZI-1"
-* practitioner = Reference(hospitalx-carolinevandijk)
-* organization = Reference(urn:uuid:hospitalx)
-* code.coding = $sct#17561000 "Cardiologist"
-* specialty.coding = $sct#394579002 "Cardiology"
-* telecom[+].system = #email
-* telecom[=].value = "c.vandijk@hospitalx.nl"
-
-Instance: bundle-hospitalx
-InstanceOf: Organization
-Usage: #inline
-Title: "1.01 Organization Hospital X"
-Description: "copy Organization to CPS if it doesn't exist"
-* meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization"
-* identifier.system = "http://fhir.nl/fhir/NamingSystem/ura"
-* identifier.value = "URA-1"
-* name = "Hospital X"
-* telecom[0].system = #phone
-* telecom[=].value = "+31301234567"
-* telecom[=].use = #work
-* telecom[+].system = #email
-* telecom[=].value = "info@hospitalx.nl"
-* telecom[=].use = #work
-* address.line = "Koekoekslaan 1"
-* address.line.extension[0].url = "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName"
-* address.line.extension[=].valueString = "Koekoekslaan"
-* address.line.extension[+].url = "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber"
-* address.line.extension[=].valueString = "1"
-* address.city = "Nieuwegein"
-* address.postalCode = "3435CM"
-
-Instance: hospitalx-bundle1-01
+Instance: cps-bundle1
 InstanceOf: Bundle
 Usage: #example
-Title: "1.01 Bundle to create CarePlan and CareTeam"
+Title: "1.01 Bundle"
+Description: "Bundle to initiate telemonitoring"
+* meta.versionId = "1"
 * type = #transaction
-* insert BundleEntry(bundle-careplan1-01, careplan1, #POST, CarePlan)
-* insert BundleEntry(bundle-careteam1-01, careteam1, #POST, CareTeam)
-* insert BundleEntry(bundle-patrick, patrick, #POST, Patient)
-* entry[=].request.ifNoneExist = "identifier=http://fhir.nl/fhir/NamingSystem/bsn|111222333"
-* insert BundleEntry(bundle-carolinevandijk-hospitalx, carolinevandijk-hospitalx, #POST, PractitionerRole)
-* entry[=].request.ifNoneExist = "identifier=http://fhir.nl/fhir/NamingSystem/uzi|UZI-1"
-* insert BundleEntry(bundle-hospitalx, hospitalx, #POST, Organization)
-* entry[=].request.ifNoneExist = "identifier=http://fhir.nl/fhir/NamingSystem/ura|URA-1"
+* insert BundleEntry(123, cps-task1-01, #PUT, Task)
+* insert BundleEntry(456, hospitalx-servicerequest-telemonitoring, #PUT, ServiceRequest)
+* insert BundleEntry(789, hospitalx-heartfailure, #PUT, Condition)
+
+
+//resulting instances at cps:
+
+Instance: cps-servicerequest-telemonitoring
+InstanceOf: ServiceRequest
+Usage: #example
+Title: "1.01 ServiceRequest Telemonitoring"
+Description: "copy of data in EHR of Hospital X"
+* meta.versionId = "1"
+* meta.lastUpdated = "2024-09-03T12:00:00Z"
+* meta.source = "http://hospitalx.nl/fhir/ServiceRequest/99534756439"
+* status = #active
+* intent = #order
+* subject = Reference(hospitalx-patrick) "Patient Patrick Egger"
+* requester = Reference(hospitalx-carolinevandijk-hospitalx) "Caroline van Dijk at Hospital X"
+* code = http://snomed.info/sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
+* reasonReference = Reference(hospitalx-heartfailure) "Diagnose Hartfalen"
+
+Instance: cps-heartfailure
+InstanceOf: Condition
+Usage: #example
+Title: "9.01 Condition heartfailure"
+Description: "copy of data in EHR of Hospital X"
+* meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem"
+* meta.versionId = "1"
+* meta.lastUpdated = "2024-09-03T12:00:00Z"
+* meta.source = "http://hospitalx.nl/fhir/Condition/56476575765"
+* code = $sct#195111005 "Hartfalen"
+* subject = Reference(hospitalx-patrick)

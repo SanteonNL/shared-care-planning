@@ -29,9 +29,7 @@ As all information is provided, Zorg bij jou automatically accepts the tasks and
 Caroline monitors the task in the EHR and sees that a few days later the status of the Task is updated to “in progress”, meaning that Patrick has downloaded and started to use the monitoring app.
 
 
-# Transactions
-
-## Hospital X: Find existing CarePlan/CareTeam for Patient
+## Hospital X: Find existing CarePlan for Patient
 
 ```
 curl --request GET '{% raw %}{{cps-base-url}}{% endraw %}/CarePlan/?category=http://snomed.info/sct|135411000146103' \
@@ -41,29 +39,38 @@ curl --request GET '{% raw %}{{cps-base-url}}{% endraw %}/CarePlan/?category=htt
 
 ## Hospital X: Create Task 
 
-assumption no CarePlan was found (so no Task.basedOn), create a new Task:
+assumption no CarePlan was found (so no Task.basedOn), create a Bundle with a new Task and a copy of the referred ServiceRequest and Condition:
 
 ```
-curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/Task/' \
+curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
---data '{% include Task-cps-task1-01.json %}'
+--data '{% include Bundle-cps-bundle1.json %}'
 ```
 
 ## MedicalServiceCentre: Create sub-Task with Questionnaire
 
 ```
-curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/Task/' \
+curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
---data '{% include Task-cps-task2-01.json %}'
+--data '{% include Bundle-cps-bundle2.json %}'
 ```
 
 ## Hospital X: Update sub-Task with QuestionnaireResponse
 
 ```
-curl --request PUT '{% raw %}{{cps-base-url}}{% endraw %}/Task/' \
+curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
---data '{% include Task-cps-task2-02.json %}'
+--data '{% include Bundle-cps-bundle3.json %}'
+```
+
+## MedicalServiceCentre: Update Task to accepted
+
+```
+curl --request PUT '{% raw %}{{cps-base-url}}{% endraw %}/Task' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+--data '{% include Task-cps-task1-02.json %}'
 ```

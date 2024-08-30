@@ -21,6 +21,9 @@ Usage: #example
 Title: "9.01 Condition COPD"
 Description: "Existing data in EHR of Hospital X"
 * meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem"
+* meta.versionId = "1"
+* meta.lastUpdated = "2024-09-03T12:00:00Z"
+* id = "143214345325432"
 * code = $sct#13645005 "Chronic obstructive pulmonary disease"
 * subject = Reference(hospitalx-patrick) // Patient Patrick Egger
 
@@ -30,9 +33,11 @@ Usage: #example
 Title: "9.01 Condition heartfailure"
 Description: "Existing data in EHR of Hospital X"
 * meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem"
+* meta.versionId = "1"
+* meta.lastUpdated = "2024-09-03T12:00:00Z"
+* id = "56476575765"
 * code = $sct#195111005 "Hartfalen"
 * subject = Reference(hospitalx-patrick) // Patient Patrick Egger
-* note.text = "Hier een zinnige tekst over de diagnose Hartfalen"
 
 
 // Instance: hospitalx-medication-rash
@@ -71,7 +76,7 @@ Description: "Existing data in EHR of Hospital X"
 * address.postalCode = "3435CM"
 
 
-Instance: hospitalx-medicalservicecentre
+Instance: hospitalx-msc
 InstanceOf: Organization
 Usage: #example
 Title: "9.01 Organization Medical Service Centre"
@@ -132,11 +137,13 @@ InstanceOf: ServiceRequest
 Usage: #example
 Title: "9.01 ServiceRequest Telemonitoring"
 Description: "Existing data in EHR of Hospital X"
+* meta.versionId = "1"
+* meta.lastUpdated = "2024-09-03T12:00:00Z"
+* id = "99534756439"
 * status = #active
 * intent = #order
 * subject = Reference(hospitalx-patrick) "Patient Patrick Egger"
 * requester = Reference(hospitalx-carolinevandijk-hospitalx) "Caroline van Dijk at Hospital X"
-* performer = Reference(hospitalx-medicalservicecentre) "Medical Service Centre"
 * code = http://snomed.info/sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
 * reasonReference = Reference(hospitalx-heartfailure) "Diagnose Hartfalen"
 //* orderDetail.text = "COPD Thuismonitoring pakket Light"

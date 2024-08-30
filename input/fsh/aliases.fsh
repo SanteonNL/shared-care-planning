@@ -6,8 +6,13 @@ Alias: $task-code = http://hl7.org/fhir/CodeSystem/task-code
 Alias: $task-input-type = http://terminology.hl7.org/CodeSystem/task-input-type
 Alias: $bsn = http://fhir.nl/fhir/NamingSystem/bsn
 Alias: $ura = http://fhir.nl/fhir/NamingSystem/ura
+Alias: $uzi = http://fhir.nl/fhir/NamingSystem/uzi
 Alias: $yesnodontknow = http://hl7.org/fhir/ValueSet/yesnodontknow
 Alias: $condition-code = http://hl7.org/fhir/ValueSet/condition-code
+Alias: $usage-context-type = http://terminology.hl7.org/CodeSystem/usage-context-type
+Alias: $FHIR-version = http://hl7.org/fhir/FHIR-version
+Alias: $v3-AdministrativeGender = http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender
+Alias: $v3-NullFlavor = http://terminology.hl7.org/CodeSystem/v3-NullFlavor
 
 // Alias: $ucum = http://unitsofmeasure.org
 // Alias: $orpha = http://www.orpha.net
