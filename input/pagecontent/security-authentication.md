@@ -92,10 +92,14 @@ This section outlines how authentication could be implemented in the future when
 
 #### Structure
 The structure of the credentials that act as sources of trust are:
-* The *UZI credential*, that contains:
-  * The UZI code
-  * One or more relations, that contain the URA number of the institution abd the Role of the professional.
-* The *URA credential* of the organization.  
+
+* The *PractitionerRole credential*, that contains:
+  * The Practitioner identifier
+  * The Organization identifier
+  * One or more roles, that the practitioner fulfills at the organization
+
+* The *Organization credential*, that contains:
+  * The Organization identifier
 
 <img src="Trust_structure.png" width="40%" style="float: none"/>
 

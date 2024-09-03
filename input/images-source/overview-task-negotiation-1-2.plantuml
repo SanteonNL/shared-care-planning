@@ -15,7 +15,7 @@ end box
 
 activate Practitioner1
 Practitioner1 -> CPC1 : Start Request\nreferral
-&CPC1 -> CPS : Create CarePlan\n (if non exists\n referring Patient\n and Conditions)
+& CPC1 -> CPS : Find/select CarePlan
 & note over EHR2 #WhiteSmoke
 Actions in <color #purple>purple
  are optional

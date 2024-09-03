@@ -13,11 +13,10 @@ Both the patient and practitioner need to give consent to the exchange of inform
 ### Limiting data and access
 The access to data in SCP is limited based access policies that apply in the context of data access. The SCP authorization specification makes distinction access policies:
 * Care Plan Service Policy: The Shared Care Planing data model elements, being Patient, Task (and other workflow resources), CarePlan and CareTeam based on the role of the participant in the Shared Care Planning. Access rules are based on:
-  * The role of the health care professional in the CareTeam of the patient.
   * The FHIR resource type.
   * The action (Read/Create/Update/Delete)
 * Care Plan Contributor Policy: The Shared Care Planing specification allows use case specific rules to be defined that limits access to data provided by the Care Plan Contributor based on, and not limited by:
-  * Use case
+  * Task-type (what is an organization doing for the patient in this CarePlan?)
   * Condition 
   * The contents of the CarePlan and CareTeam.
   * Note that the use case specific data is no so much limited to the role of the health care professional in the CareTeam of the patient, as "not looking at the same information" is considered potentially harmful for the patients' treatment. 
