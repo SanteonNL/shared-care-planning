@@ -49,7 +49,7 @@ The structure of the credentials that act as sources of trust are:
 
 <img src="Trust_structure.png" width="40%" style="float: none"/>
 
-Alternatively, the role can be assigned by the organization itself. Thereby the organization becomes s trusted source itself. As the organization holds a URA credential the verifier is albe to verify the authenticity of both the professional (UZI) and organization (URA), and the assigned role issued by the organization.  
+Alternatively, the role can be assigned by the organization itself. Thereby the organization becomes the trusted source itself. As the organization holds an Organization Credential the verifier is able to verify the authenticity of both the professional and organization, and the assigned role issued by the organization.  
 
 <img src="Trust_structure_2.png" width="40%" style="float: none"/>
 
@@ -57,7 +57,7 @@ Alternatively, the role can be assigned by the organization itself. Thereby the 
 ### Practical implementation
 As the sources of trust are not available yet, we need to work with whatever is around right now. The tentative credential structure will be:
 
-* The EmployeeCredential, represents a login of an employee by wrapping the id_token.
+* The NutsEmployeeCredential, represents a login of an employee by wrapping the id_token.
 * The membership credentials is assigned to an organization by an issuer with the role "domain controller". 
 * The Role credential is issued by the organization to the owner of the EmployeeCredential.
 
