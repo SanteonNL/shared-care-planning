@@ -1,137 +1,43 @@
-Instance: msc-hospitalx
-InstanceOf: Organization
+Instance: cps-task-03
+InstanceOf: SCPTask
 Usage: #example
-Title: "9.02 Organization Hospital X"
-Description: "Existing data in EHR of Medical Service Centre"
-* meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization"
-* identifier.system = "http://fhir.nl/fhir/NamingSystem/ura"
-* identifier.value = "URA-1"
-* name = "Hospital X"
-* telecom[0].system = #phone
-* telecom[=].value = "+31301234567"
-* telecom[=].use = #work
-* telecom[+].system = #email
-* telecom[=].value = "info@hospitalx.nl"
-* telecom[=].use = #work
-* address.line = "Koekoekslaan 1"
-* address.line.extension[0].url = "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName"
-* address.line.extension[=].valueString = "Koekoekslaan"
-* address.line.extension[+].url = "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber"
-* address.line.extension[=].valueString = "1"
-* address.city = "Nieuwegein"
-* address.postalCode = "3435CM"
+Title: "1.07.1 (sub-)Task 3 creation"
+Description: "Ask for extra contact information for telemonitoring"
+* meta.versionId = "1"
+* basedOn = Reference(cps-careplan-01)
+* partOf = Reference(cps-task-01)
+* status = #ready
+* intent = #order
+* focus = Reference(cps-servicerequest-telemonitoring)
+* for.identifier.system = $bsn
+* for.identifier.value = "111222333"
+* requester.identifier.system = $ura
+* requester.identifier.value = "URA-2"
+* owner.identifier.system = $ura
+* owner.identifier.value = "URA-1"
+* input[+].type = $task-input-type#Reference "Reference"
+* input[=].valueReference = Reference(urn:uuid:702)
+* input[+].type = $task-input-type#Reference "Reference"
+* input[=].valueReference = Reference(urn:uuid:703)
 
-
-Instance: msc-msc
-InstanceOf: Organization
+Instance: cps-bundle-04
+InstanceOf: Bundle
 Usage: #example
-Title: "9.02 Organization Medical Service Centre"
-Description: "Existing data in EHR of Medical Service Centre"
-* meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthcareProvider-Organization"
-* identifier.system = "http://fhir.nl/fhir/NamingSystem/ura"
-* identifier.value = "URA-2"
-* name = "Medical Service Centre"
-* telecom[0].system = #phone
-* telecom[=].value = "+31301234567"
-* telecom[=].use = #work
-* telecom[+].system = #email
-* telecom[=].value = "info@msc.nl"
-* telecom[=].use = #work
-* address.line = "Herculesplein 38"
-* address.line.extension[0].url = "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName"
-* address.line.extension[=].valueString = "Herculesplein"
-* address.line.extension[+].url = "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber"
-* address.line.extension[=].valueString = "38"
-* address.city = "Utrecht"
-* address.postalCode = "3584 AA"
+Title: "1.07.2 Bundle"
+Description: "Bundle to ask for contact information for telemonitoring"
+* meta.versionId = "1"
+* type = #transaction
+* insert BundleEntry(urn:uuid:123, cps-task-03, #PUT, Task)
+* insert BundleEntry(urn:uuid:702, cps-questionnaire-patient-details, #PUT, Questionnaire)
+* insert BundleEntry(urn:uuid:703, cps-questionnaire-practitioner-details, #PUT, Questionnaire)
 
+//resulting instances at cps:
 
-Instance: msc-carolinevandijk-hospitalx
-InstanceOf: PractitionerRole
-Usage: #example
-Title: "9.02 PractitionerRole Caroline van Dijk at Hospital X"
-Description: "Existing data in EHR of Medical Service Centre"
-* meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole"
-* identifier.system = $uzi
-* identifier.value = "UZI-1"
-* practitioner = Reference(urn:uuid:msc-carolinevandijk)
-* organization = Reference(urn:uuid:msc-hospitalx)
-* code.coding = $sct#17561000 "Cardiologist"
-* specialty.coding = $sct#394579002 "Cardiology"
-* telecom[+].system = #email
-* telecom[=].value = "c.vandijk@hospitalx.nl"
-
-
-Instance: msc-carolinevandijk
-InstanceOf: Practitioner
-Usage: #example
-Title: "9.02 Practitioner Caroline van Dijk"
-Description: "Existing data in EHR of Medical Service Centre"
-* meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner"
-* name.use = #official
-* name.text = "Caroline van Dijk"
-* name.family = "van Dijk"
-* name.given = "Caroline"
-* telecom[+].system = #phone
-* telecom[=].value = "+31688888888"
-* telecom[+].system = #email
-* telecom[=].value = "caroline@vandijk.nl"
-
-Instance: msc-questionnaire-telemonitoring-enrollment-criteria
+Instance: cps-questionnaire-patient-details
 InstanceOf: Questionnaire
 Usage: #example
-Title: "9.02 Questionnaire for telemonitoring - enrollment criteria"
-Description: "Questionnaire for enrollment criteria for telemonitoring"
-* meta.lastUpdated = "2024-09-02T13:40:17Z"
-* meta.source = "http://decor.nictiz.nl/fhir/4.0/sansa-"
-* meta.tag = $FHIR-version#4.0.1
-* language = #nl-NL
-* url = "http://decor.nictiz.nl/fhir/Questionnaire/2.16.840.1.113883.2.4.3.11.60.909.26.34-1--20240902134017"
-* identifier.system = "urn:ietf:rfc:3986"
-* identifier.value = "urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34-1"
-* name = "Telemonitoring - enrollment criteria"
-* title = "Telemonitoring - enrollment criteria"
-* status = #draft
-* experimental = false
-* date = "2024-09-02T13:40:17Z"
-* publisher = "Medical Service Centre"
-* effectivePeriod.start = "2024-09-02T13:40:17Z"
-* item[+].linkId = "2.16.840.1.113883.2.4.3.11.60.909.2.2.2208"
-* item[=].text = "Patient heeft smartphone"
-* item[=].type = #boolean
-* item[=].required = true
-* item[=].repeats = false
-* item[=].readOnly = false
-* item[+].linkId = "2.16.840.1.113883.2.4.3.11.60.909.2.2.2209"
-* item[=].text = "Patient of mantelzorger leest e-mail op smartphone"
-* item[=].type = #boolean
-* item[=].required = true
-* item[=].repeats = false
-* item[=].readOnly = false
-* item[+].linkId = "2.16.840.1.113883.2.4.3.11.60.909.2.2.2210"
-* item[=].text = "Patient of mantelzorger kan apps installeren op smartphone"
-* item[=].type = #boolean
-* item[=].required = true
-* item[=].repeats = false
-* item[=].readOnly = false
-* item[+].linkId = "2.16.840.1.113883.2.4.3.11.60.909.2.2.2211"
-* item[=].text = "Patient of mantelzorger is Nederlandse taal machtig"
-* item[=].type = #boolean
-* item[=].required = true
-* item[=].repeats = false
-* item[=].readOnly = false
-* item[+].linkId = "2.16.840.1.113883.2.4.3.11.60.909.2.2.2212"
-* item[=].text = "Patient beschikt over een weegschaal of bloeddrukmeter (of gaat deze aanschaffen)"
-* item[=].type = #boolean
-* item[=].required = true
-* item[=].repeats = false
-* item[=].readOnly = false
-
-Instance: msc-questionnaire-patient-details
-InstanceOf: Questionnaire
-Usage: #example
-Title: "9.02 Questionnaire for patient details"
-Description: "Questionnaire for patient details"
+Title: "1.07.3 Questionnaire for patient details"
+Description: "copy of MSC Questionnaire"
 * meta.lastUpdated = "2024-09-02T13:40:17Z"
 * meta.source = "http://decor.nictiz.nl/fhir/4.0/sansa-"
 * meta.tag = $FHIR-version#4.0.1
@@ -331,13 +237,11 @@ Description: "Questionnaire for patient details"
 * item[=].answerOption[+].valueCoding = http://hl7.org/fhir/administrative-gender#female "Female"
 * item[=].answerOption[+].valueCoding = http://hl7.org/fhir/administrative-gender#unknown "Unknown"
 
-
-
-Instance: msc-questionnaire-practitioner-details
+Instance: cps-questionnaire-practitioner-details
 InstanceOf: Questionnaire
 Usage: #example
-Title: "9.02 Questionnaire for practitioner details"
-Description: "Questionnaire for practitioner details"
+Title: "1.07.4 Questionnaire for practitioner details"
+Description: "copy of MSC Questionnaire"
 * meta.lastUpdated = "2024-09-02T13:40:17Z"
 * meta.source = "http://decor.nictiz.nl/fhir/4.0/sansa-"
 * meta.tag = $FHIR-version#4.0.1
@@ -483,48 +387,3 @@ Description: "Questionnaire for practitioner details"
 * item[=].item.required = true
 * item[=].item.repeats = false
 * item[=].item.readOnly = false
-
-// Instance: msc-actdef-telemon-heartfailure
-// InstanceOf: ActivityDefinition
-// Usage: #example
-// Title: "9.02 ActivityDefinition for telemonitoring heartfailure patients"
-// * url = "http://medicalservicecentre.nl/assets/ActivityDefinition/telemon-heartfailure"
-// * title = "Telemonitoring for heartfailure patients"
-// * description = "Telemonitoring for heartfailure patients"
-// * status = #active
-// * version = "1.0.0 - initial version"
-// * kind = http://hl7.org/fhir/request-resource-types#ServiceRequest
-// * intent = #order
-// * code = $sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
-// * useContext[+].code = $usage-context-type#focus "Focus"
-// * useContext[=].valueCodeableConcept = $sct#195111005 "Heart failure"
-
-// Instance: msc-actdef-telemon-copd
-// InstanceOf: ActivityDefinition
-// Usage: #example
-// Title: "9.02 ActivityDefinition for telemonitoring COPD patients"
-// * url = "http://medicalservicecentre.nl/assets/ActivityDefinition/telemon-copd"
-// * title = "Telemonitoring for COPD patients"
-// * description = "Telemonitoring for COPD patients"
-// * status = #active
-// * version = "1.0.0 - initial version"
-// * kind = http://hl7.org/fhir/request-resource-types#ServiceRequest
-// * intent = #order
-// * code = $sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
-// * useContext[+].code = $usage-context-type#focus "Focus"
-// * useContext[=].valueCodeableConcept = $sct#13645005 "Chronic obstructive pulmonary disease"
-
-Instance: msc-bundle-01
-InstanceOf: Bundle
-Usage: #example
-Title: "9.02 Bundle"
-Description: "Existing data in EHR of MedicalServiceCentre"
-* meta.versionId = "1"
-* type = #transaction
-* insert BundleEntry(urn:uuid:msc-hospitalx, msc-hospitalx, #POST, Organization)
-* insert BundleEntry(urn:uuid:msc-msc, msc-msc, #POST, Organization)
-* insert BundleEntry(urn:uuid:msc-carolinevandijk-hospitalx, msc-carolinevandijk-hospitalx, #POST, PractitionerRole)
-* insert BundleEntry(urn:uuid:msc-carolinevandijk, msc-carolinevandijk, #POST, Practitioner)
-* insert BundleEntry(urn:uuid:msc-questionnaire-telemonitoring-enrollment-criteria, msc-questionnaire-telemonitoring-enrollment-criteria, #POST, Questionnaire)
-* insert BundleEntry(urn:uuid:msc-questionnaire-patient-details, msc-questionnaire-patient-details, #POST, Questionnaire)
-* insert BundleEntry(urn:uuid:msc-questionnaire-practitioner-details, msc-questionnaire-practitioner-details, #POST, Questionnaire)

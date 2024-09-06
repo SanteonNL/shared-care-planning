@@ -1,0 +1,4 @@
+curl --request POST '{{cpc2-base-url}}/' 
+--header 'Content-Type: application/json' \
+--header 'Authorization: {{access-token}}' \
+--data '{{Bundle-msc-bundle-01.json}}'

@@ -1,11 +1,11 @@
-Instance: cps-task2-01
+Instance: cps-task-02
 InstanceOf: SCPTask
 Usage: #example
-Title: "1.03 (sub-)Task 2 creation"
+Title: "1.03.1 (sub-)Task 2 creation"
 Description: "Ask for extra information for telemonitoring"
 * meta.versionId = "1"
-* basedOn = Reference(cps-careplan1-01)
-* partOf = Reference(cps-task1-01)
+* basedOn = Reference(cps-careplan-01)
+* partOf = Reference(cps-task-01)
 * status = #ready
 * intent = #order
 * focus = Reference(cps-servicerequest-telemonitoring)
@@ -16,24 +16,24 @@ Description: "Ask for extra information for telemonitoring"
 * owner.identifier.system = $ura
 * owner.identifier.value = "URA-1"
 * input.type = $task-input-type#Reference "Reference"
-* input.valueReference = Reference(urn:oid:456)
+* input.valueReference = Reference(urn:uuid:456)
 
-Instance: cps-bundle2
+Instance: cps-bundle-02
 InstanceOf: Bundle
 Usage: #example
-Title: "1.03 Bundle"
+Title: "1.03.2 Bundle"
 Description: "Bundle to ask for extra information for telemonitoring"
 * meta.versionId = "1"
 * type = #transaction
-* insert BundleEntry(123, cps-task2-01, #PUT, Task)
-* insert BundleEntry(456, cps-questionnaire-telemonitoring-enrollment-criteria, #PUT, Questionnaire)
+* insert BundleEntry(urn:uuid:123, cps-task-02, #PUT, Task)
+* insert BundleEntry(urn:uuid:456, cps-questionnaire-telemonitoring-enrollment-criteria, #PUT, Questionnaire)
 
 //resulting instances at cps:
 
 Instance: cps-questionnaire-telemonitoring-enrollment-criteria
 InstanceOf: Questionnaire
 Usage: #example
-Title: "1.03 Questionnaire for telemonitoring - enrollment criteria"
+Title: "1.03.3 Questionnaire for telemonitoring - enrollment criteria"
 Description: "Questionnaire for enrollment criteria for telemonitoring"
 * meta.lastUpdated = "2024-09-02T13:40:17Z"
 * meta.source = "http://decor.nictiz.nl/fhir/4.0/sansa-"

@@ -1,16 +1,16 @@
 //transaction 1
 
-Instance: cps-task1-01
+Instance: cps-task-01
 InstanceOf: SCPTask
 Usage: #example
-Title: "1.01 Task creation"
+Title: "1.01.1 Task creation"
 Description: "Initiation of a task for telemonitoring"
 * meta.versionId = "1"
 * status = #requested
 * intent = #order
 * code = $task-code#fullfill
-* focus = Reference(urn:oid:456)
-* reasonReference = Reference(urn:oid:789)
+* focus = Reference(urn:uuid:456)
+* reasonReference = Reference(urn:uuid:789)
 * for.identifier.system = $bsn
 * for.identifier.value = "111222333"
 * requester.identifier.system = $uzi
@@ -19,16 +19,16 @@ Description: "Initiation of a task for telemonitoring"
 * owner.identifier.value = "URA-2"
 
 
-Instance: cps-bundle1
+Instance: cps-bundle-01
 InstanceOf: Bundle
 Usage: #example
-Title: "1.01 Bundle"
+Title: "1.01.2 Bundle"
 Description: "Bundle to initiate telemonitoring"
 * meta.versionId = "1"
 * type = #transaction
-* insert BundleEntry(123, cps-task1-01, #PUT, Task)
-* insert BundleEntry(456, hospitalx-servicerequest-telemonitoring, #PUT, ServiceRequest)
-* insert BundleEntry(789, hospitalx-heartfailure, #PUT, Condition)
+* insert BundleEntry(urn:uuid:123, cps-task-01, #PUT, Task)
+* insert BundleEntry(urn:uuid:456, hospitalx-servicerequest-telemonitoring, #PUT, ServiceRequest)
+* insert BundleEntry(urn:uuid:789, hospitalx-heartfailure, #PUT, Condition)
 
 
 //resulting instances at cps:
@@ -36,7 +36,7 @@ Description: "Bundle to initiate telemonitoring"
 Instance: cps-servicerequest-telemonitoring
 InstanceOf: ServiceRequest
 Usage: #example
-Title: "1.01 ServiceRequest Telemonitoring"
+Title: "1.01.3 ServiceRequest Telemonitoring"
 Description: "copy of data in EHR of Hospital X"
 * meta.versionId = "1"
 * meta.lastUpdated = "2024-09-03T12:00:00Z"
@@ -51,7 +51,7 @@ Description: "copy of data in EHR of Hospital X"
 Instance: cps-heartfailure
 InstanceOf: Condition
 Usage: #example
-Title: "9.01 Condition heartfailure"
+Title: "1.01.4 Condition heartfailure"
 Description: "copy of data in EHR of Hospital X"
 * meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem"
 * meta.versionId = "1"

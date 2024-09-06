@@ -21,10 +21,11 @@ RuleSet: SupportSearchParam (name, canonical, type)
 // * rest.resource[=].searchParam[=].extension[0].valueCode = {expectation}
 
 RuleSet: BundleEntry (fullUrl, resource, method, url)
-* entry[+].fullUrl = "urn:uuid:{fullUrl}"
+* entry[+].fullUrl = "{fullUrl}"
 * entry[=].resource = {resource}
 * entry[=].request.method = {method}
 * entry[=].request.url = "{url}"
+
 
 RuleSet: ParticipantMember (identifier-system, identifier-value, startdate)
 * participant[+].member.identifier.system = "{identifier-system}"
