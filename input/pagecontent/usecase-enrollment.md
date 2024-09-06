@@ -32,7 +32,7 @@ The pop-up windows now responds that the MSC has accepted the request and has in
 
 #### Monitoring
 
-Caroline monitors the task in the EHR and sees that a few days later the status of the Task is updated to “in progress”, meaning that Patrick has downloaded and started to use the monitoring app.
+Caroline monitors the (shared) request in the EHR and sees that a few days later the status is updated to “in progress”, meaning that Patrick has downloaded and started to use the monitoring app.
 
 
 ### Transactions
@@ -40,68 +40,66 @@ Caroline monitors the task in the EHR and sees that a few days later the status 
 #### Preparation: populating existing data at Hospital X and MedicalServiceCentre 
 
 ```
-curl --request POST '{% raw %}{{cpc1-base-url}}{% endraw %}/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request POST '{{cpc1-base-url}}/'  --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 --data '{% include Bundle-hospitalx-bundle-01.json %}'
 
-curl --request POST '{% raw %}{{cpc2-base-url}}{% endraw %}/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request POST '{{cpc2-base-url}}/'  --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 --data '{% include Bundle-msc-bundle-01.json %}'
 ```
 
-#### Hospital X: Find existing CarePlan for Patient
+#### Hospital X: Find existing 'Shared' CarePlan for Patient
 
-```
-curl --request GET '{% raw %}{{cps-base-url}}{% endraw %}/CarePlan/?category=http://snomed.info/sct|135411000146103' --header 'Content-Type: application/json' \
-```
+
+1. [cUrl GET CarePlan to cps-base-url](cUrl-GET-CarePlan-to-cps-base-url.txt)
+
 
 #### Hospital X: Create Task 
 
 assumption no CarePlan was found (so no Task.basedOn), create a Bundle with a new Task and a copy of the referred ServiceRequest and Condition:
 
-```
-curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
---data '{% include Bundle-cps-bundle-01.json %}'
-```
+1. [cUrl POST Bundle-cps-bundle-01 to cps-base-url](cUrl-POST-Bundle-cps-bundle-01-to-cps-base-url.txt), payload: [Bundle-cps-bundle-01](Bundle-cps-bundle-01.json)
+
 
 #### CarePlanService: Create subscriptions, careplan, careteam and notifications
-```
-curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/Subscription/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+1. [cUrl POST Subscription-cps-sub-medicalservicecentre to cps-base-url](cUrl-POST-Subscription-cps-sub-medicalservicecentre-to-cps-base-url.txt), payload: [Subscription-cps-sub-medicalservicecentre](Subscription-cps-sub-medicalservicecentre.json)
+curl --request POST '{{cps-base-url}}/Subscription/'  --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 --data '{% include Subscription-cps-sub-medicalservicecentre.json %}'
-
-curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/Subscription/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+1. [cUrl POST Bundle-cps-bundle-01 to cps-base-url](cUrl-POST-Bundle-cps-bundle-01-to-cps-base-url.txt), payload: [Bundle-cps-bundle-01](Bundle-cps-bundle-01.json)
+curl --request POST '{{cps-base-url}}/Subscription/'  --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 --data '{% include Subscription-cps-sub-hospitalx.json %}'
-
-curl --request POST '{% raw %}{{cpc2-base-url}}{% endraw %}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+1. [cUrl POST Bundle-cps-bundle-01 to cps-base-url](cUrl-POST-Bundle-cps-bundle-01-to-cps-base-url.txt), payload: [Bundle-cps-bundle-01](Bundle-cps-bundle-01.json)
+curl --request POST '{{cpc2-base-url}}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 --data '{% include Bundle-notification-msc-01.json %}'
-
-curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/CarePlan/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+1. [cUrl POST Bundle-cps-bundle-01 to cps-base-url](cUrl-POST-Bundle-cps-bundle-01-to-cps-base-url.txt), payload: [Bundle-cps-bundle-01](Bundle-cps-bundle-01.json)
+curl --request POST '{{cps-base-url}}/CarePlan/'  --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 --data '{% include CarePlan-cps-careplan-01.json %}'
-
-curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/CareTeam/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+1. [cUrl POST Bundle-cps-bundle-01 to cps-base-url](cUrl-POST-Bundle-cps-bundle-01-to-cps-base-url.txt), payload: [Bundle-cps-bundle-01](Bundle-cps-bundle-01.json)
+curl --request POST '{{cps-base-url}}/CareTeam/'  --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 --data '{% include CareTeam-cps-careteam-01.json %}'
-
-curl --request POST '{% raw %}{{cpc1-base-url}}{% endraw %}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+1. [cUrl POST Bundle-cps-bundle-01 to cps-base-url](cUrl-POST-Bundle-cps-bundle-01-to-cps-base-url.txt), payload: [Bundle-cps-bundle-01](Bundle-cps-bundle-01.json)
+curl --request POST '{{cpc1-base-url}}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 --data '{% include Bundle-notification-hospitalx-01.json %}'
-```
+
 
 
 #### MedicalServiceCentre: Get Task, Create sub-Task with Questionnaire (enrollment criteria)
 
 get the Task and referenced data
 ```
-curl --request GET '{% raw %}{{cps-base-url}}{% endraw %}/Task/cps-task-01' --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}'
-curl --request GET '{% raw %}{{cps-base-url}}{% endraw %}/ServiceRequest/cps-servicerequest-telemonitoring' --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}'
-curl --request GET '{% raw %}{{cps-base-url}}{% endraw %}/Condition/cps-heartfailure' --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}'
+curl --request GET '{{cps-base-url}}/Task/cps-task-01' --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}'
+curl --request GET '{{cps-base-url}}/ServiceRequest/cps-servicerequest-telemonitoring' --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}'
+curl --request GET '{{cps-base-url}}/Condition/cps-heartfailure' --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}'
 ```
 post bundle with new (sub-) task that contains a questionnaire
 ```
-curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request POST '{{cps-base-url}}/'  --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 --data '{% include Bundle-cps-bundle-02.json %}'
 ```
 
 #### CarePlanService: notify hospital X
 
 ```
-curl --request POST '{% raw %}{{cpc1-base-url}}{% endraw %}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request POST '{{cpc1-base-url}}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 --data '{% include Bundle-notification-hospitalx-02.json %}'
 ```
 
@@ -109,18 +107,18 @@ curl --request POST '{% raw %}{{cpc1-base-url}}{% endraw %}/notifications/'  --h
 #### Hospital X: Get sub-task, Update sub-Task with QuestionnaireResponse (enrollment criteria)
 get sub-task and questionnaire
 ```
-curl --request GET '{% raw %}{{cps-base-url}}{% endraw %}/Task/cps-task-02/' --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
-curl --request GET '{% raw %}{{cps-base-url}}{% endraw %}/Questionnaire/msc-questionnaire-telemonitoring-enrollment-criteria/' --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' 
+curl --request GET '{{cps-base-url}}/Task/cps-task-02/' --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
+curl --request GET '{{cps-base-url}}/Questionnaire/msc-questionnaire-telemonitoring-enrollment-criteria/' --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' 
 ```
 fill in QuestionnaireResponse and update the (sub-)Task
 ```
-curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request POST '{{cps-base-url}}/'  --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 --data '{% include Bundle-cps-bundle-03.json %}'
 ```
 
 #### CarePlanService: notify medicalservicecentre
 ```
-curl --request POST '{% raw %}{{cpc2-base-url}}{% endraw %}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request POST '{{cpc2-base-url}}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 --data '{% include Bundle-notification-msc-02.json %}'
 ```
 
@@ -128,53 +126,53 @@ curl --request POST '{% raw %}{{cpc2-base-url}}{% endraw %}/notifications/'  --h
 
 post bundle with new (sub-) task that contains a questionnaire
 ```
-curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request POST '{{cps-base-url}}/'  --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 --data '{% include Bundle-cps-bundle-04.json %}'
 ```
 
 #### CarePlanService: notify hospital X
 
 ```
-curl --request POST '{% raw %}{{cpc1-base-url}}{% endraw %}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request POST '{{cpc1-base-url}}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 --data '{% include Bundle-notification-hospitalx-03.json %}'
 ```
 #### Hospital X: Update sub-Task with QuestionnaireResponse (patient/practitioner details)
 ```
-curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request POST '{{cps-base-url}}/'  --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 --data '{% include Bundle-cps-bundle-05.json %}'
 ```
 #### CarePlanService: notify medicalservicecentre
 
 ```
-curl --request POST '{% raw %}{{cpc2-base-url}}{% endraw %}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request POST '{{cpc2-base-url}}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 --data '{% include Bundle-notification-msc-03.json %}'
 ```
 
 #### MedicalServiceCentre: Update Task to accepted
 
 ```
-curl --request GET '{% raw %}{{cps-base-url}}{% endraw %}/Task/cps-task-01/' --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request GET '{{cps-base-url}}/Task/cps-task-01/' --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 
-curl --request PUT '{% raw %}{{cps-base-url}}{% endraw %}/Task/cps-task-01/' --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request PUT '{{cps-base-url}}/Task/cps-task-01/' --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 --data '{% include Task-cps-task-01-02.json %}'
 ```
 
 #### CarePlanService: update CareTeam and CarePlan, notify CareTeam participants
 
 ```
-curl --request GET '{% raw %}{{cps-base-url}}{% endraw %}/CarePlan/cps-careplan-01/' --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' 
+curl --request GET '{{cps-base-url}}/CarePlan/cps-careplan-01/' --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' 
 
-curl --request PUT '{% raw %}{{cps-base-url}}{% endraw %}/CarePlan/cps-careplan-01/' --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request PUT '{{cps-base-url}}/CarePlan/cps-careplan-01/' --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 --data '{% include CarePlan-cps-careplan-01-02.json %}'
 
-curl --request GET '{% raw %}{{cps-base-url}}{% endraw %}/CareTeam/cps-careteam-01/' --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}'
+curl --request GET '{{cps-base-url}}/CareTeam/cps-careteam-01/' --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}'
 
-curl --request PUT '{% raw %}{{cps-base-url}}{% endraw %}/CareTeam/cps-careteam-01/' --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request PUT '{{cps-base-url}}/CareTeam/cps-careteam-01/' --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 --data '{% include CareTeam-cps-careteam-01-02.json %}'
 
-curl --request POST '{% raw %}{{cpc1-base-url}}{% endraw %}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request POST '{{cpc1-base-url}}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 --data '{% include Bundle-notification-hospitalx-11.json %}'
 
-curl --request POST '{% raw %}{{cpc2-base-url}}{% endraw %}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request POST '{{cpc2-base-url}}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {{access-token}}' \
 --data '{% include Bundle-notification-msc-11.json %}'
 ```
