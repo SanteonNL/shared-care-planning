@@ -37,6 +37,16 @@ Caroline monitors the task in the EHR and sees that a few days later the status 
 
 ### Transactions
 
+#### Preparation: populating existing data at Hospital X and MedicalServiceCentre 
+
+```
+curl --request POST '{% raw %}{{cpc1-base-url}}{% endraw %}/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+--data '{% include Bundle-hospitalx-bundle-01.json %}'
+
+curl --request POST '{% raw %}{{cpc2-base-url}}{% endraw %}/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+--data '{% include Bundle-msc-bundle-01.json %}'
+```
+
 #### Hospital X: Find existing CarePlan for Patient
 
 ```
@@ -60,7 +70,7 @@ curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/Subscription/'  --hea
 curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/Subscription/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
 --data '{% include Subscription-cps-sub-hospitalx.json %}'
 
-curl --request POST 'https://medicalservicecentre.nl/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request POST '{% raw %}{{cpc2-base-url}}{% endraw %}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
 --data '{% include Bundle-notification-msc-01.json %}'
 
 curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/CarePlan/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
@@ -69,7 +79,7 @@ curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/CarePlan/'  --header 
 curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/CareTeam/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
 --data '{% include CareTeam-cps-careteam-01.json %}'
 
-curl --request POST 'https://hospitalx.nl/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request POST '{% raw %}{{cpc1-base-url}}{% endraw %}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
 --data '{% include Bundle-notification-hospitalx-01.json %}'
 ```
 
@@ -91,7 +101,7 @@ curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/'  --header 'Content-
 #### CarePlanService: notify hospital X
 
 ```
-curl --request POST 'https://hospitalx.nl/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request POST '{% raw %}{{cpc1-base-url}}{% endraw %}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
 --data '{% include Bundle-notification-hospitalx-02.json %}'
 ```
 
@@ -110,7 +120,7 @@ curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/'  --header 'Content-
 
 #### CarePlanService: notify medicalservicecentre
 ```
-curl --request POST 'https://medicalservicecentre.nl/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request POST '{% raw %}{{cpc2-base-url}}{% endraw %}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
 --data '{% include Bundle-notification-msc-02.json %}'
 ```
 
@@ -125,7 +135,7 @@ curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/'  --header 'Content-
 #### CarePlanService: notify hospital X
 
 ```
-curl --request POST 'https://hospitalx.nl/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request POST '{% raw %}{{cpc1-base-url}}{% endraw %}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
 --data '{% include Bundle-notification-hospitalx-03.json %}'
 ```
 #### Hospital X: Update sub-Task with QuestionnaireResponse (patient/practitioner details)
@@ -136,7 +146,7 @@ curl --request POST '{% raw %}{{cps-base-url}}{% endraw %}/'  --header 'Content-
 #### CarePlanService: notify medicalservicecentre
 
 ```
-curl --request POST 'https://medicalservicecentre.nl/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request POST '{% raw %}{{cpc2-base-url}}{% endraw %}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
 --data '{% include Bundle-notification-msc-03.json %}'
 ```
 
@@ -162,9 +172,9 @@ curl --request GET '{% raw %}{{cps-base-url}}{% endraw %}/CareTeam/cps-careteam-
 curl --request PUT '{% raw %}{{cps-base-url}}{% endraw %}/CareTeam/cps-careteam-01/' --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
 --data '{% include CareTeam-cps-careteam-01-02.json %}'
 
-curl --request POST 'https://hospitalx.nl/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request POST '{% raw %}{{cpc1-base-url}}{% endraw %}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
 --data '{% include Bundle-notification-hospitalx-11.json %}'
 
-curl --request POST 'https://medicalservicecentre.nl/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
+curl --request POST '{% raw %}{{cpc2-base-url}}{% endraw %}/notifications/'  --header 'Content-Type: application/json' --header 'Authorization: {% raw %}{{access-token}}{% endraw %}' \
 --data '{% include Bundle-notification-msc-11.json %}'
 ```

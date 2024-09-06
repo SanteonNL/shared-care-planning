@@ -25,7 +25,7 @@ Description: "Existing data in EHR of Hospital X"
 * meta.lastUpdated = "2024-09-03T12:00:00Z"
 * id = "143214345325432"
 * code = $sct#13645005 "Chronic obstructive pulmonary disease"
-* subject = Reference(hospitalx-patrick) // Patient Patrick Egger
+* subject = Reference(urn:uuid:hospitalx-patrick) // Patient Patrick Egger
 
 Instance: hospitalx-heartfailure
 InstanceOf: Condition
@@ -37,7 +37,7 @@ Description: "Existing data in EHR of Hospital X"
 * meta.lastUpdated = "2024-09-03T12:00:00Z"
 * id = "56476575765"
 * code = $sct#195111005 "Hartfalen"
-* subject = Reference(hospitalx-patrick) // Patient Patrick Egger
+* subject = Reference(urn:uuid:hospitalx-patrick) // Patient Patrick Egger
 
 
 // Instance: hospitalx-medication-rash
@@ -108,8 +108,8 @@ Description: "Existing data in EHR of Hospital X"
 * meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole"
 * identifier.system = "http://fhir.nl/fhir/NamingSystem/uzi"
 * identifier.value = "UZI-1"
-* practitioner = Reference(hospitalx-carolinevandijk)
-* organization = Reference(hospitalx-hospitalx)
+* practitioner = Reference(urn:uuid:hospitalx-carolinevandijk)
+* organization = Reference(urn:uuid:hospitalx-hospitalx)
 * code.coding = $sct#17561000 "Cardiologist"
 * specialty.coding = $sct#394579002 "Cardiology"
 * telecom[+].system = #email
@@ -142,9 +142,27 @@ Description: "Existing data in EHR of Hospital X"
 * id = "99534756439"
 * status = #active
 * intent = #order
-* subject = Reference(hospitalx-patrick) "Patient Patrick Egger"
-* requester = Reference(hospitalx-carolinevandijk-hospitalx) "Caroline van Dijk at Hospital X"
+* subject = Reference(urn:uuid:hospitalx-patrick) "Patient Patrick Egger"
+* requester = Reference(urn:uuid:hospitalx-carolinevandijk-hospitalx) "Caroline van Dijk at Hospital X"
 * code = http://snomed.info/sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
-* reasonReference = Reference(hospitalx-heartfailure) "Diagnose Hartfalen"
+* reasonReference = Reference(urn:uuid:hospitalx-heartfailure) "Diagnose Hartfalen"
 //* orderDetail.text = "COPD Thuismonitoring pakket Light"
 //* patientInstruction = "# streefwaarden\n- 30 kg\n- 180 cm\n# aantekeningen\n- Grote hond\n-grote mond\n"
+
+
+
+Instance: hospitalx-bundle-01
+InstanceOf: Bundle
+Usage: #example
+Title: "9.01 Bundle"
+Description: "Existing data in EHR of Hospital X"
+* meta.versionId = "1"
+* type = #transaction
+* insert BundleEntry(urn:uuid:hospitalx-patrick, hospitalx-patrick, #POST, Patient)
+* insert BundleEntry(urn:uuid:hospitalx-copd, hospitalx-copd, #POST, Condition)
+* insert BundleEntry(urn:uuid:hospitalx-heartfailure, hospitalx-heartfailure, #POST, Condition)
+* insert BundleEntry(urn:uuid:hospitalx-hospitalx, hospitalx-hospitalx, #POST, Organization)
+* insert BundleEntry(urn:uuid:hospitalx-msc, hospitalx-msc, #POST, Organization)
+* insert BundleEntry(urn:uuid:hospitalx-carolinevandijk-hospitalx, hospitalx-carolinevandijk-hospitalx, #POST, PractitionerRole)
+* insert BundleEntry(urn:uuid:hospitalx-carolinevandijk, hospitalx-carolinevandijk, #POST, Practitioner)
+* insert BundleEntry(urn:uuid:hospitalx-servicerequest-telemonitoring, hospitalx-servicerequest-telemonitoring, #POST, ServiceRequest)

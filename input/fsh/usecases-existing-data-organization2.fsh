@@ -54,8 +54,8 @@ Description: "Existing data in EHR of Medical Service Centre"
 * meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole"
 * identifier.system = $uzi
 * identifier.value = "UZI-1"
-* practitioner = Reference(msc-carolinevandijk)
-* organization = Reference(msc-hospitalx)
+* practitioner = Reference(urn:uuid:msc-carolinevandijk)
+* organization = Reference(urn:uuid:msc-hospitalx)
 * code.coding = $sct#17561000 "Cardiologist"
 * specialty.coding = $sct#394579002 "Cardiology"
 * telecom[+].system = #email
@@ -135,6 +135,8 @@ Description: "Questionnaire for patient details"
 * meta.lastUpdated = "2024-09-02T13:40:17Z"
 * meta.source = "http://decor.nictiz.nl/fhir/4.0/sansa-"
 * meta.tag = $FHIR-version#4.0.1
+* meta.profile[0] = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-exp"
+* meta.profile[+] = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"
 * language = #nl-NL
 * url = "http://decor.nictiz.nl/fhir/Questionnaire/2.16.840.1.113883.2.4.3.11.60.909.26.34-2--20240902134017"
 * identifier.system = "urn:ietf:rfc:3986"
@@ -146,6 +148,13 @@ Description: "Questionnaire for patient details"
 * date = "2024-09-02T13:40:17Z"
 * publisher = "Medical Service Centre"
 * effectivePeriod.start = "2024-09-02T13:40:17Z"
+* extension[0].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext"
+* extension[=].extension[0].url = "name"
+* extension[=].extension[=].valueCoding = $launchContext#patient
+* extension[=].extension[+].url = "type"
+* extension[=].extension[=].valueCode = #Patient
+* extension[=].extension[+].url = "description"
+* extension[=].extension[=].valueString = "The patient that is to be used to pre-populate the form"
 * item[+].linkId = "2.16.840.1.113883.2.4.3.11.60.909.2.2.2233"
 * item[=].text = "Naamgegevens"
 * item[=].text.extension.url = "http://hl7.org/fhir/StructureDefinition/translation"
@@ -164,6 +173,9 @@ Description: "Questionnaire for patient details"
 * item[=].item[=].text.extension.extension[=].valueCode = #en-US
 * item[=].item[=].text.extension.extension[+].url = "content"
 * item[=].item[=].text.extension.extension[=].valueString = "FirstNames"
+* item[=].item[=].extension.url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
+* item[=].item[=].extension.valueExpression.language = #text/fhirpath
+* item[=].item[=].extension.valueExpression.expression = "%patient.name.given.first()"
 * item[=].item[=].type = #string
 * item[=].item[=].required = true
 * item[=].item[=].repeats = true
@@ -186,6 +198,9 @@ Description: "Questionnaire for patient details"
 * item[=].item[=].item[=].text.extension.extension[=].valueCode = #en-US
 * item[=].item[=].item[=].text.extension.extension[+].url = "content"
 * item[=].item[=].item[=].text.extension.extension[=].valueString = "Prefix"
+* item[=].item[=].item[=].extension.url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
+* item[=].item[=].item[=].extension.valueExpression.language = #text/fhirpath
+* item[=].item[=].item[=].extension.valueExpression.expression = "%patient.name.given.last()"
 * item[=].item[=].item[=].type = #string
 * item[=].item[=].item[=].required = false
 * item[=].item[=].item[=].repeats = false
@@ -197,6 +212,9 @@ Description: "Questionnaire for patient details"
 * item[=].item[=].item[=].text.extension.extension[=].valueCode = #en-US
 * item[=].item[=].item[=].text.extension.extension[+].url = "content"
 * item[=].item[=].item[=].text.extension.extension[=].valueString = "LastName"
+* item[=].item[=].item[=].extension.url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
+* item[=].item[=].item[=].extension.valueExpression.language = #text/fhirpath
+* item[=].item[=].item[=].extension.valueExpression.expression = "%patient.name.family"
 * item[=].item[=].item[=].type = #string
 * item[=].item[=].item[=].required = true
 * item[=].item[=].item[=].repeats = false
@@ -230,6 +248,9 @@ Description: "Questionnaire for patient details"
 * item[=].item[=].item.text.extension.extension[=].valueCode = #en-US
 * item[=].item[=].item.text.extension.extension[+].url = "content"
 * item[=].item[=].item.text.extension.extension[=].valueString = "TelephoneNumber"
+* item[=].item[=].item.extension.url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
+* item[=].item[=].item.extension.valueExpression.language = #text/fhirpath
+* item[=].item[=].item.extension.valueExpression.expression = "%patient.telecom.where(system='phone').value"
 * item[=].item[=].item.type = #string
 * item[=].item[=].item.required = true
 * item[=].item[=].item.repeats = false
@@ -252,6 +273,9 @@ Description: "Questionnaire for patient details"
 * item[=].item[=].item.text.extension.extension[=].valueCode = #en-US
 * item[=].item[=].item.text.extension.extension[+].url = "content"
 * item[=].item[=].item.text.extension.extension[=].valueString = "EmailAddress"
+* item[=].item[=].item.extension.url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
+* item[=].item[=].item.extension.valueExpression.language = #text/fhirpath
+* item[=].item[=].item.extension.valueExpression.expression = "%patient.telecom.where(system='email').value"
 * item[=].item[=].item.type = #string
 * item[=].item[=].item.required = true
 * item[=].item[=].item.repeats = false
@@ -263,6 +287,9 @@ Description: "Questionnaire for patient details"
 * item[=].text.extension.extension[=].valueCode = #en-US
 * item[=].text.extension.extension[+].url = "content"
 * item[=].text.extension.extension[=].valueString = "Burgerservicenummer (OID: 2.16.840.1.113883.2.4.6.3)"
+* item[=].extension.url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
+* item[=].extension.valueExpression.language = #text/fhirpath
+* item[=].extension.valueExpression.expression = "%patient.identifier.where(system='http://fhir.nl/fhir/NamingSystem/bsn').value"
 * item[=].type = #string
 * item[=].required = true
 * item[=].repeats = false
@@ -274,6 +301,9 @@ Description: "Questionnaire for patient details"
 * item[=].text.extension.extension[=].valueCode = #en-US
 * item[=].text.extension.extension[+].url = "content"
 * item[=].text.extension.extension[=].valueString = "DateOfBirth"
+* item[=].extension.url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
+* item[=].extension.valueExpression.language = #text/fhirpath
+* item[=].extension.valueExpression.expression = "%patient.birthDate"
 * item[=].type = #dateTime
 * item[=].required = true
 * item[=].repeats = false
@@ -285,14 +315,23 @@ Description: "Questionnaire for patient details"
 * item[=].text.extension.extension[=].valueCode = #en-US
 * item[=].text.extension.extension[+].url = "content"
 * item[=].text.extension.extension[=].valueString = "Gender"
+* item[=].extension.url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
+* item[=].extension.valueExpression.language = #text/fhirpath
+* item[=].extension.valueExpression.expression = "%patient.gender"
 * item[=].type = #choice
 * item[=].required = true
 * item[=].repeats = false
 * item[=].readOnly = false
-* item[=].answerOption[0].valueCoding = $v3-AdministrativeGender#UN "Undifferentiated"
-* item[=].answerOption[+].valueCoding = $v3-AdministrativeGender#M "Male"
-* item[=].answerOption[+].valueCoding = $v3-AdministrativeGender#F "Female"
-* item[=].answerOption[+].valueCoding = $v3-NullFlavor#UNK "Unknown"
+// * item[=].answerOption[0].valueCoding = $v3-AdministrativeGender#UN "Undifferentiated"
+// * item[=].answerOption[+].valueCoding = $v3-AdministrativeGender#M "Male"
+// * item[=].answerOption[+].valueCoding = $v3-AdministrativeGender#F "Female"
+// * item[=].answerOption[+].valueCoding = $v3-NullFlavor#UNK "Unknown"
+* item[=].answerOption[0].valueCoding = http://hl7.org/fhir/administrative-gender#other "Other"
+* item[=].answerOption[+].valueCoding = http://hl7.org/fhir/administrative-gender#male "Male"
+* item[=].answerOption[+].valueCoding = http://hl7.org/fhir/administrative-gender#female "Female"
+* item[=].answerOption[+].valueCoding = http://hl7.org/fhir/administrative-gender#unknown "Unknown"
+
+
 
 Instance: msc-questionnaire-practitioner-details
 InstanceOf: Questionnaire
@@ -302,6 +341,8 @@ Description: "Questionnaire for practitioner details"
 * meta.lastUpdated = "2024-09-02T13:40:17Z"
 * meta.source = "http://decor.nictiz.nl/fhir/4.0/sansa-"
 * meta.tag = $FHIR-version#4.0.1
+* meta.profile[0] = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-pop-exp"
+* meta.profile[+] = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"
 * language = #nl-NL
 * url = "http://decor.nictiz.nl/fhir/Questionnaire/2.16.840.1.113883.2.4.3.11.60.909.26.34-3--20240902134017"
 * identifier.system = "urn:ietf:rfc:3986"
@@ -313,6 +354,13 @@ Description: "Questionnaire for practitioner details"
 * date = "2024-09-02T13:40:17Z"
 * publisher = "Medical Service Centre"
 * effectivePeriod.start = "2024-09-02T13:40:17Z"
+* extension[+].url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext"
+* extension[=].extension[0].url = "name"
+* extension[=].extension[=].valueCoding = $launchContext#user
+* extension[=].extension[+].url = "type"
+* extension[=].extension[=].valueCode = #Practitioner
+* extension[=].extension[+].url = "description"
+* extension[=].extension[=].valueString = "The practitioner user that is to be used to pre-populate the form"
 * item[0].linkId = "2.16.840.1.113883.2.4.3.11.60.909.2.2.2274"
 * item[=].text = "Naamgegevens"
 * item[=].text.extension.url = "http://hl7.org/fhir/StructureDefinition/translation"
@@ -331,6 +379,9 @@ Description: "Questionnaire for practitioner details"
 * item[=].item[=].text.extension.extension[=].valueCode = #en-US
 * item[=].item[=].text.extension.extension[+].url = "content"
 * item[=].item[=].text.extension.extension[=].valueString = "FirstNames"
+* item[=].item[=].extension.url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
+* item[=].item[=].extension.valueExpression.language = #text/fhirpath
+* item[=].item[=].extension.valueExpression.expression = "%user.name.given.first()"
 * item[=].item[=].type = #string
 * item[=].item[=].required = true
 * item[=].item[=].repeats = true
@@ -353,6 +404,9 @@ Description: "Questionnaire for practitioner details"
 * item[=].item[=].item[=].text.extension.extension[=].valueCode = #en-US
 * item[=].item[=].item[=].text.extension.extension[+].url = "content"
 * item[=].item[=].item[=].text.extension.extension[=].valueString = "Prefix"
+* item[=].item[=].item[=].extension.url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
+* item[=].item[=].item[=].extension.valueExpression.language = #text/fhirpath
+* item[=].item[=].item[=].extension.valueExpression.expression = "%user.name.given.last()"
 * item[=].item[=].item[=].type = #string
 * item[=].item[=].item[=].required = true
 * item[=].item[=].item[=].repeats = false
@@ -364,6 +418,9 @@ Description: "Questionnaire for practitioner details"
 * item[=].item[=].item[=].text.extension.extension[=].valueCode = #en-US
 * item[=].item[=].item[=].text.extension.extension[+].url = "content"
 * item[=].item[=].item[=].text.extension.extension[=].valueString = "LastName"
+* item[=].item[=].item[=].extension.url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
+* item[=].item[=].item[=].extension.valueExpression.language = #text/fhirpath
+* item[=].item[=].item[=].extension.valueExpression.expression = "%user.name.family"
 * item[=].item[=].item[=].type = #string
 * item[=].item[=].item[=].required = true
 * item[=].item[=].item[=].repeats = false
@@ -397,6 +454,9 @@ Description: "Questionnaire for practitioner details"
 * item[=].item.item.text.extension.extension[=].valueCode = #en-US
 * item[=].item.item.text.extension.extension[+].url = "content"
 * item[=].item.item.text.extension.extension[=].valueString = "EmailAddress"
+* item[=].item.item.extension.url = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression"
+* item[=].item.item.extension.valueExpression.language = #text/fhirpath
+* item[=].item.item.extension.valueExpression.expression = "%user.telecom.where(system='email').value"
 * item[=].item.item.type = #string
 * item[=].item.item.required = true
 * item[=].item.item.repeats = false
@@ -453,3 +513,18 @@ Description: "Questionnaire for practitioner details"
 // * code = $sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
 // * useContext[+].code = $usage-context-type#focus "Focus"
 // * useContext[=].valueCodeableConcept = $sct#13645005 "Chronic obstructive pulmonary disease"
+
+Instance: msc-bundle-01
+InstanceOf: Bundle
+Usage: #example
+Title: "9.02 Bundle"
+Description: "Existing data in EHR of MedicalServiceCentre"
+* meta.versionId = "1"
+* type = #transaction
+* insert BundleEntry(urn:uuid:msc-hospitalx, msc-hospitalx, #POST, Organization)
+* insert BundleEntry(urn:uuid:msc-msc, msc-msc, #POST, Organization)
+* insert BundleEntry(urn:uuid:msc-carolinevandijk-hospitalx, msc-carolinevandijk-hospitalx, #POST, PractitionerRole)
+* insert BundleEntry(urn:uuid:msc-carolinevandijk, msc-carolinevandijk, #POST, Practitioner)
+* insert BundleEntry(urn:uuid:msc-questionnaire-telemonitoring-enrollment-criteria, msc-questionnaire-telemonitoring-enrollment-criteria, #POST, Questionnaire)
+* insert BundleEntry(urn:uuid:msc-questionnaire-patient-details, msc-questionnaire-patient-details, #POST, Questionnaire)
+* insert BundleEntry(urn:uuid:msc-questionnaire-practitioner-details, msc-questionnaire-practitioner-details, #POST, Questionnaire)

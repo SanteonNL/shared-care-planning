@@ -14,7 +14,7 @@ Description: "Subscription to receive notifications of instance-id's where the M
 * channel.extension[+].url = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-max-count"
 * channel.extension[=].valuePositiveInt = 20
 * channel.type = #rest-hook
-* channel.endpoint = "https://medicalservicecentre.nl/notifications"
+* channel.endpoint = "{{cpc2-base-url}}/notifications"
 * channel.payload = #application/fhir+json
 * channel.payload.extension.url = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-payload-content"
 * channel.payload.extension.valueCode = #id-only
@@ -36,7 +36,7 @@ Description: "Subscription to receive notifications of instance-id's where Hospi
 * channel.extension[+].url = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-max-count"
 * channel.extension[=].valuePositiveInt = 20
 * channel.type = #rest-hook
-* channel.endpoint = "https://hospitalx.nl/notifications"
+* channel.endpoint = "{{cpc1-base-url}}/notifications"
 * channel.payload = #application/fhir+json
 * channel.payload.extension.url = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-payload-content"
 * channel.payload.extension.valueCode = #id-only
