@@ -6,11 +6,12 @@
 
 
 ### Version: current
-[Source code](https://github.com/SanteonNL/shared-care-planning), [Compare to version 0.1.0](https://github.com/SanteonNL/shared-care-planning/compare/main...0.1.0).  
+[Source code](https://github.com/SanteonNL/shared-care-planning), [Compare to version 0.2.0](https://github.com/SanteonNL/shared-care-planning/compare/0.2.0...main).  
 Significant changes/Closed issues:
 
 
-### Version: 0.2.0
+### Version: 0.2.0 
+[Source code](https://github.com/SanteonNL/shared-care-planning/tree/0.2.0), [Compare to version 0.1.0](https://github.com/SanteonNL/shared-care-planning/compare/0.1.0...0.2.0)
 - Added use-case [Enroll patient in home monitoring](./usecase-enrollment.html) with example instances and transactions (notifications are work in progress). Lessons learned:
   - During the 'Task negotiation' some data needs to be copied to the CarePlanService because the target CarePlanContributor (Task filler) is (often) not able to read data from the source CarePlanContributor (Task requester). Using instances in transaction Bundles in stead of Contained resources, because separate instances might be referred to by multiple other instances and support for metadata (meta.source, meta.lastupdated)
     - CarePlan Contributor should not create CarePlan; easier and more reliable to create CarePlan at CarePlanService

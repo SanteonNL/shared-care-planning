@@ -1,0 +1,3 @@
+curl --request GET '{{cps-base-url}}/CarePlan/?category=http://snomed.info/sct|135411000146103' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: {{cps-access-token}}' \
