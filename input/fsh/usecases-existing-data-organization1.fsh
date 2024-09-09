@@ -99,6 +99,20 @@ Description: "Existing data in EHR of Hospital X"
 * address.city = "Utrecht"
 * address.postalCode = "3584 AA"
 
+Instance: hospitalx-msc-hcs
+InstanceOf: HealthcareService
+Usage: #example
+Title: "9.01 HealthcareService Telemonitoring at Medical Service Centre"
+Description: "Existing data in EHR of Hospital X"
+* active = true
+* providedBy = Reference(hospitalx-msc)
+* type[+] = $sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
+* type[+] = $sct#715191006 "monitoren van asthma via telegeneeskunde (regime/therapie)"
+* type[+] = $sct#879780004 "monitoren van chronisch hartfalen via telegeneeskunde (regime/therapie)" 
+* type[+] = $sct#473199000 "monitoren van chronische ziekte via telegeneeskunde (regime/therapie)" 
+* type[+] = $sct#716358000 "monitoren van chronische obstructieve longziekte via telegeneeskunde (regime/therapie)" 
+* name = "Medical Service Centre - Telemonitoring Services"
+
 
 Instance: hospitalx-carolinevandijk-hospitalx
 InstanceOf: PractitionerRole
@@ -144,7 +158,7 @@ Description: "Existing data in EHR of Hospital X"
 * intent = #order
 * subject = Reference(urn:uuid:hospitalx-patrick) "Patient Patrick Egger"
 * requester = Reference(urn:uuid:hospitalx-carolinevandijk-hospitalx) "Caroline van Dijk at Hospital X"
-* code = http://snomed.info/sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
+* code = $sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
 * reasonReference = Reference(urn:uuid:hospitalx-heartfailure) "Diagnose Hartfalen"
 //* orderDetail.text = "COPD Thuismonitoring pakket Light"
 //* patientInstruction = "# streefwaarden\n- 30 kg\n- 180 cm\n# aantekeningen\n- Grote hond\n-grote mond\n"
@@ -165,4 +179,5 @@ Description: "Existing data in EHR of Hospital X"
 * insert BundleEntryWithFullurl(urn:uuid:hospitalx-msc, hospitalx-msc, #POST, Organization)
 * insert BundleEntryWithFullurl(urn:uuid:hospitalx-carolinevandijk-hospitalx, hospitalx-carolinevandijk-hospitalx, #POST, PractitionerRole)
 * insert BundleEntryWithFullurl(urn:uuid:hospitalx-carolinevandijk, hospitalx-carolinevandijk, #POST, Practitioner)
+* insert BundleEntryWithFullurl(urn:uuid:hospitalx-msc-hcs, hospitalx-msc-hcs, #POST, HealthcareService)
 * insert BundleEntryWithFullurl(urn:uuid:hospitalx-servicerequest-telemonitoring, hospitalx-servicerequest-telemonitoring, #POST, ServiceRequest)

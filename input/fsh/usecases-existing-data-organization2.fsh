@@ -77,6 +77,20 @@ Description: "Existing data in EHR of Medical Service Centre"
 * telecom[+].system = #email
 * telecom[=].value = "caroline@vandijk.nl"
 
+Instance: msc-msc-hcs
+InstanceOf: HealthcareService
+Usage: #example
+Title: "9.02 HealthcareService Telemonitoring at Medical Service Centre"
+Description: "Existing data in EHR of Medical Service Centre"
+* active = true
+* providedBy = Reference(msc-msc)
+* type[+] = $sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
+* type[+] = $sct#715191006 "monitoren van asthma via telegeneeskunde (regime/therapie)"
+* type[+] = $sct#879780004 "monitoren van chronisch hartfalen via telegeneeskunde (regime/therapie)" 
+* type[+] = $sct#473199000 "monitoren van chronische ziekte via telegeneeskunde (regime/therapie)" 
+* type[+] = $sct#716358000 "monitoren van chronische obstructieve longziekte via telegeneeskunde (regime/therapie)" 
+* name = "Medical Service Centre - Telemonitoring Services"
+
 Instance: msc-questionnaire-telemonitoring-enrollment-criteria
 InstanceOf: Questionnaire
 Usage: #example
@@ -525,6 +539,7 @@ Description: "Existing data in EHR of MedicalServiceCentre"
 * insert BundleEntryWithFullurl(urn:uuid:msc-msc, msc-msc, #POST, Organization)
 * insert BundleEntryWithFullurl(urn:uuid:msc-carolinevandijk-hospitalx, msc-carolinevandijk-hospitalx, #POST, PractitionerRole)
 * insert BundleEntryWithFullurl(urn:uuid:msc-carolinevandijk, msc-carolinevandijk, #POST, Practitioner)
+* insert BundleEntryWithFullurl(urn:uuid:msc-msc-hcs, msc-msc-hcs, #POST, HealthcareService)
 * insert BundleEntryWithFullurl(urn:uuid:msc-questionnaire-telemonitoring-enrollment-criteria, msc-questionnaire-telemonitoring-enrollment-criteria, #POST, Questionnaire)
 * insert BundleEntryWithFullurl(urn:uuid:msc-questionnaire-patient-details, msc-questionnaire-patient-details, #POST, Questionnaire)
 * insert BundleEntryWithFullurl(urn:uuid:msc-questionnaire-practitioner-details, msc-questionnaire-practitioner-details, #POST, Questionnaire)
