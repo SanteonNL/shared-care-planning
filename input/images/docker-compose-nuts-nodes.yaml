@@ -1,0 +1,26 @@
+
+services:
+  nutsnode-hospital:
+    image: nutsfoundation/nuts-node:6.0.0-beta.11
+    ports:
+      - "8080:8080" # port for public access (DIDs)
+      - "8081:8081" # port exposed for loading test data (create DIDs and VCs, requesting access token)
+    environment:
+      - NUTS_VERBOSITY=debug
+      - NUTS_STRICTMODE=false
+      - NUTS_HTTP_INTERNAL_ADDRESS=:8081
+      - NUTS_AUTH_CONTRACTVALIDATORS=dummy
+      - NUTS_URL=${HOSPITAL_EXTERNAL_API}
+      - NUTS_VDR_DIDMETHODS=web
+  nutsnode-cps:
+    image: nutsfoundation/nuts-node:6.0.0-beta.11
+    ports:
+      - "8180:8080" # port for public access (DIDs)
+      - "8181:8081" # port exposed for loading test data (create DIDs and VCs, requesting access token)
+    environment:
+      - NUTS_VERBOSITY=debug
+      - NUTS_STRICTMODE=false
+      - NUTS_HTTP_INTERNAL_ADDRESS=:8081
+      - NUTS_AUTH_CONTRACTVALIDATORS=dummy
+      - NUTS_URL=${CPS_EXTERNAL_API}
+      - NUTS_VDR_DIDMETHODS=web

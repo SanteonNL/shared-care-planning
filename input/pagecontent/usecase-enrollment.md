@@ -37,6 +37,10 @@ Caroline monitors the (shared) request in the EHR and sees that a few days later
 
 ### Transactions
 
+#### Preparation: did and VCs
+1. Please read the file and execute the ngrok commands first: [docker-compose-nuts-nodes.sh](docker-compose-nuts-nodes.sh)
+2. [cUrl-POST-Nuts-hospitalx-create-did-vc](cUrl-POST-Nuts-hospitalx-create-did-vc.sh)
+
 #### Preparation: populating existing data at Hospital X and MedicalServiceCentre 
 1. [cUrl POST Bundle-hospitalx-bundle-01 to cpc1-base-url](cUrl-POST-Bundle-hospitalx-bundle-01-to-cpc1-base-url.txt), payload: [Bundle-hospitalx-bundle-01](Bundle-hospitalx-bundle-01.json)
 1. [cUrl POST Bundle-msc-bundle-01 to cpc2-base-url](cUrl-POST-Bundle-msc-bundle-01-to-cpc2-base-url.txt), payload: [Bundle-msc-bundle-01](Bundle-msc-bundle-01.json)
