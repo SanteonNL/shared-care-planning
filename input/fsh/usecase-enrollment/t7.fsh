@@ -16,9 +16,12 @@ Description: "Ask for extra contact information for telemonitoring"
 * owner.identifier.system = $ura
 * owner.identifier.value = "URA-1"
 * input[+].type = $task-input-type#Reference "Reference"
-* input[=].valueReference = Reference(urn:uuid:702)
+* input[=].valueReference.identifier.system = "urn:ietf:rfc:3986"
+* input[=].valueReference.identifier.value = "urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34-2"
 * input[+].type = $task-input-type#Reference "Reference"
-* input[=].valueReference = Reference(urn:uuid:703)
+* input[=].valueReference.identifier.system = "urn:ietf:rfc:3986"
+* input[=].valueReference.identifier.value = "urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34-3"
+
 
 Instance: cps-bundle-04
 InstanceOf: Bundle
@@ -27,9 +30,9 @@ Title: "1.07.2 Bundle"
 Description: "Bundle to ask for contact information for telemonitoring"
 * meta.versionId = "1"
 * type = #transaction
-* insert BundleEntry(urn:uuid:123, cps-task-03, #PUT, Task)
-* insert BundleEntry(urn:uuid:702, cps-questionnaire-patient-details, #PUT, Questionnaire)
-* insert BundleEntry(urn:uuid:703, cps-questionnaire-practitioner-details, #PUT, Questionnaire)
+* insert BundleEntry(cps-task-03, #POST, Task)
+* insert BundleEntry(cps-questionnaire-patient-details, #PUT, Questionnaire?identifier=urn:ietf:rfc:3986|urn:oid:urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34-2)
+* insert BundleEntry(cps-questionnaire-practitioner-details, #PUT, Questionnaire?identifier=urn:ietf:rfc:3986|urn:oid:urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34-3)
 
 //resulting instances at cps:
 

@@ -61,13 +61,15 @@ Description: "Provide contact information for telemonitoring"
 * owner.identifier.system = $ura
 * owner.identifier.value = "URA-1"
 * input[+].type = $task-input-type#Reference "Reference"
-* input[=].valueReference = Reference(cps-questionnaire-patient-details)
+* input[=].valueReference.identifier.system = "urn:ietf:rfc:3986"
+* input[=].valueReference.identifier.value = "urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34-2"
 * input[+].type = $task-input-type#Reference "Reference"
-* input[=].valueReference = Reference(cps-questionnaire-practitioner-details)
-* output.type = $task-input-type#Reference "Reference"
-* output.valueReference = Reference(urn:uuid:901)
-* output.type = $task-input-type#Reference "Reference"
-* output.valueReference = Reference(urn:uuid:902)
+* input[=].valueReference.identifier.system = "urn:ietf:rfc:3986"
+* input[=].valueReference.identifier.value = "urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34-3"
+* output[+].type = $task-input-type#Reference "Reference"
+* output[=].valueReference = Reference(urn:uuid:901)
+* output[+].type = $task-input-type#Reference "Reference"
+* output[=].valueReference = Reference(urn:uuid:902)
 
 Instance: cps-bundle-05
 InstanceOf: Bundle
@@ -76,6 +78,7 @@ Title: "1.05.3 Bundle"
 Description: "Bundle with response for extra information for telemonitoring"
 * meta.versionId = "1"
 * type = #transaction
-* insert BundleEntry(urn:uuid:123, cps-task-03-02, #PUT, Task)
-* insert BundleEntry(urn:uuid:901, cps-qr-patient-details, #PUT, Questionnaire)
-* insert BundleEntry(urn:uuid:902, cps-qr-practitioner-details, #PUT, Questionnaire)
+* insert BundleEntry(cps-task-03-02, #PUT, Task/cps-task-03)
+* entry.request.ifMatch = "W/\"1\""
+* insert BundleEntryWithFullurl(urn:uuid:901, cps-qr-patient-details, #POST, QuestionnaireResponse)
+* insert BundleEntryWithFullurl(urn:uuid:902, cps-qr-practitioner-details, #POST, QuestionnaireResponse)

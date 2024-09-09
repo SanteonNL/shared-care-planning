@@ -158,11 +158,11 @@ Title: "9.01 Bundle"
 Description: "Existing data in EHR of Hospital X"
 * meta.versionId = "1"
 * type = #transaction
-* insert BundleEntry(urn:uuid:hospitalx-patrick, hospitalx-patrick, #POST, Patient)
-* insert BundleEntry(urn:uuid:hospitalx-copd, hospitalx-copd, #POST, Condition)
-* insert BundleEntry(urn:uuid:hospitalx-heartfailure, hospitalx-heartfailure, #POST, Condition)
-* insert BundleEntry(urn:uuid:hospitalx-hospitalx, hospitalx-hospitalx, #POST, Organization)
-* insert BundleEntry(urn:uuid:hospitalx-msc, hospitalx-msc, #POST, Organization)
-* insert BundleEntry(urn:uuid:hospitalx-carolinevandijk-hospitalx, hospitalx-carolinevandijk-hospitalx, #POST, PractitionerRole)
-* insert BundleEntry(urn:uuid:hospitalx-carolinevandijk, hospitalx-carolinevandijk, #POST, Practitioner)
-* insert BundleEntry(urn:uuid:hospitalx-servicerequest-telemonitoring, hospitalx-servicerequest-telemonitoring, #POST, ServiceRequest)
+* insert BundleEntryWithFullurl(urn:uuid:hospitalx-patrick, hospitalx-patrick, #POST, Patient)
+* insert BundleEntryWithFullurl(urn:uuid:hospitalx-copd, hospitalx-copd, #POST, Condition)
+* insert BundleEntryWithFullurl(urn:uuid:hospitalx-heartfailure, hospitalx-heartfailure, #POST, Condition)
+* insert BundleEntryWithFullurl(urn:uuid:hospitalx-hospitalx, hospitalx-hospitalx, #POST, Organization)
+* insert BundleEntryWithFullurl(urn:uuid:hospitalx-msc, hospitalx-msc, #POST, Organization)
+* insert BundleEntryWithFullurl(urn:uuid:hospitalx-carolinevandijk-hospitalx, hospitalx-carolinevandijk-hospitalx, #POST, PractitionerRole)
+* insert BundleEntryWithFullurl(urn:uuid:hospitalx-carolinevandijk, hospitalx-carolinevandijk, #POST, Practitioner)
+* insert BundleEntryWithFullurl(urn:uuid:hospitalx-servicerequest-telemonitoring, hospitalx-servicerequest-telemonitoring, #POST, ServiceRequest)

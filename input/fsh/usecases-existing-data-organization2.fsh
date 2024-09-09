@@ -521,10 +521,10 @@ Title: "9.02 Bundle"
 Description: "Existing data in EHR of MedicalServiceCentre"
 * meta.versionId = "1"
 * type = #transaction
-* insert BundleEntry(urn:uuid:msc-hospitalx, msc-hospitalx, #POST, Organization)
-* insert BundleEntry(urn:uuid:msc-msc, msc-msc, #POST, Organization)
-* insert BundleEntry(urn:uuid:msc-carolinevandijk-hospitalx, msc-carolinevandijk-hospitalx, #POST, PractitionerRole)
-* insert BundleEntry(urn:uuid:msc-carolinevandijk, msc-carolinevandijk, #POST, Practitioner)
-* insert BundleEntry(urn:uuid:msc-questionnaire-telemonitoring-enrollment-criteria, msc-questionnaire-telemonitoring-enrollment-criteria, #POST, Questionnaire)
-* insert BundleEntry(urn:uuid:msc-questionnaire-patient-details, msc-questionnaire-patient-details, #POST, Questionnaire)
-* insert BundleEntry(urn:uuid:msc-questionnaire-practitioner-details, msc-questionnaire-practitioner-details, #POST, Questionnaire)
+* insert BundleEntryWithFullurl(urn:uuid:msc-hospitalx, msc-hospitalx, #POST, Organization)
+* insert BundleEntryWithFullurl(urn:uuid:msc-msc, msc-msc, #POST, Organization)
+* insert BundleEntryWithFullurl(urn:uuid:msc-carolinevandijk-hospitalx, msc-carolinevandijk-hospitalx, #POST, PractitionerRole)
+* insert BundleEntryWithFullurl(urn:uuid:msc-carolinevandijk, msc-carolinevandijk, #POST, Practitioner)
+* insert BundleEntryWithFullurl(urn:uuid:msc-questionnaire-telemonitoring-enrollment-criteria, msc-questionnaire-telemonitoring-enrollment-criteria, #POST, Questionnaire)
+* insert BundleEntryWithFullurl(urn:uuid:msc-questionnaire-patient-details, msc-questionnaire-patient-details, #POST, Questionnaire)
+* insert BundleEntryWithFullurl(urn:uuid:msc-questionnaire-practitioner-details, msc-questionnaire-practitioner-details, #POST, Questionnaire)
