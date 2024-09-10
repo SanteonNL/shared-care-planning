@@ -1,4 +1,4 @@
-curl --request POST '{{cpc1-base-url}}/notifications/' 
+curl --request POST '{{cpc1-base-url}}notifications/' 
 --header 'Content-Type: application/json' \
---header 'Authorization: {{access-token}}' \
+--header 'Authorization: {{cpc1-access-token}}' \
 --data '{{Bundle-notification-hospitalx-01.json}}'

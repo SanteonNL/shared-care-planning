@@ -83,7 +83,7 @@ Usage: #example
 Title: "9.02 HealthcareService Telemonitoring at Medical Service Centre"
 Description: "Existing data in EHR of Medical Service Centre"
 * active = true
-* providedBy = Reference(msc-msc)
+* providedBy = Reference(urn:uuid:msc-msc)
 * type[+] = $sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
 * type[+] = $sct#715191006 "monitoren van asthma via telegeneeskunde (regime/therapie)"
 * type[+] = $sct#879780004 "monitoren van chronisch hartfalen via telegeneeskunde (regime/therapie)" 
