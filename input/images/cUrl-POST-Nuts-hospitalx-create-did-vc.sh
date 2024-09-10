@@ -73,8 +73,9 @@ curl --location "$HOSPITAL_INTERNAL_API/internal/vcr/v2/holder/$HOSPITAL_DID/vc"
 
 # The next item needs the public host name of the CPS NUTS node, this is done by extracting it from the DID.
 # In a more realistic situation this would be either known or available in a DID document.
-CPS_DID_PARTS=("${CPS_DID//:/ }")
+CPS_DID_PARTS=(${CPS_DID//:/ })
 CPS_HOST="${CPS_DID_PARTS[2]}"
+echo "$CPS_HOST"
 
 # This call gets a access token on the hospital's NUTS node to access data on the CPS FHIR environment.
 ACCESS_TOKEN_JSON=$(curl --location "$HOSPITAL_INTERNAL_API/internal/auth/v2/$HOSPITAL_SUBJECT/request-service-access-token" \
