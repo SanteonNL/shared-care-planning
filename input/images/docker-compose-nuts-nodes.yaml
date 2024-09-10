@@ -12,6 +12,9 @@ services:
       - NUTS_AUTH_CONTRACTVALIDATORS=dummy
       - NUTS_URL=${HOSPITAL_EXTERNAL_API}
       - NUTS_VDR_DIDMETHODS=web
+    configs:
+      - source: homemonitoring_policy.json
+        target: /nuts/config/policy/homemonitoring.json
   nutsnode-cps:
     image: nutsfoundation/nuts-node:6.0.0-beta.11
     ports:
@@ -25,10 +28,90 @@ services:
       - NUTS_URL=${CPS_EXTERNAL_API}
       - NUTS_VDR_DIDMETHODS=web
     configs:
-      - source: homemonitoring_policy.json
-        target: /nuts/config/policy/homemonitoring.json
+      - source: careplanservice_policy.json
+        target: /nuts/config/policy/careplanservice.json
 configs:
   homemonitoring_policy.json:
+    content: | 
+      {
+        "homemonitoring": {
+          "organization": {
+            "format": {
+              "ldp_vc": {
+                "proof_type": [
+                  "JsonWebSignature2020"
+                ]
+              },
+              "jwt_vc": {
+                "alg": [
+                  "ES256"
+                ]
+              },
+              "ldp_vp": {
+                "proof_type": [
+                  "JsonWebSignature2020"
+                ]
+              },
+              "jwt_vp": {
+                "alg": [
+                  "ES256"
+                ]
+              }
+            },
+            "id": "pd_any_care_organization_with_employee",
+            "name": "Care organization with employee",
+            "purpose": "Finding a care organization with logged in user for authorizing access to medical metadata",
+            "input_descriptors": [
+              {
+                "id": "id_nuts_ura_credential",
+                "name": "Care organization",
+                "purpose": "Finding a care organization for authorizing access to medical metadata.",
+                "constraints": {
+                  "fields": [
+                    {
+                      "path": [
+                        "$.type"
+                      ],
+                      "filter": {
+                        "type": "string",
+                        "const": "NutsUraCredential"
+                      }
+                    },
+                    {
+                      "id": "organization_name",
+                      "path": [
+                        "$.credentialSubject.organization.name"
+                      ],
+                      "filter": {
+                        "type": "string"
+                      }
+                    },
+                    {
+                      "id": "organization_ura",
+                      "path": [
+                        "$.credentialSubject.organization.ura"
+                      ],
+                      "filter": {
+                        "type": "string"
+                      }
+                    },
+                    {
+                      "id": "organization_city",
+                      "path": [
+                        "$.credentialSubject.organization.city"
+                      ],
+                      "filter": {
+                        "type": "string"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+  careplanservice_policy.json:
     content: | 
       {
         "careplanservice": {
@@ -108,6 +191,8 @@ configs:
           }
         }
       }
+
+
 
 
 
