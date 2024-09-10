@@ -1,7 +1,7 @@
 Instance: cps-task-01-02
 InstanceOf: SCPTask
-Usage: #example
-Title: "1.11 Task acceptance"
+Usage: #inline
+Title: "1.11.1 Task acceptance"
 Description: "Updating a task for telemonitoring to status accepted"
 * meta.versionId = "2"
 * status = #accepted
@@ -17,3 +17,12 @@ Description: "Updating a task for telemonitoring to status accepted"
 * requester.identifier.value = "UZI-1"
 * owner.identifier.system = $ura
 * owner.identifier.value = "URA-2"
+
+Instance: cps-bundle-06
+InstanceOf: Bundle
+Usage: #example
+Title: "1.11.2 Bundle"
+Description: "Bundle to accept the telemonitoring Task"
+* meta.versionId = "1"
+* type = #transaction
+* insert BundleEntry(cps-task-01-02, #PUT, Task/cps-task-01)

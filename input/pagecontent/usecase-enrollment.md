@@ -116,15 +116,14 @@ fill in QuestionnaireResponse and update the (sub-)Task
 
 #### MedicalServiceCentre: Update Task to accepted
 1. [cUrl GET Task from cps-base-url](cUrl-GET-cps-task-01-from-cps-base-url.txt)
-1. [cUrl PUT Task-cps-task-01-02 to cps-base-url](cUrl-PUT-Task-cps-task-01-02-to-cps-base-url.txt), payload: [Task-cps-task-01-02](Task-cps-task-01-02.json)
+1. [cUrl POST Bundle-cps-bundle-06 to cps-base-url](cUrl-POST-Bundle-cps-bundle-06-to-cps-base-url.txt), payload: [Bundle-cps-bundle-06](Bundle-cps-bundle-06.json)
 
 
 
 #### CarePlanService: update CareTeam and CarePlan, notify CareTeam participants
 
 1. [cUrl GET CarePlan from cps-base-url](cUrl-GET-cps-careplan-01-from-cps-base-url.txt)
-1. [cUrl PUT CarePlan-cps-careplan-01-02 to cps-base-url](cUrl-PUT-CarePlan-cps-careplan-01-02-to-cps-base-url.txt), payload: [CarePlan-cps-careplan-01-02](CarePlan-cps-careplan-01-02.json)
 1. [cUrl GET CareTeam from cps-base-url](cUrl-GET-cps-careteam-01-from-cps-base-url.txt)
-1. [cUrl PUT CareTeam-cps-careteam-01-02 to cps-base-url](cUrl-PUT-CareTeam-cps-careteam-01-02-to-cps-base-url.txt), payload: [CareTeam-cps-careteam-01-02](CareTeam-cps-careteam-01-02.json)
+1. [cUrl POST Bundle-cps-bundle-07 to cps-base-url](cUrl-POST-Bundle-cps-bundle-07-to-cps-base-url.txt), payload: [Bundle-cps-bundle-07](Bundle-cps-bundle-07.json)
 1. [cUrl POST Bundle-notification-hospitalx-11 to cps-base-url](cUrl-POST-Bundle-notification-hospitalx-11-to-cps-base-url.txt), payload: [Bundle-notification-hospitalx-11](Bundle-notification-hospitalx-11.json)
 1. [cUrl POST Bundle-notification-msc-11 to cps-base-url](cUrl-POST-Bundle-notification-msc-11-to-cps-base-url.txt), payload: [Bundle-notification-msc-11](Bundle-notification-msc-11.json)

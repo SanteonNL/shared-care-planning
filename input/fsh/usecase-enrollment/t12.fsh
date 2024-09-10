@@ -1,6 +1,6 @@
 Instance: cps-careplan-01-02
 InstanceOf: SCPCareplan
-Usage: #example
+Usage: #inline
 Title: "1.12.1 CarePlan update"
 Description: "Add activity (Task) to CarePlan"
 * meta.versionId = "2"
@@ -18,7 +18,7 @@ Description: "Add activity (Task) to CarePlan"
 
 Instance: cps-careteam-01-02
 InstanceOf: SCPCareTeam
-Usage: #example
+Usage: #inline
 Title: "1.12.2 CareTeam update"
 Description: "Add participant to CareTeam"
 * meta.versionId = "2"
@@ -29,7 +29,15 @@ Description: "Add participant to CareTeam"
 * insert ParticipantMember($ura, URA-1, 2024-08-27)
 * insert ParticipantMember($ura, URA-2, 2024-08-27)
 
-
+Instance: cps-bundle-07
+InstanceOf: Bundle
+Usage: #example
+Title: "1.12.2 Bundle"
+Description: "Bundle to update CarePlan and CareTeam"
+* meta.versionId = "1"
+* type = #transaction
+* insert BundleEntry(cps-careplan-01-02, #PUT, CarePlan/cps-careplan-01)
+* insert BundleEntry(cps-careteam-01-02, #PUT, CareTeam/cps-careteam-01)
 
 Instance: notification-hospitalx-11
 InstanceOf: Bundle
@@ -106,3 +114,4 @@ Usage: #inline
 * parameter[=].part[=].valueInstant = "2024-05-29T11:44:13.1882432-05:00"
 * parameter[=].part[+].name = "focus"
 * parameter[=].part[=].valueReference = Reference(cps-careteam-01)
+
