@@ -82,8 +82,7 @@ ACCESS_TOKEN_JSON=$(curl --location "$HOSPITAL_INTERNAL_API/internal/auth/v2/$HO
   --header 'Content-Type: application/json' \
 --data-raw "{
     \"authorization_server\": \"https://$CPS_HOST/oauth2/$CPS_SUBJECT\",
-    \"scope\": \"careplanservice\",
-    \"credentials\": [ $VC_DOC ]
+    \"scope\": \"careplanservice\"
   }")
 
 # Get the access_token from the JSON
