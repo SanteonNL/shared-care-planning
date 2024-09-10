@@ -27,7 +27,6 @@ Description: "Provide information for telemonitoring"
 * partOf = Reference(cps-task-01)
 * status = #completed
 * intent = #order
-* focus = Reference(cps-servicerequest-telemonitoring)
 * for.identifier.system = $bsn
 * for.identifier.value = "111222333"
 * requester.identifier.system = $ura

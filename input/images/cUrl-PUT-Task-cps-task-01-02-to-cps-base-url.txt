@@ -1,4 +1,4 @@
-curl --request PUT '{{cps-base-url}}Task/cps-task-01/'
---header 'Content-Type: application/json' \
---header 'Authorization: {{cps-access-token}}' \
---data '{{Task-cps-task-01-02.json}}'
+curl --request PUT {{cps-base-url}}Task/cps-task-01/
+--header Content-Type:application/json \
+--header Authorization:{{cps-access-token}} \
+--data @fsh-generated/resources/Task-cps-task-01-02.json

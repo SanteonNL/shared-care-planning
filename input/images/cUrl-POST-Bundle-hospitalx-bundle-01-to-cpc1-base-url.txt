@@ -1,4 +1,4 @@
-curl --request POST '{{cpc1-base-url}}' \
---header 'Content-Type: application/json' \
---header 'Authorization: {{cpc1-access-token}}' \
---data '{{Bundle-hospitalx-bundle-01.json}}'
+curl --request POST {{cpc1-base-url}} \
+--header Content-Type:application/json \
+--header Authorization:{{cpc1-access-token}} \
+--data @fsh-generated/resources/Bundle-hospitalx-bundle-01.json
