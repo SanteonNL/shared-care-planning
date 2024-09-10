@@ -1,0 +1,4 @@
+curl --request POST '{{cpc2-base-url}}/notifications/' 
+--header 'Content-Type: application/json' \
+--header 'Authorization: {{access-token}}' \
+--data '{{Bundle-notification-msc-11.json}}'

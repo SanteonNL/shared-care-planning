@@ -31,6 +31,7 @@ Description: "A task for a patient that is shared between multiple care provider
 * basedOn only Reference(SCPCareplan)
 * basedOn MS
 * status from SCPTaskStatus (required) 
+//* status obeys SCPTask-state-change
 * focus MS
 * for.identifier.system 1..1
 * for.identifier.value 1..1
@@ -46,3 +47,9 @@ Title: "Shared Care Planning: Task Status"
 * ^status = #active
 * include codes from valueset http://hl7.org/fhir/ValueSet/task-status
 * exclude $task-status#draft
+
+// Invariant: SCPTask-state-change
+// Severity: #error
+// Description: "Only the 'requester' can create an SCPTask in state 'ready' or 'requested'. 
+// Only the 'owner' can update an SCPTask for state transitions requested->received, requested->accepted, requested->rejected, received->accepted, received->rejected, accepted->in-progress, in-progress->completed, in-progress->failed, ready->completed and ready->failed.
+// Both the 'requester' and 'owner' can update an SCPTask for state transitions requested->cancelled, received->cancelled, accepted->cancelled, in-progress->on-hold and on-hold->in-progress"

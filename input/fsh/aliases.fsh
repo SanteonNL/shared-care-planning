@@ -13,6 +13,8 @@ Alias: $usage-context-type = http://terminology.hl7.org/CodeSystem/usage-context
 Alias: $FHIR-version = http://hl7.org/fhir/FHIR-version
 Alias: $v3-AdministrativeGender = http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender
 Alias: $v3-NullFlavor = http://terminology.hl7.org/CodeSystem/v3-NullFlavor
+Alias: $launchContext = http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext
+Alias: $questionnaire-item-control = http://hl7.org/fhir/questionnaire-item-control
 
 // Alias: $ucum = http://unitsofmeasure.org
 // Alias: $orpha = http://www.orpha.net
