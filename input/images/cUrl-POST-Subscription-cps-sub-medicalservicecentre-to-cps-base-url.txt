@@ -1,4 +1,4 @@
-curl --request POST '{{cps-base-url}}/Subscription/' 
---header 'Content-Type: application/json' \
---header 'Authorization: {{access-token}}' \
---data '{{Subscription-cps-sub-medicalservicecentre.json}}'
+curl --request PUT {{cps-base-url}}Subscription/cps-sub-medicalservicecentre 
+--header Content-Type:application/json \
+--header Authorization:{{cps-access-token}} \
+--data @fsh-generated/resources/Subscription-cps-sub-medicalservicecentre.json

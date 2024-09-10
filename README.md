@@ -14,7 +14,7 @@ This IG can also be build using the FHIR Implementation Guide Auto-Builder. To t
 
 ```
 curl -X POST  "https://us-central1-fhir-org-starter-project.cloudfunctions.net/ig-commit-trigger" \
--H "Content-type: application/json" \
+-H "Content-Type:application/json" \
 --data '{"ref": "refs/heads/main", "repository": {"full_name": "santeonnl/shared-care-planning"}}'
 ```
 
