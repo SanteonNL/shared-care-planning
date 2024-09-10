@@ -31,8 +31,8 @@ Description: "Bundle to ask for contact information for telemonitoring"
 * meta.versionId = "1"
 * type = #transaction
 * insert BundleEntry(cps-task-03, #POST, Task)
-* insert BundleEntry(cps-questionnaire-patient-details, #PUT, Questionnaire?identifier=urn:ietf:rfc:3986|urn:oid:urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34-2)
-* insert BundleEntry(cps-questionnaire-practitioner-details, #PUT, Questionnaire?identifier=urn:ietf:rfc:3986|urn:oid:urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34-3)
+* insert BundleEntry(cps-questionnaire-patient-details, #PUT, Questionnaire/2.16.840.1.113883.2.4.3.11.60.909.26.34-2)
+* insert BundleEntry(cps-questionnaire-practitioner-details, #PUT, Questionnaire/2.16.840.1.113883.2.4.3.11.60.909.26.34-3)
 
 //resulting instances at cps:
 
