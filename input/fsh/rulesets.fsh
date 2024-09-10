@@ -27,7 +27,7 @@ RuleSet: BundleEntry (resource, method, url)
 
 RuleSet: BundleEntryWithFullurl (fullUrl, resource, method, url)
 * entry[+].fullUrl = "{fullUrl}"
-* entry[+].resource = {resource}
+* entry[=].resource = {resource}
 * entry[=].request.method = {method}
 * entry[=].request.url = "{url}"
 
