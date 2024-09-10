@@ -7,6 +7,8 @@ Description: "Subscription to receive notifications of instance-id's where the M
 * status = #active
 * reason = "Subscription to receive notifications of instance-id's where the Medical Service Centre is a participant. E.g. as a CareTeam.participant.member, Task.owner or Task.filler"
 * criteria = "https://cps.nl/fhir/SubscriptionTopic/organizationIsParticipantInInstance"
+* criteria.extension.url = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-filter-criteria"
+* criteria.extension.valueString = "Task?owner.identifier=http://fhir.nl/fhir/NamingSystem/ura|URA-1,Task?requester.identifier=http://fhir.nl/fhir/NamingSystem/ura|URA-1,CareTeam?participant.member.identifier=http://fhir.nl/fhir/NamingSystem/ura|URA-1"
 * channel.extension[0].url = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-heartbeat-period"
 * channel.extension[=].valueUnsignedInt = 86400
 * channel.extension[+].url = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-timeout"
@@ -29,6 +31,8 @@ Description: "Subscription to receive notifications of instance-id's where Hospi
 * status = #active
 * reason = "Subscription to receive notifications of instance-id's where Hospital X is a participant. E.g. as a CareTeam.participant.member, Task.owner or Task.filler"
 * criteria = "https://cps.nl/fhir/SubscriptionTopic/organizationIsParticipantInInstance"
+* criteria.extension.url = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-filter-criteria"
+* criteria.extension.valueString = "Task?owner.identifier=http://fhir.nl/fhir/NamingSystem/ura|URA-2,Task?requester.identifier=http://fhir.nl/fhir/NamingSystem/ura|URA-2,CareTeam?participant.member.identifier=http://fhir.nl/fhir/NamingSystem/ura|URA-2"
 * channel.extension[0].url = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-heartbeat-period"
 * channel.extension[=].valueUnsignedInt = 86400
 * channel.extension[+].url = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-timeout"
@@ -85,7 +89,7 @@ Description: "Initiation of a care plan for a patient with Heartfailure"
 * subject.identifier.system = $bsn
 * subject.identifier.value = "111222333"
 * careTeam = Reference(cps-careteam-01)
-* addresses[+] = Reference(cps-heartfailure)
+* addresses[+] = Reference(Condition/2.16.528.1.1007.3.3.21514.ehr.diagnoses-56476575765)
 * author.identifier.system = $uzi
 * author.identifier.value = "UZI-1"
 

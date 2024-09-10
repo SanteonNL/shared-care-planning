@@ -1,4 +1,4 @@
-curl --request POST '{{cps-base-url}}Subscription/' 
+curl --request PUT '{{cps-base-url}}Subscription/cps-sub-hospitalx' 
 --header 'Content-Type: application/json' \
 --header 'Authorization: {{cps-access-token}}' \
 --data '{{Subscription-cps-sub-hospitalx.json}}'

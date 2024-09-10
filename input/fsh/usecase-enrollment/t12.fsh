@@ -10,7 +10,7 @@ Description: "Add activity (Task) to CarePlan"
 * subject.identifier.system = $bsn
 * subject.identifier.value = "111222333"
 * careTeam = Reference(cps-careteam-01)
-* addresses[+] = Reference(cps-heartfailure)
+* addresses[+] = Reference(Condition/2.16.528.1.1007.3.3.21514.ehr.diagnoses-56476575765)
 * author.identifier.system = $uzi
 * author.identifier.value = "UZI-1"
 * activity[+].reference = Reference(cps-task-01)

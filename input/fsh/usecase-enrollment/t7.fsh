@@ -30,7 +30,7 @@ Title: "1.07.2 Bundle"
 Description: "Bundle to ask for contact information for telemonitoring"
 * meta.versionId = "1"
 * type = #transaction
-* insert BundleEntry(cps-task-03, #POST, Task)
+* insert BundleEntry(cps-task-03, #PUT, Task/cps-task-03)
 * insert BundleEntry(cps-questionnaire-patient-details, #PUT, Questionnaire/2.16.840.1.113883.2.4.3.11.60.909.26.34-2)
 * insert BundleEntry(cps-questionnaire-practitioner-details, #PUT, Questionnaire/2.16.840.1.113883.2.4.3.11.60.909.26.34-3)
 

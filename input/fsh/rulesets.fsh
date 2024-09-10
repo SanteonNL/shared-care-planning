@@ -32,6 +32,6 @@ RuleSet: BundleEntryWithFullurl (fullUrl, resource, method, url)
 * entry[=].request.url = "{url}"
 
 RuleSet: ParticipantMember (identifier-system, identifier-value, startdate)
-* participant[+].member.identifier.system = "{identifier-system}"
+* participant[+].member.identifier.system = {identifier-system}
 * participant[=].member.identifier.value = "{identifier-value}"
 * participant[=].period.start = "{startdate}"

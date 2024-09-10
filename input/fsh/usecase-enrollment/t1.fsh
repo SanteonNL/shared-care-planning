@@ -28,7 +28,7 @@ Title: "1.01.2 Bundle"
 Description: "Bundle to initiate telemonitoring"
 * meta.versionId = "1"
 * type = #transaction
-* insert BundleEntry(cps-task-01, #POST, Task)
+* insert BundleEntry(cps-task-01, #PUT, Task/cps-task-01)
 * insert BundleEntry(cps-servicerequest-telemonitoring, #PUT, ServiceRequest/2.16.528.1.1007.3.3.21514.ehr.orders-99534756439)
 * insert BundleEntry(cps-heartfailure, #PUT, Condition/2.16.528.1.1007.3.3.21514.ehr.diagnoses-56476575765)
 
