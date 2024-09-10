@@ -101,6 +101,13 @@ post bundle with new (sub-) task that contains a questionnaire
 
 
 #### Hospital X: Update sub-Task with QuestionnaireResponse (patient/practitioner details)
+get sub-task and questionnaire
+
+1. [cUrl GET Task from cps-base-url](cUrl-GET-cps-task-03-from-cps-base-url.txt)
+1. [cUrl GET Questionnaire patient details from cps-base-url](cUrl-GET-cps-questionnaire-patient-details-from-cps-base-url.txt)
+1. [cUrl GET Questionnaire practitioner details from cps-base-url](cUrl-GET-cps-questionnaire-practitioner-details-from-cps-base-url.txt)
+fill in QuestionnaireResponse and update the (sub-)Task
+
 1. [cUrl POST Bundle-cps-bundle-05 to cps-base-url](cUrl-POST-Bundle-cps-bundle-05-to-cps-base-url.txt), payload: [Bundle-cps-bundle-05](Bundle-cps-bundle-05.json)
 
 #### CarePlanService: notify medicalservicecentre

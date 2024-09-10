@@ -9,9 +9,9 @@ Description: "Initiation of a task for telemonitoring"
 * status = #requested
 * intent = #order
 * code = $task-code#fullfill
-* focus.identifier.system = "http://hospitalx.nl/ServiceRequest/"
+* focus.identifier.system = "2.16.528.1.1007.3.3.21514.ehr.orders"
 * focus.identifier.value = "99534756439"
-* reasonReference.identifier.system = "http://hospitalx.nl/Condition/"
+* reasonReference.identifier.system = "2.16.528.1.1007.3.3.21514.ehr.diagnoses"
 * reasonReference.identifier.value = "56476575765"
 * for.identifier.system = $bsn
 * for.identifier.value = "111222333"
@@ -42,7 +42,7 @@ Title: "1.01.3 ServiceRequest Telemonitoring"
 Description: "copy of data in EHR of Hospital X"
 * meta.versionId = "1"
 * meta.lastUpdated = "2024-09-03T12:00:00Z"
-* identifier.system = "http://hospitalx.nl/ServiceRequest/"
+* identifier.system = "2.16.528.1.1007.3.3.21514.ehr.orders"
 * identifier.value = "99534756439"
 * status = #active
 * intent = #order
@@ -51,7 +51,7 @@ Description: "copy of data in EHR of Hospital X"
 * requester.identifier.system = $uzi
 * requester.identifier.value = "UZI-1"
 * code = http://snomed.info/sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
-* reasonReference.identifier.system = "http://hospitalx.nl/Condition/"
+* reasonReference.identifier.system = "2.16.528.1.1007.3.3.21514.ehr.diagnoses"
 * reasonReference.identifier.value = "56476575765"
 
 Instance: cps-heartfailure
@@ -62,7 +62,7 @@ Description: "copy of data in EHR of Hospital X"
 * meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem"
 * meta.versionId = "1"
 * meta.lastUpdated = "2024-09-03T12:00:00Z"
-* identifier.system = "http://hospitalx.nl/Condition/"
+* identifier.system = "2.16.528.1.1007.3.3.21514.ehr.diagnoses"
 * identifier.value = "56476575765"
 * code = $sct#195111005 "Hartfalen"
 * subject.identifier.system = $bsn

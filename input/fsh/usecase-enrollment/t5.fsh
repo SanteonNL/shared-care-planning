@@ -35,8 +35,8 @@ Description: "Provide information for telemonitoring"
 * owner.identifier.system = $ura
 * owner.identifier.value = "URA-1"
 * input[+].type = $task-input-type#Reference "Reference"
-* input[=].valueReference.identifier.system = "urn:ietf:rfc:3986"
-* input[=].valueReference.identifier.value = "urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34-1"
+* input[=].valueReference.identifier.system = "urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34"
+* input[=].valueReference.identifier.value = "1"
 * output[+].type = $task-input-type#Reference "Reference"
 * output[=].valueReference = Reference(urn:uuid:456)
 

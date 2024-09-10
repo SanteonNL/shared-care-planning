@@ -15,8 +15,8 @@ Description: "Ask for extra information for telemonitoring"
 * owner.identifier.system = $ura
 * owner.identifier.value = "URA-1"
 * input[+].type = $task-input-type#Reference "Reference"
-* input[=].valueReference.identifier.system = "urn:ietf:rfc:3986"
-* input[=].valueReference.identifier.value = "urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34-1"
+* input[=].valueReference.identifier.system = "urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34"
+* input[=].valueReference.identifier.value = "1"
 
 Instance: cps-bundle-02
 InstanceOf: Bundle
@@ -40,8 +40,8 @@ Description: "Questionnaire for enrollment criteria for telemonitoring"
 * meta.tag = $FHIR-version#4.0.1
 * language = #nl-NL
 * url = "http://decor.nictiz.nl/fhir/Questionnaire/2.16.840.1.113883.2.4.3.11.60.909.26.34-1--20240902134017"
-* identifier.system = "urn:ietf:rfc:3986"
-* identifier.value = "urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34-1"
+* identifier.system = "urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34"
+* identifier.value = "1"
 * name = "Telemonitoring - enrollment criteria"
 * title = "Telemonitoring - enrollment criteria"
 * status = #draft
