@@ -8,15 +8,15 @@ Description: "Ask for extra information for telemonitoring"
 * partOf = Reference(cps-task-01)
 * status = #ready
 * intent = #order
-* focus = Reference(cps-servicerequest-telemonitoring)
 * for.identifier.system = $bsn
 * for.identifier.value = "111222333"
 * requester.identifier.system = $ura
 * requester.identifier.value = "URA-2"
 * owner.identifier.system = $ura
 * owner.identifier.value = "URA-1"
-* input.type = $task-input-type#Reference "Reference"
-* input.valueReference = Reference(urn:uuid:456)
+* input[+].type = $task-input-type#Reference "Reference"
+* input[=].valueReference.identifier.system = "urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34"
+* input[=].valueReference.identifier.value = "1"
 
 Instance: cps-bundle-02
 InstanceOf: Bundle
@@ -25,8 +25,8 @@ Title: "1.03.2 Bundle"
 Description: "Bundle to ask for extra information for telemonitoring"
 * meta.versionId = "1"
 * type = #transaction
-* insert BundleEntry(urn:uuid:123, cps-task-02, #PUT, Task)
-* insert BundleEntry(urn:uuid:456, cps-questionnaire-telemonitoring-enrollment-criteria, #PUT, Questionnaire)
+* insert BundleEntry(cps-task-02, #PUT, Task/cps-task-02)
+* insert BundleEntry(cps-questionnaire-telemonitoring-enrollment-criteria, #PUT, Questionnaire/2.16.840.1.113883.2.4.3.11.60.909.26.34-1)
 
 //resulting instances at cps:
 
@@ -40,8 +40,8 @@ Description: "Questionnaire for enrollment criteria for telemonitoring"
 * meta.tag = $FHIR-version#4.0.1
 * language = #nl-NL
 * url = "http://decor.nictiz.nl/fhir/Questionnaire/2.16.840.1.113883.2.4.3.11.60.909.26.34-1--20240902134017"
-* identifier.system = "urn:ietf:rfc:3986"
-* identifier.value = "urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34-1"
+* identifier.system = "urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34"
+* identifier.value = "1"
 * name = "Telemonitoring - enrollment criteria"
 * title = "Telemonitoring - enrollment criteria"
 * status = #draft
