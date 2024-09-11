@@ -1,4 +1,4 @@
 curl --request PUT '{{cps-base-url}}/CareTeam/cps-careteam-01/'
 --header 'Content-Type: application/json' \
---header 'Authorization: {{HOSPITAL_ACCESS_TOKEN}}' \
+--header 'Authorization: {{access-token}}' \
 --data '{{CareTeam-cps-careteam-01-02.json}}'
