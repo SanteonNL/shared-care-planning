@@ -30,6 +30,9 @@ services:
     configs:
       - source: careplanservice_policy.json
         target: /nuts/config/policy/careplanservice.json
+        ## This Nuts node is also used for MSC, that is why the homemonitoring policy is also required.
+      - source: homemonitoring_policy.json
+        target: /nuts/config/policy/homemonitoring.json
 configs:
   homemonitoring_policy.json:
     content: | 
