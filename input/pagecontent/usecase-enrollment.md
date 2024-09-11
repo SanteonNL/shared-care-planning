@@ -105,7 +105,7 @@ The `NutsEmployeeCredential` is specified in [this RFC](https://nuts-foundation.
 
 #### Preparation: did and VCs
 1. Please read the file and execute the ngrok commands first: [docker-compose-nuts-nodes.sh](docker-compose-nuts-nodes.sh)
-2. [cUrl-POST-Nuts-hospitalx-create-did-vc](cUrl-POST-Nuts-hospitalx-create-did-vc.sh)
+2. [cUrl-POST-Nuts-create-did-vcs-and-access_tokens.sh](cUrl-POST-Nuts-create-did-vcs-and-access_tokens.sh)
 
 #### Preparation: populating existing data at Hospital X and MedicalServiceCentre 
 1. [cUrl POST Bundle-hospitalx-bundle-01 to cpc1-base-url](cUrl-POST-Bundle-hospitalx-bundle-01-to-cpc1-base-url.txt), payload: [Bundle-hospitalx-bundle-01](Bundle-hospitalx-bundle-01.json)
