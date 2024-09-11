@@ -113,7 +113,7 @@ CPS_HOST="${CPS_DID_PARTS[2]}"
 echo "$CPS_HOST"
 
 # This call gets a access token on the hospital's NUTS node to access data on the CPS FHIR environment.
-ACCESS_TOKEN_JSON=$(curl --location "$HOSPITAL_INTERNAL_API/internal/auth/v2/$HOSPITAL_SUBJECT/request-service-access-token" \
+HOSPITAL_ACCESS_TOKEN_JSON=$(curl --location "$HOSPITAL_INTERNAL_API/internal/auth/v2/$HOSPITAL_SUBJECT/request-service-access-token" \
   --header 'Content-Type: application/json' \
   --data-raw "{
     \"authorization_server\": \"https://$CPS_HOST/oauth2/$CPS_SUBJECT\",
@@ -121,14 +121,14 @@ ACCESS_TOKEN_JSON=$(curl --location "$HOSPITAL_INTERNAL_API/internal/auth/v2/$HO
   }")
 
 # Get the access_token from the JSON
-echo "$ACCESS_TOKEN_JSON"
-ACCESS_TOKEN=$(echo "$ACCESS_TOKEN_JSON" | jq -r .access_token)
-echo "$ACCESS_TOKEN"
+echo "$HOSPITAL_ACCESS_TOKEN_JSON"
+HOSPITAL_ACCESS_TOKEN=$(echo "$HOSPITAL_ACCESS_TOKEN_JSON" | jq -r .access_token)
+echo "$HOSPITAL_ACCESS_TOKEN"
 
 # The verification step: the CPS NUTS node will validate the token.
 curl --location "$CPS_INTERNAL_API/internal/auth/v2/accesstoken/introspect_extended" \
   --header "Content-Type: application/x-www-form-urlencoded" \
-  --data "token=$ACCESS_TOKEN"
+  --data "token=$HOSPITAL_ACCESS_TOKEN"
 
 ## -- UC: access the hospital FHIR API from CPS --
 
@@ -139,11 +139,13 @@ HOSPITAL_HOST="${HOSPITAL_DID_PARTS[2]}"
 echo "$HOSPITAL_HOST"
 
 # This call gets a access token on the hospital's NUTS node to access data on the CPS FHIR environment.
-ACCESS_TOKEN_JSON=$(curl --location "$CPS_INTERNAL_API/internal/auth/v2/$CPS_SUBJECT/request-service-access-token" \
+CPS_ACCESS_TOKEN_JSON=$(curl --location "$CPS_INTERNAL_API/internal/auth/v2/$CPS_SUBJECT/request-service-access-token" \
   --header 'Content-Type: application/json' \
   --data-raw "{
     \"authorization_server\": \"https://$HOSPITAL_HOST/oauth2/$HOSPITAL_SUBJECT\",
     \"scope\": \"homemonitoring\"
   }")
 # Get the access_token from the JSON
-echo "$ACCESS_TOKEN_JSON"
+echo "$CPS_ACCESS_TOKEN_JSON"
+CPS_ACCESS_TOKEN=$(echo "$CPS_ACCESS_TOKEN_JSON" | jq -r .access_token)
+echo "$CPS_ACCESS_TOKEN"

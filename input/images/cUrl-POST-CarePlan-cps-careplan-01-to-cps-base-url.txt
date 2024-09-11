@@ -1,4 +1,4 @@
-curl --request POST '{{cps-base-url}}/CarePlan/' 
+curl --request POST '{{cps-base-url}}/CarePlan/'
 --header 'Content-Type: application/json' \
---header 'Authorization: {{access-token}}' \
+--header 'Authorization: {{HOSPITAL_ACCESS_TOKEN}}' \
 --data '{{CarePlan-cps-careplan-01.json}}'

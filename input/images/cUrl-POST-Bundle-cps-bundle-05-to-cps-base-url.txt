@@ -1,4 +1,4 @@
-curl --request POST '{{cps-base-url}}/' 
+curl --request POST '{{cps-base-url}}/'
 --header 'Content-Type: application/json' \
---header 'Authorization: {{access-token}}' \
+--header 'Authorization: {{HOSPITAL_ACCESS_TOKEN}}' \
 --data '{{Bundle-cps-bundle-05.json}}'
