@@ -15,11 +15,11 @@ A home care nurse, Hilda House, is seeing a new client called: Cedric Collins. H
 
 #### GP using the CareTeam
 
-After two weeks, Cedric doesn't feel well. He decides to consult his GP Dr. Gregory Greene. Dr. Gregory opens Cedric's dossier and reads his that left foot was amputated two weeks ago and he is now getting home care. At the hospital, Cedric was diagnosed with diabetes. From the last couple of home care notes, he reads Gregory keeps complaining about his right hand. 
+After two weeks, Cedric doesn't feel well. He decides to consult his GP Dr. Gregory Greene. Dr. Gregory opens Cedric's dossier and reads his that left foot was amputated two weeks ago and he is now getting home care. At the hospital, Cedric was diagnosed with diabetes. From the last couple of home care notes, he reads that Cedric keeps complaining about his right hand. 
 Gregory is happy that all recent/relevant data is showing up in his system; he can now focus on the problem at hand; Cedric's right hand.... 
 
 
-> In the background, Gregory's EHR is fetching data. It knows where to fetch the data because the request from Hilda was based on a Shared CarePlan. This CarePlan has a CareTeam with 4 members (Cedric, GP, hospital and home care). Gregory's EHR also got a notification of this specific CarePlan and CareTeam; it was used two weeks ago to authorize Hilda's request for data, but now it is used to locate the healthcare data of Cedric.
+> In the background, Gregory's EHR is fetching data. It knows where to fetch the data because the request from Hilda was based on a Shared CarePlan. This CarePlan has a CareTeam with 4 members (Cedric, GP, hospital and home care). Gregory's EHR also got a notification of this specific CarePlan and CareTeam; it was used two weeks ago to authorize Hilda's request for data, but now it is used to locate the healthcare data of Cedric at the home care organization and the hospital.
 
 
 #### But what if....multiple overlapping CarePlans/CareTeams?
