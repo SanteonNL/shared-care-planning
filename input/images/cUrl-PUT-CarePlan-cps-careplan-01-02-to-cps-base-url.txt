@@ -1,4 +1,0 @@
-curl --request PUT '{{cps-base-url}}/CarePlan/cps-careplan-01/'
---header 'Content-Type: application/json' \
---header 'Authorization: {{access-token}}' \
---data '{{CarePlan-cps-careplan-01-02.json}}'

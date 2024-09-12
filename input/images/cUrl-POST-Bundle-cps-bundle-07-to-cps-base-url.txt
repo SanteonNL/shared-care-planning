@@ -1,0 +1,4 @@
+curl --request POST {{cps-base-url}}
+--header Content-Type:application/json \
+--header Authorization:{{cps-access-token}} \
+--data @fsh-generated/resources/Bundle-cps-bundle-07.json

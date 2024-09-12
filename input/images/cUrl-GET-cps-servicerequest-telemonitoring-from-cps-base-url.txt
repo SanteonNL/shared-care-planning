@@ -1,3 +1,3 @@
-curl --request GET '{{cps-base-url}}/ServiceRequest/cps-servicerequest-telemonitoring'
---header 'Content-Type: application/json' \
---header 'Authorization: {{access-token}}' 
+curl --request GET {{cps-base-url}}ServiceRequest?identifier=2.16.528.1.1007.3.3.21514.ehr.diagnoses%7C99534756439
+--header Content-Type:application/json \
+--header Authorization:{{cps-access-token}} 

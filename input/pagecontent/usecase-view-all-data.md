@@ -2,11 +2,10 @@
 
 ### The user story
 
-This user story takes place after the user story [enrollment for homemonitroing (NL)](usecase-enrollment.html) has taken place. 
 
 #### Monitoring
 
-A home monitoring nurse, <<Hilda House>>, from Medical Service Center MSC is monitoring patient Patrick Egger in the context of his condition Heart Failure (see user story [enrollment for homemonitroing (NL)](usecase-enrollment.html). During the monitoring phase, the hospital X had also added the General Practitioner GP to the multidisciplinbairy careplan that handles Patrick Eggers Heart Failure Condition.
+A home monitoring nurse, <Hilda House>, from Medical Service Center MSC is monitoring patient Patrick Egger in the context of his condition Heart Failure (see user story [enrollment for homemonitroing (NL)](usecase-enrollment.html). During the monitoring phase, the hospital X had also added the General Practitioner GP to the multidisciplinbairy careplan that handles Patrick Eggers Heart Failure Condition.
 
 #### Incoming alert/flag
 

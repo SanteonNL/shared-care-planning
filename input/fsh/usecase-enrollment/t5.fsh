@@ -27,17 +27,17 @@ Description: "Provide information for telemonitoring"
 * partOf = Reference(cps-task-01)
 * status = #completed
 * intent = #order
-* focus = Reference(cps-servicerequest-telemonitoring)
 * for.identifier.system = $bsn
 * for.identifier.value = "111222333"
 * requester.identifier.system = $ura
 * requester.identifier.value = "URA-2"
 * owner.identifier.system = $ura
 * owner.identifier.value = "URA-1"
-* input.type = $task-input-type#Reference "Reference"
-* input.valueReference = Reference(cps-questionnaire-telemonitoring)
-* output.type = $task-input-type#Reference "Reference"
-* output.valueReference = Reference(urn:uuid:456)
+* input[+].type = $task-input-type#Reference "Reference"
+* input[=].valueReference.identifier.system = "urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34"
+* input[=].valueReference.identifier.value = "1"
+* output[+].type = $task-input-type#Reference "Reference"
+* output[=].valueReference = Reference(urn:uuid:456)
 
 Instance: cps-bundle-03
 InstanceOf: Bundle
@@ -46,5 +46,6 @@ Title: "1.05.3 Bundle"
 Description: "Bundle with response for extra information for telemonitoring"
 * meta.versionId = "1"
 * type = #transaction
-* insert BundleEntry(urn:uuid:123, cps-task-02-02, #PUT, Task)
-* insert BundleEntry(urn:uuid:456, cps-questionnaire-telemonitoring-enrollment-criteria, #PUT, Questionnaire)
+* insert BundleEntry(cps-task-02-02, #PUT, Task/cps-task-02)
+* entry.request.ifMatch = "W/\"1\""
+* insert BundleEntryWithFullurl(urn:uuid:456, cps-qr-telemonitoring-enrollment-criteria, #POST, QuestionnaireResponse)
