@@ -122,7 +122,8 @@ Title: "1.02.6 notification bundle for Hospital X"
 
 Instance: 292d3c72-edc1-4d8a-afaa-d85e19c7f562a
 InstanceOf: Parameters
-Usage: #inline
+Usage: #example
+Title: "1.02.6 notification bundle parameter for Hospital X"
 * meta.profile = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription-status-r4"
 * parameter[0].name = "subscription"
 * parameter[=].valueReference = Reference(cps-sub-hospitalx)

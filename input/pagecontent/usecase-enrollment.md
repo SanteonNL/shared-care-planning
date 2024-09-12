@@ -1,5 +1,3 @@
-# Enroll patient in home monitoring (in the Netherlands)
-
 ### The user story
 
 #### Register diagnosis, get informed consent
@@ -13,6 +11,8 @@ Caroline makes a (service-)request for 'home monitoring' in the EHR. The diagnos
 #### Search for multidisciplinary careplan
 
 A pop-up window appears. In this window, an existing multidisciplinary CarePlan could be selected from a dropdown menu. However, for Patrick there are no known Careplans, therefore Caroline can only pick 'create new Careplan' from the dropdown menu. 
+
+> In the background, the MSC receives the request and determines if there are enough resources available to execute the request. As Patrick (his Dutch-citizen-id) is unknown to the MSC, the MSC responds with a questionnaire. If the MSC wouldn't be able to execute te request, it would be rejected here.
 
 #### (Auto)fill criteria
 
