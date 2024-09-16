@@ -19,7 +19,7 @@ export CITY="Amsterdam"
 
 # This will create a new DID on the hospital side.
 echo "Create $CPC1_SUBJECT DID"
-CPC1_DID_DOC=$(curl --location "${CPC1_INTERNAL_API}/internal/vdr/v2/subject" \
+CPC1_DID_DOC=$(curl -s --location "${CPC1_INTERNAL_API}/internal/vdr/v2/subject" \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --data "{
@@ -31,7 +31,7 @@ echo "$CPC1_DID"
 
 # This will create a new DID on the CPS side.
 echo "Create $CPS_SUBJECT DID"
-CPS_DID_DOC=$(curl --location "${CPS_INTERNAL_API}/internal/vdr/v2/subject" \
+CPS_DID_DOC=$(curl -s --location "${CPS_INTERNAL_API}/internal/vdr/v2/subject" \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --data "{
@@ -43,7 +43,7 @@ echo "$CPS_DID"
 
 # This will create a new DID on the CPS side.
 echo "Create $CPC2_SUBJECT DID"
-CPC2_DID_DOC=$(curl --location "${CPS_INTERNAL_API}/internal/vdr/v2/subject" \
+CPC2_DID_DOC=$(curl -s --location "${CPS_INTERNAL_API}/internal/vdr/v2/subject" \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --data "{
@@ -54,7 +54,7 @@ CPC2_DID=$(echo "$CPC2_DID_DOC" | jq -r .documents[0].id)
 echo "$CPC2_DID"
 
 # This will create a new VC on the CPS NUTS node, issued to the hospital.
-CPC1_VC_DOC=$(curl --location "${CPS_INTERNAL_API}/internal/vcr/v2/issuer/vc" \
+CPC1_VC_DOC=$(curl -s --location "${CPS_INTERNAL_API}/internal/vcr/v2/issuer/vc" \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --data-raw "{
@@ -78,16 +78,16 @@ CPC1_VC_DOC=$(curl --location "${CPS_INTERNAL_API}/internal/vcr/v2/issuer/vc" \
 echo "$CPC1_VC_DOC"
 
 # This will create a post the VC on the hospital NUTS node.
-curl --location "$CPC1_INTERNAL_API/internal/vcr/v2/holder/$CPC1_DID/vc" \
+curl -s --location "$CPC1_INTERNAL_API/internal/vcr/v2/holder/$CPC1_DID/vc" \
   --header 'Content-Type: application/json' \
   --data "$CPC1_VC_DOC"
 
 # Superfluous call to list the VSs.
-curl --location "$CPC1_INTERNAL_API/internal/vcr/v2/holder/$CPC1_DID/vc" \
+curl -s --location "$CPC1_INTERNAL_API/internal/vcr/v2/holder/$CPC1_DID/vc" \
 --header 'Accept: application/json'
 
 # This will create a new VC on the CPS NUTS node, issued to the hospital.
-CPS_VC_DOC=$(curl --location "${CPS_INTERNAL_API}/internal/vcr/v2/issuer/vc" \
+CPS_VC_DOC=$(curl -s --location "${CPS_INTERNAL_API}/internal/vcr/v2/issuer/vc" \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --data-raw "{
@@ -111,12 +111,12 @@ CPS_VC_DOC=$(curl --location "${CPS_INTERNAL_API}/internal/vcr/v2/issuer/vc" \
 echo "$CPS_VC_DOC"
 
 # This will create a post the VC on the CPS NUTS node.
-curl --location "$CPS_INTERNAL_API/internal/vcr/v2/holder/$CPS_DID/vc" \
+curl -s --location "$CPS_INTERNAL_API/internal/vcr/v2/holder/$CPS_DID/vc" \
   --header 'Content-Type: application/json' \
   --data "$CPS_VC_DOC"
 
 # Superfluous call to list the VSs.
-curl --location "$CPS_INTERNAL_API/internal/vcr/v2/holder/$CPS_DID/vc" \
+curl -s --location "$CPS_INTERNAL_API/internal/vcr/v2/holder/$CPS_DID/vc" \
 --header 'Accept: application/json'
 
 ## -- UC: access the CPS FHIR API from the hospital to CPS --
@@ -128,7 +128,7 @@ CPS_HOST="${CPS_DID_PARTS[2]}"
 echo "$CPS_HOST"
 
 # This call gets a access token on the hospital's NUTS node to access data on the CPS FHIR environment.
-CPS_ACCESS_TOKEN_JSON=$(curl --location "$CPC1_INTERNAL_API/internal/auth/v2/$CPC1_SUBJECT/request-service-access-token" \
+CPS_ACCESS_TOKEN_JSON=$(curl -s --location "$CPC1_INTERNAL_API/internal/auth/v2/$CPC1_SUBJECT/request-service-access-token" \
   --header 'Content-Type: application/json' \
   --data-raw "{
     \"authorization_server\": \"https://$CPS_HOST/oauth2/$CPS_SUBJECT\",
@@ -141,7 +141,7 @@ CPS_ACCESS_TOKEN=$(echo "$CPS_ACCESS_TOKEN_JSON" | jq -r .access_token)
 echo "$CPS_ACCESS_TOKEN"
 
 # The verification step: the CPS NUTS node will validate the token.
-curl --location "$CPS_INTERNAL_API/internal/auth/v2/accesstoken/introspect_extended" \
+curl -s --location "$CPS_INTERNAL_API/internal/auth/v2/accesstoken/introspect_extended" \
   --header "Content-Type: application/x-www-form-urlencoded" \
   --data "token=$CPS_ACCESS_TOKEN"
 
@@ -154,7 +154,7 @@ CPC1_HOST="${CPC1_DID_PARTS[2]}"
 echo "$CPC1_HOST"
 
 # This call gets a access token on the CPS's NUTS node to access data on the Hospital FHIR environment.
-CPC1_ACCESS_TOKEN_JSON=$(curl --location "$CPS_INTERNAL_API/internal/auth/v2/$CPS_SUBJECT/request-service-access-token" \
+CPC1_ACCESS_TOKEN_JSON=$(curl -s --location "$CPS_INTERNAL_API/internal/auth/v2/$CPS_SUBJECT/request-service-access-token" \
   --header 'Content-Type: application/json' \
   --data-raw "{
     \"authorization_server\": \"https://$CPC1_HOST/oauth2/$CPC1_SUBJECT\",
@@ -174,7 +174,7 @@ CPC2_DID_PARTS=(${CPC2_DID//:/ })
 CPC2_HOST="${CPC2_DID_PARTS[2]}"
 echo "$CPC2_HOST"
 # This call gets a access token on the CPS's NUTS node to access data on the MSC FHIR environment.
-CPC2_ACCESS_TOKEN_JSON=$(curl --location "$CPS_INTERNAL_API/internal/auth/v2/$CPS_SUBJECT/request-service-access-token" \
+CPC2_ACCESS_TOKEN_JSON=$(curl -s --location "$CPS_INTERNAL_API/internal/auth/v2/$CPS_SUBJECT/request-service-access-token" \
   --header 'Content-Type: application/json' \
   --data-raw "{
     \"authorization_server\": \"https://$CPC2_HOST/oauth2/$CPC2_SUBJECT\",
@@ -184,3 +184,13 @@ CPC2_ACCESS_TOKEN_JSON=$(curl --location "$CPS_INTERNAL_API/internal/auth/v2/$CP
 echo "$CPC2_ACCESS_TOKEN_JSON"
 CPC2_ACCESS_TOKEN=$(echo "$CPC2_ACCESS_TOKEN_JSON" | jq -r .access_token)
 echo "$CPC2_ACCESS_TOKEN"
+
+echo For getting NUTS access_tokens, the following variables need to be set:
+echo export CPS_DID="$CPS_DID"
+echo export CPC1_DID="$CPC1_DID"
+echo export CPC2_DID="$CPC2_DID"
+echo export CPS_SUBJECT="$CPS_SUBJECT"
+echo export CPC1_SUBJECT="$CPC1_SUBJECT"
+echo export CPC2_SUBJECT="$CPC2_SUBJECT"
+echo export CPC1_INTERNAL_API="$CPC1_INTERNAL_API"
+echo export CPS_INTERNAL_API="$CPS_INTERNAL_API"
