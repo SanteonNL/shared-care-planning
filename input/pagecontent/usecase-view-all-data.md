@@ -2,20 +2,26 @@
 
 #### Home care nurse creates CarePlan/CareTeam and retrieves data
 
-A home care nurse, Hilda House, is seeing a new client called: Cedric Collins. Hilda was told that Cedric was discharged from a hospital after surgery. Hilda decides to search for Cedric's data at the hospital and General Practitioner. She takes her tablet, logs in, opens Cedric's dossier and asks Cedric for the names of his GP and the hospital. In the 'care team' tab of the dossier, she adds/selects the GP and the hospital. Cedric's GP/Hospital-data is now showing up instantly in the, e.g., conditions, measurements and events sections of the dossier. If needed, Hilda can see what the original source of the data is.
+A home care nurse, Hilda House, is seeing a new client called: Cedric Collins. Hilda was told that Cedric was discharged from a hospital after surgery. Hilda decides to search for Cedric's data at the hospital and General Practitioner. She takes her tablet, logs in, opens Cedric's dossier and asks Cedric for the names of his GP and the hospital and if he wants to share the GP/hospital data with her. In the 'care team' tab of the dossier, she adds/selects the GP and the hospital. During this action, the GP-system responds with (small) questionnaire: "To add GP Dr. Greene to your client's care team, please provide the 6-digit number that was send to your client via sms/email" Cedric takes his phone and gives Hilda the 6-digit number. Cedric's GP/Hospital-data is now showing up in the, e.g., conditions, measurements and events sections of the dossier. If needed, Hilda can see what the original source of the data is.
 
 > In the background, Hilda's EHR is performing a number of actions: 
 > 1. The data endpoints of the care providers (GP & hospital) are looked up in the local provider directory
-> 1. A 'simple' request is send to the GP and hospital; are you a care provider of Cedric?
->    1. The GP-system recognizes Cedric's ID, looks up if he is currently registered as a client and responds 'yes, I'm currently the GP of Cedric'  
->    1. The hospital-system recognizes Cedric's ID, looks up what activities were done or are planned and responds 'yes, we were an active care provider for the last 3 months'
+> 1. A 'simple' request is send to the GP; are you a care provider of Cedric?
+>    1. The GP-system recognizes Cedric's ID, looks up if he is currently registered as a client. 
+>    1. In order to check if Cedric consents to share the GP-data with the home care organization, an sms with a code is send to the phonenumber of Cedric and a (sub-) Task/Questionnaire is send Hilda's EHR to fill in that same code
+>    1. Hilda's EHR shows a questionnaire that requests the code that was send to Cedric.
+>    1. As soon as the code is return by Cedric/Hilda, the GP-system checks if the code is correct.
+>    1. The code is correct; the GP-system accepts the first request "are you a care provider of Cedric?" 
+> 1. A 'simple' request is send to the hospital; are you a care provider of Cedric?   
+>    1. The hospital-system recognizes Cedric's ID, looks up what activities were done or are planned and checks an external consent-registry. 
+>    1. the hospital-system accepts the first request "are you a care provider of Cedric?"
 > 1. A 'Shared CarePlan' (including the 2 requests) and a 'Shared CareTeam' (including Cedric, Hilda's home care organization, the GP and the hospital) are created.
 > 1. As the GP/Hospital-systems have agreed/accepted the requests, these organizations are all member of the same CareTeam for Cedric. As an active members in the CareTeam, Hilda's EHR is authorized by the GP's system and the hospital to fetch Cedric's data.
 > 1. Hilda's EHR displays the data of all care team members of Cedric  
 
 #### GP using the CareTeam
 
-After two weeks, Cedric doesn't feel well. He decides to consult his GP Dr. Gregory Greene. Dr. Gregory opens Cedric's dossier and reads his that left foot was amputated two weeks ago and he is now getting home care. At the hospital, Cedric was diagnosed with diabetes. From the last couple of home care notes, he reads that Cedric keeps complaining about his right hand. 
+After two weeks, Cedric doesn't feel well. He decides to consult his GP Dr. Gregory Greene. Dr. Gregory opens Cedric's dossier and reads his that left foot was amputated three weeks ago and he is now getting home care. At the hospital, Cedric was diagnosed with diabetes. From the last couple of home care notes, he reads that Cedric keeps complaining about his right hand. 
 Gregory is happy that all recent/relevant data is showing up in his system; he can now focus on the problem at hand; Cedric's right hand.... 
 
 
@@ -24,14 +30,14 @@ Gregory is happy that all recent/relevant data is showing up in his system; he c
 
 #### But what if....multiple overlapping CarePlans/CareTeams?
 
-What if Hilda's EHR sends out the requests to the GP and hospital ('are you a care provider of Cedric?') and the hospital already has a Shared Care Plan for Cedric?  
-In this (other/older) CarePlan, the hospital requested a medicalservicecentre to provide telemonitoring; this CareTeam consists of 3 members (Cedric, hospital and the medicalservicecentre). Read [Enroll patient in home monitoring](./usecase-enrollment.html) for more details.  
+Imagine that the hospital requested a medicalservicecentre last year to provide telemonitoring. That resulted in a CarePlan and a CareTeam consisting of 3 members (Cedric, hospital and the medicalservicecentre). Read [Enroll patient in home monitoring](./usecase-enrollment.html) for more details on this example. 
+Now Hilda's EHR sends out the requests to the GP and the hospital ('are you a care provider of Cedric?') like in the first paragraph. The hospital is already a member of a Care Team for Cedric. Should these CareTeams be merged? Or should they remain separate?  In the hospital, a request is created to merge both CarePlans/CareTeams. This request is evaluated/approved by a coordinating nurse Caroline van Dijk before it is send to Hilda. As the hospital and Caroline are member of both CarePlans/CareTeams, she can determine if it would make sense to merge.
 
-> In the background, The hospital system creates a request for Hilda to merge the CarePlans/CareTeams just after accepting Hilda's original request.
+> In the background, The hospital system creates a draft request which can be 'approved' by coordinating nurse Caroline van Dijk. After approval, this request is send to Hilda's EHR.
 
- Now, Hilda gets a request/alert on her worklist/inbox: 'Hospital X is a member of an existing CarePlan/CareTeam for Cedric, do you want to merge your CarePlan into the existing CarePlan/CareTeam?' She reviews the other/older CarePlan and CareTeam. After consulting Cedric, she decides that the CarePlans and CareTeams should be merged; she approves the request. This enables her and the medicalservicecentre to cooperate with each other and view Cedric's data; both parties interact with Cedric on a weekly basis.
+ Now, Hilda gets a request/alert on her worklist/inbox: 'Hospital X is a member of an existing CarePlan/CareTeam for Cedric. Do you want to request to merge your CareTeam with the existing CareTeam?' She reviews the other/older CarePlan and CareTeam. After consulting Cedric, she decides that the CarePlans and CareTeams should be merged; she approves the request. This enables her and the medicalservicecentre to cooperate with each other and view Cedric's data; both parties interact with Cedric on a weekly basis.
  
- > In the background, the CarePlanService of the other/older CarePlan/CareTeam adds the data of the new CarePlan/CareTeam and copies associated Tasks and other data. The Hospital system also requests to Hilda's system to de-active the (now obsolete) CarePlan. Hilda's system accepts and de-activates the (+/- 5 minutes old) CarePlan
+ > In the background, the CarePlanService of the other/older CarePlan/CareTeam adds the data of the new CarePlan/CareTeam and copies associated Tasks and other data. The Hospital system also requests to Hilda's system to de-active the (now obsolete) CarePlan. Hilda's system accepts and de-activates the CarePlan
 
 <!-- 
 ### Data set definition
