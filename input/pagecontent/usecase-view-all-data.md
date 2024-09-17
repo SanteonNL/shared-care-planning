@@ -85,4 +85,6 @@ search narrowing has to be performed by data holder according to table.
 
 ### Transactions
 
-#### Brams magic here
+<div>
+{% include usecase-view-all-data.svg %}
+</div>
