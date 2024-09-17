@@ -30,7 +30,7 @@ Gregory is happy that all recent/relevant data is showing up in his system; he c
 
 #### But what if....multiple overlapping CarePlans/CareTeams?
 
-Imagine that the hospital requested a medicalservicecentre last year to provide telemonitoring. That resulted in a CarePlan and a CareTeam consisting of 3 members (Cedric, hospital and the medicalservicecentre). Read [Enroll patient in home monitoring](./usecase-enrollment.html) for more details on this example. 
+Imagine that the hospital requested a medicalservicecentre last year to provide telemonitoring. That resulted in a CarePlan and a CareTeam consisting of 3 members (Cedric, hospital and the medicalservicecentre). Read [Enroll patient in home monitoring](./usecase-enrollment.html) for more details on this example.  
 Now Hilda's EHR sends out the requests to the GP and the hospital ('are you a care provider of Cedric?') like in the first paragraph. The hospital is already a member of a Care Team for Cedric. Should these CareTeams be merged? Or should they remain separate?  In the hospital, a request is created to merge both CarePlans/CareTeams. This request is evaluated/approved by a coordinating nurse Caroline van Dijk before it is send to Hilda. As the hospital and Caroline are member of both CarePlans/CareTeams, she can determine if it would make sense to merge.
 
 > In the background, The hospital system creates a draft request which can be 'approved' by coordinating nurse Caroline van Dijk. After approval, this request is send to Hilda's EHR.

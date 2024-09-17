@@ -1,7 +1,7 @@
 Instance: notification-hospitalx-02
 InstanceOf: Bundle
 Usage: #example
-Title: "1.04.1 notification bundle for Hospital X"
+Title: "1.23 notification bundle for Hospital X"
 * meta.profile = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription-notification-r4"
 * type = #history
 * timestamp = "2020-05-29T11:44:13.1882432-05:00"

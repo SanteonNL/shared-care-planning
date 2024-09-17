@@ -1,7 +1,7 @@
 Instance: cps-qr-patient-details
 InstanceOf: QuestionnaireResponse
 Usage: #example
-Title: "1.09.1 QuestionnaireResponse for patient details" 
+Title: "1.48.1 QuestionnaireResponse for patient details" 
 Description: "Contact information for telemonitoring"
 * status = #completed
 * questionnaire = Canonical(cps-questionnaire-patient-details)
@@ -26,7 +26,7 @@ Description: "Contact information for telemonitoring"
 Instance: cps-qr-practitioner-details
 InstanceOf: QuestionnaireResponse
 Usage: #example
-Title: "1.09.1 QuestionnaireResponse for practitioner details" 
+Title: "1.48.2 QuestionnaireResponse for practitioner details" 
 Description: "Contact information for telemonitoring"
 * status = #completed
 * questionnaire = Canonical(cps-questionnaire-practitioner-details)
@@ -46,7 +46,7 @@ Description: "Contact information for telemonitoring"
 Instance: cps-task-03-02
 InstanceOf: SCPTask
 Usage: #example
-Title: "1.09.2 (sub-)Task 3 completion"
+Title: "1.48.3 (sub-)Task 3 completion"
 Description: "Provide contact information for telemonitoring"
 * meta.versionId = "2"
 * basedOn = Reference(cps-careplan-01)
@@ -73,7 +73,7 @@ Description: "Provide contact information for telemonitoring"
 Instance: cps-bundle-05
 InstanceOf: Bundle
 Usage: #example
-Title: "1.05.3 Bundle"
+Title: "1.48.4 Bundle"
 Description: "Bundle with response for extra information for telemonitoring"
 * meta.versionId = "1"
 * type = #transaction
