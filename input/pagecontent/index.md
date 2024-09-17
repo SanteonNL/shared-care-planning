@@ -36,7 +36,7 @@ Some of these items are explained in more detail:
 - Use Cases/Examples
 
     - [Enroll patient in home monitoring](./usecase-enrollment.html)
-    - [Get data for home monitoring](./usecase-view-all-data.html)
+    - [Get data for home care](./usecase-view-all-data.html)
     - [Referral/Nursing handoff](./usecase-nursing-handoff.html)
 
 - [Artifacts](./artifacts.html): a comprehensive list of all artifacts that are used in SCP 

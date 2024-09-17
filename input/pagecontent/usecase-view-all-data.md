@@ -1,11 +1,11 @@
 ### The user story
 
-#### Home care nurse creates CarePlan/CareTeam and retrieves data
+#### Community nurse creates CarePlan/CareTeam and retrieves data
 
-A home care nurse, Hilda House, is seeing a new client called: Cedric Collins. Hilda was told that Cedric was discharged from a hospital after surgery. Hilda decides to search for Cedric's data at the hospital and General Practitioner. She takes her tablet, logs in, opens Cedric's dossier and asks Cedric for the names of his GP and the hospital and if he wants to share the GP/hospital data with her. In the 'care team' tab of the dossier, she adds/selects the GP and the hospital. During this action, the GP-system responds with (small) questionnaire: "To add GP Dr. Greene to your client's care team, please provide the 6-digit number that was send to your client via sms/email" Cedric takes his phone and gives Hilda the 6-digit number. Cedric's GP/Hospital-data is now showing up in the, e.g., conditions, measurements and events sections of the dossier. If needed, Hilda can see what the original source of the data is.
+A Community nurse, Hilda House, is seeing a new client called: Cedric Collins. Hilda was told that Cedric was discharged from a hospital after surgery. Hilda decides to search for Cedric's data at the hospital and General Practitioner. She takes her tablet, logs in, opens Cedric's dossier and asks Cedric for the names of his GP and the hospital and if he wants to share the GP/hospital data with her. In the 'care team' tab of the dossier, she adds/selects the GP and the hospital. During this action, the GP-system responds with (small) questionnaire: "To add GP Dr. Greene to your client's care team, please provide the 6-digit number that was send to your client via sms/email" Cedric takes his phone and gives Hilda the 6-digit number. Cedric's GP/Hospital-data is now showing up in the appropriate sections of the dossier. If needed, Hilda can see what the original source of the data is.
 
 > In the background, Hilda's EHR is performing a number of actions: 
-> 1. The data endpoints of the care providers (GP & hospital) are looked up in the local provider directory
+> 1. The service endpoints of the care providers (GP & hospital) are looked up in the local provider directory
 > 1. A 'simple' request is send to the GP; are you a care provider of Cedric?
 >    1. The GP-system recognizes Cedric's ID, looks up if he is currently registered as a client. 
 >    1. In order to check if Cedric consents to share the GP-data with the home care organization, an sms with a code is send to the phonenumber of Cedric and a (sub-) Task/Questionnaire is send Hilda's EHR to fill in that same code
@@ -35,7 +35,7 @@ Now Hilda's EHR sends out the requests to the GP and the hospital ('are you a ca
 
 > In the background, The hospital system creates a draft request which can be 'approved' by coordinating nurse Caroline van Dijk. After approval, this request is send to Hilda's EHR.
 
- Now, Hilda gets a request/alert on her worklist/inbox: 'Hospital X is a member of an existing CarePlan/CareTeam for Cedric. Do you want to request to merge your CareTeam with the existing CareTeam?' She reviews the other/older CarePlan and CareTeam. After consulting Cedric, she decides that the CarePlans and CareTeams should be merged; she approves the request. This enables her and the medicalservicecentre to cooperate with each other and view Cedric's data; both parties interact with Cedric on a weekly basis.
+ Now, Hilda gets a request/alert on her worklist/inbox: 'Hospital X is a member of an existing CarePlan/CareTeam for Cedric. Do you want to merge your CareTeam with the existing CareTeam?' She reviews the other/older CarePlan and CareTeam. After consulting Cedric, she decides that the CarePlans and CareTeams should be merged; she approves the request. This enables her and the medicalservicecentre to cooperate with each other and view Cedric's data; both parties interact with Cedric on a weekly basis.
  
  > In the background, the CarePlanService of the other/older CarePlan/CareTeam adds the data of the new CarePlan/CareTeam and copies associated Tasks and other data. The Hospital system also requests to Hilda's system to de-active the (now obsolete) CarePlan. Hilda's system accepts and de-activates the CarePlan
 
