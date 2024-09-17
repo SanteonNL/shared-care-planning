@@ -1,5 +1,21 @@
 #!/bin/bash
 
+
+
+# Create the environment
+# Please modify and run the following script first:
+# input/images/docker-compose-nuts-nodes.sh
+
+# Run the following script only once
+source input/images/cUrl-POST-Nuts-create-did-and-vcs.sh
+
+# Run the following script to get temporary access tokens
+# This script will set:
+# CPS_ACCESS_TOKEN
+# CPC1_ACCESS_TOKEN
+# CPC2_ACCESS_TOKEN
+source input/images/cUrl-POST-Nuts-access_tokens.sh
+
 # The FHIR transactions can be tested (partly) by using curl statements that POST/PUT/GET the FHIR example instances in Shared Care Planning to a FHIR server.
 # The FHIR instances are generated in JSON format and from FHIR Shorthand (.fsh) files by Sushi
 
@@ -13,12 +29,9 @@
 # ~/shared-care-planning$ sushi
 
 # Defining the environment variables for the curl statements
-export CPS_BASE_URL="http://localhost:8080/fhir/"
-export CPC1_BASE_URL="http://localhost:8080/fhir/"
-export CPC2_BASE_URL="http://localhost:8080/fhir/"
-export CPS_ACCESS_TOKEN="cps"
-export CPC1_ACCESS_TOKEN="cpc1"
-export CPC2_ACCESS_TOKEN="cpc2"
+export CPS_BASE_URL="http://localhost:8090/fhir/"
+export CPC1_BASE_URL="http://localhost:8190/fhir/"
+export CPC2_BASE_URL="http://localhost:8290/fhir/"
 
 curlstatements=(
   "cUrl-POST-Bundle-hospitalx-bundle-01-to-cpc1-base-url.txt"
