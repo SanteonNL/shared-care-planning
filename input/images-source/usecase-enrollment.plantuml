@@ -1,0 +1,69 @@
+@startuml usecase-enrollment
+
+skinparam roundcorner 20
+
+
+!pragma teoz true
+
+box Hospital X #e8d0a9
+    actor "Caroline \nvan Dijk" as Practitioner1
+    participant "Care Plan Contributor" as CPC1 #LightGray
+end box
+box MedicalServiceCentre #acd1e9
+    participant "<font color=white>Care Plan Service" as CPS #Gray
+    participant "Care Plan Contributor" as CPC2 #LightGray
+    participant "Task manager" as EHR2
+    actor "Patrick\nEgger" as Patient
+end box
+
+activate Practitioner1
+autonumber
+Practitioner1 -> CPC1 : Start Request\nreferral
+& CPC1 -> CPS : Find/select CarePlan
+
+CPC1 -> CPS : Create Task\n referring Request,\n Condition and CarePlan\n (if any)
+& CPS -> CPS  : Update CareTeam, CarePlan\n and Subscriptions
+CPS o-> CPC1 : Notify CareTeam, CarePlan
+& CPS o-> CPC2  : Notify Task created
+& CPC2 -> EHR2  : Notify Task created
+' & note right EHR2 #WhiteSmoke
+' Actions in gray
+'  are optional
+' end note
+
+autonumber 20 "<font color=Black>0"
+ EHR2 -> EHR2 : evaluate Task\n (required data,\n capacity, etc)
+&EHR2 -> CPC2 : Need more information
+& CPC2 -> CPS  : Create (sub-)Task2: do\n  Questionnaire 'enrollment criteria'
+& CPS -> CPC1 : Notify Task2 created
+& CPC1 -> Practitioner1 : Present Questionnaire\n(prefill data from EHR)
+
+Practitioner1 -> CPC1 : Complete\n QuestionnaireResponse
+& CPC1 -> CPS : Update Task2: Add\n QuestionnaireResponse
+& CPS -> CPC2 : Notify Task2 update
+& CPC2 -> EHR2 : Notify Task2 update
+
+autonumber 40 "<font color=Black>0"
+EHR2 -> EHR2 :evaluate Task:\n status 'accepted', \ncheck required data
+& EHR2 -> CPC2 :Task accepted,\n but need contact\n details to start
+& CPC2 -> CPS :Task accepted & \nCreate (sub-)Task3: do \n  Questionnaire 'contact details'
+CPS -> CPS  : Update CareTeam, CarePlan
+CPS o-> CPC1 :Notify Task accepted\n Task3 created\n CareTeam updated\n CarePlan updated
+& CPS o-> CPC2 :Notify CareTeam updated\n CarePlan updated
+& CPC1 -> Practitioner1 :Your order is accepted,\nPresent Questionnaire\n(prefill data from EHR)
+
+Practitioner1 -> CPC1 : Complete\n QuestionnaireResponse
+& CPC1 -> CPS : Update Task3: Add\n QuestionnaireResponse(s)
+& CPS -> CPC2 : Notify Task3 update
+& CPC2 -> EHR2 : Notify Task3 update
+
+autonumber 60
+EHR2 -> EHR2 : evaluate Task:\n status 'in-progress'
+& CPC2 -> CPS : Update Task: \n status 'in-progress'
+& EHR2 -> CPC2 : Notify Task update
+& CPS -> CPC1 : Notify Task update
+& CPC1 -> Practitioner1 : Done!\nYour order is in-progress
+EHR2 -> Patient : send activation email
+deactivate Practitioner1
+
+@enduml
