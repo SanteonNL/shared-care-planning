@@ -226,6 +226,16 @@ The 'responding' CareTeam-member (data holders) use the CareTeam, CarePlan and T
 
 Note that the CP-Service will notify all CP-Contributors on changed CarePlans and CareTeams. It might not be necessary to retrieve these from the CP-Service if the CarePlan and CareTeam are stored locally at the CP-Contributor.
 
+#### Notifications
+
+For notification, SCP uses the [Subscriptions R5 Backport for R4](https://hl7.org/fhir/uv/subscriptions-backport/). The backport-subscription-profiles for R4 give the option for 'id-only' subscriptions. Notification bundles for 'id-only-subscriptions' will only contain resource-identifiers (in stead of e.g. the full instances), which doesn't exist in the R4 specifications. 
+
+The CarePlan service manages subscriptions and sends out the notifications, following the [Out-of-band (or server) managed subscriptions in the FHIR R6 specifications](https://build.fhir.org/subscriptions.html#workflow-styles). 
+
+CarePlan contributors receive a notification-bundle whenever a Task, CarePlan or CareTeam is updated where 'they' (e.g. the Organization of the CarePlanContributor) is registered as a requester, author, member, owner, etc. 
+Check out the example instances for a [subscription](Subscription-cps-sub-hospitalx.json.html) or [notification-bundle](Bundle-notification-hospitalx-01.json.html).
+
+
 ### Deployment considerations
 ***TODO*** Use Orca and you'll be fine.
 
