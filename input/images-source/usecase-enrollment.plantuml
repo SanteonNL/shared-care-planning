@@ -1,6 +1,7 @@
 @startuml usecase-enrollment
 
 skinparam roundcorner 20
+skinparam defaultFontName Arial 
 
 
 !pragma teoz true
@@ -13,8 +14,8 @@ box MedicalServiceCentre #acd1e9
     participant "<font color=white>Care Plan Service" as CPS #Gray
     participant "Care Plan Contributor" as CPC2 #LightGray
     participant "Task manager" as EHR2
-    actor "Patrick\nEgger" as Patient
 end box
+actor "Patrick\nEgger" as Patient
 
 activate Practitioner1
 autonumber
@@ -31,7 +32,7 @@ CPS o-> CPC1 : Notify CareTeam, CarePlan
 '  are optional
 ' end note
 
-autonumber 20 "<font color=Black>0"
+autonumber 20
  EHR2 -> EHR2 : evaluate Task\n (required data,\n capacity, etc)
 &EHR2 -> CPC2 : Need more information
 & CPC2 -> CPS  : Create (sub-)Task2: do\n  Questionnaire 'enrollment criteria'
@@ -43,7 +44,7 @@ Practitioner1 -> CPC1 : Complete\n QuestionnaireResponse
 & CPS -> CPC2 : Notify Task2 update
 & CPC2 -> EHR2 : Notify Task2 update
 
-autonumber 40 "<font color=Black>0"
+autonumber 40
 EHR2 -> EHR2 :evaluate Task:\n status 'accepted', \ncheck required data
 & EHR2 -> CPC2 :Task accepted,\n but need contact\n details to start
 & CPC2 -> CPS :Task accepted & \nCreate (sub-)Task3: do \n  Questionnaire 'contact details'

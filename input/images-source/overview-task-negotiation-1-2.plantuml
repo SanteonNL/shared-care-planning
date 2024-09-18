@@ -1,6 +1,7 @@
 @startuml overview-task-negotiation-1-2
 
 skinparam roundcorner 20
+skinparam defaultFontName Arial 
 
 
 !pragma teoz true

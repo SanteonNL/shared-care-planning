@@ -104,7 +104,7 @@ The `NutsEmployeeCredential` is specified in [this RFC](https://nuts-foundation.
 - Please read the file and execute the ngrok commands first: [docker-compose-nuts-nodes.sh](docker-compose-nuts-nodes.sh)
 - [cUrl-POST-Nuts-create-did-and-vcs.sh](cUrl-POST-Nuts-create-did-and-vcs.sh)
 
-## Get the access_tokens
+#### Get the access_tokens
 - [cUrl-POST-Nuts-access_tokens.sh](cUrl-POST-Nuts-access_tokens.sh)
 
 #### Preparation: populating existing data at Hospital X and MedicalServiceCentre
@@ -115,87 +115,88 @@ The `NutsEmployeeCredential` is specified in [this RFC](https://nuts-foundation.
 {% include usecase-enrollment.svg %}
 </div>
 
-#### Hospital X: Find existing 'Shared' CarePlan for Patient
-2. [cUrl GET CarePlan from cps-base-url](cUrl-GET-CarePlan-from-cps-base-url.txt)
+   
+Step 2: Hospital X: Find existing 'Shared' CarePlan for Patient
+- [cUrl GET CarePlan from cps-base-url](cUrl-GET-CarePlan-from-cps-base-url.txt)
 
 
-#### Hospital X: Create Task 
+Step 3: Hospital X: Create Task 
 assumption no CarePlan was found (so no Task.basedOn), create a Bundle with a new Task and a copy of the referred ServiceRequest and Condition:
-3. [cUrl POST Bundle-cps-bundle-01 to cps-base-url](cUrl-POST-Bundle-cps-bundle-01-to-cps-base-url.txt), payload: [Bundle-cps-bundle-01](Bundle-cps-bundle-01.json)
+- [cUrl POST Bundle-cps-bundle-01 to cps-base-url](cUrl-POST-Bundle-cps-bundle-01-to-cps-base-url.txt), payload: [Bundle-cps-bundle-01](Bundle-cps-bundle-01.json)
 
 
-#### CarePlanService: Create subscriptions, careplan, careteam and notifications
-4. Multiple transactions:  
+Step 4: CarePlanService: Create subscriptions, careplan, careteam and notifications
     
-   1. [cUrl POST Subscription-cps-sub-medicalservicecentre to cps-base-url](cUrl-POST-Subscription-cps-sub-medicalservicecentre-to-cps-base-url.txt), payload: [Subscription-cps-sub-medicalservicecentre](Subscription-cps-sub-medicalservicecentre.json)
-   1. [cUrl POST Subscription-cps-sub-hospitalx to cps-base-url](cUrl-POST-Subscription-cps-sub-hospitalx-to-cps-base-url.txt), payload: [Subscription-cps-sub-hospitalx](Subscription-cps-sub-hospitalx.json)
-   1. [cUrl POST CareTeam-cps-careteam-01 to cps-base-url](cUrl-POST-CareTeam-cps-careteam-01-to-cps-base-url.txt), payload: [CareTeam-cps-careteam-01](CareTeam-cps-careteam-01.json)
-   1. [cUrl POST CarePlan-cps-careplan-01 to cps-base-url](cUrl-POST-CarePlan-cps-careplan-01-to-cps-base-url.txt), payload: [CarePlan-cps-careplan-01](CarePlan-cps-careplan-01.json)
-5. [cUrl POST Bundle-notification-hospitalx-01 to cps-base-url](cUrl-POST-Bundle-notification-hospitalx-01-to-cps-base-url.txt), payload: [Bundle-notification-hospitalx-01](Bundle-notification-hospitalx-01.json)
-6. [cUrl POST Bundle-notification-msc-01 to cps-base-url](cUrl-POST-Bundle-notification-msc-01-to-cps-base-url.txt), payload: [Bundle-notification-msc-01](Bundle-notification-msc-01.json)
+- [cUrl POST Subscription-cps-sub-medicalservicecentre to cps-base-url](cUrl-POST-Subscription-cps-sub-medicalservicecentre-to-cps-base-url.txt), payload: [Subscription-cps-sub-medicalservicecentre](Subscription-cps-sub-medicalservicecentre.json)
+- [cUrl POST Subscription-cps-sub-hospitalx to cps-base-url](cUrl-POST-Subscription-cps-sub-hospitalx-to-cps-base-url.txt), payload: [Subscription-cps-sub-hospitalx](Subscription-cps-sub-hospitalx.json)
+- [cUrl POST CareTeam-cps-careteam-01 to cps-base-url](cUrl-POST-CareTeam-cps-careteam-01-to-cps-base-url.txt), payload: [CareTeam-cps-careteam-01](CareTeam-cps-careteam-01.json)
+- [cUrl POST CarePlan-cps-careplan-01 to cps-base-url](cUrl-POST-CarePlan-cps-careplan-01-to-cps-base-url.txt), payload: [CarePlan-cps-careplan-01](CarePlan-cps-careplan-01.json)
+
+Step 5: CarePlanService: notify hospital X
+
+- [cUrl POST Bundle-notification-hospitalx-01 to cps-base-url](cUrl-POST-Bundle-notification-hospitalx-01-to-cps-base-url.txt), payload: [Bundle-notification-hospitalx-01](Bundle-notification-hospitalx-01.json)
+
+Step 6: CarePlanService: notify medicalservicecentre
+- [cUrl POST Bundle-notification-msc-01 to cps-base-url](cUrl-POST-Bundle-notification-msc-01-to-cps-base-url.txt), payload: [Bundle-notification-msc-01](Bundle-notification-msc-01.json)
 
 
 
-#### MedicalServiceCentre: Get Task, Create sub-Task with Questionnaire (enrollment criteria)
+Step 20: MedicalServiceCentre: Get Task, Create sub-Task with Questionnaire (enrollment criteria)
 
 get the Task and referenced data
+- [cUrl GET Task from cps-base-url](cUrl-GET-cps-task-01-from-cps-base-url.txt)
+- [cUrl GET ServiceRequest from cps-base-url](cUrl-GET-cps-servicerequest-telemonitoring-from-cps-base-url.txt)
+- [cUrl GET Condition from cps-base-url](cUrl-GET-cps-heartfailure-from-cps-base-url.txt)
 
-20. Multiple transactions:  
-    1. [cUrl GET Task from cps-base-url](cUrl-GET-cps-task-01-from-cps-base-url.txt)
-    1. [cUrl GET ServiceRequest from cps-base-url](cUrl-GET-cps-servicerequest-telemonitoring-from-cps-base-url.txt)
-    1. [cUrl GET Condition from cps-base-url](cUrl-GET-cps-heartfailure-from-cps-base-url.txt)
-
-post bundle with new (sub-) task that contains a questionnaire
-22. [cUrl POST Bundle-cps-bundle-02 to cps-base-url](cUrl-POST-Bundle-cps-bundle-02-to-cps-base-url.txt), payload: [Bundle-cps-bundle-02](Bundle-cps-bundle-02.json)
+Step 22: post bundle with new (sub-) task that contains a questionnaire
+- [cUrl POST Bundle-cps-bundle-02 to cps-base-url](cUrl-POST-Bundle-cps-bundle-02-to-cps-base-url.txt), payload: [Bundle-cps-bundle-02](Bundle-cps-bundle-02.json)
 
 
-#### CarePlanService: notify hospital X
-23. [cUrl POST Bundle-notification-hospitalx-02 to cps-base-url](cUrl-POST-Bundle-notification-hospitalx-02-to-cps-base-url.txt), payload: [Bundle-notification-hospitalx-02](Bundle-notification-hospitalx-02.json)
+Step 23: CarePlanService: notify hospital X
+- [cUrl POST Bundle-notification-hospitalx-02 to cps-base-url](cUrl-POST-Bundle-notification-hospitalx-02-to-cps-base-url.txt), payload: [Bundle-notification-hospitalx-02](Bundle-notification-hospitalx-02.json)
 
 
-#### Hospital X: Get sub-task, Update sub-Task with QuestionnaireResponse (enrollment criteria)
+Step 24: Hospital X: Get sub-task, Update sub-Task with QuestionnaireResponse (enrollment criteria)
 get sub-task and questionnaire
 
-24. Multiple transactions: 
-    1. [cUrl GET Task from cps-base-url](cUrl-GET-cps-task-02-from-cps-base-url.txt)
-    1. [cUrl GET Questionnaire from cps-base-url](cUrl-GET-cps-questionnaire-telemonitoring-enrollment-criteria-from-cps-base-url.txt)
+- [cUrl GET Task from cps-base-url](cUrl-GET-cps-task-02-from-cps-base-url.txt)
+- [cUrl GET Questionnaire from cps-base-url](cUrl-GET-cps-questionnaire-telemonitoring-enrollment-criteria-from-cps-base-url.txt)
 
-fill in QuestionnaireResponse and update the (sub-)Task
-26. [cUrl POST Bundle-cps-bundle-03 to cps-base-url](cUrl-POST-Bundle-cps-bundle-03-to-cps-base-url.txt), payload: [Bundle-cps-bundle-03](Bundle-cps-bundle-03.json)
-
-
-#### CarePlanService: notify medicalservicecentre
-27. [cUrl POST Bundle-notification-msc-02 to cps-base-url](cUrl-POST-Bundle-notification-msc-02-to-cps-base-url.txt), payload: [Bundle-notification-msc-02](Bundle-notification-msc-02.json)
+Step 26: fill in QuestionnaireResponse and update the (sub-)Task
+- [cUrl POST Bundle-cps-bundle-03 to cps-base-url](cUrl-POST-Bundle-cps-bundle-03-to-cps-base-url.txt), payload: [Bundle-cps-bundle-03](Bundle-cps-bundle-03.json)
 
 
+Step 27:  CarePlanService: notify medicalservicecentre
+- [cUrl POST Bundle-notification-msc-02 to cps-base-url](cUrl-POST-Bundle-notification-msc-02-to-cps-base-url.txt), payload: [Bundle-notification-msc-02](Bundle-notification-msc-02.json)
 
-#### MedicalServiceCentre: Task accepted & Create sub-Task with Questionnaire (patient/practitioner details)
+
+
+Step 42:  MedicalServiceCentre: Task accepted & Create sub-Task with Questionnaire (patient/practitioner details)
 
 post bundle with new (sub-) task that contains a questionnaire  
 
-42. Multiple transactions: 
-    1. [cUrl GET Task from cps-base-url](cUrl-GET-cps-task-01-from-cps-base-url.txt)
-    1. [cUrl POST Bundle-cps-bundle-04 to cps-base-url](cUrl-POST-Bundle-cps-bundle-04-to-cps-base-url.txt), payload: [Bundle-cps-bundle-04](Bundle-cps-bundle-04.json)
+- [cUrl GET Task from cps-base-url](cUrl-GET-cps-task-01-from-cps-base-url.txt)
+- [cUrl POST Bundle-cps-bundle-04 to cps-base-url](cUrl-POST-Bundle-cps-bundle-04-to-cps-base-url.txt), payload: [Bundle-cps-bundle-04](Bundle-cps-bundle-04.json)
 
-#### CarePlanService: update CarePlan/CareTeam, notify hospital X and medicalservicecentre
-43. [cUrl POST Bundle-cps-bundle-07 to cps-base-url](cUrl-POST-Bundle-cps-bundle-07-to-cps-base-url.txt), payload: [Bundle-cps-bundle-07](Bundle-cps-bundle-07.json)
+Step 43:  CarePlanService: update CarePlan/CareTeam, notify hospital X and medicalservicecentre
+- [cUrl POST Bundle-cps-bundle-07 to cps-base-url](cUrl-POST-Bundle-cps-bundle-07-to-cps-base-url.txt), payload: [Bundle-cps-bundle-07](Bundle-cps-bundle-07.json)
+
+Step 44: 
+- [cUrl POST Bundle-notification-hospitalx-11 to cps-base-url](cUrl-POST-Bundle-notification-hospitalx-11-to-cps-base-url.txt), payload: [Bundle-notification-hospitalx-11](Bundle-notification-hospitalx-11.json)
+
+Step 45: 
+- [cUrl POST Bundle-notification-msc-11 to cps-base-url](cUrl-POST-Bundle-notification-msc-11-to-cps-base-url.txt), payload: [Bundle-notification-msc-11](Bundle-notification-msc-11.json)
 
 
-44. [cUrl POST Bundle-notification-hospitalx-11 to cps-base-url](cUrl-POST-Bundle-notification-hospitalx-11-to-cps-base-url.txt), payload: [Bundle-notification-hospitalx-11](Bundle-notification-hospitalx-11.json)
-
-45. [cUrl POST Bundle-notification-msc-11 to cps-base-url](cUrl-POST-Bundle-notification-msc-11-to-cps-base-url.txt), payload: [Bundle-notification-msc-11](Bundle-notification-msc-11.json)
-
-
-#### Hospital X: Update sub-Task with QuestionnaireResponse (patient/practitioner details)
+Step 48:  Hospital X: Update sub-Task with QuestionnaireResponse (patient/practitioner details)
 get sub-task and questionnaire
 
-48. Multiple transactions: 
-    1. [cUrl GET Task from cps-base-url](cUrl-GET-cps-task-03-from-cps-base-url.txt)
-    1. [cUrl GET Questionnaire patient details from cps-base-url](cUrl-GET-cps-questionnaire-patient-details-from-cps-base-url.txt)
-    1. [cUrl GET Questionnaire practitioner details from cps-base-url](cUrl-GET-cps-questionnaire-practitioner-details-from-cps-base-url.txt)
+- [cUrl GET Task from cps-base-url](cUrl-GET-cps-task-03-from-cps-base-url.txt)
+- [cUrl GET Questionnaire patient details from cps-base-url](cUrl-GET-cps-questionnaire-patient-details-from-cps-base-url.txt)
+- [cUrl GET Questionnaire practitioner details from cps-base-url](cUrl-GET-cps-questionnaire-practitioner-details-from-cps-base-url.txt)
+
 fill in QuestionnaireResponse and update the (sub-)Task
+- [cUrl POST Bundle-cps-bundle-05 to cps-base-url](cUrl-POST-Bundle-cps-bundle-05-to-cps-base-url.txt), payload: [Bundle-cps-bundle-05](Bundle-cps-bundle-05.json)
 
-    1. [cUrl POST Bundle-cps-bundle-05 to cps-base-url](cUrl-POST-Bundle-cps-bundle-05-to-cps-base-url.txt), payload: [Bundle-cps-bundle-05](Bundle-cps-bundle-05.json)
-
-#### CarePlanService: notify medicalservicecentre
-49. [cUrl POST Bundle-notification-msc-03 to cps-base-url](cUrl-POST-Bundle-notification-msc-03-to-cps-base-url.txt), payload: [Bundle-notification-msc-03](Bundle-notification-msc-03.json)
+Step 49:  CarePlanService: notify medicalservicecentre
+- [cUrl POST Bundle-notification-msc-03 to cps-base-url](cUrl-POST-Bundle-notification-msc-03-to-cps-base-url.txt), payload: [Bundle-notification-msc-03](Bundle-notification-msc-03.json)

@@ -1,0 +1,80 @@
+@startuml usecase-view-all-data-merge
+
+skinparam roundcorner 20
+skinparam defaultFontName Arial 
+!pragma teoz true
+' Care@Home #c1dad6
+' Dr Greene #81a594
+' Hospital X #e8d0a9
+' MedicalServiceCentre #acd1e9  
+' brown #b7afa3
+' very light blue #f5fafa
+' darker blue #6d929b
+
+box Care@Home #c1dad6 
+    actor "Hilda\nHouse" as Practitioner1
+    participant "Care Plan Contributor" as CPC1 #LightGray
+    participant "<font color=white>Care Plan Service\n<font color=white>(provided by broker)" as CPS1 #Gray
+end box
+
+box MedicalServiceCentre #acd1e9
+    participant "<font color=white>Care Plan Service" as CPS2 #Gray
+end box
+
+box Hospital X #e8d0a9 
+    actor "Caroline \nvan Dijk" as Practitioner3
+    participant "Care Plan Contributor" as CPC3 #LightGray
+    participant "Task manager" as EHR3
+end box
+
+
+
+
+activate Practitioner1
+autonumber
+Practitioner1 -> CPC1 : Start adding\ncare providers\n for client
+& CPC1 -> CPS1 : Find/select CarePlan
+
+CPC1 -> CPS1 : Create Tasks\n referring Request,\n and CarePlan (if any)
+& CPS1 -> CPS1  : Update CareTeam, CarePlan\n and Subscriptions
+CPS1 -> CPC1 : Notify CareTeam, CarePlan
+
+& note right Practitioner3 #WhiteSmoke
+<color #DarkSlateGray>CarePlan mergers are
+ <color #DarkSlateGray>work-in-progress...
+end note
+
+autonumber 20
+
+CPS1 -> CPC3  : Notify Task created
+& CPC3 -> EHR3  : Notify Task created
+EHR3 -> EHR3 : evaluate Task\n (required data,\n capacity, etc)
+autonumber 300
+EHR3 -> CPC3 : multiple CarePlans\n for patient,\n ask merge approval Hospital X 
+& CPC3 -> CPS2 : Create (sub-)Task2: do \n  Questionnaire 'merge CarePlans'
+CPS2 -> CPC3 : Notify Task2 created
+& CPC3 -> EHR3 : Notify Task2 created
+EHR3 -> EHR3 : evaluate Task2
+& EHR3 -> Practitioner3 : Present Questionnaire\n(merge CarePlan X & Y?)
+Practitioner3 -> CPC3 : Complete\n QuestionnaireResponse
+CPC3 -> CPS2 : Update Task2: Add\n QuestionnaireResponse
+CPS2 -> CPC3  : Notify Task2 updated
+& CPC3 -> EHR3  : Notify Task2 updated
+EHR3 -> EHR3 : evaluate Task2
+
+EHR3 -> CPC3 : multiple CarePlans\n for patient,\n ask merge approval Care@Home 
+& CPC3 -> CPS1 : Create (sub-sub-)Task3: do \n  Questionnaire 'merge CarePlans'
+& CPS1 -> CPC1 : Notify Task3 created
+& CPC1 -> Practitioner1 : Present Questionnaire\n(merge CarePlan X & Y?)
+Practitioner1 -> CPC1 : Complete\n QuestionnaireResponse
+& CPC1 -> CPS1 : Update Task3: Add\n QuestionnaireResponse
+& CPS1 -> CPC3  : Notify Task3 updated
+& CPC3 -> EHR3  : Notify Task3 updated
+EHR3 -> EHR3 : evaluate Task3
+EHR3 -> CPC3 : merge approved
+CPC3 -> CPS2 : merge CarePlan X & Y
+CPS2 -> CPS1 : Notify merge CarePlan X & Y
+CPS1 -> CPS1 : deactivate CarePlan Y
+
+
+@enduml

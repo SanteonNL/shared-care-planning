@@ -2,7 +2,7 @@
 
 #### Community nurse creates CarePlan/CareTeam and retrieves data
 
-A Community nurse, Hilda House, is seeing a new client called: Cedric Collins. Hilda was told that Cedric was discharged from a hospital after surgery. Hilda decides to search for Cedric's data at the hospital and General Practitioner. She takes her tablet, logs in, opens Cedric's dossier and asks Cedric for the names of his GP and the hospital and if he wants to share the GP/hospital data with her. In the 'care team' tab of the dossier, she adds/selects the GP and the hospital. During this action, the GP-system responds with (small) questionnaire: "To add GP Dr. Greene to your client's care team, please provide the 6-digit number that was send to your client via sms/email" Cedric takes his phone and gives Hilda the 6-digit number. Cedric's GP/Hospital-data is now showing up in the appropriate sections of the dossier. If needed, Hilda can see what the original source of the data is.
+A Community nurse, Hilda House, is seeing a new client called: Cedric Collins. Hilda was told that Cedric was discharged from a hospital after surgery. Hilda decides to search for Cedric's data at the hospital and General Practitioner. She takes her tablet, logs in, opens Cedric's dossier and asks Cedric for the names of his GP and the hospital and if he wants to share the GP/hospital data with her. In the 'care team' tab of the dossier, she adds/selects 'GP Dr. Greene' and 'Hospital X'. Just after this action, the GP-system responds with (small) questionnaire: "To add GP Dr. Greene to your client's care team, please provide the 6-digit number that was send to your client via sms/email" Cedric takes his phone and gives Hilda the 6-digit number. Cedric's GP/Hospital-data is now showing up in the appropriate sections of the dossier. If needed, Hilda can see what the original source of the data is.
 
 > In the background, Hilda's EHR is performing a number of actions: 
 > 1. The service endpoints of the care providers (GP & hospital) are looked up in the local provider directory
@@ -83,8 +83,35 @@ NutsEmployeeCredential
 ##### Search narrowing
 search narrowing has to be performed by data holder according to table.
 
-### Transactions
+### Transactions 'Community nurse creates CarePlan/CareTeam and retrieves data'
 
 <div>
 {% include usecase-view-all-data.svg %}
 </div>
+
+Step 2: Care@Home: Find existing 'Shared' CarePlan for Patient
+- [cUrl GET CarePlan from cps-base-url](cUrl-GET-CarePlan-from-cps-base-url.txt)
+
+
+Step 3: Care@Home: Create Task 
+assumption no CarePlan was found (so no Task.basedOn), create a Bundle with a new Task and a copy of the referred ServiceRequest and Condition:
+- [cUrl POST Bundle-cps-bundle-01 to cps-base-url](cUrl-POST-Bundle-cps-bundle-01-to-cps-base-url.txt), payload: [Bundle-cps-bundle-01](Bundle-cps-bundle-01.json)
+
+Step 4-infinite: WIP
+
+
+### Transactions 'GP using the CareTeam'
+
+<div>
+{% include usecase-view-all-data-gp.svg %}
+</div>
+
+Step 1-infinite: WIP
+
+### Transactions 'But what if....multiple overlapping CarePlans/CareTeams?'
+
+<div>
+{% include usecase-view-all-data-merge.svg %}
+</div>
+
+Step 1-infinite: WIP
