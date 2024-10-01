@@ -1,0 +1,29 @@
+@startuml overview-getting-data-from-careteam-members
+
+!pragma teoz true
+
+
+
+box Care Provider 2
+    actor "Practitioner" as Practitioner2
+    participant "Care Plan Contributor (CPC)" as CPC2
+end box
+box Care Provider 1
+    participant "Care Plan Service (CPS)" as CPS
+    participant "Care Plan Contributor (CPC)" as CPC1
+end box
+hide footbox
+
+
+
+Practitioner2 -> CPC2 : Steps <b>1-4</b>
+
+CPC2 -> CPC1 : <b>5</b> request health data of patient, \nthis is a call made from a CPC data requester to a CPC data holder, \nproxied through to the related CPS \nThe request must be made with an X-SCP-Context header set with the URL of the <color #purple>CareTeam<color #purple> the requester is a part of
+CPC1 -> CPS : <b>6</b> request (using the ID in the supplied header) <color #purple>CarePlan, \nCareTeam<color #purple>
+CPS -->  CPC1 :  <b>7</b> return <color #purple>CarePlan and all associated CareTeams<color #purple>
+CPC1 -->  CPC1 : <b>8</b> check authorization: \n 1) Validate that the requester is a participant of a <color #purple>CareTeam<color #purple> within the <color #purple>CarePlan<color #purple> \n 2) Validate that the participant has a valid start date, and that it has not expired if it has an end date
+CPC1 -> CPS : proxy request
+CPS -->  CPC1 :  return requested data
+CPC1 -->  CPC2 : <b>9</b> health data of patient
+
+@enduml
