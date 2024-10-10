@@ -3,7 +3,7 @@
 Instance: cps-task-01
 InstanceOf: SCPTask
 Usage: #example
-Title: "1.01.1 Task creation"
+Title: "1.03.1 Task creation"
 Description: "Initiation of a task for telemonitoring"
 * meta.versionId = "1"
 * status = #requested
@@ -24,7 +24,7 @@ Description: "Initiation of a task for telemonitoring"
 Instance: cps-bundle-01
 InstanceOf: Bundle
 Usage: #example
-Title: "1.01.2 Bundle"
+Title: "1.03.2 Bundle"
 Description: "Bundle to initiate telemonitoring"
 * meta.versionId = "1"
 * type = #transaction
@@ -38,7 +38,7 @@ Description: "Bundle to initiate telemonitoring"
 Instance: cps-servicerequest-telemonitoring
 InstanceOf: ServiceRequest
 Usage: #example
-Title: "1.01.3 ServiceRequest Telemonitoring"
+Title: "1.03.3 ServiceRequest Telemonitoring"
 Description: "copy of data in EHR of Hospital X"
 * meta.versionId = "1"
 * meta.lastUpdated = "2024-09-03T12:00:00Z"
@@ -57,7 +57,7 @@ Description: "copy of data in EHR of Hospital X"
 Instance: cps-heartfailure
 InstanceOf: Condition
 Usage: #example
-Title: "1.01.4 Condition heartfailure"
+Title: "1.03.4 Condition heartfailure"
 Description: "copy of data in EHR of Hospital X"
 * meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem"
 * meta.versionId = "1"

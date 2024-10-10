@@ -1,7 +1,27 @@
+Instance: cps-task-01-02
+InstanceOf: SCPTask
+Usage: #inline
+Title: "1.42.1 Task acceptance"
+Description: "Updating a task for telemonitoring to status accepted"
+* meta.versionId = "2"
+* status = #accepted
+* intent = #order
+* code = $task-code#fullfill
+* focus.identifier.system = "2.16.528.1.1007.3.3.21514.ehr.orders"
+* focus.identifier.value = "99534756439"
+* reasonReference.identifier.system = "2.16.528.1.1007.3.3.21514.ehr.diagnoses"
+* reasonReference.identifier.value = "56476575765"
+* for.identifier.system = $bsn
+* for.identifier.value = "111222333"
+* requester.identifier.system = $uzi
+* requester.identifier.value = "UZI-1"
+* owner.identifier.system = $ura
+* owner.identifier.value = "URA-2"
+
 Instance: cps-task-03
 InstanceOf: SCPTask
 Usage: #example
-Title: "1.07.1 (sub-)Task 3 creation"
+Title: "1.42.2 (sub-)Task 3 creation"
 Description: "Ask for extra contact information for telemonitoring"
 * meta.versionId = "1"
 * basedOn = Reference(cps-careplan-01)
@@ -25,10 +45,11 @@ Description: "Ask for extra contact information for telemonitoring"
 Instance: cps-bundle-04
 InstanceOf: Bundle
 Usage: #example
-Title: "1.07.2 Bundle"
+Title: "1.42.3 Bundle"
 Description: "Bundle to ask for contact information for telemonitoring"
 * meta.versionId = "1"
 * type = #transaction
+* insert BundleEntry(cps-task-01-02, #PUT, Task/cps-task-01)
 * insert BundleEntry(cps-task-03, #PUT, Task/cps-task-03)
 * insert BundleEntry(cps-questionnaire-patient-details, #PUT, Questionnaire/2.16.840.1.113883.2.4.3.11.60.909.26.34-2)
 * insert BundleEntry(cps-questionnaire-practitioner-details, #PUT, Questionnaire/2.16.840.1.113883.2.4.3.11.60.909.26.34-3)
@@ -38,7 +59,7 @@ Description: "Bundle to ask for contact information for telemonitoring"
 Instance: cps-questionnaire-patient-details
 InstanceOf: Questionnaire
 Usage: #example
-Title: "1.07.3 Questionnaire for patient details"
+Title: "1.42.4 Questionnaire for patient details"
 Description: "copy of MSC Questionnaire"
 * meta.lastUpdated = "2024-09-02T13:40:17Z"
 * meta.source = "http://decor.nictiz.nl/fhir/4.0/sansa-"
@@ -242,7 +263,7 @@ Description: "copy of MSC Questionnaire"
 Instance: cps-questionnaire-practitioner-details
 InstanceOf: Questionnaire
 Usage: #example
-Title: "1.07.4 Questionnaire for practitioner details"
+Title: "1.42.5 Questionnaire for practitioner details"
 Description: "copy of MSC Questionnaire"
 * meta.lastUpdated = "2024-09-02T13:40:17Z"
 * meta.source = "http://decor.nictiz.nl/fhir/4.0/sansa-"

@@ -16,6 +16,18 @@ source input/images/cUrl-POST-Nuts-create-did-and-vcs.sh
 # CPC2_ACCESS_TOKEN
 source input/images/cUrl-POST-Nuts-access_tokens.sh
 
+# The FHIR transactions can be tested (partly) by using curl statements that POST/PUT/GET the FHIR example instances in Shared Care Planning to a FHIR server.
+# The FHIR instances are generated in JSON format and from FHIR Shorthand (.fsh) files by Sushi
+
+# To install sushi, you need NodeJS, npm and sushi:
+  #  curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - &&\
+  #  sudo apt-get install -y nodejs
+  #  sudo npm install -g npm@latest
+  #  sudo npm install -g fsh-sushi
+
+# To generate the FHIR instances, run the following command (in the root of the repository):
+# ~/shared-care-planning$ sushi
+
 # Defining the environment variables for the curl statements
 export CPS_BASE_URL="http://localhost:8090/fhir/"
 export CPC1_BASE_URL="http://localhost:8190/fhir/"

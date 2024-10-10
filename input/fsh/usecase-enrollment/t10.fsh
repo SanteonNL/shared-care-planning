@@ -1,6 +1,6 @@
 Instance: notification-msc-03
 InstanceOf: Bundle
-Title: "1.10 notification bundle for MSC"
+Title: "1.49 notification bundle for MSC"
 Usage: #example
 * meta.profile = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription-notification-r4"
 * type = #history

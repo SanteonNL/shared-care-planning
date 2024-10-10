@@ -1,0 +1,102 @@
+@startuml usecase-view-all-data
+
+skinparam roundcorner 20
+skinparam defaultFontName Arial 
+!pragma teoz true
+' Care@Home #c1dad6
+' Dr Greene #81a594
+' Hospital X #e8d0a9
+' MedicalServiceCentre #acd1e9  
+' brown #b7afa3
+' very light blue #f5fafa
+' darker blue #6d929b
+
+box Care@Home #c1dad6 
+    actor "Hilda\nHouse" as Practitioner1
+    participant "Care Plan Contributor" as CPC1 #LightGray
+    participant "<font color=white>Care Plan Service\n<font color=white>(provided by broker)" as CPS #Gray
+end box
+
+box General Practitioner\n Dr Greene #81a594
+    participant "Care Plan Contributor" as CPC2 #LightGray
+    participant "Task manager" as EHR2
+end box
+
+box Hospital X #e8d0a9 
+    participant "Care Plan Contributor" as CPC3 #LightGray
+    participant "Task manager" as EHR3
+end box
+actor "Cedric\nCollins" as Patient
+participant "External consent\n registry" as Consent
+
+activate Practitioner1
+autonumber
+Practitioner1 -> CPC1 : Start adding\ncare providers\n for client
+& CPC1 -> CPS : Find/select CarePlan
+
+CPC1 -> CPS : Create Tasks\n referring Request,\n and CarePlan (if any)
+& CPS -> CPS  : Update CareTeam, CarePlan\n and Subscriptions
+CPS -> CPC1 : Notify CareTeam, CarePlan
+
+autonumber 20
+group Add Hospital X to CareTeam
+CPS -> CPC3  : Notify Task created
+& CPC3 -> EHR3  : Notify Task created
+EHR3 -> EHR3 : evaluate Task\n (required data,\n capacity, etc)
+EHR3 -> Consent : check\nconsent
+return ok
+EHR3 -> EHR3 :evaluate Task:\n status 'accepted'
+& EHR3 -> CPC3 :Task accepted
+& CPC3 -> CPS :Task accepted
+CPS -> CPS  : Update CareTeam, CarePlan
+CPS o-> CPC1 :Notify Task accepted\n CareTeam updated\n CarePlan updated
+& CPS o-> CPC3 :Notify CareTeam updated\n CarePlan updated
+& CPC1 -> Practitioner1 :Hospital X successfully\n added to care team
+end
+
+autonumber 40
+group Add GP Dr Greene to CareTeam
+CPS -> CPC2  : Notify Task created
+& CPC2 -> EHR2  : Notify Task created
+ EHR2 -> EHR2 : evaluate Task\n (required data,\n capacity, etc)
+EHR2 o-> Patient : sms "give code 123456\n to your practitioner if you want\n to share your healthdata at GP Dr Greene"
+&EHR2 o-> CPC2 : Send consent-code-\nchallenge questionnaire
+& CPC2 -> CPS  : Create (sub-)Task2: do\n  Questionnaire\n 'consent-code-challenge'
+& CPS -> CPC1 : Notify Task2 created
+& CPC1 -> Practitioner1 : Present Questionnaire\n(prefill data from EHR)
+Patient -> Practitioner1 : give code 123456
+
+Practitioner1 -> CPC1 : Complete\n QuestionnaireResponse
+& CPC1 -> CPS : Update Task2: Add\n QuestionnaireResponse
+& CPS -> CPC2 : Notify Task2 update
+& CPC2 -> EHR2 : Notify Task2 update
+
+EHR2 -> EHR2 :evaluate Task:\n status 'accepted'
+& EHR2 -> CPC2 :Task accepted
+& CPC2 -> CPS :Task accepted
+CPS -> CPS  : Update CareTeam, CarePlan
+CPS o-> CPC1 :Notify Task accepted\n CareTeam updated\n CarePlan updated
+& CPC1 -> Practitioner1 :GP Dr. Greene successfully\n added to care team
+& CPS o-> CPC2 : Notify CareTeam updated\n CarePlan updated
+CPS -> CPC3 :Notify CareTeam updated\n CarePlan updated
+
+end 
+
+autonumber 80
+Practitioner1 -> CPC1 : show me\n data of patient in dossier
+CPC1 -> CPC1 : lookup url\n of CarePlan
+CPC1 -> CPS : request CarePlan, \nCareTeam
+CPS -->  CPC1 : return CarePlan, \nCareTeam
+CPC1 -> CPC2 : request health data of patient
+CPC2 -> CPS : request CarePlan, \nCareTeam, Tasks
+CPS -->  CPC2 : return CarePlan, \nCareTeam, Tasks
+CPC2 -->  CPC2 : check\nauthorization
+CPC2 -->  CPC1 : health data of patient
+CPC1 -> CPC3 : request health data of patient
+CPC3 -> CPS : request CarePlan, \nCareTeam, Tasks
+CPS -->  CPC3 : return CarePlan, \nCareTeam, Tasks
+CPC3 -->  CPC3 : check\nauthorization
+CPC3 -->  CPC1 : health data of patient
+CPC1 -> Practitioner1 : present Patient data
+
+@enduml

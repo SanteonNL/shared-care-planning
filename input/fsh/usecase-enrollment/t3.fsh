@@ -1,7 +1,7 @@
 Instance: cps-task-02
 InstanceOf: SCPTask
 Usage: #example
-Title: "1.03.1 (sub-)Task 2 creation"
+Title: "1.22.1 (sub-)Task 2 creation"
 Description: "Ask for extra information for telemonitoring"
 * meta.versionId = "1"
 * basedOn = Reference(cps-careplan-01)
@@ -21,7 +21,7 @@ Description: "Ask for extra information for telemonitoring"
 Instance: cps-bundle-02
 InstanceOf: Bundle
 Usage: #example
-Title: "1.03.2 Bundle"
+Title: "1.22.2 Bundle"
 Description: "Bundle to ask for extra information for telemonitoring"
 * meta.versionId = "1"
 * type = #transaction
@@ -33,7 +33,7 @@ Description: "Bundle to ask for extra information for telemonitoring"
 Instance: cps-questionnaire-telemonitoring-enrollment-criteria
 InstanceOf: Questionnaire
 Usage: #example
-Title: "1.03.3 Questionnaire for telemonitoring - enrollment criteria"
+Title: "1.22.3 Questionnaire for telemonitoring - enrollment criteria"
 Description: "Questionnaire for enrollment criteria for telemonitoring"
 * meta.lastUpdated = "2024-09-02T13:40:17Z"
 * meta.source = "http://decor.nictiz.nl/fhir/4.0/sansa-"

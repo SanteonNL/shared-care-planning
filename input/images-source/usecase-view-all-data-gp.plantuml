@@ -1,0 +1,49 @@
+@startuml usecase-view-all-data-gp
+
+skinparam roundcorner 20
+skinparam defaultFontName Arial 
+!pragma teoz true
+' Care@Home #c1dad6
+' Dr Greene #81a594
+' Hospital X #e8d0a9
+' MedicalServiceCentre #acd1e9  
+' brown #b7afa3
+' very light blue #f5fafa
+' darker blue #6d929b
+
+box Care@Home #c1dad6 
+    
+    participant "Care Plan Contributor" as CPC2 #LightGray
+    participant "<font color=white>Care Plan Service\n<font color=white>(provided by broker)" as CPS #Gray
+end box
+
+box General Practitioner\n Dr Greene #81a594
+    actor "Gregory\nGreene" as Practitioner1
+    participant "Care Plan Contributor" as CPC1 #LightGray
+end box
+
+box Hospital X #e8d0a9 
+    participant "Care Plan Contributor" as CPC3 #LightGray
+end box
+
+activate Practitioner1
+autonumber
+
+autonumber 200
+Practitioner1 -> CPC1 : show me\n data of patient in dossier
+CPC1 -> CPC1 : lookup url\n of CarePlan
+CPC1 -> CPS : request CarePlan, \nCareTeam
+CPS -->  CPC1 : return CarePlan, \nCareTeam
+CPC1 -> CPC2 : request health data of patient
+CPC2 -> CPS : request CarePlan, \nCareTeam, Tasks
+CPS -->  CPC2 : return CarePlan, \nCareTeam, Tasks
+CPC2 -->  CPC2 : check\nauthorization
+CPC2 -->  CPC1 : health data of patient
+CPC1 -> CPC3 : request health data of patient
+CPC3 -> CPS : request CarePlan, \nCareTeam, Tasks
+CPS -->  CPC3 : return CarePlan, \nCareTeam, Tasks
+CPC3 -->  CPC3 : check\nauthorization
+CPC3 -->  CPC1 : health data of patient
+CPC1 -> Practitioner1 : present Patient data
+
+@enduml

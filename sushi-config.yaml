@@ -87,7 +87,7 @@ pages:
     title: Use cases - Enroll patient in home monitoring
 
   usecase-view-all-data.md:
-    title: Use cases - Get data for home monitoring
+    title: Use cases - Get data for home care
 
   usecase-nursing-handoff.md:
     title: Use cases - How execute a nursing referral
@@ -131,7 +131,7 @@ menu:
     Getting data from CareTeam members: transaction-discovery.html
   Use cases:
     Enroll patient in home monitoring: usecase-enrollment.html
-    Get data for home monitoring: usecase-view-all-data.html
+    Get data for home care: usecase-view-all-data.html
     Referral/Nursing handoff: usecase-nursing-handoff.html
 
   Artifacts: artifacts.html

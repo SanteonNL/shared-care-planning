@@ -1,7 +1,7 @@
 Instance: cps-qr-telemonitoring-enrollment-criteria
 InstanceOf: QuestionnaireResponse
 Usage: #example
-Title: "1.05.1 QuestionnaireResponse for telemonitoring enrollment criteria" 
+Title: "1.26.1 QuestionnaireResponse for telemonitoring enrollment criteria" 
 Description: "Extra information for telemonitoring"
 * status = #completed
 * questionnaire = Canonical(cps-questionnaire-telemonitoring-enrollment-criteria)
@@ -20,7 +20,7 @@ Description: "Extra information for telemonitoring"
 Instance: cps-task-02-02
 InstanceOf: SCPTask
 Usage: #example
-Title: "1.05.2 (sub-)Task 2 completion"
+Title: "1.26.2 (sub-)Task 2 completion"
 Description: "Provide information for telemonitoring"
 * meta.versionId = "2"
 * basedOn = Reference(cps-careplan-01)
@@ -42,7 +42,7 @@ Description: "Provide information for telemonitoring"
 Instance: cps-bundle-03
 InstanceOf: Bundle
 Usage: #example
-Title: "1.05.3 Bundle"
+Title: "1.26.3 Bundle"
 Description: "Bundle with response for extra information for telemonitoring"
 * meta.versionId = "1"
 * type = #transaction
