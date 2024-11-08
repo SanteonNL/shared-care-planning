@@ -33,8 +33,8 @@ Description: "A task for a patient that is shared between multiple care provider
 * status from SCPTaskStatus (required) 
 //* status obeys SCPTask-state-change
 * focus MS
-* for.identifier.system 1..1
-* for.identifier.value 1..1
+* for only Reference(Patient)
+* for 1..1
 * requester.identifier.system 1..1
 * requester.identifier.value 1..1
 * owner.identifier.system 1..1

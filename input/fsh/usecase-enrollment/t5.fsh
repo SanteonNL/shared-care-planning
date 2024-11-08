@@ -37,7 +37,7 @@ Description: "Provide information for telemonitoring"
 * input[=].valueReference.identifier.system = "urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34"
 * input[=].valueReference.identifier.value = "1"
 * output[+].type = $task-input-type#Reference "Reference"
-* output[=].valueReference = Reference(urn:uuid:456)
+* output[=].valueReference = Reference(urn:uuid:cps-qr-telemonitoring-enrollment-criteria)
 
 Instance: cps-bundle-03
 InstanceOf: Bundle
@@ -46,6 +46,6 @@ Title: "1.26.3 Bundle"
 Description: "Bundle with response for extra information for telemonitoring"
 * meta.versionId = "1"
 * type = #transaction
-* insert BundleEntry(cps-task-02-02, #PUT, Task/cps-task-02)
+* insert BundleEntryWithFullurl(urn:uuid:cps-task-02-02, cps-task-02-02, #PUT, Task/cps-task-02)
 * entry.request.ifMatch = "W/\"1\""
-* insert BundleEntryWithFullurl(urn:uuid:456, cps-qr-telemonitoring-enrollment-criteria, #POST, QuestionnaireResponse)
+* insert BundleEntryWithFullurl(urn:uuid:cps-qr-telemonitoring-enrollment-criteria, cps-qr-telemonitoring-enrollment-criteria, #POST, QuestionnaireResponse)

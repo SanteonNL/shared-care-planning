@@ -1,0 +1,67 @@
+@startuml overview-task-negotiation-1-2-3-careplan
+
+skinparam roundcorner 20
+skinparam defaultFontName Arial 
+
+
+!pragma teoz true
+
+
+box Care Provider 2 #acd1e9
+    actor "Practitioner" as P2
+    participant "SCP-Contributor" as C2 #LightGray
+end box
+box Care Provider 1 #e8d0a9
+    participant "SCP-Contributor" as C1 #LightGray
+    participant "<font color=white>SCP-Service" as S1 #Gray
+end box
+box Care Provider 3 #c1dad6
+     participant "SCP-Contributor" as C3 #LightGray
+    actor "Practitioner" as P3
+end box
+
+hide footbox
+
+activate P2
+autonumber 
+P2 -> C2 : Start Request referral
+C2 -> P2 : Show CarePlans (if any)
+P2 -> C2 : Selected CarePlan
+
+& C2 -> S1 : Create Task
+' \nand CarePlan (if any)
+& S1 -> S1  : Create Subscriptions,\n update CarePlan 
+S1 -> C1 : Notify CarePlan\n updated
+ S1 o-> C2 : Notify CarePlan updated
+& S1 o-> C3  : Notify Task created
+
+autonumber 30
+& C3 -> C3 : evaluate Task:\n status 'accepted'
+
+C3 o-> P3 : Notify Task update
+& C3 o-> S1 : Update Task: \n status 'accepted'
+ S1 -> S1  : Update CareTeam
+ S1 -> C1 :Notify CareTeam\n updated
+S1 -> C2 :Notify Task accepted\n CareTeam updated
+& S1 o-> C3 :Notify CareTeam updated
+& C2 -> P2 : Your order \nis accepted
+deactivate P2
+note right P2 #WhiteSmoke
+<color #Gray>sequence diagram shortened for brevity
+end note
+
+' activate P3
+' P3 -> C3 : starting with Task
+' & C3 -> S1 : Update Task: status in-progress
+' & S1 -> C2 : Notify Task update
+' & C2 -> P2 : Notify Task update
+
+' == waiting for Task to finish ==
+' P3 -> C3 : Task completed
+' & C3 -> S1 : Update Task: status complete
+'  S1 -> S1  : Update CareTeam
+' S1 -> C2 :Notify Task update\n CareTeam updated
+' & S1 o-> C3 :Notify CareTeam updated
+' & C2 -> P2 : Notify Task update
+' deactivate P3
+@enduml

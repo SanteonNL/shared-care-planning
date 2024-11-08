@@ -1,0 +1,124 @@
+# 1) To use requests in this file, you need to install the REST Client extension in Visual Studio Code
+#
+# 2) In the settings.json of the REST Client extension, add these environment variables like so:
+# "rest-client.environmentVariables": {
+#         "$shared": {
+#             "path-to-data": "./fsh-generated/resources/"
+#         },
+#         "local": {
+#             "cps-base-url": "http://localhost:8080/fhir/",
+#             "cps-access-token": "Basic user:password",
+#             "cpc1-base-url": "https://fauxcare.com/fhir/"
+#         }
+# }
+# 
+# 3) Switch between environments by clicking on the environment name in the status bar at the bottom right of the window
+
+# Test requests for usecase enrollment 
+
+###
+
+GET {{cps-base-url}}CarePlan
+    ?category=http://snomed.info/sct%7C135411000146103 \
+Content-Type: application/json
+Authorization: {{cps-access-token}}
+
+###
+
+POST {{cps-base-url}}
+Content-Type: application/fhir+json
+Authorization: {{cps-access-token}}
+
+<@ {{path-to-data}}Bundle-cps-bundle-01.json
+
+###
+
+PUT {{cps-base-url}}Subscription/cps-sub-hospitalx 
+Content-Type: application/fhir+json
+Authorization: {{cps-access-token}}
+
+<@ {{path-to-data}}Subscription-cps-sub-hospitalx.json
+
+###
+
+PUT {{cps-base-url}}Subscription/cps-sub-medicalservicecentre  
+Content-Type: application/fhir+json
+Authorization: {{cps-access-token}}
+
+<@ {{path-to-data}}Subscription-cps-sub-medicalservicecentre.json
+
+###
+
+PUT {{cps-base-url}}CareTeam/cps-careteam-01/
+Content-Type: application/fhir+json
+Authorization: {{cps-access-token}}
+
+<@ {{path-to-data}}CareTeam-cps-careteam-01.json
+
+###
+
+PUT {{cps-base-url}}CarePlan/cps-careplan-01/
+Content-Type: application/fhir+json
+Authorization: {{cps-access-token}}
+
+<@ {{path-to-data}}CarePlan-cps-careplan-01.json
+
+
+###
+
+POST {{cps-base-url}}
+Content-Type: application/fhir+json
+Authorization: {{cps-access-token}}
+
+<@ {{path-to-data}}Bundle-cps-bundle-02.json
+
+###
+
+POST {{cps-base-url}}
+Content-Type: application/fhir+json
+Authorization: {{cps-access-token}}
+
+<@ {{path-to-data}}Bundle-cps-bundle-03.json
+
+###
+
+POST {{cps-base-url}}
+Content-Type: application/fhir+json
+Authorization: {{cps-access-token}}
+
+<@ {{path-to-data}}Bundle-cps-bundle-07.json
+
+# ###
+
+
+
+# Random requests/snippets
+
+GET {{cps-base-url}}ServiceRequest
+    ?identifier=2.16.528.1.1007.3.3.21514.ehr.orders|99534756439
+Content-Type: application/json
+Authorization: {{cps-access-token}}
+
+###
+
+GET {{cps-base-url}}Task
+    ?_id=cps-task-01
+    &_include=Task:focus
+    &_include=Task:patient
+    &_include=Task:requester
+    &_include=Task:owner
+    &_include=Task:part-of
+Content-Type: application/json
+Authorization: {{cps-access-token}}
+
+###
+DELETE {{cps-base-url}}Task/31 HTTP/1.1
+
+###
+DELETE {{cps-base-url}}ServiceRequest/32 HTTP/1.1
+
+###
+DELETE {{cps-base-url}}ServiceRequest/2.16.528.1.1007.3.3.21514.ehr.orders-99534756439 HTTP/1.1
+
+###
+DELETE {{cps-base-url}}Patient?identifier=http://fhir.nl/fhir/NamingSystem/bsn|991188226

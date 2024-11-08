@@ -36,7 +36,7 @@ Description: "Existing data in EHR of Hospital X"
 * meta.versionId = "1"
 * meta.lastUpdated = "2024-09-03T12:00:00Z"
 * id = "56476575765"
-* code = $sct#195111005 "Hartfalen"
+* code = $sct#84114007 "Hartfalen"
 * subject = Reference(urn:uuid:hospitalx-patrick) // Patient Patrick Egger
 
 
