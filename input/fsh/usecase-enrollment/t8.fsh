@@ -7,13 +7,12 @@ Description: "Add activity (Task) to CarePlan"
 * status = #active
 * intent = #order
 * category = $sct#135411000146103 "Multidisciplinary care regime"
-* subject.identifier.system = $bsn
-* subject.identifier.value = "111222333"
+* subject = Reference(cps-patient-patrick)
 * careTeam = Reference(cps-careteam-01)
-* addresses[+] = Reference(Condition/2.16.528.1.1007.3.3.21514.ehr.diagnoses-56476575765)
 * author.identifier.system = $uzi
 * author.identifier.value = "UZI-1"
-* activity[+].reference = Reference(cps-task-01)
+* activity[+].reference = Reference(Task/cps-task-01)
+* activity[+].reference = Reference(Task/cps-task-02)
 
 
 Instance: cps-careteam-01-02
@@ -23,8 +22,7 @@ Title: "1.43.2 CareTeam update"
 Description: "Add participant to CareTeam"
 * meta.versionId = "2"
 * category = $sct#135411000146103 "Multidisciplinary care regime"
-* subject.identifier.system = $bsn
-* subject.identifier.value = "111222333"
+* subject = Reference(cps-patient-patrick)
 * insert ParticipantMember($bsn, 111222333, 2024-08-27)
 * insert ParticipantMember($ura, URA-1, 2024-08-27)
 * insert ParticipantMember($ura, URA-2, 2024-08-27)
@@ -57,39 +55,32 @@ InstanceOf: Parameters
 Usage: #inline
 * meta.profile = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription-status-r4"
 * parameter[0].name = "subscription"
-* parameter[=].valueReference = Reference(cps-sub-hospitalx)
+* parameter[=].valueReference = Reference({{cps-base-url}}Subscription/cps-sub-hospitalx)
 * parameter[+].name = "status"
 * parameter[=].valueCode = #active
 * parameter[+].name = "type"
 * parameter[=].valueCode = #event-notification
 * parameter[+].name = "notification-event"
 * parameter[=].part[0].name = "event-number"
-* parameter[=].part[=].valueString = "3"
-* parameter[=].part[+].name = "timestamp"
-* parameter[=].part[=].valueInstant = "2024-05-29T11:44:13.1882432-05:01"
-* parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference(cps-task-03)
-* parameter[+].name = "notification-event"
-* parameter[=].part[0].name = "event-number"
 * parameter[=].part[=].valueString = "4"
 * parameter[=].part[+].name = "timestamp"
 * parameter[=].part[=].valueInstant = "2024-05-29T11:44:13.1882432-05:00"
 * parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference(cps-careplan-01)
+* parameter[=].part[=].valueReference = Reference({{cps-base-url}}CarePlan/cps-careplan-01)
 * parameter[+].name = "notification-event"
 * parameter[=].part[0].name = "event-number"
 * parameter[=].part[=].valueString = "5"
 * parameter[=].part[+].name = "timestamp"
 * parameter[=].part[=].valueInstant = "2024-05-29T11:44:13.1882432-05:00"
 * parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference(cps-careteam-01)
+* parameter[=].part[=].valueReference = Reference({{cps-base-url}}CareTeam/cps-careteam-01)
 * parameter[+].name = "notification-event"
 * parameter[=].part[0].name = "event-number"
 * parameter[=].part[=].valueString = "6"
 * parameter[=].part[+].name = "timestamp"
 * parameter[=].part[=].valueInstant = "2024-05-29T11:44:13.1882432-05:01"
 * parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference(cps-task-01)
+* parameter[=].part[=].valueReference = Reference({{cps-base-url}}Task/cps-task-01)
 
 Instance: notification-msc-11
 InstanceOf: Bundle
@@ -109,7 +100,7 @@ InstanceOf: Parameters
 Usage: #inline
 * meta.profile = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription-status-r4"
 * parameter[0].name = "subscription"
-* parameter[=].valueReference = Reference(cps-sub-medicalservicecentre)
+* parameter[=].valueReference = Reference({{cps-base-url}}Subscription/cps-sub-medicalservicecentre)
 * parameter[+].name = "status"
 * parameter[=].valueCode = #active
 * parameter[+].name = "type"
@@ -120,18 +111,18 @@ Usage: #inline
 * parameter[=].part[+].name = "timestamp"
 * parameter[=].part[=].valueInstant = "2024-05-29T11:44:13.1882432-05:00"
 * parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference(cps-careplan-01)
+* parameter[=].part[=].valueReference = Reference({{cps-base-url}}CarePlan/cps-careplan-01)
 * parameter[+].name = "notification-event"
 * parameter[=].part[0].name = "event-number"
 * parameter[=].part[=].valueString = "5"
 * parameter[=].part[+].name = "timestamp"
 * parameter[=].part[=].valueInstant = "2024-05-29T11:44:13.1882432-05:00"
 * parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference(cps-careteam-01)
+* parameter[=].part[=].valueReference = Reference({{cps-base-url}}CareTeam/cps-careteam-01)
 * parameter[+].name = "notification-event"
 * parameter[=].part[0].name = "event-number"
 * parameter[=].part[=].valueString = "6"
 * parameter[=].part[+].name = "timestamp"
 * parameter[=].part[=].valueInstant = "2024-05-29T11:44:13.1882432-05:01"
 * parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference(cps-task-01)
+* parameter[=].part[=].valueReference = Reference({{cps-base-url}}Task/cps-task-01)

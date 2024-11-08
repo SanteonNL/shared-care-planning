@@ -1,0 +1,76 @@
+@startuml overview-task-negotiation-1-2-base
+
+skinparam roundcorner 20
+skinparam defaultFontName Arial 
+
+
+!pragma teoz true
+
+box Care Provider 1 #e8d0a9
+    actor "Practitioner" as P1
+    participant "SCP-Contributor" as C1 #LightGray
+    participant "<font color=white>SCP-Service" as S1 #Gray
+end box
+box Care Provider 2 #acd1e9
+     participant "SCP-Contributor" as C2 #LightGray
+    actor "Practitioner" as P2
+end box
+
+hide footbox
+
+activate P1
+autonumber
+P1 -> C1 : Start Request\nreferral
+' & C1 -> S1 : Find/select CarePlan
+
+& C1 -> S1 : Create Task \n referring Request
+' \nand CarePlan (if any)
+& S1 -> S1  : Create Subscriptions
+' \nand CareTeam, CarePlan 
+' S1 o-> C1 : Notify CareTeam update,\n CarePlan update
+ S1 o-> C2  : Notify Task created
+
+
+' autonumber 10 "<font color=Gray>0"
+'  E2 -[#Gray]> E2 : <color #Gray>evaluate Task\n <color #Gray>(required data,\n <color #Gray>capacity, etc)
+' &E2 -[#Gray]> C2 : <color #Gray>Need more information
+' & C2 -[#Gray]> S1  : <color #Gray>Create (sub-)Task2: do\n <color #Gray> Questionnaire 'required data'
+' & S1 -[#Gray]> C1 : <color #Gray>Notify Task2 created
+' & C1 -[#Gray]> P1 : <color #Gray>Present Questionnaire\n<color #Gray>(prefill data from EHR)
+
+' P1 -[#Gray]> C1 : <color #Gray>Complete\n <color #Gray>QuestionnaireResponse
+' & C1 -[#Gray]> S1 : <color #Gray>Update Task2: Add\n <color #Gray>QuestionnaireResponse
+' & S1 -[#Gray]> C2 : <color #Gray>Notify Task2 update
+' & C2 -[#Gray]> E2 : <color #Gray>Notify Task2 update
+
+autonumber 30
+& C2 -> C2 : evaluate Task:\n status 'accepted'
+& note right P2 #WhiteSmoke
+<color #Gray>Accepting a Task
+ <color #Gray>may involve checking on
+ <color #Gray>required data, capacity, etc
+end note
+
+C2 o-> P2 : Notify Task update
+& C2 o-> S1 : Update Task: \n status 'accepted'
+' S1 -> S1  : Update CareTeam, CarePlan
+& S1 -> C1 :Notify Task accepted
+' \n CareTeam updated\n CarePlan updated
+' & S1 o-> C2 :Notify CareTeam updated\n CarePlan updated
+& C1 -> P1 : Your order \nis accepted
+deactivate P1
+
+== waiting for Task to start ==
+activate P2
+P2 -> C2 : starting with Task
+& C2 -> S1 : Update Task: status in-progress
+& S1 -> C1 : Notify Task update
+& C1 -> P1 : Notify Task update
+
+== waiting for Task to finish ==
+P2 -> C2 : Task completed
+& C2 -> S1 : Update Task: status complete
+& S1 -> C1 : Notify Task update
+& C1 -> P1 : Notify Task update
+deactivate P2
+@enduml

@@ -57,10 +57,8 @@ Description: "Initiation of a care plan for a patient with Heartfailure"
 * status = #active
 * intent = #order
 * category = $sct#135411000146103 "Multidisciplinary care regime"
-* subject.identifier.system = $bsn
-* subject.identifier.value = "111222333"
+* subject = Reference(cps-patient-patrick)
 * careTeam = Reference(cps-careteam-01)
-* addresses[+] = Reference(Condition/2.16.528.1.1007.3.3.21514.ehr.diagnoses-56476575765)
 * author.identifier.system = $uzi
 * author.identifier.value = "UZI-1"
 
@@ -97,7 +95,7 @@ Usage: #example
 Title: "1.05.2 notification bundle parameter for Hospital X"
 * meta.profile = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription-status-r4"
 * parameter[0].name = "subscription"
-* parameter[=].valueReference = Reference(cps-sub-hospitalx)
+* parameter[=].valueReference = Reference({{cps-base-url}}Subscription/cps-sub-hospitalx)
 * parameter[+].name = "status"
 * parameter[=].valueCode = #active
 * parameter[+].name = "type"
@@ -108,14 +106,14 @@ Title: "1.05.2 notification bundle parameter for Hospital X"
 * parameter[=].part[+].name = "timestamp"
 * parameter[=].part[=].valueInstant = "2024-05-29T11:44:13.1882432-05:00"
 * parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference(cps-careplan-01)
+* parameter[=].part[=].valueReference = Reference({{cps-base-url}}CarePlan/cps-careplan-01)
 * parameter[+].name = "notification-event"
 * parameter[=].part[0].name = "event-number"
 * parameter[=].part[=].valueString = "2"
 * parameter[=].part[+].name = "timestamp"
 * parameter[=].part[=].valueInstant = "2024-05-29T11:44:13.1882432-05:00"
 * parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference(cps-careteam-01)
+* parameter[=].part[=].valueReference = Reference({{cps-base-url}}CareTeam/cps-careteam-01)
 
 Instance: notification-msc-01
 InstanceOf: Bundle
@@ -135,7 +133,7 @@ InstanceOf: Parameters
 Usage: #inline
 * meta.profile = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription-status-r4"
 * parameter[0].name = "subscription"
-* parameter[=].valueReference = Reference(cps-sub-medicalservicecentre)
+* parameter[=].valueReference = Reference({{cps-base-url}}Subscription/cps-sub-medicalservicecentre)
 * parameter[+].name = "status"
 * parameter[=].valueCode = #active
 * parameter[+].name = "type"
@@ -146,4 +144,4 @@ Usage: #inline
 * parameter[=].part[+].name = "timestamp"
 * parameter[=].part[=].valueInstant = "2020-05-29T11:44:13.1882432-05:00"
 * parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference(cps-task-01)
+* parameter[=].part[=].valueReference = Reference({{cps-base-url}}Task/cps-task-01)

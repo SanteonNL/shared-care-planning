@@ -9,12 +9,9 @@ Description: "Initiation of a task for telemonitoring"
 * status = #requested
 * intent = #order
 * code = $task-code#fullfill
-* focus.identifier.system = "2.16.528.1.1007.3.3.21514.ehr.orders"
-* focus.identifier.value = "99534756439"
-* reasonReference.identifier.system = "2.16.528.1.1007.3.3.21514.ehr.diagnoses"
-* reasonReference.identifier.value = "56476575765"
-* for.identifier.system = $bsn
-* for.identifier.value = "111222333"
+* focus.reference = "urn:uuid:cps-servicerequest-telemonitoring"
+* reasonCode.coding = $sct#195111005 "Hartfalen"
+* for.reference = "urn:uuid:cps-patient-patrick"
 * requester.identifier.system = $uzi
 * requester.identifier.value = "UZI-1"
 * owner.identifier.system = $ura
@@ -28,9 +25,9 @@ Title: "1.03.2 Bundle"
 Description: "Bundle to initiate telemonitoring"
 * meta.versionId = "1"
 * type = #transaction
-* insert BundleEntry(cps-task-01, #PUT, Task/cps-task-01)
-* insert BundleEntry(cps-servicerequest-telemonitoring, #PUT, ServiceRequest/2.16.528.1.1007.3.3.21514.ehr.orders-99534756439)
-* insert BundleEntry(cps-heartfailure, #PUT, Condition/2.16.528.1.1007.3.3.21514.ehr.diagnoses-56476575765)
+* insert BundleEntryWithFullurl(urn:uuid:cps-task-01, cps-task-01, #POST, Task)
+* insert BundleEntryWithFullurl(urn:uuid:cps-servicerequest-telemonitoring, cps-servicerequest-telemonitoring, #PUT, ServiceRequest?identifier=2.16.528.1.1007.3.3.21514.ehr.orders|99534756439)
+* insert BundleEntryWithFullurl(urn:uuid:cps-patient-patrick, cps-patient-patrick, #PUT, Patient?identifier=http://fhir.nl/fhir/NamingSystem/bsn|111222333)
 
 
 //resulting instances at cps:
@@ -46,24 +43,27 @@ Description: "copy of data in EHR of Hospital X"
 * identifier.value = "99534756439"
 * status = #active
 * intent = #order
-* subject.identifier.system = $bsn
-* subject.identifier.value = "111222333"
+* subject.reference = "urn:uuid:cps-patient-patrick"
+* encounter.reference = "{{cps-base-url}}Encounter/cps-encounter-01"
 * requester.identifier.system = $uzi
 * requester.identifier.value = "UZI-1"
 * code = http://snomed.info/sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
-* reasonReference.identifier.system = "2.16.528.1.1007.3.3.21514.ehr.diagnoses"
-* reasonReference.identifier.value = "56476575765"
 
-Instance: cps-heartfailure
-InstanceOf: Condition
+
+Instance: cps-patient-patrick
+InstanceOf: Patient
 Usage: #example
-Title: "1.03.4 Condition heartfailure"
+Title: "1.03.4 Patient Patrick Egger"
 Description: "copy of data in EHR of Hospital X"
-* meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem"
-* meta.versionId = "1"
-* meta.lastUpdated = "2024-09-03T12:00:00Z"
-* identifier.system = "2.16.528.1.1007.3.3.21514.ehr.diagnoses"
-* identifier.value = "56476575765"
-* code = $sct#195111005 "Hartfalen"
-* subject.identifier.system = $bsn
-* subject.identifier.value = "111222333"
+* meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient"
+* identifier.system = "http://fhir.nl/fhir/NamingSystem/bsn"
+* identifier.value = "111222333"
+* name
+  * given[0] = "Patrick"
+  * family = "Egger"
+* telecom[+].system = #phone
+* telecom[=].value = "+31612345678"
+* telecom[+].system = #email
+* telecom[=].value = "patrickegger@myweb.nl"
+* gender = #male
+* birthDate = "1984-04-01"

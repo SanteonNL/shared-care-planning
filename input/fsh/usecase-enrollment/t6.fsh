@@ -16,7 +16,7 @@ InstanceOf: Parameters
 Usage: #inline
 * meta.profile = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription-status-r4"
 * parameter[0].name = "subscription"
-* parameter[=].valueReference = Reference(cps-sub-medicalservicecentre)
+* parameter[=].valueReference = Reference({{cps-base-url}}Subscription/cps-sub-medicalservicecentre)
 * parameter[+].name = "status"
 * parameter[=].valueCode = #active
 * parameter[+].name = "type"
@@ -27,4 +27,4 @@ Usage: #inline
 * parameter[=].part[+].name = "timestamp"
 * parameter[=].part[=].valueInstant = "2020-05-29T11:44:13.1882432-05:05"
 * parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference(cps-task-02-02)
+* parameter[=].part[=].valueReference = Reference({{cps-base-url}}Task/cps-task-02-02)
