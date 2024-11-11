@@ -5,6 +5,7 @@ Title: "1.26.1 QuestionnaireResponse for telemonitoring enrollment criteria"
 Description: "Extra information for telemonitoring"
 * status = #completed
 * questionnaire = Canonical(cps-questionnaire-telemonitoring-enrollment-criteria)
+* subject = Reference(Patient/cps-patient-patrick)
 * item[+].linkId = "2.16.840.1.113883.2.4.3.11.60.909.2.2.2208"
 * item[=].answer.valueBoolean = true
 * item[+].linkId = "2.16.840.1.113883.2.4.3.11.60.909.2.2.2209" 
