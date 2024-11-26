@@ -13,12 +13,16 @@ RuleSet: SupportInteraction (interaction)
 // * rest.resource[=].interaction[=].extension[0].url = $exp
 // * rest.resource[=].interaction[=].extension[0].valueCode = {expectation}
 
-RuleSet: SupportSearchParam (name, canonical, type)
+RuleSet: SupportSearchParam (name, type)
 * rest.resource[=].searchParam[+].name = "{name}"
-* rest.resource[=].searchParam[=].definition = "{canonical}"
 * rest.resource[=].searchParam[=].type = {type}
 // * rest.resource[=].searchParam[=].extension[0].url = $exp
 // * rest.resource[=].searchParam[=].extension[0].valueCode = {expectation}
+
+RuleSet: SupportCustomSearchParam (name, canonical, type)
+* rest.resource[=].searchParam[+].name = "{name}"
+* rest.resource[=].searchParam[=].definition = "{canonical}"
+* rest.resource[=].searchParam[=].type = {type}
 
 RuleSet: BundleEntry (resource, method, url)
 * entry[+].resource = {resource}

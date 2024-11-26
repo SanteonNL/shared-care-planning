@@ -111,18 +111,33 @@ Authorization: {{cps-access-token}}
 
 <@ {{path-to-data}}Bundle-cps-bundle-07.json
 
-# ###
+###
 
 
 
 # Random requests/snippets
 
 GET {{cps-base-url}}ServiceRequest
-    ?identifier=2.16.528.1.1007.3.3.21514.ehr.orders|99534756439
+    ?identifier=urn:oid:1.2.840.114350.1.13.487.3.7.2.798268|55242485
 Content-Type: application/json
 Authorization: {{cps-access-token}}
 
 ###
+
+GET {{cps-base-url}}SearchParameter
+    ?name=output-reference
+Content-Type: application/json
+Authorization: {{cps-access-token}}
+
+###
+GET {{cps-base-url}}Organization
+Content-Type: application/json
+Authorization: {{cps-access-token}}
+
+
+
+###
+
 
 GET {{cps-base-url}}QuestionnaireResponse
     # ?_id=cps-task-02-02
@@ -307,6 +322,9 @@ Authorization: {{cps-access-token}}
 GET {{cps-base-url}}SearchParameter
 
 ###
+GET {{cps-base-url}}CareTeam
+
+###
 GET {{cps-base-url}}QuestionnaireResponse/a18
 
 ###
@@ -351,469 +369,47 @@ curl --request GET \
   --url 'http://localhost:8080/fhir/Task?output-valuereference-reference=QuestionnaireResponse%2Fa18' \
   --header 'content-type: application/json' 
 
+###
+
+PUT {{cps-base-url}}Task
+Content-Type: application/fhir+json
+
+{
+   "id": "1234"
+}
+
 
 ###
-POST {{cps-base-url}}
+# @name getpatient
+GET {{cps-base-url}}/Patient
 Content-Type: application/fhir+json
 Authorization: {{cps-access-token}}
 
-{
-  "resourceType": "Bundle",
-  "type": "transaction",
-  "entry": [
-    {
-      "resource": {
-        "resourceType": "Task",
-        "meta": {
-          "version": "1",
-          "profile": [
-            "http://santeonnl.github.io/shared-care-planning/StructureDefinition/SCPTask"
-          ]
-        },
-        "status": "requested",
-        "intent": "order",
-        "code": {
-          "coding": [
-            {
-              "system": "http://hl7.org/fhir/CodeSystem/task-code",
-              "code": "fullfill"
-            }
-          ]
-        },
-        "focus": {
-          "reference": "urn:uuid:ewSPPEVLOvrbP5lOB3RcJxTmoPGhqwW2sXtpBg59rOY43"
-        },
-        "for": {
-          "reference": "urn:uuid:eMHenDEmb0pPKgx9fCqgriUjNuuYji1wdA33dx8IfrCE3"
-        },
-        "requester": {
-          "identifier": {
-            "system": "http://fhir.nl/fhir/NamingSystem/ura",
-            "value": "21514"
-          }
-        },
-        "owner": {
-          "identifier": {
-            "system": "http://fhir.nl/fhir/NamingSystem/ura",
-            "value": "86446"
-          }
-        },
-        "reasonCode": {
-          "coding": null
-        }
-      },
-      "request": {
-        "url": "Task",
-        "method": "POST"
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:ewSPPEVLOvrbP5lOB3RcJxTmoPGhqwW2sXtpBg59rOY43",
-      "resource": {
-        "resourceType": "ServiceRequest",
-        "identifier": [
-          {
-            "use": "usual",
-            "type": {
-              "coding": [
-                {
-                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
-                  "code": "PLAC",
-                  "display": "Placer Identifier"
-                }
-              ],
-              "text": "Placer Identifier"
-            },
-            "system": "urn:oid:1.2.840.114350.1.13.487.3.7.2.798268",
-            "value": "55242485"
-          }
-        ],
-        "status": "active",
-        "intent": "original-order",
-        "category": [
-          {
-            "coding": [
-              {
-                "system": "http://snomed.info/sct",
-                "code": "371883000",
-                "display": "poliklinische verrichting (verrichting)"
-              },
-              {
-                "system": "urn:oid:1.2.840.114350.1.13.487.3.7.10.798268.30",
-                "code": "610000",
-                "display": "Afspraak"
-              }
-            ],
-            "text": "Afspraak"
-          }
-        ],
-        "priority": "routine",
-        "code": {
-          "coding": [
-            {
-              "system": "urn:oid:1.2.840.114350.1.13.487.3.7.2.696580",
-              "code": "230077",
-              "display": "TM CAR HARTFALEN AANMELDING THUISMONITORING"
-            }
-          ],
-          "text": "CAR hartfalen aanmelding thuismonitoring"
-        },
-        "quantityQuantity": {
-          "value": 1
-        },
-        "subject": {
-          "reference": "urn:uuid:eMHenDEmb0pPKgx9fCqgriUjNuuYji1wdA33dx8IfrCE3",
-          "display": "Xxx-Aansluittest, Betsy"
-        },
-        "encounter": {
-          "reference": "https://sintantonius.nl/Encounter/eeBQ-NOnhJ4uHk2OnpE639w3",
-          "identifier": {
-            "use": "usual",
-            "system": "urn:oid:1.2.840.114350.1.13.487.3.7.3.698084.8",
-            "value": "72255058"
-          },
-          "display": "Alleen orders"
-        },
-        "occurrencePeriod": {
-          "start": "2024-11-06T23:00:00Z"
-        },
-        "authoredOn": "2024-11-07T14:40:13Z",
-        "requester": {
-          "reference": "https://sintantonius.nl/Practitioner/eGWu9OiNVI9ZmCwlfakGoYPT1wnf.ZXP-.xa1aC5Rq.w3",
-          "type": "Practitioner",
-          "display": "J. Abarbanel"
-        },
-        "note": [
-          {
-            "text": "- Optitratie: Ja\r\n- Na opname: Ja\r\n- Emailadres en telefoonnummer zijn juist in EPIC genoteerd: Ja\r\n- PatiÃ«nt is in staat de app te bedienen: Ja\r\n- Is er een taalbarriere: Ja\r\n- PatiÃ«nt heeft een bloeddrukmeter: Ja \r\n- Ontslagdatum: 21-11-2024"
-          }
-        ]
-      },
-      "request": {
-        "url": "ServiceRequest?identifier=urn:oid:1.2.840.114350.1.13.487.3.7.2.798268|55242485",
-        "method": "PUT"
-      }
-    },
-    {
-      "fullUrl": "urn:uuid:eMHenDEmb0pPKgx9fCqgriUjNuuYji1wdA33dx8IfrCE3",
-      "resource": {
-        "resourceType": "Patient",
-        "extension": [
-          {
-            "valueCodeableConcept": {
-              "coding": [
-                {
-                  "system": "urn:oid:1.2.840.114350.1.13.487.3.7.10.698084.130.657370.310560001",
-                  "code": "female",
-                  "display": "female"
-                }
-              ]
-            },
-            "url": "http://open.epic.com/FHIR/StructureDefinition/extension/legal-sex"
-          },
-          {
-            "valueCodeableConcept": {
-              "coding": [
-                {
-                  "system": "urn:oid:1.2.840.114350.1.13.487.3.7.10.698084.130.657370.310560001",
-                  "code": "female",
-                  "display": "female"
-                }
-              ]
-            },
-            "url": "http://open.epic.com/FHIR/StructureDefinition/extension/sex-for-clinical-use"
-          },
-          {
-            "valueCode": "248152002",
-            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-sex"
-          }
-        ],
-        "identifier": [
-          {
-            "use": "usual",
-            "type": {
-              "text": "CEID"
-            },
-            "system": "urn:oid:1.2.840.114350.1.13.487.3.7.3.688884.100",
-            "value": "SNZPP268ZLXCSFL"
-          },
-          {
-            "use": "usual",
-            "type": {
-              "text": "EPIC"
-            },
-            "system": "urn:oid:1.2.840.114350.1.13.487.3.7.5.737384.0",
-            "value": "E1932124"
-          },
-          {
-            "use": "usual",
-            "type": {
-              "text": "EXTERNAL"
-            },
-            "system": "urn:oid:1.2.840.114350.1.13.487.3.7.2.698084",
-            "value": "Z1933001"
-          },
-          {
-            "use": "usual",
-            "type": {
-              "text": "FHIR"
-            },
-            "system": "http://open.epic.com/FHIR/StructureDefinition/patient-dstu2-fhir-id",
-            "value": "TjQOZCiFHN-723DRGAEdWzTUgt2qZfBEA4E0b3IFYDU0B"
-          },
-          {
-            "use": "usual",
-            "type": {
-              "text": "FHIR STU3"
-            },
-            "system": "http://open.epic.com/FHIR/StructureDefinition/patient-fhir-id",
-            "value": "eMHenDEmb0pPKgx9fCqgriUjNuuYji1wdA33dx8IfrCE3"
-          },
-          {
-            "use": "usual",
-            "type": {
-              "text": "INTERNAL"
-            },
-            "system": "urn:oid:1.2.840.114350.1.13.487.3.7.2.698084",
-            "value": "  Z1933001"
-          },
-          {
-            "use": "usual",
-            "type": {
-              "text": "LOCAL"
-            },
-            "system": "urn:oid:2.16.528.1.1007.3.3.21514.2.2.4.1",
-            "value": "3003156"
-          },
-          {
-            "use": "usual",
-            "type": {
-              "text": "WPRINTERNAL"
-            },
-            "system": "urn:oid:1.2.840.114350.1.13.487.3.7.2.878082",
-            "value": "124419"
-          },
-          {
-            "use": "usual",
-            "system": "http://fhir.nl/fhir/NamingSystem/bsn",
-            "value": "999990019"
-          }
-        ],
-        "active": true,
-        "name": [
-          {
-            "extension": [
-              {
-                "valueCode": "NL3",
-                "url": "http://hl7.org/fhir/StructureDefinition/humanname-assembly-order"
-              }
-            ],
-            "use": "official",
-            "text": "B. Xxx-Aansluittest",
-            "family": "Xxx-Aansluittest",
-            "given": [
-              "B."
-            ],
-            "_family": {
-              "extension": [
-                {
-                  "valueString": "Aansluittest",
-                  "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-name"
-                },
-                {
-                  "valueString": "Xxx",
-                  "url": "http://hl7.org/fhir/StructureDefinition/humanname-partner-name"
-                }
-              ]
-            },
-            "_given": [
-              {
-                "extension": [
-                  {
-                    "valueCode": "IN",
-                    "url": "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "extension": [
-              {
-                "valueCode": "NL3",
-                "url": "http://hl7.org/fhir/StructureDefinition/humanname-assembly-order"
-              }
-            ],
-            "use": "usual",
-            "text": "Betsy Xxx-Aansluittest",
-            "family": "Xxx-Aansluittest",
-            "given": [
-              "B."
-            ],
-            "_family": {
-              "extension": [
-                {
-                  "valueString": "Aansluittest",
-                  "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-name"
-                },
-                {
-                  "valueString": "Xxx",
-                  "url": "http://hl7.org/fhir/StructureDefinition/humanname-partner-name"
-                }
-              ]
-            },
-            "_given": [
-              {
-                "extension": [
-                  {
-                    "valueCode": "IN",
-                    "url": "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "extension": [
-              {
-                "valueCode": "NL4",
-                "url": "http://hl7.org/fhir/StructureDefinition/humanname-assembly-order"
-              }
-            ],
-            "use": "old",
-            "text": "XXXAANSLUITTEST,B.",
-            "family": "Xxxaansluittest",
-            "given": [
-              "B."
-            ],
-            "_family": {
-              "extension": [
-                {
-                  "valueString": "Xxxaansluittest",
-                  "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-name"
-                }
-              ]
-            }
-          },
-          {
-            "extension": [
-              {
-                "valueCode": "NL4",
-                "url": "http://hl7.org/fhir/StructureDefinition/humanname-assembly-order"
-              }
-            ],
-            "use": "old",
-            "text": "XXX-AANSLUITTEST,B.",
-            "family": "Xxx-Aansluittest",
-            "given": [
-              "B."
-            ],
-            "_family": {
-              "extension": [
-                {
-                  "valueString": "Xxx-Aansluittest",
-                  "url": "http://hl7.org/fhir/StructureDefinition/humanname-own-name"
-                }
-              ]
-            }
-          }
-        ],
-        "gender": "female",
-        "birthDate": "1950-02-02",
-        "deceasedBoolean": false,
-        "address": [
-          {
-            "use": "home",
-            "city": "Enschede",
-            "postalCode": "9999 XY",
-            "country": "NLD",
-            "_line": [
-              {
-                "extension": [
-                  {
-                    "valueString": "Knolweg",
-                    "url": "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName"
-                  },
-                  {
-                    "valueString": "1001",
-                    "url": "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "use": "old",
-            "city": "Enschede",
-            "postalCode": "9999 XX",
-            "country": "NLD",
-            "_line": [
-              {
-                "extension": [
-                  {
-                    "valueString": "Knolweg",
-                    "url": "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName"
-                  },
-                  {
-                    "valueString": "1001",
-                    "url": "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "use": "old",
-            "city": "Enschede",
-            "postalCode": "9999 XY",
-            "country": "NLD",
-            "_line": [
-              {
-                "extension": [
-                  {
-                    "valueString": "Knolweg",
-                    "url": "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetName"
-                  },
-                  {
-                    "valueString": "1001",
-                    "url": "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber"
-                  }
-                ]
-              }
-            ]
-          }
-        ],
-        "communication": [
-          {
-            "language": {
-              "coding": [
-                {
-                  "system": "urn:ietf:bcp:47",
-                  "code": "nl",
-                  "display": "Nederlands"
-                }
-              ],
-              "text": "Nederlands"
-            },
-            "preferred": true
-          }
-        ],
-        "generalPractitioner": [
-          {
-            "reference": "https://sintantonius.nl/Practitioner/eGWu9OiNVI9ZmCwlfakGoYPT1wnf.ZXP-.xa1aC5Rq.w3",
-            "type": "Practitioner",
-            "display": "J. Abarbanel"
-          }
-        ],
-        "managingOrganization": {
-          "reference": "https://sintantonius.nl/Organization/eFJTqsfY2f-4SZhzlJ..Ezw3",
-          "display": "St Antonius"
-        }
-      },
-      "request": {
-        "url": "Patient?identifier=http://fhir.nl/fhir/NamingSystem/bsn|999990019",
-        "method": "PUT"
-      }
-    }
-  ]
-}
+@patientid = {{getpatient.response.body.entry[0].resource.id}}
+
+###
+# @name getpatient
+GET {{cps-base-url}}/Patient?identifier=http://fhir.nl/fhir/NamingSystem/bsn|999990019
+Content-Type: application/fhir+json
+Authorization: {{cps-access-token}}
+
+@patientid2 = {{getpatient.response.body.entry[0].resource.id}}
+
+###
+GET {{cps-base-url}}/Patient/{{patientid2}}
+Content-Type: application/fhir+json
+Authorization: {{cps-access-token}}
+
+
+###
+GET {{cps-base-url}}/Task?part-of=Task/f5eb88fb-ff7c-4529-8178-06f7cd7c8614
+Content-Type: application/fhir+json
+Authorization: {{cps-access-token}}
+
+
+###
+GET {{cps-base-url}}/ServiceRequest
+Content-Type: application/fhir+json
+Authorization: {{cps-access-token}}
+
+
