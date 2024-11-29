@@ -28,9 +28,10 @@ Some of these items are explained in more detail:
   - [Privacy](privacy.html)
 
 - Transactions
-    - [Creating and responding to a Task](./transaction-task-negotiation.html)
-    - [Updating CarePlan and CareTeam](./transaction-careplan-careteam-mngt.html)
-    - [Getting data from CareTeam members](./transaction-discovery.html)
+    - [Basic Request workflow](./transaction-request-workflow.html)
+    - [Request workflow with additional response workflow](./transaction-request-response-workflow.html)
+    - [Updating CarePlan and CareTeam](./transaction-careplan-careteam-update.html)
+    - [Getting data from CareTeam members](./transaction-get-data.html)
 
 
 - Use Cases/Examples

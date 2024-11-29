@@ -183,7 +183,7 @@ In the second diagram, Care Provider 2 will send Care Provider 3 a request, stil
 {% include overview-task-negotiation-1-2-3.svg %}
 </div>
 
-For more information on this transaction, see [Transactions - Creating and responding to a Task](./transaction-task-negotiation.html)
+For more information on this transaction, see [Transactions - Request workflow with additional response workflow](./transaction-request-response-workflow.html)
 
 #### Updating CarePlan and CareTeam
 The CarePlan Service is responsible for updating the CareTeam and, for convenience, the CarePlan.activities. This transaction is triggered by a Task creation or update at the CP-Service. 

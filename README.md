@@ -2,7 +2,7 @@
 
 This repository contains the content of the Shared Care Planning Implementation Guide. For a readable version, start [here](https://santeonnl.github.io/shared-care-planning/).
 
-You can also check [this slidedeck](/input/assets/Shared%20Care%20Planning%20voor%20Zorg&ICT2024.pptx) to quickly get a feeling what Shared Care Planning is. 
+You can also check [this slidedeck](/input/assets/Shared%20Care%20Planning%20HL7%20WGM%202024%20nov.pptx) to quickly get a feeling what Shared Care Planning is. 
 
 This specification is in **draft status**. Feel free to **contribute** to this standard. Create a new issue or create an new branch and pull-request into main.
 
