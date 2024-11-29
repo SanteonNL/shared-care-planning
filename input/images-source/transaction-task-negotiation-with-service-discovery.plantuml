@@ -1,4 +1,4 @@
-@startuml transaction-task-negotiation-with-service-discovery
+@startuml transaction-request-response-workflow-with-service-discovery
 autonumber
 
 

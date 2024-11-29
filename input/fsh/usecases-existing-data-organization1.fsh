@@ -106,12 +106,20 @@ Title: "9.01 HealthcareService Telemonitoring at Medical Service Centre"
 Description: "Existing data in EHR of Hospital X"
 * active = true
 * providedBy = Reference(urn:uuid:hospitalx-msc)
-* type[+] = $sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
+* identifier.system = "urn:oid:2.16.840.1.113883.2.4.3.224"
+* identifier.value = "urn:uuid:91a9be09-eb97-4c0f-9a61-27a1985ae38b"
+* active = true
+* providedBy.identifier.system = $ura
+* providedBy.identifier.value = "URA-002"
+* category[+] = $sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
 * type[+] = $sct#715191006 "monitoren van asthma via telegeneeskunde (regime/therapie)"
 * type[+] = $sct#879780004 "monitoren van chronisch hartfalen via telegeneeskunde (regime/therapie)" 
-* type[+] = $sct#473199000 "monitoren van chronische ziekte via telegeneeskunde (regime/therapie)" 
 * type[+] = $sct#716358000 "monitoren van chronische obstructieve longziekte via telegeneeskunde (regime/therapie)" 
-* name = "Medical Service Centre - Telemonitoring Services"
+* type[+] = $sct#84114007 "hartfalen (aandoening)"
+* type[+] = $sct#195979001 "Asthma unspecified (disorder)"
+* type[+] = $sct#304527002 "acuut astma (aandoening)"
+* type[+] = $sct#389145006 "allergisch astma (aandoening)"
+* type[+] = $sct#13645005 "chronische obstructieve longaandoening (aandoening)"
 
 
 Instance: hospitalx-carolinevandijk-hospitalx

@@ -1,18 +1,18 @@
+<img src="transaction-get-data-1.png" width="32%" style="float: none"/>
+
+<img src="transaction-get-data-2.png" width="32%" style="float: none"/>
+
+
 ### Trigger Events
-Task met status 'accepted', 'cancelled', 'completed', etc.
 
 ### Scope
 
 ### Actor Roles
 
 ### Interactions 
-Sequence diagram
 
 ### Profiles
 TODO: refer to used profiles (FHIR structure definitions generated on page 'Artifacts')
-
-
-
 
 
 <!-- # Workflow
@@ -75,6 +75,8 @@ This actor hosts Care Plans and Care Teams that act
 This actor hosts generic authorization policies that can be used as paramaters in the authorization process. E.g.:
 - Condition - resource matrices
 - ParticipantRole - Resource matrices
+
+
 
 
  -->

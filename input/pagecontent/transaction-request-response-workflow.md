@@ -1,3 +1,13 @@
+<img src="transaction-request-response-workflow-1.png" width="32%" style="float: none"/>
+
+<img src="transaction-request-response-workflow-2.png" width="32%" style="float: none"/>
+
+<img src="transaction-request-response-workflow-3.png" width="32%" style="float: none"/>
+<img src="transaction-request-response-workflow-4.png" width="32%" style="float: none"/>
+<img src="transaction-request-response-workflow-5.png" width="32%" style="float: none"/>
+
+
+
 For adressing: make use of a (nation wide) database where you can find healthcareservices and or organizations that you are looking for. Tip: implement/use a Care Service Discovery that conforms to the [IHE mCSD](https://profiles.ihe.net/ITI/mCSD/index.html) profile
 
 For resolving a FHIR-endpoint for a specific healthcareservice/organization, multiple service discovery methods could be used (NUTS en/of GF Adressering)
