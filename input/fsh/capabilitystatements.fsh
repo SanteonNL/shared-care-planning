@@ -22,6 +22,12 @@ Description: "A capability statement for a CarePlan Contributor."
 * format = #json
 * rest.mode = #server
 
+// HealthCareService
+
+// Questionnaire
+
+
+
 Instance: CarePlanService-client
 InstanceOf: CapabilityStatement
 Usage: #definition
@@ -76,6 +82,10 @@ Description: "A capability statement for a CarePlan Service."
 * rest.resource[=].searchInclude[+] = "CarePlan:activity:detail:product"
 * insert SupportSearchParam(category, #token)
 
+// CareTeam
+
+// Task
+
 // Subscription
 * rest.resource[+].type = #Subscription
 * rest.resource[=].supportedProfile[+] = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription"
@@ -85,5 +95,13 @@ Description: "A capability statement for a CarePlan Service."
 * rest.resource[=].operation[+].name = "events"
 * rest.resource[=].operation[=].definition = "http://hl7.org/fhir/uv/subscriptions-backport/OperationDefinition/backport-subscription-events"
 
+// QuestionnaireResponse
 
+// Questionnaire
+
+// ServiceRequest
+
+// Condition
+
+// Patient
 
