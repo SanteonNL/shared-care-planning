@@ -1,4 +1,4 @@
-Instance: hospitalx-patrick
+Instance: hospitalx-patient-patrick
 InstanceOf: Patient
 Title: "9.01 Patient Patrick Egger"
 Description: "Existing data in EHR of Hospital X"
@@ -25,7 +25,7 @@ Description: "Existing data in EHR of Hospital X"
 * meta.lastUpdated = "2024-09-03T12:00:00Z"
 * id = "143214345325432"
 * code = $sct#13645005 "Chronic obstructive pulmonary disease"
-* subject = Reference(urn:uuid:hospitalx-patrick) // Patient Patrick Egger
+* subject = Reference(urn:uuid:hospitalx-patient-patrick) // Patient Patrick Egger
 
 Instance: hospitalx-heartfailure
 InstanceOf: Condition
@@ -37,7 +37,7 @@ Description: "Existing data in EHR of Hospital X"
 * meta.lastUpdated = "2024-09-03T12:00:00Z"
 * id = "56476575765"
 * code = $sct#84114007 "Hartfalen"
-* subject = Reference(urn:uuid:hospitalx-patrick) // Patient Patrick Egger
+* subject = Reference(urn:uuid:hospitalx-patient-patrick) // Patient Patrick Egger
 
 
 // Instance: hospitalx-medication-rash
@@ -48,7 +48,7 @@ Description: "Existing data in EHR of Hospital X"
 // * meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem"
 // * category = $sct#116223007 "Complicatie"
 // * code = $sct#62014003 "Geneesmiddel-interacties"
-// * subject = Reference(hospitalx-patrick) // Patient Patrick Egger
+// * subject = Reference(hospitalx-patient-patrick) // Patient Patrick Egger
 // * subject.type = "Patient"
 // * note.text = "Huiduitslag met veel jeuk door medicatie"
 
@@ -164,7 +164,7 @@ Description: "Existing data in EHR of Hospital X"
 * id = "99534756439"
 * status = #active
 * intent = #order
-* subject = Reference(urn:uuid:hospitalx-patrick) "Patient Patrick Egger"
+* subject = Reference(urn:uuid:hospitalx-patient-patrick) "Patient Patrick Egger"
 * requester = Reference(urn:uuid:hospitalx-carolinevandijk-hospitalx) "Caroline van Dijk at Hospital X"
 * code = $sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
 * reasonReference = Reference(urn:uuid:hospitalx-heartfailure) "Diagnose Hartfalen"
@@ -180,7 +180,7 @@ Title: "9.01 Bundle"
 Description: "Existing data in EHR of Hospital X"
 * meta.versionId = "1"
 * type = #transaction
-* insert BundleEntryWithFullurl(urn:uuid:hospitalx-patrick, hospitalx-patrick, #POST, Patient)
+* insert BundleEntryWithFullurl(urn:uuid:hospitalx-patient-patrick, hospitalx-patient-patrick, #POST, Patient)
 * insert BundleEntryWithFullurl(urn:uuid:hospitalx-copd, hospitalx-copd, #POST, Condition)
 * insert BundleEntryWithFullurl(urn:uuid:hospitalx-heartfailure, hospitalx-heartfailure, #POST, Condition)
 * insert BundleEntryWithFullurl(urn:uuid:hospitalx-hospitalx, hospitalx-hospitalx, #POST, Organization)

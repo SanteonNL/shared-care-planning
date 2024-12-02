@@ -40,13 +40,7 @@ POST {{cps-base-url}}$reindex
 # Test requests for usecase enrollment 
 
 ###
-
-GET {{cps-base-url}}CarePlan
-    ?category=http://snomed.info/sct%7C135411000146103 \
-Content-Type: application/json
-Authorization: {{cps-access-token}}
-
-###
+# @name postBundleTask1
 
 POST {{cps-base-url}}
 Content-Type: application/fhir+json
@@ -55,24 +49,60 @@ Authorization: {{cps-access-token}}
 <@ {{path-to-data}}Bundle-cps-bundle-01.json
 
 ###
+# @name getTask1
 
-PUT {{cps-base-url}}Subscription/cps-sub-hospitalx 
+GET {{cps-base-url}}{{postBundleTask1.response.body.entry[0].response.location}}
+
+###
+@task1id = {{getTask1.response.body.id}}
+@task1etag = {{getTask1.response.body.meta.versionId}}
+
+
+###
+# @name getPatient1
+
+GET {{cps-base-url}}{{getTask1.response.body.for.reference}}
+
+
+###
+# @name getServiceRequest1
+
+GET {{cps-base-url}}{{getTask1.response.body.focus.reference}}
+
+###
+
+@patient1id = {{getPatient1.response.body.id}}
+
+@servicerequest1id = {{getServiceRequest1.response.body.id}}
+
+###
+# @name postSubscription1
+
+POST {{cps-base-url}}Subscription
 Content-Type: application/fhir+json
 Authorization: {{cps-access-token}}
 
 <@ {{path-to-data}}Subscription-cps-sub-hospitalx.json
 
 ###
+@subscription1id = {{postSubscription1.response.body.id}}
 
-PUT {{cps-base-url}}Subscription/cps-sub-medicalservicecentre  
+###
+# @name postSubscription2
+
+POST {{cps-base-url}}Subscription
 Content-Type: application/fhir+json
 Authorization: {{cps-access-token}}
 
 <@ {{path-to-data}}Subscription-cps-sub-medicalservicecentre.json
 
 ###
+@subscription2id = {{postSubscription2.response.body.id}}
 
-PUT {{cps-base-url}}CareTeam/cps-careteam-01/
+###
+# @name postCareTeam1
+
+POST {{cps-base-url}}CareTeam
 Content-Type: application/fhir+json
 Authorization: {{cps-access-token}}
 
@@ -80,14 +110,22 @@ Authorization: {{cps-access-token}}
 
 ###
 
-PUT {{cps-base-url}}CarePlan/cps-careplan-01/
+@careteam1id = {{postCareTeam1.response.body.id}}
+
+###
+# @name postCarePlan1
+
+POST {{cps-base-url}}CarePlan
 Content-Type: application/fhir+json
 Authorization: {{cps-access-token}}
 
 <@ {{path-to-data}}CarePlan-cps-careplan-01.json
 
+###
+@careplan1id = {{postCarePlan1.response.body.id}}
 
 ###
+# @name postBundleTask2
 
 POST {{cps-base-url}}
 Content-Type: application/fhir+json
@@ -96,12 +134,34 @@ Authorization: {{cps-access-token}}
 <@ {{path-to-data}}Bundle-cps-bundle-02.json
 
 ###
+# @name getTask2
+
+GET {{cps-base-url}}{{postBundleTask2.response.body.entry[0].response.location}}
+
+###
+@task2id = {{getTask2.response.body.id}}
+@task2etag = {{getTask2.response.body.meta.versionId}}
+
+
+# ###
+# # @name getPatient1
+
+# GET {{cps-base-url}}{{getTask1.response.body.for.reference}}
+
+###
 
 POST {{cps-base-url}}
 Content-Type: application/fhir+json
 Authorization: {{cps-access-token}}
 
 <@ {{path-to-data}}Bundle-cps-bundle-03.json
+
+###
+POST {{cps-base-url}}
+Content-Type: application/fhir+json
+Authorization: {{cps-access-token}}
+
+<@ {{path-to-data}}Bundle-cps-bundle-06.json
 
 ###
 
@@ -413,3 +473,17 @@ Content-Type: application/fhir+json
 Authorization: {{cps-access-token}}
 
 
+### Get the Patient(-instance) ID
+# @name getpatient1
+
+POST {{cps-base-url}}/Patient/_search
+Content-Type: application/x-www-form-urlencoded
+
+identifier=http://fhir.nl/fhir/NamingSystem/bsn|999990019
+
+###
+
+GET {{cps-base-url}}CarePlan
+    ?category=http://snomed.info/sct%7C135411000146103 \
+Content-Type: application/json
+Authorization: {{cps-access-token}}

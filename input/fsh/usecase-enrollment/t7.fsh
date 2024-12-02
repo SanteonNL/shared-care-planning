@@ -7,16 +7,22 @@ Description: "Updating a task for telemonitoring to status accepted"
 * status = #accepted
 * intent = #order
 * code = $task-code#fullfill
-* focus.identifier.system = "2.16.528.1.1007.3.3.21514.ehr.orders"
-* focus.identifier.value = "99534756439"
-* reasonReference.identifier.system = "2.16.528.1.1007.3.3.21514.ehr.diagnoses"
-* reasonReference.identifier.value = "56476575765"
-* for.identifier.system = $bsn
-* for.identifier.value = "111222333"
+* focus = Reference(ServiceRequest/{{servicerequest1id}})
+* reasonCode.coding = $sct#195111005 "Hartfalen"
+* for = Reference(Patient/{{patient1id}})
 * requester.identifier.system = $uzi
 * requester.identifier.value = "UZI-1"
 * owner.identifier.system = $ura
 * owner.identifier.value = "URA-2"
+
+Instance: cps-bundle-06
+InstanceOf: Bundle
+Usage: #example
+Title: "1.42.2 Bundle"
+Description: "Bundle to update Task 1"
+* meta.versionId = "1"
+* type = #transaction
+* insert BundleEntryPUT(cps-task-01-02, #PUT, Task/{{task1id}},{{task1etag}})
 
 // Instance: cps-task-03
 // InstanceOf: SCPTask

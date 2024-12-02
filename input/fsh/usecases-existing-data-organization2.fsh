@@ -108,7 +108,7 @@ Description: "Questionnaire for enrollment criteria for telemonitoring"
 // * meta.source = "http://decor.nictiz.nl/fhir/4.0/sansa-"
 * meta.tag = $FHIR-version#4.0.1
 * language = #nl-NL
-// * url = "http://decor.nictiz.nl/fhir/Questionnaire/2.16.840.1.113883.2.4.3.11.60.909.26.34-1--20240902134017"
+* url = "https://raw.githubusercontent.com/Zorgbijjou/scp-homemonitoring/refs/tags/0.1.0/fsh-generated/resources/Questionnaire-zbj-questionnaire-telemonitoring-heartfailure-enrollment.json"
 * identifier.system = "urn:oid:2.16.840.1.113883.2.4.3.224"
 * identifier.value = "urn:uuid:ca893f5c-2868-4349-bc0f-66f67d4ab3a2"
 // * name = "Telemonitoring - enrollment criteria"
