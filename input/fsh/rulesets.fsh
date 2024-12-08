@@ -29,6 +29,12 @@ RuleSet: BundleEntry (resource, method, url)
 * entry[=].request.method = {method}
 * entry[=].request.url = "{url}"
 
+RuleSet: BundleEntryPUT (resource, method, url, etag)
+* entry[+].resource = {resource}
+* entry[=].request.method = {method}
+* entry[=].request.url = "{url}"
+* entry[=].request.ifMatch = "W/\"{etag}\""
+
 RuleSet: BundleEntryWithFullurl (fullUrl, resource, method, url)
 * entry[+].fullUrl = "{fullUrl}"
 * entry[=].resource = {resource}
