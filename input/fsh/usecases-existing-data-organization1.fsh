@@ -106,7 +106,7 @@ Title: "9.01 HealthcareService Telemonitoring at Medical Service Centre"
 Description: "Existing data in EHR of Hospital X"
 * active = true
 * providedBy = Reference(urn:uuid:hospitalx-msc)
-* identifier.system = "urn:oid:2.16.840.1.113883.2.4.3.224"
+* identifier.system = "urn:ietf:rfc:3986"
 * identifier.value = "urn:uuid:91a9be09-eb97-4c0f-9a61-27a1985ae38b"
 * active = true
 * providedBy.identifier.system = $ura
@@ -128,8 +128,10 @@ Usage: #example
 Title: "9.01 PractitionerRole Caroline van Dijk at Hospital X"
 Description: "Existing data in EHR of Hospital X"
 * meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole"
-* identifier.system = "http://fhir.nl/fhir/NamingSystem/uzi"
-* identifier.value = "UZI-1"
+* identifier[+].system = "http://example.org/hospitalx-HRM/assignments"
+* identifier[=].value = "123456"
+* identifier[+].system = "http://fhir.nl/fhir/NamingSystem/uzi"
+* identifier[=].value = "UZI-1"
 * practitioner = Reference(urn:uuid:hospitalx-carolinevandijk)
 * organization = Reference(urn:uuid:hospitalx-hospitalx)
 * code.coding = $sct#17561000 "Cardiologist"
@@ -144,6 +146,10 @@ Usage: #example
 Title: "9.01 Practitioner Caroline van Dijk"
 Description: "Existing data in EHR of Hospital X"
 * meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner"
+* identifier[+].system = "urn:ietf:rfc:3986"
+* identifier[=].value = "urn:uuid:21a4c9fa-98d1-43b2-8ee6-00764f99e763"
+* identifier[+].system = "http://example.org/hospitalx-HRM/employees"
+* identifier[=].value = "1234"
 * name.use = #official
 * name.text = "Caroline van Dijk"
 * name.family = "van Dijk"
@@ -161,7 +167,8 @@ Title: "9.01 ServiceRequest Telemonitoring"
 Description: "Existing data in EHR of Hospital X"
 * meta.versionId = "1"
 * meta.lastUpdated = "2024-09-03T12:00:00Z"
-* id = "99534756439"
+* identifier.system = $uuid
+* identifier.value = "urn:uuid:37063bd0-d6bb-4fe0-b73c-26532f297d4b"
 * status = #active
 * intent = #order
 * subject = Reference(urn:uuid:hospitalx-patient-patrick) "Patient Patrick Egger"

@@ -9,27 +9,26 @@ Description: "Initiation of a task for telemonitoring"
 * status = #requested
 * intent = #order
 * code = $task-code#fullfill
-* focus = Reference(urn:uuid:cps-servicerequest-telemonitoring)
+* insert RefIdentifier(focus, ServiceRequest, 1, $uuid, urn:uuid:37063bd0-d6bb-4fe0-b73c-26532f297d4b, $ura, URA-1, cpc1)
 * reasonCode.coding = $sct#195111005 "Hartfalen"
-* for = Reference(urn:uuid:hospitalx-patient-patrick)
-* requester.identifier.system = $uzi
-* requester.identifier.value = "UZI-1"
-* owner.identifier.system = $ura
-* owner.identifier.value = "URA-2"
+* insert RefIdentifier(for, Patient, 1, $bsn, 111222333, $ura, URA-1, cpc1)
+* insert RefIdentifier(requester, PractitionerRole, 1, "http://example.org/hospitalx-HRM/assignments", 123456, $ura, URA-1, cpc1)
+* insert RefIdentifier(owner, Organization, 2, $ura, URA-2, $ura, URA-1, cpc1)
 
-Instance: cps-servicerequest-telemonitoring
-InstanceOf: ServiceRequest
-Usage: #example
-Title: "9.01 ServiceRequest Telemonitoring"
-Description: "Existing data in EHR of Hospital X"
-* meta.versionId = "1"
-* meta.lastUpdated = "2024-09-03T12:00:00Z"
-* status = #active
-* intent = #order
-* subject = Reference(urn:uuid:hospitalx-patient-patrick) 
-* requester = Reference({{cpc1-base-url}}PractitionerRole/{{practitionerrole1id}}) 
-* code = $sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
-* reasonReference = Reference({{cpc1-base-url}}Condition/{{condition1id}}) 
+
+// Instance: cps-servicerequest-telemonitoring
+// InstanceOf: ServiceRequest
+// Usage: #example
+// Title: "9.01 ServiceRequest Telemonitoring"
+// Description: "Existing data in EHR of Hospital X"
+// * meta.versionId = "1"
+// * meta.lastUpdated = "2024-09-03T12:00:00Z"
+// * status = #active
+// * intent = #order
+// * subject = Reference(urn:uuid:hospitalx-patient-patrick) 
+// * requester = Reference({{cpc1-base-url}}PractitionerRole/{{practitionerrole1id}}) 
+// * code = $sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
+// * reasonReference = Reference({{cpc1-base-url}}Condition/{{condition1id}}) 
 
 Instance: cps-bundle-01
 InstanceOf: Bundle
@@ -39,8 +38,8 @@ Description: "Bundle to initiate telemonitoring"
 * meta.versionId = "1"
 * type = #transaction
 * insert BundleEntry(cps-task-01, #POST, Task)
-* insert BundleEntryWithFullurl(urn:uuid:cps-servicerequest-telemonitoring, cps-servicerequest-telemonitoring, #POST, ServiceRequest)
-* insert BundleEntryWithFullurl(urn:uuid:hospitalx-patient-patrick, hospitalx-patient-patrick, #POST, Patient)
+// * insert BundleEntryWithFullurl(urn:uuid:cps-servicerequest-telemonitoring, cps-servicerequest-telemonitoring, #POST, ServiceRequest)
+// * insert BundleEntryWithFullurl(urn:uuid:hospitalx-patient-patrick, hospitalx-patient-patrick, #POST, Patient)
 
 
 // //resulting instances at cps:

@@ -14,7 +14,7 @@ Description: "Ask for extra information for telemonitoring"
 * owner.identifier.system = $ura
 * owner.identifier.value = "URA-1"
 * input[+].type = $task-input-type#Reference "Reference"
-* input[=].valueReference = Reference(urn:uuid:msc-questionnaire-telemonitoring-enrollment-criteria)
+* input[=].valueReference = Reference(urn:uuid:msc-telemonitoring-heartfailure-enrollment)
 
 Instance: cps-bundle-02
 InstanceOf: Bundle
@@ -24,4 +24,4 @@ Description: "Bundle to ask for extra information for telemonitoring"
 * meta.versionId = "1"
 * type = #transaction
 * insert BundleEntry(cps-task-02, #POST, Task)
-* insert BundleEntryWithFullurl(urn:uuid:msc-questionnaire-telemonitoring-enrollment-criteria, msc-questionnaire-telemonitoring-enrollment-criteria, #POST, Questionnaire)
+* insert BundleEntryWithFullurl(urn:uuid:msc-telemonitoring-heartfailure-enrollment, msc-telemonitoring-heartfailure-enrollment, #POST, Questionnaire)

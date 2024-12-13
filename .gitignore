@@ -1,5 +1,5 @@
 temp/
-temp-*
+*-temp*
 template/
 input-cache/
 .~lock*
