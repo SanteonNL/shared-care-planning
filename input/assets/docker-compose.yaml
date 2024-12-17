@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  fhir:
+    container_name: hapifhir
+    image: "hapiproject/hapi:latest"
+    ports:
+      - "8080:8080"
+    environment:
+      - hapi.fhir.fhir_version=R4
+      - hapi.fhir.allow_external_references=true
+      - hapi.fhir.partitioning.allow_references_across_partitions=false
+
+    # configs:
+    #   - source: hapi
+    #     target: /app/config/application.yaml
