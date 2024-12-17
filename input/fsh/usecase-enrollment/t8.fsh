@@ -7,10 +7,9 @@ Description: "Add activity (Task) to CarePlan"
 * status = #active
 * intent = #order
 * category = $sct#135411000146103 "Multidisciplinary care regime"
-* subject = Reference(Patient/{{patient1id}})
+* insert RefIdentifier(subject, Patient, 1, $bsn, 111222333, $ura, URA-1, cpc1)
 * careTeam = Reference(CareTeam/{{careteam1id}})
-* author.identifier.system = $uzi
-* author.identifier.value = "UZI-1"
+* insert RefIdentifier(author, PractitionerRole, 1, $uzi, UZI-1, $ura, URA-1, cpc1)
 * activity[+].reference = Reference(Task/{{task1id}})
 * activity[+].reference = Reference(Task/{{task2id}})
 
@@ -22,10 +21,10 @@ Title: "1.43.2 CareTeam update"
 Description: "Add participant to CareTeam"
 * meta.versionId = "2"
 * category = $sct#135411000146103 "Multidisciplinary care regime"
-* subject = Reference(Patient/{{patient1id}})
-* insert ParticipantMember($bsn, 111222333, 2024-08-27)
-* insert ParticipantMember($ura, URA-1, 2024-08-27)
-* insert ParticipantMember($ura, URA-2, 2024-08-27)
+* insert RefIdentifier(subject, Patient, 1, $bsn, 111222333, $ura, URA-1, cpc1)
+* insert ParticipantMember(2024-08-27, Patient, 1, $bsn, 111222333, $ura, URA-1, cpc1)
+* insert ParticipantMember(2024-08-27, Organization, 1, $ura, URA-1, $ura, URA-1, cpc1)
+* insert ParticipantMember(2024-08-27, Organization, 2, $ura, URA-2, $ura, URA-1, cpc1)
 
 Instance: cps-bundle-07
 InstanceOf: Bundle

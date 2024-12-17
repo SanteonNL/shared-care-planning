@@ -1,6 +1,6 @@
-Instance: cps-qr-telemonitoring-enrollment-criteria
+Instance: msc-telemonitoring-heartfailure-enrollment-response
 InstanceOf: QuestionnaireResponse
-Usage: #example
+Usage: #inline
 Title: "1.26.1 QuestionnaireResponse for telemonitoring enrollment criteria" 
 Description: "Extra information for telemonitoring"
 * status = #completed
@@ -48,21 +48,19 @@ Usage: #example
 Title: "1.26.2 (sub-)Task 2 completion"
 Description: "Provide information for telemonitoring"
 * meta.versionId = "2"
+* contained[0] = msc-telemonitoring-heartfailure-enrollment
+* contained[1] = msc-telemonitoring-heartfailure-enrollment-response
 * basedOn = Reference(CarePlan/{{careplan1id}})
 * partOf = Reference(Task/{{task1id}})
 * status = #completed
 * intent = #order
-* for.identifier.system = $bsn
-* for.identifier.value = "111222333"
-* requester.identifier.system = $ura
-* requester.identifier.value = "URA-2"
-* owner.identifier.system = $ura
-* owner.identifier.value = "URA-1"
+* insert RefIdentifier(for, Patient, 1, $bsn, 111222333, $ura, URA-1, cpc1)
+* insert RefIdentifier(requester, Organization, 2, $ura, URA-2, $ura, URA-2, cpc2)
+* insert RefIdentifier(owner, PractitionerRole, 1, $uzi, UZI-1, $ura, URA-2, cpc2)
 * input[+].type = $task-input-type#Reference "Reference"
-* input[=].valueReference.identifier.system = "urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34"
-* input[=].valueReference.identifier.value = "1"
+* input[=].valueReference = Reference(msc-telemonitoring-heartfailure-enrollment)
 * output[+].type = $task-input-type#Reference "Reference"
-* output[=].valueReference = Reference(urn:uuid:cps-qr-telemonitoring-enrollment-criteria)
+* output[=].valueReference = Reference(msc-telemonitoring-heartfailure-enrollment-response)
 
 Instance: cps-bundle-03
 InstanceOf: Bundle
@@ -72,4 +70,4 @@ Description: "Bundle with response for extra information for telemonitoring"
 * meta.versionId = "1"
 * type = #transaction
 * insert BundleEntryPUT(cps-task-02-02, #PUT, Task/{{task2id}},{{task2etag}})
-* insert BundleEntryWithFullurl(urn:uuid:cps-qr-telemonitoring-enrollment-criteria, cps-qr-telemonitoring-enrollment-criteria, #POST, QuestionnaireResponse)
+//* insert BundleEntryWithFullurl(urn:uuid:cps-qr-telemonitoring-enrollment-criteria, cps-qr-telemonitoring-enrollment-criteria, #POST, QuestionnaireResponse)

@@ -7,13 +7,11 @@ Description: "Updating a task for telemonitoring to status accepted"
 * status = #accepted
 * intent = #order
 * code = $task-code#fullfill
-* focus = Reference(ServiceRequest/{{servicerequest1id}})
-* reasonCode.coding = $sct#195111005 "Hartfalen"
-* for = Reference(Patient/{{patient1id}})
-* requester.identifier.system = $uzi
-* requester.identifier.value = "UZI-1"
-* owner.identifier.system = $ura
-* owner.identifier.value = "URA-2"
+* insert RefIdentifier(focus, ServiceRequest, 1, $uuid, urn:uuid:37063bd0-d6bb-4fe0-b73c-26532f297d4b, $ura, URA-1, cpc1)
+* reasonCode.coding = $sct#84114007 "Hartfalen"
+* insert RefIdentifier(for, Patient, 1, $bsn, 111222333, $ura, URA-1, cpc1)
+* insert RefIdentifier(requester, PractitionerRole, 1, $uzi, UZI-1, $ura, URA-1, cpc1)
+* insert RefIdentifier(owner, Organization, 2, $ura, URA-2, $ura, URA-1, cpc1)
 
 Instance: cps-bundle-06
 InstanceOf: Bundle
