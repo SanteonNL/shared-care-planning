@@ -7,16 +7,20 @@ Description: "Updating a task for telemonitoring to status accepted"
 * status = #accepted
 * intent = #order
 * code = $task-code#fullfill
-* focus.identifier.system = "2.16.528.1.1007.3.3.21514.ehr.orders"
-* focus.identifier.value = "99534756439"
-* reasonReference.identifier.system = "2.16.528.1.1007.3.3.21514.ehr.diagnoses"
-* reasonReference.identifier.value = "56476575765"
-* for.identifier.system = $bsn
-* for.identifier.value = "111222333"
-* requester.identifier.system = $uzi
-* requester.identifier.value = "UZI-1"
-* owner.identifier.system = $ura
-* owner.identifier.value = "URA-2"
+* insert RefIdentifier(focus, ServiceRequest, 1, $uuid, urn:uuid:37063bd0-d6bb-4fe0-b73c-26532f297d4b, $ura, URA-1, cpc1)
+* reasonCode.coding = $sct#84114007 "Hartfalen"
+* insert RefIdentifier(for, Patient, 1, $bsn, 111222333, $ura, URA-1, cpc1)
+* insert RefIdentifier(requester, PractitionerRole, 1, $uzi, UZI-1, $ura, URA-1, cpc1)
+* insert RefIdentifier(owner, Organization, 2, $ura, URA-2, $ura, URA-1, cpc1)
+
+Instance: cps-bundle-06
+InstanceOf: Bundle
+Usage: #example
+Title: "1.42.2 Bundle"
+Description: "Bundle to update Task 1"
+* meta.versionId = "1"
+* type = #transaction
+* insert BundleEntryPUT(cps-task-01-02, #PUT, Task/{{task1id}},{{task1etag}})
 
 // Instance: cps-task-03
 // InstanceOf: SCPTask
