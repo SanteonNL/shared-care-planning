@@ -2,7 +2,7 @@
 
 Instance: cps-task-01
 InstanceOf: SCPTask
-Usage: #example
+Usage: #inline
 Title: "1.03.1 Task creation"
 Description: "Initiation of a task for telemonitoring"
 * meta.versionId = "1"
@@ -14,21 +14,20 @@ Description: "Initiation of a task for telemonitoring"
 * insert RefIdentifier(for, Patient, 1, $bsn, 111222333, $ura, URA-1, cpc1)
 * insert RefIdentifier(requester, PractitionerRole, 1, $uzi, UZI-1, $ura, URA-1, cpc1)
 * insert RefIdentifier(owner, Organization, 2, $ura, URA-2, $ura, URA-1, cpc1)
+* relevantHistory[+] = Reference(Provenance/urn:uuid:cps-task-signature-01)
 
 
-// Instance: cps-servicerequest-telemonitoring
-// InstanceOf: ServiceRequest
-// Usage: #example
-// Title: "9.01 ServiceRequest Telemonitoring"
-// Description: "Existing data in EHR of Hospital X"
-// * meta.versionId = "1"
-// * meta.lastUpdated = "2024-09-03T12:00:00Z"
-// * status = #active
-// * intent = #order
-// * subject = Reference(urn:uuid:hospitalx-patient-patrick) 
-// * requester = Reference({{cpc1-base-url}}PractitionerRole/{{practitionerrole1id}}) 
-// * code = $sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
-// * reasonReference = Reference({{cpc1-base-url}}Condition/{{condition1id}}) 
+Instance: cps-task-signature-01
+InstanceOf: Provenance
+Usage: #inline
+* target = Reference(Task/urn:uuid:cps-task-01)
+* recorded = "2024-12-19T15:41:10+01:00"
+* reason = $v3-ActReason#TREAT "treatment"
+* activity = $v3-DataOperation#CREATE "create"
+* agent.type = $provenance-participant-type#author
+* insert RefIdentifier(agent.who, PractitionerRole, 1, $uzi, UZI-1, $ura, URA-1, cpc1)
+* insert RefIdentifier(agent.onBehalfOf, Organization, 1, $ura, URA-1, $ura, URA-1, cpc1)
+
 
 Instance: cps-bundle-01
 InstanceOf: Bundle
@@ -37,8 +36,8 @@ Title: "1.03.2 Bundle"
 Description: "Bundle to initiate telemonitoring"
 * meta.versionId = "1"
 * type = #transaction
-* insert BundleEntry(cps-task-01, #POST, Task)
-// * insert BundleEntryWithFullurl(urn:uuid:cps-servicerequest-telemonitoring, cps-servicerequest-telemonitoring, #POST, ServiceRequest)
+* insert BundleEntryWithFullurl(urn:uuid:cps-task-01,cps-task-01, #POST, Task)
+* insert BundleEntryWithFullurl(urn:uuid:cps-task-signature-01, cps-task-signature-01, #POST, Provenance)
 // * insert BundleEntryWithFullurl(urn:uuid:hospitalx-patient-patrick, hospitalx-patient-patrick, #POST, Patient)
 
 

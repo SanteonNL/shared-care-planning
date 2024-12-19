@@ -13,11 +13,13 @@ Alias: $usage-context-type = http://terminology.hl7.org/CodeSystem/usage-context
 Alias: $FHIR-version = http://hl7.org/fhir/FHIR-version
 Alias: $v3-AdministrativeGender = http://terminology.hl7.org/CodeSystem/v3-AdministrativeGender
 Alias: $v3-ActCode = http://terminology.hl7.org/CodeSystem/v3-ActCode
+Alias: $v3-ActReason = http://terminology.hl7.org/CodeSystem/v3-ActReason
+Alias: $v3-DataOperation = http://terminology.hl7.org/CodeSystem/v3-DataOperation
 Alias: $v3-NullFlavor = http://terminology.hl7.org/CodeSystem/v3-NullFlavor
 Alias: $launchContext = http://hl7.org/fhir/uv/sdc/CodeSystem/launchContext
 Alias: $questionnaire-item-control = http://hl7.org/fhir/questionnaire-item-control
 Alias: $uuid = urn:ietf:rfc:3986
-
+Alias: $provenance-participant-type = http://terminology.hl7.org/CodeSystem/provenance-participant-type
 Alias: $unitsofmeasure = http://unitsofmeasure.org
 // Alias: $orpha = http://www.orpha.net
 // Alias: $atc = http://www.whocc.no/atc

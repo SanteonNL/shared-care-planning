@@ -108,7 +108,7 @@ Title: "9.01 HealthcareService Telemonitoring at Medical Service Centre"
 Description: "Existing data in EHR of Hospital X"
 * active = true
 * providedBy = Reference(urn:uuid:hospitalx-msc)
-* identifier.system = "urn:ietf:rfc:3986"
+* identifier.system = $uuid
 * identifier.value = "urn:uuid:91a9be09-eb97-4c0f-9a61-27a1985ae38b"
 * active = true
 * providedBy.identifier.system = $ura
@@ -148,7 +148,7 @@ Usage: #example
 Title: "9.01 Practitioner Caroline van Dijk"
 Description: "Existing data in EHR of Hospital X"
 * meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner"
-* identifier[+].system = "urn:ietf:rfc:3986"
+* identifier[+].system = $uuid
 * identifier[=].value = "urn:uuid:21a4c9fa-98d1-43b2-8ee6-00764f99e763"
 * identifier[+].system = "http://hospitalx.example.org/HRM/employees"
 * identifier[=].value = "1234"

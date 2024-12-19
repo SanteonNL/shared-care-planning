@@ -84,7 +84,7 @@ Title: "9.02 HealthcareService Telemonitoring at Medical Service Centre"
 Description: "Existing data in EHR of Medical Service Centre"
 * active = true
 * providedBy = Reference(urn:uuid:msc-msc)
-* identifier.system = "urn:ietf:rfc:3986"
+* identifier.system = $uuid
 * identifier.value = "urn:uuid:91a9be09-eb97-4c0f-9a61-27a1985ae38b"
 * active = true
 * providedBy.identifier.system = $ura
@@ -107,7 +107,7 @@ Usage: #example
 * language = #nl-NL
 * title = "Vragenlijst voor aanmelding van patienten met hartfalen voor telemonitoring"
 * url = "http://example.org/Questionnaire-msc-telemonitoring-heartfailure-enrollment|0.3"
-* identifier.system = "urn:ietf:rfc:3986"
+* identifier.system = $uuid
 * identifier.value = "urn:uuid:95b9cffc-277b-4941-88e0-c0bb6931af01"
 * status = #active
 * publisher = "Medical Service Centre B.V."
@@ -263,7 +263,7 @@ Description: "Existing data in EHR of MedicalServiceCentre"
 // * meta.profile[+] = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"
 // * language = #nl-NL
 // * url = "http://decor.nictiz.nl/fhir/Questionnaire/2.16.840.1.113883.2.4.3.11.60.909.26.34-2--20240902134017"
-// * identifier.system = "urn:ietf:rfc:3986"
+// * identifier.system = $uuid
 // * identifier.value = "urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34-2"
 // * name = "patient contactdetails"
 // * title = "patient contactdetails"
@@ -469,7 +469,7 @@ Description: "Existing data in EHR of MedicalServiceCentre"
 // * meta.profile[+] = "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-render"
 // * language = #nl-NL
 // * url = "http://decor.nictiz.nl/fhir/Questionnaire/2.16.840.1.113883.2.4.3.11.60.909.26.34-3--20240902134017"
-// * identifier.system = "urn:ietf:rfc:3986"
+// * identifier.system = $uuid
 // * identifier.value = "urn:oid:2.16.840.1.113883.2.4.3.11.60.909.26.34-3"
 // * name = "practitioner details"
 // * title = "practitioner details"
