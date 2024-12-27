@@ -7,9 +7,9 @@ Description: "Add activity (Task) to CarePlan"
 * status = #active
 * intent = #order
 * category = $sct#135411000146103 "Multidisciplinary care regime"
-* insert RefIdentifier(subject, Patient, 1, $bsn, 111222333, $ura, URA-1, cpc1)
+* insert RefIdentifier(subject, Patient, 1, $bsn, 111222333, $ura, URA-1, org1)
 * careTeam = Reference(CareTeam/{{careteam1id}})
-* insert RefIdentifier(author, PractitionerRole, 1, $uzi, UZI-1, $ura, URA-1, cpc1)
+* insert RefIdentifier(author, PractitionerRole, 1, $uzi, UZI-1, $ura, URA-1, org1)
 * activity[+].reference = Reference(Task/{{task1id}})
 * activity[+].reference = Reference(Task/{{task2id}})
 
@@ -21,10 +21,10 @@ Title: "1.43.2 CareTeam update"
 Description: "Add participant to CareTeam"
 * meta.versionId = "2"
 * category = $sct#135411000146103 "Multidisciplinary care regime"
-* insert RefIdentifier(subject, Patient, 1, $bsn, 111222333, $ura, URA-1, cpc1)
-* insert ParticipantMember(2024-08-27, Patient, 1, $bsn, 111222333, $ura, URA-1, cpc1)
-* insert ParticipantMember(2024-08-27, Organization, 1, $ura, URA-1, $ura, URA-1, cpc1)
-* insert ParticipantMember(2024-08-27, Organization, 2, $ura, URA-2, $ura, URA-1, cpc1)
+* insert RefIdentifier(subject, Patient, 1, $bsn, 111222333, $ura, URA-1, org1)
+* insert ParticipantMember(2024-08-27, Patient, 1, $bsn, 111222333, $ura, URA-1, org1)
+* insert ParticipantMember(2024-08-27, Organization, 1, $ura, URA-1, $ura, URA-1, org1)
+* insert ParticipantMember(2024-08-27, Organization, 2, $ura, URA-2, $ura, URA-1, org1)
 
 Instance: cps-bundle-07
 InstanceOf: Bundle
@@ -46,7 +46,7 @@ Title: "1.44 notification bundle for Hospital X"
 * entry.fullUrl = "urn:uuid:292d3c72-edc1-4d8a-afaa-d85e19c7f5611"
 * entry.resource = 292d3c72-edc1-4d8a-afaa-d85e19c7f5611
 * entry.request.method = #GET
-* entry.request.url = "{{cps-base-url}}Subscription/{{subscription1id}}/$status"
+* entry.request.url = "{{org1-fhir-url}}Subscription/{{subscription1id}}/$status"
 * entry.response.status = "200"
 
 Instance: 292d3c72-edc1-4d8a-afaa-d85e19c7f5611
@@ -54,7 +54,7 @@ InstanceOf: Parameters
 Usage: #inline
 * meta.profile = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription-status-r4"
 * parameter[0].name = "subscription"
-* parameter[=].valueReference = Reference({{cps-base-url}}Subscription/{{subscription1id}})
+* parameter[=].valueReference = Reference({{org1-fhir-url}}Subscription/{{subscription1id}})
 * parameter[+].name = "status"
 * parameter[=].valueCode = #active
 * parameter[+].name = "type"
@@ -65,21 +65,21 @@ Usage: #inline
 * parameter[=].part[+].name = "timestamp"
 * parameter[=].part[=].valueInstant = "2024-05-29T11:44:13.1882432-05:00"
 * parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference({{cps-base-url}}CarePlan/{{careplan1id}})
+* parameter[=].part[=].valueReference = Reference({{org1-fhir-url}}CarePlan/{{careplan1id}})
 * parameter[+].name = "notification-event"
 * parameter[=].part[0].name = "event-number"
 * parameter[=].part[=].valueString = "5"
 * parameter[=].part[+].name = "timestamp"
 * parameter[=].part[=].valueInstant = "2024-05-29T11:44:13.1882432-05:00"
 * parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference({{cps-base-url}}CareTeam/{{careteam1id}})
+* parameter[=].part[=].valueReference = Reference({{org1-fhir-url}}CareTeam/{{careteam1id}})
 * parameter[+].name = "notification-event"
 * parameter[=].part[0].name = "event-number"
 * parameter[=].part[=].valueString = "6"
 * parameter[=].part[+].name = "timestamp"
 * parameter[=].part[=].valueInstant = "2024-05-29T11:44:13.1882432-05:01"
 * parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference({{cps-base-url}}Task/{{task1id}})
+* parameter[=].part[=].valueReference = Reference({{org1-fhir-url}}Task/{{task1id}})
 
 Instance: notification-msc-11
 InstanceOf: Bundle
@@ -91,7 +91,7 @@ Title: "1.45 notification bundle for MSC"
 * entry.fullUrl = "urn:uuid:292d3c72-edc1-4d8a-afaa-d85e19c7f5612"
 * entry.resource = 292d3c72-edc1-4d8a-afaa-d85e19c7f5612
 * entry.request.method = #GET
-* entry.request.url = "{{cps-base-url}}Subscription/{{subscription2id}}/$status"
+* entry.request.url = "{{org1-fhir-url}}Subscription/{{subscription2id}}/$status"
 * entry.response.status = "200"
 
 Instance: 292d3c72-edc1-4d8a-afaa-d85e19c7f5612
@@ -99,7 +99,7 @@ InstanceOf: Parameters
 Usage: #inline
 * meta.profile = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription-status-r4"
 * parameter[0].name = "subscription"
-* parameter[=].valueReference = Reference({{cps-base-url}}Subscription/{{subscription2id}})
+* parameter[=].valueReference = Reference({{org1-fhir-url}}Subscription/{{subscription2id}})
 * parameter[+].name = "status"
 * parameter[=].valueCode = #active
 * parameter[+].name = "type"
@@ -110,18 +110,18 @@ Usage: #inline
 * parameter[=].part[+].name = "timestamp"
 * parameter[=].part[=].valueInstant = "2024-05-29T11:44:13.1882432-05:00"
 * parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference({{cps-base-url}}CarePlan/{{careplan1id}})
+* parameter[=].part[=].valueReference = Reference({{org1-fhir-url}}CarePlan/{{careplan1id}})
 * parameter[+].name = "notification-event"
 * parameter[=].part[0].name = "event-number"
 * parameter[=].part[=].valueString = "5"
 * parameter[=].part[+].name = "timestamp"
 * parameter[=].part[=].valueInstant = "2024-05-29T11:44:13.1882432-05:00"
 * parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference({{cps-base-url}}CareTeam/{{careteam1id}})
+* parameter[=].part[=].valueReference = Reference({{org1-fhir-url}}CareTeam/{{careteam1id}})
 * parameter[+].name = "notification-event"
 * parameter[=].part[0].name = "event-number"
 * parameter[=].part[=].valueString = "6"
 * parameter[=].part[+].name = "timestamp"
 * parameter[=].part[=].valueInstant = "2024-05-29T11:44:13.1882432-05:01"
 * parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference({{cps-base-url}}Task/{{task1id}})
+* parameter[=].part[=].valueReference = Reference({{org1-fhir-url}}Task/{{task1id}})

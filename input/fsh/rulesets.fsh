@@ -48,7 +48,7 @@ RuleSet: BundleEntryWithFullurl (fullUrl, resource, method, url)
 
 RuleSet: ParticipantMember (startdate, resource-type, instance-number, identifier-system, identifier-value, assigner-system, assigner-value, source)
 * participant[+].period.start = "{startdate}"
-* participant[=].member = Reference({{{source}-base-url}}{resource-type}/{{{resource-type}{instance-number}}})
+* participant[=].member = Reference({{{source}-fhir-url}}{resource-type}/{{{resource-type}{instance-number}}})
 * participant[=].member.type = "{resource-type}"
 * participant[=].member.identifier.system = {identifier-system}
 * participant[=].member.identifier.value = "{identifier-value}"
@@ -57,7 +57,7 @@ RuleSet: ParticipantMember (startdate, resource-type, instance-number, identifie
 
 
 RuleSet: RefIdentifier (resource-element, resource-type, instance-number, identifier-system, identifier-value, assigner-system, assigner-value, source)
-* {resource-element} = Reference({{{source}-base-url}}{resource-type}/{{{resource-type}{instance-number}}})
+* {resource-element} = Reference({{{source}-fhir-url}}{resource-type}/{{{resource-type}{instance-number}}})
 * {resource-element}.type = "{resource-type}"
 * {resource-element}.identifier.system = {identifier-system}
 * {resource-element}.identifier.value = "{identifier-value}"

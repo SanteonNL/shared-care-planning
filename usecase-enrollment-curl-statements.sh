@@ -34,39 +34,39 @@ export CPC1_BASE_URL="http://localhost:8190/fhir/"
 export CPC2_BASE_URL="http://localhost:8290/fhir/"
 
 curlstatements=(
-  "cUrl-POST-Bundle-hospitalx-bundle-01-to-cpc1-base-url.txt"
-  "cUrl-POST-Bundle-msc-bundle-01-to-cpc2-base-url.txt"
-  "cUrl-GET-CarePlan-from-cps-base-url.txt"
-  "cUrl-POST-Bundle-cps-bundle-01-to-cps-base-url.txt"
-  "cUrl-POST-Subscription-cps-sub-medicalservicecentre-to-cps-base-url.txt"
-  "cUrl-POST-Subscription-cps-sub-hospitalx-to-cps-base-url.txt"
-#   "cUrl-POST-Bundle-notification-msc-01-to-cps-base-url.txt"
-  "cUrl-POST-CareTeam-cps-careteam-01-to-cps-base-url.txt"
-  "cUrl-POST-CarePlan-cps-careplan-01-to-cps-base-url.txt"
-#   "cUrl-POST-Bundle-notification-hospitalx-01-to-cps-base-url.txt"
-  "cUrl-GET-cps-task-01-from-cps-base-url.txt"
-  "cUrl-GET-cps-servicerequest-telemonitoring-from-cps-base-url.txt"
-  "cUrl-GET-cps-heartfailure-from-cps-base-url.txt"
-  "cUrl-POST-Bundle-cps-bundle-02-to-cps-base-url.txt"
-#   "cUrl-POST-Bundle-notification-hospitalx-02-to-cps-base-url.txt"
-  "cUrl-GET-cps-task-02-from-cps-base-url.txt"
-  "cUrl-GET-cps-questionnaire-telemonitoring-enrollment-criteria-from-cps-base-url.txt"
-  "cUrl-POST-Bundle-cps-bundle-03-to-cps-base-url.txt"
-#   "cUrl-POST-Bundle-notification-msc-02-to-cps-base-url.txt"
-  "cUrl-POST-Bundle-cps-bundle-04-to-cps-base-url.txt"
-#   "cUrl-POST-Bundle-notification-hospitalx-03-to-cps-base-url.txt"
-  "cUrl-GET-cps-task-03-from-cps-base-url.txt"
-  "cUrl-GET-cps-questionnaire-patient-details-from-cps-base-url.txt"
-  "cUrl-GET-cps-questionnaire-practitioner-details-from-cps-base-url.txt"
-  "cUrl-POST-Bundle-cps-bundle-05-to-cps-base-url.txt"
-#   "cUrl-POST-Bundle-notification-msc-03-to-cps-base-url.txt"
-  "cUrl-GET-cps-task-01-from-cps-base-url.txt"
-  "cUrl-POST-Bundle-cps-bundle-06-to-cps-base-url.txt"
-  "cUrl-GET-cps-careplan-01-from-cps-base-url.txt"
-  "cUrl-GET-cps-careteam-01-from-cps-base-url.txt"
-  "cUrl-POST-Bundle-cps-bundle-07-to-cps-base-url.txt"
-#   "cUrl-POST-Bundle-notification-hospitalx-11-to-cps-base-url.txt"
-#   "cUrl-POST-Bundle-notification-msc-11-to-cps-base-url.txt"
+  "cUrl-POST-Bundle-hospitalx-bundle-01-to-cpc1-fhir-url.txt"
+  "cUrl-POST-Bundle-msc-bundle-01-to-cpc2-fhir-url.txt"
+  "cUrl-GET-CarePlan-from-org1-fhir-url.txt"
+  "cUrl-POST-Bundle-cps-bundle-01-to-org1-fhir-url.txt"
+  "cUrl-POST-Subscription-cps-sub-medicalservicecentre-to-org1-fhir-url.txt"
+  "cUrl-POST-Subscription-cps-sub-hospitalx-to-org1-fhir-url.txt"
+#   "cUrl-POST-Bundle-notification-msc-01-to-org1-fhir-url.txt"
+  "cUrl-POST-CareTeam-cps-careteam-01-to-org1-fhir-url.txt"
+  "cUrl-POST-CarePlan-cps-careplan-01-to-org1-fhir-url.txt"
+#   "cUrl-POST-Bundle-notification-hospitalx-01-to-org1-fhir-url.txt"
+  "cUrl-GET-cps-task-01-from-org1-fhir-url.txt"
+  "cUrl-GET-cps-servicerequest-telemonitoring-from-org1-fhir-url.txt"
+  "cUrl-GET-cps-heartfailure-from-org1-fhir-url.txt"
+  "cUrl-POST-Bundle-cps-bundle-02-to-org1-fhir-url.txt"
+#   "cUrl-POST-Bundle-notification-hospitalx-02-to-org1-fhir-url.txt"
+  "cUrl-GET-cps-task-02-from-org1-fhir-url.txt"
+  "cUrl-GET-cps-questionnaire-telemonitoring-enrollment-criteria-from-org1-fhir-url.txt"
+  "cUrl-POST-Bundle-cps-bundle-03-to-org1-fhir-url.txt"
+#   "cUrl-POST-Bundle-notification-msc-02-to-org1-fhir-url.txt"
+  "cUrl-POST-Bundle-cps-bundle-04-to-org1-fhir-url.txt"
+#   "cUrl-POST-Bundle-notification-hospitalx-03-to-org1-fhir-url.txt"
+  "cUrl-GET-cps-task-03-from-org1-fhir-url.txt"
+  "cUrl-GET-cps-questionnaire-patient-details-from-org1-fhir-url.txt"
+  "cUrl-GET-cps-questionnaire-practitioner-details-from-org1-fhir-url.txt"
+  "cUrl-POST-Bundle-cps-bundle-05-to-org1-fhir-url.txt"
+#   "cUrl-POST-Bundle-notification-msc-03-to-org1-fhir-url.txt"
+  "cUrl-GET-cps-task-01-from-org1-fhir-url.txt"
+  "cUrl-POST-Bundle-cps-bundle-06-to-org1-fhir-url.txt"
+  "cUrl-GET-cps-careplan-01-from-org1-fhir-url.txt"
+  "cUrl-GET-cps-careteam-01-from-org1-fhir-url.txt"
+  "cUrl-POST-Bundle-cps-bundle-07-to-org1-fhir-url.txt"
+#   "cUrl-POST-Bundle-notification-hospitalx-11-to-org1-fhir-url.txt"
+#   "cUrl-POST-Bundle-notification-msc-11-to-org1-fhir-url.txt"
 )
 
 for value in "${curlstatements[@]}"
@@ -77,10 +77,10 @@ echo "
 Loading file $value"
 request=$(<input/images/$value)
 
-# find and replace {{cps-base-url}} with ${CPS_BASE_URL}:
-request=${request/"{{cps-base-url}}"/${CPS_BASE_URL}}
-request=${request/"{{cpc1-base-url}}"/${CPC1_BASE_URL}}
-request=${request/"{{cpc2-base-url}}"/${CPC2_BASE_URL}}
+# find and replace {{org1-fhir-url}} with ${CPS_BASE_URL}:
+request=${request/"{{org1-fhir-url}}"/${CPS_BASE_URL}}
+request=${request/"{{org1-fhir-url}}"/${CPC1_BASE_URL}}
+request=${request/"{{cpc2-fhir-url}}"/${CPC2_BASE_URL}}
 
 # find and replace {{cps-access-token}} with ${CPS_ACCESS_TOKEN}:
 request=${request/"{{cps-access-token}}"/${CPS_ACCESS_TOKEN}}

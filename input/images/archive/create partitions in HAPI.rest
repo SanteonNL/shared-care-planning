@@ -1,0 +1,50 @@
+# 1) To use requests in this file, you need to install the REST Client extension in Visual Studio Code
+#
+# 2) In the settings.json of the REST Client extension, add these environment variables like so:
+# "rest-client.environmentVariables": {
+#         "$shared": {
+#             "path-to-data": "./fsh-generated/resources/"
+#         },
+#         "local": {
+          #  "org1-fhir-url": "http://localhost:8080/fhir/DEFAULT/",
+          #   "org1-access-token": "Basic user:password",
+          #   "org2-fhir-url": "http://localhost:8080/fhir/ORG2/"
+          #   "org3-fhir-url": "http://localhost:8080/fhir/ORG3/"
+#         }
+# }
+# 
+# 3) Switch between environments by clicking on the environment name in the status bar at the bottom right of the window
+
+###
+
+POST {{org1-fhir-url}}$partition-management-create-partition
+Content-Type: application/fhir+json
+Authorization: {{org1-access-token}}
+
+{
+  "resourceType": "Parameters",
+  "parameter": [ {
+    "name": "id",
+    "valueInteger": 2
+  }, {
+    "name": "name",
+    "valueCode": "ORG2"
+  }]
+}
+
+###
+
+POST {{org1-fhir-url}}$partition-management-create-partition
+Content-Type: application/fhir+json
+Authorization: {{org1-access-token}}
+
+{
+  "resourceType": "Parameters",
+  "parameter": [ {
+    "name": "id",
+    "valueInteger": 3
+  }, {
+    "name": "name",
+    "valueCode": "ORG3"
+  }]
+}

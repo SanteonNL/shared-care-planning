@@ -9,14 +9,9 @@ Description: "Ask for extra information for telemonitoring"
 * partOf = Reference(Task/{{task1id}})
 * status = #ready
 * intent = #order
-* for = Reference(Patient/{{patient1id}})
-* requester.identifier.system = $ura
-* requester.identifier.value = "URA-2"
-* owner.identifier.system = $ura
-* owner.identifier.value = "URA-1"
-* insert RefIdentifier(for, Patient, 1, $bsn, 111222333, $ura, URA-1, cpc1)
-* insert RefIdentifier(requester, Organization, 2, $ura, URA-2, $ura, URA-2, cpc2)
-* insert RefIdentifier(owner, PractitionerRole, 1, $uzi, UZI-1, $ura, URA-2, cpc2)
+* insert RefIdentifier(for, Patient, 1, $bsn, 111222333, $ura, URA-1, org1)
+* insert RefIdentifier(requester, Organization, 2, $ura, URA-2, $ura, URA-2, org2)
+* insert RefIdentifier(owner, PractitionerRole, 1, $uzi, UZI-1, $ura, URA-2, org2)
 * input[+].type = $task-input-type#Reference "Reference"
 * input[=].valueReference = Reference(msc-telemonitoring-heartfailure-enrollment)
 

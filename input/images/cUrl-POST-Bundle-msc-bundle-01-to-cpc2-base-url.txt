@@ -1,4 +1,0 @@
-curl --request POST {{cpc2-base-url}} 
---header Content-Type:application/json \
---header Authorization:{{cpc2-access-token}} \
---data @fsh-generated/resources/Bundle-msc-bundle-01.json
