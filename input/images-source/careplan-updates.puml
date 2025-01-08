@@ -11,27 +11,7 @@ participant  org_b as "Organization B"
 participant  org_c as "Organization C"
 participant  org_d as "Organization D"
 actor patient as "Patient P"
-' database registry as "Discovery Service"
 
-' group init organizations
-'     org_a -> org_a: self issue URA VC, Service-definition VC
-'     org_a -> registry: publish URA VP, Service-definition VP
-
-'     org_b -> org_b: self issue URA VC, Service-definition VC
-'     org_b -> registry: publish URA VP, Service-definition VP
-
-'     org_c -> org_c: self issue URA VC, Service-definition VC
-'     org_c -> registry: publish URA VP, Service-definition VP
-
-'     org_d -> org_c: self issue URA VC, Service-definition VC
-'     org_d -> registry: publish URA VP, Service-definition VP
-
-'     note right
-'         All services are now
-'         registered in the discovery service (Vanilla NUTS)
-'     end note
-
-' end
 
 group init careplan 
  org_a -> org_a: create CarePlan/123
@@ -39,48 +19,52 @@ end
 
 group referral A->B
    org_a -> org_a: create task (for=Patient/P, \nbasedOn=CarePlan/123 , \nrequester=A, \nperformer=B)
-    note right
+
+   org_a -> org_b: notify task
+   org_b -> org_a: accept/update task
+   org_a -> org_b: issue CarePlan-Request-VC
+   note right
         This referral may use the 
         request-(response-)workflow as specified in SCP,
         but could also use different workflow as long as
         Organization A is able to verify the referral 
-        from A to B based on (or related to) CarePlan/123
-    end note
-   org_a -> org_b: notify task
-   org_b -> org_a: accept/update task
+        and issue a CarePlan-Request-VC. This credential 
+        should contain the who/why/what of the referral. 
+   end note
 end
 
-group careplan update B
-    org_b -> org_a: request VC for Careplan/123 \nverifier=Organization A
-    org_a -> org_a: verify referral A->B based on CarePlan/123
-    return allow
-    org_a -> org_a: add member Organization B to CarePlan/123 
+group careplan update B (based on referral)
+    org_b -> org_a: request VC for Careplan/123 \nproof=CarePlan-Request-VP
+    org_a -> org_a: add member Organization B to CarePlan/123
+    org_a -> org_a: create Provenance on CarePlan/123 with CarePlan-Request-VP
     org_a -> org_b: issue CarePlan VC
+    note right
+        The CarePlan-credential acts as a proof
+        that Organization B is a member of the CarePlan
+        and is authorized to access the CarePlan data and/or 
+        update elements of the CarePlan.
+        It should also contain the who/why/what of the 
+        CarePlan-Request-VC.
+    end note
 end
 
 group referral B->C
    org_b -> org_b: create task (for=Patient/P, \nbasedOn=CarePlan/123 , \nrequester=B, \nperformer=C)
    org_b -> org_c: notify task
    org_c -> org_b: accept/update task
-    ' note right
-    '      - Patient is related to Organization A and B
-    '      - Organization A has issued a task to Organization B
-    '        for Patient
-    '      - Organization B has accepted the task
-    ' end note
+   org_b -> org_c: issue CarePlan-Request-VC
 end
 
-group careplan update C
-    org_c -> org_a: request VC for Careplan/123 \nverifier=Organization B
-    org_a -> org_b: verify referral B->C based on CarePlan/123 
-    return allow
+group careplan update C (based on referral)
+    org_c -> org_a: request VC for Careplan/123 \nproof=CarePlan-Request-VP
     org_a -> org_a: add member Organization C to CarePlan/123 
+    org_a -> org_a: create Provenance on CarePlan/123 with CarePlan-Request-VP
     org_a -> org_c: issue CarePlan VC
 end
 
-group careplan update D
-    org_d -> org_a: request VC for Careplan/123 \nverifier=Patient
-    org_a -> patient: approve Careplan membership for Organization D 
+group careplan update D (Patient initiated)
+    patient -> org_d: issue CarePlan-Request-VC
+    org_d -> org_a: request VC for Careplan/123 nproof=CarePlan-Request-VP
     note right
          - A CarePlan-member is added without
            requiring a referral
@@ -89,12 +73,12 @@ group careplan update D
            an app at Organization A to manage
            the CarePlan (approve the new member)
     end note
-    return allow
     org_a -> org_a: add member Organization D to CarePlan/123 
+    org_a -> org_a: create Provenance on CarePlan/123 with CarePlan-Request-VP
     org_a -> org_d: issue CarePlan VC
 end
 
-group access
+group access data by Organization D
     org_d -> org_a: request accesstoken (URA+CarePlan VP)
     return accesstoken
     org_d -> org_a: request CarePlan/123 to locate other members
