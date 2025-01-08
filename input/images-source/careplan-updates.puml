@@ -39,9 +39,15 @@ end
 
 group referral A->B
    org_a -> org_a: create task (for=Patient/P, \nbasedOn=CarePlan/123 , \nrequester=A, \nperformer=B)
+    note right
+        This referral may use the 
+        request-(response-)workflow as specified in SCP,
+        but could also use different workflow as long as
+        Organization A is able to verify the referral 
+        from A to B based on (or related to) CarePlan/123
+    end note
    org_a -> org_b: notify task
    org_b -> org_a: accept/update task
-
 end
 
 group careplan update B
