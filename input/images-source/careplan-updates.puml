@@ -1,0 +1,104 @@
+@startuml careplan-updates
+
+skinparam roundcorner 20
+skinparam defaultFontName Arial 
+
+
+!pragma teoz true
+
+participant  org_a as "Organization A"
+participant  org_b as "Organization B"
+participant  org_c as "Organization C"
+participant  org_d as "Organization D"
+actor patient as "Patient P"
+' database registry as "Discovery Service"
+
+' group init organizations
+'     org_a -> org_a: self issue URA VC, Service-definition VC
+'     org_a -> registry: publish URA VP, Service-definition VP
+
+'     org_b -> org_b: self issue URA VC, Service-definition VC
+'     org_b -> registry: publish URA VP, Service-definition VP
+
+'     org_c -> org_c: self issue URA VC, Service-definition VC
+'     org_c -> registry: publish URA VP, Service-definition VP
+
+'     org_d -> org_c: self issue URA VC, Service-definition VC
+'     org_d -> registry: publish URA VP, Service-definition VP
+
+'     note right
+'         All services are now
+'         registered in the discovery service (Vanilla NUTS)
+'     end note
+
+' end
+
+group init careplan 
+ org_a -> org_a: create CarePlan/123
+end
+
+group referral A->B
+   org_a -> org_a: create task (for=Patient/P, \nbasedOn=CarePlan/123 , \nrequester=A, \nperformer=B)
+   org_a -> org_b: notify task
+   org_b -> org_a: accept/update task
+
+end
+
+group careplan update B
+    org_b -> org_a: request VC for Careplan/123 \nverifier=Organization A
+    org_a -> org_a: verify referral A->B based on CarePlan/123
+    return allow
+    org_a -> org_a: add member Organization B to CarePlan/123 
+    org_a -> org_b: issue CarePlan VC
+end
+
+group referral B->C
+   org_b -> org_b: create task (for=Patient/P, \nbasedOn=CarePlan/123 , \nrequester=B, \nperformer=C)
+   org_b -> org_c: notify task
+   org_c -> org_b: accept/update task
+    ' note right
+    '      - Patient is related to Organization A and B
+    '      - Organization A has issued a task to Organization B
+    '        for Patient
+    '      - Organization B has accepted the task
+    ' end note
+end
+
+group careplan update C
+    org_c -> org_a: request VC for Careplan/123 \nverifier=Organization B
+    org_a -> org_b: verify referral B->C based on CarePlan/123 
+    return allow
+    org_a -> org_a: add member Organization C to CarePlan/123 
+    org_a -> org_c: issue CarePlan VC
+end
+
+group careplan update D
+    org_d -> org_a: request VC for Careplan/123 \nverifier=Patient
+    org_a -> patient: approve Careplan membership for Organization D 
+    note right
+         - A CarePlan-member is added without
+           requiring a referral
+         - The Patient may have initiated this
+           expansion at Organization D, or from 
+           an app at Organization A to manage
+           the CarePlan (approve the new member)
+    end note
+    return allow
+    org_a -> org_a: add member Organization D to CarePlan/123 
+    org_a -> org_d: issue CarePlan VC
+end
+
+group access
+    org_d -> org_a: request accesstoken (URA+CarePlan VP)
+    return accesstoken
+    org_d -> org_a: request CarePlan/123 to locate other members
+    org_d -> org_a: request data
+    return data
+    org_d -> org_b: request accesstoken (URA+CarePlan VP)
+    org_d -> org_b: request data
+    return data
+    org_d -> org_c: request accesstoken (URA+CarePlan VP)
+    org_d -> org_c: request data
+    return data
+end
+@enduml
