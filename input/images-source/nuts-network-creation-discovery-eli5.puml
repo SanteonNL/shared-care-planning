@@ -1,23 +1,23 @@
 @startuml
-actor app1 as "Organzation 1 (CP owner)"
-actor app2 as "Organzation 2"
-actor app3 as "Organzation 3"
-actor app4 as "Organzation X"
+actor app1 as "Organisation 1 (CP owner)"
+actor app2 as "Organisation 2"
+actor app3 as "Organisation 3"
+actor app4 as "Organisation X"
 
 app1 -> app2: issue invite VC
 app2 --> app1: accept & present invite as VP
-app1 -> app1: make Organzation 2 member of CarePlan / Team
+app1 -> app1: make Organisation 2 member of CarePlan / Team
 app1 -> app2: issue CarePlan VC
 
 app2 -> app3: issue invite VC
 app3 --> app1: accept & present invite as VP
 app1 -> app1: check if invite is valud
-app1 -> app1: make Organzation 3 member of CarePlan / Team
+app1 -> app1: make Organisation 3 member of CarePlan / Team
 app1 -> app3: issue CarePlan VC
 
 app4 -> app1: proof membership of careteam \nby other means (Patient consent)
 app1 -> app1: verify proof
-app1 -> app1: make Organzation X member of CarePlan / Team
+app1 -> app1: make Organisation X member of CarePlan / Team
 app1 -> app4: issue CarePlan VC
 note right
  - The organizations have active CarePlan VCs
