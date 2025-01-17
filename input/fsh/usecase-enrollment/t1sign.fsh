@@ -1,6 +1,8 @@
 Instance: cps-task-signature-01
 InstanceOf: Provenance
 Usage: #example
+// when deploying resources to a HAPIFHIR-server, it automatrically deletes the _history part (version) of the reference
+// to prevent this, the extension "auto-version-references-at-path" is used here
 * meta.extension.url = "http://hapifhir.io/fhir/StructureDefinition/auto-version-references-at-path"
 * meta.extension.valueString = "target"
 * target = Reference(Task/{{task1id}}/_history/{{task1etag}})
