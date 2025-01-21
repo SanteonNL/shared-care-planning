@@ -54,25 +54,23 @@ Usage: #example
 Title: "1.04.3 CarePlan creation"
 Description: "Initiation of a care plan for a patient with Heartfailure"
 * meta.versionId = "1"
+* contained[0] = cps-careteam-01
 * status = #active
 * intent = #order
 * category = $sct#135411000146103 "Multidisciplinary care regime"
 * insert RefIdentifier(subject, Patient, 1, $bsn, 111222333, $ura, URA-1, org1)
-* careTeam = Reference(CareTeam/{{careteam1id}})
+* careTeam = Reference(cps-careteam-01)
 * insert RefIdentifier(author, PractitionerRole, 1, $uzi, UZI-1, $ura, URA-1, org1)
-* activity[+].reference = Reference(Task/{{task1id}})
+* activity[+].reference = Reference({{org1-fhir-url}}Task/{{task1id}})
 
 
 Instance: cps-careteam-01
-InstanceOf: SCPCareTeam
-Usage: #example
+InstanceOf: CareTeam
+Usage: #inline
 Title: "1.04.4 CareTeam creation"
 Description: "Initiation of a care team for a patient with Heartfailure"
-* meta.versionId = "1"
-* category = $sct#135411000146103 "Multidisciplinary care regime"
-* insert RefIdentifier(subject, Patient, 1, $bsn, 111222333, $ura, URA-1, org1)
 * insert ParticipantMember(2024-08-27, Patient, 1, $bsn, 111222333, $ura, URA-1, org1)
-* insert ParticipantMember(2024-08-27, Organization, 1, $ura, URA-1, $ura, URA-1, org1)
+* insert ParticipantMember(2024-08-27, PractitionerRole, 1, $uzi, UZI-1, $ura, URA-1, org1)
 
 
 Instance: notification-hospitalx-01
@@ -106,13 +104,6 @@ Title: "1.05.2 notification bundle parameter for Hospital X"
 * parameter[=].part[=].valueInstant = "2024-05-29T11:44:13.1882432-05:00"
 * parameter[=].part[+].name = "focus"
 * parameter[=].part[=].valueReference = Reference({{org1-fhir-url}}CarePlan/{{careplan1id}})
-* parameter[+].name = "notification-event"
-* parameter[=].part[0].name = "event-number"
-* parameter[=].part[=].valueString = "2"
-* parameter[=].part[+].name = "timestamp"
-* parameter[=].part[=].valueInstant = "2024-05-29T11:44:13.1882432-05:00"
-* parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference({{org1-fhir-url}}CareTeam/{{careteam1id}})
 
 Instance: notification-msc-01
 InstanceOf: Bundle

@@ -106,13 +106,13 @@ InstanceOf: HealthcareService
 Usage: #example
 Title: "9.01 HealthcareService Telemonitoring at Medical Service Centre"
 Description: "Existing data in EHR of Hospital X"
-* active = true
-* providedBy = Reference(urn:uuid:hospitalx-msc)
 * identifier.system = $uuid
 * identifier.value = "urn:uuid:91a9be09-eb97-4c0f-9a61-27a1985ae38b"
 * active = true
+* providedBy = Reference(urn:uuid:hospitalx-msc)
 * providedBy.identifier.system = $ura
 * providedBy.identifier.value = "URA-002"
+* active = true
 * category[+] = $sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
 * type[+] = $sct#715191006 "monitoren van asthma via telegeneeskunde (regime/therapie)"
 * type[+] = $sct#879780004 "monitoren van chronisch hartfalen via telegeneeskunde (regime/therapie)" 

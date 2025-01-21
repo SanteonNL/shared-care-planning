@@ -63,3 +63,11 @@ RuleSet: RefIdentifier (resource-element, resource-type, instance-number, identi
 * {resource-element}.identifier.value = "{identifier-value}"
 * {resource-element}.identifier.assigner.identifier.system = {assigner-system}
 * {resource-element}.identifier.assigner.identifier.value = "{assigner-value}"
+
+RuleSet: RefIdentifierContained (resource-element, resource-type, id, identifier-system, identifier-value, assigner-system, assigner-value)
+* {resource-element} = Reference({id})
+* {resource-element}.type = "{resource-type}"
+* {resource-element}.identifier.system = {identifier-system}
+* {resource-element}.identifier.value = "{identifier-value}"
+* {resource-element}.identifier.assigner.identifier.system = {assigner-system}
+* {resource-element}.identifier.assigner.identifier.value = "{assigner-value}"
