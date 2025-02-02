@@ -7,7 +7,7 @@ Title: "1.03.1 Task creation"
 Description: "Initiation of a task for telemonitoring"
 * meta.versionId = "1"
 * contained[+] = hospitalx-servicerequest-telemonitoring
-* contained[+] = hospitalx-carolinevandijk-hospitalx
+* contained[+] = hospitalx-user-carolinevandijk
 * contained[+] = hospitalx-msc-hcs
 * status = #requested
 * intent = #order
@@ -15,9 +15,17 @@ Description: "Initiation of a task for telemonitoring"
 * insert RefIdentifierContained(focus, ServiceRequest, hospitalx-servicerequest-telemonitoring, $uuid, urn:uuid:37063bd0-d6bb-4fe0-b73c-26532f297d4b, $ura, URA-1)
 * reasonCode.coding = $sct#84114007 "Hartfalen"
 * insert RefIdentifier(for, Patient, 1, $bsn, 111222333, $ura, URA-1, org1)
-* insert RefIdentifierContained(requester, PractitionerRole, hospitalx-carolinevandijk-hospitalx, $uzi, UZI-1, $ura, URA-1)
+* insert RefIdentifierContained(requester, PractitionerRole, hospitalx-user-carolinevandijk, $uzi, UZI-1, $ura, URA-1)
 * insert RefIdentifierContained(owner, HealthcareService, hospitalx-msc-hcs, $uuid, urn:uuid:91a9be09-eb97-4c0f-9a61-27a1985ae38b, $ura, URA-1)
 // * relevantHistory[+] = Reference(Provenance/urn:uuid:cps-task-signature-01)
+
+
+Instance: hospitalx-user-carolinevandijk
+InstanceOf: PractitionerRole
+Usage: #inline
+* identifier[+].system = "https://www.cwz.nl/hix-user"
+* identifier[=].value = "123456"
+* insert RefIdentifier(organization, Organization, 1, $ura, URA-1, $ura, URA-1, org1)
 
 
 // Instance: cps-task-signature-01

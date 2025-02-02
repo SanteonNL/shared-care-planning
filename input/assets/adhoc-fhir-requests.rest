@@ -1,0 +1,43 @@
+###
+
+POST {{org1-fhir-url}}/Patient/_search
+Content-Type: application/x-www-form-urlencoded
+Authorization: {{org1-access-token}}
+
+identifier={{getTask1.response.body.focus.identifier.system}}|{{getTask1.response.body.focus.identifier.value}}
+
+###
+
+GET {{org1-fhir-url}}/CarePlan 
+Content-Type: application/fhir+json 
+Authorization: {{org1-access-token}}
+
+###
+
+GET {{org1-fhir-url}}/PractitionerRole 
+Content-Type: application/fhir+json 
+Authorization: {{org1-access-token}}
+
+###
+
+GET {{org1-fhir-url}}/Practitioner 
+Content-Type: application/fhir+json 
+Authorization: {{org1-access-token}}
+
+###
+
+GET {{org2-fhir-url}}/Organization 
+Content-Type: application/fhir+json 
+Authorization: {{org1-access-token}}
+
+###
+
+GET {{org1-fhir-url}}/Condition 
+Content-Type: application/fhir+json 
+Authorization: {{org1-access-token}}
+
+###
+
+GET {{org1-fhir-url}}/Task 
+Content-Type: application/fhir+json 
+Authorization: {{org1-access-token}}

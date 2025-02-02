@@ -26,6 +26,7 @@ GET {{org1-fhir-url}}{{postBundleTask1.response.body.entry[0].response.location}
 
 POST {{org1-fhir-url}}/Patient/_search
 Content-Type: application/x-www-form-urlencoded
+Authorization: {{org1-access-token}}
 X-SCP-Context: {{org1-fhir-url}}Task/{{task1id}}
 
 identifier=http://fhir.nl/fhir/NamingSystem/bsn|{{getTask1.response.body.for.identifier.value}}
@@ -36,6 +37,7 @@ identifier=http://fhir.nl/fhir/NamingSystem/bsn|{{getTask1.response.body.for.ide
 
 POST {{org1-fhir-url}}/ServiceRequest/_search
 Content-Type: application/x-www-form-urlencoded
+Authorization: {{org1-access-token}}
 X-SCP-Context: {{org1-fhir-url}}Task/{{task1id}}
 
 identifier={{getTask1.response.body.focus.identifier.system}}|{{getTask1.response.body.focus.identifier.value}}
