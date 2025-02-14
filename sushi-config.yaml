@@ -65,8 +65,8 @@ pages:
   careplan.md:
     title: Careplans
 
-  task.md:
-    title: Tasks
+  workflow.md:
+    title: Workflow
 
   care-services.md:
     title: Care Services
@@ -114,10 +114,10 @@ pages:
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 menu:
   Home: index.html
-  CarePlan: careplan.html
-  Tasks: task.html
+  Workflow: workflow.html
   Care Services: care-services.html
   Notifications: notification.html
+  CarePlan: careplan.html
   Provenance: provenance.html
 
   Use cases:

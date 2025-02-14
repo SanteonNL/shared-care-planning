@@ -1,3 +1,8 @@
+### Summary of workflow in FHIR core specification
+
+
+### Workflow in Shared Care Planning
+
 The Task resource describes an activity that can be performed, is being performed, or has been performed. It is used to manage and track the status of tasks, participants and definition of the Task. A Task in SCP is always related ('basedOn') the CarePlan. When a party is request to 'do' a Task, that organizations that may not be part of the CareTeam yet. Personally Identifiable Information SHOULD be left out of the Task content until the Task is accepted by the organization responsible for the Task.
 Key elements of a Task for SCP:
 - **basedOn**: References to other requests that the task is based on. MUST contain one reference to a SCP-CarePlan.

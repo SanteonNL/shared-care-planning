@@ -1,3 +1,9 @@
+### Summary of Provenance in FHIR core spec
+
+
+### Provenance in Shared Care Planning
+
+
 The Provenance resource captures details about the creation, modification, and transmission of a resource. It includes information about the entities and agents involved, as well as the time and place of the event. Provenance is essential for understanding the history and trustworthiness of data within healthcare systems. Members of the CareTeam in a CarePlan are authorized to access and manipulate data.  Therefore the transactions that lead to adding or changing CareTeam-members is recorded in Provenance instances. 
 Key elements of a Provenance for SCP:
 - **target**: The resources that are the subject of the provenance information (e.g., a specific Task).

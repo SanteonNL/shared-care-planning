@@ -18,7 +18,7 @@ The 'care network' within Shared Care Planning is formed by a FHIR **CarePlan** 
 #### CarePlan
 SCP builds upon the IHE 'Dynamic Care Planning' profile ([IHE-DCP](https://wiki.ihe.net/index.php/Dynamic_Care_Planning_(DCP))). The FHIR CarePlan is used to consolidate the activities and participants for a patient. Whenever a SCP-CarePlan is created or updated, all participants are notified.
 
-#### Tasks
+#### Workflow
 Activities in the CarePlan are represented by FHIR Tasks. These Tasks are communicated between a requester and a performer using the [FHIR Workflow Mangement Communication patterns](https://hl7.org/fhir/R4/workflow-management.html). 
 
 The main premise of SCP is that all Tasks should refer to the same CarePlan, as long as they are related to one or more associated conditions or goals. The requesters and performers of all Tasks are consolidated as the CarePlan participants or a 'care network' of that patient. A performer shall be added as a careplan participant as soon as it accepts a SCP-Task with the intent of an order (accepting 'proposal-Tasks' does not lead to CarePlan-membership). Being participant in a CarePlan may be used for data localization and autorization (to read healthcare data from other careplan participants or to invite new participants). Whenever a SCP-Task is created or updated, all Task participants *and the CarePlan-host* are notified
