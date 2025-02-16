@@ -10,6 +10,14 @@ IHE mCSD uses standard FHIR REST queries to, periodically, collect/update all re
 ### Care Service Discovery in Shared Care Planning
 In Shared Care Planning, information is needed to discover or address other care providers, departments or practitioners that are relevant for the patient. For this, the FHIR R4 resources Organization, PractitionerRole, HealthcareServices, Location and Endpoint are used. The first three resourcestypes provide information for the *type* of organization, type of practitioners and (healthcare-) services offered. Resourcetypes Location and Endpoint provide information on the geographical/physical or digital/virtual *location* of the entity.
 
+A SCP node must register and publish entities (Locations, HealthcareServices, etc.) that exist in the local organization. 
+
+A Care Service Directory collects all entities periodically from all SCP nodes. In oreder to do that, the Care Service Directory needs a list of all organizations/endpoints in scope of the CSD.
+
+The SCP node uses the Care Service Directory to select or search for e.g. HealthcareServices or Endpoints that it needs. 
+
+In practice, there are many deployment optionns. In theory, every SCP node could perform the role of a Care Service Directory, but that would be an inefficient, not-very-scalable approach. You could also have 1 central CSD, but that would result in being highly dependant on that single service (single point of failure). Hybrid approaches are also possible where, e.g., a central CSD node periodically collects all entities and SCP nodes copy the CSD to a local repository.
+
 ### example use case
 #### Use Case #1: Practitioner Query
 The patient, Vera Brooks, consults with her physician who recommends surgery. The physician can assist the patient in finding a suitable surgeon, taking into consideration the location and specialty of the surgeon.
@@ -33,25 +41,47 @@ Dr. West just created a referral (for patient Vera Brooks from use case #1). The
 {% include care-services-use-case-2.svg %}
 </div>
 
-### requirements for SCP endpoint
+### requirements for a SCP endpoint
+A SCP endpoint will perform the IHE mCSD role of 'Care Services Update Supplier'. A SCP node must register and publish entities (Locations, HealthcareServices, etc.) that exist in the local organization. The entities will be collected by a Care Service Directory using a history-search, getting all changes since a specific datetime.
 
-capabilitystatement
+A Shared Care Planning **endpoint** shall implement the following capabilities:
+- support the `Organization`, `Location`, `Practitioner`, `PractitionerRole`, `HealthcareService`, `Endpoint` resources
+    - support the `history-type` interaction
+        - support searchparameter `_since`
 
 ### requirements for SCP node
-
-select endpoint for some hcs/org/pr
-
-
+A SCP node/client will perform the IHE mCSD role of 'Care Services Selective Consumer'. It should enable a practitioner, like [Dr. West in use case 1](#use-case-1-practitioner-query), to search for other care services or to find the endpoint for a, e.g., department (organization). The SCP node should basically be able to use the collected data in the CSD.
+ 
 
 
+### requirements for a Care Service Directory endpoint
 
-In order to address a (potential) performer, a directory of care services and technical endpoints is required. [IHE mobile Care Service Discovery] specifies such a directory: 
-- FHIR Organizations specify care providers and departments within that care provider. 
-- FHIR HealthcareServices and/or FHIR PractitionerRole may be used to specify which services are offered by an organization.
-- FHIR Locations specify the physical location where a HealthcareService, PractitionerRole or Organization offers services 
-- FHIR Endpoints specify the technical location (url) for communication or data exchange.
+A CSD endpoint will perform the IHE mCSD role of 'Care Services Selective Supplier':
 
-When a practitioner is creating a Task, it will query the care services directory for the service-type that is requested, possibily within some geographical boundaries (using Location). Once a HealthcareService, PractitionerRole or Organization is selected, a system should lookup the appropriate endpoint/url to send a Task or notification.
+- support searchparameters `_id` and `_lastUpdated`
+- support the `Organization` resource
+    - support the `search-type` interaction
+        - support searchparameters `active`,`identifier`, `name`, `name:contains`, `name:exact`, `partof`, `type`
+        - supports including references at `Organization.endpoint`
+- support the `Location` resource
+    - support the `search-type` interaction
+        - support searchparameters `near`,`near-distance`, `identifier`, `name`, `name:contains`, `name:exact`, `organization`, `partof`, `type`, `status`
+        - supports including references at `Location.organization`
+- support the `Practitioner` resource
+    - support the `search-type` interaction
+        - support searchparameters `active`,`identifier`, `name`, `name:contains`, `name:exact`, `given`, `given:contains`, `given:exact`,`family`, `family:contains`, `family:exact`,
+- support the `PractitionerRole` resource
+    - support the `search-type` interaction
+        - support searchparameters `active`,`location`, `organization`, `role`, `service` and `specialty`
+        - supports including references at `PractitionerRole.practitioner`
+- support the `HealthcareService` resource
+    - support the `search-type` interaction
+        - support searchparameters `active`,`identifier`, `location`, `name`, `name:contains`, `name:exact`, `organization` and `service-type`
+- support the `Endpoint` resource
+    - support the `search-type` interaction
+        - support searchparameters `identifier`,`organization` and `status`
 
-SCP does not specify the geographical area of a care service directory. It could cover a small region or multiple countries. A broad scope could improve collaboration between practitioners for patients that are temporarily living abroad, near country borders, suffer from a rare disease or require highly specialized care.
 
+### requirements for Care Service Directory service
+
+A CSD node/client will perform the IHE mCSD role of 'Care Services Update Consumer'. It should periodically loop through all SCP node and fetch any changes in the registered entities and merging those in the repoository of the CSD. 
