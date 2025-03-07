@@ -21,6 +21,8 @@ Alias: $questionnaire-item-control = http://hl7.org/fhir/questionnaire-item-cont
 Alias: $uuid = urn:ietf:rfc:3986
 Alias: $provenance-participant-type = http://terminology.hl7.org/CodeSystem/provenance-participant-type
 Alias: $unitsofmeasure = http://unitsofmeasure.org
+Alias: $audit-event-type = http://terminology.hl7.org/CodeSystem/audit-event-type
+Alias: $restful-interaction = http://hl7.org/fhir/restful-interaction
 // Alias: $orpha = http://www.orpha.net
 // Alias: $atc = http://www.whocc.no/atc
 

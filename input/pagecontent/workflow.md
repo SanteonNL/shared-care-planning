@@ -32,6 +32,27 @@ In Shared Care Planning, an advanced FHIR workflow pattern is used to cover all 
 
 Basic workflow:
 
+Creation of Task on requester's system
+<div>
+{% include workflow-base-f.svg %}
+</div>
+
+Creation of Task on performer's system
+<div>
+{% include workflow-base-g.svg %}
+</div>
+
+
+
+#### Notification of stakeholders
+If a Task is created/updated, participating organizations MUST be notified of this change. 
+
+Participating organizations may have a ***role*** in the Task (e.g. a HealthcareService in Task.requestor or Task.owner). The e.g. HealthcareService instance may exist locally, so the notification-endpoint may be found by e.g. searching for the HealthcareService.managingOrganizations and their Endpoints
+
+Participating organizations may also host instances that are ***referenced*** in the Task (e.g. an external CarePlan in Task.basedOn, an external ServiceRequest in Task.focus or an external Task in Task.partOf). The host and domain name in the literal reference may be used to find the notification-endpoint.
+
+#### Authorization of Task Updates
+WIP
 
 
 The Task resource describes an activity that can be performed, is being performed, or has been performed. It is used to manage and track the status of tasks, participants and definition of the Task. A Task in SCP is always related ('basedOn') the CarePlan. When a party is request to 'do' a Task, that organizations that may not be part of the CareTeam yet. Personally Identifiable Information SHOULD be left out of the Task content until the Task is accepted by the organization responsible for the Task.

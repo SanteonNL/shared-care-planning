@@ -1,0 +1,44 @@
+@startuml care-services-use-case-3
+
+skinparam roundcorner 20
+skinparam defaultFontName Arial 
+hide footbox
+
+!pragma teoz true
+
+actor  Doctor as "Dr. West"
+participant  ISP as "ISP"
+participant  EHR as "EHR"
+participant  CSD as "Care Service Directory"
+participant  EHR2 as "Orthopedic Clinic"
+
+
+activate Doctor
+Doctor -> EHR: Start EHR
+EHR -> ISP: Start Login sequence
+ISP -> EHR: Return Login token (Dezi-nr, Org-id(Ura), Org-type, rol, functie-code(s))
+
+
+activate EHR
+group create referral 
+ Doctor -> EHR: create referral for Dr. East\n at Orthopedic Clinic
+end
+activate CSD
+EHR -> CSD: Find PractitonerRole of Dr. East\n including Endpoints
+EHR -> EHR: Check for SCP notification Endpoints
+EHR -> CSD: If no endpoint found: find Organization of PractitonerRole\n including Endpoint
+EHR -> EHR: Check for SCP notification Endpoints
+loop If no endpoint found and\nOrganization is part of parent Organization
+    EHR -> CSD: Find parent Organization of Organization\n including Endpoints
+    EHR -> EHR: Check for SCP notification Endpoints
+end
+deactivate CSD
+EHR -> EHR2: Post **notification** to SCP notification Endpoint\nof Orthopedic Clinic with referral ID
+group referral response
+ EHR2 -> EHR: Respond to referral
+ & EHR -> Doctor: Handle referral response
+end
+
+deactivate Doctor
+deactivate EHR
+@enduml

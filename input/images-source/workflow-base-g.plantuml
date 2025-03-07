@@ -1,0 +1,72 @@
+@startuml workflow-base-g
+
+skinparam roundcorner 20
+skinparam defaultFontName Arial 
+
+
+!pragma teoz true
+
+box Care Provider 1 #e8d0a9
+    actor "Practitioner 1" as P1
+    participant "EHR1" as C1 #LightGray
+end box
+box Care Provider 2 #acd1e9
+     participant "EHR2" as C2 #LightGray
+    actor "Practitioner 2" as P2
+end box
+
+hide footbox
+
+activate P1
+autonumber
+P1 -[#Gray]> C1 : <color #Gray>Create/Select Request*
+P1 -[#Gray]> C1 : <color #Gray>Create/Select CarePlan*
+' & C1 -> C1 : Find/select CarePlan
+
+P1 -> C1 : Create Task
+& C1 -> C2 : Create Task
+' \nand CarePlan (if any)
+& C2 -> C2  : Create/Select\n Subscriptions
+' \nand CareTeam, CarePlan 
+' C1 o-> C1 : Notify CareTeam update,\n CarePlan update
+
+C2 -> C1  : Get related resources
+
+
+' autonumber 10 "<font color=Gray>0"
+'  E2 -[#Gray]> E2 : <color #Gray>evaluate Task\n <color #Gray>(required data,\n <color #Gray>capacity, etc)
+' &E2 -[#Gray]> C2 : <color #Gray>Need more information
+' & C2 -[#Gray]> C1  : <color #Gray>Create (sub-)Task2: do\n <color #Gray> Questionnaire 'required data'
+' & C1 -[#Gray]> C1 : <color #Gray>Notify Task2 created
+' & C1 -[#Gray]> P1 : <color #Gray>Present Questionnaire\n<color #Gray>(prefill data from EHR)
+
+' P1 -[#Gray]> C1 : <color #Gray>Complete\n <color #Gray>QuestionnaireResponse
+' & C1 -[#Gray]> C1 : <color #Gray>Update Task2: Add\n <color #Gray>QuestionnaireResponse
+' & C1 -[#Gray]> C2 : <color #Gray>Notify Task2 update
+' & C2 -[#Gray]> E2 : <color #Gray>Notify Task2 update
+
+C2 -> C2 : evaluate Task
+
+' C2 o-> P2 : Update Task
+C2 -> C2 : Update Task
+C2 -> C1  : Notify
+&C2 o-> P2 : Notify
+' C1 -> C1  : Update CareTeam, CarePlan
+
+' \n CareTeam updated\n CarePlan updated
+' & C1 o-> C2 :Notify CareTeam updated\n CarePlan updated
+C1 -> P1 : 'Your task is now in state \n received/rejected/accepted'
+
+deactivate P1
+group Act on Task
+    activate P2
+    P2 -> C2 : Act accordingly\n (may involve creating Events) 
+    C2 -> C2 : Update Task
+    &C2 -> C1 : Notify
+    &C1 -> P1 : Notify
+    deactivate P2
+end 
+P1 -[#Gray]> C1 : <color #Gray>If Task status completed/failed\n<color #Gray>Update Request completed*
+
+
+@enduml

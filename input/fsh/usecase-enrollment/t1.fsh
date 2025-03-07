@@ -76,6 +76,44 @@ Usage: #example
 // copy best practices from: https://hl7.org/fhir/us/davinci-cdex/signatures.html#digital-signatures
 * signature.data = "c29tZSBzaWduYXR1cmUgZGF0YQ=="
 
+
+
+Instance: cps-auditevent-task-creation
+InstanceOf: AuditEvent
+Usage: #example
+Title: "1.03.5 AuditEvent for Task Creation"
+Description: "AuditEvent capturing the creation of a task by organization URA-1"
+* meta.versionId = "1"
+* type = $audit-event-type#rest "RESTful Operation" //Audit Event: Execution of a RESTful operation as defined by FHIR.
+* subtype[+] = $restful-interaction#create "Create" //Create a new resource with a server assigned id.
+* action = #C
+* recorded = "2024-12-19T15:41:12+01:00"
+* outcome = #0
+* insert RefIdentifier(agent[0].who, Organization, 1, $ura, URA-1, $ura, URA-1, org1)
+* agent[0].requestor = true
+* source.observer = Reference(Device/orca-01)
+* entity[0].what = Reference(Task/cps-task-01)
+
+// Instance: cps-task-01-ref1
+// InstanceOf: SCPTask
+// Usage: #example
+// Title: "1.03.1 Task creation"
+// Description: "Initiation of a task for telemonitoring"
+// * meta.versionId = "1"
+// * contained[+] = hospitalx-servicerequest-telemonitoring
+// * contained[+] = hospitalx-user-carolinevandijk
+// * contained[+] = hospitalx-msc-hcs
+// * status = #requested
+// * intent = #order
+// * code = $task-code#fullfill
+// * insert RefIdentifierContained(focus, ServiceRequest, hospitalx-servicerequest-telemonitoring, $uuid, urn:uuid:37063bd0-d6bb-4fe0-b73c-26532f297d4b, $ura, URA-1)
+// * reasonCode.coding = $sct#84114007 "Hartfalen"
+// * insert RefIdentifier(for, Patient, 1, $bsn, 111222333, $ura, URA-1, org1)
+// * insert RefIdentifierContained(requester, PractitionerRole, hospitalx-user-carolinevandijk, $uzi, UZI-1, $ura, URA-1)
+// * insert RefIdentifierContained(owner, HealthcareService, hospitalx-msc-hcs, $uuid, urn:uuid:91a9be09-eb97-4c0f-9a61-27a1985ae38b, $ura, URA-1)
+
+
+
 // //resulting instances at cps:
 
 // Instance: cps-servicerequest-telemonitoring
