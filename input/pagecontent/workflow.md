@@ -54,18 +54,18 @@ If a SCP-Task is (sucessfully) created/updated, the client SHALL create a Proven
 
 #### Authorization
 An SCP-Task can only be created by the requester. Tasks can only be updated by the owner/performer. However, some elements SHALL not be updated by the performer, depending on the Task.intent. This table indicates the elements a performer can ***update*** (immutability is the default):
-|Element|Task.intent = plan|Task.intent = *order|notes|
-|-|-|-|-|
-|status|true|true|excluding status `requested`|
-|statusReason|true|true|-|
-|businessstatus|true|true|-|
-|executionPeriod|true|-|-|
-|lastModified|true|true|-|
-|owner|true|true|entity within current organization|
-|location|true|true|-|
-|note|true|true|-|
-|relevantHistory|true|true|-|
-|output|-|true|-|
+|Mutable elements|notes|
+|-|-|
+|status|changing status to `requested` is prohibited|
+|statusReason|-|
+|businessstatus|-|
+|executionPeriod|if intent = `order` and the status is updated to `received` or `accepted`, the  executionPeriod should ***not*** be updated|
+|lastModified|-|
+|owner|the owner may be changed to an entity within current organization|
+|location|-|
+|note|-|
+|relevantHistory|-|
+|output|-|
 
 #### Using planned Tasks
 When a requester sets Task.intent to `plan`, it may use this to find the care organization that is able to perform the Task closest to the Patient or at the earliest date (by changing the executionPeriod). 
