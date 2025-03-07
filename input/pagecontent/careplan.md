@@ -16,6 +16,15 @@ The FHIR CarePlan resource is a framework for documenting and managing healthcar
 For SCP, CarePlan will be validated using [this profile](TODO). For more information, check the [FHIR R4 CarePlan documentation](https://hl7.org/fhir/R4/careplan.html)
 
 
+#### Notification of stakeholders
+If a CarePlan is created/updated, participating organizations MUST be notified of this change. 
+
+Stakeholders may have a ***role*** in the CarePlan. For example, an external care provider department may be set as CarePlan.careteam.participant.member or CarePlan.author. The Organization or PractitionerRole instance of this care provider department may exist locally (or at a Care Service Directory service), so to find the notification-endpoint of the care provider may involve searching/fetching the PractitionerRole.endpoint, PractitionerRole.organization, Organization.partOf and/or Organization.endpoint.
+
+Stakeholders may also host instances that are ***referenced*** in the CarePlan (e.g. an external CarePlan in CarePlan.basedOn, an external ServiceRequest in CarePlan.focus or an external CarePlan in CarePlan.partOf). The base-url in the literal reference may be used to find the notification-endpoint.
+
+
+
 #### Transaction - 
 
 #### Updating CarePlan and CareTeam

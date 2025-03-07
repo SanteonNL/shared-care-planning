@@ -24,7 +24,7 @@ P1 -[#Gray]> C1 : <color #Gray>Create/Select CarePlan*
 ' & C1 -> C1 : Find/select CarePlan
 
 P1 -> C1 : Create Task
-& C1 -> C2 : Create Task
+& C1 -> C2 : Create Task  + Provenance
 ' \nand CarePlan (if any)
 & C2 -> C2  : Create/Select\n Subscriptions
 ' \nand CareTeam, CarePlan 
@@ -48,7 +48,7 @@ C2 -> C1  : Get related resources
 C2 -> C2 : evaluate Task
 
 ' C2 o-> P2 : Update Task
-C2 -> C2 : Update Task
+C2 -> C2 : Update Task  + Provenance
 C2 -> C1  : Notify
 &C2 o-> P2 : Notify
 ' C1 -> C1  : Update CareTeam, CarePlan
@@ -61,7 +61,7 @@ deactivate P1
 group Act on Task
     activate P2
     P2 -> C2 : Act accordingly\n (may involve creating Events) 
-    C2 -> C2 : Update Task
+    C2 -> C2 : Update Task  + Provenance
     &C2 -> C1 : Notify
     &C1 -> P1 : Notify
     deactivate P2

@@ -28,16 +28,14 @@ More [advanced FHIR workflow patterns](https://hl7.org/fhir/R4/workflow-manageme
 
 ### Workflow in Shared Care Planning
 
-In Shared Care Planning, an advanced FHIR workflow pattern is used to cover all requirements for a generic workflow process between organizations. The process is based on [FHIR workflow pattern F](https://hl7.org/fhir/R4/workflow-management.html#optionf), but SCP nodes can also use pattern [G](https://hl7.org/fhir/R4/workflow-management.html#optiong) or [H](https://hl7.org/fhir/R4/workflow-management.html#optionh) depending on the capabilities of their healthcare systems. The main difference between these 3 patterns (F, G and H) is the location of the Task; it can be stored at the requester, performer or at a third party (broker). For example; if you'd want to create a request, but your EHR does not support it, you may choose to create a Task at the performer (and thus following pattern [G](https://hl7.org/fhir/R4/workflow-management.html#optiong) in stead of [F](https://hl7.org/fhir/R4/workflow-management.html#optionf)). SCP uses [notifications](./notification.md) in between nodes.
+In Shared Care Planning, an advanced FHIR workflow pattern is used to cover all requirements for a generic workflow process between organizations. The process is based on [FHIR workflow pattern F](https://hl7.org/fhir/R4/workflow-management.html#optionf), but SCP nodes can also use pattern [G](https://hl7.org/fhir/R4/workflow-management.html#optiong) or [H](https://hl7.org/fhir/R4/workflow-management.html#optionh) depending on the capabilities of their healthcare systems. The main difference between these 3 patterns (F, G and H) is the location of the Task; it can be stored at the requester, performer or at a third party (broker). For example; if you'd want to create a request, but your EHR does not support it, you may choose to create a Task at the performer (and thus following pattern [G](https://hl7.org/fhir/R4/workflow-management.html#optiong) in stead of [F](https://hl7.org/fhir/R4/workflow-management.html#optionf)). SCP uses [notifications](./notification.md) in between nodes to provide quick feedback/updates in initial phase of a Task (creation to acceptance/rejectance).
 
-Basic workflow:
-
-Creation of Task on requester's system
+#### Task workflow Option F: Creation of Task on requester's system
 <div>
 {% include workflow-base-f.svg %}
 </div>
 
-Creation of Task on performer's system
+#### Task workflow Option G: Creation of Task on performer's system
 <div>
 {% include workflow-base-g.svg %}
 </div>
@@ -45,16 +43,41 @@ Creation of Task on performer's system
 
 
 #### Notification of stakeholders
-If a Task is created/updated, participating organizations MUST be notified of this change. 
+If a SCP-Task is created/updated, participating organizations MUST be notified of this change. 
 
-Participating organizations may have a ***role*** in the Task (e.g. a HealthcareService in Task.requestor or Task.owner). The e.g. HealthcareService instance may exist locally, so the notification-endpoint may be found by e.g. searching for the HealthcareService.managingOrganizations and their Endpoints
+Stakeholders may have a ***role*** in the Task. For example, an external care provider department may be set as the Task.owner. The Organization or HealthcareService instance of this care provider department may exist locally (or at a Care Service Directory service), so to find the notification-endpoint of the care provider may involve searching/fetching the HealthcareService.endpoint, HealthcareService.managingOrganizations, Organization.partOf and/or Organization.endpoint
 
-Participating organizations may also host instances that are ***referenced*** in the Task (e.g. an external CarePlan in Task.basedOn, an external ServiceRequest in Task.focus or an external Task in Task.partOf). The host and domain name in the literal reference may be used to find the notification-endpoint.
+Stakeholders may also host instances that are ***referenced*** in the Task (e.g. an external CarePlan in Task.basedOn, an external ServiceRequest in Task.focus or an external Task in Task.partOf). The base-url in the literal reference may be used to find the notification-endpoint.
 
-#### Authorization of Task Updates
-WIP
+#### Provenance
+If a SCP-Task is (sucessfully) created/updated, the client SHALL create a Provenance resource for this Task-version containing a verification signature. The SCP-Task instance may be used to infer a relationship between care provider and patient (and implicit treatment/data access consent). To mitigate security risks (care providers that are compromised) stakeholders should be able to verify the trustworthiness of the initial (requester) and latest version of the Task (owner/performer).
+
+#### Authorization
+An SCP-Task can only be created by the requester. Tasks can only be updated by the owner/performer. However, some elements SHALL not be updated by the performer, depending on the Task.intent. This table indicates the elements a performer can ***update*** (immutability is the default):
+|Element|Task.intent = plan|Task.intent = *order|notes|
+|-|-|-|-|
+|status|true|true|excluding status `requested`|
+|statusReason|true|true|-|
+|businessstatus|true|true|-|
+|executionPeriod|true|-|-|
+|lastModified|true|true|-|
+|owner|true|true|entity within current organization|
+|location|true|true|-|
+|note|true|true|-|
+|relevantHistory|true|true|-|
+|output|-|true|-|
+
+#### Using planned Tasks
+When a requester sets Task.intent to `plan`, it may use this to find the care organization that is able to perform the Task closest to the Patient or at the earliest date (by changing the executionPeriod). 
+Multiple Tasks may be created in parallel for different care providers. For privacy reasons, the Patient instance (or non-relevant parts of the Patient instance) should not be shared with care providers in this phase.
+Performers MUST respond real-time to allow the requester to select the best performer (based on location, executionPeriod or other data like cost and patient satisfaction ratings). A new Task SHALL be created with intent = `order`, status = `requested` and the selected performer to proceed with the usual acceptance/execution of the Task. 
 
 
+
+
+
+
+<!-- 
 The Task resource describes an activity that can be performed, is being performed, or has been performed. It is used to manage and track the status of tasks, participants and definition of the Task. A Task in SCP is always related ('basedOn') the CarePlan. When a party is request to 'do' a Task, that organizations that may not be part of the CareTeam yet. Personally Identifiable Information SHOULD be left out of the Task content until the Task is accepted by the organization responsible for the Task.
 Key elements of a Task for SCP:
 - **basedOn**: References to other requests that the task is based on. MUST contain one reference to a SCP-CarePlan.
@@ -118,4 +141,4 @@ In the second diagram, Care Provider 2 will send Care Provider 3 a request, stil
 {% include overview-task-negotiation-1-2-3.svg %}
 </div>
 
-For more information on this transaction, see [Transactions - Request workflow with additional response workflow](./transaction-request-response-workflow.html)
+For more information on this transaction, see [Transactions - Request workflow with additional response workflow](./transaction-request-response-workflow.html) -->
