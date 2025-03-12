@@ -54,18 +54,19 @@ If a SCP-Task is (sucessfully) created/updated, the client SHALL create a Proven
 
 #### Authorization
 An SCP-Task can only be created by the requester. Tasks can only be updated by the owner/performer. However, some elements SHALL not be updated by the performer, depending on the Task.intent. This table indicates the elements a performer can ***update*** (immutability is the default):
-|Mutable elements|notes|
-|-|-|
-|status|changing status to `requested` is prohibited|
-|statusReason|-|
-|businessstatus|-|
-|executionPeriod|if intent = `order` and the status is updated to `received` or `accepted`, the  executionPeriod should ***not*** be updated|
-|lastModified|-|
-|owner|the owner may be changed to an entity within current organization|
-|location|-|
-|note|-|
-|relevantHistory|-|
-|output|-|
+
+| Mutable elements | notes                                                                                                                       |
+|------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| status           | changing status to `requested` is prohibited                                                                                |
+| statusReason     | -                                                                                                                           |
+| businessstatus   | -                                                                                                                           |
+| executionPeriod  | if intent = `order` and the status is updated to `received` or `accepted`, the  executionPeriod should ***not*** be updated |
+| lastModified     | -                                                                                                                           |
+| owner            | the owner may be changed to an entity within current organization                                                           |
+| location         | -                                                                                                                           |
+| note             | -                                                                                                                           |
+| relevantHistory  | -                                                                                                                           |
+| output           | -                                                                                                                           |
 
 #### Using planned Tasks
 When a requester sets Task.intent to `plan`, it may use this to find the care organization that is able to perform the Task closest to the Patient or at the earliest date (by changing the executionPeriod). 
@@ -124,6 +125,7 @@ The requestor and owner are restricted to make certain state transitions. For so
 |in-progress|failed|Task.owner|
 |in-progress|on-hold|Task.requestor, Task.owner|
 |on-hold|in-progress|Task.requestor, Task.owner|
+
 {:.grid .table-hover}
 
 In the first sequence diagram, Care Provider 1 has implemented the (optional) CP-Service role and is requesting Care Provider 2 to do a Task. As a Task MUST always be based on a CarePlan, so if there is none, a CarePlan should be created. 
