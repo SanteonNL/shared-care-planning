@@ -1,0 +1,59 @@
+@startuml
+
+skinparam roundcorner 20
+skinparam maxmessagesize 128
+skinparam defaultFontName Arial
+
+actor Patient as p
+control "Huisarts" as CPS <<CPS>>
+boundary "OLVG" as Z2  <<CPC>>
+boundary "Geboortezorg" as Z3 <<CPC>>
+boundary "Fysio" as Z4 <<CPC>>
+
+group Add "OLVG" to CareTeam
+
+CPS -> Z2: Task
+Z2 -> Z2: accept
+Z2 --> CPS: notify
+CPS -> p: ask for consent
+p --> CPS: give consent
+CPS -> CPS: add "OLVG" to CareTeam
+CPS -> Z2: notify
+Z2 -> CPS: fetch Patient details
+end
+
+group Add "Geboortezorg" to CareTeam
+Z2 -> Z3: Task
+Z3 -> Z3: accept
+Z3 -> Z2: notify
+Z2 -> CPS: notify
+CPS -> p: ask for consent
+p --> CPS: give consent
+CPS -> CPS: add "Geboortezorg" to CareTeam
+CPS -> Z2: notify
+CPS -> Z3: notify
+Z3 -> CPS: fetch Patient details
+opt existing data
+Z3 -> p: ask for consent
+p --> Z3: give consent
+end
+end
+
+group The patient goed to the "Fysio" and names the Hospital
+Z4 -> Z2: Task
+Z2 -> Z2: accept and add CareTeam as basedOn
+Z2 -> CPS: notify
+CPS -> p: ask for consent
+p --> CPS: give consent
+CPS -> CPS: add "Fysio" to CareTeam
+CPS -> Z2: notify
+CPS -> Z3: notify
+CPS -> Z4: notify
+Z4 -> CPS: fetch Patient details
+Z4 -> Z2: get data
+Z2 -> Z2: check CareTeam
+Z2 --> Z4:  data
+
+end
+
+@enduml
