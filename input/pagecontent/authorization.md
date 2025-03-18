@@ -59,7 +59,7 @@ A Care Plan is bound to one single context, in the sense that, CSP assumes that 
 New members can only be added to the Care Team of the Care Plan by with explicit consent of the Patient. This responsibility lies with the Care Plan Service. The CPS must be able to contact the Patient and handle the proces of requesting consent. The same goes for Care Plan Contributors that enter a Care Team with existing data; those must verify with the Patient that the existing data is being shared within the context of the Care Plan and Care Team.
 
 ### Methods of Patients' consent
-The methods of consent must be either in physical interaction with the Patient (at the desk), by physical channels such as mail or with modification digital methods such as e-mail or SMS notifications of digital consent forms with the contemporary authentication methods that are already in place.     
+The methods of consent must be either in physical interaction with the Patient (at the desk), by physical channels such as mail or with digital methods such as e-mail or SMS notifications to digital consent forms protected by contemporary authentication methods that are already in place.     
 
 #### (Lack of) cryptographic consent
 In the current authentication landscape of the Netherlands, cryptographic proof of end-user consent is not in sight on the short term. The solution we propose is based on a) consent of the user and b) the due-diligence of the CPS and the CPC in some cases. We choose not to put the emphasis on capturing proof of consent with cryptographic methods, knowing that such technology will eventually become part of the EU Digital Identity Wallet infrastructure signing function. 
@@ -69,7 +69,7 @@ Organizations are authenticated by their X509 Certificate, that is used to sign 
 
 
 ### CPS Responsibilities
-The Care Plan Service (SCP) has the role of maintaining the Care Plan and acts as gatekeeper for the Care Plan and Care Team for the Patient. The SCP may only add members to the Care Team with the expicit consent of the user. The CPS may keep track of the consent using the FHIR Consent resources, but is not required to do so.
+The Care Plan Service (SCP) has the role of maintaining the Care Plan and acts as gatekeeper for the Care Plan and Care Team for the Patient. The SCP may only add members to the Care Team with the explicit consent of the user. The CPS may keep track of the consent using the FHIR Consent resources, but is not required to do so.
 
 ### CPC Responsibilities
 The Care Plan Contributor (CPC) only needs to get consent of the Patient when it links pre-existing data of the Patient to the context of the CarePlan. In that case, the CPC must contact the Patient and is required to get consent for sharing the data.
@@ -147,5 +147,8 @@ Each step in the process is organized into groups that represent the task of add
 
 
 ### Main advantages of this approach
-* Distributed
-* Specific
+#### Distributed
+As soon as an organization gets assigned a task that is part of SCP, the task refers to the Care Plan with the `basedOn` value. The Care Plan becomes discoverable and the roles in the SCP are implicitly determined by the ownership of the Care Plan. The CPS is the organization hosting the FHIR resource, all the other members are CPC in the Care Plan.
+
+#### Specific
+Consent is acquired on adding an organization or existing data to a care plan, and not at forehand.
