@@ -1,10 +1,10 @@
 ### Summary of IHE Dynamic Care Planning
-
+The FHIR CarePlan resource is a framework for documenting and managing healthcare interventions and goals. It ensures that all relevant information is available to all stakeholders, promoting coordinated and effective care delivery.
 
 ### Care Planning in Shared Care Planning
 
 
-The FHIR CarePlan resource is a framework for documenting and managing healthcare interventions and goals. It ensures that all relevant information is available to all stakeholders, promoting coordinated and effective care delivery. Key elements of a CarePlan for SCP:
+ Key elements of a CarePlan for SCP:
 - **subject**: The patient to whom the care plan is intended.
 - **addresses**: Conditions/problems/concerns/diagnoses that this plan is addressing.
 - **activity**: References to SCP-Tasks. Details of the planned interventions, including scheduled activities, performed activities, and their outcomes.

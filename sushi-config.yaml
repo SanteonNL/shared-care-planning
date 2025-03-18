@@ -74,8 +74,8 @@ pages:
   notification.md:
     title: Notifications
 
-  provenance.md:
-    title: Provenance
+  authorization.md:
+    title: Authorization
 
   usecase-enrollment.md:
     title: Use cases - Enroll patient in home monitoring
@@ -118,7 +118,7 @@ menu:
   Care Services: care-services.html
   Notifications: notification.html
   CarePlan: careplan.html
-  Provenance: provenance.html
+  Authorization: authorization.html
 
   Use cases:
     Enroll patient in home monitoring: usecase-enrollment.html

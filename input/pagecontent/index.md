@@ -55,7 +55,7 @@ The Provenance resource is used to record why and who created or updated data. I
     - [Request workflow with additional response workflow](./task.html#request-response-workflow)
 - [Care Services](./care-services.html)
 - [Notifications](./notification.html)
-- [Provenance](./provenance.html)
+- [Authorization](./authorization.html)
 
 - Use Cases/Examples
 
