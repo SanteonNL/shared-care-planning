@@ -23,7 +23,7 @@ P1 -[#Gray]> C1 : <color #Gray>Create/Select Request*
 P1 -[#Gray]> C1 : <color #Gray>Create/Select CarePlan*
 ' & C1 -> C1 : Find/select CarePlan
 
-P1 -> C1 : Create Task + Provenance
+P1 -> C1 : Create Task
 ' \nand CarePlan (if any)
 & C1 -> C1  : Create/Select\n Subscriptions
 ' \nand CareTeam, CarePlan 
@@ -55,7 +55,7 @@ C2 -> C2 : evaluate Task
 end note
 
 ' C2 o-> P2 : Update Task
-C2 -> C1 : Update Task + Provenance
+C2 -> C1 : Update Task
 &C2 o-> P2 : Notify
 ' C1 -> C1  : Update CareTeam, CarePlan
 
@@ -75,7 +75,7 @@ group Act on Task
     end note
 
     C2 -> C2 : Update Task
-    &C2 -> C1 : Update Task + Provenance
+    &C2 -> C1 : Update Task
     &C1 -> P1 : Notify
     deactivate P2
 end 

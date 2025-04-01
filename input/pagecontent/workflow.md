@@ -28,19 +28,12 @@ More [advanced FHIR workflow patterns](https://hl7.org/fhir/R4/workflow-manageme
 
 ### Workflow in Shared Care Planning
 
-In Shared Care Planning, an advanced FHIR workflow pattern is used to cover all requirements for a generic workflow process between organizations. The process is based on [FHIR workflow pattern F](https://hl7.org/fhir/R4/workflow-management.html#optionf), but SCP nodes can also use pattern [G](https://hl7.org/fhir/R4/workflow-management.html#optiong) or [H](https://hl7.org/fhir/R4/workflow-management.html#optionh) depending on the capabilities of their healthcare systems. The main difference between these 3 patterns (F, G and H) is the location of the Task; it can be stored at the requester, performer or at a third party (broker). For example; if you'd want to create a request, but your EHR does not support it, you may choose to create a Task at the performer (and thus following pattern [G](https://hl7.org/fhir/R4/workflow-management.html#optiong) in stead of [F](https://hl7.org/fhir/R4/workflow-management.html#optionf)). SCP uses [notifications](./notification.md) in between nodes to provide quick feedback/updates in initial phase of a Task (creation to acceptance/rejectance).
-
-#### Task workflow Option F: Creation of Task on requester's system
-<div>
-{% include workflow-base-f.svg %}
-</div>
+In Shared Care Planning, an advanced FHIR workflow pattern is used to cover all requirements for a generic workflow process between organizations. The process is based on [FHIR workflow pattern G](https://hl7.org/fhir/R4/workflow-management.html#optiong), but SCP nodes can also use pattern [F](https://hl7.org/fhir/R4/workflow-management.html#optionf) or [H](https://hl7.org/fhir/R4/workflow-management.html#optionh) depending on the capabilities of their healthcare systems. The main difference between these 3 patterns (F, G and H) is the location of the Task; it can be stored at the requester, performer or at a third party (broker). For example; if you'd want to create a Task at the performer, but their EHR does not support it, you may choose to create a Task at your own EHR and notify the performer (and thus following pattern [F](https://hl7.org/fhir/R4/workflow-management.html#optionf) in stead of [G](https://hl7.org/fhir/R4/workflow-management.html#optiong)). SCP uses [notifications](./notification.md) in between nodes to provide quick feedback/updates in initial phase of a Task (creation to acceptance/rejectance).
 
 #### Task workflow Option G: Creation of Task on performer's system
 <div>
 {% include workflow-base-g.svg %}
 </div>
-
-
 
 #### Notification of stakeholders
 If a SCP-Task is created/updated, participating organizations MUST be notified of this change. 
@@ -49,24 +42,41 @@ Stakeholders may have a ***role*** in the Task. For example, an external care pr
 
 Stakeholders may also host instances that are ***referenced*** in the Task (e.g. an external CarePlan in Task.basedOn, an external ServiceRequest in Task.focus or an external Task in Task.partOf). The base-url in the literal reference may be used to find the notification-endpoint.
 
-#### Provenance
-If a SCP-Task is (sucessfully) created/updated, the client SHALL create a Provenance resource for this Task-version containing a verification signature. The SCP-Task instance may be used to infer a relationship between care provider and patient (and implicit treatment/data access consent). To mitigate security risks (care providers that are compromised) stakeholders should be able to verify the trustworthiness of the initial (requester) and latest version of the Task (owner/performer).
 
-#### Authorization
+#### Task state and lifecycle
+The Task status and state transitions are important part in the lifecycle of a Task.
+The Task state machine for SCP is a subset of the [base FHIR Task state machine](https://hl7.org/fhir/R4/task.html#statemachine). In comparison to base FHIR Task state machine, the SCP-Task does not use status 'draft' or state 'ready', but does allows states-transition and from 'requested to completed: 
+
+<img src="Task-state-machine.png" width="32%" style="float: none"/>
+
+|State from|State to|Allow state transition for|
+|-|-|-|
+|-|requested|Task.requestor who is also CarePlan-participant|
+|requested|received, accepted, rejected, cancelled, in-progress, completed, failed|Task.owner|
+|received|accepted, rejected, cancelled, in-progress, completed, failed|Task.owner|
+|accepted|cancelled, in-progress, completed, failed|Task.owner|
+|in-progress|completed, failed, on-hold|Task.owner|
+|on-hold|in-progress, completed, failed|Task.owner|
+{:.grid .table-hover}
+
 An SCP-Task can only be created by the requester. Tasks can only be updated by the owner/performer. However, some elements SHALL not be updated by the performer, depending on the Task.intent. This table indicates the elements a performer can ***update*** (immutability is the default):
 
-| Mutable elements | notes                                                                                                                       |
-|------------------|-----------------------------------------------------------------------------------------------------------------------------|
-| status           | changing status to `requested` is prohibited                                                                                |
-| statusReason     | -                                                                                                                           |
-| businessstatus   | -                                                                                                                           |
-| executionPeriod  | if intent = `order` and the status is updated to `received` or `accepted`, the  executionPeriod should ***not*** be updated |
-| lastModified     | -                                                                                                                           |
-| owner            | the owner may be changed to an entity within current organization                                                           |
-| location         | -                                                                                                                           |
-| note             | -                                                                                                                           |
-| relevantHistory  | -                                                                                                                           |
-| output           | -                                                                                                                           |
+| Mutable elements | notes |
+|-|-|
+| status | changing status to `requested` is prohibited|
+| statusReason | - |
+| businessstatus | - |
+| executionPeriod| if intent = `order` and the status is updated to `received` or `accepted`, the executionPeriod should ***not*** be updated |
+| lastModified | - |
+| owner| the owner may be changed to an entity within current organization |
+| location | - |
+| note | - |
+| relevantHistory| - |
+| output | - |
+{:.grid .table-hover}
+
+To avoid losing data during updates, actors MUST support the directives in [FHIR transactional integrity](http://hl7.org/fhir/R4/http.html#transactional-integrity) and [FHIR concurrency](https://hl7.org/fhir/R4/http.html#concurrency)
+
 
 #### Using planned Tasks
 When a requester sets Task.intent to `plan`, it may use this to find the care organization that is able to perform the Task closest to the Patient or at the earliest date (by changing the executionPeriod). 
