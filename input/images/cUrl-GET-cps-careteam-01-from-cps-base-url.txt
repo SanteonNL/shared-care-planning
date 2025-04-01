@@ -1,3 +1,0 @@
-curl --request GET {{cps-base-url}}CareTeam/cps-careteam-01/
---header Content-Type:application/json \
---header Authorization:{{cps-access-token}} 

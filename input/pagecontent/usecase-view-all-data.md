@@ -90,12 +90,12 @@ search narrowing has to be performed by data holder according to table.
 </div>
 
 Step 2: Care@Home: Find existing 'Shared' CarePlan for Patient
-- [cUrl GET CarePlan from cps-base-url](cUrl-GET-CarePlan-from-cps-base-url.txt)
+- [cUrl GET CarePlan from org1-fhir-url](cUrl-GET-CarePlan-from-org1-fhir-url.txt)
 
 
 Step 3: Care@Home: Create Task 
 assumption no CarePlan was found (so no Task.basedOn), create a Bundle with a new Task and a copy of the referred ServiceRequest and Condition:
-- [cUrl POST Bundle-cps-bundle-01 to cps-base-url](cUrl-POST-Bundle-cps-bundle-01-to-cps-base-url.txt), payload: [Bundle-cps-bundle-01](Bundle-cps-bundle-01.json)
+- [cUrl POST Bundle-cps-bundle-01 to org1-fhir-url](cUrl-POST-Bundle-cps-bundle-01-to-org1-fhir-url.txt), payload: [Bundle-cps-bundle-01](Bundle-cps-bundle-01.json)
 
 Step 4-infinite: WIP
 

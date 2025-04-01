@@ -1,0 +1,58 @@
+# 1) To use requests in this file, you need to install the REST Client extension in Visual Studio Code
+#
+# 2) In the settings.json of the REST Client extension, add these environment variables like so:
+# "rest-client.environmentVariables": {
+#         "$shared": {
+#             "path-to-data": "./fsh-generated/resources/"
+#         },
+#         "local": {
+          #  "org1-fhir-url": "http://localhost:8090/fhir/",
+          #   "org1-access-token": "Basic user:password",
+          #   "org2-fhir-url": "https://localhost:8190/fhir/"
+          #   "org3-fhir-url": "https://localhost:8290/fhir/"
+#         }
+# }
+# 
+# 3) Switch between environments by clicking on the environment name in the status bar at the bottom right of the window
+
+# Setup FHIR server: add search parameters
+
+###
+POST {{org1-fhir-url}}
+Content-Type: application/fhir+json
+Authorization: {{org1-access-token}}
+
+<@ {{path-to-data}}Bundle-searchparams.json
+
+###
+
+POST {{org1-fhir-url}}$reindex
+
+### POST existing data in EHR of Hospital X
+
+POST {{org1-fhir-url}}
+Content-Type: application/fhir+json
+Authorization: {{org1-access-token}}
+
+<@ {{path-to-data}}Bundle-hospitalx-bundle-01.json
+
+###
+
+POST {{org2-fhir-url}}
+Content-Type: application/fhir+json
+Authorization: {{org1-access-token}}
+
+<@ {{path-to-data}}Bundle-searchparams.json
+
+### POST existing data in EHR of Medical Service Centre
+
+POST {{org2-fhir-url}}
+Content-Type: application/fhir+json
+# Authorization: {{org1-access-token}}
+
+<@ {{path-to-data}}Bundle-msc-bundle-01.json
+
+
+### POST existing data in EHR of Organization 3
+
+# no data available

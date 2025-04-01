@@ -5,21 +5,23 @@ Description: "A care plan for a patient that is shared between multiple care pro
 * category = $sct#135411000146103 // Multidisciplinary care regime
 * subject only Reference(Patient)
 * subject 1..1
-* careTeam only Reference(SCPCareTeam)
+* careTeam only Reference(CareTeam)
 * careTeam 1..1
 * author only Reference(PractitionerRole)
 * author 1..1
+* contained only CareTeam
+* contained 1..1
 
 
-Profile: SCPCareTeam
-Parent: CareTeam
-Title: "Shared Care Planning: CareTeam Profile"
-Description: "A care team for a patient that is shared between multiple care providers."
-* subject only Reference(Patient)
-* subject 1..1
-* participant.member 1..1
-* participant.period.start 1..1
-* participant.period.end 0..1
+// Profile: SCPCareTeam
+// Parent: CareTeam
+// Title: "Shared Care Planning: CareTeam Profile"
+// Description: "A care team for a patient that is shared between multiple care providers."
+// * subject only Reference(Patient)
+// * subject 1..1
+// * participant.member 1..1
+// * participant.period.start 1..1
+// * participant.period.end 0..1
 
 
 Profile: SCPTask
@@ -30,8 +32,8 @@ Description: "A task for a patient that is shared between multiple care provider
 * ^experimental = true
 * basedOn only Reference(SCPCareplan)
 * basedOn MS
-* status from SCPTaskStatus (required) 
-//* status obeys SCPTask-state-change
+* status from SCPTaskStatus (required)
+//rule: only if focal-resource is of type Questionnaire, state-transistion request->completed is allowed
 * focus MS
 * for only Reference(Patient)
 * for 1..1
@@ -39,6 +41,20 @@ Description: "A task for a patient that is shared between multiple care provider
 * requester.identifier.value 1..1
 * owner.identifier.system 1..1
 * owner.identifier.value 1..1
+
+
+Instance: ActivityDefinition-SCPTask
+InstanceOf: ActivityDefinition
+Usage: #definition
+* meta.tag = $FHIR-version#4.0.1
+* url = "http://santeonnl.github.io/shared-care-planning/ActivityDefinition/SCPTask.json"
+* name = "activitydefinition-scp-task"
+* status = #active
+* version = "0.1"
+* title = "Shared Care Planning: Task ActivityDefinition"
+* description = "An ActivityDefinition for a task for a patient that is shared between multiple care providers."
+* kind = #Task
+* profile = "http://santeonnl.github.io/shared-care-planning/StructureDefinition/SCPTask"
 
 
 ValueSet: SCPTaskStatus

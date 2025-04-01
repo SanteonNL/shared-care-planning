@@ -1,4 +1,0 @@
-curl --request PUT {{cps-base-url}}Subscription/cps-sub-medicalservicecentre 
---header Content-Type:application/json \
---header Authorization:{{cps-access-token}} \
---data @fsh-generated/resources/Subscription-cps-sub-medicalservicecentre.json

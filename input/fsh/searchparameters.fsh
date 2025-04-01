@@ -39,3 +39,13 @@ Usage: #definition
 * expression = "Task.output.value.ofType(Reference)"
 * xpathUsage = #normal
 * xpath = "f:Task/f:output/f:valueReference"
+
+Instance: searchparams
+InstanceOf: Bundle
+Usage: #example
+Title: "9.03 Bundle"
+Description: "Search parameters to setup FHIR server"
+* type = #batch
+* insert BundleEntry(CarePlan-subject-identifier, #POST, SearchParameter)
+* insert BundleEntry(Task-input-reference, #POST, SearchParameter)
+* insert BundleEntry(Task-output-reference, #POST, SearchParameter)

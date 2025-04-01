@@ -8,7 +8,7 @@ Usage: #example
 * entry.fullUrl = "urn:uuid:292d3c72-edc1-4d8a-afaa-d85e19c7f566"
 * entry.resource = 292d3c72-edc1-4d8a-afaa-d85e19c7f566
 * entry.request.method = #GET
-* entry.request.url = "https://cps.nl/fhir/Subscription/cps-sub-medicalservicecentre/$status"
+* entry.request.url = "{{org1-fhir-url}}Subscription/{{subscription2id}}/$status"
 * entry.response.status = "200"
 
 Instance: 292d3c72-edc1-4d8a-afaa-d85e19c7f566
@@ -16,7 +16,7 @@ InstanceOf: Parameters
 Usage: #inline
 * meta.profile = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription-status-r4"
 * parameter[0].name = "subscription"
-* parameter[=].valueReference = Reference({{cps-base-url}}Subscription/cps-sub-medicalservicecentre)
+* parameter[=].valueReference = Reference({{org1-fhir-url}}Subscription/{{subscription2id}})
 * parameter[+].name = "status"
 * parameter[=].valueCode = #active
 * parameter[+].name = "type"
@@ -27,4 +27,4 @@ Usage: #inline
 * parameter[=].part[+].name = "timestamp"
 * parameter[=].part[=].valueInstant = "2020-05-29T11:44:13.1882432-05:05"
 * parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference({{cps-base-url}}Task/cps-task-02-02)
+* parameter[=].part[=].valueReference = Reference({{org1-fhir-url}}Task/{{task2id}})

@@ -1,0 +1,75 @@
+@startuml
+actor org_a as "Organization A"
+actor org_b as "Organization B"
+actor org_c as "Organization C"
+database registry as "Orca Registry"
+
+group init
+    org_a -> org_a: self issue URA VC, Service VC
+    org_a -> registry: publish URA VP, Service VP
+
+    org_b -> org_b: self issue URA VC, Service VC
+    org_b -> registry: publish URA VP, Service VP
+
+    org_c -> org_c: self issue URA VC, Service VC
+    org_c -> registry: publish URA VP, Service VP
+
+    note right
+        All services are now
+        registered in the registry
+    end note
+end
+
+group enroll
+   org_a -> registry: lookup B (service)
+   org_a -> org_a: create task (for=Patient, \nrequester=A, \nperformer=B)
+   org_a -> org_b: issue VC (A->B) with (Task, Patient) to B
+   org_b -> org_b: sign VP (A->B)
+   org_b -> org_a: accept/update task with VP (A->B)
+   org_b -> registry: publish VP (A->B)
+    note right
+        The registry now knows:
+         - Patient is related to Organization A and B
+         - Organization A has issued a task to Organization B
+           for Patient
+         - Organization B has accepted the task
+    end note
+end
+
+group forward
+   org_b -> registry: lookup C (service)
+   org_b -> org_b: create task (for=Patient, \nrequester=B, \nperformer=C)
+   org_b -> org_c: issue VC (B->C) with (Task, Patient) to C
+   org_c -> org_c: sign VP (B->C)
+   org_c -> org_b: accept/update task with VP (B->C)
+   org_c -> registry: publish VP (B->C)
+    note right
+        The registry now knows:
+         - Patient is related to Organization B and C
+         - Organization B has issued a task to Organization C
+           for Patient
+         - Organization C has accepted the task
+    end note
+end
+
+group discover
+    org_c -> registry: query registry (patient=X, usecase=Y)
+    registry --> org_c: result VP (A->B), VP (B->C)
+    org_c -> org_c: locates "Organization A" as part of the network
+end
+
+group access
+    org_c -> registry: lookup A (service)
+    org_c -> org_a: request data (VP (B->C))
+    org_a -> registry: query for "Organization B"
+    registry --> org_a: return (VP (A->B))
+    note right
+        Organization A can verify that:
+        - Organization B has assigned a task to Organization C (with a VC (B->C))
+        - Organization C has accepted the task from Organization B (with a VP (B->C))
+        - Organization A has assigned a task to Organization B (with a VC (A->B))
+        - Organization B has accepted the task from Organization A (with a VP (A->B))
+    end note
+    org_a --> org_c: provide data
+end
+@enduml

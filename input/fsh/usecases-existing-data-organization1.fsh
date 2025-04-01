@@ -1,10 +1,12 @@
-Instance: hospitalx-patrick
+Instance: hospitalx-patient-patrick
 InstanceOf: Patient
 Title: "9.01 Patient Patrick Egger"
 Description: "Existing data in EHR of Hospital X"
 * meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-Patient"
-* identifier.system = "http://fhir.nl/fhir/NamingSystem/bsn"
-* identifier.value = "111222333"
+* identifier[+].system = "http://hospitalx.example.org/EHR/patients"
+* identifier[=].value = "123456"
+* identifier[+].system = "http://fhir.nl/fhir/NamingSystem/bsn"
+* identifier[=].value = "111222333"
 * name
   * given[0] = "Patrick"
   * family = "Egger"
@@ -25,7 +27,7 @@ Description: "Existing data in EHR of Hospital X"
 * meta.lastUpdated = "2024-09-03T12:00:00Z"
 * id = "143214345325432"
 * code = $sct#13645005 "Chronic obstructive pulmonary disease"
-* subject = Reference(urn:uuid:hospitalx-patrick) // Patient Patrick Egger
+* subject = Reference(urn:uuid:hospitalx-patient-patrick) // Patient Patrick Egger
 
 Instance: hospitalx-heartfailure
 InstanceOf: Condition
@@ -37,7 +39,7 @@ Description: "Existing data in EHR of Hospital X"
 * meta.lastUpdated = "2024-09-03T12:00:00Z"
 * id = "56476575765"
 * code = $sct#84114007 "Hartfalen"
-* subject = Reference(urn:uuid:hospitalx-patrick) // Patient Patrick Egger
+* subject = Reference(urn:uuid:hospitalx-patient-patrick) // Patient Patrick Egger
 
 
 // Instance: hospitalx-medication-rash
@@ -48,7 +50,7 @@ Description: "Existing data in EHR of Hospital X"
 // * meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-Problem"
 // * category = $sct#116223007 "Complicatie"
 // * code = $sct#62014003 "Geneesmiddel-interacties"
-// * subject = Reference(hospitalx-patrick) // Patient Patrick Egger
+// * subject = Reference(hospitalx-patient-patrick) // Patient Patrick Egger
 // * subject.type = "Patient"
 // * note.text = "Huiduitslag met veel jeuk door medicatie"
 
@@ -104,13 +106,13 @@ InstanceOf: HealthcareService
 Usage: #example
 Title: "9.01 HealthcareService Telemonitoring at Medical Service Centre"
 Description: "Existing data in EHR of Hospital X"
-* active = true
-* providedBy = Reference(urn:uuid:hospitalx-msc)
-* identifier.system = "urn:oid:2.16.840.1.113883.2.4.3.224"
+* identifier.system = $uuid
 * identifier.value = "urn:uuid:91a9be09-eb97-4c0f-9a61-27a1985ae38b"
 * active = true
+* providedBy = Reference(urn:uuid:hospitalx-msc)
 * providedBy.identifier.system = $ura
 * providedBy.identifier.value = "URA-002"
+* active = true
 * category[+] = $sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
 * type[+] = $sct#715191006 "monitoren van asthma via telegeneeskunde (regime/therapie)"
 * type[+] = $sct#879780004 "monitoren van chronisch hartfalen via telegeneeskunde (regime/therapie)" 
@@ -128,8 +130,10 @@ Usage: #example
 Title: "9.01 PractitionerRole Caroline van Dijk at Hospital X"
 Description: "Existing data in EHR of Hospital X"
 * meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-PractitionerRole"
-* identifier.system = "http://fhir.nl/fhir/NamingSystem/uzi"
-* identifier.value = "UZI-1"
+* identifier[+].system = "http://hospitalx.example.org/HRM/assignments"
+* identifier[=].value = "123456"
+* identifier[+].system = "http://fhir.nl/fhir/NamingSystem/uzi"
+* identifier[=].value = "UZI-1"
 * practitioner = Reference(urn:uuid:hospitalx-carolinevandijk)
 * organization = Reference(urn:uuid:hospitalx-hospitalx)
 * code.coding = $sct#17561000 "Cardiologist"
@@ -144,6 +148,10 @@ Usage: #example
 Title: "9.01 Practitioner Caroline van Dijk"
 Description: "Existing data in EHR of Hospital X"
 * meta.profile = "http://nictiz.nl/fhir/StructureDefinition/nl-core-HealthProfessional-Practitioner"
+* identifier[+].system = $uuid
+* identifier[=].value = "urn:uuid:21a4c9fa-98d1-43b2-8ee6-00764f99e763"
+* identifier[+].system = "http://hospitalx.example.org/HRM/employees"
+* identifier[=].value = "1234"
 * name.use = #official
 * name.text = "Caroline van Dijk"
 * name.family = "van Dijk"
@@ -161,10 +169,11 @@ Title: "9.01 ServiceRequest Telemonitoring"
 Description: "Existing data in EHR of Hospital X"
 * meta.versionId = "1"
 * meta.lastUpdated = "2024-09-03T12:00:00Z"
-* id = "99534756439"
+* identifier.system = $uuid
+* identifier.value = "urn:uuid:37063bd0-d6bb-4fe0-b73c-26532f297d4b"
 * status = #active
 * intent = #order
-* subject = Reference(urn:uuid:hospitalx-patrick) "Patient Patrick Egger"
+* subject = Reference(urn:uuid:hospitalx-patient-patrick) "Patient Patrick Egger"
 * requester = Reference(urn:uuid:hospitalx-carolinevandijk-hospitalx) "Caroline van Dijk at Hospital X"
 * code = $sct#719858009 "monitoren via telegeneeskunde (regime/therapie)"
 * reasonReference = Reference(urn:uuid:hospitalx-heartfailure) "Diagnose Hartfalen"
@@ -180,7 +189,7 @@ Title: "9.01 Bundle"
 Description: "Existing data in EHR of Hospital X"
 * meta.versionId = "1"
 * type = #transaction
-* insert BundleEntryWithFullurl(urn:uuid:hospitalx-patrick, hospitalx-patrick, #POST, Patient)
+* insert BundleEntryWithFullurl(urn:uuid:hospitalx-patient-patrick, hospitalx-patient-patrick, #POST, Patient)
 * insert BundleEntryWithFullurl(urn:uuid:hospitalx-copd, hospitalx-copd, #POST, Condition)
 * insert BundleEntryWithFullurl(urn:uuid:hospitalx-heartfailure, hospitalx-heartfailure, #POST, Condition)
 * insert BundleEntryWithFullurl(urn:uuid:hospitalx-hospitalx, hospitalx-hospitalx, #POST, Organization)

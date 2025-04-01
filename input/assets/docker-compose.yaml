@@ -1,0 +1,34 @@
+services:
+  fhir-org1:
+    container_name: fhir-org1
+    image: "hapiproject/hapi:latest"
+    ports:
+      - "8090:8080"
+    environment:
+      - hapi.fhir.fhir_version=R4
+      - hapi.fhir.allow_external_references=true
+      - JAVA_OPTS=-Dhapi.fhir.jsonParser.dontStripVersionsFromReferencesAtPaths=Provenance.target
+      # - hapi.fhir.enforce_referential_integrity_on_write=true
+      # - hapi.fhir.etag_support_enabled=true
+      # - hapi.fhir.auto_version_reference_at_paths=Provenance.target.reference
+      #  - hapi.fhir.partitioning.allow_references_across_partitions=false
+
+      # configs:
+      #   - source: hapi
+      #     target: /app/config/application.yaml
+  fhir-org2:
+    container_name: fhir-org2
+    image: "hapiproject/hapi:latest"
+    ports:
+      - "8190:8080"
+    environment:
+      - hapi.fhir.fhir_version=R4
+      - hapi.fhir.allow_external_references=true
+  # fhir-org3:
+  #   container_name: fhir-org3
+  #   image: "hapiproject/hapi:latest"
+  #   ports:
+  #     - "8290:8080"
+  #   environment:
+  #     - hapi.fhir.fhir_version=R4
+  #     - hapi.fhir.allow_external_references=true

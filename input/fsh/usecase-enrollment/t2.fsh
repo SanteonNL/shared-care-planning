@@ -16,7 +16,7 @@ Description: "Subscription to receive notifications of instance-id's where the M
 * channel.extension[+].url = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-max-count"
 * channel.extension[=].valuePositiveInt = 20
 * channel.type = #rest-hook
-* channel.endpoint = "{{cpc2-base-url}}notifications"
+* channel.endpoint = "{{org2-fhir-url}}notifications"
 * channel.payload = #application/fhir+json
 * channel.payload.extension.url = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-payload-content"
 * channel.payload.extension.valueCode = #id-only
@@ -40,7 +40,7 @@ Description: "Subscription to receive notifications of instance-id's where Hospi
 * channel.extension[+].url = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-max-count"
 * channel.extension[=].valuePositiveInt = 20
 * channel.type = #rest-hook
-* channel.endpoint = "{{cpc1-base-url}}notifications"
+* channel.endpoint = "{{org1-fhir-url}}notifications"
 * channel.payload = #application/fhir+json
 * channel.payload.extension.url = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-payload-content"
 * channel.payload.extension.valueCode = #id-only
@@ -54,26 +54,23 @@ Usage: #example
 Title: "1.04.3 CarePlan creation"
 Description: "Initiation of a care plan for a patient with Heartfailure"
 * meta.versionId = "1"
+* contained[0] = cps-careteam-01
 * status = #active
 * intent = #order
 * category = $sct#135411000146103 "Multidisciplinary care regime"
-* subject = Reference(cps-patient-patrick)
+* insert RefIdentifier(subject, Patient, 1, $bsn, 111222333, $ura, URA-1, org1)
 * careTeam = Reference(cps-careteam-01)
-* author.identifier.system = $uzi
-* author.identifier.value = "UZI-1"
+* insert RefIdentifier(author, PractitionerRole, 1, $uzi, UZI-1, $ura, URA-1, org1)
+* activity[+].reference = Reference({{org1-fhir-url}}Task/{{task1id}})
 
 
 Instance: cps-careteam-01
-InstanceOf: SCPCareTeam
-Usage: #example
+InstanceOf: CareTeam
+Usage: #inline
 Title: "1.04.4 CareTeam creation"
 Description: "Initiation of a care team for a patient with Heartfailure"
-* meta.versionId = "1"
-* category = $sct#135411000146103 "Multidisciplinary care regime"
-* subject.identifier.system = $bsn
-* subject.identifier.value = "111222333"
-* insert ParticipantMember($bsn, 111222333, 2024-08-27)
-* insert ParticipantMember($ura, URA-1, 2024-08-27)
+* insert ParticipantMember(2024-08-27, Patient, 1, $bsn, 111222333, $ura, URA-1, org1)
+* insert ParticipantMember(2024-08-27, PractitionerRole, 1, $uzi, UZI-1, $ura, URA-1, org1)
 
 
 Instance: notification-hospitalx-01
@@ -86,7 +83,7 @@ Title: "1.05.1 notification bundle for Hospital X"
 * entry.fullUrl = "urn:uuid:292d3c72-edc1-4d8a-afaa-d85e19c7f562a"
 * entry.resource = 292d3c72-edc1-4d8a-afaa-d85e19c7f562a
 * entry.request.method = #GET
-* entry.request.url = "https://cps.nl/fhir/Subscription/cps-sub-hospitalx/$status"
+* entry.request.url = "{{org1-fhir-url}}Subscription/{{subscription1id}}/$status"
 * entry.response.status = "200"
 
 Instance: 292d3c72-edc1-4d8a-afaa-d85e19c7f562a
@@ -95,7 +92,7 @@ Usage: #example
 Title: "1.05.2 notification bundle parameter for Hospital X"
 * meta.profile = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription-status-r4"
 * parameter[0].name = "subscription"
-* parameter[=].valueReference = Reference({{cps-base-url}}Subscription/cps-sub-hospitalx)
+* parameter[=].valueReference = Reference({{org1-fhir-url}}Subscription/{{subscription1id}})
 * parameter[+].name = "status"
 * parameter[=].valueCode = #active
 * parameter[+].name = "type"
@@ -106,14 +103,7 @@ Title: "1.05.2 notification bundle parameter for Hospital X"
 * parameter[=].part[+].name = "timestamp"
 * parameter[=].part[=].valueInstant = "2024-05-29T11:44:13.1882432-05:00"
 * parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference({{cps-base-url}}CarePlan/cps-careplan-01)
-* parameter[+].name = "notification-event"
-* parameter[=].part[0].name = "event-number"
-* parameter[=].part[=].valueString = "2"
-* parameter[=].part[+].name = "timestamp"
-* parameter[=].part[=].valueInstant = "2024-05-29T11:44:13.1882432-05:00"
-* parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference({{cps-base-url}}CareTeam/cps-careteam-01)
+* parameter[=].part[=].valueReference = Reference({{org1-fhir-url}}CarePlan/{{careplan1id}})
 
 Instance: notification-msc-01
 InstanceOf: Bundle
@@ -125,7 +115,7 @@ Usage: #example
 * entry.fullUrl = "urn:uuid:292d3c72-edc1-4d8a-afaa-d85e19c7f562"
 * entry.resource = 292d3c72-edc1-4d8a-afaa-d85e19c7f562
 * entry.request.method = #GET
-* entry.request.url = "https://cps.nl/fhir/Subscription/cps-sub-medicalservicecentre/$status"
+* entry.request.url = "{{org1-fhir-url}}Subscription/{{subscription2id}}/$status"
 * entry.response.status = "200"
 
 Instance: 292d3c72-edc1-4d8a-afaa-d85e19c7f562
@@ -133,7 +123,7 @@ InstanceOf: Parameters
 Usage: #inline
 * meta.profile = "http://hl7.org/fhir/uv/subscriptions-backport/StructureDefinition/backport-subscription-status-r4"
 * parameter[0].name = "subscription"
-* parameter[=].valueReference = Reference({{cps-base-url}}Subscription/cps-sub-medicalservicecentre)
+* parameter[=].valueReference = Reference({{org1-fhir-url}}Subscription/{{subscription2id}})
 * parameter[+].name = "status"
 * parameter[=].valueCode = #active
 * parameter[+].name = "type"
@@ -144,4 +134,4 @@ Usage: #inline
 * parameter[=].part[+].name = "timestamp"
 * parameter[=].part[=].valueInstant = "2020-05-29T11:44:13.1882432-05:00"
 * parameter[=].part[+].name = "focus"
-* parameter[=].part[=].valueReference = Reference({{cps-base-url}}Task/cps-task-01)
+* parameter[=].part[=].valueReference = Reference({{org1-fhir-url}}Task/{{cps-task-01}})

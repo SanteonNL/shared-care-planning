@@ -10,7 +10,7 @@ name: shared-care-planning
 title: Shared Care Planning (SCP) Implementation Guide
 # description: Example Implementation Guide for getting started with SUSHI
 status: draft # draft | active | retired | unknown
-version: 0.2.0
+version: 0.3.0
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 copyrightYear: 2024+
 releaseLabel: ci-build # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
@@ -62,29 +62,20 @@ pages:
   index.md:
     title: Home
 
-  overview.md:
-    title: Overview
+  careplan.md:
+    title: Careplans
 
-  security-authentication.md:
-    title: Security - Authentication
+  workflow.md:
+    title: Workflow
 
-  security-authorization.md:
-    title: Security - Authorization
+  care-services.md:
+    title: Care Services
 
-  security-privacy.md:
-    title: Security - Privacy
+  notification.md:
+    title: Notifications
 
-  transaction-request-workflow.md:
-    title: Transactions - Basic request workflow
-
-  transaction-request-response-workflow.md:
-    title: Transactions - Request workflow with additional response workflow
-
-  transaction-careplan-careteam-update.md:
-    title: Transactions - Updating CarePlan and CareTeam
-
-  transaction-get-data.md:
-    title: Transactions - Getting data from CareTeam members
+  authorization.md:
+    title: Authorization
 
   usecase-enrollment.md:
     title: Use cases - Enroll patient in home monitoring
@@ -123,16 +114,12 @@ pages:
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 menu:
   Home: index.html
-  Overview: overview.html
-  Security:
-    Authentication: security-authentication.html
-    Authorization: security-authorization.html
-    Privacy: security-privacy.html
-  Transactions:
-    Basic Request workflow: transaction-request-workflow.html
-    Request workflow with additional response workflow: transaction-request-response-workflow.html
-    Updating CarePlan and CareTeam: transaction-careplan-careteam-update.html
-    Getting data from CareTeam members: transaction-get-data.html
+  Workflow: workflow.html
+  Care Services: care-services.html
+  Notifications: notification.html
+  CarePlan: careplan.html
+  Authorization: authorization.html
+
   Use cases:
     Enroll patient in home monitoring: usecase-enrollment.html
     Get data for home care: usecase-view-all-data.html

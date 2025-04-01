@@ -1,0 +1,169 @@
+# Test requests for usecase enrollment 
+
+###
+# @name postBundleTask1
+
+POST {{org1-fhir-url}}
+Content-Type: application/fhir+json
+Authorization: {{org1-access-token}}
+
+<@ {{path-to-data}}Bundle-cps-bundle-01.json
+
+###
+# @name getTask1
+
+GET {{org1-fhir-url}}{{postBundleTask1.response.body.entry[0].response.location}}
+
+###
+@task1id = {{getTask1.response.body.id}}
+@task1etag = {{getTask1.response.body.meta.versionId}}
+###
+
+# GET {{org1-fhir-url}}Task/13/_history/1
+
+###
+# @name getPatient1
+
+POST {{org1-fhir-url}}/Patient/_search
+Content-Type: application/x-www-form-urlencoded
+Authorization: {{org1-access-token}}
+X-SCP-Context: {{org1-fhir-url}}Task/{{task1id}}
+
+identifier=http://fhir.nl/fhir/NamingSystem/bsn|{{getTask1.response.body.for.identifier.value}}
+
+
+###
+# @name getServiceRequest1
+
+POST {{org1-fhir-url}}/ServiceRequest/_search
+Content-Type: application/x-www-form-urlencoded
+Authorization: {{org1-access-token}}
+X-SCP-Context: {{org1-fhir-url}}Task/{{task1id}}
+
+identifier={{getTask1.response.body.focus.identifier.system}}|{{getTask1.response.body.focus.identifier.value}}
+
+
+###
+
+@patient1id = {{getPatient1.response.body.entry[0].resource.id}}
+
+@servicerequest1id = {{getServiceRequest1.response.body.entry[0].resource.id}}
+
+### POST Provenance (incl. signature)
+POST {{org1-fhir-url}}
+Content-Type: application/fhir+json
+Authorization: {{org1-access-token}}
+X-SCP-Context: {{org1-fhir-url}}Task/{{task1id}}
+
+<@ {{path-to-data}}Bundle-cps-signature-bundle-01.json
+
+###
+
+POST {{org1-fhir-url}}Task/_search
+Content-Type: application/x-www-form-urlencoded
+X-SCP-Context: {{org1-fhir-url}}Task/{{task1id}}
+
+_id={{task1id}}&_revinclude=Provenance:target
+
+###
+
+GET {{org1-fhir-url}}Provenance
+
+
+###
+# @name postSubscription1
+
+POST {{org1-fhir-url}}Subscription
+Content-Type: application/fhir+json
+Authorization: {{org1-access-token}}
+
+<@ {{path-to-data}}Subscription-cps-sub-hospitalx.json
+
+###
+@subscription1id = {{postSubscription1.response.body.id}}
+
+###
+# @name postSubscription2
+
+POST {{org1-fhir-url}}Subscription
+Content-Type: application/fhir+json
+Authorization: {{org1-access-token}}
+
+<@ {{path-to-data}}Subscription-cps-sub-medicalservicecentre.json
+
+###
+@subscription2id = {{postSubscription2.response.body.id}}
+
+###
+# @name postCareTeam1
+
+POST {{org1-fhir-url}}CareTeam
+Content-Type: application/fhir+json
+Authorization: {{org1-access-token}}
+
+<@ {{path-to-data}}CareTeam-cps-careteam-01.json
+
+###
+
+@careteam1id = {{postCareTeam1.response.body.id}}
+
+###
+# @name postCarePlan1
+
+POST {{org1-fhir-url}}CarePlan
+Content-Type: application/fhir+json
+Authorization: {{org1-access-token}}
+
+<@ {{path-to-data}}CarePlan-cps-careplan-01.json
+
+###
+@careplan1id = {{postCarePlan1.response.body.id}}
+
+###
+# @name postBundleTask2
+
+POST {{org1-fhir-url}}
+Content-Type: application/fhir+json
+Authorization: {{org1-access-token}}
+
+<@ {{path-to-data}}Bundle-cps-bundle-02.json
+
+###
+# @name getTask2
+
+GET {{org1-fhir-url}}{{postBundleTask2.response.body.entry[0].response.location}}
+
+###
+@task2id = {{getTask2.response.body.id}}
+@task2etag = {{getTask2.response.body.meta.versionId}}
+
+
+# ###
+# # @name getPatient1
+
+# GET {{org1-fhir-url}}{{getTask1.response.body.for.reference}}
+
+###
+
+POST {{org1-fhir-url}}
+Content-Type: application/fhir+json
+Authorization: {{org1-access-token}}
+
+<@ {{path-to-data}}Bundle-cps-bundle-03.json
+
+###
+POST {{org1-fhir-url}}
+Content-Type: application/fhir+json
+Authorization: {{org1-access-token}}
+
+<@ {{path-to-data}}Bundle-cps-bundle-06.json
+
+###
+
+POST {{org1-fhir-url}}
+Content-Type: application/fhir+json
+Authorization: {{org1-access-token}}
+
+<@ {{path-to-data}}Bundle-cps-bundle-07.json
+
+###
