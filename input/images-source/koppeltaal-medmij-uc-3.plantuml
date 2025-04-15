@@ -1,0 +1,27 @@
+@startuml koppeltaal-medmij-uc-3
+
+skinparam roundcorner 20
+skinparam defaultFontName Arial 
+hide footbox
+
+!pragma teoz true
+
+actor  Patient as "Vera"
+participant  EHR1 as "ehr1"
+participant  PHR as "phr1"
+
+EHR1 -> EHR1: create/POST Task-5 to\n schedule an appointment
+EHR1 -> Patient: notify Patient
+Patient -> PHR: retrieve tasks from care providers
+PHR -> EHR1: Get Task-5
+PHR -> EHR1: Execute Task-5 (schedule appointment)
+PHR -> EHR1: Update Task-5 complete
+====
+EHR1 -> EHR1: create/POST Task-6 to\n complete a questionnaire
+EHR1 -> Patient: notify Patient
+Patient -> PHR: retrieve tasks from care providers
+PHR -> EHR1: Get Task-6
+PHR -> EHR1: Execute Task-6 (complete questionnaire)
+PHR -> EHR1: Update Task-6 complete
+
+@enduml
