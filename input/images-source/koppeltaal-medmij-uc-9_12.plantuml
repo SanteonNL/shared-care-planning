@@ -1,0 +1,37 @@
+@startuml koppeltaal-medmij-uc-9-10-11-12
+
+skinparam roundcorner 20
+skinparam defaultFontName Arial 
+hide footbox
+
+!pragma teoz true
+
+actor  Patient as "Vera"
+actor  Doctor as "GP Dr. West"
+participant  HIS as "gp-system"
+participant ZH1 as "zh1"
+participant GGZ as "ggz"
+participant  PGO1 as "pgo1"
+
+Patient -> GGZ: Patient Makes Appointment
+GGZ -> HIS: Task-8 Notify
+GGZ -> PGO1: Task-8 Notify
+HIS -> HIS: Update CarePlan
+GGZ -> PGO1: Creer/Post Task9a (Vragenlijst Ernst van de Angst)
+PGO1 -> Patient: Notificeer Patient
+Patient -> PGO1: Invullen Angst Inventarisatie Vragenlijst
+PGO1 -> PGO1: Task9a complete
+PGO1 -> GGZ: Task9a complete
+GGZ -> PGO1: Creer/Post Task9b (Module Behandeling Angst)
+PGO1 -> Patient: Notificeer Patient
+Patient -> PGO1: Opvolgen Module Behandeling Angst
+PGO1 -> PGO1: Task9b complete
+PGO1 -> GGZ: Task9b complete
+GGZ -> PGO1: Creer/Post Task9c (Vragenlijst Meting behandeleffect)
+PGO1 -> Patient: Notificeer Patient
+Patient -> PGO1: Invullen Vragenlijst behandeleffect
+PGO1 -> PGO1: Task9c complete
+PGO1 -> GGZ: Task9c complete
+GGZ -> HIS: Task-8 complete
+Doctor -> ZH1: Make Careplan MRI (etc)
+@enduml

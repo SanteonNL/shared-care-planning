@@ -1,0 +1,34 @@
+@startuml koppeltaal-medmij-uc-7/8
+
+skinparam roundcorner 20
+skinparam defaultFontName Arial 
+hide footbox
+
+!pragma teoz true
+
+actor  Patient as "Vera"
+actor  Doctor as "GP Dr. West"
+participant  HIS as "gp-system"
+participant GGZ as "ggz"
+participant  EHR1 as "zh1"
+participant  PGO1 as "pgo1"
+participant FHIR as "FHIR"
+participant MOD1 as "mod1"
+
+MOD1 -> FHIR: Task-6 completed
+FHIR -> PGO1: Task-6 Notify
+FHIR -> EHR1: Task-6 Notify
+EHR1 -> EHR1: Task-6 Evaluate
+EHR1 -> HIS: Task-1 (MRI) Cancel
+Doctor -> HIS: Create Careplan (angst)
+Doctor -> HIS: Create ServiceRequest (angst)
+Doctor -> HIS: Zoek GGZ-instelling (angst)
+HIS -> HIS: Create Task 8 for ServiceRequest
+HIS -> GGZ: Post Task 8 for ServiceRequest
+
+Patient -> GGZ: Patient Makes Appointment
+GGZ -> HIS: Task-8 Notify
+GGZ -> PGO1: Task-8 Notify
+HIS -> HIS: Update CarePlan
+
+@enduml
