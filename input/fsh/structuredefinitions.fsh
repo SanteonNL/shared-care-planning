@@ -67,5 +67,5 @@ Title: "Shared Care Planning: Task Status"
 // Invariant: SCPTask-state-change
 // Severity: #error
 // Description: "Only the 'requester' can create an SCPTask in state 'ready' or 'requested'. 
-// Only the 'owner' can update an SCPTask for state transitions requested->received, requested->accepted, requested->rejected, received->accepted, received->rejected, accepted->in-progress, in-progress->completed, in-progress->failed, ready->completed and ready->failed.
+// Only the 'owner' can update an SCPTask for state transitions requested->received, requested->accepted, requested->rejected, received->accepted, received->rejected, accepted->in-progress, accepted->rejected,in-progress->completed, in-progress->failed, ready->completed and ready->failed.
 // Both the 'requester' and 'owner' can update an SCPTask for state transitions requested->cancelled, received->cancelled, accepted->cancelled, in-progress->on-hold and on-hold->in-progress"

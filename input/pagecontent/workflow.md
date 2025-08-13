@@ -54,7 +54,7 @@ The Task state machine for SCP is a subset of the [base FHIR Task state machine]
 |-|requested|Task.requestor who is also CarePlan-participant|
 |requested|received, accepted, rejected, cancelled, in-progress, completed, failed|Task.owner|
 |received|accepted, rejected, cancelled, in-progress, completed, failed|Task.owner|
-|accepted|cancelled, in-progress, completed, failed|Task.owner|
+|accepted|cancelled, rejected, in-progress, completed, failed|Task.owner|
 |in-progress|completed, failed, on-hold|Task.owner|
 |on-hold|in-progress, completed, failed|Task.owner|
 {:.grid .table-hover}
