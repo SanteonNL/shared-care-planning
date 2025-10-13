@@ -40,6 +40,20 @@ Usage: #definition
 * xpathUsage = #normal
 * xpath = "f:Task/f:output/f:valueReference"
 
+Instance: Task-patient-identifier
+InstanceOf: SearchParameter
+Usage: #definition
+* url = "http://santeonnl.github.io/shared-care-planning/cps-searchparameter-task-patient-identifier.json"
+* name = "patient-identifier"
+* status = #active
+* description = "Search Tasks by patient identifier"
+* code = #patient-identifier
+* base = #Task
+* type = #token
+* expression = "Task.for.identifier"
+* xpathUsage = #normal
+* xpath = "f:Task/f:for/f:identifier"
+
 Instance: searchparams
 InstanceOf: Bundle
 Usage: #example
@@ -49,3 +63,4 @@ Description: "Search parameters to setup FHIR server"
 * insert BundleEntry(CarePlan-subject-identifier, #POST, SearchParameter)
 * insert BundleEntry(Task-input-reference, #POST, SearchParameter)
 * insert BundleEntry(Task-output-reference, #POST, SearchParameter)
+* insert BundleEntry(Task-patient-identifier, #POST, SearchParameter)
